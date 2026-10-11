@@ -1,0 +1,78 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:Inter;src:url(/usr/share/fonts/opentype/inter/Inter-Bold.otf);font-weight:700}
+@font-face{font-family:Inter;src:url(/usr/share/fonts/opentype/inter/Inter-SemiBold.otf);font-weight:600}
+@font-face{font-family:Play;src:url(fonts/Playfair.ttf);font-weight:100 900}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#FAF9F6}
+#st{position:absolute;inset:0;overflow:hidden;font-family:Inter}
+.blob{position:absolute;border-radius:50%;filter:blur(120px);opacity:.55}
+#tag{position:absolute;top:300px;width:100%;text-align:center}
+#pill{display:inline-block;padding:16px 34px;border-radius:40px;background:#161513;color:#FAF9F6;font:600 32px Inter;letter-spacing:6px}
+#pill b{color:#E2B56B}
+#title{position:absolute;top:400px;width:100%;text-align:center;font:800 92px/100px Play;color:#161513}
+#title i{font-style:normal;color:#C48C34}
+#piece{position:absolute;left:0;top:600px;width:1080px;height:640px}
+#cap{position:absolute;left:90px;right:90px;top:1220px;text-align:center;font:700 62px/80px Inter;color:#161513;perspective:900px}
+#cap span{display:inline-block;margin:0 8px;transform-origin:50% 100%}
+#cap span.hl{color:#C48C34}
+#cta{position:absolute;top:1470px;width:100%;display:flex;flex-direction:column;align-items:center;gap:18px}
+#zone{width:520px;height:120px;border:4px dashed #C48C34;border-radius:30px;display:flex;align-items:center;justify-content:center;font:700 40px Inter;color:#C48C34;background:rgba(255,255,255,.7)}
+canvas{position:absolute;inset:0}
+</style></head><body><div id="st">
+<div class="blob" id="b1" style="width:900px;height:900px;background:#F1D7A8"></div>
+<div class="blob" id="b2" style="width:800px;height:800px;background:#E3E6EE"></div>
+<div id="tag"><span id="pill">NOVO REELS · <b>CARRINHO</b></span></div>
+<div id="title">Um <i>plano</i> pra<br>cada dia</div>
+<svg id="piece" viewBox="-540 -60 1080 640" style="overflow:visible"><ellipse id="shadow" cx="0" cy="540" rx="260" ry="30" fill="rgba(90,60,20,.18)"/>
+<g id="hg"><rect x="-55" y="-10" width="110" height="18" rx="6" fill="#161513"/><rect x="-55" y="232" width="110" height="18" rx="6" fill="#161513"/><path d="M-40 8 H40 Q40 70 6 120 Q40 170 40 232 H-40 Q-40 170 -6 120 Q-40 70 -40 8Z" fill="rgba(255,255,255,.75)" stroke="#161513" stroke-width="5"/><path id="sandT" fill="#E2B56B"/><path id="sandB" fill="#C48C34"/><line id="sandS" x1="0" y1="120" x2="0" y2="230" stroke="#C48C34" stroke-width="4"/></g>
+<g id="cart"><g id="items"></g>
+<path d="M-250 150 L-210 150" stroke="#161513" stroke-width="14" stroke-linecap="round"/><path d="M-210 150 L-180 180" stroke="#161513" stroke-width="10"/>
+<path d="M-180 180 L230 180 L200 380 L-150 380Z" fill="#2A2724"/><path d="M230 180 L280 150 L250 350 L200 380Z" fill="#161513"/><path d="M-180 180 L-130 150 L280 150 L230 180Z" fill="#4A443D"/>
+<g stroke="#C48C34" stroke-width="5" opacity=".8"><line x1="-110" y1="190" x2="-90" y2="370"/><line x1="-30" y1="190" x2="-20" y2="370"/><line x1="50" y1="190" x2="50" y2="370"/><line x1="130" y1="190" x2="120" y2="370"/><line x1="-165" y1="250" x2="218" y2="250"/><line x1="-157" y1="315" x2="208" y2="315"/></g>
+<path d="M-150 380 L-130 420 H200" stroke="#161513" stroke-width="10" fill="none"/>
+<g id="w1" transform="translate(-100 460)"><circle r="36" fill="#161513"/><circle r="14" fill="#E2B56B"/><line x1="-30" y1="0" x2="30" y2="0" stroke="#E2B56B" stroke-width="5"/></g>
+<g id="w2" transform="translate(170 460)"><circle r="36" fill="#161513"/><circle r="14" fill="#E2B56B"/><line x1="-30" y1="0" x2="30" y2="0" stroke="#E2B56B" stroke-width="5"/></g></g>
+<g id="cal" transform="translate(40 -20)"><rect x="-120" y="-10" width="240" height="160" rx="22" fill="#fff" stroke="#161513" stroke-width="6"/><rect x="-120" y="-10" width="240" height="48" rx="22" fill="#C48C34"/><rect x="-120" y="16" width="240" height="22" fill="#C48C34"/><circle cx="-60" cy="-14" r="10" fill="#161513"/><circle cx="60" cy="-14" r="10" fill="#161513"/>
+<g id="page"><text id="dtx" x="0" y="122" text-anchor="middle" font-family="Play" font-weight="800" font-size="84" fill="#161513">D1</text></g></g>
+</svg>
+<div id="cap"></div>
+<div id="cta"><svg id="arrow" width="90" height="90" viewBox="0 0 90 90"><path d="M45 10 V70 M20 48 L45 74 L70 48" stroke="#161513" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><div id="zone">cole o link do Reels aqui</div></div>
+<canvas id="fx" width="1080" height="1920"></canvas>
+</div><script>
+const TL=__TIMELINE__,S=TL.segs,$=id=>document.getElementById(id);
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)),eo=x=>1-Math.pow(1-clamp(x),4);
+const back=x=>{x=clamp(x);const c=1.7;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+function bounce(x){const n=7.5625,d=2.75;if(x<1/d)return n*x*x;if(x<2/d)return n*(x-=1.5/d)*x+.75;if(x<2.5/d)return n*(x-=2.25/d)*x+.9375;return n*(x-=2.625/d)*x+.984375}
+const ITEMS=[[-90,150,0],[40,140,1],[160,150,0],[-20,90,1],[110,95,0],[-120,95,1],[30,40,0]];
+let ih="";ITEMS.forEach((m,k)=>{ih+=m[2]?`<g class="it"><circle r="38" fill="#C48C34"/><circle r="28" fill="#E2B56B"/><text y="13" text-anchor="middle" font-family="Play" font-weight="800" font-size="36" fill="#8A5E1E">$</text></g>`:`<g class="it"><path d="M-40 -30 L0 -46 L40 -30 L0 -14Z" fill="#F1D7A8"/><path d="M-40 -30 L0 -14 V36 L-40 20Z" fill="#C48C34"/><path d="M40 -30 L0 -14 V36 L40 20Z" fill="#9C6B26"/></g>`});$("items").innerHTML=ih;
+const HL=[["carrinho","vendas","caírem"],["ação","cada","dia","bônus","último"],["toca","assiste","agora"]];
+const DAYS=["D1","D2","D3","ÚLT"];
+const CAP=$("cap");let cs=-1,sp=[];
+function setCap(i){if(cs===i)return;cs=i;CAP.innerHTML="";sp=[];let wi=0;S[i].text.replace("...","…").split(" ").forEach(tok=>{const e=document.createElement("span");e.textContent=tok;const c=tok.toLowerCase().replace(/[.,:?…!]/g,"");if(HL[i].includes(c))e.className="hl";e._t=S[i].wt[Math.min(wi,S[i].wt.length-1)];if(c)wi++;CAP.appendChild(e);sp.push(e)})}
+const fx=$("fx").getContext("2d");
+function render(t){
+ $("b1").style.transform=`translate(${-260+140*Math.sin(t*.5)}px,${200+120*Math.cos(t*.4)}px)`;$("b2").style.transform=`translate(${520+120*Math.cos(t*.45)}px,${1150+140*Math.sin(t*.33)}px)`;
+ const t0=S[0].start,t1=S[1].start,t2=S[2].start;
+ $("pill").style.transform=`scale(${back((t-0.1)/0.5)})`;$("title").style.opacity=eo((t-0.3)/0.5);$("title").style.transform=`translateY(${(1-eo((t-0.3)/0.5))*30}px)`;
+ // cart parked + hourglass draining -> calendar tabs flip D1..ÚLT, cart rolls & fills with gold -> float
+ const intro=back((t-0.2)/0.6);const roll=eo((t-(t1+0.4))/5.0);
+ const hgo=1-eo((t-(t1+0.2))/0.6);const sf=clamp(t/(t1+0.2));
+ $("hg").setAttribute("transform",`translate(${330+(1-hgo)*120} ${170+(1-intro)*-400}) rotate(${Math.sin(t*2)*4}) scale(${Math.max(.01,hgo*intro)})`);
+ const lv=8+112*sf;$("sandT").setAttribute("d",`M${-38+lv*0.28} ${lv} H${38-lv*0.28} L4 118 H-4Z`);const bh=100*sf;$("sandB").setAttribute("d",`M-38 230 H38 L${38-bh*.3} ${230-bh} H${-38+bh*.3}Z`);
+ const cx=-200+140*roll+(t1+0.4>t?Math.sin(t*2.5)*4:0);$("cart").setAttribute("transform",`translate(${cx} ${70+(1-intro)*-500}) scale(.92)`);
+ ["w1","w2"].forEach((w,k)=>$(w).setAttribute("transform",`translate(${k?170:-100} 460) rotate(${roll*720})`));
+ let d=-1,ph=0;for(let k=0;k<4;k++){const tk=t1+0.6+k*1.3;if(t>=tk){d=k;ph=clamp((t-tk)/0.45)}}
+ const ci=back((t-(t1+0.3))/0.5);$("cal").setAttribute("transform",`translate(330 ${150+Math.sin(t*2)*6}) rotate(${Math.sin(t*1.5)*4}) scale(${Math.max(.01,ci)})`);$("cal").style.opacity=t>t1+0.3?1:0;
+ if(d>=0){$("dtx").textContent=DAYS[d];$("dtx").setAttribute("font-size",d==3?64:84);$("dtx").setAttribute("y",d==3?115:122)}
+ $("page").style.transformBox="fill-box";$("page").style.transformOrigin="center top";$("page").style.transform=`scaleY(${d>0?Math.abs(Math.cos(Math.min(ph,0.5)*Math.PI)+(ph>0.5?0:0))*(ph<0.5?1:1):1})`;
+ $("page").style.transform=`scaleY(${d>0&&ph<1?Math.abs(Math.cos(ph*Math.PI)):1})`;
+ [...$("items").children].forEach((g,k)=>{const m=ITEMS[k];const tk=t1+0.8+k*0.62;const e=bounce(clamp((t-tk)/0.6));const fl=Math.sin(t*2+k)*4*e;g.setAttribute("transform",`translate(${m[0]} ${m[1]-(1-e)*420+fl}) scale(${t>tk?1:0.01})`);g.style.opacity=t>tk?1:0});
+ const fin=eo((t-(t1+4.6))/0.6);$("piece").style.transform=`translateY(${Math.sin(t*1.6)*12*fin}px) rotate(${Math.sin(t*.8)*1.5*fin}deg)`;
+
+ const ca=eo((t-t2+0.2)/0.5);$("cta").style.opacity=ca;$("arrow").style.transform=`translateY(${Math.abs(Math.sin(t*5))*18}px)`;
+ $("zone").style.transform=`scale(${1+0.04*Math.sin(t*6)*ca})`;
+ let i=t>=t2-0.3?2:t>=t1-0.3?1:0;setCap(i);sp.forEach(e=>{const a=eo((t-e._t+.06)/.3);e.style.opacity=a;e.style.transform=`translateY(${(1-a)*26}px) rotateX(${(1-a)*-80}deg)`});
+ fx.clearRect(0,0,1080,1920);const lt=t-(t1+4.5);if(lt>0&&lt<0.8){for(let n=0;n<28;n++){const a=n/28*Math.PI*2,d=60+lt*300;fx.globalAlpha=1-lt/0.8;fx.fillStyle=n%2?"#C48C34":"#161513";fx.fillRect(870+Math.cos(a)*d-4,880+Math.sin(a)*d-4,8,8)}fx.globalAlpha=1}
+}
+window.render=render;window.TOTAL=TL.total;render(0);
+</script></body></html>

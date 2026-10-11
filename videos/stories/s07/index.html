@@ -1,0 +1,69 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:Inter;src:url(/usr/share/fonts/opentype/inter/Inter-Bold.otf);font-weight:700}
+@font-face{font-family:Inter;src:url(/usr/share/fonts/opentype/inter/Inter-SemiBold.otf);font-weight:600}
+@font-face{font-family:Play;src:url(fonts/Playfair.ttf);font-weight:100 900}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#FAF9F6}
+#st{position:absolute;inset:0;overflow:hidden;font-family:Inter}
+.blob{position:absolute;border-radius:50%;filter:blur(120px);opacity:.55}
+#tag{position:absolute;top:300px;width:100%;text-align:center}
+#pill{display:inline-block;padding:16px 34px;border-radius:40px;background:#161513;color:#FAF9F6;font:600 32px Inter;letter-spacing:6px}
+#pill b{color:#E2B56B}
+#title{position:absolute;top:400px;width:100%;text-align:center;font:800 92px/100px Play;color:#161513}
+#title i{font-style:normal;color:#C48C34}
+#piece{position:absolute;left:0;top:600px;width:1080px;height:640px}
+#cap{position:absolute;left:90px;right:90px;top:1220px;text-align:center;font:700 62px/80px Inter;color:#161513;perspective:900px}
+#cap span{display:inline-block;margin:0 8px;transform-origin:50% 100%}
+#cap span.hl{color:#C48C34}
+#cta{position:absolute;top:1470px;width:100%;display:flex;flex-direction:column;align-items:center;gap:18px}
+#zone{width:520px;height:120px;border:4px dashed #C48C34;border-radius:30px;display:flex;align-items:center;justify-content:center;font:700 40px Inter;color:#C48C34;background:rgba(255,255,255,.7)}
+canvas{position:absolute;inset:0}
+</style></head><body><div id="st">
+<div class="blob" id="b1" style="width:900px;height:900px;background:#F1D7A8"></div>
+<div class="blob" id="b2" style="width:800px;height:800px;background:#E3E6EE"></div>
+<div id="tag"><span id="pill">NOVO REELS · <b>RECUPERAÇÃO</b></span></div>
+<div id="title">Não acabou<br><i>ainda</i></div>
+<svg id="piece" viewBox="-540 -60 1080 640" style="overflow:visible"><ellipse id="shadow" cx="0" cy="520" rx="330" ry="32" fill="rgba(90,60,20,.18)"/>
+<g id="door"><circle cx="0" cy="170" r="215" fill="none" stroke="#E3E0D8" stroke-width="16"/><circle id="ring" cx="0" cy="170" r="215" fill="none" stroke="#C48C34" stroke-width="16" stroke-linecap="round" stroke-dasharray="1351" transform="rotate(-90 0 170)"/>
+<rect x="-150" y="20" width="300" height="320" rx="10" fill="#F1D7A8"/><rect id="glow" x="-150" y="20" width="300" height="320" fill="#E2B56B"/><text x="0" y="205" text-anchor="middle" font-family="Play" font-weight="800" font-size="64" fill="#8A5E1E">ABERTO</text>
+<clipPath id="dc"><rect x="-150" y="20" width="300" height="320"/></clipPath><g clip-path="url(#dc)"><g id="shut"></g></g>
+<path d="M-175 0 H175 V36 H-175Z" fill="#161513"/><rect x="-175" y="0" width="22" height="345" fill="#161513"/><rect x="153" y="0" width="22" height="345" fill="#161513"/><rect x="-185" y="340" width="370" height="16" rx="6" fill="#161513"/></g>
+<g id="stairs"></g>
+</svg>
+<div id="cap"></div>
+<div id="cta"><svg id="arrow" width="90" height="90" viewBox="0 0 90 90"><path d="M45 10 V70 M20 48 L45 74 L70 48" stroke="#161513" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><div id="zone">cole o link do Reels aqui</div></div>
+<canvas id="fx" width="1080" height="1920"></canvas>
+</div><script>
+const TL=__TIMELINE__,S=TL.segs,$=id=>document.getElementById(id);
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)),eo=x=>1-Math.pow(1-clamp(x),4);
+const back=x=>{x=clamp(x);const c=1.7;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+function bounce(x){const n=7.5625,d=2.75;if(x<1/d)return n*x*x;if(x<2/d)return n*(x-=1.5/d)*x+.75;if(x<2.5/d)return n*(x-=2.25/d)*x+.9375;return n*(x-=2.625/d)*x+.984375}
+let sh="";for(let k=0;k<9;k++)sh+=`<rect x="-150" y="${20+k*36}" width="300" height="34" fill="${k%2?'#4A443D':'#3A3530'}"/><rect x="-150" y="${50+k*36}" width="300" height="4" fill="#161513"/>`;$("shut").innerHTML=sh;
+const STEP=["Reabertura","Versão menor","Desconto"];let st="";
+for(let k=0;k<3;k++){const x=-365+k*230,y=330-k*120,w=220;st+=`<g class="stp"><path class="tp" d="M${x} ${y} L${x+40} ${y-30} H${x+w+40} L${x+w} ${y}Z"/><path class="sd" d="M${x+w} ${y} L${x+w+40} ${y-30} V470 L${x+w} 500Z"/><rect class="fr" x="${x}" y="${y}" width="${w}" height="${500-y}"/><text x="${x+w/2}" y="${y+58}" text-anchor="middle" font-family="Inter" font-weight="700" font-size="${k==1?30:32}" fill="#FAF9F6">${STEP[k]}</text><text x="${x+w/2}" y="${y+130}" text-anchor="middle" font-family="Play" font-weight="800" font-size="64" fill="rgba(255,255,255,.35)">${k+1}</text></g>`}$("stairs").innerHTML=st;
+const HL=[["fechou","acabou"],["recuperar","não","comprou","ordem","certa","desconto"],["toca","assiste","agora"]];
+const CAP=$("cap");let cs=-1,sp=[];
+function setCap(i){if(cs===i)return;cs=i;CAP.innerHTML="";sp=[];let wi=0;S[i].text.replace("...","…").split(" ").forEach(tok=>{const e=document.createElement("span");e.textContent=tok;const c=tok.toLowerCase().replace(/[.,:?…!]/g,"");if(HL[i].includes(c))e.className="hl";e._t=S[i].wt[Math.min(wi,S[i].wt.length-1)];if(c)wi++;CAP.appendChild(e);sp.push(e)})}
+const fx=$("fx").getContext("2d");
+function render(t){
+ $("b1").style.transform=`translate(${-260+140*Math.sin(t*.5)}px,${200+120*Math.cos(t*.4)}px)`;$("b2").style.transform=`translate(${520+120*Math.cos(t*.45)}px,${1150+140*Math.sin(t*.33)}px)`;
+ const t0=S[0].start,t1=S[1].start,t2=S[2].start;
+ $("pill").style.transform=`scale(${back((t-0.1)/0.5)})`;$("title").style.opacity=eo((t-0.3)/0.5);$("title").style.transform=`translateY(${(1-eo((t-0.3)/0.5))*30}px)`;
+ // closed shutter -> reopens briefly with timer ring -> closes, staircase rises & lights step by step -> float
+ const intro=back((t-0.2)/0.6);const op=eo((t-(t1+0.1))/0.5)-eo((t-(t1+1.9))/0.4);
+ $("shut").setAttribute("transform",`translate(0 ${-330*op})`);$("glow").style.opacity=0.4+0.6*op*(0.8+0.2*Math.sin(t*12));
+ const rp=clamp((t-(t1+0.3))/1.7);$("ring").setAttribute("stroke-dashoffset",1351*rp);$("ring").style.opacity=t>t1+0.1&&rp<1?1:0;
+ const out=eo((t-(t1+2.1))/0.6);const shake=t<t1?Math.sin(t*20)*3*Math.max(0,Math.sin(t*1.5)):0;
+ $("door").setAttribute("transform",`translate(${shake} ${50+80*out+(1-intro)*-500}) scale(${Math.max(.01,(1-out)*intro)})`);$("door").style.transformOrigin="0 170px";
+ [...$("stairs").children].forEach((g,k)=>{const r=bounce(clamp((t-(t1+2.3+k*0.25))/0.6));const lit=clamp((t-(t1+3.0+k*0.75))/0.3);
+  g.setAttribute("transform",`translate(0 ${(1-r)*560})`);g.style.opacity=t>t1+2.3+k*0.25?1:0;
+  const L=(a,b)=>`hsl(${35+3*lit},${15+45*lit}%,${a+(b-a)*lit}%)`;
+  g.querySelector(".tp").setAttribute("fill",L(30,72));g.querySelector(".sd").setAttribute("fill",L(10,38));g.querySelector(".fr").setAttribute("fill",L(18,50))});
+ const fin=eo((t-(t1+5.2))/0.6);$("piece").style.transform=`translateY(${Math.sin(t*1.6)*12*fin}px) rotate(${Math.sin(t*.8)*1.5*fin}deg)`;
+ const ca=eo((t-t2+0.2)/0.5);$("cta").style.opacity=ca;$("arrow").style.transform=`translateY(${Math.abs(Math.sin(t*5))*18}px)`;
+ $("zone").style.transform=`scale(${1+0.04*Math.sin(t*6)*ca})`;
+ let i=t>=t2-0.3?2:t>=t1-0.3?1:0;setCap(i);sp.forEach(e=>{const a=eo((t-e._t+.06)/.3);e.style.opacity=a;e.style.transform=`translateY(${(1-a)*26}px) rotateX(${(1-a)*-80}deg)`});
+ fx.clearRect(0,0,1080,1920);const lt=t-(t1+4.6);if(lt>0&&lt<0.8){for(let n=0;n<28;n++){const a=n/28*Math.PI*2,d=60+lt*300;fx.globalAlpha=1-lt/0.8;fx.fillStyle=n%2?"#C48C34":"#161513";fx.fillRect(790+Math.cos(a)*d-4,840+Math.sin(a)*d-4,8,8)}fx.globalAlpha=1}
+}
+window.render=render;window.TOTAL=TL.total;render(0);
+</script></body></html>
