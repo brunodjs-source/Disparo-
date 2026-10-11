@@ -1,0 +1,255 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:Inter;src:url(/usr/share/fonts/opentype/inter/Inter-Bold.otf);font-weight:700}
+@font-face{font-family:Inter;src:url(/usr/share/fonts/opentype/inter/Inter-SemiBold.otf);font-weight:600}
+@font-face{font-family:Play;src:url(fonts/Playfair.ttf);font-weight:100 900}
+:root{--bg:#FAF9F6;--txt:#161513;--gold:#C48C34;--goldD:#7A4E18;--dim:#8C867C;--line:#E4DED2}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--bg)}
+#stage{position:absolute;inset:0;overflow:hidden;background:var(--bg);font-family:Inter}
+.blob{position:absolute;border-radius:50%;filter:blur(110px);opacity:.55}
+#label{position:absolute;top:280px;width:100%;text-align:center;font:600 34px Inter;letter-spacing:9px;color:var(--gold)}
+#label:after{content:"";display:block;width:80px;height:2px;background:var(--gold);margin:22px auto 0}
+#cam{position:absolute;inset:0;transform-origin:50% 40%}
+#illus{position:absolute;left:0;top:380px;width:1080px;height:420px;perspective:1400px}
+.sc{position:absolute;inset:0;transform-style:preserve-3d;display:flex;align-items:center;justify-content:center;opacity:0}
+#cap{position:absolute;left:90px;right:90px;top:920px;text-align:center;font:700 72px/92px Inter;color:var(--txt);perspective:900px}
+#cap span{display:inline-block;margin:0 9px;transform-origin:50% 100%;will-change:transform}
+#cap span.hl{color:var(--gold);text-shadow:1px 1px 0 #d9a85a,2px 2px 0 #c99a4e,3px 3px 0 #b8893f,5px 8px 12px rgba(90,60,20,.18)}
+canvas{position:absolute;inset:0}
+/* 3D box */
+.box{position:relative;width:200px;height:200px;transform-style:preserve-3d}
+.box .f{position:absolute;width:200px;height:200px;border-radius:14px}
+.part{position:absolute;width:150px;height:56px;transform-style:preserve-3d}
+.part .t,.part .fr,.part .sd{position:absolute;border-radius:6px}
+.chip{width:58px;height:58px;border-radius:50%;border:3px solid var(--line);background:#fff;font:700 28px Inter;color:var(--dim);display:flex;align-items:center;justify-content:center}
+.chip.on{border-color:var(--gold);background:var(--gold);color:#fff;box-shadow:0 8px 20px rgba(196,140,52,.35)}
+#chips{position:absolute;top:815px;width:100%;display:flex;gap:26px;justify-content:center;opacity:0}
+.big3d{font:800 112px Play;color:var(--gold);text-shadow:1px 1px 0 #b07a28,2px 2px 0 #a8742a,3px 3px 0 #9c6a22,4px 4px 0 #925f1e,5px 5px 0 #8a5c1c,6px 6px 0 #835619,7px 7px 0 #7a4e18,8px 8px 0 #704615,14px 22px 26px rgba(90,60,20,.3)}
+</style></head>
+<body><div id="stage">
+<div class="blob" id="b1" style="width:900px;height:900px;background:#F1D7A8"></div>
+<div class="blob" id="b2" style="width:800px;height:800px;background:#E3E6EE"></div>
+<div id="cam">
+<div id="label">ETAPA 7 · RECUPERAÇÃO</div>
+<div id="illus">
+ <!-- 0 carrinho fechou: loja com porta de aço -->
+ <div class="sc" id="s0">
+  <svg width="1080" height="420" viewBox="0 0 1080 420" style="overflow:visible">
+   <rect x="300" y="20" width="480" height="70" rx="14" fill="#C48C34"/>
+   <path d="M300 90 h480 l-30 30 h-420z" fill="#B07A28"/>
+   <rect x="330" y="120" width="420" height="270" fill="#EEE9DF" stroke="#161513" stroke-width="10"/>
+   <g transform="translate(540 255)"><path d="M-150 -60 L-120 -60 L-90 50 L90 50 L115 -30 L-110 -30" fill="none" stroke="#C48C34" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"/><circle cx="-60" cy="80" r="18" fill="#C48C34"/><circle cx="60" cy="80" r="18" fill="#C48C34"/></g>
+   <clipPath id="shc"><rect x="330" y="120" width="420" height="270"/></clipPath>
+   <g clip-path="url(#shc)"><g id="shutter"></g></g>
+   <line x1="250" y1="392" x2="830" y2="392" stroke="#161513" stroke-width="10" stroke-linecap="round"/>
+   <g id="dust0" fill="#D8CFBF"></g>
+   <g id="sign"><line x1="-60" y1="0" x2="-90" y2="60" stroke="#161513" stroke-width="5"/><line x1="60" y1="0" x2="90" y2="60" stroke="#161513" stroke-width="5"/><circle r="10" fill="#161513"/>
+    <rect x="-150" y="60" width="300" height="100" rx="16" fill="#C0392B"/><text y="128" text-anchor="middle" font-family="Inter" font-weight="700" font-size="50" fill="#fff" letter-spacing="3">FECHADO</text></g>
+  </svg>
+ </div>
+ <!-- 1 público valioso: multidão vira ouro + diamante -->
+ <div class="sc" id="s1">
+  <svg width="1080" height="420" viewBox="0 0 1080 420" style="overflow:visible">
+   <g id="dia" transform="translate(540 80)"><g id="diai"><path d="M-80 -30 L-45 -70 H45 L80 -30 L0 70Z" fill="#E2B56B"/><path d="M-80 -30 H80 L0 70Z" fill="#C48C34"/><path d="M-45 -70 L-20 -30 L0 -70 L20 -30 L45 -70" fill="none" stroke="#F4DDB0" stroke-width="5"/><path d="M-20 -30 L0 70 L20 -30" fill="none" stroke="#9C6A22" stroke-width="4"/></g></g>
+   <g id="rays1" stroke="#C48C34" stroke-width="7" stroke-linecap="round"></g>
+   <g id="crowd"></g>
+  </svg>
+ </div>
+ <!-- 2 levantou a mão e não entrou -->
+ <div class="sc" id="s2">
+  <svg width="1080" height="420" viewBox="0 0 1080 420" style="overflow:visible">
+   <rect x="800" y="60" width="180" height="320" rx="10" fill="#EEE9DF" stroke="#161513" stroke-width="10"/>
+   <rect x="815" y="75" width="150" height="305" fill="#7A4E18" opacity=".18"/>
+   <circle cx="940" cy="230" r="10" fill="#161513"/>
+   <line x1="60" y1="385" x2="1010" y2="385" stroke="#E4DED2" stroke-width="6" stroke-linecap="round"/>
+   <g id="hands"></g>
+   <g id="stopl" opacity="0"><line x1="740" y1="90" x2="740" y2="380" stroke="#C0392B" stroke-width="8" stroke-dasharray="20 14"/></g>
+  </svg>
+ </div>
+ <!-- 3 reabre a porta por pouco tempo -->
+ <div class="sc" id="s3">
+  <svg width="1080" height="420" viewBox="0 0 1080 420" style="overflow:visible">
+   <circle cx="540" cy="210" r="200" fill="none" stroke="#E4DED2" stroke-width="16"/>
+   <circle id="tring" cx="540" cy="210" r="200" fill="none" stroke="#C48C34" stroke-width="16" stroke-linecap="round" stroke-dasharray="1257" transform="rotate(-90 540 210)"/>
+   <rect x="455" y="70" width="170" height="280" rx="8" fill="#FDF3DF" stroke="#161513" stroke-width="10"/>
+   <path id="glow" d="M465 80 H615 V340 H465Z" fill="#F4D6A0"/>
+   <g id="door"><path d="" fill="#C48C34" stroke="#7A4E18" stroke-width="6" stroke-linejoin="round"/><circle r="9" fill="#7A4E18"/></g>
+   <g id="tbadge" transform="translate(735 70)"><circle r="52" fill="#161513"/><text id="ttxt" y="14" text-anchor="middle" font-family="Inter" font-weight="700" font-size="38" fill="#FAF9F6">48h</text></g>
+  </svg>
+ </div>
+ <!-- 4 pesquisa: por que não comprou -->
+ <div class="sc" id="s4">
+  <svg width="1080" height="420" viewBox="0 0 1080 420" style="overflow:visible">
+   <g id="card"><rect x="260" y="10" width="560" height="400" rx="30" fill="#fff" stroke="#E4DED2" stroke-width="5"/>
+   <circle cx="320" cy="75" r="30" fill="#161513"/><text x="320" y="89" text-anchor="middle" font-family="Inter" font-weight="700" font-size="40" fill="#FAF9F6">?</text>
+   <text x="370" y="72" font-family="Inter" font-weight="700" font-size="34" fill="#161513">Por que você</text><text x="370" y="112" font-family="Inter" font-weight="700" font-size="34" fill="#161513">não comprou?</text>
+   <g class="ans" data-y="160"><rect x="300" width="480" height="70" rx="35" fill="#FAF3E4" stroke="#C48C34" stroke-width="4"/><circle cx="340" cy="35" r="16" fill="none" stroke="#C48C34" stroke-width="4"/><circle class="dot" cx="340" cy="35" r="9" fill="#C48C34"/><text x="375" y="47" font-family="Inter" font-weight="700" font-size="34" fill="#7A4E18">dinheiro</text></g>
+   <g class="ans" data-y="250"><rect x="300" width="480" height="70" rx="35" fill="#FAF3E4" stroke="#C48C34" stroke-width="4"/><circle cx="340" cy="35" r="16" fill="none" stroke="#C48C34" stroke-width="4"/><circle class="dot" cx="340" cy="35" r="9" fill="#C48C34"/><text x="375" y="47" font-family="Inter" font-weight="700" font-size="34" fill="#7A4E18">tempo</text></g>
+   <g class="ans" data-y="340" ><rect x="300" width="480" height="50" rx="25" fill="#F4F1EA"/><rect x="330" y="18" width="200" height="14" rx="7" fill="#E4DED2"/></g></g>
+   <g id="pen" ><path d="M0 0 L30 -90 L60 -80 L30 10Z" fill="#161513"/><path d="M0 0 L30 10 L10 25Z" fill="#C48C34"/></g>
+  </svg>
+ </div>
+ <!-- 5 dinheiro -> versão menor -->
+ <div class="sc" id="s5">
+  <svg width="1080" height="420" viewBox="0 0 1080 420" style="overflow:visible">
+   <g id="coin5" transform="translate(180 200)"><circle r="80" fill="#E2B56B" stroke="#B07A28" stroke-width="10"/><text y="22" text-anchor="middle" font-family="Inter" font-weight="700" font-size="60" fill="#7A4E18">R$</text></g>
+   <path id="arr5" d="M300 200 H420" stroke="#161513" stroke-width="12" stroke-linecap="round" fill="none"/><path id="arr5h" d="M400 175 L430 200 L400 225" stroke="#161513" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+   <g id="pbox" transform="translate(700 380)"><g id="pboxi">
+    <path d="M-150 -220 L0 -280 L150 -220 L0 -160Z" fill="#E9C27F"/><path d="M-150 -220 L0 -160 V0 L-150 -60Z" fill="#C48C34"/><path d="M150 -220 L0 -160 V0 L150 -60Z" fill="#8C5A1E"/>
+    <path d="M-75 -250 L75 -190 V-160" stroke="#F4DDB0" stroke-width="14" fill="none"/></g></g>
+   <g id="minitag" opacity="0"><rect x="800" y="40" width="200" height="60" rx="30" fill="#161513"/><text x="900" y="81" text-anchor="middle" font-family="Inter" font-weight="700" font-size="30" fill="#FAF9F6">MENOR</text></g>
+  </svg>
+ </div>
+ <!-- 6 tempo -> versão mais curta -->
+ <div class="sc" id="s6">
+  <svg width="1080" height="420" viewBox="0 0 1080 420" style="overflow:visible">
+   <g transform="translate(200 140)"><circle r="95" fill="#fff" stroke="#161513" stroke-width="10"/><line id="h6" y2="-60" stroke="#C48C34" stroke-width="9" stroke-linecap="round"/><line id="m6" y2="-40" stroke="#161513" stroke-width="10" stroke-linecap="round"/><circle r="10" fill="#161513"/></g>
+   <rect x="80" y="290" width="920" height="40" rx="20" fill="#EEE9DF"/>
+   <rect id="road" x="80" y="290" width="920" height="40" rx="20" fill="#C48C34"/>
+   <g id="segs6"></g>
+   <g id="flag6"><line x1="0" y1="0" x2="0" y2="-90" stroke="#161513" stroke-width="7"/><path d="M0 -90 L55 -72 L0 -54Z" fill="#C48C34"/></g>
+   <g id="clen" transform="translate(620 140)"><text id="ctx6" text-anchor="middle" font-family="Play" font-weight="800" font-size="96" fill="#161513">12h</text></g>
+  </svg>
+ </div>
+ <!-- 7 desconto por último -->
+ <div class="sc" id="s7">
+  <svg width="1080" height="420" viewBox="0 0 1080 420" style="overflow:visible">
+   <g id="step7" opacity=".9"><circle cx="230" cy="110" r="38" fill="#C48C34"/><path d="M212 110 L226 124 L250 98" stroke="#fff" stroke-width="8" fill="none" stroke-linecap="round"/><circle cx="230" cy="210" r="38" fill="#C48C34"/><path d="M212 210 L226 224 L250 198" stroke="#fff" stroke-width="8" fill="none" stroke-linecap="round"/><circle id="c3" cx="230" cy="310" r="38" fill="#fff" stroke="#C48C34" stroke-width="6"/><text x="230" y="324" text-anchor="middle" font-family="Inter" font-weight="700" font-size="38" fill="#C48C34">3</text><line x1="230" y1="148" x2="230" y2="172" stroke="#E4DED2" stroke-width="6"/><line x1="230" y1="248" x2="230" y2="272" stroke="#E4DED2" stroke-width="6"/></g>
+   <line x1="640" y1="-40" x2="640" y2="60" stroke="#161513" stroke-width="5"/>
+   <g id="tag7" transform="translate(640 60)">
+    <path d="M-150 40 L-70 -30 H150 V320 H-150Z" fill="#C48C34"/><circle cx="-70" cy="20" r="16" fill="#FAF9F6"/>
+    <text x="0" y="170" text-anchor="middle" font-family="Play" font-weight="800" font-size="92" fill="#fff">R$</text>
+    <line id="strike7" x1="-100" y1="140" x2="100" y2="140" stroke="#161513" stroke-width="12" stroke-linecap="round" stroke-dasharray="210" stroke-dashoffset="210"/>
+    <g id="badge7" transform="translate(110 250)"><circle r="72" fill="#161513"/><text y="16" text-anchor="middle" font-family="Inter" font-weight="700" font-size="46" fill="#FAF9F6">-30%</text></g>
+   </g>
+  </svg>
+ </div>
+ <!-- 8 escada -->
+ <div class="sc" id="s8">
+  <svg width="1080" height="420" viewBox="0 0 1080 420" style="overflow:visible"><g id="stairs"></g></svg>
+ </div>
+ <!-- 9 CTA -->
+ <div class="sc" id="s9" style="flex-direction:column">
+  <div class="big3d" id="ctaw">RECUPERAÇÃO</div>
+  <div id="cbox" style="margin-top:40px;width:860px;height:104px;border-radius:52px;background:#fff;border:3px solid var(--gold);box-shadow:4px 10px 0 #E4DED2;display:flex;align-items:center;padding:0 34px 0 50px;font:600 44px Inter;color:var(--txt)">
+   <span id="ctxt"></span><span id="caret" style="width:4px;height:50px;background:var(--gold);margin-left:6px"></span>
+   <span style="margin-left:auto;width:70px;height:70px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-size:40px">↑</span>
+  </div>
+ </div>
+</div>
+<div id="chips"></div>
+<div id="cap"></div>
+</div>
+<canvas id="fx" width="1080" height="1920"></canvas>
+</div>
+<script>
+const TL = __TIMELINE__;
+const S = TL.segs, $ = id => document.getElementById(id);
+const HL = [["fechou","acabou"],["público","valioso"],["mão","fechou"],["reabra","pouco","tempo"],["pergunte","motivo"],["dinheiro","menor"],["tempo","curta"],["depois","desconto"],["reabertura","menor","preço"],["recuperação"]];
+const SC = S.map(s => s.start - 0.35);
+const clamp = (x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const eo = x => 1-Math.pow(1-clamp(x),4);
+const eio = x => {x=clamp(x);return x<.5?8*x*x*x*x:1-Math.pow(-2*x+2,4)/2};
+const back = x => {x=clamp(x);const c=1.7;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const elastic = x => {x=clamp(x);return x===0?0:x===1?1:Math.pow(2,-10*x)*Math.sin((x*10-.75)*2*Math.PI/3)+1};
+function rnd(n){const x=Math.sin(n*127.1+311.7)*43758.5453;return x-Math.floor(x)}
+const W=(i,k)=>S[i].wt[Math.min(k,S[i].wt.length-1)]-SC[i]; // word time local to scene
+
+// static builds
+let sh="";for(let k=0;k<14;k++)sh+=`<rect x="330" y="${k*20}" width="420" height="20" fill="${k%2?'#A39C90':'#B8B1A5'}"/><line x1="330" x2="750" y1="${k*20+19}" y2="${k*20+19}" stroke="#7d776d" stroke-width="2"/>`;
+sh+=`<rect x="330" y="280" width="420" height="16" fill="#5f5a52"/><rect x="510" y="282" width="60" height="10" rx="5" fill="#C48C34"/>`;$("shutter").innerHTML=sh;
+const person=(c)=>`<circle cy="-46" r="20" fill="${c}"/><path d="M-30 20 Q-30 -18 0 -18 Q30 -18 30 20Z" fill="${c}"/>`;
+let cr="";for(let r=0;r<3;r++)for(let c=0;c<9-(r%2);c++){const x=540+(c-(8-(r%2))/2)*92,y=275+r*62;cr+=`<g class="pp" data-x="${x}" data-y="${y}" data-k="${r*9+c}">${person('#161513')}</g>`}$("crowd").innerHTML=cr;
+let hs="";for(let k=0;k<6;k++){hs+=`<g class="hp" data-k="${k}"><path class="arm" d="M18 -10 L40 -60" stroke="#161513" stroke-width="10" stroke-linecap="round"/><circle class="hand" cx="40" cy="-64" r="11" fill="#C48C34"/><circle cy="-46" r="22" fill="#161513"/><path d="M-32 30 Q-32 -18 0 -18 Q32 -18 32 30Z" fill="#161513"/></g>`}$("hands").innerHTML=hs;
+const STEPS=["Reabertura","Versão menor","Desconto"];let st="";
+for(let k=0;k<3;k++){const x=150+k*270,y=330-k*95,h=60+k*95;
+ st+=`<g class="stp"><path d="M${x} ${y} L${x+260} ${y} L${x+300} ${y-34} L${x+40} ${y-34}Z" class="top" fill="#E9DCC2"/><rect x="${x}" y="${y}" width="260" height="${h}" class="fr" fill="#D8CFBF"/><path d="M${x+260} ${y} L${x+300} ${y-34} V${y+h-34} L${x+260} ${y+h}Z" class="sd" fill="#BFB5A3"/>
+ <text x="${x+130}" y="${y+50}" text-anchor="middle" font-family="Inter" font-weight="700" font-size="32" fill="#fff">${STEPS[k]}</text><text x="${x+150}" y="${y-60}" class="num" text-anchor="middle" font-family="Play" font-weight="800" font-size="64" fill="#C48C34" opacity="0">${k+1}</text></g>`}$("stairs").innerHTML=st;
+const chips=$("chips");for(let k=0;k<3;k++){const c=document.createElement("div");c.className="chip";c.textContent=k+1;chips.appendChild(c)}
+
+// captions
+const CAP=$("cap");let capSeg=-1,spans=[];
+function setCap(i){if(capSeg===i)return;capSeg=i;CAP.innerHTML="";spans=[];
+ const toks=S[i].text.replace("...","…").split(" ");let wi=0;
+ toks.forEach(tok=>{const sp=document.createElement("span");sp.textContent=tok;const c=tok.toLowerCase().replace(/[.,:?…!]/g,"");
+  if(HL[i].includes(c))sp.className="hl";sp._t=S[i].wt[Math.min(wi,S[i].wt.length-1)];if(c)wi++;CAP.appendChild(sp);spans.push(sp)});}
+
+const fx=$("fx").getContext("2d");
+function particles(t,i){fx.clearRect(0,0,1080,1920);
+ for(let s=1;s<S.length;s++){const lt=t-SC[s];if(lt<0||lt>1.1)continue;
+  for(let n=0;n<70;n++){const r1=rnd(s*100+n),r2=rnd(s*100+n+.5),r3=rnd(s*100+n+.9);
+   const sx=540+(r1-.5)*520,sy=570+(r2-.5)*300;const tx=160+r3*760,ty=860+rnd(n*7+s)*260;
+   const p=eio(lt/1.0);const mx=(sx+tx)/2+(r2-.5)*500,my=Math.min(sy,ty)-180*r1;
+   const x=(1-p)*(1-p)*sx+2*(1-p)*p*mx+p*p*tx,y=(1-p)*(1-p)*sy+2*(1-p)*p*my+p*p*ty;
+   const a=Math.sin(Math.PI*clamp(lt/1.1))*.9;fx.globalAlpha=a;fx.fillStyle=n%3?"#C48C34":"#161513";
+   const sz=4+r1*9;fx.save();fx.translate(x,y);fx.rotate(lt*8*(r2-.5));fx.fillRect(-sz/2,-sz/2,sz,sz*(.4+r3));fx.restore()}}
+ fx.globalAlpha=1}
+
+const SCALE={s9:0.95};
+function sceneT(el,lt,dur){
+ const ein=eo(lt/0.6), eout=eio((lt-(dur-0.35))/0.45);
+ const rx=(1-ein)*-70, rot=eout*85, sc=(0.6+0.4*back(lt/0.7))*(1-0.4*eout);
+ el.style.opacity=Math.min(ein,1-eout);
+ el.style.filter=`blur(${(1-ein)*14+eout*16}px)`;
+ el.style.transform=`translateZ(${(1-ein)*-400}px) rotateX(${rx}deg) rotateY(${rot}deg) scale(${sc*(SCALE[el.id]||1.1)})`;}
+
+function render(t){
+ $("b1").style.transform=`translate(${-260+140*Math.sin(t*.35)}px,${120+120*Math.cos(t*.27)}px)`;
+ $("b2").style.transform=`translate(${520+120*Math.cos(t*.3)}px,${1150+140*Math.sin(t*.22)}px)`;
+ let i=0;for(let k=0;k<SC.length;k++)if(t>=SC[k])i=k;
+ const lt=t-SC[i], dur=(i<S.length-1?SC[i+1]:TL.total+5)-SC[i];
+ for(let k=0;k<S.length;k++){const el=$("s"+k);if(k!==i){el.style.opacity=0;continue}sceneT(el,lt,i===9?99:dur)}
+ $("cam").style.transform=`scale(${1+0.03*clamp(lt/8)})`;
+ const ch=$("chips");ch.style.opacity=(i===8)?eo((lt-0.3)/0.4):0;
+ const on8=i===8?[W(8,3),W(8,5),W(8,9)].filter(x=>lt>=x-0.05).length:0;
+ [...ch.children].forEach((c,k)=>{const on=k<on8;c.className="chip"+(on?" on":"");const tk=[W(8,3),W(8,5),W(8,9)][k];c.style.transform=`scale(${on?1+0.25*(1-eo((lt-tk)/0.5)):1})`});
+ if(i===0){const p=bounce(clamp((lt-0.5)/0.9));$("shutter").setAttribute("transform",`translate(0 ${-200+p*294})`);
+  const hit=lt>1.1&&lt<1.6?Math.sin((lt-1.1)*60)*8*(1-(lt-1.1)/0.5):0;$("s0").firstElementChild.style.transform=`translate(${hit}px,0)`;
+  let d="";if(lt>1.0)for(let n=0;n<10;n++){const q=clamp((lt-1.0)/0.8);const sd=n<5?-1:1;d+=`<circle cx="${540+sd*(220+q*120*rnd(n))}" cy="${388-q*50*rnd(n+3)}" r="${(1-q)*12*rnd(n+1)+1}" opacity="${1-q}"/>`}$("dust0").innerHTML=d;
+  const sp=clamp((lt-1.3)/0.6);const sw=Math.sin((lt-1.3)*5)*28*Math.exp(-(lt-1.3)*1.4);
+  $("sign").setAttribute("transform",`translate(540 ${-20+eo(sp)*140}) rotate(${sp>0?sw:0})`);$("sign").setAttribute("opacity",eo(sp*2));}
+ if(i===1){[...document.querySelectorAll(".pp")].forEach((g,n)=>{const k=+g.dataset.k,x=+g.dataset.x,y=+g.dataset.y;const q=back((lt-0.1-rnd(k)*0.6)/0.5);
+   g.setAttribute("transform",`translate(${x} ${y+(1-q)*60}) scale(${Math.max(0.001,q)})`);const gold=lt>W(1,8)+rnd(k+9)*0.9;g.querySelectorAll("*").forEach(e=>e.setAttribute("fill",gold?"#C48C34":"#161513"))});
+  const dq=back((lt-W(1,9))/0.6);$("dia").setAttribute("transform",`translate(540 ${105+Math.sin(lt*3)*6}) scale(${Math.max(0.001,dq)})`);$("diai").style.transform=`scaleX(${Math.cos(lt*2.4)})`;
+  let r="";const rq=lt-W(1,10);if(rq>0){const s=(rq%1.2)/1.2;for(let n=0;n<12;n++){const a=n/12*Math.PI*2;r+=`<line x1="${540+Math.cos(a)*(85+s*35)}" y1="${105+Math.sin(a)*(85+s*35)}" x2="${540+Math.cos(a)*(105+s*45)}" y2="${105+Math.sin(a)*(105+s*45)}" opacity="${1-s}"/>`}}$("rays1").innerHTML=r;}
+ if(i===2){const walk=eo(lt/1.4);[...document.querySelectorAll(".hp")].forEach((g,k)=>{const x=120+k*100+walk*120,bob=lt<1.4?Math.abs(Math.sin(lt*9+k))*-10:0;
+   g.setAttribute("transform",`translate(${x} ${355+bob})`);const up=back((lt-W(2,1)-k*0.08)/0.4);const a=-60*up;
+   g.querySelector(".arm").setAttribute("d",`M18 -10 L${18+22*(1-up)+16*up} ${-10+(a+10)}`);const hd=g.querySelector(".hand");hd.setAttribute("cx",18+22*(1-up)+16*up);hd.setAttribute("cy",a-14);hd.setAttribute("r",11*up+0.01)});
+  $("stopl").setAttribute("opacity",eo((lt-W(2,6))/0.3)*(0.6+0.4*Math.sin(lt*8)**2));}
+ if(i===3){const op=eio((lt-W(3,5)+0.1)/0.6),cl=eio((lt-W(3,10)-0.6)/0.5);const o=op*(1-cl);
+  const w=150*Math.cos(o*1.2),sk=o*40;$("door").firstElementChild.setAttribute("d",`M465 80 L${465+w} ${80+sk*0.5} L${465+w} ${340-sk*0.5} L465 340Z`);$("door").lastElementChild.setAttribute("transform",`translate(${465+w*0.85} 210)`);
+  $("glow").setAttribute("opacity",o);const tp=clamp((lt-W(3,8))/2.6);$("tring").style.strokeDashoffset=1257*tp;
+  $("ttxt").textContent=Math.max(0,Math.round(48*(1-tp)))+"h";$("tbadge").setAttribute("transform",`translate(735 70) scale(${back((lt-W(3,8))/0.5)+0.001+(tp>0&&tp<1?0.04*Math.sin(lt*12):0)})`);}
+ if(i===4){const fl=eo(lt/0.6);$("card").setAttribute("transform",`translate(0 ${(1-fl)*40})`);
+  [...document.querySelectorAll(".ans")].forEach((g,k)=>{const q=back((lt-W(4,4)+0.1-k*0.25)/0.45);g.setAttribute("transform",`translate(${540*(1-Math.max(0.001,q))} ${+g.dataset.y}) scale(${Math.max(0.001,q)} 1)`);});
+  const ck=[W(4,6),W(4,7)];document.querySelectorAll(".dot").forEach((d,k)=>d.setAttribute("r",9*elastic((lt-ck[k])/0.6)));
+  const px=ck.findIndex(x=>lt<x);const tg=px<0?1:px;const pyT=[195,285][Math.min(tg,1)];
+  $("pen").setAttribute("transform",`translate(${600+Math.sin(lt*5)*6} ${pyT+30}) rotate(${-15+Math.sin(lt*9)*5})`);$("pen").setAttribute("opacity",eo((lt-W(4,5))/0.3));}
+ if(i===5){const cq=back(lt/0.5);$("coin5").setAttribute("transform",`translate(180 200) scale(${Math.max(.001,cq)}) scale(${0.55+0.45*Math.cos(lt*3)},1)`);
+  const sq=eio((lt-W(5,5)+0.1)/0.8);const s=1-0.45*sq;$("pboxi").setAttribute("transform",`scale(${s*back(lt/0.6)+0.001})`);
+  $("arr5").style.opacity=$("arr5h").style.opacity=eo((lt-W(5,3))/0.4);
+  $("minitag").setAttribute("opacity",eo((lt-W(5,6))/0.3));$("minitag").setAttribute("transform",`translate(0 ${(1-back((lt-W(5,6))/0.5))*30+130})`);}
+ if(i===6){const sq=eio((lt-W(6,5))/0.9);const w=920-600*sq;$("road").setAttribute("width",w);$("flag6").setAttribute("transform",`translate(${80+w-14} 290)`);
+  $("h6").setAttribute("transform",`rotate(${lt*(360-300*sq)})`);$("m6").setAttribute("transform",`rotate(${lt*30})`);
+  $("ctx6").textContent=sq<0.5?"12h":"2h";$("clen").setAttribute("transform",`translate(${620-200*sq} 160) scale(${1-0.15*Math.sin(sq*Math.PI)})`);
+  let g="";for(let k=1;k<6;k++){const x=80+k*w/6;g+=`<line x1="${x}" x2="${x}" y1="296" y2="324" stroke="#FAF9F6" stroke-width="5" stroke-linecap="round"/>`}$("segs6").innerHTML=g;}
+ if(i===7){const sw=Math.sin(lt*3)*10*Math.exp(-lt*1.2);const dq=W(7,5);
+  $("tag7").setAttribute("transform",`translate(640 ${60-(1-eo(lt/0.6))*300}) rotate(${sw})`);
+  $("strike7").style.strokeDashoffset=210*(1-eo((lt-dq+0.15)/0.35));
+  const b=elastic((lt-dq)/0.8);$("badge7").setAttribute("transform",`translate(110 250) scale(${Math.max(.001,b)}) rotate(${-15*b})`);
+  $("c3").setAttribute("fill",lt>dq?"#C48C34":"#fff");$("step7").setAttribute("transform",`translate(0 0)`);}
+ if(i===8){const tk=[W(8,3),W(8,5),W(8,9)];[...document.querySelectorAll(".stp")].forEach((g,k)=>{const q=back((lt-0.1-k*0.15)/0.5);g.setAttribute("transform",`translate(0 ${(1-q)*120})`);g.setAttribute("opacity",clamp(q*2));
+   const on=lt>=tk[k];g.querySelector(".top").setAttribute("fill",on?"#F4DDB0":"#E9DCC2");g.querySelector(".fr").setAttribute("fill",on?"#C48C34":"#D8CFBF");g.querySelector(".sd").setAttribute("fill",on?"#8C5A1E":"#BFB5A3");
+   const n=g.querySelector(".num");const nq=back((lt-tk[k])/0.4);n.setAttribute("opacity",clamp(nq));n.setAttribute("transform",`translate(0 ${(1-nq)*30})`)});}
+ if(i===9){const w="RECUPERAÇÃO",tb=lt-1.4;const n=tb>0?Math.min(w.length,Math.floor(tb*10)):0;$("ctxt").textContent=n?w.slice(0,n):"Adicione um comentário…";$("ctxt").style.color=n?"#161513":"#8C867C";
+  $("caret").style.opacity=Math.floor(t*2.5)%2?0:1;$("cbox").style.opacity=eo((lt-1.1)/0.4);$("cbox").style.transform=`translateY(${(1-eo((lt-1.1)/0.4))*40}px)`;
+  $("ctaw").style.transform=`rotateX(${(1-back(lt/0.8))*80}deg) scale(${0.7+0.3*back(lt/0.8)})`;}
+ setCap(i);spans.forEach(sp=>{const a=eo((t-sp._t+.06)/.32);sp.style.opacity=a;sp.style.transform=`translateY(${(1-a)*30}px) rotateX(${(1-a)*-85}deg) scale(${.85+.15*back((t-sp._t+.06)/.4)})`;sp.style.filter=`blur(${(1-a)*8}px)`});
+ CAP.style.transform=`translateY(${-30*eio((lt-(dur-0.35))/0.45)}px)`;CAP.style.opacity=1-eio((lt-(dur-0.35))/0.45)*(i<9?1:0);
+ particles(t,i);
+}
+function bounce(x){const n=7.5625,d=2.75;if(x<1/d)return n*x*x;if(x<2/d)return n*(x-=1.5/d)*x+.75;if(x<2.5/d)return n*(x-=2.25/d)*x+.9375;return n*(x-=2.625/d)*x+.984375}
+window.render=render;window.TOTAL=TL.total;render(0);
+</script></body></html>
