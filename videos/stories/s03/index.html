@@ -1,0 +1,62 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:Inter;src:url(/usr/share/fonts/opentype/inter/Inter-Bold.otf);font-weight:700}
+@font-face{font-family:Inter;src:url(/usr/share/fonts/opentype/inter/Inter-SemiBold.otf);font-weight:600}
+@font-face{font-family:Play;src:url(fonts/Playfair.ttf);font-weight:100 900}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#FAF9F6}
+#st{position:absolute;inset:0;overflow:hidden;font-family:Inter}
+.blob{position:absolute;border-radius:50%;filter:blur(120px);opacity:.55}
+#tag{position:absolute;top:300px;width:100%;text-align:center}
+#pill{display:inline-block;padding:16px 34px;border-radius:40px;background:#161513;color:#FAF9F6;font:600 32px Inter;letter-spacing:6px}
+#pill b{color:#E2B56B}
+#title{position:absolute;top:400px;width:100%;text-align:center;font:800 92px/100px Play;color:#161513}
+#title i{font-style:normal;color:#C48C34}
+#piece{position:absolute;left:0;top:670px;width:1080px;height:640px}
+#cap{position:absolute;left:90px;right:90px;top:1220px;text-align:center;font:700 62px/80px Inter;color:#161513;perspective:900px}
+#cap span{display:inline-block;margin:0 8px;transform-origin:50% 100%}
+#cap span.hl{color:#C48C34}
+#cta{position:absolute;top:1470px;width:100%;display:flex;flex-direction:column;align-items:center;gap:18px}
+#zone{width:520px;height:120px;border:4px dashed #C48C34;border-radius:30px;display:flex;align-items:center;justify-content:center;font:700 40px Inter;color:#C48C34;background:rgba(255,255,255,.7)}
+canvas{position:absolute;inset:0}
+</style></head><body><div id="st">
+<div class="blob" id="b1" style="width:900px;height:900px;background:#F1D7A8"></div>
+<div class="blob" id="b2" style="width:800px;height:800px;background:#E3E6EE"></div>
+<div id="tag"><span id="pill">NOVO REELS · <b>CAPTAÇÃO</b></span></div>
+<div id="title">O que importa:<br><i>custo por cliente</i></div>
+<svg id="piece" viewBox="-540 -60 1080 640" style="overflow:visible"><ellipse id="shadow" cx="-170" cy="440" rx="170" ry="28" fill="rgba(90,60,20,.18)"/><g id="fun"><path d="M-400 60 L-205 300 V380 H-135 V300 L60 60Z" fill="hsl(36,50%,52%)"/><path d="M-170 60 L-170 380 H-135 V300 L60 60Z" fill="hsl(33,50%,40%)"/><ellipse cx="-170" cy="60" rx="230" ry="40" fill="hsl(36,40%,28%)"/><ellipse cx="-170" cy="60" rx="230" ry="40" fill="none" stroke="hsl(38,62%,72%)" stroke-width="10"/></g><g id="dots"></g><g id="lev"></g><g id="gauge" transform="translate(250 420)"><path d="M-120 0 A120 120 0 0 1 -60 -103.9" stroke="#C48C34" stroke-width="26" fill="none"/><path d="M-60 -103.9 A120 120 0 0 1 60 -103.9" stroke="#D9C7A6" stroke-width="26" fill="none"/><path d="M60 -103.9 A120 120 0 0 1 120 0" stroke="#5A544B" stroke-width="26" fill="none"/><g id="ndl"><path d="M-8 0 L0 -100 L8 0Z" fill="#161513"/></g><circle r="16" fill="#161513"/><text y="52" text-anchor="middle" font-family="Inter" font-weight="700" font-size="30" fill="#161513">custo por cliente</text></g></svg>
+<div id="cap"></div>
+<div id="cta"><svg id="arrow" width="90" height="90" viewBox="0 0 90 90"><path d="M45 10 V70 M20 48 L45 74 L70 48" stroke="#161513" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><div id="zone">cole o link do Reels aqui</div></div>
+<canvas id="fx" width="1080" height="1920"></canvas>
+</div><script>
+const TL=__TIMELINE__,S=TL.segs,$=id=>document.getElementById(id);
+const HL=[["lead","barato","ninguém","compra"],["custo","cliente","três","alavancas"],["toca","assiste","agora"]];
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)),eo=x=>1-Math.pow(1-clamp(x),4);
+const back=x=>{x=clamp(x);const c=1.7;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+function bounce(x){const n=7.5625,d=2.75;if(x<1/d)return n*x*x;if(x<2/d)return n*(x-=1.5/d)*x+.75;if(x<2.5/d)return n*(x-=2.25/d)*x+.9375;return n*(x-=2.625/d)*x+.984375}
+const LV=["anúncio","página","prazo 14–21d"];let dh="",lh="";for(let n=0;n<180;n++)dh+=`<circle r="11"/>`;LV.forEach((l,k)=>{lh+=`<g class="lv" transform="translate(250 ${k*92})"><rect x="-150" y="-36" width="300" height="72" rx="36" fill="#fff" stroke="#161513" stroke-width="4"/><rect class="tr" x="-130" y="-14" width="60" height="28" rx="14" fill="#D9D6CF"/><circle class="kn" cx="-116" r="17" fill="#161513"/><text x="35" y="10" text-anchor="middle" font-family="Inter" font-weight="700" font-size="28" fill="#161513">${l}</text></g>`});$("dots").innerHTML=dh;$("lev").innerHTML=lh;
+const CAP=$("cap");let cs=-1,sp=[];
+function setCap(i){if(cs===i)return;cs=i;CAP.innerHTML="";sp=[];let wi=0;S[i].text.replace("...","…").split(" ").forEach(tok=>{const e=document.createElement("span");e.textContent=tok;const c=tok.toLowerCase().replace(/[.,:?…!]/g,"");if(HL[i].includes(c))e.className="hl";e._t=S[i].wt[Math.min(wi,S[i].wt.length-1)];if(c)wi++;CAP.appendChild(e);sp.push(e)})}
+const fx=$("fx").getContext("2d");
+function render(t){
+ $("b1").style.transform=`translate(${-260+140*Math.sin(t*.5)}px,${200+120*Math.cos(t*.4)}px)`;$("b2").style.transform=`translate(${520+120*Math.cos(t*.45)}px,${1150+140*Math.sin(t*.33)}px)`;
+ const t0=S[0].start,t1=S[1].start,t2=S[2].start;
+ $("pill").style.transform=`scale(${back((t-0.1)/0.5)})`;$("title").style.opacity=eo((t-0.3)/0.5);$("title").style.transform=`translateY(${(1-eo((t-0.3)/0.5))*30}px)`;
+ // the one piece: funnel swallowing many grey leads that drip out -> 3 levers flip -> only gold leads pass -> gauge "custo por cliente" settles low
+ const fi=back((t-0.15)/0.6);$("fun").setAttribute("transform",`translate(-170 220) scale(${Math.max(.01,fi)}) translate(170 -220)`);
+ const GO=t1+3.8,sm=(a,b,x)=>a+(b-a)*eo(x);
+ [...$("dots").children].forEach((c,n)=>{const gold=n>=140,ts=gold?GO+(n-140)*0.18:n*0.055+0.3;const a=t-ts;if(a<0||a>1.4||(!gold&&ts>GO-0.1)){c.style.opacity=0;return}
+  const x0=-170+((n*73)%380-190);let x,y,o=1;if(a<0.35){x=x0;y=-20+80*(a/0.35)}else if(a<0.85){const p=(a-0.35)/0.5;x=x0+(-170-x0)*p;y=60+270*p*p}else{const p=(a-0.85)/0.55;x=-170+(gold?0:Math.sin(n)*20*p);y=330+120*p;o=1-p}
+  c.setAttribute("cx",x);c.setAttribute("cy",y);c.setAttribute("fill",gold?"#C48C34":"#A9A49B");c.style.opacity=o*clamp(a/0.1)});
+ [...$("lev").children].forEach((g,k)=>{const ap=back((t-0.5-k*0.15)/0.5);const on=eo((t-(t1+2.4+k*0.6))/0.35);g.setAttribute("transform",`translate(250 ${10+k*86}) scale(${Math.max(.01,ap)*(1+0.12*Math.sin(clamp(on)*Math.PI))})`);g.querySelector(".kn").setAttribute("cx",-116+32*on);g.querySelector(".kn").setAttribute("fill",on>.5?"#C48C34":"#161513");g.querySelector(".tr").setAttribute("fill",on>.5?"#F1D7A8":"#D9D6CF")});
+ const gs=clamp((t-GO)/1.1),v=gs>0?0.88+(0.15-0.88)*back(gs):0.88+0.07*Math.sin(t*9);$("ndl").setAttribute("transform",`rotate(${-90+v*180})`);
+ const ga=back((t-0.7)/0.5);$("gauge").setAttribute("transform",`translate(250 420) scale(${Math.max(.01,ga)})`);
+ const set=eo((t-(GO+1))/1);const fly=Math.sin(t*1.6)*12*set;$("piece").style.transform=`translateY(${fly}px) rotate(${Math.sin(t*.8)*1.5*set}deg)`;
+ // CTA
+ const ca=eo((t-t2+0.2)/0.5);$("cta").style.opacity=ca;$("arrow").style.transform=`translateY(${Math.abs(Math.sin(t*5))*18}px)`;
+ $("zone").style.transform=`scale(${1+0.04*Math.sin(t*6)*ca})`;
+ let i=t>=t2-0.3?2:t>=t1-0.3?1:0;setCap(i);sp.forEach(e=>{const a=eo((t-e._t+.06)/.3);e.style.opacity=a;e.style.transform=`translateY(${(1-a)*26}px) rotateX(${(1-a)*-80}deg)`});
+ // sparkle burst when the gauge settles
+ fx.clearRect(0,0,1080,1920);const lt=t-(t1+4.7);if(lt>0&&lt<0.8){for(let n=0;n<24;n++){const a=n/24*Math.PI*2,d=60+lt*260;fx.globalAlpha=1-lt/0.8;fx.fillStyle=n%2?"#C48C34":"#161513";fx.fillRect(790+Math.cos(a)*d-4,1100+Math.sin(a)*d-4,8,8)}fx.globalAlpha=1}
+}
+window.render=render;window.TOTAL=TL.total;render(0);
+</script></body></html>
