@@ -1,0 +1,253 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:Inter;src:url(/usr/share/fonts/opentype/inter/Inter-Bold.otf);font-weight:700}
+@font-face{font-family:Inter;src:url(/usr/share/fonts/opentype/inter/Inter-SemiBold.otf);font-weight:600}
+@font-face{font-family:Play;src:url(fonts/Playfair.ttf);font-weight:100 900}
+:root{--bg:#FAF9F6;--txt:#161513;--gold:#C48C34;--goldD:#7A4E18;--dim:#8C867C;--line:#E4DED2}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--bg)}
+#stage{position:absolute;inset:0;overflow:hidden;background:var(--bg);font-family:Inter}
+.blob{position:absolute;border-radius:50%;filter:blur(110px);opacity:.55}
+#label{position:absolute;top:280px;width:100%;text-align:center;font:600 34px Inter;letter-spacing:9px;color:var(--gold)}
+#label:after{content:"";display:block;width:80px;height:2px;background:var(--gold);margin:22px auto 0}
+#cam{position:absolute;inset:0;transform-origin:50% 40%}
+#illus{position:absolute;left:0;top:380px;width:1080px;height:420px;perspective:1400px}
+.sc{position:absolute;inset:0;transform-style:preserve-3d;display:flex;align-items:center;justify-content:center;opacity:0}
+#cap{position:absolute;left:90px;right:90px;top:920px;text-align:center;font:700 72px/92px Inter;color:var(--txt);perspective:900px}
+#cap span{display:inline-block;margin:0 9px;transform-origin:50% 100%;will-change:transform}
+#cap span.hl{color:var(--gold);text-shadow:1px 1px 0 #d9a85a,2px 2px 0 #c99a4e,3px 3px 0 #b8893f,5px 8px 12px rgba(90,60,20,.18)}
+canvas{position:absolute;inset:0}
+/* 3D box */
+.box{position:relative;width:200px;height:200px;transform-style:preserve-3d}
+.box .f{position:absolute;width:200px;height:200px;border-radius:14px}
+.part{position:absolute;width:150px;height:56px;transform-style:preserve-3d}
+.part .t,.part .fr,.part .sd{position:absolute;border-radius:6px}
+.chip{width:58px;height:58px;border-radius:50%;border:3px solid var(--line);background:#fff;font:700 28px Inter;color:var(--dim);display:flex;align-items:center;justify-content:center}
+.chip.on{border-color:var(--gold);background:var(--gold);color:#fff;box-shadow:0 8px 20px rgba(196,140,52,.35)}
+#chips{position:absolute;top:815px;width:100%;display:flex;gap:26px;justify-content:center;opacity:0}
+.big3d{font:800 120px Play;color:var(--gold);text-shadow:1px 1px 0 #b07a28,2px 2px 0 #a8742a,3px 3px 0 #9c6a22,4px 4px 0 #925f1e,5px 5px 0 #8a5c1c,6px 6px 0 #835619,7px 7px 0 #7a4e18,8px 8px 0 #704615,14px 22px 26px rgba(90,60,20,.3)}
+</style></head>
+<body><div id="stage">
+<div class="blob" id="b1" style="width:900px;height:900px;background:#F1D7A8"></div>
+<div class="blob" id="b2" style="width:800px;height:800px;background:#E3E6EE"></div>
+<div id="cam">
+<div id="label">ETAPA 4 · AQUECIMENTO</div>
+<div id="illus">
+ <!-- 0 inscreveu e esqueceu -->
+ <div class="sc" id="s0">
+  <svg width="1080" height="420" viewBox="0 0 1080 420" style="overflow:visible">
+   <g transform="translate(250 230)">
+    <circle cy="-40" r="70" fill="#161513"/><path d="M-120 190 Q-120 50 0 50 Q120 50 120 190Z" fill="#161513"/>
+   </g>
+   <g id="bub" transform="translate(560 120)">
+    <circle id="bd1" cx="-200" cy="60" r="12" fill="#fff" stroke="#E4DED2" stroke-width="4"/>
+    <circle id="bd2" cx="-160" cy="30" r="20" fill="#fff" stroke="#E4DED2" stroke-width="4"/>
+    <g id="bmain"><ellipse cx="80" cy="0" rx="230" ry="130" fill="#fff" stroke="#E4DED2" stroke-width="5"/>
+     <g id="card0"><rect x="-60" y="-70" width="280" height="140" rx="20" fill="#FAF9F6" stroke="#C48C34" stroke-width="5"/>
+      <circle cx="-5" cy="0" r="34" fill="#C48C34"/><path id="ck0" d="M-20 0 L-8 13 L12 -12" stroke="#fff" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="60" stroke-dashoffset="60"/>
+      <text x="45" y="-12" font-family="Inter" font-weight="700" font-size="28" fill="#161513">Inscrição</text>
+      <text x="45" y="24" font-family="Inter" font-weight="600" font-size="24" fill="#8C867C">confirmada</text></g></g>
+   </g>
+   <g id="dots0" fill="#C48C34"></g>
+   <g id="cal" transform="translate(930 90)">
+    <rect x="-70" y="-10" width="140" height="150" rx="16" fill="#fff" stroke="#161513" stroke-width="6"/>
+    <rect x="-70" y="-10" width="140" height="40" rx="14" fill="#C48C34"/>
+    <g id="calp"><rect x="-64" y="32" width="128" height="102" fill="#fff"/><text id="calt" y="108" text-anchor="middle" font-family="Play" font-weight="800" font-size="70" fill="#161513">D0</text></g>
+   </g>
+  </svg>
+ </div>
+ <!-- 1 timeline com queda -->
+ <div class="sc" id="s1">
+  <svg width="1080" height="420" viewBox="0 0 1080 420" style="overflow:visible">
+   <line id="tl1" x1="130" y1="200" x2="950" y2="200" stroke="#161513" stroke-width="10" stroke-linecap="round" stroke-dasharray="820" stroke-dashoffset="820"/>
+   <rect id="gap1" x="380" y="170" width="320" height="60" rx="10" fill="#FAF9F6" stroke="#C0392B" stroke-width="4" stroke-dasharray="14 10" opacity="0"/>
+   <g id="pinA" transform="translate(130 200)"><circle r="30" fill="#C48C34"/><text y="-55" text-anchor="middle" font-family="Inter" font-weight="700" font-size="30" fill="#161513">INSCRIÇÃO</text></g>
+   <g id="pinB" transform="translate(950 200)"><circle r="30" fill="#161513"/><text y="-55" text-anchor="middle" font-family="Inter" font-weight="700" font-size="30" fill="#161513">EVENTO</text></g>
+   <g id="ppl1"></g>
+  </svg>
+ </div>
+ <!-- 2 intervalo onde trabalho -->
+ <div class="sc" id="s2">
+  <svg width="1080" height="420" viewBox="0 0 1080 420" style="overflow:visible">
+   <line x1="130" y1="300" x2="950" y2="300" stroke="#E4DED2" stroke-width="10" stroke-linecap="round"/>
+   <line id="fill2" x1="380" y1="300" x2="700" y2="300" stroke="#C48C34" stroke-width="14" stroke-linecap="round" stroke-dasharray="320" stroke-dashoffset="320"/>
+   <circle cx="130" cy="300" r="22" fill="#C48C34"/><circle cx="950" cy="300" r="22" fill="#161513"/>
+   <path id="brk" d="M380 350 V380 H700 V350" fill="none" stroke="#161513" stroke-width="6" stroke-dasharray="400" stroke-dashoffset="400"/>
+   <g id="g1" transform="translate(480 160)"></g><g id="g2" transform="translate(605 115)"></g>
+  </svg>
+ </div>
+ <!-- 3 tres coisas para o lead -->
+ <div class="sc" id="s3">
+  <svg width="1080" height="420" viewBox="0 0 1080 420" style="overflow:visible">
+   <g transform="translate(540 260)"><circle cy="-40" r="55" fill="#161513"/><path d="M-95 150 Q-95 40 0 40 Q95 40 95 150Z" fill="#161513"/></g>
+   <g id="pk"></g>
+  </svg>
+ </div>
+ <!-- 4 motivo: chave abre, lâmpada -->
+ <div class="sc" id="s4">
+  <svg width="1080" height="420" viewBox="0 0 1080 420" style="overflow:visible">
+   <g id="mcard" transform="translate(440 210)">
+    <rect x="-150" y="-170" width="300" height="340" rx="28" fill="#fff" stroke="#E4DED2" stroke-width="5"/>
+    <text y="145" text-anchor="middle" font-family="Inter" font-weight="700" font-size="34" letter-spacing="4" fill="#C48C34">MOTIVO</text>
+    <g id="kh"><circle cy="10" r="30" fill="#161513"/><path d="M-16 20 L-24 90 H24 L16 20Z" fill="#161513"/></g>
+    <g transform="translate(0 -25)"><g id="bulb" opacity="0"><path d="M0 -70 A60 60 0 0 1 36 38 V66 H-36 V38 A60 60 0 0 1 0 -70Z" fill="#F4DDB0" stroke="#C48C34" stroke-width="6"/><rect x="-30" y="72" width="60" height="14" rx="6" fill="#7A4E18"/><rect x="-24" y="92" width="48" height="12" rx="6" fill="#7A4E18"/>
+     <g id="rays" stroke="#C48C34" stroke-width="7" stroke-linecap="round"></g></g></g>
+   </g>
+   <g id="key"><circle r="44" fill="none" stroke="#C48C34" stroke-width="18"/><path d="M44 0 H190 M150 0 V36 M180 0 V28" stroke="#C48C34" stroke-width="18" stroke-linecap="round"/></g>
+  </svg>
+ </div>
+ <!-- 5 canais -->
+ <div class="sc" id="s5">
+  <svg width="1080" height="420" viewBox="0 0 1080 420" style="overflow:visible">
+   <g class="chn" transform="translate(250 210)"><g class="ci"><rect x="-100" y="-70" width="200" height="140" rx="18" fill="#fff" stroke="#161513" stroke-width="10"/><path class="dr" d="M-90 -60 L0 10 L90 -60" fill="none" stroke="#C48C34" stroke-width="10" stroke-linejoin="round" stroke-dasharray="260" stroke-dashoffset="260"/></g><text y="130" text-anchor="middle" font-family="Inter" font-weight="700" font-size="30" fill="#161513">e-mail</text></g>
+   <g class="chn" transform="translate(540 210)"><g class="ci"><path d="M-95 -75 H95 Q110 -75 110 -60 V40 Q110 55 95 55 H-30 L-75 95 V55 H-95 Q-110 55 -110 40 V-60 Q-110 -75 -95 -75Z" fill="#fff" stroke="#161513" stroke-width="10" stroke-linejoin="round"/><path class="dr" d="M-55 -10 H55 M-55 -40 H30" stroke="#C48C34" stroke-width="10" stroke-linecap="round" stroke-dasharray="120" stroke-dashoffset="120"/></g><text y="130" text-anchor="middle" font-family="Inter" font-weight="700" font-size="30" fill="#161513">WhatsApp</text></g>
+   <g class="chn" transform="translate(830 210)"><g class="ci"><circle r="88" fill="none" stroke="#C48C34" stroke-width="10" stroke-dasharray="30 12" class="sring"/><circle r="70" fill="#fff" stroke="#161513" stroke-width="6"/><circle cy="-15" r="22" fill="#161513"/><path class="dr" d="M-38 40 Q-38 10 0 10 Q38 10 38 40Z" fill="#161513"/></g><text y="130" text-anchor="middle" font-family="Inter" font-weight="700" font-size="30" fill="#161513">stories</text></g>
+  </svg>
+ </div>
+ <!-- 6 pequena tarefa -->
+ <div class="sc" id="s6">
+  <svg width="1080" height="420" viewBox="0 0 1080 420" style="overflow:visible">
+   <g transform="translate(540 210)">
+    <rect x="-330" y="-150" width="660" height="300" rx="30" fill="#fff" stroke="#E4DED2" stroke-width="5"/>
+    <text x="-270" y="-80" font-family="Inter" font-weight="700" font-size="30" letter-spacing="4" fill="#C48C34">TAREFA</text>
+    <rect x="-270" y="-30" width="90" height="90" rx="16" fill="none" stroke="#161513" stroke-width="8"/>
+    <path id="tick6" d="M-255 15 L-232 40 L-188 -14" fill="none" stroke="#C48C34" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="110" stroke-dashoffset="110"/>
+    <g id="qb"><circle cx="230" cy="-80" r="40" fill="#161513"/><text x="230" y="-62" text-anchor="middle" font-family="Inter" font-weight="700" font-size="50" fill="#FAF9F6">?</text></g>
+    <rect id="ln1" x="-150" y="-10" width="0" height="22" rx="11" fill="#E4DED2"/>
+    <rect id="ln2" x="-150" y="30" width="0" height="22" rx="11" fill="#EEE9DF"/>
+    <rect id="ln3" x="-270" y="95" width="0" height="10" rx="5" fill="#C48C34"/>
+   </g>
+  </svg>
+ </div>
+ <!-- 7 pequeno passo, grande palco -->
+ <div class="sc" id="s7">
+  <svg width="1080" height="420" viewBox="0 0 1080 420" style="overflow:visible">
+   <path id="beam7" d="M770 10 L890 10 L1030 380 L560 380Z" fill="#F4DDB0" opacity="0"/>
+   <line x1="80" y1="380" x2="1000" y2="380" stroke="#E4DED2" stroke-width="6" stroke-linecap="round"/>
+   <rect id="stp" x="330" y="320" width="150" height="60" rx="8" fill="#E2B56B"/>
+   <g id="stg"><rect x="560" y="200" width="440" height="180" rx="12" fill="#C48C34"/><rect x="560" y="200" width="440" height="22" rx="8" fill="#7A4E18"/></g>
+   <g id="guy"><circle cy="-95" r="26" fill="#161513"/><path d="M-30 0 Q-30 -60 0 -60 Q30 -60 30 0Z" fill="#161513"/></g>
+   <g id="stars7" fill="#C48C34"></g>
+  </svg>
+ </div>
+ <!-- 8 CTA -->
+ <div class="sc" id="s8" style="flex-direction:column">
+  <div class="big3d" id="ctaw">AQUECIMENTO</div>
+  <div id="cbox" style="margin-top:40px;width:860px;height:104px;border-radius:52px;background:#fff;border:3px solid var(--gold);box-shadow:4px 10px 0 #E4DED2;display:flex;align-items:center;padding:0 34px 0 50px;font:600 44px Inter;color:var(--txt)">
+   <span id="ctxt"></span><span id="caret" style="width:4px;height:50px;background:var(--gold);margin-left:6px"></span>
+   <span style="margin-left:auto;width:70px;height:70px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center"><svg width="34" height="34" viewBox="0 0 34 34"><path d="M17 30 V5 M6 15 L17 4 L28 15" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+  </div>
+ </div>
+</div>
+<div id="chips"></div>
+<div id="cap"></div>
+</div>
+<canvas id="fx" width="1080" height="1920"></canvas>
+</div>
+<script>
+const TL = __TIMELINE__;
+const S = TL.segs, $ = id => document.getElementById(id);
+const HL = [["inscreveu","esqueceu","seguinte"],["perde","audiência","inscrição","evento"],["intervalo","trabalho"],["três","coisas"],["motivo","sabendo"],["lembrete","canal","e-mail","whatsapp","stories"],["pequena","tarefa","pergunta"],["compromete","pequeno","grande"],["aquecimento"]];
+const SC = S.map(s => s.start - 0.35);
+const clamp = (x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const eo = x => 1-Math.pow(1-clamp(x),4);
+const eio = x => {x=clamp(x);return x<.5?8*x*x*x*x:1-Math.pow(-2*x+2,4)/2};
+const back = x => {x=clamp(x);const c=1.7;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const elastic = x => {x=clamp(x);return x===0?0:x===1?1:Math.pow(2,-10*x)*Math.sin((x*10-.75)*2*Math.PI/3)+1};
+function rnd(n){const x=Math.sin(n*127.1+311.7)*43758.5453;return x-Math.floor(x)}
+
+// build static bits
+const chips=$("chips");for(let k=0;k<3;k++){const c=document.createElement("div");c.className="chip";c.textContent=k+1;chips.appendChild(c)}
+let pp="";for(let k=0;k<14;k++)pp+=`<circle class="pd" r="13" fill="${k%4?'#C48C34':'#161513'}"/>`;$("ppl1").innerHTML=pp;
+function gear(r,n){let d="";for(let k=0;k<n*2;k++){const a=k/(n*2)*Math.PI*2,a2=(k+1)/(n*2)*Math.PI*2,R=k%2?r:r+18;d+=(k?"L":"M")+(Math.cos(a)*R).toFixed(1)+" "+(Math.sin(a)*R).toFixed(1)+"L"+(Math.cos(a2)*R).toFixed(1)+" "+(Math.sin(a2)*R).toFixed(1)}return d+"Z"}
+$("g1").innerHTML=`<g class="gr"><path d="${gear(70,10)}" fill="#161513"/><circle r="26" fill="#FAF9F6"/></g>`;
+$("g2").innerHTML=`<g class="gr"><path d="${gear(46,8)}" fill="#C48C34"/><circle r="16" fill="#FAF9F6"/></g>`;
+let pk="";for(let k=0;k<3;k++)pk+=`<g class="pkg"><rect x="-58" y="-58" width="116" height="116" rx="18" fill="${k==1?'#161513':'#C48C34'}"/><text y="22" text-anchor="middle" font-family="Play" font-weight="800" font-size="64" fill="#fff">${k+1}</text></g>`;$("pk").innerHTML=pk;
+let ry="";for(let k=0;k<7;k++){const a=-Math.PI+k/6*Math.PI;ry+=`<line x1="${Math.cos(a)*85}" y1="${-10+Math.sin(a)*85}" x2="${Math.cos(a)*115}" y2="${-10+Math.sin(a)*115}"/>`}$("rays").innerHTML=ry;
+let bg="";[250,540,830].forEach((x,k)=>bg+=`<g class="bdg" transform="translate(${x+80} 130)"><circle r="28" fill="#C0392B"/><text y="11" text-anchor="middle" font-family="Inter" font-weight="700" font-size="30" fill="#fff">1</text></g>`);document.querySelector("#s5 svg").insertAdjacentHTML("beforeend",bg);
+
+// captions
+const CAP=$("cap");let capSeg=-1,spans=[];
+function setCap(i){if(capSeg===i)return;capSeg=i;CAP.innerHTML="";spans=[];
+ const toks=S[i].text.replace("...","…").split(" ");let wi=0;
+ toks.forEach(tok=>{const sp=document.createElement("span");sp.textContent=tok;const c=tok.toLowerCase().replace(/[.,:?…!]/g,"");
+  if(HL[i].includes(c))sp.className="hl";sp._t=S[i].wt[Math.min(wi,S[i].wt.length-1)];if(c)wi++;CAP.appendChild(sp);spans.push(sp)});}
+
+const fx=$("fx").getContext("2d");
+function particles(t,i){fx.clearRect(0,0,1080,1920);
+ // burst at each scene switch: pieces of the illustration scatter and fly into the caption words
+ for(let s=1;s<S.length;s++){const lt=t-SC[s];if(lt<0||lt>1.1)continue;
+  for(let n=0;n<70;n++){const r1=rnd(s*100+n),r2=rnd(s*100+n+.5),r3=rnd(s*100+n+.9);
+   const sx=540+(r1-.5)*520,sy=570+(r2-.5)*300;const tx=160+r3*760,ty=860+rnd(n*7+s)*260;
+   const p=eio(lt/1.0);const mx=(sx+tx)/2+(r2-.5)*500,my=Math.min(sy,ty)-180*r1;
+   const x=(1-p)*(1-p)*sx+2*(1-p)*p*mx+p*p*tx,y=(1-p)*(1-p)*sy+2*(1-p)*p*my+p*p*ty;
+   const a=Math.sin(Math.PI*clamp(lt/1.1))*.9;fx.globalAlpha=a;fx.fillStyle=n%3?"#C48C34":"#161513";
+   const sz=4+r1*9;fx.save();fx.translate(x,y);fx.rotate(lt*8*(r2-.5));fx.fillRect(-sz/2,-sz/2,sz,sz*(.4+r3));fx.restore()}}
+ fx.globalAlpha=1}
+
+const SCL={s0:0.95,s1:1,s2:1.05,s3:1.15,s4:1.1,s5:1,s6:1.05,s7:1,s8:0.95};
+function sceneT(el,lt,dur){ // 3D enter / exit shared by all illustrations
+ const ein=eo(lt/0.6), eout=eio((lt-(dur-0.35))/0.45);
+ const rx=(1-ein)*-70, rot=eout*85, sc=(0.6+0.4*back(lt/0.7))*(1-0.4*eout);
+ el.style.opacity=Math.min(ein,1-eout);
+ el.style.filter=`blur(${(1-ein)*14+eout*16}px)`;
+ el.style.transform=`translateZ(${(1-ein)*-400}px) rotateX(${rx}deg) rotateY(${rot}deg) scale(${sc*(SCL[el.id]||1)})`;}
+
+function render(t){
+ $("b1").style.transform=`translate(${-260+140*Math.sin(t*.35)}px,${120+120*Math.cos(t*.27)}px)`;
+ $("b2").style.transform=`translate(${520+120*Math.cos(t*.3)}px,${1150+140*Math.sin(t*.22)}px)`;
+ let i=0;for(let k=0;k<SC.length;k++)if(t>=SC[k])i=k;
+ const lt=t-SC[i], dur=(i<S.length-1?SC[i+1]:TL.total+5)-SC[i];
+ for(let k=0;k<S.length;k++){const el=$("s"+k);if(k!==i){el.style.opacity=0;continue}sceneT(el,lt,i===8?99:dur)}
+ $("cam").style.transform=`scale(${1+0.03*clamp(lt/8)})`;
+ // chips: 3 coisas during 4..6
+ const ch=$("chips");ch.style.opacity=(i>=4&&i<=6)?eo((t-SC[4])/0.4):0;
+ [...ch.children].forEach((c,k)=>{const on=i>=4&&k<=i-4;c.className="chip"+(on?" on":"");c.style.transform=`scale(${on&&k===i-4?1+0.25*(1-eo(lt/0.5)):1})`});
+ if(i===0){$("ck0").style.strokeDashoffset=60*(1-eo((lt-0.3)/0.4));
+  const bq=back((lt-0.1)/0.6);$("bmain").setAttribute("transform",`scale(${Math.max(.001,bq)})`);$("bmain").style.transformOrigin="80px 0px";
+  const fg=clamp((lt-2.2)/1.4);$("card0").setAttribute("opacity",1-fg);$("card0").style.filter=`blur(${fg*10}px)`;$("bmain").setAttribute("opacity",1-clamp((lt-3.0)/0.8));
+  $("bd1").setAttribute("opacity",1-clamp((lt-3.2)/0.5));$("bd2").setAttribute("opacity",1-clamp((lt-3.0)/0.5));
+  let d="";if(fg>0)for(let n=0;n<24;n++){const q=clamp(fg*1.3-rnd(n)*.3);d+=`<circle cx="${480+rnd(n+1)*300+q*80*(rnd(n+2)-.5)}" cy="${80+rnd(n+3)*100+q*q*200}" r="${(1-q)*8+1}" opacity="${(1-q)*(q>0?1:0)}"/>`}$("dots0").innerHTML=d;
+  const fl=clamp((lt-1.6)/0.6);$("calp").setAttribute("transform",`translate(0 ${32}) scale(1 ${Math.abs(Math.cos(fl*Math.PI))}) translate(0 -32)`);$("calt").textContent=fl>0.5?"D+1":"D0";$("calt").setAttribute("fill",fl>0.5?"#C48C34":"#161513");}
+ if(i===1){$("tl1").style.strokeDashoffset=820*(1-eio(lt/0.7));$("gap1").setAttribute("opacity",eo((lt-1.0)/0.4)*(0.7+0.3*Math.sin(lt*8)));
+  [...document.querySelectorAll(".pd")].forEach((c,k)=>{const st=0.4+k*0.12,q=clamp((lt-st)/2.2);const drop=k%4!==0;const dx=400+rnd(k)*260;let x=130+q*820,y=200,o=q>0?1:0;
+   if(drop&&x>dx){const f=(x-dx)/120;x=dx+(x-dx)*.35;y=200+f*f*60;o=Math.max(0,1-f*.5)}else if(!drop){y=200-Math.abs(Math.sin(q*18))*18}
+   c.setAttribute("cx",x);c.setAttribute("cy",y);c.setAttribute("opacity",o)});
+  $("pinB").setAttribute("transform",`translate(950 200) scale(${1+0.15*Math.max(0,Math.sin((lt-2.6)*5))*(lt>2.6&&lt<3.3?1:0)})`);}
+ if(i===2){$("brk").style.strokeDashoffset=400*(1-eo((lt-0.2)/0.6));$("fill2").style.strokeDashoffset=320*(1-eio((lt-0.5)/1.4));
+  const gq=back(lt/0.6);document.querySelectorAll("#s2 .gr").forEach((g,k)=>g.setAttribute("transform",`scale(${Math.max(.001,gq)}) rotate(${(k?-1.45:1)*lt*120})`));}
+ if(i===3){[...document.querySelectorAll(".pkg")].forEach((g,k)=>{const tx=[300,540,780][k],ty=[170,60,170][k];const q=clamp((lt-0.6-k*0.3)/0.7);
+   const sx=[-120,540,1200][k],sy=[-200,-260,-200][k];const e=eo(q);const x=sx+(tx-sx)*e,y=sy+(ty-sy)*bounce(q);
+   g.setAttribute("transform",`translate(${x} ${y}) rotate(${(1-e)*(k-1)*90}) scale(${q>0?1:0.001})`)});}
+ if(i===4){const kq=eio((lt-0.2)/0.9);const turn=clamp((lt-1.15)/0.4);
+  $("key").setAttribute("transform",`translate(${980-kq*350} ${220-Math.sin(kq*Math.PI)*80}) rotate(180) scale(1 ${Math.cos(turn*Math.PI/2)*0.9+0.1})`);$("key").setAttribute("opacity",1-clamp((lt-1.6)/0.3));
+  const op=back((lt-1.7)/0.6);$("kh").setAttribute("opacity",1-clamp((lt-1.6)/0.2));$("bulb").setAttribute("opacity",clamp((lt-1.7)/0.2));$("bulb").setAttribute("transform",`scale(${Math.max(.001,op)})`);
+  $("rays").setAttribute("opacity",clamp((lt-2.1)/0.3)*(0.6+0.4*Math.sin(lt*9)));
+  $("mcard").setAttribute("transform",`translate(440 210) rotate(${lt>1.5&&lt<1.9?Math.sin(lt*60)*3:0})`);}
+ if(i===5){const cs=[...document.querySelectorAll("#s5 .chn")],bd=[...document.querySelectorAll(".bdg")];
+  cs.forEach((g,k)=>{const st=0.25+k*0.75;const q=back((lt-st)/0.5);const ci=g.querySelector(".ci");ci.setAttribute("transform",`scale(${Math.max(.001,q)}) rotate(${(1-clamp((lt-st)/0.5))*-25})`);
+   g.querySelectorAll(".dr").forEach(d=>d.style.strokeDashoffset=(d.getAttribute("stroke-dasharray")|0)*(1-eo((lt-st-0.3)/0.5)));
+   const sr=g.querySelector(".sring");if(sr)sr.setAttribute("transform",`rotate(${lt*60})`);
+   const bq=elastic((lt-st-0.45)/0.8);const wig=lt>st+.5?Math.sin((lt-st)*25)*8*Math.exp(-(lt-st-.5)*3):0;
+   bd[k].setAttribute("transform",`translate(${[330,620,910][k]} 130) scale(${Math.max(.001,bq)}) rotate(${wig})`)});}
+ if(i===6){[["ln1",380],["ln2",280],["ln3",540]].forEach(([id,w],k)=>$(id).setAttribute("width",w*eo((lt-0.2-k*0.2)/0.5)));
+  $("qb").setAttribute("transform",`translate(0 ${Math.sin(lt*4)*8}) rotate(${Math.sin(lt*3)*6} 230 -80)`);
+  $("tick6").style.strokeDashoffset=110*(1-eo((lt-1.5)/0.4));}
+ if(i===7){const g=$("guy");let x,y;const j1=clamp((lt-0.3)/0.5),j2=clamp((lt-1.3)/0.7);
+  if(lt<1.3){x=200+j1*205;y=380-60*eo(j1)-Math.sin(j1*Math.PI)*50}else{x=405+j2*375;y=320-120*eo(j2)-Math.sin(j2*Math.PI)*60}
+  const sq=(lt>0.8&&lt<1.0)||(lt>2.0&&lt<2.2)?0.85:1;g.setAttribute("transform",`translate(${x} ${y}) scale(${2-sq} ${sq})`);
+  const sgq=back((lt-0.1)/0.6);$("stg").setAttribute("transform",`translate(780 380) scale(1 ${Math.max(.001,sgq)}) translate(-780 -380)`);
+  $("beam7").setAttribute("opacity",0.7*eo((lt-2.0)/0.5));
+  let st="";if(lt>2.0)for(let n=0;n<10;n++){const q=clamp((lt-2.0-n*0.05)/0.9);const a=n/10*Math.PI*2;st+=`<circle cx="${780+Math.cos(a)*(40+q*170)}" cy="${120+Math.sin(a)*(40+q*110)}" r="${(1-q)*10}"/>`}$("stars7").innerHTML=st;}
+ if(i===8){const w="AQUECIMENTO",tb=lt-1.4;const n=tb>0?Math.min(w.length,Math.floor(tb*9)):0;$("ctxt").textContent=n?w.slice(0,n):"Adicione um comentário…";$("ctxt").style.color=n?"#161513":"#8C867C";
+  $("caret").style.opacity=Math.floor(t*2.5)%2?0:1;$("cbox").style.opacity=eo((lt-1.1)/0.4);$("cbox").style.transform=`translateY(${(1-eo((lt-1.1)/0.4))*40}px)`;
+  $("ctaw").style.transform=`rotateX(${(1-back(lt/0.8))*80}deg) scale(${0.7+0.3*back(lt/0.8)})`;}
+ // captions with 3D flip-in per word
+ setCap(i);spans.forEach(sp=>{const a=eo((t-sp._t+.06)/.32);sp.style.opacity=a;sp.style.transform=`translateY(${(1-a)*30}px) rotateX(${(1-a)*-85}deg) scale(${.85+.15*back((t-sp._t+.06)/.4)})`;sp.style.filter=`blur(${(1-a)*8}px)`});
+ CAP.style.transform=`translateY(${-30*eio((lt-(dur-0.35))/0.45)}px)`;CAP.style.opacity=1-eio((lt-(dur-0.35))/0.45)*(i<8?1:0);
+ particles(t,i);
+}
+function bounce(x){const n=7.5625,d=2.75;if(x<1/d)return n*x*x;if(x<2/d)return n*(x-=1.5/d)*x+.75;if(x<2.5/d)return n*(x-=2.25/d)*x+.9375;return n*(x-=2.625/d)*x+.984375}
+window.render=render;window.TOTAL=TL.total;render(0);
+</script></body></html>
