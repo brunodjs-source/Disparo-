@@ -1,0 +1,69 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:Inter;src:url(/usr/share/fonts/opentype/inter/Inter-Bold.otf);font-weight:700}
+@font-face{font-family:Inter;src:url(/usr/share/fonts/opentype/inter/Inter-SemiBold.otf);font-weight:600}
+@font-face{font-family:Play;src:url(fonts/Playfair.ttf);font-weight:100 900}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#FAF9F6}
+#st{position:absolute;inset:0;overflow:hidden;font-family:Inter}
+.blob{position:absolute;border-radius:50%;filter:blur(120px);opacity:.55}
+#tag{position:absolute;top:300px;width:100%;text-align:center}
+#pill{display:inline-block;padding:16px 34px;border-radius:40px;background:#161513;color:#FAF9F6;font:600 32px Inter;letter-spacing:6px}
+#pill b{color:#E2B56B}
+#title{position:absolute;top:400px;width:100%;text-align:center;font:800 92px/100px Play;color:#161513}
+#title i{font-style:normal;color:#C48C34}
+#piece{position:absolute;left:0;top:600px;width:1080px;height:640px}
+#cap{position:absolute;left:90px;right:90px;top:1220px;text-align:center;font:700 62px/80px Inter;color:#161513;perspective:900px}
+#cap span{display:inline-block;margin:0 8px;transform-origin:50% 100%}
+#cap span.hl{color:#C48C34}
+#cta{position:absolute;top:1470px;width:100%;display:flex;flex-direction:column;align-items:center;gap:18px}
+#zone{width:520px;height:120px;border:4px dashed #C48C34;border-radius:30px;display:flex;align-items:center;justify-content:center;font:700 40px Inter;color:#C48C34;background:rgba(255,255,255,.7)}
+canvas{position:absolute;inset:0}
+</style></head><body><div id="st">
+<div class="blob" id="b1" style="width:900px;height:900px;background:#F1D7A8"></div>
+<div class="blob" id="b2" style="width:800px;height:800px;background:#E3E6EE"></div>
+<div id="tag"><span id="pill">NOVO REELS · <b>EVENTO</b></span></div>
+<div id="title">Live <i>lotada</i><br>não é venda</div>
+<svg id="piece" viewBox="-540 -60 1080 640" style="overflow:visible">
+<ellipse id="shadow" cx="0" cy="540" rx="300" ry="30" fill="rgba(90,60,20,.16)"/>
+<g id="scr"><rect x="-330" y="-10" width="660" height="400" rx="34" fill="#161513"/><rect x="-306" y="14" width="612" height="352" rx="20" fill="#2a2620"/>
+<circle cx="0" cy="170" r="70" fill="#4a4237"/><path d="M-120 366 C-120 280 -60 250 0 250 C60 250 120 280 120 366Z" fill="#4a4237"/>
+<g id="play"><circle cx="0" cy="190" r="0" fill="none"/></g>
+<rect x="-282" y="36" width="160" height="50" rx="12" fill="#E5383B"/><circle id="dot" cx="-256" cy="61" r="9" fill="#fff"/><text x="-136" y="72" text-anchor="end" font-family="Inter" font-weight="700" font-size="28" fill="#fff">AO VIVO</text>
+<rect x="-106" y="36" width="190" height="50" rx="12" fill="rgba(255,255,255,.14)"/><path d="M-90 61 Q-74 44 -58 61 Q-74 78 -90 61Z" fill="#fff"/><circle cx="-74" cy="61" r="6" fill="#2a2620"/><text id="vw" x="70" y="72" text-anchor="end" font-family="Inter" font-weight="700" font-size="30" fill="#fff">0</text>
+<g id="sale"><rect id="sbx" x="100" y="300" width="190" height="52" rx="12" fill="#E5383B"/><text id="stx" x="195" y="336" text-anchor="middle" font-family="Inter" font-weight="700" font-size="28" fill="#fff">vendas: 0</text></g>
+<g id="hearts"></g></g>
+<g id="steps"></g></svg>
+<div id="cap"></div>
+<div id="cta"><svg id="arrow" width="90" height="90" viewBox="0 0 90 90"><path d="M45 10 V70 M20 48 L45 74 L70 48" stroke="#161513" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><div id="zone">cole o link do Reels aqui</div></div>
+<canvas id="fx" width="1080" height="1920"></canvas>
+</div><script>
+const TL=__TIMELINE__,S=TL.segs,$=id=>document.getElementById(id);
+const HL=[["lotou","ninguém","comprou"],["três","passos","vende","problema","caminho","método"],["toca","assiste","agora"]];
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)),eo=x=>1-Math.pow(1-clamp(x),4);
+const back=x=>{x=clamp(x);const c=1.7;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+function bounce(x){const n=7.5625,d=2.75;if(x<1/d)return n*x*x;if(x<2/d)return n*(x-=1.5/d)*x+.75;if(x<2.5/d)return n*(x-=2.25/d)*x+.9375;return n*(x-=2.625/d)*x+.984375}
+let sk="";["Problema","Outro caminho","Seu método"].forEach((s,k)=>{const x=-330+k*230;sk+=`<g class="stp" data-x="${x}"><rect x="0" y="0" width="200" height="96" rx="22"/><circle cx="34" cy="48" r="20" fill="#fff"/><text x="34" y="57" text-anchor="middle" font-family="Inter" font-weight="700" font-size="26" class="n">${k+1}</text><text x="${s.length>9?62:62}" y="${s.includes(" ")?42:58}" font-family="Inter" font-weight="700" font-size="25" class="l">${s.includes(" ")?s.split(" ")[0]+"</text><text x='62' y='72' font-family='Inter' font-weight='700' font-size='25' class='l'>"+s.split(" ")[1]:s}</text></g>`});$("steps").innerHTML=sk;
+const CAP=$("cap");let cs=-1,sp=[];
+function setCap(i){if(cs===i)return;cs=i;CAP.innerHTML="";sp=[];let wi=0;S[i].text.replace("...","…").split(" ").forEach(tok=>{const e=document.createElement("span");e.textContent=tok;const c=tok.toLowerCase().replace(/[.,:?…!]/g,"");if(HL[i].includes(c))e.className="hl";e._t=S[i].wt[Math.min(wi,S[i].wt.length-1)];if(c)wi++;CAP.appendChild(e);sp.push(e)})}
+const fx=$("fx").getContext("2d");
+function render(t){
+ $("b1").style.transform=`translate(${-260+140*Math.sin(t*.5)}px,${200+120*Math.cos(t*.4)}px)`;$("b2").style.transform=`translate(${520+120*Math.cos(t*.45)}px,${1150+140*Math.sin(t*.33)}px)`;
+ const t0=S[0].start,t1=S[1].start,t2=S[2].start;
+ $("pill").style.transform=`scale(${back((t-0.1)/0.5)})`;$("title").style.opacity=eo((t-0.3)/0.5);$("title").style.transform=`translateY(${(1-eo((t-0.3)/0.5))*30}px)`;
+const intro=back((t-0.15)/0.6);$("scr").setAttribute("transform",`scale(${Math.max(.01,intro)})`);$("scr").style.transformOrigin="540px 860px";
+ const vv=Math.round(2847*eo((t-0.4)/(t1-0.2)));$("vw").textContent=vv.toLocaleString("pt-BR");$("dot").style.opacity=0.4+0.6*(Math.sin(t*8)>0?1:0);
+ let hs="";for(let n=0;n<7;n++){const p=((t*0.6+n/7)%1);hs+=`<path transform="translate(${250+Math.sin(n*3+t*2)*20} ${330-p*260}) scale(${1.2-p*.4})" opacity="${(1-p)*(t<t1+2?1:0.5)}" d="M0 6 C-14 -6 -10 -18 0 -10 C10 -18 14 -6 0 6Z" fill="#E5383B"/>`}$("hearts").innerHTML=hs;
+ const shake=t<t1?Math.sin(t*20)*3*clamp((t-1.5)/0.5):0;$("sale").setAttribute("transform",`translate(${shake} 0)`);
+ [...document.querySelectorAll(".stp")].forEach((g,k)=>{const ap=back((t-(t1+0.6+k*0.15))/0.5),lit=clamp((t-(t1+2.6+k*0.9))/0.3);g.setAttribute("transform",`translate(${+g.dataset.x} ${420+(1-ap)*80})`);g.style.opacity=clamp(ap);
+  g.querySelector("rect").setAttribute("fill",lit>.5?"#C48C34":"#E8E2D6");g.querySelectorAll(".l").forEach(e=>e.setAttribute("fill",lit>.5?"#fff":"#8a8070"));g.querySelector(".n").setAttribute("fill",lit>.5?"#C48C34":"#8a8070");g.querySelector("rect").setAttribute("transform",`scale(${1+0.08*Math.sin(clamp(lit)*Math.PI)})`)});
+ const sv=Math.floor(Math.max(0,(t-(t1+5.6)))*14+(t>t1+5.6?1:0));$("stx").textContent="vendas: "+sv;$("sbx").setAttribute("fill",sv>0?"#2BA84A":"#E5383B");
+ const order=clamp((t-t1-6)/1);const fly=Math.sin(t*1.6)*10*order;$("piece").style.transform=`translateY(${fly}px)`;
+ // CTA
+ const ca=eo((t-t2+0.2)/0.5);$("cta").style.opacity=ca;$("arrow").style.transform=`translateY(${Math.abs(Math.sin(t*5))*18}px)`;
+ $("zone").style.transform=`scale(${1+0.04*Math.sin(t*6)*ca})`;
+ let i=t>=t2-0.3?2:t>=t1-0.3?1:0;setCap(i);sp.forEach(e=>{const a=eo((t-e._t+.06)/.3);e.style.opacity=a;e.style.transform=`translateY(${(1-a)*26}px) rotateX(${(1-a)*-80}deg)`});
+ // sparkle burst when tag lands
+ fx.clearRect(0,0,1080,1920);const lt=t-(t1+5.6);if(lt>0&&lt<0.8){for(let n=0;n<24;n++){const a=n/24*Math.PI*2,d=60+lt*260;fx.globalAlpha=1-lt/0.8;fx.fillStyle=n%2?"#C48C34":"#161513";fx.fillRect(735+Math.cos(a)*d-4,986+Math.sin(a)*d-4,8,8)}fx.globalAlpha=1}
+}
+window.render=render;window.TOTAL=TL.total;render(0);
+</script></body></html>
