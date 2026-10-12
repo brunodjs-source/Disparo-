@@ -1,0 +1,56 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:Inter;src:url(/usr/share/fonts/opentype/inter/Inter-Bold.otf);font-weight:700}
+@font-face{font-family:Inter;src:url(/usr/share/fonts/opentype/inter/Inter-SemiBold.otf);font-weight:600}
+@font-face{font-family:Inter;src:url(/usr/share/fonts/opentype/inter/Inter-Medium.otf);font-weight:500}
+@font-face{font-family:Play;src:url(fonts/Playfair.ttf);font-weight:100 900}
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1350px;overflow:hidden;background:#FAF9F6;font-family:Inter;color:#161513}
+.s{position:absolute;inset:0;padding:110px 96px;display:flex;flex-direction:column}
+.glow{position:absolute;border-radius:50%;filter:blur(120px);opacity:.6}
+.top{display:flex;justify-content:space-between;font:600 26px Inter;letter-spacing:5px;color:#C48C34;position:relative}
+.foot{position:absolute;left:96px;right:96px;bottom:80px;display:flex;justify-content:space-between;font:600 26px Inter;color:#8C867C}
+.foot b{color:#161513}
+h1{font:800 104px/1.04 Play;letter-spacing:-1px;position:relative}
+h1 i{font-style:normal;color:#C48C34}
+.sub{font:500 40px/1.35 Inter;color:#4a463f;margin-top:44px;position:relative}
+.big{font:800 300px/1 Play;color:#C48C34;text-shadow:3px 3px 0 #b07a28,6px 6px 0 #9c6a22,9px 9px 0 #7a4e18,18px 26px 34px rgba(90,60,20,.25);position:relative}
+.stage{font:700 30px Inter;letter-spacing:6px;color:#C48C34;margin-top:70px;position:relative}
+.card{position:relative;background:#fff;border:3px solid #E9E2D4;border-radius:36px;padding:52px 56px 56px;margin-top:42px;box-shadow:8px 14px 0 #ECE6DA}
+.card .n{width:86px;height:86px;border-radius:50%;background:#C48C34;color:#fff;font:800 46px Play;display:flex;align-items:center;justify-content:center;margin-bottom:28px;box-shadow:0 10px 24px rgba(196,140,52,.35)}
+.card p{font:700 54px/1.22 Inter}
+.box{position:absolute;right:56px;top:56px;width:70px;height:70px;border:5px solid #161513;border-radius:16px}
+.recap{position:relative;margin-top:40px;display:grid;gap:18px}
+.row{display:flex;gap:22px;align-items:flex-start;font:600 31px/1.3 Inter}
+.cb{flex:none;width:40px;height:40px;border:4px solid #161513;border-radius:9px;margin-top:2px}
+.row em{font-style:normal;color:#C48C34;font-weight:700;margin-right:6px}
+.cta{position:relative;margin-top:60px;display:grid;gap:30px}
+.pill{display:flex;align-items:center;gap:28px;background:#fff;border:3px solid #E9E2D4;border-radius:999px;padding:30px 44px;font:700 44px Inter;box-shadow:6px 10px 0 #ECE6DA}
+.pill .ic{flex:none;width:76px;height:76px;border-radius:50%;background:#161513;display:flex;align-items:center;justify-content:center}
+.pill.gold{background:#C48C34;color:#fff;border-color:#C48C34;box-shadow:6px 10px 0 #E8D2A8}
+.pill.gold .ic{background:#fff}
+</style></head><body><div id="root"></div><script>
+const Q=__Q__;
+const glow=()=>`<div class="glow" style="width:820px;height:820px;background:#F1D7A8;left:-300px;top:-260px"></div><div class="glow" style="width:700px;height:700px;background:#E3E6EE;right:-280px;bottom:-240px"></div>`;
+const foot=(i)=>`<div class="foot"><span><b>@o_estrategista.com.br</b></span><span>${i}/8 ${i<8?'→':''}</span></div>`;
+const S=[];
+S.push(`${glow()}<div class="top"><span>CHECKLIST DE LANÇAMENTO</span></div>
+<div class="big" style="margin-top:70px">10</div>
+<h1 style="margin-top:20px">perguntas antes de <i>abrir o carrinho</i></h1>
+<div class="sub">Se você travar em três delas, o problema não é o anúncio. É a ordem.</div>${foot(1)}`);
+let n=1;
+Q.forEach(([st,qs],k)=>{S.push(`${glow()}<div class="top"><span>ETAPA ${k+1} DE 5</span><span>${st}</span></div>
+${qs.map(q=>`<div class="card"><div class="box"></div><div class="n">${n++}</div><p>${q}</p></div>`).join('')}${foot(k+2)}`)});
+n=1;
+S.push(`${glow()}<div class="top"><span>PRINTA ESSA</span><span>RESUMO</span></div>
+<h1 style="font-size:76px;margin-top:40px">Antes de abrir o <i>carrinho</i></h1>
+<div class="recap">${Q.flatMap(([st,qs])=>qs).map(q=>`<div class="row"><div class="cb"></div><div><em>${n++}.</em>${q}</div></div>`).join('')}</div>${foot(7)}`);
+S.push(`${glow()}<div class="top"><span>ANTES DE IR</span></div>
+<h1 style="margin-top:90px">Respondeu <i>não</i> pra alguma?</h1>
+<div class="sub">É ali que o seu próximo lançamento perde venda. Melhor descobrir agora do que no carrinho.</div>
+<div class="cta">
+<div class="pill"><div class="ic"><svg width="38" height="38" viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4z" fill="#fff"/></svg></div>Salva pro próximo lançamento</div>
+<div class="pill"><div class="ic"><svg width="38" height="38" viewBox="0 0 24 24"><path d="M3 11l18-8-8 18-2-8z" fill="#fff"/></svg></div>Manda pro expert que vai lançar</div>
+<div class="pill gold"><div class="ic"><svg width="38" height="38" viewBox="0 0 24 24"><path d="M4 4h16v12H8l-4 4z" fill="#C48C34"/></svg></div>Comenta CHECKLIST</div>
+</div>${foot(8)}`);
+window.S=S;window.show=i=>{document.getElementById('root').innerHTML=`<div class="s">${S[i]}</div>`};
+</script></body></html>
