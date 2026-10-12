@@ -70,52 +70,59 @@ O que ficou de fora, porque afundou nas três rodadas da sua pesquisa:
 
 ---
 
-## 4. Roteiro final
+## 4. Roteiro final (aprovado nas ferramentas da skill)
 
-Fala com cerca de 94 palavras, voz Antonio a +8%. Os tempos exatos estão em `timeline.json`.
+O gancho foi testado no **hookscore** do /ig-reel. A primeira versão ("Nutricionista, especialista em consórcio, dentista, advogado.") tirou **28,6 (fraco)**: não falava com quem assiste nem dizia o que estava em jogo. A versão final, **"Em Campinas, você perde cliente no mesmo lugar."**, tirou **87,0 (forte)**, com 8 palavras e cerca de 2,9s. As profissões continuam chamadas pelo nome, mas na tela (desde o primeiro quadro) e no trecho do "ponto em comum".
+
+O **beats.py** deu 34,2s para o alvo de 35s. O fim repete "cliente" do gancho, o que cria o loop de segunda visualização. A pedido da ferramenta, o fim ganhou um número concreto ("30 minutos").
 
 | Bloco | Fala | Na tela |
 |---|---|---|
-| Dor (gancho) | Nutricionista, especialista em consórcio, dentista, advogado. | Quatro cartões com ícones desenhados, CAMPINAS · SP |
-| Dor | Em Campinas, todos perdem cliente no mesmo lugar. | Clientes saindo de cada profissão e caindo no mesmo buraco; chips de médico, psicólogo, arquiteto e corretor |
-| Dor | Seguidor, curtida, indicação. Nenhum deles diz quem vai fechar. | Widgets de métrica que apagam; contrato com "?" |
-| Ponto em comum | Vocês vendem uma decisão que o cliente adia. | Calendário virando: a dieta, a carta de crédito, o implante, o processo |
-| Ponto em comum | Ele pede o preço, diz que vai pensar e some. | Conversa no celular; o cliente some e fica "visto por último há 9 dias" |
+| Gancho | Em Campinas, você perde cliente no mesmo lugar. | Os quatro ícones (nutrição, consórcio, odontologia, direito) com clientes caindo no mesmo buraco. Texto "ONDE O CLIENTE SOME" desde o primeiro quadro. |
+| Dor | Ele pede o preço, diz que vai pensar e some. | Conversa no celular. O cliente some e fica "visto por último há 9 dias". |
+| Dor (vídeo-base) | Seguidor, curtida, indicação. Nenhum deles diz quem vai fechar. | Widgets de métrica que apagam e um contrato com "?" |
+| Ponto em comum | Nutricionista, consórcio, dentista, advogado: vocês vendem uma decisão que o cliente adia. | Quatro cartões (a dieta, a carta de crédito, o implante, o processo) com o carimbo DEPOIS |
 | Autoridade | Treze anos de marketing me mostraram: a venda não morre no preço. Morre no intervalo. | "13 ANOS" em 3D, etiqueta de preço riscada, linha INTERESSE ··· INTERVALO ··· DECISÃO |
 | Solução | Lançamento encurta esse intervalo: pesquisa, oferta na ordem certa, aquecimento e prazo real. | Os quatro nós entram na linha e a decisão chega mais perto |
 | Por que um estrategista | Por isso especialista precisa de estrategista: você atende, eu desenho e comando. | ESPECIALISTA + ESTRATEGISTA viram os dois cartões de papel |
-| CTA | Me manda sua profissão no botão. Eu te mostro onde o cliente escapa. | Campo digitando profissões, botão ENVIAR MENSAGEM, seta para o botão do anúncio |
+| CTA | Me manda sua profissão. Em 30 minutos eu te mostro onde o seu cliente escapa. | Campo digitando profissões, botão ENVIAR MENSAGEM, "30 MINUTOS · SEM CUSTO", seta para o botão do anúncio |
 
 ---
 
 ## 5. Copy do anúncio
 
+Os três textos passaram no **detect** do /ig-human (detector de texto com cara de IA, em português): A com 71,5, B com 74,4 e C com 75,8, todos PASS. Nenhum tem termo-clichê nem travessão.
+
 **Texto principal A (geral):**
-> Nutricionista, especialista em consórcio, dentista, advogado: em Campinas, todos perdem cliente no mesmo lugar.
+> Nutricionista, especialista em consórcio, dentista, advogado: em Campinas, Valinhos ou Paulínia, todo mundo perde cliente no mesmo lugar.
 >
-> O cliente pede o preço, diz que vai pensar e some. A técnica você já tem. O que falta é alguém cuidando do intervalo entre o interesse e a decisão.
+> O cliente pede o preço. Diz que vai pensar. Some.
 >
-> Eu desenho e comando a estratégia que encurta esse intervalo: pesquisa, oferta na ordem certa, aquecimento e prazo real. Você continua atendendo.
+> Não falta técnica pra vocês. Falta alguém cuidando do intervalo entre o interesse e a decisão, que é onde a venda morre.
+>
+> Em 13 anos de marketing eu vi isso em consultório, escritório e financeira. O conserto tem nome: pesquisa, oferta na ordem certa, aquecimento e prazo real. Eu desenho e comando. Você continua atendendo.
 >
 > Me manda sua profissão no WhatsApp. Em 30 minutos, sem custo, eu te mostro onde o seu cliente escapa.
 
 **Texto principal B (consórcio e crédito):**
 > Especialista em consórcio em Campinas: quantas simulações deste mês viraram "vou pensar"?
 >
-> Carta de crédito é decisão grande, e decisão grande fica para depois. A venda não morre na taxa. Morre no intervalo.
+> O mercado tá em alta. De janeiro a julho foram R$ 331,6 bilhões em créditos, 22,9% a mais que em 2025, segundo a ABAC. Mesmo assim, carta de crédito é decisão grande. E decisão grande fica pra depois. Às vezes, pra nunca.
 >
-> Grupo com data de formação já é um prazo real. Falta a sequência antes dele: pesquisa, convite, aula e fechamento.
+> A venda não morre na taxa. Morre no intervalo.
 >
-> Me chama no WhatsApp e me conta como você vende hoje. O diagnóstico é gratuito.
+> Grupo com data de formação já é um prazo real. Falta a sequência antes dele: pesquisa, convite, aula e fechamento. Isso eu desenho e comando.
+>
+> Me chama no WhatsApp e me conta como você vende hoje. São 30 minutos de diagnóstico, sem custo.
 
 **Texto principal C (saúde e advocacia):**
-> Orçamento enviado. Paciente sumido. Consulta que virou "vou ver com a família".
+> Orçamento enviado. Paciente que sumiu depois da segunda consulta. Cliente que disse "vou ver com a família".
 >
-> Dentista, nutricionista e advogado de Campinas vendem a mesma coisa: uma decisão que o cliente adia.
+> Dentista, nutricionista e advogado de Campinas, Valinhos e Vinhedo vendem a mesma coisa: uma decisão que o cliente deixa pra depois. A dieta, o implante, o processo.
 >
-> Lançamento é a engenharia que encurta esse caminho, dentro das regras do seu conselho. Você atende, eu desenho e comando.
+> Em 13 anos de marketing eu vi essa cena em consultório e escritório. Lançamento é a engenharia que encurta esse caminho, dentro das regras do CFO, do CFN e da OAB. Você atende. Eu desenho e comando.
 >
-> Me manda sua profissão. Eu te mostro onde o seu cliente escapa, em 30 minutos e sem custo.
+> Me manda sua profissão no WhatsApp. Em 30 minutos eu te mostro onde o seu cliente escapa. Sem custo.
 
 **Títulos (até 40 caracteres):**
 - Diagnóstico gratuito em Campinas
@@ -173,13 +180,13 @@ Fechamento:
 
 ## 7. Próximos testes
 
-1. **Gancho por nicho.** Mudam só os primeiros 4 segundos; o resto do vídeo é o mesmo.
-   - "Especialista em consórcio: simulação enviada, cliente sumido."
-   - "Dentista: orçamento na gaveta é paciente adiando."
-   - "Nutricionista: o paciente que some depois da segunda consulta."
-   - "Advogado: a consulta que vira 'vou ver com a família'."
-2. **Remarketing** para quem viu 50% do vídeo. O argumento é o mesmo, com o convite direto para o diagnóstico.
-3. **Medir a taxa de gancho de cada versão em 48h.** A versão que passar das outras vira série, com outros temas na mesma forma.
+1. **Gancho por nicho.** Mudam só os primeiros 3 segundos e o resto do vídeo é o mesmo. Notas no hookscore:
+   - "Consórcio em Campinas: você perde a venda no mesmo lugar." (84,4)
+   - "Advogado em Campinas, você perde o cliente depois da primeira consulta." (80,0)
+   - "Dentista em Campinas, você perde o paciente depois do orçamento." (76,4)
+   - "Nutricionista em Campinas, você perde o paciente na segunda consulta." (76,4)
+2. **Remarketing** para quem viu 50% do vídeo, com o convite direto para o diagnóstico.
+3. **Comparar a taxa de gancho de cada versão em 48h.** A versão vencedora vira série, com outros temas na mesma forma.
 
 ---
 
