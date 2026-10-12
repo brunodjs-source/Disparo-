@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Roteiro do Evento</title>
+<link rel="stylesheet" href="base.css">
+<style>
+table.grid td{font-size:7.9pt;padding:1.7mm 2mm}
+table.grid td.k{font-size:8.2pt}
+.passo{display:grid;grid-template-columns:13mm 1fr;gap:3.6mm;background:#fff;border:.8pt solid #E6DCCB;border-radius:2.6mm;padding:3.2mm 4mm;margin-bottom:2.8mm}
+.passo .n{font:700 30pt/0.9 "Play";color:var(--gold)}
+.passo h3{margin:0 0 1.8mm;font:700 11pt/1.25 "Play"}
+.passo .rows{display:grid;grid-template-columns:1fr 1fr;gap:1.8mm 4.4mm}
+.passo .rows p{font-size:8.2pt;line-height:1.42;margin:0}
+.passo .rows b{display:block;font:700 6.2pt/1.2 "In";letter-spacing:.16em;text-transform:uppercase;color:var(--gold-d);margin-bottom:.6mm}
+.bar{display:flex;height:10mm;border-radius:1.6mm;overflow:hidden;margin:2.4mm 0 1.4mm}
+.bar div{display:flex;flex-direction:column;align-items:center;justify-content:center;font:700 6pt/1.15 "In";color:#fff;text-align:center;padding:0 .4mm;border-right:.6pt solid var(--bg)}
+.bar div:last-child{border-right:0}
+.bar div small{font:500 5.6pt/1.1 "In";opacity:.85}
+.bar .a{background:#8f877a}.bar .c{background:var(--ink)}.bar .t{background:var(--gold-d)}.bar .o{background:var(--gold)}
+.barleg{display:flex;gap:5mm;font:600 6.8pt/1 "In";color:var(--muted);margin-bottom:3mm}
+.barleg i{display:inline-block;width:2.6mm;height:2.6mm;border-radius:.5mm;margin-right:1.2mm;vertical-align:-.3mm}
+.day{margin:3mm 0 1.6mm}
+.day .d{font-size:16pt}
+.tip{font-size:8pt;line-height:1.42;color:var(--muted);margin:0 0 1mm}
+.tip b{color:var(--ink)}
+.toc.tight li{padding:1.75mm 0}
+.sc .script{padding:2.8mm 4mm;margin:1.6mm 0 1.4mm}
+.sc .day{margin:2.6mm 0 1.2mm}
+.ex{background:#fff;border:.8pt solid #E6DCCB;border-radius:2.6mm;padding:3.2mm 3.8mm}
+.ex h4{margin-bottom:.8mm}
+.ex .who{font:700 10.4pt/1.25 "Play";margin-bottom:1.8mm}
+.ex p{font-size:7.9pt;line-height:1.42;margin-bottom:1.5mm}
+.ex p:last-child{margin-bottom:0}
+.ex p b{color:var(--gold-d)}
+.aula{background:#fff;border:.8pt solid #E6DCCB;border-radius:2.6mm;padding:3.2mm 3.6mm}
+.aula .an{font:700 18pt/1 "Play";color:var(--gold);margin-bottom:1mm}
+.aula h4{margin-bottom:1.4mm}
+.aula p{font-size:8pt;line-height:1.42;margin-bottom:1.4mm}
+.aula p:last-child{margin-bottom:0}
+</style>
+</head>
+<body data-short="Roteiro do Evento">
+
+<!-- 1 CAPA -->
+<section class="page cover">
+  <div class="glow1"></div><div class="glow2"></div><div class="frame"></div><div class="bignum">3</div>
+  <div class="top"><span>O Estrategista</span><span>Material gratuito</span></div>
+  <div class="mid">
+    <div class="type">Roteiro pronto</div>
+    <h1>Roteiro do <em>Evento</em></h1>
+    <p class="sub">Como montar uma live ou aula que vende sem entregar tudo de graça. Os três passos, o roteiro minuto a minuto, scripts com lacunas pra cada bloco, o que ensinar e o que guardar, e os números pra acompanhar.</p>
+  </div>
+  <div class="inside">
+    <h4>O que tem aqui dentro</h4>
+    <ul>
+      <li>Os 3 passos do evento que vende</li>
+      <li>O que ensinar e o que guardar</li>
+      <li>Roteiro minuto a minuto da live</li>
+      <li>Scripts com lacunas pra cada bloco</li>
+      <li>Live única ou evento em três aulas</li>
+      <li>Exemplos por área, erros e números</li>
+    </ul>
+  </div>
+  <div class="bottom">
+    <div class="brand">O Estrategista<small>Bruno Israel Gonçalves · Estrategista de Lançamento</small></div>
+    <div class="handle">@o_estrategista.com.br</div>
+  </div>
+</section>
+
+<!-- 2 INTRO -->
+<section class="page"><div class="inner">
+  <div class="kicker">Antes de começar</div>
+  <h1 class="sec">Sua live lotou e ninguém <em>comprou</em></h1>
+  <p class="lead">Já assisti centenas de eventos de lançamento. Os que não vendem quase sempre têm o mesmo erro: ensinam demais. A pessoa sai satisfeita, agradece no chat e vai embora sem sentir que precisa de você pra continuar.</p>
+  <p>Evento que vende não é uma aula boa com uma oferta pendurada no final. É um roteiro com três passos, sempre nesta ordem:</p>
+  <div class="grid3" style="margin:3mm 0 4mm">
+    <div class="card"><h4>1 · O problema e o custo</h4><p class="small">Mostra o problema com as palavras do cliente e o que custa continuar nele. Sem custo, ninguém se mexe.</p></div>
+    <div class="card"><h4>2 · O outro caminho</h4><p class="small">Mostra que existe outro jeito de resolver e que pessoas no mesmo ponto já fizeram. Aqui entra a prova.</p></div>
+    <div class="card"><h4>3 · O seu método</h4><p class="small">Apresenta o seu método como esse caminho. O conteúdo prova que você sabe. A oferta mostra como ir junto.</p></div>
+  </div>
+  <h3>O evento em uma linha</h3>
+  <div class="tl">
+    <div><b></b><span>Abertura</span>chegada</div>
+    <div><b></b><span>Promessa</span>da aula</div>
+    <div class="on"><b></b><span>Passo 1</span>problema e custo</div>
+    <div class="on"><b></b><span>Passo 2</span>outro caminho</div>
+    <div class="on"><b></b><span>Passo 3</span>o método</div>
+    <div><b></b><span>Transição</span>a ponte</div>
+    <div><b></b><span>Oferta</span>5 partes</div>
+    <div><b></b><span>Perguntas</span>de quem decide</div>
+    <div><b></b><span>Fecha</span>a decisão</div>
+  </div>
+  <h2>O que tem neste material</h2>
+  <ul class="toc tight">
+    <li><span class="tn">1</span><span class="tt">Os três passos do evento que vende</span><span class="tp">pág. 03</span></li>
+    <li><span class="tn">2</span><span class="tt">O que ensinar e o que guardar</span><span class="tp">pág. 04</span></li>
+    <li><span class="tn">3</span><span class="tt">Roteiro minuto a minuto</span><span class="tp">pág. 05</span></li>
+    <li><span class="tn">4</span><span class="tt">Scripts de cada bloco, com lacunas</span><span class="tp">pág. 06 e 07</span></li>
+    <li><span class="tn">5</span><span class="tt">Chat e engajamento</span><span class="tp">pág. 08</span></li>
+    <li><span class="tn">6</span><span class="tt">Live única ou evento em três aulas</span><span class="tp">pág. 09</span></li>
+    <li><span class="tn">7</span><span class="tt">Exemplos preenchidos por área</span><span class="tp">pág. 10</span></li>
+    <li><span class="tn">8</span><span class="tt">Erros comuns e números pra acompanhar</span><span class="tp">pág. 11 e 12</span></li>
+    <li><span class="tn">9</span><span class="tt">Checklist do evento</span><span class="tp">pág. 13</span></li>
+  </ul>
+  <h3>O que ter em mãos antes de escrever o roteiro</h3>
+  <div class="grid2">
+    <ul class="check">
+      <li><span class="cb"></span>A dor principal, nas palavras da pesquisa.</li>
+      <li><span class="cb"></span>A oferta montada nas cinco partes.</li>
+      <li><span class="cb"></span>Uma prova permitida pelo seu conselho.</li>
+    </ul>
+    <ul class="check">
+      <li><span class="cb"></span>O nome e as etapas do seu método.</li>
+      <li><span class="cb"></span>O link de compra testado no celular.</li>
+      <li><span class="cb"></span>Uma pessoa do time pra moderar o chat.</li>
+    </ul>
+  </div>
+  <p class="note">Os minutos e números deste material são exemplos ilustrativos. Não são referência de mercado nem promessa de resultado. Adapte ao tamanho do seu evento e ao seu histórico.</p>
+</div></section>
+
+<!-- 3 OS TRES PASSOS -->
+<section class="page"><div class="inner">
+  <div class="kicker">Seção 1</div>
+  <h1 class="sec">Os três passos do evento que <em>vende</em></h1>
+  <p class="lead">Cada passo responde uma pergunta que está na cabeça de quem assiste. Se uma delas fica sem resposta, a oferta chega antes da hora e soa como empurrão.</p>
+
+  <div class="passo"><div class="n">1</div><div>
+    <h3>O problema e o custo de continuar nele</h3>
+    <div class="rows">
+      <p><b>Pergunta que responde</b>"Isso é comigo? E é tão sério assim?"</p>
+      <p><b>O que a pessoa precisa sentir</b>Reconhecimento e um incômodo útil: "do jeito que está, não dá pra continuar".</p>
+      <p><b>O que você mostra</b>A cena do problema com as palavras da pesquisa, a causa que ninguém contou pra ela e o custo em tempo, dinheiro, saúde ou relações.</p>
+      <p><b>Sinal de que funcionou</b>O chat se enche de "sou eu", "exatamente isso", "como você sabe?".</p>
+    </div>
+  </div></div>
+
+  <div class="passo"><div class="n">2</div><div>
+    <h3>Existe outro caminho, e outras pessoas já fizeram</h3>
+    <div class="rows">
+      <p><b>Pergunta que responde</b>"Tem jeito? Funciona pra alguém como eu?"</p>
+      <p><b>O que a pessoa precisa sentir</b>Esperança com base: vontade de mudar, apoiada em alguma coisa concreta.</p>
+      <p><b>O que você mostra</b>Por que o caminho comum falha, o princípio do outro caminho (o quê e o porquê) e a prova: caso, demonstração ao vivo ou prova de processo.</p>
+      <p><b>Sinal de que funcionou</b>Aparecem perguntas como "e no meu caso?", "dá pra fazer mesmo trabalhando?".</p>
+    </div>
+  </div></div>
+
+  <div class="passo"><div class="n">3</div><div>
+    <h3>O seu método é esse caminho</h3>
+    <div class="rows">
+      <p><b>Pergunta que responde</b>"Como eu chego lá? E por que com você?"</p>
+      <p><b>O que a pessoa precisa sentir</b>Clareza e responsabilidade: "agora eu sei o caminho, a decisão é minha".</p>
+      <p><b>O que você mostra</b>As etapas do método, com nome. Onde a pessoa está hoje, o que falta e qual parte é difícil de fazer sozinha.</p>
+      <p><b>Sinal de que funcionou</b>"Quando abre?", "quanto custa?", "como eu entro?", antes mesmo da oferta.</p>
+    </div>
+  </div></div>
+
+  <div class="callout ink">
+    <h4>O conteúdo prova que você sabe. Não entrega tudo.</h4>
+    <p>Quem aprende tudo de graça não sente que precisa de você. O papel do conteúdo no evento é fazer a pessoa confiar que você conhece o caminho e enxergar que percorrer ele sozinha leva mais tempo e mais erro.</p>
+  </div>
+  <h3>Por que a ordem importa</h3>
+  <table class="t">
+    <tr><th style="width:24%">Se você pula</th><th>O que acontece</th></tr>
+    <tr><td class="k">O passo 1</td><td>Ninguém sente urgência. A pessoa concorda com tudo e deixa pra depois, porque o problema não parece caro.</td></tr>
+    <tr><td class="k">O passo 2</td><td>A pessoa acredita em você, mas não acredita que funciona pra ela. A oferta vira aposta.</td></tr>
+    <tr><td class="k">O passo 3</td><td>A pessoa sai com vontade e sem caminho. Vai procurar a resposta no Google, ou com quem mostrou o método.</td></tr>
+  </table>
+</div></section>
+
+<!-- 4 ENSINAR VS GUARDAR -->
+<section class="page"><div class="inner">
+  <div class="kicker">Seção 2</div>
+  <h1 class="sec">O que ensinar e o que <em>guardar</em></h1>
+  <p class="lead">A regra cabe numa linha: ensine o quê e o porquê, guarde o como completo. A pessoa sai sabendo o que precisa ser feito e por que, e percebendo que fazer sozinha é o caminho mais longo.</p>
+  <div class="grid2">
+    <div class="card">
+      <h4>Ensinar no evento: o quê e o porquê</h4>
+      <ul class="dots small" style="margin:0">
+        <li><b>O erro</b> que a pessoa está cometendo e por que ele parece certo.</li>
+        <li><b>A causa real</b> do problema, que ela ainda não enxergou.</li>
+        <li><b>O princípio</b> do outro caminho, explicado com clareza.</li>
+        <li><b>Um exemplo</b> do princípio aplicado num caso.</li>
+        <li><b>Um primeiro passo pequeno</b>, que dá pra fazer hoje.</li>
+      </ul>
+    </div>
+    <div class="card soft">
+      <h4>Guardar pro produto: o como completo</h4>
+      <ul class="dots small" style="margin:0">
+        <li><b>O passo a passo inteiro</b>, na ordem e no ritmo certos.</li>
+        <li><b>As ferramentas</b>: modelos, planilhas, roteiros prontos.</li>
+        <li><b>A adaptação</b> ao caso de cada um.</li>
+        <li><b>O acompanhamento</b>: correção, ajuste, resposta à dúvida.</li>
+        <li><b>O que fazer quando trava</b>, que é onde quase todo mundo para.</li>
+      </ul>
+    </div>
+  </div>
+  <h3>Como fica em cada área <span class="ill">exemplos ilustrativos</span></h3>
+  <table class="t">
+    <tr><th style="width:15%">Área</th><th>Ensina no evento</th><th>Guarda pro produto</th></tr>
+    <tr><td class="k">Psicologia</td><td>Por que a ansiedade aparece sempre nos mesmos momentos do dia, e o princípio de reconhecer o gatilho.</td><td>O registro diário, as técnicas de regulação por situação, o acompanhamento em grupo.</td></tr>
+    <tr><td class="k">Nutrição</td><td>Por que a dieta para na terceira semana, e a ideia de planejar pra semana ruim.</td><td>O cardápio flexível, o plano da semana ruim montado com a pessoa, o ajuste semanal.</td></tr>
+    <tr><td class="k">Direito</td><td>Quais são as cláusulas que todo contrato de prestação de serviço precisa ter, e por quê.</td><td>A redação de cada cláusula, a revisão do contrato da pessoa, a rotina de cobrança.</td></tr>
+    <tr><td class="k">Odontologia</td><td>Por que o paciente diz "vou pensar" depois do orçamento, e o que muda na forma de apresentar.</td><td>O roteiro de consulta completo, o treino com correção, os modelos de plano de tratamento.</td></tr>
+  </table>
+  <div class="grid2">
+    <div class="callout" style="margin-top:0">
+      <h4>O teste do caderno</h4>
+      <p class="small">Se alguém anotar tudo e conseguir fazer sozinho, você ensinou demais. Se não anotar nada, ensinou de menos. O ponto certo: a pessoa anota o que precisa ser feito e fica com a pergunta "e como eu faço isso no meu caso?".</p>
+    </div>
+    <div class="callout" style="margin-top:0">
+      <h4>Ensinar de menos também não vende</h4>
+      <p class="small">Evento que só promete e não mostra nada vira propaganda longa. A pessoa sente que perdeu tempo e não confia em quem não demonstrou que sabe. Conteúdo de verdade, só que o quê e o porquê.</p>
+    </div>
+  </div>
+  <div class="script">
+    <div class="lab">Quando alguém pede o como no chat <span>resposta pronta</span></div>
+    <p>"Boa pergunta, <span class="bl s"></span>. Hoje eu te mostrei o quê e o porquê. O como, adaptado ao seu caso, com <span class="bl l"></span> <span class="muted small">(acompanhamento, modelos, correção)</span>, é exatamente o que a gente faz no <span class="bl"></span>. Eu mostro como funciona daqui a pouco."</p>
+  </div>
+</div></section>
+
+<!-- 5 ROTEIRO MINUTO A MINUTO -->
+<section class="page"><div class="inner">
+  <div class="kicker">Seção 3</div>
+  <h1 class="sec">Roteiro minuto a <em>minuto</em></h1>
+  <p class="lead">Uma live de 90 minutos como referência. Metade do tempo vai pros três passos. A oferta tem hora marcada no roteiro, ela não fica com o tempo que sobrar. <span class="ill">exemplo ilustrativo</span></p>
+  <div class="bar">
+    <div class="a" style="flex:5">Ab.<small>5</small></div>
+    <div class="a" style="flex:5">Prom.<small>5</small></div>
+    <div class="c" style="flex:15">Problema e custo<small>15 min</small></div>
+    <div class="c" style="flex:15">Outro caminho<small>15 min</small></div>
+    <div class="c" style="flex:15">Método<small>15 min</small></div>
+    <div class="t" style="flex:3">Tr.</div>
+    <div class="o" style="flex:20">Oferta<small>20 min</small></div>
+    <div class="o" style="flex:10">Perguntas<small>10</small></div>
+    <div class="t" style="flex:2"></div>
+  </div>
+  <div class="barleg"><span><i style="background:#8f877a"></i>chegada</span><span><i style="background:var(--ink)"></i>os três passos</span><span><i style="background:var(--gold-d)"></i>transição e fechamento</span><span><i style="background:var(--gold)"></i>oferta e perguntas</span></div>
+  <table class="t grid">
+    <tr><th style="width:11%">Minuto</th><th style="width:17%">Bloco</th><th>O que acontece</th><th style="width:27%">No chat</th></tr>
+    <tr><td class="k">0 a 5</td><td class="k">Abertura</td><td>Começa no horário. Responde a dúvida que mais apareceu na tarefa do aquecimento.</td><td>"De onde você está assistindo?"</td></tr>
+    <tr><td class="k">5 a 10</td><td class="k">Promessa da aula</td><td>O que a pessoa vai sair sabendo. Avisa que no final mostra como trabalhar com você.</td><td>"De 0 a 10, quanto isso te atrapalha hoje?"</td></tr>
+    <tr><td class="k">10 a 25</td><td class="k">Problema e custo</td><td>A cena, a causa que ninguém contou, o custo de continuar e o que piora se nada mudar.</td><td>"Se isso é você, escreve EU."</td></tr>
+    <tr><td class="k">25 a 40</td><td class="k">Outro caminho</td><td>Por que o caminho comum falha, o princípio do novo, a prova com o mesmo ponto de partida.</td><td>"Já tinha pensado desse jeito? SIM ou NÃO."</td></tr>
+    <tr><td class="k">40 a 55</td><td class="k">O método</td><td>As etapas com nome. Abre uma, mostra o mapa das outras e onde a maioria trava.</td><td>"Em qual etapa você está? 1, 2 ou 3."</td></tr>
+    <tr><td class="k">55 a 58</td><td class="k">Transição</td><td>Os dois caminhos: tentar sozinho ou fazer junto. Pede licença pra mostrar a oferta.</td><td>"Quer ver como funciona? Escreve QUERO."</td></tr>
+    <tr><td class="k">58 a 78</td><td class="k">Oferta</td><td>As cinco partes: oportunidade, prova, história, objeção respondida antes e preço por último.</td><td>Link fixado. "Entrou? Escreve DENTRO."</td></tr>
+    <tr><td class="k">78 a 88</td><td class="k">Perguntas</td><td>Primeiro as dúvidas de quem está decidindo: pra quem é, pagamento, acesso, prazo.</td><td>Moderador separa as objeções.</td></tr>
+    <tr><td class="k">88 a 90</td><td class="k">Fechamento</td><td>Recapitula, repete link e prazo, deixa a decisão com a pessoa.</td><td>Link repetido pela última vez.</td></tr>
+  </table>
+  <div class="grid2">
+    <div class="callout" style="margin-top:0">
+      <h4>Se a live tiver 60 minutos</h4>
+      <p class="small">Corte dos três passos, nunca da oferta. Algo como 30 minutos pros três passos, 3 de transição, 17 de oferta e 10 de perguntas e fechamento. A oferta continua começando antes dos dois terços do tempo. <span class="note">(exemplo ilustrativo)</span></p>
+    </div>
+    <div class="callout" style="margin-top:0">
+      <h4>Combine o sinal de tempo</h4>
+      <p class="small">Quem modera avisa você, por mensagem ou bilhete, cinco minutos antes do horário da transição. Se o conteúdo atrasou, você corta exemplo, não oferta. Ensaie o roteiro uma vez inteiro, com cronômetro.</p>
+    </div>
+  </div>
+  <h3>Os 30 minutos antes de entrar ao vivo</h3>
+  <div class="grid2">
+    <ul class="check">
+      <li><span class="cb"></span>Internet, áudio, câmera e luz testados no lugar da live.</li>
+      <li><span class="cb"></span>Slides abertos, com os da oferta já na sequência certa.</li>
+      <li><span class="cb"></span>Página de compra aberta numa aba, pra mostrar na tela.</li>
+    </ul>
+    <ul class="check">
+      <li><span class="cb"></span>Moderador na sala, com link, respostas prontas e relógio.</li>
+      <li><span class="cb"></span>Roteiro de tópicos impresso ou numa segunda tela.</li>
+      <li><span class="cb"></span>Mensagem de "estamos ao vivo" pronta pro grupo e stories.</li>
+    </ul>
+  </div>
+</div></section>
+
+<!-- 6 SCRIPTS 1 A 5 -->
+<section class="page"><div class="inner sc">
+  <div class="kicker">Seção 4 · Scripts com lacunas</div>
+  <h1 class="sec" style="font-size:19pt;margin-bottom:1mm">Da abertura ao <em>método</em> <span class="ill">minutos: exemplo ilustrativo</span></h1>
+
+  <div class="day"><span class="d">01</span><span class="dt">Abertura</span><span class="dg">minuto 0 a 5</span></div>
+  <div class="script"><p>"Boa noite, que bom ter você aqui. Escreve no chat de onde você está assistindo. Enquanto o pessoal chega, deixa eu responder a pergunta que mais apareceu nas respostas de vocês: <span class="bl l"></span>. A resposta curta é <span class="bl l"></span>, e hoje você vai entender o porquê."</p></div>
+  <p class="tip"><b>Por quê:</b> começar no horário respeita quem chegou na hora, e responder a dúvida da tarefa premia quem participou.</p>
+
+  <div class="day"><span class="d">02</span><span class="dt">Promessa da aula</span><span class="dg">minuto 5 a 10</span></div>
+  <div class="script"><p>"Nos próximos minutos você vai entender <span class="bl l"></span>, por que <span class="bl l"></span>, e qual é o caminho pra <span class="bl l"></span>. No final, eu vou mostrar como a gente pode fazer isso junto, pra quem quiser. Fica até lá, porque <span class="bl l"></span> <span class="muted small">(o que acontece no final)</span>."</p></div>
+  <p class="tip"><b>Por quê:</b> quem é avisado da oferta desde o começo não se sente enganado, e quem quer comprar fica até o fim.</p>
+
+  <div class="day"><span class="d">03</span><span class="dt">Passo 1 · Problema e custo</span><span class="dg">minuto 10 a 25</span></div>
+  <div class="script"><p>"Talvez você esteja vivendo isso: <span class="bl l"></span> <span class="muted small">(a cena, com palavras da pesquisa)</span>. Você já tentou <span class="bl"></span> e não resolveu, porque o problema nunca foi esse. O problema é <span class="bl l"></span> <span class="muted small">(a causa que você enxerga)</span>. E enquanto isso não muda, cada <span class="bl s"></span> custa <span class="bl l"></span>. Se nada mudar, <span class="bl l"></span>."</p></div>
+  <p class="tip"><b>Por quê:</b> o custo concreto transforma "eu deveria" em "eu preciso". Peça no chat: "se isso é você, escreve EU".</p>
+
+  <div class="day"><span class="d">04</span><span class="dt">Passo 2 · Outro caminho, com prova</span><span class="dg">minuto 25 a 40</span></div>
+  <div class="script"><p>"Existe outro jeito de olhar pra isso. Em vez de <span class="bl l"></span> <span class="muted small">(o caminho comum)</span>, <span class="bl l"></span> <span class="muted small">(o princípio)</span>. Funciona porque <span class="bl l"></span>.</p><p>E não é teoria. A <span class="bl s"></span> estava <span class="bl l"></span> <span class="muted small">(mesmo ponto de partida de quem assiste)</span>. Ela <span class="bl l"></span> e hoje <span class="bl l"></span> <span class="muted small">(mudança concreta e permitida)</span>."</p></div>
+  <p class="tip"><b>Por quê:</b> sem prova, a pessoa duvida dela mesma. Com conselho profissional, use demonstração ou prova de processo.</p>
+
+  <div class="day"><span class="d">05</span><span class="dt">Passo 3 · O método como caminho</span><span class="dg">minuto 40 a 55</span></div>
+  <div class="script"><p>"Esse caminho tem nome. Eu chamo de <span class="bl"></span>, e ele tem <span class="bl s"></span> etapas: <span class="bl"></span>, <span class="bl"></span> e <span class="bl"></span>. Hoje você viu a lógica da etapa <span class="bl s"></span>. As outras são <span class="bl l"></span>, e é nelas que quase todo mundo trava, porque <span class="bl l"></span>."</p></div>
+  <p class="tip"><b>Por quê:</b> mostre o mapa inteiro e abra uma etapa só. A pessoa enxerga onde está e o que ainda falta.</p>
+  <div class="callout">
+    <h4>Como usar estes scripts</h4>
+    <p class="small">Preencha, leia em voz alta e corte o que travar na boca. Na live, não leia: transforme cada script em três ou quatro tópicos e fale com as suas palavras. O que precisa sair igual ao papel é só a promessa, o custo e a frase de transição.</p>
+  </div>
+</div></section>
+
+<!-- 7 SCRIPTS 6 A 9 -->
+<section class="page"><div class="inner">
+  <div class="kicker">Seção 4 · Scripts com lacunas</div>
+  <h1 class="sec" style="font-size:19pt">Da transição ao <em>fechamento</em> <span class="ill">minutos: exemplo ilustrativo</span></h1>
+
+  <div class="day" style="margin-top:1mm"><span class="d">06</span><span class="dt">Transição pra oferta</span><span class="dg">minuto 55 a 58</span></div>
+  <div class="script"><p>"Você tem dois caminhos agora. O primeiro é pegar o que viu hoje e tentar sozinho. Dá pra fazer, e se for o seu caso, eu torço por você. O segundo é fazer isso comigo, com <span class="bl l"></span> <span class="muted small">(método, acompanhamento, grupo)</span>. Pra quem quer o segundo, eu vou mostrar agora como funciona."</p></div>
+  <div class="grid2">
+    <div>
+      <h4 style="margin-top:1mm">Outras frases de transição</h4>
+      <ul class="dots small" style="margin:0">
+        <li>"Até aqui eu te mostrei o quê e o porquê. Agora eu mostro como a gente faz isso junto."</li>
+        <li>"No começo eu prometi mostrar como trabalhar comigo. É agora."</li>
+        <li>"Muita gente perguntou 'e no meu caso?'. A resposta tem nome: [programa]."</li>
+      </ul>
+    </div>
+    <div class="vs" style="grid-template-columns:1fr;margin:0;gap:2mm">
+      <div class="bad"><div class="tag">Assim não</div><p class="small">"Bom, deixa eu falar rapidinho de um produto, prometo que não vou demorar..."</p></div>
+      <div class="good"><div class="tag">Assim sim</div><p class="small">Pausa, tom firme, e a frase dos dois caminhos. Oferta não se apresenta pedindo desculpa.</p></div>
+    </div>
+  </div>
+
+  <div class="day"><span class="d">07</span><span class="dt">A oferta, em cinco partes</span><span class="dg">minuto 58 a 78</span></div>
+  <div class="script">
+    <div class="lab">Roteiro com lacunas <span>na ordem do material OFERTA</span></div>
+    <p>"O <span class="bl"></span> é pra quem <span class="bl l"></span>. A turma começa em <span class="bl s"></span> e as inscrições vão até <span class="bl s"></span>. <span class="muted small">(oportunidade)</span> Quem já passou por ele: <span class="bl l"></span>. <span class="muted small">(prova)</span> Eu criei porque <span class="bl l"></span>. <span class="muted small">(história)</span></p>
+    <p>Se você está pensando <span class="bl l"></span>, <span class="bl l"></span>. <span class="muted small">(objeção respondida antes)</span> Você recebe <span class="bl l"></span>. O investimento é <span class="bl"></span>, ou <span class="bl"></span> parcelado. O link está na tela e fixado no chat."</p>
+  </div>
+  <p class="tip"><b>Por quê:</b> o preço só aparece quando o valor já está claro. Assim que ele aparecer, o link vai pra tela, pro chat e pro grupo, ao mesmo tempo.</p>
+
+  <div class="day"><span class="d">08</span><span class="dt">Perguntas</span><span class="dg">minuto 78 a 88</span></div>
+  <div class="script"><p>"Vou responder primeiro quem está decidindo. A pergunta que mais apareceu foi <span class="bl l"></span>. A resposta é <span class="bl l"></span>. E pra quem perguntou se serve pra <span class="bl"></span>: <span class="bl l"></span>. O link continua aqui embaixo."</p></div>
+  <p class="tip"><b>Ordem:</b> pra quem é, pagamento, acesso e prazo antes de dúvida técnica. Pergunta de conteúdo, responda curto e traga de volta pro programa. Repita o link a cada duas ou três respostas.</p>
+
+  <div class="day"><span class="d">09</span><span class="dt">Fechamento</span><span class="dg">minuto 88 a 90</span></div>
+  <div class="script"><p>"Recapitulando: hoje você viu <span class="bl l"></span>. Agora a decisão é sua. Se é pra você, o link é <span class="bl"></span>, e as inscrições vão até <span class="bl s"></span>. Se não é agora, tudo bem: <span class="bl l"></span> <span class="muted small">(replay, grupo, próximos passos)</span>. Obrigado por ficar até aqui."</p></div>
+  <p class="tip"><b>Por quê:</b> terminar com a decisão nas mãos da pessoa é mais forte do que pressão. Nada de "última chance" que não é a última.</p>
+</div></section>
+
+<!-- 8 CHAT E ENGAJAMENTO -->
+<section class="page"><div class="inner">
+  <div class="kicker">Seção 5</div>
+  <h1 class="sec">Chat e <em>engajamento</em></h1>
+  <p class="lead">O chat é termômetro e é prova ao vivo. Quem escreve deixa de assistir e passa a participar. E quem chega na oferta participando decide com mais facilidade do que quem só ouviu.</p>
+  <h3>Uma pergunta pra cada momento</h3>
+  <table class="t">
+    <tr><th style="width:17%">Momento</th><th style="width:38%">Pergunta pro chat</th><th>Pra que serve</th></tr>
+    <tr><td class="k">Abertura</td><td>"De onde você está assistindo?"</td><td>Cria o hábito de escrever logo no começo.</td></tr>
+    <tr><td class="k">Promessa</td><td>"De 0 a 10, quanto isso te atrapalha hoje?"</td><td>Mede a dor e mostra pro grupo que ninguém está sozinho.</td></tr>
+    <tr><td class="k">Passo 1</td><td>"Se isso é você, escreve EU."</td><td>Reconhecimento. Cada "EU" na tela é prova social.</td></tr>
+    <tr><td class="k">Passo 2</td><td>"Já tinha pensado nisso desse jeito? SIM ou NÃO."</td><td>Confere se a virada é nova pra eles. Muito "SIM", aprofunde o porquê.</td></tr>
+    <tr><td class="k">Passo 3</td><td>"Em qual etapa você está hoje? 1, 2 ou 3."</td><td>A pessoa se localiza no método e vê o que falta.</td></tr>
+    <tr><td class="k">Transição</td><td>"Quer ver como funciona trabalhar comigo? QUERO."</td><td>Pequeno compromisso antes da oferta.</td></tr>
+    <tr><td class="k">Oferta</td><td>"Entrou? Escreve DENTRO pra eu te dar boas-vindas."</td><td>Prova de compra em tempo real pra quem está decidindo.</td></tr>
+  </table>
+  <div class="grid2">
+    <div>
+      <h3 style="margin-top:1mm">Regras do bom engajamento</h3>
+      <ul class="check">
+        <li><span class="cb"></span><b>Leia em voz alta:</b> nome e o que a pessoa escreveu.</li>
+        <li><span class="cb"></span><b>Resposta curta:</b> uma palavra ou um número, fácil de digitar no celular.</li>
+        <li><span class="cb"></span><b>Ritmo:</b> uma interação a cada cinco a dez minutos. <span class="note">(exemplo ilustrativo)</span></li>
+        <li><span class="cb"></span><b>Ligada ao bloco:</b> a pergunta reforça o passo, não distrai dele.</li>
+        <li><span class="cb"></span><b>Nunca pergunta aberta</b> na hora da oferta. Ela abre discussão.</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="margin-top:1mm">O que o moderador faz</h3>
+      <ul class="dots">
+        <li>Fixa o link no chat e repete no grupo assim que o preço aparece.</li>
+        <li>Responde dúvida operacional: acesso, pagamento, boleto, nota.</li>
+        <li>Separa as objeções pra você responder no bloco de perguntas.</li>
+        <li>Anota quem escreveu QUERO e não comprou, pra conversa no WhatsApp.</li>
+        <li>Avisa o tempo e remove ofensa, sem discutir.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="script">
+    <div class="lab">Comentário negativo ou pergunta fora de hora <span>resposta pronta</span></div>
+    <p>"Boa pergunta, <span class="bl s"></span>, e ela é mais comum do que parece. Eu respondo com calma lá no final, na parte de perguntas. Anota aí pra não esquecer." <span class="muted small">Responda uma vez e volte pro roteiro: discutir no chat custa os minutos da oferta.</span></p>
+  </div>
+  <div class="callout">
+    <h4>Se o chat estiver parado</h4>
+    <p class="small">Troque a pergunta por uma de resposta única ("SIM ou NÃO", "1, 2 ou 3"), leia em voz alta o primeiro nome que aparecer e agradeça. Gente escreve quando vê outras pessoas sendo lidas. Com pouca gente, fale com quem está lá.</p>
+  </div>
+</div></section>
+
+<!-- 9 LIVE UNICA VS 3 AULAS -->
+<section class="page"><div class="inner">
+  <div class="kicker">Seção 6</div>
+  <h1 class="sec">Live única ou evento em <em>três aulas</em></h1>
+  <p class="lead">Os três passos são os mesmos nos dois formatos. O que muda é quanto tempo cada um ganha. Mais aulas dão mais tempo pra consciência subir. Uma live só é mais simples de executar.</p>
+  <table class="t">
+    <tr><th style="width:19%">Critério</th><th>Live única</th><th>Três aulas</th></tr>
+    <tr><td class="k">Quando usar</td><td>O público já sabe que tem o problema. Primeiro lançamento, ticket menor, time pequeno.</td><td>O público ainda não entende o problema. Ticket maior, método que pede mais demonstração.</td></tr>
+    <tr><td class="k">Onde ficam os passos</td><td>Todos no mesmo dia, em sequência.</td><td>Um passo por aula, com a oferta na terceira.</td></tr>
+    <tr><td class="k">Produção</td><td>Uma aula, um roteiro, um dia de pico.</td><td>Três roteiros, tarefa entre as aulas, mais trabalho do time.</td></tr>
+    <tr><td class="k">Risco principal</td><td>A oferta chegar com o público ainda frio.</td><td>Perder audiência entre uma aula e outra.</td></tr>
+    <tr><td class="k">Onde fica a oferta</td><td>No fim da live, com hora marcada no roteiro.</td><td>Na aula 3, com o carrinho abrindo ao vivo. A aula 2 pode anunciar que ela vem.</td></tr>
+    <tr><td class="k">Pra começar</td><td>Bom formato pro primeiro evento: menos peças pra coordenar.</td><td>Bom quando você já fez uma live única e quer dar mais tempo pro passo 1 e pro passo 2.</td></tr>
+  </table>
+  <h3>Como dividir os passos em três aulas</h3>
+  <div class="grid3">
+    <div class="aula"><div class="an">Aula 1</div><h4>Problema e custo</h4>
+      <p>Abertura, promessa da série e o passo 1 com profundidade: a cena, a causa, o custo.</p>
+      <p><b>Termina com:</b> "Amanhã eu mostro que existe outro caminho, e quem já fez."</p>
+      <p><b>Tarefa:</b> uma pergunta curta ligada ao custo, pra responder no grupo.</p>
+    </div>
+    <div class="aula"><div class="an">Aula 2</div><h4>Outro caminho e prova</h4>
+      <p>Recap de dois minutos, respostas da tarefa, o passo 2 e a prova mais forte que você tem.</p>
+      <p><b>Termina com:</b> o mapa do método e "na aula 3 eu mostro o caminho completo e como fazer junto".</p>
+      <p><b>Tarefa:</b> "em qual etapa você está?".</p>
+    </div>
+    <div class="aula"><div class="an">Aula 3</div><h4>Método e oferta</h4>
+      <p>Recap curto, o passo 3, transição, oferta em cinco partes, perguntas e fechamento.</p>
+      <p><b>O carrinho abre ao vivo</b>, nessa aula, com o link na tela.</p>
+      <p><b>Tempo:</b> a oferta começa antes da metade da aula. <span class="note">(exemplo ilustrativo)</span></p>
+    </div>
+  </div>
+  <div class="grid2" style="margin-top:3mm">
+    <div>
+      <h3 style="margin-top:0">Entre uma aula e outra</h3>
+      <ul class="dots small">
+        <li>Mensagem no grupo com o assunto concreto da próxima aula, não "amanhã tem mais".</li>
+        <li>Recap curto no início de cada aula, pra quem perdeu a anterior.</li>
+        <li>Corte de dois minutos da aula anterior nos stories, com o link da próxima.</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="margin-top:0">Avise desde a aula 1</h3>
+      <ul class="dots small">
+        <li>Que na aula 3 você vai mostrar como trabalhar com você.</li>
+        <li>Que quem estiver ao vivo na aula 3 tem uma condição que o replay não tem, se isso for verdade e você for cumprir.</li>
+        <li>Quando o replay sai do ar, e mantenha o prazo.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">
+    <h4>O erro clássico das três aulas</h4>
+    <p>Dar três aulas de conteúdo e deixar a oferta pros últimos minutos da terceira. A série vira curso gratuito. Cada aula precisa terminar levando pra próxima, e a terceira existe pra apresentar o método e a oferta.</p>
+  </div>
+</div></section>
+
+<!-- 10 EXEMPLOS POR AREA -->
+<section class="page"><div class="inner">
+  <div class="kicker">Seção 7</div>
+  <h1 class="sec">Exemplos preenchidos por <em>área</em></h1>
+  <p class="lead">O mesmo roteiro em quatro profissões. Use como referência de tom e de tamanho, não como texto pra copiar: o seu tem que sair da sua pesquisa. <span class="ill">exemplos ilustrativos</span></p>
+  <div class="grid2">
+    <div class="ex">
+      <h4>Psicologia</h4><div class="who">Ansiedade no trabalho</div>
+      <p><b>Promessa:</b> "Você vai entender por que a ansiedade aparece sempre nos mesmos momentos do dia."</p>
+      <p><b>Problema e custo:</b> "O peito aperta no domingo à noite, pensando na segunda. Você já tentou meditar e tirar férias, e tudo volta na primeira reunião. Cada semana assim custa sono e paciência com quem você ama."</p>
+      <p><b>Outro caminho e prova:</b> parar de brigar com a ansiedade e reconhecer o gatilho na hora em que ele aparece. Prova de processo: o registro de gatilhos aplicado ao vivo a uma situação enviada na tarefa, sem identificar ninguém.</p>
+      <p><b>Método:</b> reconhecer, regular, reorganizar a rotina. Na aula, a lógica da primeira etapa.</p>
+      <p><b>Transição:</b> "Reconhecer você já sabe. Regular e reorganizar, com acompanhamento em grupo, é o que a gente faz no programa."</p>
+    </div>
+    <div class="ex">
+      <h4>Nutrição</h4><div class="who">A dieta que para na terceira semana</div>
+      <p><b>Promessa:</b> "Você vai entender por que a dieta para sempre no mesmo ponto, e o que fazer diferente nele."</p>
+      <p><b>Problema e custo:</b> "Toda segunda você recomeça, e na terceira semana parou de novo. Cada recomeço deixa o corpo e a cabeça mais cansados, e a próxima tentativa mais difícil."</p>
+      <p><b>Outro caminho e prova:</b> planejar pra semana ruim, e não pra semana perfeita. Prova: o caso de uma paciente com o mesmo histórico de recomeços, com autorização e dentro das regras do seu conselho.</p>
+      <p><b>Método:</b> cardápio flexível, plano da semana ruim, ajuste mensal. Na aula, o princípio da segunda fase.</p>
+      <p><b>Transição:</b> "Montar o seu plano da semana ruim, com ajuste toda semana, é o que a gente faz junto na turma."</p>
+    </div>
+    <div class="ex">
+      <h4>Direito</h4><div class="who">Contrato de quem presta serviço</div>
+      <p><b>Promessa:</b> "Você vai sair sabendo quais cláusulas o seu contrato precisa ter, e por quê."</p>
+      <p><b>Problema e custo:</b> "Você usa um modelo da internet e só descobre o buraco quando o cliente cancela no meio ou não paga. Cada contrato fraco é uma cobrança difícil e horas que ninguém paga."</p>
+      <p><b>Outro caminho e prova:</b> contrato como ferramenta de gestão, não como formalidade. Demonstração ao vivo: revisar uma cláusula de cancelamento enviada por um participante, sem dados pessoais e dentro das regras da OAB.</p>
+      <p><b>Método:</b> cláusulas essenciais, revisão do seu contrato, rotina de cobrança. Na aula, quais são as cláusulas e por quê.</p>
+      <p><b>Transição:</b> "Agora você sabe o que falta. Escrever as suas cláusulas, com revisão, é o que acontece na mentoria."</p>
+    </div>
+    <div class="ex">
+      <h4>Odontologia</h4><div class="who">Dentista que ouve "vou pensar"</div>
+      <p><b>Promessa:</b> "Você vai entender por que o paciente some depois do orçamento, e o que muda na forma de apresentar."</p>
+      <p><b>Problema e custo:</b> "Você explica o tratamento, mostra o valor e ouve 'vou pensar'. Cada orçamento que não volta é horário vago na agenda e a tentação de baixar o preço no próximo."</p>
+      <p><b>Outro caminho e prova:</b> apresentar o plano a partir do problema do paciente, e não da lista de procedimentos. Prova de processo: o roteiro de consulta mostrado na tela, etapa por etapa.</p>
+      <p><b>Método:</b> escuta, diagnóstico mostrado, plano em etapas, investimento. Na aula, o segundo momento.</p>
+      <p><b>Transição:</b> "Treinar os quatro momentos com o seu roteiro, com correção, é o que a gente faz na turma."</p>
+    </div>
+  </div>
+  <div class="callout">
+    <h4>Profissões com conselho</h4>
+    <p>CFP, CFN, OAB, CFO, CFM e outros conselhos restringem depoimento, antes e depois e divulgação de resultado. Confira o seu código de ética antes do evento. Nesses casos, demonstração ao vivo e prova de processo fazem o papel principal no passo 2.</p>
+  </div>
+</div></section>
+
+<!-- 11 ERROS COMUNS -->
+<section class="page"><div class="inner">
+  <div class="kicker">Seção 8</div>
+  <h1 class="sec">Os erros que esvaziam o <em>carrinho</em></h1>
+  <p class="lead">Quase todo evento que lota e não vende cai em um destes. A boa notícia: todos têm correção no roteiro, antes de mexer no preço ou no produto.</p>
+  <table class="t">
+    <tr><th style="width:22%">Erro</th><th style="width:36%">Como aparece</th><th>Como corrigir</th></tr>
+    <tr><td class="k">Ensinar demais</td><td>A aula vira curso. O chat agradece, ninguém clica no link.</td><td>Ensine o quê e o porquê, guarde o como completo (página 04).</td></tr>
+    <tr><td class="k">Oferta sem tempo</td><td>O conteúdo atrasa e a oferta entra nos últimos minutos, com o preço falado correndo.</td><td>Oferta com hora marcada no roteiro. Se atrasar, corte exemplo, não oferta.</td></tr>
+    <tr><td class="k">Sem prova</td><td>A pessoa confia em você, mas acha que no caso dela não funciona.</td><td>Uma prova com o mesmo ponto de partida, no passo 2. Se não pode depoimento, demonstração.</td></tr>
+    <tr><td class="k">Problema sem custo</td><td>Todo mundo concorda e deixa pra depois.</td><td>Escreva o custo concreto de continuar: tempo, dinheiro, saúde, relação.</td></tr>
+    <tr><td class="k">Método sem nome</td><td>A pessoa não sabe o que está comprando nem onde ela está no caminho.</td><td>Etapas com nome, mostradas como mapa, antes da oferta.</td></tr>
+    <tr><td class="k">Oferta pedindo desculpa</td><td>"Rapidinho", "não quero ser chato", tom mais baixo na hora do preço.</td><td>Avise da oferta na promessa da aula e use a frase dos dois caminhos.</td></tr>
+    <tr><td class="k">Perguntas antes da oferta</td><td>Dúvida técnica consome o tempo e a oferta nem começa.</td><td>Perguntas depois do preço. Antes, só "anota que eu respondo no final".</td></tr>
+    <tr><td class="k">Link difícil de achar</td><td>O link é só falado, ou aparece uma vez.</td><td>Na tela, fixado no chat, no grupo e repetido a cada bloco de respostas.</td></tr>
+    <tr><td class="k">Improviso</td><td>A aula muda de rumo conforme o chat e passa do tempo.</td><td>Roteiro com minutos, ensaio com cronômetro, moderador com sinal de tempo.</td></tr>
+    <tr><td class="k">Replay sem prazo</td><td>Quem sabe que o replay fica no ar pra sempre não assiste ao vivo nem decide.</td><td>Prazo do replay dito antes do evento e mantido depois.</td></tr>
+  </table>
+  <div class="vs">
+    <div class="bad"><div class="tag">Assim não</div><p>Aula de duas horas com doze técnicas, exercício ao vivo e planilha de presente. Oferta nos últimos cinco minutos: "quem quiser se aprofundar, o link está aí". <span class="note">(exemplo ilustrativo)</span></p></div>
+    <div class="good"><div class="tag">Assim sim</div><p>Uma causa, um princípio, uma prova e o mapa do método em 45 minutos. Transição firme, oferta em cinco partes com tempo, perguntas depois do preço. <span class="note">(exemplo ilustrativo)</span></p></div>
+  </div>
+  <div class="callout ink">
+    <h4>Elogio no chat não é venda</h4>
+    <p>"Melhor aula que eu já vi" é ótimo de ler e não paga nada. Se o chat elogia e o link não recebe clique, o evento ensinou mais do que vendeu. Guarde os elogios como sinal de conteúdo, e meça o evento pelo que acontece depois da oferta.</p>
+  </div>
+</div></section>
+
+<!-- 12 METRICAS -->
+<section class="page"><div class="inner">
+  <div class="kicker">Seção 8 · Números</div>
+  <h1 class="sec">Números do evento pra <em>acompanhar</em></h1>
+  <p class="lead">Cada número mostra um pedaço do roteiro. Quando um deles cai, ele aponta qual bloco revisar no próximo evento.</p>
+  <table class="t">
+    <tr><th style="width:21%">Número</th><th style="width:27%">Conta</th><th>Se estiver abaixo da sua meta</th></tr>
+    <tr><td class="k">Pico ao vivo</td><td>maior número simultâneo ÷ inscritos</td><td>O problema está antes do evento: aquecimento e mensagens da última hora (material AQUECIMENTO).</td></tr>
+    <tr><td class="k">Retenção até a oferta</td><td>pessoas no início da oferta ÷ pico</td><td>Conteúdo longo, ensinando demais ou sem motivo pra ficar até o fim. Revise a promessa da aula.</td></tr>
+    <tr><td class="k">Interação no passo 1</td><td>comentários "EU" ÷ pessoas ao vivo</td><td>O problema não foi reconhecido. Volte às palavras da pesquisa.</td></tr>
+    <tr><td class="k">Cliques no link</td><td>cliques ÷ pessoas na oferta</td><td>Link escondido, oferta confusa ou preço antes do valor. Revise a transição e a ordem das cinco partes.</td></tr>
+    <tr><td class="k">Vendas na live</td><td>vendas durante a live ÷ cliques</td><td>Trava no checkout ou objeção sem resposta. Teste o pagamento e leia as perguntas do chat.</td></tr>
+  </table>
+  <div class="grid2">
+    <div class="callout" style="margin-top:0">
+      <h4>Como medir sem complicar</h4>
+      <p class="small">Alguém do time anota o número de pessoas ao vivo a cada dez minutos e o minuto exato em que a oferta começou. Use um link de compra só pra live, com rastreio próprio, pra separar o que veio dela.</p>
+    </div>
+    <div class="callout" style="margin-top:0">
+      <h4>Como definir as metas</h4>
+      <p class="small">Use o seu histórico. Se é o primeiro evento, ele vira a sua régua: anote tudo e compare o próximo com ele. Compare sempre com você mesmo, não com o número que alguém postou.</p>
+    </div>
+  </div>
+  <h3>Exemplo de painel <span class="ill">exemplo ilustrativo</span></h3>
+  <table class="t nw">
+    <tr><th>Inscritos</th><th>Pico ao vivo</th><th>Na oferta</th><th>Cliques no link</th><th>Vendas na live</th></tr>
+    <tr><td>1.000</td><td>210 (21%)</td><td>95 (45% do pico)</td><td>40 (42% da oferta)</td><td>14 (35% dos cliques)</td></tr>
+  </table>
+  <p class="note">Números inventados pra mostrar a leitura. Nesse caso, o ponto fraco é a retenção: menos da metade do pico chegou à oferta. Antes de mexer em preço ou bônus, a primeira mudança seria encurtar o conteúdo e adiantar a oferta. (exemplo ilustrativo)</p>
+  <h3>As minhas metas</h3>
+  <table class="t fill">
+    <tr><th style="width:26%">Número</th><th>Meta</th><th>Real</th><th style="width:38%">O que vou mudar no próximo</th></tr>
+    <tr><td class="k">Pico ao vivo</td><td></td><td></td><td></td></tr>
+    <tr><td class="k">Retenção até a oferta</td><td></td><td></td><td></td></tr>
+    <tr><td class="k">Cliques no link</td><td></td><td></td><td></td></tr>
+    <tr><td class="k">Vendas na live</td><td></td><td></td><td></td></tr>
+  </table>
+  <div class="callout">
+    <h4>Uma mudança por vez</h4>
+    <p class="small">No dia seguinte, compare cada número com a meta e escolha uma mudança só pro próximo evento. Se você muda roteiro, oferta e horário ao mesmo tempo, não descobre o que funcionou.</p>
+  </div>
+</div></section>
+
+<!-- 13 CHECKLIST -->
+<section class="page"><div class="inner">
+  <div class="kicker">Checklist final</div>
+  <h1 class="sec">Checklist do <em>evento</em></h1>
+  <div class="grid2">
+    <div>
+      <h3 style="margin-top:0">Roteiro</h3>
+      <ul class="check">
+        <li><span class="cb"></span>Os três passos estão na ordem: problema, outro caminho, método.</li>
+        <li><span class="cb"></span>O custo de continuar está escrito com palavras da pesquisa.</li>
+        <li><span class="cb"></span>Tenho uma prova com o mesmo ponto de partida, permitida pelo conselho.</li>
+        <li><span class="cb"></span>O método tem nome e etapas.</li>
+        <li><span class="cb"></span>A oferta tem hora marcada no roteiro.</li>
+      </ul>
+      <h3>Conteúdo</h3>
+      <ul class="check">
+        <li><span class="cb"></span>Ensino o quê e o porquê. O como completo fica no produto.</li>
+        <li><span class="cb"></span>Passei no teste do caderno.</li>
+        <li><span class="cb"></span>A promessa da aula avisa que vai ter oferta.</li>
+      </ul>
+      <h3>Oferta</h3>
+      <ul class="check">
+        <li><span class="cb"></span>Transição escrita e ensaiada em voz alta.</li>
+        <li><span class="cb"></span>Cinco partes na ordem, preço por último.</li>
+        <li><span class="cb"></span>Prazo e condição reais, que eu vou cumprir.</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="margin-top:0">Chat e time</h3>
+      <ul class="check">
+        <li><span class="cb"></span>Uma pergunta pro chat em cada bloco.</li>
+        <li><span class="cb"></span>Moderador com link, respostas operacionais e sinal de tempo.</li>
+        <li><span class="cb"></span>Lista de quem escreveu QUERO e não comprou.</li>
+      </ul>
+      <h3>Técnica</h3>
+      <ul class="check">
+        <li><span class="cb"></span>Link de compra testado no celular e no computador.</li>
+        <li><span class="cb"></span>Internet, áudio e luz testados no horário do evento.</li>
+        <li><span class="cb"></span>Ensaio completo com cronômetro.</li>
+      </ul>
+      <h3>Depois da live</h3>
+      <ul class="check">
+        <li><span class="cb"></span>Números anotados: pico, oferta, cliques, vendas.</li>
+        <li><span class="cb"></span>Prazo do replay comunicado e mantido.</li>
+        <li><span class="cb"></span>Objeções do chat separadas pros e-mails do carrinho.</li>
+      </ul>
+    </div>
+  </div>
+  <h2 style="margin-top:3mm">Plano do meu roteiro</h2>
+  <table class="t fill">
+    <tr><th style="width:20%">Bloco</th><th style="width:12%">Minuto</th><th>A frase principal</th><th style="width:22%">Prova ou material</th></tr>
+    <tr><td class="k">Abertura</td><td></td><td></td><td></td></tr>
+    <tr><td class="k">Promessa da aula</td><td></td><td></td><td></td></tr>
+    <tr><td class="k">Problema e custo</td><td></td><td></td><td></td></tr>
+    <tr><td class="k">Outro caminho</td><td></td><td></td><td></td></tr>
+    <tr><td class="k">O método</td><td></td><td></td><td></td></tr>
+    <tr><td class="k">Transição</td><td></td><td></td><td></td></tr>
+    <tr><td class="k">Oferta</td><td></td><td></td><td></td></tr>
+    <tr><td class="k">Perguntas</td><td></td><td></td><td></td></tr>
+    <tr><td class="k">Fechamento</td><td></td><td></td><td></td></tr>
+  </table>
+  <div class="grid2">
+    <div class="field"><label>Data e hora do evento</label><div class="fl"></div></div>
+    <div class="field"><label>Quem modera o chat</label><div class="fl"></div></div>
+  </div>
+</div></section>
+
+<!-- 14 PROXIMO PASSO -->
+<section class="page final"><div class="glow"></div><div class="inner">
+  <div class="kicker">Próximo passo</div>
+  <h1 class="sec">Agora é olhar o <em>seu</em> caso</h1>
+  <p class="lead">O roteiro é o mesmo pra qualquer evento. O que muda é o problema, a prova e o método de cada um, e nisso um olhar de fora ajuda. Tem dois caminhos, os dois gratuitos.</p>
+  <div class="fcard">
+    <div class="tagx">Comunidade</div>
+    <h2>Grupo do Estrategista</h2>
+    <p>Um grupo no WhatsApp onde eu compartilho leituras de lançamento, materiais como este e os avisos dos próximos encontros. Sem spam, sem corrente.</p>
+    <a class="act" href="https://chat.whatsapp.com/HeBIG8dzGCFHsmwcDZ9p6T" style="color:inherit;text-decoration:none">Toque aqui pra entrar no grupo no WhatsApp</a>
+  </div>
+  <div class="fcard">
+    <div class="tagx">Diagnóstico gratuito</div>
+    <h2>O Tabuleiro</h2>
+    <p>Doze perguntas, uns quatro minutos. Você recebe uma nota por etapa do lançamento e descobre qual delas está travando o seu resultado. Se fizer sentido, a conversa continua no WhatsApp.</p>
+    <span class="act">estrategistadelancamento.com.br</span>
+  </div>
+  <h4 style="color:var(--gold);margin-top:6mm">Outros materiais da série · comente a palavra no post ou peça no direct</h4>
+  <div class="series">
+    <div><b>Checklist de Lançamento</b>Comenta <span>CHECKLIST</span></div>
+    <div><b>Pesquisa antes do produto</b>Comenta <span>PESQUISA</span></div>
+    <div><b>Estrutura de Oferta</b>Comenta <span>OFERTA</span></div>
+    <div><b>Checklist de Captação</b>Comenta <span>CAPTAÇÃO</span></div>
+    <div><b>Sequência de Aquecimento</b>Comenta <span>AQUECIMENTO</span></div>
+    <div><b>Cronograma do Carrinho</b>Comenta <span>CARRINHO</span></div>
+    <div><b>Recuperação e Downsell</b>Comenta <span>RECUPERAÇÃO</span></div>
+    <div><b>Do lançamento ao perpétuo</b>Comenta <span>PERPÉTUO</span></div>
+  </div>
+  <p class="sign">"Quem aprende tudo de graça não sente que precisa de você."</p>
+  <div class="signby">Bruno Israel Gonçalves · O Estrategista</div>
+  <div class="disc">Os números deste material são exemplos ilustrativos. Nenhum resultado é prometido: cada lançamento depende da audiência, da oferta e da execução.</div>
+</div></section>
+
+<script src="base.js"></script>
+</body>
+</html>
