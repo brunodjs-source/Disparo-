@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Recuperação e Downsell</title>
+<link rel="stylesheet" href="base.css">
+<style>
+.stairs{display:grid;grid-template-columns:repeat(5,1fr);gap:2.4mm;align-items:end;margin:3mm 0 4mm}
+.stairs div{background:#fff;border:.8pt solid #E6DCCB;border-radius:2.4mm;padding:2.6mm 3mm}
+.stairs div b{display:block;font:700 15pt/1 "Play";color:var(--gold);margin-bottom:1.6mm}
+.stairs div span{display:block;font-weight:700;font-size:8.6pt;line-height:1.25;margin-bottom:1mm}
+.stairs div em{display:block;font-style:normal;color:var(--muted);font-size:7.4pt;line-height:1.35}
+.stairs div:nth-child(1){min-height:25mm}
+.stairs div:nth-child(2){min-height:30mm}
+.stairs div:nth-child(3){min-height:35mm}
+.stairs div:nth-child(4){min-height:40mm}
+.stairs div.last{min-height:45mm;background:var(--ink);border-color:var(--ink);color:#F3EDE2}
+.stairs div.last em{color:#bdb4a5}
+.temp{display:inline-block;font:700 6.2pt/1 "In";letter-spacing:.12em;text-transform:uppercase;padding:1.1mm 1.6mm;border-radius:1mm;white-space:nowrap}
+.temp.q{background:var(--ink);color:#fff}
+.temp.o{background:var(--gold-d);color:#fff}
+.temp.m{background:var(--gold);color:#fff}
+.temp.f{background:#E9E2D4;color:var(--muted)}
+.tree{margin:2.4mm 0 3mm}
+.tree .r{display:grid;grid-template-columns:31mm 5mm 1fr 46mm 15mm;align-items:center;gap:0 2mm;margin-bottom:1.6mm}
+.tree .r.h{font:700 6.4pt/1.2 "In";letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:1.2mm}
+.tree .why{background:var(--ink);color:#F3EDE2;font:700 8.2pt/1.2 "In";padding:2.4mm 3mm;border-radius:1.6mm}
+.tree .ar{color:var(--gold);font:700 12pt/1 "In";text-align:center}
+.tree .go{background:#fff;border:.8pt solid var(--gold);border-radius:1.6mm;padding:2mm 3mm;font-size:8.3pt;line-height:1.35}
+.tree .go small{display:block;color:var(--muted);font-size:7.2pt}
+.tree .no{font-size:7.6pt;line-height:1.35;color:var(--muted)}
+.tree .cnt{border-bottom:.7pt solid #CEC3B0;height:6.4mm}
+.qn{margin-bottom:2.2mm}
+.qn p{margin-bottom:.8mm}
+.script .op{font-size:8pt;color:var(--muted);line-height:1.45}
+.opts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.6mm 3mm;margin:1mm 0 0 4.4mm;font-size:8pt;color:#3a3732}
+.opts span:before,.op i:before{content:"";display:inline-block;width:2.4mm;height:2.4mm;border:.8pt solid var(--ink);border-radius:50%;margin-right:1.4mm;vertical-align:-.3mm;background:#fff}
+.op i{font-style:normal;margin-right:2.6mm}
+table.t td{font-size:8.3pt}
+table.ex td{font-size:7.9pt;padding:1.7mm 2.2mm}
+table.ex td.k{font-size:8.1pt}
+</style>
+</head>
+<body data-short="Recuperação e Downsell">
+
+<!-- 1 CAPA -->
+<section class="page cover">
+  <div class="glow1"></div><div class="glow2"></div><div class="frame"></div><div class="bignum">5</div>
+  <div class="top"><span>O Estrategista</span><span>Material gratuito</span></div>
+  <div class="mid">
+    <div class="type">Passo a passo</div>
+    <h1>Recuperação e <em>Downsell</em></h1>
+    <p class="sub">O que fazer com quem chegou perto e não comprou. Quem separar, quando reabrir, o que perguntar, o que oferecer pra cada motivo e por que o desconto vem por último. Com mensagens prontas, exemplo preenchido e os números pra acompanhar.</p>
+  </div>
+  <div class="inside">
+    <h4>O que tem aqui dentro</h4>
+    <ul>
+      <li>Quem conta como "quase comprou"</li>
+      <li>Reabertura curta pra quem pediu</li>
+      <li>Pesquisa com quem não comprou</li>
+      <li>Árvore de decisão por motivo</li>
+      <li>Versão menor sem canibalizar o principal</li>
+      <li>Desconto com regra, por último</li>
+    </ul>
+  </div>
+  <div class="bottom">
+    <div class="brand">O Estrategista<small>Bruno Israel Gonçalves · Estrategista de Lançamento</small></div>
+    <div class="handle">@o_estrategista.com.br</div>
+  </div>
+</section>
+
+<!-- 2 INTRO -->
+<section class="page"><div class="inner">
+  <div class="kicker">Antes de começar</div>
+  <h1 class="sec">Quem não comprou já <em>levantou a mão</em></h1>
+  <p class="lead">O carrinho fechou e a maior parte da lista não comprou. A reação comum é dar o lançamento por encerrado ou mandar um desconto pra todo mundo no dia seguinte. As duas deixam dinheiro na mesa.</p>
+  <p>Quem se inscreveu, assistiu, clicou no botão e chegou até a página de pagamento já disse, com o comportamento, que quer resolver o problema. Faltou alguma coisa pra fechar. O trabalho agora é descobrir o quê e oferecer a saída certa pra cada motivo, sempre nesta ordem:</p>
+  <div class="stairs">
+    <div><b>1</b><span>Reabertura curta</span><em>Mesma oferta, por pouco tempo, só pra quem pediu.</em></div>
+    <div><b>2</b><span>Pergunta do motivo</span><em>Pesquisa com quem não comprou.</em></div>
+    <div><b>3</b><span>Versão menor</span><em>Se o motivo foi dinheiro.</em></div>
+    <div><b>4</b><span>Versão mais curta</span><em>Se o motivo foi tempo.</em></div>
+    <div class="last"><b>5</b><span>Desconto</span><em>Por último, com prazo real e motivo honesto.</em></div>
+  </div>
+  <div class="callout">
+    <h4>Por que o desconto vai no fim</h4>
+    <p>Desconto como primeira opção resolve um motivo que talvez nem exista. Se a pessoa não comprou por falta de tempo, metade do preço continua sem caber na agenda dela. E quem pagou o preço cheio aprende que esperar compensa. Cada etapa antes do desconto recupera quem dá pra recuperar sem mexer no valor do seu produto principal, que fica no pedestal até o fim.</p>
+  </div>
+  <h2>O que tem neste material</h2>
+  <ul class="toc">
+    <li><span class="tn">1</span><span class="tt">Quem conta como "quase comprou" e como separar</span><span class="tp">pág. 03</span></li>
+    <li><span class="tn">2</span><span class="tt">Reabertura: regras e mensagens prontas</span><span class="tp">pág. 04 e 05</span></li>
+    <li><span class="tn">3</span><span class="tt">Pesquisa com quem não comprou e como ler as respostas</span><span class="tp">pág. 06 e 07</span></li>
+    <li><span class="tn">4</span><span class="tt">Versão menor, versão curta, prova e próxima turma</span><span class="tp">pág. 08 e 09</span></li>
+    <li><span class="tn">5</span><span class="tt">Desconto, por último</span><span class="tp">pág. 10</span></li>
+    <li><span class="tn">6</span><span class="tt">Exemplo preenchido e outras áreas</span><span class="tp">pág. 11</span></li>
+    <li><span class="tn">7</span><span class="tt">Números da recuperação e checklist</span><span class="tp">pág. 12 e 13</span></li>
+  </ul>
+  <p class="note">Os números deste material são exemplos ilustrativos. Não são referência de mercado nem promessa de resultado. A recuperação começa no dia seguinte ao fechamento do carrinho e só termina quando cada pessoa recebeu o caminho do motivo dela.</p>
+</div></section>
+
+<!-- 3 SEGMENTACAO -->
+<section class="page"><div class="inner">
+  <div class="kicker">Seção 1</div>
+  <h1 class="sec">Quem conta como <em>quase comprou</em></h1>
+  <p class="lead">Nem todo mundo que não comprou está no mesmo ponto. Quem abandonou o checkout está a um clique. Quem só se inscreveu e nunca apareceu está longe. Mandar a mesma mensagem pros dois desperdiça os dois.</p>
+  <table class="t">
+    <tr><th style="width:25%">Sinal</th><th style="width:31%">Onde encontrar</th><th style="width:14%">Temperatura</th><th>O que recebe</th></tr>
+    <tr><td class="k">Pediu reabertura</td><td>Lista de espera, palavra-chave no WhatsApp, resposta "perdi o prazo"</td><td><span class="temp q">Muito quente</span></td><td>Primeiro aviso da reabertura, no privado</td></tr>
+    <tr><td class="k">Checkout abandonado</td><td>Relatório da plataforma de pagamento: nome, e-mail e telefone</td><td><span class="temp q">Muito quente</span></td><td>Contato individual de uma pessoa do time + reabertura</td></tr>
+    <tr><td class="k">Clicou no link de compra</td><td>Link com rastreio por canal (UTM) ou encurtador</td><td><span class="temp o">Quente</span></td><td>Aviso da reabertura + pesquisa</td></tr>
+    <tr><td class="k">Ficou até a oferta</td><td>Relatório da plataforma do evento, presentes no momento da oferta</td><td><span class="temp o">Quente</span></td><td>Pesquisa + caminho pelo motivo</td></tr>
+    <tr><td class="k">Respondeu a tarefa</td><td>Enquetes do grupo, respostas de e-mail, caixa de perguntas</td><td><span class="temp m">Morno</span></td><td>Pesquisa + caminho pelo motivo</td></tr>
+    <tr><td class="k">Só se inscreveu</td><td>Lista de inscritos, sem nenhum dos sinais acima</td><td><span class="temp f">Frio</span></td><td>Pesquisa curta + lista da próxima turma</td></tr>
+  </table>
+  <h3>Como montar as listas</h3>
+  <ol class="steps">
+    <li><b>Exporte tudo no dia do fechamento:</b> checkout abandonado, cliques, presença no evento, respostas da tarefa. Depois de alguns dias, parte desses dados some ou fica difícil de cruzar.</li>
+    <li><b>Tire os compradores de todas as listas.</b> Nada desgasta mais do que oferecer condição especial pra quem acabou de pagar o preço cheio.</li>
+    <li><b>Cada pessoa fica num segmento só:</b> o mais quente que ela atingiu. Quem clicou e também ficou até a oferta entra como "clicou".</li>
+    <li><b>Separe quem recebe contato individual</b> (pediu reabertura e checkout abandonado) de quem recebe envio em massa. Esse contato é de uma pessoa do time, com nome, e não de robô: muita gente parou por cartão recusado, limite ou dúvida no parcelamento, e resolve em uma resposta.</li>
+    <li><b>Anote o tamanho de cada segmento.</b> É a base dos números da página 12.</li>
+  </ol>
+  <h3>As minhas listas</h3>
+  <table class="t fill">
+    <tr><th style="width:30%">Segmento</th><th style="width:14%">Quantos</th><th>Canal</th><th style="width:24%">Responsável</th></tr>
+    <tr><td class="k">Pediu reabertura</td><td></td><td></td><td></td></tr>
+    <tr><td class="k">Checkout abandonado</td><td></td><td></td><td></td></tr>
+    <tr><td class="k">Clicou / ficou até a oferta</td><td></td><td></td><td></td></tr>
+    <tr><td class="k">Tarefa / só inscrito</td><td></td><td></td><td></td></tr>
+  </table>
+</div></section>
+
+<!-- 4 REABERTURA -->
+<section class="page"><div class="inner">
+  <div class="kicker">Seção 2 · Degrau 1</div>
+  <h1 class="sec">Reabertura: curta, real e só pra <em>quem pediu</em></h1>
+  <p class="lead">É a etapa mais simples e a que menos mexe no valor do produto: mesma oferta, mesmo preço, por pouco tempo, pra quem levantou a mão depois do fechamento. Ela recupera quem perdeu o prazo, e não quem desistiu.</p>
+  <div class="tl">
+    <div class="on"><b></b><span>Fechamento</span>lista de espera aberta</div>
+    <div><b></b><span>Dia seguinte</span>aviso no privado</div>
+    <div class="on"><b></b><span>Reabertura</span>janela curta</div>
+    <div><b></b><span>Últimas horas</span>lembrete</div>
+    <div><b></b><span>Fecha de vez</span>sem volta</div>
+    <div class="on"><b></b><span>Pesquisa</span>degrau 2</div>
+  </div>
+  <div class="grid2">
+    <div>
+      <h3 style="margin-top:0">As regras da reabertura</h3>
+      <ul class="check">
+        <li><span class="cb"></span><b>Só pra quem pediu:</b> lista de espera, checkout abandonado e quem escreveu dizendo que perdeu o prazo. Não é anúncio público.</li>
+        <li><span class="cb"></span><b>Janela curta, com hora marcada:</b> de 24 a 48 horas, por exemplo <span class="note">(exemplo ilustrativo)</span>.</li>
+        <li><span class="cb"></span><b>Prazo real:</b> fechou, fechou. Não existe reabertura da reabertura.</li>
+        <li><span class="cb"></span><b>Mesma oferta, mesmo preço.</b> Pode tirar o bônus de quem entrou no prazo. Nunca acrescente.</li>
+        <li><span class="cb"></span><b>Motivo honesto:</b> "muita gente pediu" só se muita gente pediu.</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="margin-top:0">Como montar a lista de espera</h3>
+      <ul class="dots">
+        <li>No e-mail e no WhatsApp de fechamento, um link: "perdi o prazo, me avisa se abrir de novo".</li>
+        <li>Uma palavra-chave pra responder no WhatsApp, ou um formulário de uma pergunta só.</li>
+        <li>Na página de vendas fechada, troque o botão de compra por "entrar na lista de espera".</li>
+        <li>Quem abandonou o checkout entra direto, sem precisar pedir.</li>
+        <li>Quem respondeu a qualquer mensagem do carrinho depois do fechamento também entra.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="vs">
+    <div class="bad"><div class="tag">Assim não</div><p>"Por motivo de força maior, prorrogamos as inscrições!" nos stories, pra todo mundo, pela terceira vez no mesmo lançamento.</p><p class="small muted" style="margin-top:1.6mm">Prazo que estica ensina a lista a não comprar no prazo.</p></div>
+    <div class="good"><div class="tag">Assim sim</div><p>"O carrinho fechou ontem. Muita gente me escreveu dizendo que perdeu o horário. Pra quem está na lista, abro amanhã das 10h às 22h, nas mesmas condições. Depois disso, só na próxima turma." <span class="note">(exemplo ilustrativo)</span></p></div>
+  </div>
+  <div class="callout ink">
+    <h4>Nunca prometa a reabertura durante o carrinho</h4>
+    <p>Se no carrinho você diz "se perder, eu reabro", o prazo deixa de existir. A reabertura só é anunciada depois do fechamento, e só pra lista. Quem descobre que todo fechamento tem reabertura para de comprar no prazo.</p>
+  </div>
+  <div class="callout">
+    <h4>E se quase ninguém pedir?</h4>
+    <p>Então não reabra. Reabertura sem pedido é prorrogação com outro nome. Pule direto pra pesquisa da página 06: ela vai mostrar se o problema foi prazo, preço, tempo ou confiança.</p>
+  </div>
+  <div class="grid2">
+    <div class="field"><label>Minha janela de reabertura</label><div class="fl"></div></div>
+    <div class="field"><label>Quem entra na lista</label><div class="fl"></div></div>
+  </div>
+</div></section>
+
+<!-- 5 MENSAGENS REABERTURA -->
+<section class="page"><div class="inner">
+  <div class="kicker">Seção 2 · Mensagens prontas</div>
+  <h1 class="sec" style="font-size:19pt">Mensagens da <em>reabertura</em></h1>
+  <p class="small muted">Troque o que está entre colchetes e preencha as lacunas. Cada mensagem vai só pra lista de espera e pro checkout abandonado, nunca pra lista inteira.</p>
+
+  <div class="day"><span class="d">Fechamento</span><span class="dt">Abrir a lista de espera</span><span class="dg">na hora em que o carrinho fecha</span></div>
+  <div class="grid2">
+    <div class="msg"><div class="mh"><span class="ch">E-mail</span><span class="when">assunto: Fechou</span></div>
+      <p>"Oi, [nome]. As inscrições do [produto] fecharam às [hora]. Obrigado a quem entrou. Se você queria entrar e perdeu o prazo, me avisa aqui: [link da lista de espera]. Não prometo nada. Mas, se eu abrir de novo, quem está nessa lista fica sabendo primeiro."</p>
+    </div>
+    <div class="msg"><div class="mh"><span class="ch w">WhatsApp</span><span class="when">grupo do lançamento</span></div>
+      <p>"Inscrições encerradas. Quem entrou, o acesso chega no seu e-mail. Quem perdeu o horário e queria entrar, responde <span class="bl s"></span> no meu privado que eu anoto o seu nome."</p>
+    </div>
+  </div>
+
+  <div class="day"><span class="d">Aviso</span><span class="dt">No privado, um por um</span><span class="dg">dia seguinte ao fechamento</span></div>
+  <div class="grid2">
+    <div class="msg"><div class="mh"><span class="ch w">WhatsApp</span><span class="when">lista de espera</span></div>
+      <p>"Oi, [nome], aqui é [nome] do time do [expert]. Você entrou na lista de espera do [produto]. Amanhã, das <span class="bl s"></span> às <span class="bl s"></span>, a gente reabre só pra essa lista, nas mesmas condições. Quer que eu te mande o link quando abrir?"</p>
+    </div>
+    <div class="msg"><div class="mh"><span class="ch w">WhatsApp</span><span class="when">checkout abandonado</span></div>
+      <p>"Oi, [nome], tudo bem? Vi que você chegou na página de pagamento do [produto] e não finalizou. Aconteceu alguma coisa com o cartão ou com o parcelamento? Se quiser, eu te ajudo por aqui. Amanhã a gente reabre por algumas horas pra quem ficou no meio do caminho."</p>
+    </div>
+  </div>
+
+  <div class="day"><span class="d">Reabertura</span><span class="dt">Janela aberta</span><span class="dg">no horário anunciado, nem antes nem depois</span></div>
+  <div class="msg"><div class="mh"><span class="ch">E-mail</span><span class="when">assunto: Reabri, até [hora] de [dia]</span></div>
+    <p>"Oi, [nome]. Como avisei, reabri as inscrições do [produto] só pra quem pediu. Fica aberto até <span class="bl s"></span> de <span class="bl s"></span>, e depois disso só na próxima turma, sem data definida.</p>
+    <p>Pra lembrar o que está incluído: <span class="bl l"></span>. O valor é o mesmo do carrinho: <span class="bl"></span>, ou <span class="bl"></span> parcelado. O link é este: [link]. Se tiver qualquer dúvida, responde este e-mail que eu leio."</p>
+  </div>
+  <div class="grid2">
+    <div class="msg"><div class="mh"><span class="ch w">WhatsApp</span><span class="when">quem respondeu "sim" ao aviso</span></div>
+      <p>"Abriu. Aqui está o link, como combinado: [link]. Fica aberto até [hora]. Se travar alguma coisa no pagamento, me chama aqui."</p>
+    </div>
+    <div class="msg"><div class="mh"><span class="ch s">Stories</span><span class="when">sem falar da reabertura</span></div>
+      <p>Bastidor da turma começando: o primeiro encontro, a área de membros, a primeira dúvida respondida. Quem está na lista vê o produto andando. Quem não está não aprende a esperar reabertura.</p>
+    </div>
+  </div>
+
+  <div class="day"><span class="d">Fecha de vez</span><span class="dt">Últimas horas e encerramento</span></div>
+  <div class="grid2">
+    <div class="msg"><div class="mh"><span class="ch w">WhatsApp</span><span class="when">algumas horas antes</span></div>
+      <p>"Faltam <span class="bl s"></span> horas pra fechar. Depois disso, a próxima turma ainda não tem data. Link: [link]."</p>
+    </div>
+    <div class="msg"><div class="mh"><span class="ch">E-mail</span><span class="when">depois do fechamento</span></div>
+      <p>"Fechou de vez. Amanhã eu te mando uma pergunta curta. A sua resposta muda o que eu faço daqui pra frente."</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- 6 PESQUISA -->
+<section class="page"><div class="inner">
+  <div class="kicker">Seção 3 · Degrau 2</div>
+  <h1 class="sec">Pergunte o <em>motivo</em> antes de oferecer</h1>
+  <p class="lead">Você não sabe por que a pessoa não comprou. Acha que sabe. A pesquisa com quem não comprou troca o palpite pela resposta e decide qual dos próximos degraus faz sentido pra cada pessoa.</p>
+  <div class="script">
+    <div class="lab">As cinco perguntas pra copiar <span>formulário de até dois minutos</span></div>
+    <div class="qn"><p><b>1.</b> "O que fez você se interessar pelo <span class="bl"></span>?" <span class="muted small">(aberta)</span></p></div>
+    <div class="qn"><p><b>2.</b> "O que mais pesou pra você não entrar agora?"</p>
+      <div class="opts"><span>O valor não cabia agora</span><span>Não ia ter tempo de acompanhar</span><span>Não sei se serve pro meu caso</span><span>Não é o momento, quero depois</span><span>Perdi o prazo</span><span>Não era o que eu procurava</span><span style="grid-column:1 / span 3">Outro: <b class="bl l" style="font-weight:400"></b></span></div></div>
+    <div class="qn"><p><b>3.</b> "Se esse motivo fosse resolvido, você entraria?" <span class="op" style="margin-left:2mm"><i>Sim</i><i>Talvez</i><i>Não</i></span></p></div>
+    <div class="qn"><p><b>4.</b> "O que teria que ser diferente pra fazer sentido pra você?" <span class="muted small">(aberta)</span></p></div>
+    <p><b>5.</b> "Posso te mandar uma mensagem sobre isso?"</p>
+    <div class="op" style="margin-left:4.4mm"><i>Sim, por WhatsApp</i><i>Sim, por e-mail</i><i>Prefiro não</i></div>
+  </div>
+  <div class="grid2">
+    <div>
+      <h3 style="margin-top:0">Como enviar</h3>
+      <ul class="dots small">
+        <li><b>Quando:</b> no dia seguinte ao fechamento definitivo, depois da reabertura, enquanto a decisão ainda está fresca.</li>
+        <li><b>Pra quem:</b> todos os segmentos, menos compradores. Lista de espera e checkout abandonado recebem no privado. O resto, por e-mail e no grupo.</li>
+        <li><b>Formato:</b> formulário com as cinco. No WhatsApp, só a 2 e a 3, direto na conversa.</li>
+        <li><b>Lembrete:</b> um só, dois dias depois, pra quem não respondeu.</li>
+        <li><b>Sem brinde que compra resposta.</b> Se oferecer algo, que seja útil e ligado ao tema, como uma aula curta.</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="margin-top:0">Por que cada pergunta existe</h3>
+      <ul class="dots small">
+        <li><b>1</b> mostra a palavra que fez a pessoa chegar. Ela vai pra próxima captação.</li>
+        <li><b>2</b> separa o motivo e decide o caminho.</li>
+        <li><b>3</b> mede o tamanho do motivo. "Talvez" pede outra leitura (página 07).</li>
+        <li><b>4</b> desenha a versão menor ou a mais curta com as palavras do cliente.</li>
+        <li><b>5</b> é a permissão pra oferecer. Sem ela, você só agradece.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="msg"><div class="mh"><span class="ch">E-mail</span><span class="when">assunto: Uma pergunta sobre o [produto]</span></div>
+      <p>"Oi, [nome]. O [produto] fechou e você não entrou. Tudo bem, de verdade. Eu queria entender o motivo, porque é a sua resposta que decide o que eu faço na próxima turma. São cinco perguntas, menos de dois minutos: [link]. Eu leio todas. [seu nome]."</p>
+    </div>
+    <div class="msg"><div class="mh"><span class="ch w">WhatsApp</span><span class="when">privado</span></div>
+      <p>"Oi, [nome], aqui é [nome]. Posso te fazer uma pergunta rápida sobre o [produto]? O que mais pesou pra você não entrar: o valor, o tempo, a dúvida se funcionaria pro seu caso ou o momento?"</p>
+    </div>
+  </div>
+  <div class="callout">
+    <h4>Escute sem vender</h4>
+    <p>Na pesquisa, não ofereça nada. Se a pessoa responder no WhatsApp, agradeça e diga que volta com uma resposta. Oferta no meio da pergunta transforma pesquisa em pitch, e a resposta deixa de ser verdadeira.</p>
+  </div>
+</div></section>
+
+<!-- 7 LEITURA E ARVORE -->
+<section class="page"><div class="inner">
+  <div class="kicker">Seção 3 · Leitura</div>
+  <h1 class="sec">Como ler as respostas e escolher o <em>caminho</em></h1>
+  <p class="lead">Cada resposta aponta pra um caminho. A regra é uma só: o motivo decide a oferta, e não o contrário. Antes de separar, confira se a resposta diz mesmo o que parece dizer.</p>
+  <table class="t">
+    <tr><th style="width:21%">Resposta</th><th style="width:34%">O que pode estar por trás</th><th>Como confirmar</th></tr>
+    <tr><td class="k">"Tá caro"</td><td>Falta de dinheiro de verdade, ou a pessoa não viu valor suficiente.</td><td>Olhe a pergunta 3. "Sim" é dinheiro. "Talvez" com frequência é confiança.</td></tr>
+    <tr><td class="k">"Não tenho tempo"</td><td>Agenda real, ou o produto pareceu grande demais.</td><td>Olhe a pergunta 4: o que ficou grande? Aulas, encontros, tarefas?</td></tr>
+    <tr><td class="k">"Vou deixar pra depois"</td><td>Momento, ou a oferta não deixou claro o custo de esperar.</td><td>Tem data na resposta? "Depois das férias" é momento. "Um dia" é falta de motivo pra agora.</td></tr>
+    <tr><td class="k">"Não sei se é pra mim"</td><td>Dúvida sobre o próprio caso.</td><td>Ela descreve o caso dela na pergunta 4? Então pede prova parecida.</td></tr>
+  </table>
+  <h3>A árvore de decisão</h3>
+  <div class="tree">
+    <div class="r h"><span>Motivo</span><span></span><span>Caminho</span><span>Não fazer</span><span>Quantos</span></div>
+    <div class="r"><div class="why">Dinheiro</div><div class="ar">→</div><div class="go"><b>Versão menor</b><small>parcelamento antes, depois downsell · pág. 08</small></div><div class="no">Vender o principal mais barato.</div><div class="cnt"></div></div>
+    <div class="r"><div class="why">Tempo</div><div class="ar">→</div><div class="go"><b>Versão mais curta</b><small>trilha enxuta ou produto curto · pág. 09</small></div><div class="no">Dar desconto. O preço não era o problema.</div><div class="cnt"></div></div>
+    <div class="r"><div class="why">Confiança</div><div class="ar">→</div><div class="go"><b>Prova e garantia explicada</b><small>caso parecido, resposta individual · pág. 09</small></div><div class="no">Pressionar com prazo.</div><div class="cnt"></div></div>
+    <div class="r"><div class="why">Momento</div><div class="ar">→</div><div class="go"><b>Lista da próxima turma</b><small>com a data que a pessoa informou · pág. 09</small></div><div class="no">Insistir agora.</div><div class="cnt"></div></div>
+    <div class="r"><div class="why">Perdeu o prazo</div><div class="ar">→</div><div class="go"><b>Já atendido pela reabertura</b><small>se perdeu as duas, lista da próxima turma</small></div><div class="no">Reabrir de novo só pra ela.</div><div class="cnt"></div></div>
+    <div class="r"><div class="why">Não era pra mim</div><div class="ar">→</div><div class="go"><b>Agradecer e tirar da sequência</b><small>a resposta vai pra revisão da captação</small></div><div class="no">Oferecer qualquer coisa.</div><div class="cnt"></div></div>
+  </div>
+  <div class="callout">
+    <h4>Leia as respostas abertas, não só o gráfico</h4>
+    <p>O gráfico da pergunta 2 diz quantos. As perguntas 1 e 4 dizem como. Separe as frases que se repetem: elas viram o texto da versão menor, da versão curta e da próxima oferta, com as palavras do próprio cliente.</p>
+  </div>
+  <div class="field"><label>O motivo mais comum no meu lançamento</label><div class="fl"></div></div>
+  <div class="field"><label>A frase que mais se repetiu</label><div class="fl"></div></div>
+</div></section>
+
+<!-- 8 VERSAO MENOR -->
+<section class="page"><div class="inner">
+  <div class="kicker">Seção 4 · Degrau 3</div>
+  <h1 class="sec">Foi dinheiro: a <em>versão menor</em></h1>
+  <p class="lead">Versão menor é outro produto, menor de verdade. Ela serve quem quer resolver e não tem o valor agora, sem ensinar a lista que o principal fica barato depois do carrinho.</p>
+  <div class="callout">
+    <h4>Antes da versão menor: o parcelamento</h4>
+    <p>Às vezes "não cabe" quer dizer "não cabe à vista". Antes de oferecer outro produto, mostre pra quem respondeu dinheiro as formas de parcelar o principal: cartão, boleto parcelado, Pix parcelado. Só depois disso, a versão menor.</p>
+  </div>
+  <h3>Como desenhar sem canibalizar o principal</h3>
+  <ol class="steps">
+    <li><b>Tire o que custa mais caro pra você entregar:</b> acompanhamento, encontros ao vivo, correção, grupo. Nas três óticas, o principal costuma ser "fazer junto" e a versão menor vira "ensinar".</li>
+    <li><b>Mantenha um pedaço do problema com começo e fim.</b> A pessoa precisa terminar a versão menor com uma vitória concreta, e não com a sensação de ter comprado uma amostra.</li>
+    <li><b>Preço claramente abaixo do principal,</b> com a diferença de entrega visível na hora. Se dá pra confundir os dois, é desconto disfarçado.</li>
+    <li><b>Deixe a porta pra subir:</b> quem compra a versão menor pode migrar pro principal na próxima turma, abatendo o que já pagou, dentro de um prazo que você define.</li>
+    <li><b>Ofereça só pra quem respondeu dinheiro,</b> em mensagem direta e com prazo. Ela não entra na vitrine nem vira post.</li>
+  </ol>
+  <table class="t fill">
+    <tr><th style="width:24%">O que</th><th>Principal</th><th>Versão menor</th></tr>
+    <tr><td class="k">Formato</td><td></td><td></td></tr>
+    <tr><td class="k">O que fica de fora</td><td></td><td></td></tr>
+    <tr><td class="k">O pedaço que resolve</td><td></td><td></td></tr>
+    <tr><td class="k">Preço</td><td></td><td></td></tr>
+    <tr><td class="k">Como sobe pro principal</td><td></td><td></td></tr>
+  </table>
+  <div class="vs">
+    <div class="bad"><div class="tag">Assim não</div><p>"Pra quem não comprou: o mesmo programa com metade do preço, só hoje."</p><p class="small muted" style="margin-top:1.6mm">O principal perde valor e quem pagou cheio se sente enganado.</p></div>
+    <div class="good"><div class="tag">Assim sim</div><p>"O programa tem acompanhamento semanal. Pra quem me disse que o valor não cabia agora, separei só as aulas do módulo 1 com os modelos prontos. Se depois quiser o acompanhamento, o que você pagou é abatido na próxima turma." <span class="note">(exemplo ilustrativo)</span></p></div>
+  </div>
+  <div class="script">
+    <div class="lab">Roteiro com lacunas <span>WhatsApp, pra quem respondeu dinheiro</span></div>
+    <p>"Oi, [nome]. Você me respondeu que o valor não cabia agora, e eu entendo. Por isso separei uma versão menor: <span class="bl l"></span>, sem <span class="bl"></span>. Ela resolve <span class="bl l"></span>. O valor é <span class="bl s"></span>, até <span class="bl s"></span>. Se depois quiser o programa completo, o que você pagou é abatido. O link é este: [link]. Se não fizer sentido, tudo certo também."</p>
+  </div>
+</div></section>
+
+<!-- 9 TEMPO CONFIANCA MOMENTO -->
+<section class="page"><div class="inner">
+  <div class="kicker">Seção 4 · Degrau 4 e outros caminhos</div>
+  <h1 class="sec" style="font-size:19pt">Tempo, confiança e <em>momento</em></h1>
+  <p class="lead">Nenhum desses três motivos se resolve com preço. Cada um pede uma resposta diferente, e todas preservam o valor do principal.</p>
+
+  <div class="day"><span class="d">Tempo</span><span class="dt">A versão mais curta</span><span class="dg">degrau 4</span></div>
+  <p>Quem diz que não tem tempo quase sempre está recusando o tamanho, e não o resultado. Mostre um caminho mais curto. Dá pra fazer de dois jeitos:</p>
+  <div class="grid2">
+    <div class="card soft"><h4>Trilha enxuta, mesmo produto</h4><p class="small">Só as aulas essenciais, na ordem mínima, com o tempo por semana escrito em minutos da rotina real. O preço é o mesmo: o que muda é o caminho dentro do programa.</p></div>
+    <div class="card soft"><h4>Produto curto, separado</h4><p class="small">Se a pesquisa mostrou que o principal é grande demais pra esse público, um produto de poucos dias que resolve uma parte. Segue as mesmas regras da versão menor.</p></div>
+  </div>
+  <div class="msg" style="margin-top:2.6mm"><div class="mh"><span class="ch w">WhatsApp</span><span class="when">pra quem respondeu tempo</span></div>
+    <p>"Você me disse que o tempo foi o que pesou. Montei um caminho mais curto: <span class="bl s"></span> aulas de <span class="bl s"></span> minutos, <span class="bl s"></span> por semana, na ordem certa pra <span class="bl l"></span>. Quer que eu te mostre como fica na sua semana?"</p>
+  </div>
+
+  <div class="day"><span class="d">Confiança</span><span class="dt">Prova e garantia explicada</span></div>
+  <p>Quem não teve certeza se funcionaria pro caso dele precisa de evidência, e não de preço menor. Três coisas ajudam: um caso com o mesmo ponto de partida (dentro das regras do seu conselho), a garantia explicada com clareza (em compra online, a lei já garante sete dias pra desistir) e a resposta individual à dúvida que ele escreveu na pergunta 4.</p>
+  <div class="msg"><div class="mh"><span class="ch w">WhatsApp</span><span class="when">pra quem respondeu confiança</span></div>
+    <p>"Você escreveu que não sabia se funcionaria pra <span class="bl l"></span>. Faz sentido pensar isso. A <span class="bl s"></span> chegou exatamente nesse ponto e <span class="bl l"></span>. E você tem <span class="bl s"></span> dias pra testar: se não fizer sentido, eu devolvo o valor. Quer que eu te conte como foi o começo dela?"</p>
+  </div>
+
+  <div class="day"><span class="d">Momento</span><span class="dt">Lista da próxima turma</span></div>
+  <p>Quem disse "agora não" e deu uma data não deve ser pressionado. Anote a data, coloque na lista da próxima turma e mantenha contato com conteúdo. Essa pessoa costuma voltar como uma das mais quentes da próxima captação.</p>
+  <div class="msg"><div class="mh"><span class="ch w">WhatsApp</span><span class="when">pra quem respondeu momento</span></div>
+    <p>"Combinado. Te coloquei na lista da próxima turma e você fica sabendo antes de todo mundo. Você comentou que <span class="bl l"></span> deve acontecer em <span class="bl s"></span>. Eu te procuro perto disso, tá?"</p>
+  </div>
+  <div class="callout">
+    <h4>Um caminho por pessoa</h4>
+    <p>Cada pessoa recebe só a mensagem do motivo dela. Quem respondeu tempo não recebe a versão menor, e quem respondeu momento não recebe oferta nenhuma agora. É isso que separa recuperação de disparo em massa.</p>
+  </div>
+</div></section>
+
+<!-- 10 DESCONTO -->
+<section class="page"><div class="inner">
+  <div class="kicker">Seção 5 · Degrau 5</div>
+  <h1 class="sec">Desconto, só <em>no final</em></h1>
+  <p class="lead">Desconto não é proibido. Ele é a última ferramenta, pro pedaço da lista que passou por todas as etapas e ainda disse que o preço foi o único motivo. Usado primeiro, ele resolve o motivo errado e ensina a audiência a esperar.</p>
+  <div class="grid2">
+    <div>
+      <h3 style="margin-top:0">As regras do desconto</h3>
+      <ul class="check">
+        <li><span class="cb"></span><b>Prazo real:</b> começa e termina numa hora marcada, e não volta.</li>
+        <li><span class="cb"></span><b>Motivo honesto:</b> diga por que ele existe. Nada de data comemorativa inventada.</li>
+        <li><span class="cb"></span><b>Só pra quem passou pelas etapas:</b> reabertura, pesquisa e versão menor recusada.</li>
+        <li><span class="cb"></span><b>Em mensagem direta, nunca em post.</b> Desconto público vira o preço de referência do produto.</li>
+        <li><span class="cb"></span><b>Com contrapartida:</b> sem os bônus de quem entrou no prazo, ou só à vista.</li>
+        <li><span class="cb"></span><b>Não em toda turma.</b> Se todo fechamento tem desconto depois, a audiência aprende a comprar só no desconto.</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="margin-top:0">O teste antes do desconto</h3>
+      <ul class="check">
+        <li><span class="cb"></span>Reabri, por pouco tempo, pra quem pediu?</li>
+        <li><span class="cb"></span>Perguntei o motivo pra quem não comprou?</li>
+        <li><span class="cb"></span>Mostrei o parcelamento e a versão menor pra quem respondeu dinheiro?</li>
+        <li><span class="cb"></span>Mostrei a versão curta pra quem respondeu tempo?</li>
+        <li><span class="cb"></span>Dei prova e expliquei a garantia pra quem respondeu confiança?</li>
+      </ul>
+      <p class="small muted">Se alguma resposta for "não", o desconto ainda não é o próximo passo.</p>
+    </div>
+  </div>
+  <div class="vs">
+    <div class="bad"><div class="tag">Assim não</div><p>No dia seguinte ao fechamento, nos stories: "Perdeu? Hoje com 40% de desconto pra todo mundo!" <span class="note">(exemplo ilustrativo)</span></p><p class="small muted" style="margin-top:1.6mm">Quem comprou no prazo vê. Quem não comprou por tempo continua sem tempo.</p></div>
+    <div class="good"><div class="tag">Assim sim</div><p>No privado, pra quem disse que o valor foi o único motivo e recusou a versão menor: "condição especial até quinta, 20h, sem os bônus de quem entrou no prazo". <span class="note">(exemplo ilustrativo)</span></p></div>
+  </div>
+  <div class="script">
+    <div class="lab">Roteiro com lacunas <span>WhatsApp ou e-mail individual</span></div>
+    <p>"Oi, [nome]. Você me contou que o único motivo pra não entrar no [produto] foi o valor, e que a versão menor não resolvia o que você precisa. Faz sentido. Por isso eu abri uma condição só pra quem me respondeu isso: <span class="bl"></span> <span class="muted small">(valor ou condição)</span>, sem <span class="bl"></span> <span class="muted small">(o que fica de fora)</span>.</p>
+    <p>Ela vale até <span class="bl s"></span> de <span class="bl s"></span>, e não vai se repetir nesta turma. O link é este: [link]. Se não for o momento, eu te coloco na lista da próxima turma."</p>
+  </div>
+  <div class="callout ink">
+    <h4>Desconto como primeira opção é dinheiro deixado na mesa</h4>
+    <p>Ele vende mais barato pra quem compraria com parcelamento, com uma versão menor ou com uma prova a mais. E ainda muda o preço que a sua audiência acredita que o seu produto vale. Por isso ele fica no último degrau.</p>
+  </div>
+  <div class="grid2">
+    <div class="field"><label>Minha condição, se chegar aqui</label><div class="fl"></div></div>
+    <div class="field"><label>O que fica de fora</label><div class="fl"></div></div>
+  </div>
+</div></section>
+
+<!-- 11 EXEMPLO -->
+<section class="page"><div class="inner">
+  <div class="kicker">Exemplo preenchido</div>
+  <h1 class="sec">A recuperação de uma <em>nutricionista</em></h1>
+  <p class="lead">Um programa em grupo de oito semanas pra quem recomeça a dieta toda segunda-feira. Os números abaixo são inventados pra mostrar a leitura, etapa por etapa. <span class="ill">exemplo ilustrativo</span></p>
+  <table class="t ex">
+    <tr><th style="width:15%">Etapa</th><th>O que ela fez</th><th style="width:27%">O que voltou</th></tr>
+    <tr><td class="k">Listas</td><td>Exportou tudo no fechamento e tirou os compradores: 1.200 inscritos, 40 checkouts abandonados, 180 cliques no link, 260 até a oferta.</td><td>Seis listas, uma pessoa em cada.</td></tr>
+    <tr><td class="k">Reabertura</td><td>36 horas, mesmo preço, sem o bônus de quem entrou no prazo. Só pra lista de espera (65 pessoas) e checkout abandonado.</td><td>9 vendas.</td></tr>
+    <tr><td class="k">Pesquisa</td><td>Cinco perguntas por formulário pra todos os não compradores. No WhatsApp, só a 2 e a 3 pros mais quentes.</td><td>140 respostas: 52 dinheiro, 38 tempo, 24 confiança, 18 momento, 8 não era pra mim.</td></tr>
+    <tr><td class="k">Dinheiro</td><td>Primeiro o parcelamento. Depois, a versão menor: "Cardápio da Semana", quatro aulas gravadas e os modelos de cardápio, sem acompanhamento. Valor abatido se entrar na próxima turma.</td><td>3 pelo parcelamento, 11 na versão menor.</td></tr>
+    <tr><td class="k">Tempo</td><td>Trilha enxuta do mesmo programa: três aulas essenciais e uma tarefa por semana, com os minutos de cada uma.</td><td>4 vendas do principal.</td></tr>
+    <tr><td class="k">Confiança</td><td>Caso de uma aluna com o mesmo histórico de recomeços, garantia explicada e resposta individual à pergunta 4.</td><td>3 vendas do principal.</td></tr>
+    <tr><td class="k">Momento</td><td>Lista da próxima turma, com a data que cada pessoa informou.</td><td>18 na lista.</td></tr>
+    <tr><td class="k">Desconto</td><td>Só pra 15 pessoas que disseram que o preço foi o único motivo e recusaram a versão menor. 48 horas, à vista, sem bônus.</td><td>2 vendas.</td></tr>
+  </table>
+  <p class="note">Leitura: a versão menor e os caminhos de tempo e confiança trouxeram mais do que o desconto. Se ela tivesse começado com desconto pra lista inteira, teria vendido o principal mais barato inclusive pra quem não comprou por tempo ou por dúvida. (exemplo ilustrativo)</p>
+  <div class="callout">
+    <h4>O que ela não fez</h4>
+    <p>Não anunciou a reabertura nos stories, não reabriu duas vezes e não ofereceu desconto pra quem respondeu tempo, confiança ou momento. O preço do programa continua o mesmo pra próxima turma.</p>
+  </div>
+  <h3>Como fica em outras áreas <span class="ill">exemplos ilustrativos</span></h3>
+  <table class="t ex">
+    <tr><th style="width:15%">Área</th><th>Versão menor (dinheiro)</th><th>Versão curta (tempo)</th><th>Prova (confiança)</th></tr>
+    <tr><td class="k">Psicóloga</td><td>Curso gravado de psicoeducação sobre ansiedade no trabalho, com exercícios, sem os encontros em grupo.</td><td>Três práticas de dez minutos por dia, na ordem da primeira semana.</td><td>Explicar como funcionam os encontros e o sigilo do grupo. Prova de processo, dentro das regras do CFP.</td></tr>
+    <tr><td class="k">Advogado</td><td>Kit de modelos de cláusulas pra prestador de serviço, com uma aula de uso, sem a revisão individual.</td><td>As cinco cláusulas essenciais numa tarde, com checklist.</td><td>Demonstração da revisão de um contrato anonimizado, dentro das regras de publicidade da OAB.</td></tr>
+    <tr><td class="k">Nutricionista</td><td>"Cardápio da Semana": aulas gravadas e modelos, sem acompanhamento.</td><td>Trilha de três aulas e uma tarefa por semana.</td><td>Caso com o mesmo histórico de recomeços, sem foto de antes e depois.</td></tr>
+  </table>
+</div></section>
+
+<!-- 12 NUMEROS -->
+<section class="page"><div class="inner">
+  <div class="kicker">Seção 6</div>
+  <h1 class="sec">Números da recuperação pra <em>acompanhar</em></h1>
+  <p class="lead">A recuperação funciona quando cada degrau traz de volta uma parte de quem não comprou, sem que o desconto carregue o resultado sozinho. Estes são os números que mostram isso.</p>
+  <table class="t">
+    <tr><th style="width:22%">Número</th><th style="width:29%">Conta</th><th>Se estiver abaixo da sua meta</th></tr>
+    <tr><td class="k">Lista de espera</td><td>pessoas na lista ÷ quem ficou até a oferta e não comprou</td><td>O link da lista não apareceu. Coloque no e-mail, no WhatsApp e na página fechada.</td></tr>
+    <tr><td class="k">Conversão da reabertura</td><td>vendas na reabertura ÷ pessoas avisadas</td><td>Janela confusa ou aviso genérico. Contato individual pro checkout abandonado.</td></tr>
+    <tr><td class="k">Taxa de resposta</td><td>respostas da pesquisa ÷ pesquisas enviadas</td><td>Pesquisa longa ou enviada tarde. Corte pra duas perguntas no WhatsApp.</td></tr>
+    <tr><td class="k">Conversão por caminho</td><td>vendas ÷ pessoas que receberam aquele caminho</td><td>A oferta não bate com o motivo. Releia as respostas abertas.</td></tr>
+    <tr><td class="k">Peso do desconto</td><td>vendas com desconto ÷ total recuperado</td><td>Se o desconto concentra a maior parte, os degraus de antes estão fracos.</td></tr>
+    <tr><td class="k">Reembolso</td><td>reembolsos ÷ vendas da recuperação</td><td>Pressão demais ou versão menor que não resolve nada. Revise o tom e a entrega.</td></tr>
+  </table>
+  <h3>Exemplo de painel <span class="ill">exemplo ilustrativo</span></h3>
+  <table class="t nw">
+    <tr><th>Etapa</th><th>Receberam</th><th>Vendas</th><th>Conversão</th><th>Do total recuperado</th></tr>
+    <tr><td>Reabertura</td><td>105</td><td>9</td><td>8,6%</td><td>28%</td></tr>
+    <tr><td>Dinheiro (parcelamento e versão menor)</td><td>52</td><td>14</td><td>26,9%</td><td>44%</td></tr>
+    <tr><td>Tempo e confiança</td><td>62</td><td>7</td><td>11,3%</td><td>22%</td></tr>
+    <tr><td>Desconto</td><td>15</td><td>2</td><td>13,3%</td><td>6%</td></tr>
+  </table>
+  <p class="note">Números inventados, os mesmos da página 11. Nesse caso, o desconto pesa pouco no total, sinal de que os degraus anteriores fizeram o trabalho. (exemplo ilustrativo)</p>
+  <p class="small"><b>Como definir as metas:</b> use o seu histórico. Se é a primeira recuperação, ela vira a sua régua. Compare sempre com você mesmo, e mude uma coisa por vez.</p>
+  <h3>O meu painel</h3>
+  <table class="t fill">
+    <tr><th style="width:24%">Etapa</th><th>Receberam</th><th>Vendas</th><th>Conversão</th><th style="width:30%">O que vou mudar no próximo</th></tr>
+    <tr><td class="k">Reabertura</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="k">Pesquisa (respostas)</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="k">Versão menor</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="k">Versão curta / prova</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="k">Desconto</td><td></td><td></td><td></td><td></td></tr>
+  </table>
+</div></section>
+
+<!-- 13 CHECKLIST -->
+<section class="page"><div class="inner">
+  <div class="kicker">Checklist final</div>
+  <h1 class="sec">Checklist da <em>recuperação</em></h1>
+  <div class="grid2">
+    <div>
+      <h3 style="margin-top:0">Listas</h3>
+      <ul class="check">
+        <li><span class="cb"></span>Exportei checkout abandonado, cliques, presença e tarefa no dia do fechamento.</li>
+        <li><span class="cb"></span>Tirei os compradores de todas as listas.</li>
+        <li><span class="cb"></span>Cada pessoa está em um segmento só, o mais quente.</li>
+        <li><span class="cb"></span>Contato individual tem responsável com nome.</li>
+      </ul>
+      <h3>Reabertura</h3>
+      <ul class="check">
+        <li><span class="cb"></span>Link da lista de espera no e-mail, no WhatsApp e na página fechada.</li>
+        <li><span class="cb"></span>Reabertura não foi prometida durante o carrinho.</li>
+        <li><span class="cb"></span>Janela curta, com hora de início e de fim.</li>
+        <li><span class="cb"></span>Mesma oferta e mesmo preço, sem bônus a mais.</li>
+        <li><span class="cb"></span>Fechou na hora marcada e não reabriu.</li>
+      </ul>
+      <h3>Pesquisa</h3>
+      <ul class="check">
+        <li><span class="cb"></span>Cinco perguntas, menos de dois minutos.</li>
+        <li><span class="cb"></span>Enviada no dia seguinte ao fechamento definitivo.</li>
+        <li><span class="cb"></span>Nenhuma oferta dentro da pesquisa.</li>
+        <li><span class="cb"></span>Respostas abertas lidas e frases repetidas separadas.</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="margin-top:0">Caminhos por motivo</h3>
+      <ul class="check">
+        <li><span class="cb"></span>Dinheiro: parcelamento primeiro, depois versão menor.</li>
+        <li><span class="cb"></span>Versão menor é outro produto, com o que fica de fora visível.</li>
+        <li><span class="cb"></span>Quem compra a versão menor tem como subir pro principal.</li>
+        <li><span class="cb"></span>Tempo: trilha enxuta ou produto curto, com minutos por semana.</li>
+        <li><span class="cb"></span>Confiança: caso parecido e garantia explicada.</li>
+        <li><span class="cb"></span>Momento: lista da próxima turma, com a data anotada.</li>
+      </ul>
+      <h3>Desconto</h3>
+      <ul class="check">
+        <li><span class="cb"></span>Só depois de passar pelo teste da página 10.</li>
+        <li><span class="cb"></span>Em mensagem direta, com prazo real e motivo honesto.</li>
+        <li><span class="cb"></span>Com contrapartida e sem repetir em toda turma.</li>
+      </ul>
+      <h3>Números</h3>
+      <ul class="check">
+        <li><span class="cb"></span>Painel com vendas e conversão por etapa.</li>
+        <li><span class="cb"></span>Peso do desconto no total anotado.</li>
+        <li><span class="cb"></span>Uma mudança escolhida pro próximo lançamento.</li>
+      </ul>
+    </div>
+  </div>
+  <h2>Plano da minha recuperação</h2>
+  <table class="t fill">
+    <tr><th style="width:24%">Etapa</th><th style="width:13%">Dia</th><th>Canal</th><th>Pra quem</th><th style="width:16%">Responsável</th></tr>
+    <tr><td class="k">Fechamento e lista</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="k">Aviso no privado</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="k">Reabertura</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="k">Pesquisa</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="k">Caminhos por motivo</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="k">Desconto, se houver</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="k">Lista da próxima turma</td><td></td><td></td><td></td><td></td></tr>
+  </table>
+  <p class="note">Quem entrou na lista da próxima turma é o começo da próxima captação. Guarde as respostas da pesquisa: elas são a primeira escuta do próximo lançamento.</p>
+</div></section>
+
+<!-- 14 PROXIMO PASSO -->
+<section class="page final"><div class="glow"></div><div class="inner">
+  <div class="kicker">Próximo passo</div>
+  <h1 class="sec">Agora é olhar o <em>seu</em> caso</h1>
+  <p class="lead">A ordem é a mesma pra qualquer lançamento. O que muda é o motivo de quem não comprou no seu, e ler isso pede um olhar no seu caso. Tem dois caminhos, os dois gratuitos.</p>
+  <div class="fcard">
+    <div class="tagx">Comunidade</div>
+    <h2>Grupo do Estrategista</h2>
+    <p>Um grupo no WhatsApp onde eu compartilho leituras de lançamento, materiais como este e os avisos dos próximos encontros. Sem spam, sem corrente.</p>
+    <a class="act" href="https://chat.whatsapp.com/HeBIG8dzGCFHsmwcDZ9p6T" style="color:inherit;text-decoration:none">Toque aqui pra entrar no grupo no WhatsApp</a>
+  </div>
+  <div class="fcard">
+    <div class="tagx">Diagnóstico gratuito</div>
+    <h2>O Tabuleiro</h2>
+    <p>Doze perguntas, uns quatro minutos. Você recebe uma nota por etapa do lançamento e descobre qual delas está travando o seu resultado. Se fizer sentido, a conversa continua no WhatsApp.</p>
+    <span class="act">estrategistadelancamento.com.br</span>
+  </div>
+  <h4 style="color:var(--gold);margin-top:6mm">Outros materiais da série · comente a palavra no post ou peça no direct</h4>
+  <div class="series">
+    <div><b>Checklist de Lançamento</b>Comenta <span>CHECKLIST</span></div>
+    <div><b>Pesquisa antes do produto</b>Comenta <span>PESQUISA</span></div>
+    <div><b>Estrutura de Oferta</b>Comenta <span>OFERTA</span></div>
+    <div><b>Checklist de Captação</b>Comenta <span>CAPTAÇÃO</span></div>
+    <div><b>Sequência de Aquecimento</b>Comenta <span>AQUECIMENTO</span></div>
+    <div><b>Roteiro do Evento</b>Comenta <span>EVENTO</span></div>
+    <div><b>Cronograma do Carrinho</b>Comenta <span>CARRINHO</span></div>
+    <div><b>Do lançamento ao perpétuo</b>Comenta <span>PERPÉTUO</span></div>
+  </div>
+  <p class="sign">"Desconto como primeira opção é dinheiro deixado na mesa."</p>
+  <div class="signby">Bruno Israel Gonçalves · O Estrategista</div>
+  <div class="disc">Os números deste material são exemplos ilustrativos. Nenhum resultado é prometido: cada lançamento depende da audiência, da oferta e da execução.</div>
+</div></section>
+
+<script src="base.js"></script>
+</body>
+</html>
