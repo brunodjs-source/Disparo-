@@ -31,7 +31,7 @@ let K=sessionStorage.getItem('k')||'',L=[];const H=()=>({Authorization:'Bearer '
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 async function entrar(){K=document.getElementById('pw').value;const ok=await load();if(ok)sessionStorage.setItem('k',K);else document.getElementById('le').textContent='Senha inválida.'}
 async function load(){const r=await fetch('/api/admin',{headers:H()});if(!r.ok)return false;L=(await r.json()).leads;document.getElementById('login').hidden=true;document.getElementById('app').hidden=false;
-const fm=document.getElementById('fm');fm.innerHTML='<option value="">Todos os materiais</option>'+['checklist','pesquisa','oferta','captacao','aquecimento'].map(m=>`<option ${fm.value===m?'selected':''}>${m}</option>`).join('');
+const fm=document.getElementById('fm');fm.innerHTML='<option value="">Todos os materiais</option>'+['checklist','pesquisa','oferta','captacao','aquecimento','evento','carrinho','recuperacao','perpetuo'].map(m=>`<option ${fm.value===m?'selected':''}>${m}</option>`).join('');
 render();pdfs();return true}
 function render(){const m=fm.value,t=ft.value,q=fq.value.toLowerCase();const R=L.filter(l=>(!m||l.material===m)&&(!t||l.temperatura===t)&&(!q||[l.nome,l.email,l.instagram,l.whatsapp].join(' ').toLowerCase().includes(q)));
 const c=k=>L.filter(l=>l.temperatura===k).length;const hoje=new Date().toISOString().slice(0,10);

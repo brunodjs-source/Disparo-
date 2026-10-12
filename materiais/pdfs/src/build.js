@@ -1,10 +1,10 @@
-// Uso: node build.js [slug ...]   (sem argumentos gera os 5)
+// Uso: node build.js [slug ...]   (sem argumentos gera todos)
 const path = require('path');
 const { chromium } = require('/opt/node-tools/node_modules/playwright');
 
 const SRC = __dirname;
 const OUT = path.resolve(SRC, '..');
-const ALL = ['checklist', 'pesquisa', 'oferta', 'captacao', 'aquecimento'];
+const ALL = ['checklist', 'pesquisa', 'oferta', 'captacao', 'aquecimento', 'evento', 'carrinho', 'recuperacao', 'perpetuo'];
 
 (async () => {
   const slugs = process.argv.slice(2).length ? process.argv.slice(2) : ALL;
