@@ -1,0 +1,44 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
+<title>Painel de Leads · O Estrategista</title>
+<style>
+:root{--bg:#FAF9F6;--t:#161513;--g:#C48C34;--l:#E9E2D4;--m:#6b665d}*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--t);font:14px/1.5 Inter,system-ui,sans-serif}.w{max-width:1280px;margin:0 auto;padding:24px 16px}
+h1{font:800 26px Georgia,serif;margin-bottom:4px}.m{color:var(--m)}.bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0}
+input,select{font:14px Inter;padding:9px 12px;border:2px solid var(--l);border-radius:10px;background:#fff}
+button,a.b{font:600 14px Inter;padding:10px 16px;border-radius:10px;border:0;background:var(--g);color:#fff;cursor:pointer;text-decoration:none}a.b.d,button.d{background:var(--t)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:14px 0}.c{background:#fff;border:2px solid var(--l);border-radius:14px;padding:14px}.c b{display:block;font:800 26px Georgia}
+table{width:100%;border-collapse:collapse;background:#fff;border-radius:14px;overflow:hidden}th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--l);vertical-align:top}th{background:#F3EEE4;font-size:12px;letter-spacing:.5px}
+.tag{display:inline-block;padding:2px 9px;border-radius:99px;font-size:12px;font-weight:700}.quente{background:#FDE2D9;color:#A3360F}.morno{background:#FBEFD6;color:#8A5A00}.frio{background:#E6ECF3;color:#3B5470}
+.scroll{overflow-x:auto}#login{max-width:360px;margin:12vh auto;background:#fff;border:2px solid var(--l);border-radius:16px;padding:24px}#login input{width:100%;margin:12px 0}
+.pdfs td{white-space:nowrap}
+</style></head><body>
+<div id="login"><h1>Painel de Leads</h1><p class="m">Digite a senha do painel.</p><input id="pw" type="password" placeholder="Senha"><button onclick="entrar()">Entrar</button><p id="le" style="color:#B3261E;margin-top:8px"></p></div>
+<div class="w" id="app" hidden>
+<h1>Painel de Leads</h1><p class="m">Cadastros dos materiais gratuitos do Estrategista.</p>
+<div class="cards" id="cards"></div>
+<div class="bar"><select id="fm" onchange="render()"><option value="">Todos os materiais</option></select>
+<select id="ft" onchange="render()"><option value="">Todas as temperaturas</option><option>quente</option><option>morno</option><option>frio</option></select>
+<input id="fq" placeholder="Buscar nome, e-mail, @" oninput="render()"><button class="d" onclick="csv()">Baixar CSV</button><button onclick="load()">Atualizar</button></div>
+<div class="scroll"><table><thead><tr><th>Data</th><th>Material</th><th>Temp.</th><th>Nome</th><th>WhatsApp</th><th>E-mail</th><th>Instagram</th><th>Profissão</th><th>Seguidores</th><th>Já lançou</th><th>Quando</th><th>Dificuldade</th></tr></thead><tbody id="tb"></tbody></table></div>
+<h1 style="margin-top:34px;font-size:20px">Materiais (PDF)</h1><p class="m">Baixe os PDFs ou envie uma versão nova pra substituir.</p>
+<div class="scroll" style="margin-top:12px"><table class="pdfs"><thead><tr><th>Material</th><th>Status</th><th>Atualizado</th><th></th></tr></thead><tbody id="pb"></tbody></table></div>
+</div>
+<script>
+let K=sessionStorage.getItem('k')||'',L=[];const H=()=>({Authorization:'Bearer '+K});
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+async function entrar(){K=document.getElementById('pw').value;const ok=await load();if(ok)sessionStorage.setItem('k',K);else document.getElementById('le').textContent='Senha inválida.'}
+async function load(){const r=await fetch('/api/admin',{headers:H()});if(!r.ok)return false;L=(await r.json()).leads;document.getElementById('login').hidden=true;document.getElementById('app').hidden=false;
+const fm=document.getElementById('fm');fm.innerHTML='<option value="">Todos os materiais</option>'+['checklist','pesquisa','oferta','captacao','aquecimento'].map(m=>`<option ${fm.value===m?'selected':''}>${m}</option>`).join('');
+render();pdfs();return true}
+function render(){const m=fm.value,t=ft.value,q=fq.value.toLowerCase();const R=L.filter(l=>(!m||l.material===m)&&(!t||l.temperatura===t)&&(!q||[l.nome,l.email,l.instagram,l.whatsapp].join(' ').toLowerCase().includes(q)));
+const c=k=>L.filter(l=>l.temperatura===k).length;const hoje=new Date().toISOString().slice(0,10);
+document.getElementById('cards').innerHTML=`<div class="c">Total<b>${L.length}</b></div><div class="c">Hoje<b>${L.filter(l=>l.criadoEm.startsWith(hoje)).length}</b></div><div class="c">Quentes<b>${c('quente')}</b></div><div class="c">Mornos<b>${c('morno')}</b></div><div class="c">Frios<b>${c('frio')}</b></div>`;
+document.getElementById('tb').innerHTML=R.map(l=>{const w=l.whatsapp.replace(/\D/g,'');return`<tr><td>${new Date(l.criadoEm).toLocaleString('pt-BR')}</td><td>${esc(l.material)}</td><td><span class="tag ${l.temperatura}">${l.temperatura}</span></td><td>${esc(l.nome)}</td><td><a href="https://wa.me/${w.length<=11?'55'+w:w}" target="_blank">${esc(l.whatsapp)}</a></td><td>${esc(l.email)}</td><td>${esc(l.instagram)}</td><td>${esc(l.profissao)}</td><td>${esc(l.seguidores)}</td><td>${esc(l.lancou)}</td><td>${esc(l.quando)}</td><td>${esc(l.desafio)}</td></tr>`}).join('')||'<tr><td colspan="12" class="m">Nenhum cadastro ainda.</td></tr>'}
+async function csv(){const m=fm.value;const r=await fetch('/api/admin?format=csv'+(m?'&m='+m:''),{headers:H()});const b=await r.blob();const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=`leads-${m||'todos'}.csv`;a.click()}
+async function pdfs(){const r=await fetch('/api/admin?action=pdfs',{headers:H()});const P=await r.json();
+document.getElementById('pb').innerHTML=P.map(p=>`<tr><td><b>${esc(p.titulo)}</b><br><span class="m">${p.material}</span></td><td>${p.enviado?'Disponível ('+Math.round(p.tamanho/1024)+' KB)':'<span style="color:#B3261E">Falta enviar</span>'}</td><td>${p.atualizadoEm?new Date(p.atualizadoEm).toLocaleString('pt-BR'):''}</td>
+<td><button class="d" onclick="baixar('${p.material}')" ${p.enviado?'':'disabled'}>Baixar</button> <label class="b" style="display:inline-block;background:var(--g);color:#fff;padding:10px 16px;border-radius:10px;cursor:pointer">Enviar novo<input type="file" accept="application/pdf" hidden onchange="up('${p.material}',this.files[0])"></label> <a class="b d" href="/m/${p.material}" target="_blank">Ver página</a></td></tr>`).join('')}
+async function baixar(m){const r=await fetch('/api/material?m='+m,{headers:H()});const b=await r.blob();const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=`estrategista-${m}.pdf`;a.click()}
+async function up(m,f){if(!f)return;const r=await fetch('/api/admin?action=upload&m='+m,{method:'POST',headers:{...H(),'Content-Type':'application/pdf'},body:f});alert(r.ok?'PDF atualizado.':'Falhou: '+(await r.text()));pdfs()}
+const fm=document.getElementById('fm'),ft=document.getElementById('ft'),fq=document.getElementById('fq');if(K)load();
+</script></body></html>
