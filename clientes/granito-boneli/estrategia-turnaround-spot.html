@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Estratégia Turnaround Spot</title>
+<style>
+/* Identidade proposta Granito Boneli: azul-marinho institucional + dourado como detalhe. Trocar tokens pelo manual de marca oficial. */
+:root{--navy:#0f2238;--navy2:#1a3352;--gold:#b08d4c;--paper:#faf8f4;--ink:#16202c;--mut:#5d6672;--line:#e3ddd0;--card:#fff;--ok:#2f6b4a;--warn:#9b3b2f}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0c1522;--ink:#ebe7df;--mut:#9aa5b3;--line:#24344a;--card:#13202f;--navy:#091726;--navy2:#13283f;--gold:#d3b277;--ok:#80c79d;--warn:#e38c80}}
+:root[data-theme="dark"]{--paper:#0c1522;--ink:#ebe7df;--mut:#9aa5b3;--line:#24344a;--card:#13202f;--navy:#091726;--navy2:#13283f;--gold:#d3b277;--ok:#80c79d;--warn:#e38c80}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15.5px/1.65 Georgia,"Times New Roman",serif}
+.cover{background:var(--navy);color:#f3efe6;padding:56px 16px 48px;border-bottom:4px solid var(--gold)}
+.cover .in,main{max-width:940px;margin:0 auto}
+main{padding:8px 16px 80px}
+.k{font:600 11.5px/1 system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+h1{font-size:40px;line-height:1.1;margin:14px 0 10px;font-weight:400}
+.cover p{color:#c9cfd8;max-width:62ch}
+h2{font-size:27px;font-weight:400;margin:56px 0 6px}
+h2 small{display:block;font:600 11.5px system-ui;letter-spacing:.16em;color:var(--gold);text-transform:uppercase;margin-bottom:6px}
+h3{font:600 15px system-ui,sans-serif;margin:22px 0 6px;color:var(--navy2)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) h3{color:var(--gold)}}
+:root[data-theme="dark"] h3{color:var(--gold)}
+p,li{max-width:70ch}.mut{color:var(--mut)}
+.rule{height:1px;background:var(--gold);width:64px;margin:10px 0 18px}
+table{width:100%;border-collapse:collapse;font:14px/1.5 system-ui,sans-serif;background:var(--card);margin:10px 0}
+th,td{border-bottom:1px solid var(--line);padding:9px 10px;text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--mut);font-size:12px;letter-spacing:.06em;text-transform:uppercase;border-bottom:2px solid var(--gold)}
+.wrap{overflow-x:auto}
+.box{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--gold);padding:14px 18px;margin:16px 0;font:14.5px/1.6 system-ui,sans-serif}
+.box.w{border-left-color:var(--warn)}
+.quote{font-size:22px;line-height:1.35;border-left:3px solid var(--gold);padding:4px 0 4px 18px;margin:20px 0;max-width:60ch}
+.map{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:20px 0}
+@media (max-width:720px){.map{grid-template-columns:1fr 1fr}}
+.map div{background:var(--navy);color:#f3efe6;padding:14px 12px;font:13px/1.4 system-ui}
+.map b{display:block;color:var(--gold);font:600 11px system-ui;letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px}
+.map span{font:18px Georgia,serif}
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:12px 0}
+.kpi div{background:var(--card);border:1px solid var(--line);padding:12px;font:13px system-ui}
+.kpi b{display:block;font:24px Georgia,serif;color:var(--gold)}
+.ad{background:var(--card);border:1px solid var(--line);padding:14px 16px;font:14px/1.5 system-ui;margin:10px 0}
+.ad .u{color:var(--ok);font-size:12.5px}.ad .t{color:#1a4fa0;font-size:17px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .ad .t{color:#8ab4f8}}
+.chat{max-width:420px;font:14px/1.45 system-ui}
+.chat p{margin:6px 0;padding:8px 12px;border-radius:10px;max-width:85%}
+.chat .b{background:var(--card);border:1px solid var(--line)}
+.chat .u{background:var(--navy2);color:#fff;margin-left:auto;text-align:right}
+@media print{.cover{-webkit-print-color-adjust:exact;print-color-adjust:exact}.map div{-webkit-print-color-adjust:exact;print-color-adjust:exact}h2{break-before:page}table,.box,.ad,.chat{break-inside:avoid}@page{size:A4;margin:14mm}}
+</style></head><body>
+<header class="cover"><div class="in">
+<div class="k">Granito Boneli Advogados Associados · Estratégia de produto</div>
+<h1>Turnaround Spot<br>do primeiro clique ao acordo</h1>
+<div class="rule"></div>
+<p>Funil completo de captação, qualificação e conversão do novo produto de reestruturação de dívidas bancárias para empresas, MEI e pessoa física.</p>
+<p style="font:13px system-ui;color:#9fa9b6">Para Dr. Leonardo Guarnieri e sócios · Campinas, outubro de 2026 · Estratégia por Bruno Israel, O Estrategista</p>
+</div></header>
+<main>
+
+<h2><small>Ponto de partida</small>Um produto validado, que ainda depende de pessoas para vender</h2>
+<p>O método Turnaround nasceu da tese de mestrado do sócio fundador e está em prática há oito anos. Funciona. O que limita o crescimento não é o produto, é o canal: hoje a carteira nasce de advogados vendendo, de parceiros como Lázaro do Carmo e das palestras do Dr. Granito. São canais excelentes para o Turnaround completo, de ticket alto.</p>
+<p>O <b>Spot</b> é outro jogo. Mensalidade menor, dívida menor, e agora pessoa física e MEI. É um produto de <b>volume</b>, e volume não cabe na agenda de palestra. Quem tem uma dívida bancária apertando o caixa não espera ser indicado: ele <b>procura no Google</b>, hoje, à noite, preocupado.</p>
+<div class="quote">A estratégia é estar na frente dessa pessoa no momento em que ela procura, e entregar ao advogado apenas quem já se enquadra.</div>
+
+<h3>Os princípios da marca que governam todo o funil</h3>
+<div class="wrap"><table>
+<tr><th>Princípio</th><th>Como aparece no funil</th></tr>
+<tr><td><b>Sobriedade</b></td><td>Azul-marinho e dourado como detalhe, serifa clássica, fotografia real do escritório e dos sócios. Nada de vermelho de urgência, setas ou "ÚLTIMAS VAGAS".</td></tr>
+<tr><td><b>Autoridade técnica</b></td><td>O argumento central é o método (tese, oito anos, equipe de ~70 advogados), não promessa de desconto.</td></tr>
+<tr><td><b>Acolhimento sem julgamento</b></td><td>Quem chega está constrangido. O tom é "isso tem caminho jurídico", nunca "você errou".</td></tr>
+<tr><td><b>Conformidade OAB</b></td><td>Provimento 205/2021: informar, não mercantilizar; sem promessa de resultado, sem preço em anúncio.</td></tr>
+<tr><td><b>Discrição</b></td><td>A mecânica estratégica do método é tratada só na reunião com o advogado, nunca em material público.</td></tr>
+</table></div>
+<div class="box w"><b>Vocabulário proibido em todo material público:</b> "blindagem", "pare de pagar", "o banco não vai achar seus bens", "o banco nunca perde", "elimine sua dívida", "pague só X%", "garantido". Além do risco ético (OAB) e de reprovação no Google (política de serviços de dívida), texto público que associa reorganização patrimonial a não pagamento pode ser usado contra o próprio cliente numa alegação de fraude contra credores ou fraude à execução. <b>Vocabulário da marca:</b> reestruturação de passivo bancário · análise dos contratos · defesa técnica · negociação para quitação · caminho jurídico.</div>
+
+<h2><small>O mapa</small>Cinco fases, cada uma com número esperado e plano B</h2>
+<p>A estratégia segue o Método Xeque-Mate do Estrategista, em cinco lances. Cada lance tem um responsável, uma meta e o que fazer se a meta não vier. Sem isso, não é estratégia, é torcida.</p>
+<div class="map">
+<div><b>Lance 1 · Abertura</b><span>Concepção</span><br>oferta, regras e promessa</div>
+<div><b>Lance 2 · Gambito</b><span>Captação</span><br>Google, página e convite</div>
+<div><b>Lance 3 · Meio-jogo</b><span>Qualificação</span><br>assistente, SDR e confiança</div>
+<div><b>Lance 4 · Xeque-mate</b><span>Conversão</span><br>análise e contratação</div>
+<div><b>Lance 5 · Promoção</b><span>Pós-venda</span><br>recuperação, upgrade, indicação</div>
+</div>
+
+<!-- LANCE 1 -->
+<h2><small>Lance 1 · Abertura</small>Antes do anúncio, a oferta precisa caber numa frase</h2>
+<p>Todo lance começa olhando para trás: quem já fechou o Turnaround, por que fechou, o que perguntou na primeira conversa. As respostas viram a promessa, a página e o roteiro do assistente.</p>
+<h3>1.1 Regras de enquadramento por escrito</h3>
+<div class="wrap"><table><tr><th>Critério</th><th>Spot</th><th>Turnaround completo</th><th>Não atende</th></tr>
+<tr><td>Quem</td><td>PJ, MEI, PF</td><td>PJ e sócios</td><td>—</td></tr>
+<tr><td>Valor total da dívida bancária</td><td>até o teto <i>[a definir pelos sócios]</i></td><td>acima do teto</td><td>abaixo do piso viável <i>[a definir]</i></td></tr>
+<tr><td>Garantias</td><td>sem alienação fiduciária; aval aceito</td><td>com garantias reais</td><td>—</td></tr>
+<tr><td>Situação</td><td>em dia, atrasado ou já executado</td><td>idem</td><td>dívida só com não-bancos <i>[confirmar]</i></td></tr></table></div>
+<h3>1.2 A promessa (OAB-safe)</h3>
+<div class="quote">"Sua dívida com o banco tem caminho jurídico. Analisamos seus contratos e conduzimos a reestruturação até a negociação para quitação."</div>
+<p><b>Mecanismo único</b> (o que torna a promessa crível): <i>Método Turnaround</i>, desenvolvido em tese de mestrado do sócio fundador e aplicado há oito anos. O nome do método é o diferencial. Nenhum concorrente local tem uma tese por trás do serviço.</p>
+<h3>1.3 Persona em três portas</h3>
+<div class="wrap"><table><tr><th>Porta</th><th>Quem é</th><th>Dor dita em voz alta</th><th>Medo real</th></tr>
+<tr><td><b>Empresário</b></td><td>Dono de pequena empresa, 35–60, capital de giro e cheque especial PJ</td><td>"O banco está comendo meu caixa"</td><td>Perder a empresa, a casa, o nome</td></tr>
+<tr><td><b>MEI</b></td><td>Autônomo formalizado, Pronampe ou empréstimo no CNPJ</td><td>"Peguei para crescer e virou bola de neve"</td><td>Confusão entre CPF e CNPJ</td></tr>
+<tr><td><b>Pessoa física</b></td><td>Empréstimo pessoal, cartão, consignado não-folha</td><td>"Não durmo pensando nisso"</td><td>Vergonha, família descobrir</td></tr></table></div>
+<h3>1.4 Remuneração comunicada com transparência</h3>
+<p>"Mensalidade proporcional à sua parcela atual, mais um percentual apenas sobre o desconto efetivamente obtido." Sem números públicos; o valor sai na análise. Isso protege a conformidade e ainda responde a pergunta que todo lead faz.</p>
+<div class="kpi"><div><b>7 dias</b>prazo para fechar o Lance 1</div><div><b>1 página</b>regras do Spot assinadas pelos sócios</div><div><b>10</b>clientes atuais entrevistados (15 min cada)</div></div>
+<p class="mut"><b>Plano B:</b> se as regras não fecharem em 7 dias, lançar só a porta Empresário, com o teto provisório que os sócios já usam informalmente.</p>
+
+<!-- LANCE 2 -->
+<h2><small>Lance 2 · Gambito</small>Captar quem já está procurando</h2>
+<p>O gambito é um convite: entregar algo de valor antes de pedir. Aqui o valor é a <b>Análise de Enquadramento</b>, gratuita, em que um advogado diz se o caso tem caminho e qual.</p>
+<h3>2.1 Google Ads · quatro campanhas</h3>
+<div class="wrap"><table><tr><th>Campanha</th><th>Busca típica</th><th>Verba</th></tr>
+<tr><td><b>A · Empresa</b> (Search)</td><td>renegociar dívida bancária empresa · advogado dívida capital de giro · banco entrou com execução · defesa execução bancária</td><td>55%</td></tr>
+<tr><td><b>B · MEI e PF</b> (Search, verba separada)</td><td>dívida banco MEI · Pronampe atrasado · advogado dívida bancária · juros abusivos empréstimo</td><td>25%</td></tr>
+<tr><td><b>C · Local</b> (Search)</td><td>advogado bancário Campinas · advogado dívida Campinas e região</td><td>10%</td></tr>
+<tr><td><b>D · Lembrança</b> (YouTube/Demand Gen, só remarketing)</td><td>quem visitou a página e não converteu</td><td>10%</td></tr></table></div>
+<p class="mut">Negativas desde o dia 1: grátis, gratuito, defensoria, curso, vaga, modelo, pdf, limpar nome Serasa, consórcio, alienação, busca e apreensão, financiamento de veículo/imóvel.</p>
+<h3>2.2 Como o anúncio aparece</h3>
+<div class="ad"><span class="u">Patrocinado · granitoboneli.com.br/turnaround-spot</span><br><span class="t">Dívida Bancária na Empresa? | Reestruturação de Passivo</span><br>Analisamos seus contratos bancários e indicamos o caminho jurídico do seu caso. Escritório em Campinas desde 2016, atendimento também online.</div>
+<div class="ad"><span class="u">Patrocinado · granitoboneli.com.br/turnaround-spot</span><br><span class="t">Banco Entrou com Execução? | Defesa Técnica Especializada</span><br>O prazo para defesa é curto. Fale com advogados especializados em direito bancário e entenda suas opções.</div>
+<div class="ad"><span class="u">Patrocinado · granitoboneli.com.br/turnaround-spot/mei</span><br><span class="t">MEI com Dívida no Banco? | Existe Caminho Jurídico</span><br>Atendemos MEI e pessoa física com dívidas bancárias. Análise do seu contrato com especialista.</div>
+<h3>2.3 A página do Spot, bloco a bloco</h3>
+<div class="wrap"><table><tr><th>#</th><th>Bloco</th><th>Texto-guia na voz da marca</th></tr>
+<tr><td>1</td><td>Abertura</td><td><b>"A dívida com o banco está pesando mais que o seu negócio?"</b> Reestruturação de passivo bancário para empresas, MEI e pessoa física. <i>[Botão: Ver se meu caso se enquadra]</i></td></tr>
+<tr><td>2</td><td>Reconhecimento</td><td>"Você paga em dia e mesmo assim a parcela consome o caixa." · "O banco já ligou cobrando." · "Chegou uma citação." Se uma dessas frases é sua, continue.</td></tr>
+<tr><td>3</td><td>O método</td><td>Turnaround: desenvolvido em tese de mestrado do sócio fundador, aplicado há oito anos. Quatro etapas: análise dos contratos → plano jurídico do caso → defesa técnica → negociação para quitação.</td></tr>
+<tr><td>4</td><td>Para quem é / não é</td><td>É: dívidas com bancos e cooperativas, sem veículo ou imóvel em garantia. Não é: contratos com alienação fiduciária (para esses, temos o Turnaround completo).</td></tr>
+<tr><td>5</td><td>Quem conduz</td><td>Foto dos sócios e do Dr. Leonardo, sede na Barão de Itapura, ~70 advogados. Frase: "Renegociação de dívida é ato de advogado. Desconfie de quem promete desconto sem OAB."</td></tr>
+<tr><td>6</td><td>Como cobramos</td><td>Mensalidade proporcional à sua parcela atual + percentual apenas sobre o desconto obtido. Você sabe o valor antes de decidir.</td></tr>
+<tr><td>7</td><td>Perguntas</td><td>Meu nome vai ficar negativado? O banco pode tomar meus bens? Consigo continuar operando? Atende fora de Campinas? Quanto tempo leva?</td></tr>
+<tr><td>8</td><td>Convite</td><td>"Em uma conversa de 30 minutos, um advogado analisa seu caso e diz se há caminho e qual." <i>[WhatsApp] [Formulário curto]</i> · aviso LGPD</td></tr></table></div>
+<div class="kpi"><div><b>R$ 200/dia</b>verba recomendada (teste: R$ 100)</div><div><b>&gt; 6%</b>CTR do anúncio</div><div><b>&gt; 10%</b>conversão da página</div><div><b>R$ 80–130</b>custo por contato</div></div>
+<p class="mut"><b>Plano B:</b> CTR baixo → reescrever títulos com a dor exata das buscas. Página convertendo abaixo de 6% → trocar a abertura e reduzir o formulário a 3 campos.</p>
+
+<!-- LANCE 3 -->
+<h2><small>Lance 3 · Meio-jogo</small>Qualificar antes que o advogado gaste um minuto</h2>
+<p>No meio-jogo se ganha consciência e confiança. Aqui é onde o lead frio vira lead pronto, e onde o funil protege a agenda do time técnico.</p>
+<h3>3.1 O assistente no WhatsApp (Typebot + Evolution API + n8n)</h3>
+<div class="chat">
+<p class="b">Olá, aqui é a equipe da Granito Boneli Advogados. Vou fazer 6 perguntas rápidas para que um advogado já chegue à sua análise sabendo do seu caso. Seus dados ficam protegidos (LGPD). Podemos começar?</p>
+<p class="u">Sim</p>
+<p class="b">A dívida está no nome de: uma empresa, um MEI ou seu CPF?</p>
+<p class="u">Empresa</p>
+<p class="b">Com quais bancos ou cooperativas?</p>
+<p class="b">Valor aproximado somando tudo: [faixas]</p>
+<p class="b">Algum desses contratos tem veículo ou imóvel como garantia?</p>
+<p class="b">Hoje você está em dia, com parcelas atrasadas ou já recebeu citação de processo?</p>
+<p class="b">Obrigado. Um especialista vai falar com você. Qual o melhor horário?</p>
+</div>
+<p>O n8n classifica cada contato em <b>Spot</b>, <b>Turnaround completo</b> ou <b>Fora do perfil</b>, grava no CRM, avisa o SDR e devolve ao Google Ads quem foi qualificado (o algoritmo passa a buscar <i>esse</i> perfil, não qualquer clique). Contato com citação recebida ganha prioridade máxima: o prazo de defesa é de 15 dias.</p>
+<h3>3.2 O SDR (não-advogado)</h3>
+<ul><li>Liga em até 15 minutos no horário comercial; fora dele, primeira hora do dia seguinte.</li>
+<li>Roteiro de 5 minutos: confirma dados, acolhe ("é mais comum do que parece, e tem caminho"), agenda a análise e pede o envio dos contratos antes.</li>
+<li>Não fala de estratégia nem de valores. Só agenda.</li></ul>
+<h3>3.3 Confiança entre o agendamento e a reunião</h3>
+<ul><li>Mensagem de confirmação com nome e foto do advogado que fará a análise.</li>
+<li>Vídeo de 90 s do Dr. Granito: "Por que bancos aceitam negociar" (versão educativa, sem a mecânica).</li>
+<li>Lembretes D-1 e H-1. Pedido dos contratos em PDF ou foto.</li></ul>
+<div class="kpi"><div><b>40%</b>contatos qualificados</div><div><b>&lt; 15 min</b>tempo até a primeira ligação</div><div><b>60%</b>comparecimento à análise</div></div>
+<p class="mut"><b>Plano B:</b> comparecimento abaixo de 45% → advogado envia áudio pessoal no dia anterior. Qualificação abaixo de 25% → revisar palavras-chave e a página "para quem não é".</p>
+
+<!-- LANCE 4 -->
+<h2><small>Lance 4 · Xeque-mate</small>A Análise de Enquadramento</h2>
+<p>A venda não é o fim da partida, é a largada. Mas é aqui que o caso se decide, e o advogado entra só agora, com o caso já filtrado e os contratos em mãos.</p>
+<h3>Roteiro da análise (30 minutos)</h3>
+<div class="wrap"><table><tr><th>Minutos</th><th>Momento</th><th>O que o advogado faz</th></tr>
+<tr><td>0–5</td><td>Acolher</td><td>Reconhece a situação sem julgamento, explica o que vai acontecer na conversa.</td></tr>
+<tr><td>5–15</td><td>Ler o jogo</td><td>Analisa contratos, garantias, avais, cônjuges, situação de pagamento.</td></tr>
+<tr><td>15–22</td><td>Mostrar o caminho</td><td>Explica as etapas do método aplicadas ao caso (aqui sim, com a profundidade técnica que o material público não tem).</td></tr>
+<tr><td>22–27</td><td>Proposta</td><td>Enquadramento (Spot ou completo), mensalidade e êxito. Contrato de honorários enviado na hora.</td></tr>
+<tr><td>27–30</td><td>Próximo passo</td><td>Assinatura digital e data de início. Se pedir tempo: retorno combinado em 48 h.</td></tr></table></div>
+<div class="kpi"><div><b>25%</b>análises que viram contrato</div><div><b>48 h</b>prazo máximo de follow-up</div><div><b>3–4</b>contratos/mês no cenário R$ 200/dia</div><div><b>10×+</b>LTV/CAC estimado</div></div>
+<p class="mut">Premissas da conta: mensalidade média R$ 800, 18 meses, êxito médio R$ 6 mil (LTV ≈ R$ 20 mil). A confirmar com os sócios. <b>Plano B:</b> fechamento abaixo de 15% → gravar e revisar 5 análises com o Dr. Leonardo e ajustar o roteiro.</p>
+
+<!-- LANCE 5 -->
+<h2><small>Lance 5 · Promoção</small>O peão que vira dama</h2>
+<p>No xadrez, o peão que chega ao fim do tabuleiro vira a peça mais forte. No funil, é quem não fechou de primeira, o cliente que precisa de mais, e o cliente satisfeito que indica.</p>
+<div class="wrap"><table><tr><th>Frente</th><th>Para quem</th><th>Ação</th></tr>
+<tr><td><b>Recuperação</b></td><td>Fez a análise e não fechou</td><td>4 mensagens em 21 dias (conteúdo educativo, sem pressão) + remarketing com vídeo do sócio</td></tr>
+<tr><td><b>Reativação</b></td><td>Qualificado que não agendou</td><td>Contato do SDR em D+3 e D+10; depois, base de nutrição mensal</td></tr>
+<tr><td><b>Upgrade</b></td><td>Spot que revela dívidas maiores ou garantias</td><td>Migração para o Turnaround completo (ticket maior, mesmo cliente)</td></tr>
+<tr><td><b>Indicação</b></td><td>Cliente ativo após a primeira etapa</td><td>Pedido ético de indicação (empresário conhece empresário, MEI conhece MEI). Sem remuneração por indicação, conforme OAB.</td></tr>
+<tr><td><b>Autoridade</b></td><td>Todos</td><td>Artigos no site (pilar sobre dívida bancária empresarial + 6 satélites) e conteúdo educativo no Instagram, alimentando a busca orgânica</td></tr></table></div>
+<div class="kpi"><div><b>+5%</b>contratos recuperados</div><div><b>10%</b>Spot que migra para completo</div><div><b>1 a cada 5</b>clientes indica alguém</div></div>
+
+<h2><small>Medição</small>O que olhar toda segunda-feira</h2>
+<div class="wrap"><table><tr><th>Indicador</th><th>Meta</th><th>Alarme</th></tr>
+<tr><td>Custo por contato</td><td>R$ 80–130</td><td>&gt; R$ 180</td></tr>
+<tr><td>% qualificados</td><td>40%</td><td>&lt; 25%</td></tr>
+<tr><td>Custo por análise realizada</td><td>&lt; R$ 450</td><td>&gt; R$ 600</td></tr>
+<tr><td>Análise → contrato</td><td>25%</td><td>&lt; 15%</td></tr>
+<tr><td>CAC</td><td>&lt; R$ 2 mil</td><td>&gt; R$ 3 mil</td></tr></table></div>
+<p>Tags: GA4 + Gerenciador de Tags com consentimento de cookies; conversões online (WhatsApp, formulário) e offline via n8n (qualificado, análise, contrato com valor).</p>
+
+<h2><small>Cronograma</small>Do sim dos sócios ao primeiro contrato</h2>
+<div class="wrap"><table><tr><th>Quando</th><th>Lance</th><th>Entrega</th></tr>
+<tr><td>Semana 1</td><td>Abertura</td><td>Regras do Spot assinadas, 10 entrevistas com clientes, promessa aprovada</td></tr>
+<tr><td>Semana 2</td><td>Gambito + Meio-jogo</td><td>Página no ar, assistente e n8n, SDR treinado, tags testadas</td></tr>
+<tr><td>Semanas 3–4</td><td>Gambito</td><td>Campanhas A, B e C a R$ 100/dia</td></tr>
+<tr><td>Mês 2</td><td>Xeque-mate</td><td>Verba para R$ 200/dia, remarketing ligado, revisão das primeiras análises</td></tr>
+<tr><td>Mês 3</td><td>Promoção</td><td>Recuperação e indicação rodando; decisão de escala (R$ 400/dia)</td></tr></table></div>
+
+<h2><small>Decisões</small>O que precisamos dos sócios</h2>
+<ol><li>Teto e piso de valor do Spot e demais regras de enquadramento.</li>
+<li>Mensalidade média e percentual de êxito (para fechar a conta de retorno).</li>
+<li>Aprovação da linha de comunicação e do vocabulário proibido.</li>
+<li>Quem assume o papel de SDR.</li>
+<li>Verba inicial: R$ 100 ou R$ 200 por dia.</li>
+<li>Atendimento só Campinas e região ou Brasil, online.</li>
+<li>Manual de marca oficial (cores, fontes, fotos) para aplicar na página e nas peças.</li></ol>
+<div class="box"><b>Nada será publicado ou ativado sem o GO dos sócios.</b> Todo texto público passa pela revisão do sócio responsável antes de ir ao ar.</div>
+<p class="mut" style="font-size:13px">Identidade visual deste documento é uma proposta (azul-marinho institucional e dourado como detalhe) até o recebimento do manual de marca oficial do escritório.</p>
+</main></body></html>
