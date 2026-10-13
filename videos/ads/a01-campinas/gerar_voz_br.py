@@ -16,8 +16,10 @@ from faster_whisper import WhisperModel
 REF = sys.argv[1]
 SEGS = json.load(open("script.json"))["segs"]
 ONLY = [int(x) for x in sys.argv[2:]] or list(range(len(SEGS)))
-FALA = {"30": "trinta"}
+FALA = {"30": "trinta", "Eu": "Êu"}  # "Êu" força a tônica: sem ela o "eu" sai átono e soa "é o"
 VELOCIDADES = [1.0, 0.95, 1.05, 0.9]
+# trechos em que cada frase é gerada separada e emendada com pausa (o Kokoro junta listas curtas)
+PICOTADO = {2: 0.2}
 
 
 def norm(t):
@@ -43,7 +45,13 @@ for i in ONLY:
     texto = " ".join(FALA.get(w, w) for w in SEGS[i].split(" "))
     alvo, melhor = norm(SEGS[i]), None
     for vel in VELOCIDADES:
-        s, sr = kok.create(texto, voice="pm_alex", speed=vel, lang="pt-br")
+        if i in PICOTADO:
+            partes = [kok.create(f, voice="pm_alex", speed=vel, lang="pt-br") for f in re.split(r"(?<=[.:]) ", texto)]
+            sr = partes[0][1]
+            pausa = np.zeros(int(PICOTADO[i] * sr), np.float32)
+            s = np.concatenate([x for a, _ in partes for x in (a, pausa)][:-1])
+        else:
+            s, sr = kok.create(texto, voice="pm_alex", speed=vel, lang="pt-br")
         sf.write("_src.wav", s, sr)
         wav = vc.generate(audio="_src.wav", target_voice_path=REF)
         a16 = librosa.resample(wav.squeeze(0).numpy(), orig_sr=vc.sr, target_sr=16000)

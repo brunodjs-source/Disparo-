@@ -1,11 +1,12 @@
 # Anúncio 01 · Campinas · "O mesmo lugar"
 
-Vídeo de anúncio no formato dos Reels (motion branco, voz Antonio, trilha com grave). Ele chama quatro profissões de Campinas pelo nome, mostra o que elas têm em comum e leva para uma conversa no WhatsApp. A conversa termina no diagnóstico gratuito de 30 minutos.
+Vídeo de anúncio no formato dos Reels (motion branco, voz do Bruno, trilha com grave), com 38,2s. Ele chama quatro profissões de Campinas pelo nome, mostra o que elas têm em comum e leva para uma conversa no WhatsApp. A conversa termina no diagnóstico gratuito de 30 minutos.
 
 Arquivos:
 - `anuncio-campinas-9x16.mp4`: Reels e Stories.
 - `anuncio-campinas-4x5.mp4`: Feed.
-- `index.html`, `script.json`, `tts.py`, `build.py`, `capture.js`: fonte do vídeo. Para refazer: `python3 tts.py`, cortar os trechos (ver `build.sh`), `python3 build.py`, `node capture.js`, depois `../../add_music.sh`.
+- `index.html`, `script.json`, `gerar_voz_br.py`, `build_clone.py`, `capture.js`, `finalizar.sh`: fonte do vídeo. Para refazer: `python gerar_voz_br.py REFERENCIA.wav` (gera a fala), `python3 build_clone.py` (monta `voz.wav` e `timeline.json`), depois `./finalizar.sh` (renderiza, põe a trilha e gera as duas versões). A gravação de referência do Bruno não fica no repositório.
+- `tts.py`, `build.py`, `build.sh` e `gerar_voz_no_pc.py`: caminho antigo com a voz Antonio (Microsoft), que ficou bloqueado no servidor da sessão.
 
 ---
 
@@ -39,7 +40,7 @@ O vídeo fala com os quatro primeiros pelo nome. Médico, psicólogo, arquiteto 
 - O cliente pede o preço, diz que vai pensar e some. **A venda não morre no preço. Morre no intervalo** entre o interesse e a decisão.
 - Seguidor, curtida e indicação não dizem quem vai fechar.
 - **Lançamento é a engenharia que encurta esse intervalo:** pesquisa, oferta na ordem certa, aquecimento e prazo real. É o mesmo esqueleto de funil que serve para lançamento, perpétuo e venda consultiva.
-- O especialista não pode parar de atender para desenhar e comandar isso. **Por isso especialista precisa de estrategista.**
+- O especialista não pode parar de atender para desenhar e comandar isso. **Por isso todo especialista precisa de um estrategista.**
 
 ---
 
@@ -49,10 +50,10 @@ Método da skill **/ig-viral**: o que conta não é a view bruta, é o **múltip
 
 | O que foi aproveitado | De onde veio | Como ficou no nosso anúncio |
 |---|---|---|
-| Fórmula **"Nobody Tells You"** (vídeo-base) | @b2med, Shorts de 31s, **11,9x a mediana** (619 views contra 52). Gancho: "Só que nenhum deles vai te dizer se essa pessoa vai marcar a consulta." Opinião concreta contra métrica de vaidade. | "Seguidor, curtida, indicação. Nenhum deles diz quem vai fechar." A ideia foi estendida para quatro profissões e ligada ao método. |
+| Fórmula **"Nobody Tells You"** (vídeo-base) | @b2med, Shorts de 31s, **11,9x a mediana** (619 views contra 52). Gancho: "Só que nenhum deles vai te dizer se essa pessoa vai marcar a consulta." Opinião concreta contra métrica de vaidade. | "Seguidor. Curtida. Indicação. Nenhum deles diz quem vai fechar." A ideia foi estendida para quatro profissões e ligada ao método. |
 | **Dor do profissional nomeado** | @VitorJaci: 827x e 169x no Instagram, 17,3x no YouTube (uma conta só, então evidência fraca). | As quatro profissões são chamadas pelo nome nos primeiros 3 segundos, com Campinas na tela. |
 | Pergunta que confronta o dono do negócio | Buzzfy, pt-BR: @newtonlindolfo ("Seu negócio é uma empresa ou é um hobby caro?") teve cerca de 6,8x os seguidores e mais compartilhamentos que curtidas. | "Ele pede o preço, diz que vai pensar e some." É a cena que todo profissional reconhece. |
-| "Você precisa de um profissional", dito de forma concreta | Buzzfy: @votliapp, 412 compartilhamentos ("A fidelidade coloca alguém ao seu lado, mas só a competência coloca você na frente"). | "Por isso especialista precisa de estrategista: você atende, eu desenho e comando." |
+| "Você precisa de um profissional", dito de forma concreta | Buzzfy: @votliapp, 412 compartilhamentos ("A fidelidade coloca alguém ao seu lado, mas só a competência coloca você na frente"). | "Por isso todo especialista precisa de um estrategista: você atende. Eu desenho e comando." |
 
 Regras do Viral Reels Playbook 2026 (Buzzfy) aplicadas:
 - A primeira frase é curta, específica e sem cumprimento, e não vende nada.
@@ -74,18 +75,35 @@ O que ficou de fora, porque afundou nas três rodadas da sua pesquisa:
 
 O gancho foi testado no **hookscore** do /ig-reel. A primeira versão ("Nutricionista, especialista em consórcio, dentista, advogado.") tirou **28,6 (fraco)**: não falava com quem assiste nem dizia o que estava em jogo. A versão final, **"Em Campinas, você perde cliente no mesmo lugar."**, tirou **87,0 (forte)**, com 8 palavras e cerca de 2,9s. As profissões continuam chamadas pelo nome, mas na tela (desde o primeiro quadro) e no trecho do "ponto em comum".
 
-O **beats.py** deu 34,2s para o alvo de 35s. O fim repete "cliente" do gancho, o que cria o loop de segunda visualização. A pedido da ferramenta, o fim ganhou um número concreto ("30 minutos").
+O **beats.py** deu 34,2s para o alvo de 35s (no vídeo final, a fala termina em 36,7s e a tela final fica mais 1,5s). O fim repete "cliente" do gancho, o que cria o loop de segunda visualização. A pedido da ferramenta, o fim ganhou um número concreto ("30 minutos").
 
 | Bloco | Fala | Na tela |
 |---|---|---|
 | Gancho | Em Campinas, você perde cliente no mesmo lugar. | Os quatro ícones (nutrição, consórcio, odontologia, direito) com clientes caindo no mesmo buraco. Texto "ONDE O CLIENTE SOME" desde o primeiro quadro. |
 | Dor | Ele pede o preço, diz que vai pensar e some. | Conversa no celular. O cliente some e fica "visto por último há 9 dias". |
-| Dor (vídeo-base) | Seguidor, curtida, indicação. Nenhum deles diz quem vai fechar. | Widgets de métrica que apagam e um contrato com "?" |
+| Dor (vídeo-base) | Seguidor. Curtida. Indicação. Nenhum deles diz quem vai fechar. | Widgets de métrica que apagam e um contrato com "?" |
 | Ponto em comum | Nutricionista, consórcio, dentista, advogado: vocês vendem uma decisão que o cliente adia. | Quatro cartões (a dieta, a carta de crédito, o implante, o processo) com o carimbo DEPOIS |
 | Autoridade | Treze anos de marketing me mostraram: a venda não morre no preço. Morre no intervalo. | "13 ANOS" em 3D, etiqueta de preço riscada, linha INTERESSE ··· INTERVALO ··· DECISÃO |
 | Solução | Lançamento encurta esse intervalo: pesquisa, oferta na ordem certa, aquecimento e prazo real. | Os quatro nós entram na linha e a decisão chega mais perto |
-| Por que um estrategista | Por isso especialista precisa de estrategista: você atende, eu desenho e comando. | ESPECIALISTA + ESTRATEGISTA viram os dois cartões de papel |
+| Por que um estrategista | Por isso todo especialista precisa de um estrategista: você atende. Eu desenho e comando. | ESPECIALISTA + ESTRATEGISTA viram os dois cartões de papel |
 | CTA | Me manda sua profissão. Em 30 minutos eu te mostro onde o seu cliente escapa. | Campo digitando profissões, botão ENVIAR MENSAGEM, "30 MINUTOS · SEM CUSTO", seta para o botão do anúncio |
+
+### Voz
+
+A narração usa o timbre do Bruno, com pronúncia do Brasil:
+
+1. O **Kokoro** (licença Apache 2.0) lê o roteiro com a voz brasileira `pm_alex`.
+2. O **ChatterboxVC** (licença MIT) troca o timbre pelo do Bruno. A referência são 11,5s da gravação `voz-03-fica-aqui`.
+3. O **Whisper** confere cada trecho e refaz o que sair com palavra errada.
+
+A semelhança com a voz do Bruno ficou em 0,88, numa escala em que duas gravações dele dão de 0,92 a 0,95 e a voz Antonio dá 0,67. A primeira tentativa, com o Chatterbox gerando a fala direto, saiu com sotaque de Portugal e foi descartada.
+
+Três ajustes de áudio:
+- "Seguidor. Curtida. Indicação." é gerado palavra por palavra, com pausa entre elas. Lido de uma vez, saía emendado.
+- O "Eu" de "Eu desenho e comando" leva tônica forçada. Sem ela, soava "é o desenho".
+- A fala está 12% mais rápida, sem mudar o tom, para caber em 38,2s.
+
+A entrada do grave da trilha cai no começo do trecho da autoridade ("Treze anos…"). Para isso, a introdução da música ganha um compasso.
 
 ---
 

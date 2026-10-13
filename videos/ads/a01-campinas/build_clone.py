@@ -11,13 +11,14 @@ sys.path.append(SP + "/fw")
 from faster_whisper import WhisperModel
 
 SEGS = json.load(open("script.json"))["segs"]
-GAPS = [0.25, 0.35, 0.35, 0.35, 0.3, 0.4, 0.35, 0.35]
-HOLD, SR, HOP = 1.8, 48000, 480  # quadros de 10 ms
+GAPS = [0.15, 0.3, 0.3, 0.3, 0.3, 0.35, 0.3, 0.3]
+HOLD, SR, HOP = 1.5, 48000, 480  # quadros de 10 ms
+TEMPO = 1.12  # fala 12% mais rápida, sem mudar o tom: ritmo de anúncio e o vídeo cabe em 40 s
 PAUSA_MAX, PAUSA_NOVA = 0.32, 0.26
 
 
 def carrega(path):
-    raw = subprocess.run(["ffmpeg", "-v", "error", "-i", path, "-af", "highpass=f=70,lowpass=f=12000",
+    raw = subprocess.run(["ffmpeg", "-v", "error", "-i", path, "-af", f"highpass=f=70,lowpass=f=12000,atempo={TEMPO}",
                           "-ac", "1", "-ar", str(SR), "-f", "s16le", "-"], capture_output=True, check=True).stdout
     return np.frombuffer(raw, np.int16).astype(np.float32)
 

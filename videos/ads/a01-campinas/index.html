@@ -154,7 +154,7 @@ canvas{position:absolute;inset:0}
    <g id="dec6"><circle r="34" fill="#161513"/><text y="-92" text-anchor="middle" font-family="Inter" font-weight="800" font-size="24" letter-spacing="3" fill="#161513">DECISÃO</text><path id="chk6" d="M-14 0 L-4 10 L16 -12" stroke="#E8B36A" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0"/></g>
   </svg>
  </div>
- <!-- 7 · especialista precisa de estrategista -->
+ <!-- 7 · todo especialista precisa de um estrategista -->
  <div class="sc" id="s7">
   <div class="pill" id="pl0" style="left:60px;background:#fff;border:4px solid var(--line);color:var(--txt)">ESPECIALISTA</div>
   <div class="pill" id="pl1" style="left:560px;background:var(--gold);color:#fff">ESTRATEGISTA</div>
@@ -321,13 +321,13 @@ function render(t){
   const nk=[4,5,9,11];let gx=100;
   N6.forEach((n,k)=>{const q=back((t-W(5,nk[k])+0.08)/0.45);const g=$("n6_"+k);g.setAttribute("transform",`translate(${xs[k]} 220) scale(${Math.max(0.001,q)})`);g.setAttribute("opacity",clamp(q*3));if(q>0.2)gx=Math.max(gx,xs[k])});
   const fin=eo((t-W(5,12)-0.2)/0.5);if(fin>0)gx=gx+(dx-gx)*fin;$("gold6").setAttribute("x2",gx);$("chk6").setAttribute("opacity",fin);}
- if(i===6){const sp=eio((t-W(6,6)+0.1)/0.5);
-  [["pl0",2],["pl1",5]].forEach(([id,w],k)=>{const q=back((t-W(6,w)+0.1)/0.45);$(id).style.opacity=clamp(q*3)*(1-sp);$(id).style.transform=`scale(${Math.max(0.001,q)}) translateY(${-sp*60}px)`});
-  $("plus").style.opacity=clamp((t-W(6,4))/0.3)*(1-sp);
-  const r0=back((t-W(6,6)+0.05)/0.5),r1=back((t-W(6,8)+0.05)/0.5);
-  $("rc0").style.opacity=clamp(r0*3);$("rc0").style.transform=`rotateY(${(1-eo((t-W(6,6))/0.5))*-70}deg) scale(${Math.max(0.001,r0)})`;
-  $("rc1").style.opacity=clamp(r1*3);$("rc1").style.transform=`rotateY(${(1-eo((t-W(6,8))/0.5))*70}deg) scale(${Math.max(0.001,r1)})`;
-  $("bp").style.strokeDasharray="200";$("bp").style.strokeDashoffset=200*(1-eo((t-W(6,9))/0.8));}
+ if(i===6){const sp=eio((t-W(6,8)+0.1)/0.5);
+  [["pl0",3],["pl1",7]].forEach(([id,w],k)=>{const q=back((t-W(6,w)+0.1)/0.45);$(id).style.opacity=clamp(q*3)*(1-sp);$(id).style.transform=`scale(${Math.max(0.001,q)}) translateY(${-sp*60}px)`});
+  $("plus").style.opacity=clamp((t-W(6,5))/0.3)*(1-sp);
+  const r0=back((t-W(6,8)+0.05)/0.5),r1=back((t-W(6,10)+0.05)/0.5);
+  $("rc0").style.opacity=clamp(r0*3);$("rc0").style.transform=`rotateY(${(1-eo((t-W(6,8))/0.5))*-70}deg) scale(${Math.max(0.001,r0)})`;
+  $("rc1").style.opacity=clamp(r1*3);$("rc1").style.transform=`rotateY(${(1-eo((t-W(6,10))/0.5))*70}deg) scale(${Math.max(0.001,r1)})`;
+  $("bp").style.strokeDasharray="200";$("bp").style.strokeDashoffset=200*(1-eo((t-W(6,11))/0.8));}
  if(i===7){const ib=eo(lt/0.4);$("inbox").style.opacity=ib;$("inbox").style.transform=`translateY(${(1-ib)*40}px)`;
   const PR=["Sou nutricionista.","Trabalho com consórcio.","Sou dentista.","Sou advogada."];const tt=lt-0.35;const per=1.25;const pi=Math.floor(Math.max(0,tt)/per)%PR.length;const ph=Math.max(0,tt)%per;
   const s=PR[pi];const nch=tt>0?Math.min(s.length,Math.floor(ph*26)):0;$("ctxt").textContent=nch?s.slice(0,nch):"Sua profissão…";$("ctxt").style.color=nch?"#161513":"#8C867C";

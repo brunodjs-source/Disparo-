@@ -11,11 +11,11 @@ import edge_tts
 TRECHOS = [
     "Em Campinas, você perde cliente no mesmo lugar.",
     "Ele pede o preço, diz que vai pensar e some.",
-    "Seguidor, curtida, indicação. Nenhum deles diz quem vai fechar.",
+    "Seguidor. Curtida. Indicação. Nenhum deles diz quem vai fechar.",
     "Nutricionista, consórcio, dentista, advogado: vocês vendem uma decisão que o cliente adia.",
     "Treze anos de marketing me mostraram: a venda não morre no preço. Morre no intervalo.",
     "Lançamento encurta esse intervalo: pesquisa, oferta na ordem certa, aquecimento e prazo real.",
-    "Por isso especialista precisa de estrategista: você atende, eu desenho e comando.",
+    "Por isso todo especialista precisa de um estrategista: você atende. Eu desenho e comando.",
     "Me manda sua profissão. Em 30 minutos eu te mostro onde o seu cliente escapa.",
 ]
 PASTA = "voz-anuncio"
