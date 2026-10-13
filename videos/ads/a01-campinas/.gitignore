@@ -2,3 +2,5 @@ _built.html
 s*.mp3
 tts_err.log
 __pycache__/
+s*.wav
+p*.wav
