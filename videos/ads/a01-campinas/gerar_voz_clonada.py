@@ -11,7 +11,7 @@ import torch, torchaudio as ta
 from chatterbox.mtl_tts import ChatterboxMultilingualTTS
 
 SP = "/tmp/claude-0/-home-user-Disparo-/54eeb75b-22b3-521e-a4d4-71920aed6701/scratchpad"
-sys.path.insert(0, SP + "/fw")
+sys.path.append(SP + "/fw")
 from faster_whisper import WhisperModel
 
 REF = sys.argv[1]
