@@ -12,7 +12,12 @@ h1 i{font-family:Pf;font-weight:400;color:#E8B36A}
 .c{display:inline-block;background:linear-gradient(90deg,#E8B36A,#9A5F2A);color:#141210;font-weight:800;font-size:34px;padding:26px 44px;border-radius:60px}
 .s{font-family:Cinzel;letter-spacing:.2em;font-size:20px;color:#a89c8a;margin-top:26px}
 </style></head><body><div class="f"></div>
-<div class="t"><div class=lb>CAMPINAS · SP</div><h1>Seu cliente pede o preço, diz que vai pensar <i>e some.</i></h1>
-<div class=pr>Nutricionista, consórcio, dentista, advogado: a venda não morre no preço. Morre no intervalo.</div></div>
-<div class="b"><div class=c>Agendar diagnóstico gratuito →</div><div class=s>30 MINUTOS COM O ESTRATEGISTA · SEM CUSTO · <i style="font-family:Pf;letter-spacing:0">de lançamento</i></div></div>
-</body></html>
+<div class="t"><div class=lb id=lb></div><h1 id=h></h1><div class=pr>A estratégia certa traz o cliente decidido até você. É isso que eu desenho com especialistas de Campinas.</div></div>
+<div class="b"><div class=c>Agendar diagnóstico gratuito →</div><div class=s>30 MINUTOS · SEM CUSTO · ESTRATEGISTA <i style="font-family:Pf;letter-spacing:0">de lançamento</i></div></div>
+<script>
+const N={nutricionista:["NUTRICIONISTAS · CAMPINAS","Paciente decidido <i>não pede só o preço.</i>"],
+consorcio:["ESPECIALISTAS EM CONSÓRCIO · CAMPINAS","Cliente decidido <i>não some depois da simulação.</i>"],
+dentista:["DENTISTAS · CAMPINAS","Paciente decidido <i>não leva o orçamento pra pensar.</i>"],
+advogado:["ADVOGADOS · CAMPINAS","Cliente decidido <i>não some depois da consulta.</i>"]};
+const n=N[new URLSearchParams(location.search).get('n')];lb.textContent=n[0];h.innerHTML=n[1];
+</script></body></html>
