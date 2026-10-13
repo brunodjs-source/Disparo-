@@ -1,19 +1,20 @@
 <!doctype html><html><head><meta charset="utf-8"><style>
 @font-face{font-family:Cinzel;src:url(../../videos/ads/a01-campinas/fonts/cinzel-latin.woff2)}
 @font-face{font-family:Pf;src:url(../../videos/ads/a01-campinas/fonts/playfair-italic-latin.woff2);font-style:italic}
-body{margin:0;width:1080px;height:1920px;background:radial-gradient(900px 700px at 80% 10%,rgba(232,179,106,.3),transparent),#F6F1E8;font-family:-apple-system,Helvetica,Arial,sans-serif;color:#161513;position:relative;overflow:hidden}
-.e{position:absolute;top:300px;left:90px;right:90px}
-.lb{font-family:Cinzel;letter-spacing:.3em;color:#9A5F2A;font-size:30px}
-h1{font-size:92px;line-height:1.05;margin:40px 0;font-weight:800}
-h1 i{font-family:Pf;font-weight:400;color:#9A5F2A}
-p{font-size:44px;line-height:1.35;color:#3a352e}
-.box{margin-top:60px;border:3px dashed #C48C34;border-radius:30px;padding:40px;font-size:36px;color:#9A5F2A;text-align:center}
-.m{position:absolute;bottom:200px;left:0;right:0;text-align:center;font-family:Cinzel;letter-spacing:.3em;font-size:26px}
-</style></head><body><div class="e" id="c"></div><div class="m">ESTRATEGISTA · <i style="font-family:Pf;letter-spacing:0">de lançamento</i></div>
+body{margin:0;width:1080px;height:1920px;background:#141210;color:#F3EDE2;font-family:-apple-system,Helvetica,Arial,sans-serif;position:relative;overflow:hidden}
+.f{position:absolute;top:0;left:0;width:1080px;height:1080px;background:url(foto.jpg) center/cover;filter:grayscale(.15);-webkit-mask-image:linear-gradient(180deg,#000 55%,transparent 98%)}
+.g{position:absolute;top:0;left:0;right:0;height:1920px;background:linear-gradient(180deg,rgba(20,18,16,.15) 0,rgba(20,18,16,.1) 30%,rgba(20,18,16,.85) 52%,#141210 60%),radial-gradient(800px 600px at 50% 60%,rgba(196,140,52,.18),transparent)}
+.t{position:absolute;left:90px;right:90px;top:1060px}
+.lb{font-family:Cinzel;letter-spacing:.3em;color:#E8B36A;font-size:28px}
+h1{font-size:80px;line-height:1.08;margin:30px 0;font-weight:800}
+h1 i{font-family:Pf;font-weight:400;color:#E8B36A}
+p{font-size:42px;line-height:1.35;color:#d8cfc0;margin:0}
+.m{position:absolute;bottom:150px;left:0;right:0;text-align:center;font-family:Cinzel;letter-spacing:.3em;font-size:24px;color:#a89c8a}
+</style></head><body><div class="f"></div><div class="g"></div><div class="t" id="c"></div><div class="m">ESTRATEGISTA · <i style="font-family:Pf;letter-spacing:0">de lançamento</i></div>
 <script>
 const S={
-1:`<div class=lb>PERGUNTA RÁPIDA</div><h1>Seu cliente pede o preço e <i>some?</i></h1><p>Responde aqui embaixo. Amanhã eu te mostro onde ele escapa.</p><div class=box>espaço da enquete<br>SIM, SEMPRE · ÀS VEZES</div>`,
-2:`<div class=lb>O QUE NINGUÉM TE CONTA</div><h1>A venda não morre no preço. <i>Morre no intervalo.</i></h1><p>Entre o interesse e a decisão, o cliente esfria. Lançamento encurta esse caminho: pesquisa, oferta na ordem certa, aquecimento e prazo real.</p>`,
-3:`<div class=lb>MATERIAL GRATUITO</div><h1>Quer o passo a passo <i>completo?</i></h1><p>São 9 materiais da série, do primeiro passo ao perpétuo.</p><div class=box>espaço da caixa de perguntas<br>ou figurinha de link</div><p style="margin-top:50px">Me manda <b>PLANO</b> no direct.</p>`};
+1:`<div class=lb>PENSA COMIGO</div><h1>Quantos clientes pediram seu preço esse mês <i>e sumiram?</i></h1><p>Não foi o preço que espantou. Foi o tempo entre o interesse e a decisão.</p>`,
+2:`<div class=lb>A PERGUNTA CERTA</div><h1>Você vende o seu trabalho <i>ou vende a decisão?</i></h1><p>Quem tem método encurta o caminho do cliente. Quem não tem, espera ele voltar.</p>`,
+3:`<div class=lb>ÚLTIMA COISA</div><h1>Se isso acontece com você, <i>me chama no direct.</i></h1><p>Me conta sua profissão e eu te mostro onde o seu cliente escapa.</p>`};
 document.getElementById('c').innerHTML=S[new URLSearchParams(location.search).get('n')];
 </script></body></html>
