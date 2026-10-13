@@ -4,3 +4,4 @@ tts_err.log
 __pycache__/
 s*.wav
 p*.wav
+_src.wav
