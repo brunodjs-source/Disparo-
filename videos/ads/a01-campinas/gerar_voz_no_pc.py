@@ -15,7 +15,7 @@ TRECHOS = [
     "Nutricionista, consórcio, dentista, advogado: vocês vendem uma decisão que o cliente adia.",
     "Treze anos de marketing me mostraram: a venda não morre no preço. Morre no intervalo.",
     "Lançamento encurta esse intervalo: pesquisa, oferta na ordem certa, aquecimento e prazo real.",
-    "Por isso todo especialista precisa de um estrategista: você atende. Eu desenho e comando.",
+    "Por isso todo especialista precisa de um estrategista: você atende, e eu desenho e comando.",
     "Me manda sua profissão. Em 30 minutos eu te mostro onde o seu cliente escapa.",
 ]
 PASTA = "voz-anuncio"

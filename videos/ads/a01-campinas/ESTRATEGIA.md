@@ -1,6 +1,6 @@
 # Anúncio 01 · Campinas · "O mesmo lugar"
 
-Vídeo de anúncio no formato dos Reels (motion branco, voz do Bruno, trilha com grave), com 38,2s. Ele chama quatro profissões de Campinas pelo nome, mostra o que elas têm em comum e leva para uma conversa no WhatsApp. A conversa termina no diagnóstico gratuito de 30 minutos.
+Vídeo de anúncio no formato dos Reels (motion branco, voz do Bruno, trilha com grave), com 38,1s. Ele chama quatro profissões de Campinas pelo nome, mostra o que elas têm em comum e leva para uma conversa no WhatsApp. A conversa termina no diagnóstico gratuito de 30 minutos.
 
 Arquivos:
 - `anuncio-campinas-9x16.mp4`: Reels e Stories.
@@ -53,7 +53,7 @@ Método da skill **/ig-viral**: o que conta não é a view bruta, é o **múltip
 | Fórmula **"Nobody Tells You"** (vídeo-base) | @b2med, Shorts de 31s, **11,9x a mediana** (619 views contra 52). Gancho: "Só que nenhum deles vai te dizer se essa pessoa vai marcar a consulta." Opinião concreta contra métrica de vaidade. | "Seguidor. Curtida. Indicação. Nenhum deles diz quem vai fechar." A ideia foi estendida para quatro profissões e ligada ao método. |
 | **Dor do profissional nomeado** | @VitorJaci: 827x e 169x no Instagram, 17,3x no YouTube (uma conta só, então evidência fraca). | As quatro profissões são chamadas pelo nome nos primeiros 3 segundos, com Campinas na tela. |
 | Pergunta que confronta o dono do negócio | Buzzfy, pt-BR: @newtonlindolfo ("Seu negócio é uma empresa ou é um hobby caro?") teve cerca de 6,8x os seguidores e mais compartilhamentos que curtidas. | "Ele pede o preço, diz que vai pensar e some." É a cena que todo profissional reconhece. |
-| "Você precisa de um profissional", dito de forma concreta | Buzzfy: @votliapp, 412 compartilhamentos ("A fidelidade coloca alguém ao seu lado, mas só a competência coloca você na frente"). | "Por isso todo especialista precisa de um estrategista: você atende. Eu desenho e comando." |
+| "Você precisa de um profissional", dito de forma concreta | Buzzfy: @votliapp, 412 compartilhamentos ("A fidelidade coloca alguém ao seu lado, mas só a competência coloca você na frente"). | "Por isso todo especialista precisa de um estrategista: você atende, e eu desenho e comando." |
 
 Regras do Viral Reels Playbook 2026 (Buzzfy) aplicadas:
 - A primeira frase é curta, específica e sem cumprimento, e não vende nada.
@@ -75,7 +75,7 @@ O que ficou de fora, porque afundou nas três rodadas da sua pesquisa:
 
 O gancho foi testado no **hookscore** do /ig-reel. A primeira versão ("Nutricionista, especialista em consórcio, dentista, advogado.") tirou **28,6 (fraco)**: não falava com quem assiste nem dizia o que estava em jogo. A versão final, **"Em Campinas, você perde cliente no mesmo lugar."**, tirou **87,0 (forte)**, com 8 palavras e cerca de 2,9s. As profissões continuam chamadas pelo nome, mas na tela (desde o primeiro quadro) e no trecho do "ponto em comum".
 
-O **beats.py** deu 34,2s para o alvo de 35s (no vídeo final, a fala termina em 36,7s e a tela final fica mais 1,5s). O fim repete "cliente" do gancho, o que cria o loop de segunda visualização. A pedido da ferramenta, o fim ganhou um número concreto ("30 minutos").
+O **beats.py** deu 34,2s para o alvo de 35s (no vídeo final, a fala termina em 36,6s e a tela final fica mais 1,5s). O fim repete "cliente" do gancho, o que cria o loop de segunda visualização. A pedido da ferramenta, o fim ganhou um número concreto ("30 minutos").
 
 | Bloco | Fala | Na tela |
 |---|---|---|
@@ -85,7 +85,7 @@ O **beats.py** deu 34,2s para o alvo de 35s (no vídeo final, a fala termina em 
 | Ponto em comum | Nutricionista, consórcio, dentista, advogado: vocês vendem uma decisão que o cliente adia. | Quatro cartões (a dieta, a carta de crédito, o implante, o processo) com o carimbo DEPOIS |
 | Autoridade | Treze anos de marketing me mostraram: a venda não morre no preço. Morre no intervalo. | "13 ANOS" em 3D, etiqueta de preço riscada, linha INTERESSE ··· INTERVALO ··· DECISÃO |
 | Solução | Lançamento encurta esse intervalo: pesquisa, oferta na ordem certa, aquecimento e prazo real. | Os quatro nós entram na linha e a decisão chega mais perto |
-| Por que um estrategista | Por isso todo especialista precisa de um estrategista: você atende. Eu desenho e comando. | ESPECIALISTA + ESTRATEGISTA viram os dois cartões de papel |
+| Por que um estrategista | Por isso todo especialista precisa de um estrategista: você atende, e eu desenho e comando. | ESPECIALISTA + ESTRATEGISTA viram os dois cartões de papel |
 | CTA | Me manda sua profissão. Em 30 minutos eu te mostro onde o seu cliente escapa. | Campo digitando profissões, botão ENVIAR MENSAGEM, "30 MINUTOS · SEM CUSTO", seta para o botão do anúncio |
 
 ### Voz
@@ -100,8 +100,8 @@ A semelhança com a voz do Bruno ficou em 0,88, numa escala em que duas gravaç�
 
 Três ajustes de áudio:
 - "Seguidor. Curtida. Indicação." é gerado palavra por palavra, com pausa entre elas. Lido de uma vez, saía emendado.
-- O "Eu" de "Eu desenho e comando" leva tônica forçada. Sem ela, soava "é o desenho".
-- A fala está 12% mais rápida, sem mudar o tom, para caber em 38,2s.
+- "Você atende. Eu desenho e comando." virou "você atende, e eu desenho e comando". Sozinho, o "Eu" soava "é o desenho". Mexer só na pronúncia acertou no máximo 2 de 6 testes do Whisper; com o "e eu", acertou 5 de 6 e, no áudio final, todas as vezes.
+- A fala está 12% mais rápida, sem mudar o tom, para caber em 38,1s.
 
 A entrada do grave da trilha cai no começo do trecho da autoridade ("Treze anos…"). Para isso, a introdução da música ganha um compasso.
 

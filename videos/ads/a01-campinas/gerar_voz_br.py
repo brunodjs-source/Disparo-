@@ -16,7 +16,7 @@ from faster_whisper import WhisperModel
 REF = sys.argv[1]
 SEGS = json.load(open("script.json"))["segs"]
 ONLY = [int(x) for x in sys.argv[2:]] or list(range(len(SEGS)))
-FALA = {"30": "trinta", "Eu": "Êu"}  # "Êu" força a tônica: sem ela o "eu" sai átono e soa "é o"
+FALA = {"30": "trinta"}
 VELOCIDADES = [1.0, 0.95, 1.05, 0.9]
 # trechos em que cada frase é gerada separada e emendada com pausa (o Kokoro junta listas curtas)
 PICOTADO = {2: 0.2}
