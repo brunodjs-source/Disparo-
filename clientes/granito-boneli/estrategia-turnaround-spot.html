@@ -2,55 +2,92 @@
 <html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Estratégia Turnaround Spot</title>
 <style>
-/* Identidade proposta Granito Boneli: azul-marinho institucional + dourado como detalhe. Trocar tokens pelo manual de marca oficial. */
-:root{--navy:#0f2238;--navy2:#1a3352;--gold:#b08d4c;--paper:#faf8f4;--ink:#16202c;--mut:#5d6672;--line:#e3ddd0;--card:#fff;--ok:#2f6b4a;--warn:#9b3b2f}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0c1522;--ink:#ebe7df;--mut:#9aa5b3;--line:#24344a;--card:#13202f;--navy:#091726;--navy2:#13283f;--gold:#d3b277;--ok:#80c79d;--warn:#e38c80}}
-:root[data-theme="dark"]{--paper:#0c1522;--ink:#ebe7df;--mut:#9aa5b3;--line:#24344a;--card:#13202f;--navy:#091726;--navy2:#13283f;--gold:#d3b277;--ok:#80c79d;--warn:#e38c80}
-*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15.5px/1.65 Georgia,"Times New Roman",serif}
-.cover{background:var(--navy);color:#f3efe6;padding:56px 16px 48px;border-bottom:4px solid var(--gold)}
-.cover .in,main{max-width:940px;margin:0 auto}
-main{padding:8px 16px 80px}
-.k{font:600 11.5px/1 system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
-h1{font-size:40px;line-height:1.1;margin:14px 0 10px;font-weight:400}
-.cover p{color:#c9cfd8;max-width:62ch}
-h2{font-size:27px;font-weight:400;margin:56px 0 6px}
-h2 small{display:block;font:600 11.5px system-ui;letter-spacing:.16em;color:var(--gold);text-transform:uppercase;margin-bottom:6px}
-h3{font:600 15px system-ui,sans-serif;margin:22px 0 6px;color:var(--navy2)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) h3{color:var(--gold)}}
-:root[data-theme="dark"] h3{color:var(--gold)}
-p,li{max-width:70ch}.mut{color:var(--mut)}
-.rule{height:1px;background:var(--gold);width:64px;margin:10px 0 18px}
-table{width:100%;border-collapse:collapse;font:14px/1.5 system-ui,sans-serif;background:var(--card);margin:10px 0}
-th,td{border-bottom:1px solid var(--line);padding:9px 10px;text-align:left;vertical-align:top}
-th{font-weight:600;color:var(--mut);font-size:12px;letter-spacing:.06em;text-transform:uppercase;border-bottom:2px solid var(--gold)}
-.wrap{overflow-x:auto}
-.box{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--gold);padding:14px 18px;margin:16px 0;font:14.5px/1.6 system-ui,sans-serif}
-.box.w{border-left-color:var(--warn)}
-.quote{font-size:22px;line-height:1.35;border-left:3px solid var(--gold);padding:4px 0 4px 18px;margin:20px 0;max-width:60ch}
-.map{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:20px 0}
+/* Identidade proposta Granito Boneli · trocar tokens pelo manual oficial */
+@font-face{font-family:"Playfair";src:url("Playfair.ttf") format("truetype");font-weight:400 900}
+:root{--navy:#0e2034;--navy2:#183150;--gold:#b48f4d;--gold2:#d9c39a;--paper:#fbf9f5;--ink:#18212d;--mut:#5f6874;--line:#e6dfd1;--card:#fff;--ok:#2f6b4a;--warn:#9b3b2f;
+--serif:"Playfair",Georgia,serif;--sans:"Helvetica Neue",Arial,system-ui,sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0b1420;--ink:#ece8e0;--mut:#9ea8b5;--line:#22324a;--card:#121e2d;--gold:#d3b277;--ok:#80c79d;--warn:#e38c80}}
+:root[data-theme="dark"]{--paper:#0b1420;--ink:#ece8e0;--mut:#9ea8b5;--line:#22324a;--card:#121e2d;--gold:#d3b277;--ok:#80c79d;--warn:#e38c80}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:15.5px/1.7 var(--sans);-webkit-font-smoothing:antialiased}
+main{max-width:900px;margin:0 auto;padding:8px 16px 96px}
+/* capa */
+.cover{background:var(--navy);color:#f2eee5;min-height:100vh;display:flex;flex-direction:column;justify-content:space-between;padding:48px 16px;position:relative;overflow:hidden}
+.cover:after{content:"";position:absolute;right:-12%;top:18%;width:60vw;height:60vw;max-width:620px;max-height:620px;border:1px solid rgba(180,143,77,.28);border-radius:50%}
+.cover .in{max-width:900px;margin:0 auto;width:100%;position:relative;z-index:1}
+.mono{width:56px;height:56px;border:1.5px solid var(--gold);display:grid;place-items:center;font:600 20px var(--serif);color:var(--gold);letter-spacing:.04em}
+.k{font:600 11px/1.2 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+h1{font:400 clamp(40px,7vw,68px)/1.04 var(--serif);margin:18px 0 18px;letter-spacing:-.01em}
+h1 em{font-style:italic;color:var(--gold2)}
+.cover p{color:#c4ccd6;max-width:54ch;font-size:16.5px}
+.cover .foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;border-top:1px solid rgba(255,255,255,.14);padding-top:16px;font:12.5px var(--sans);color:#93a0b0}
+/* tipografia */
+h2{font:400 clamp(26px,4vw,34px)/1.18 var(--serif);margin:72px 0 14px;letter-spacing:-.005em;max-width:24ch}
+h2 small{display:flex;align-items:center;gap:10px;font:600 11px var(--sans);letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:12px}
+h2 small:after{content:"";flex:0 0 40px;height:1px;background:var(--gold)}
+h3{font:700 12px var(--sans);letter-spacing:.14em;text-transform:uppercase;margin:34px 0 10px;color:var(--mut)}
+p,li{max-width:66ch}li{margin-bottom:6px}.mut{color:var(--mut)}
+b{font-weight:650}
+.rule{height:1px;background:var(--gold);width:72px;margin:6px 0 22px}
+/* tabelas */
+.wrap{overflow-x:auto;margin:12px 0}
+table{width:100%;border-collapse:collapse;font:14px/1.55 var(--sans)}
+th,td{border-bottom:1px solid var(--line);padding:11px 12px 11px 0;text-align:left;vertical-align:top}
+th{font-weight:700;color:var(--gold);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;border-bottom:1px solid var(--gold)}
+td:first-child{font-weight:600}
+/* blocos */
+.box{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--gold);padding:18px 22px;margin:22px 0;font-size:14.5px}
+.box.w{border-left-color:var(--warn);background:color-mix(in srgb,var(--warn) 5%,var(--card))}
+.quote{font:italic 400 clamp(21px,3vw,26px)/1.38 var(--serif);border-left:2px solid var(--gold);padding:2px 0 2px 22px;margin:28px 0;max-width:34ch}
+.map{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;margin:26px 0;background:var(--gold)}
 @media (max-width:720px){.map{grid-template-columns:1fr 1fr}}
-.map div{background:var(--navy);color:#f3efe6;padding:14px 12px;font:13px/1.4 system-ui}
-.map b{display:block;color:var(--gold);font:600 11px system-ui;letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px}
-.map span{font:18px Georgia,serif}
-.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:12px 0}
-.kpi div{background:var(--card);border:1px solid var(--line);padding:12px;font:13px system-ui}
-.kpi b{display:block;font:24px Georgia,serif;color:var(--gold)}
-.ad{background:var(--card);border:1px solid var(--line);padding:14px 16px;font:14px/1.5 system-ui;margin:10px 0}
-.ad .u{color:var(--ok);font-size:12.5px}.ad .t{color:#1a4fa0;font-size:17px}
+.map div{background:var(--navy);color:#cfd6df;padding:18px 14px 20px;font:12.5px/1.45 var(--sans)}
+.map b{display:block;color:var(--gold);font:700 10px var(--sans);letter-spacing:.16em;text-transform:uppercase;margin-bottom:10px}
+.map span{display:block;font:400 20px/1.15 var(--serif);color:#fff;margin-bottom:6px}
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0;margin:22px 0;border-top:1px solid var(--gold);border-bottom:1px solid var(--line)}
+.kpi div{padding:16px 14px 16px 0;font:12.5px/1.4 var(--sans);color:var(--mut)}
+.kpi b{display:block;font:400 30px/1.1 var(--serif);color:var(--ink);margin-bottom:4px}
+.ad{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;font:14px/1.5 Arial,sans-serif;margin:12px 0;max-width:620px}
+.ad .u{color:var(--mut);font-size:12.5px}.ad .t{color:#1a0dab;font-size:18px;display:block;margin:2px 0 4px}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .ad .t{color:#8ab4f8}}
-.chat{max-width:420px;font:14px/1.45 system-ui}
-.chat p{margin:6px 0;padding:8px 12px;border-radius:10px;max-width:85%}
-.chat .b{background:var(--card);border:1px solid var(--line)}
-.chat .u{background:var(--navy2);color:#fff;margin-left:auto;text-align:right}
-@media print{.cover{-webkit-print-color-adjust:exact;print-color-adjust:exact}.map div{-webkit-print-color-adjust:exact;print-color-adjust:exact}h2{break-before:page}table,.box,.ad,.chat{break-inside:avoid}@page{size:A4;margin:14mm}}
+:root[data-theme="dark"] .ad .t{color:#8ab4f8}
+.chat{max-width:420px;font:14px/1.45 var(--sans);background:color-mix(in srgb,var(--gold) 8%,var(--paper));padding:16px;border-radius:14px;margin:16px 0}
+.chat p{margin:7px 0;padding:9px 13px;border-radius:12px;max-width:85%}
+.chat .b{background:var(--card);border:1px solid var(--line);border-top-left-radius:3px}
+.chat .u{background:var(--navy2);color:#fff;margin-left:auto;text-align:right;border-top-right-radius:3px;width:max-content}
+.plan{font-size:13.5px;color:var(--mut);border-top:1px dashed var(--line);padding-top:10px}
+.plan b{color:var(--warn)}
+@page{size:A4;margin:16mm 15mm 18mm}
+@page :first{margin:0}
+@media print{
+ body{font-size:10.5pt;background:#fff}
+ .cover{height:297mm;min-height:0;padding:22mm 18mm;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ .cover .in{max-width:none}
+ .cover:after{width:150mm;height:150mm;right:-40mm}
+ main{max-width:none;padding:0}
+ h2{break-before:auto;break-after:avoid;margin-top:36px}
+ h2.pb{break-before:page;margin-top:0}
+ .chat{max-width:none;columns:2;column-gap:14px;padding:12px}
+ .chat p{margin:4px 0;padding:6px 10px;font-size:9pt;break-inside:avoid}
+ h2{break-inside:avoid}
+ body{font-size:10pt}
+ .box{padding:12px 16px;margin:14px 0}
+ th,td{padding:7px 10px 7px 0}
+ p{orphans:3;widows:3}
+ .map div,.chat .u{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ table,.box,.ad,.chat,.kpi,.quote,.map{break-inside:avoid}
+ h3{break-after:avoid}
+}
 </style></head><body>
-<header class="cover"><div class="in">
+<header class="cover"><div class="in"><div class="mono">GB</div></div>
+<div class="in">
 <div class="k">Granito Boneli Advogados Associados · Estratégia de produto</div>
-<h1>Turnaround Spot<br>do primeiro clique ao acordo</h1>
+<h1>Turnaround Spot<br><em>do primeiro clique ao acordo</em></h1>
 <div class="rule"></div>
 <p>Funil completo de captação, qualificação e conversão do novo produto de reestruturação de dívidas bancárias para empresas, MEI e pessoa física.</p>
-<p style="font:13px system-ui;color:#9fa9b6">Para Dr. Leonardo Guarnieri e sócios · Campinas, outubro de 2026 · Estratégia por Bruno Israel, O Estrategista</p>
-</div></header>
+</div>
+<div class="in foot"><span>Para Dr. Leonardo Guarnieri e sócios</span><span>Campinas · outubro de 2026</span><span>Estratégia: Bruno Israel · O Estrategista</span></div>
+</header>
 <main>
 
 <h2><small>Ponto de partida</small>Um produto validado, que ainda depende de pessoas para vender</h2>
@@ -80,7 +117,7 @@ th{font-weight:600;color:var(--mut);font-size:12px;letter-spacing:.06em;text-tra
 </div>
 
 <!-- LANCE 1 -->
-<h2><small>Lance 1 · Abertura</small>Antes do anúncio, a oferta precisa caber numa frase</h2>
+<h2 class="pb"><small>Lance 1 · Abertura</small>Antes do anúncio, a oferta precisa caber numa frase</h2>
 <p>Todo lance começa olhando para trás: quem já fechou o Turnaround, por que fechou, o que perguntou na primeira conversa. As respostas viram a promessa, a página e o roteiro do assistente.</p>
 <h3>1.1 Regras de enquadramento por escrito</h3>
 <div class="wrap"><table><tr><th>Critério</th><th>Spot</th><th>Turnaround completo</th><th>Não atende</th></tr>
@@ -99,10 +136,10 @@ th{font-weight:600;color:var(--mut);font-size:12px;letter-spacing:.06em;text-tra
 <h3>1.4 Remuneração comunicada com transparência</h3>
 <p>"Mensalidade proporcional à sua parcela atual, mais um percentual apenas sobre o desconto efetivamente obtido." Sem números públicos; o valor sai na análise. Isso protege a conformidade e ainda responde a pergunta que todo lead faz.</p>
 <div class="kpi"><div><b>7 dias</b>prazo para fechar o Lance 1</div><div><b>1 página</b>regras do Spot assinadas pelos sócios</div><div><b>10</b>clientes atuais entrevistados (15 min cada)</div></div>
-<p class="mut"><b>Plano B:</b> se as regras não fecharem em 7 dias, lançar só a porta Empresário, com o teto provisório que os sócios já usam informalmente.</p>
+<p class="plan"><b>Plano B ·</b> se as regras não fecharem em 7 dias, lançar só a porta Empresário, com o teto provisório que os sócios já usam informalmente.</p>
 
 <!-- LANCE 2 -->
-<h2><small>Lance 2 · Gambito</small>Captar quem já está procurando</h2>
+<h2 class="pb"><small>Lance 2 · Gambito</small>Captar quem já está procurando</h2>
 <p>O gambito é um convite: entregar algo de valor antes de pedir. Aqui o valor é a <b>Análise de Enquadramento</b>, gratuita, em que um advogado diz se o caso tem caminho e qual.</p>
 <h3>2.1 Google Ads · quatro campanhas</h3>
 <div class="wrap"><table><tr><th>Campanha</th><th>Busca típica</th><th>Verba</th></tr>
@@ -126,7 +163,7 @@ th{font-weight:600;color:var(--mut);font-size:12px;letter-spacing:.06em;text-tra
 <tr><td>7</td><td>Perguntas</td><td>Meu nome vai ficar negativado? O banco pode tomar meus bens? Consigo continuar operando? Atende fora de Campinas? Quanto tempo leva?</td></tr>
 <tr><td>8</td><td>Convite</td><td>"Em uma conversa de 30 minutos, um advogado analisa seu caso e diz se há caminho e qual." <i>[WhatsApp] [Formulário curto]</i> · aviso LGPD</td></tr></table></div>
 <div class="kpi"><div><b>R$ 200/dia</b>verba recomendada (teste: R$ 100)</div><div><b>&gt; 6%</b>CTR do anúncio</div><div><b>&gt; 10%</b>conversão da página</div><div><b>R$ 80–130</b>custo por contato</div></div>
-<p class="mut"><b>Plano B:</b> CTR baixo → reescrever títulos com a dor exata das buscas. Página convertendo abaixo de 6% → trocar a abertura e reduzir o formulário a 3 campos.</p>
+<p class="plan"><b>Plano B ·</b> CTR baixo → reescrever títulos com a dor exata das buscas. Página convertendo abaixo de 6% → trocar a abertura e reduzir o formulário a 3 campos.</p>
 
 <!-- LANCE 3 -->
 <h2><small>Lance 3 · Meio-jogo</small>Qualificar antes que o advogado gaste um minuto</h2>
@@ -153,7 +190,7 @@ th{font-weight:600;color:var(--mut);font-size:12px;letter-spacing:.06em;text-tra
 <li>Vídeo de 90 s do Dr. Granito: "Por que bancos aceitam negociar" (versão educativa, sem a mecânica).</li>
 <li>Lembretes D-1 e H-1. Pedido dos contratos em PDF ou foto.</li></ul>
 <div class="kpi"><div><b>40%</b>contatos qualificados</div><div><b>&lt; 15 min</b>tempo até a primeira ligação</div><div><b>60%</b>comparecimento à análise</div></div>
-<p class="mut"><b>Plano B:</b> comparecimento abaixo de 45% → advogado envia áudio pessoal no dia anterior. Qualificação abaixo de 25% → revisar palavras-chave e a página "para quem não é".</p>
+<p class="plan"><b>Plano B ·</b> comparecimento abaixo de 45% → advogado envia áudio pessoal no dia anterior. Qualificação abaixo de 25% → revisar palavras-chave e a página "para quem não é".</p>
 
 <!-- LANCE 4 -->
 <h2><small>Lance 4 · Xeque-mate</small>A Análise de Enquadramento</h2>
@@ -166,10 +203,10 @@ th{font-weight:600;color:var(--mut);font-size:12px;letter-spacing:.06em;text-tra
 <tr><td>22–27</td><td>Proposta</td><td>Enquadramento (Spot ou completo), mensalidade e êxito. Contrato de honorários enviado na hora.</td></tr>
 <tr><td>27–30</td><td>Próximo passo</td><td>Assinatura digital e data de início. Se pedir tempo: retorno combinado em 48 h.</td></tr></table></div>
 <div class="kpi"><div><b>25%</b>análises que viram contrato</div><div><b>48 h</b>prazo máximo de follow-up</div><div><b>3–4</b>contratos/mês no cenário R$ 200/dia</div><div><b>10×+</b>LTV/CAC estimado</div></div>
-<p class="mut">Premissas da conta: mensalidade média R$ 800, 18 meses, êxito médio R$ 6 mil (LTV ≈ R$ 20 mil). A confirmar com os sócios. <b>Plano B:</b> fechamento abaixo de 15% → gravar e revisar 5 análises com o Dr. Leonardo e ajustar o roteiro.</p>
+<p class="plan">Premissas da conta: mensalidade média R$ 800, 18 meses, êxito médio R$ 6 mil (LTV ≈ R$ 20 mil). A confirmar com os sócios. <b>Plano B ·</b> fechamento abaixo de 15% → gravar e revisar 5 análises com o Dr. Leonardo e ajustar o roteiro.</p>
 
 <!-- LANCE 5 -->
-<h2><small>Lance 5 · Promoção</small>O peão que vira dama</h2>
+<h2 class="pb"><small>Lance 5 · Promoção</small>O peão que vira dama</h2>
 <p>No xadrez, o peão que chega ao fim do tabuleiro vira a peça mais forte. No funil, é quem não fechou de primeira, o cliente que precisa de mais, e o cliente satisfeito que indica.</p>
 <div class="wrap"><table><tr><th>Frente</th><th>Para quem</th><th>Ação</th></tr>
 <tr><td><b>Recuperação</b></td><td>Fez a análise e não fechou</td><td>4 mensagens em 21 dias (conteúdo educativo, sem pressão) + remarketing com vídeo do sócio</td></tr>
@@ -179,7 +216,7 @@ th{font-weight:600;color:var(--mut);font-size:12px;letter-spacing:.06em;text-tra
 <tr><td><b>Autoridade</b></td><td>Todos</td><td>Artigos no site (pilar sobre dívida bancária empresarial + 6 satélites) e conteúdo educativo no Instagram, alimentando a busca orgânica</td></tr></table></div>
 <div class="kpi"><div><b>+5%</b>contratos recuperados</div><div><b>10%</b>Spot que migra para completo</div><div><b>1 a cada 5</b>clientes indica alguém</div></div>
 
-<h2><small>Medição</small>O que olhar toda segunda-feira</h2>
+<h2 class="pb"><small>Medição</small>O que olhar toda segunda-feira</h2>
 <div class="wrap"><table><tr><th>Indicador</th><th>Meta</th><th>Alarme</th></tr>
 <tr><td>Custo por contato</td><td>R$ 80–130</td><td>&gt; R$ 180</td></tr>
 <tr><td>% qualificados</td><td>40%</td><td>&lt; 25%</td></tr>
