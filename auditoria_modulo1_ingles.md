@@ -16,9 +16,9 @@
 | 4 — Numbers, Colors & Basic Adjectives | **sem documento enviado** | 51 | — | ⚠️ Não auditável |
 | 5 — Days, Months & Time | 20 + 7 writing + 7 speaking extras | 50 | 34 / 34 | ✅ Completo (+16 extras) |
 | 6 — Family, Countries & Professions | 20 | 35 | 18 / 20 | ⚠️ 2 exercícios parciais |
-| 7 — Object Pronouns | 10 (só Reading e Listening no doc) | 37 | 10 / 10 | ✅ Completo (+27 extras sem spec) |
+| 7 — Object Pronouns | 20 | 37 | 20 / 20 | ✅ Completo (+17 extras) |
 
-**Total: 134 exercícios solicitados → 132 implementados integralmente, 2 implementados parcialmente, 0 ausentes.**
+**Total: 144 exercícios solicitados → 142 implementados integralmente, 2 implementados parcialmente, 0 ausentes.**
 
 Regras gerais dos documentos também foram verificadas:
 
@@ -45,7 +45,7 @@ Regras gerais dos documentos também foram verificadas:
 | 9 | **Days — pedido extra "Ela está em casa na segunda-feira… todos os dias"** | Tópico 5, ex. #44–#50 (writing) e #32–#38 (speaking "Listen and repeat") | 7 frases alternando She/He com os 7 dias, nas duas habilidades, com áudio no speaking. |
 | 10 | **Family — Speaking 15 "Family Profile Challenge"** (6 detalhes = Family Expert) | Tópico 6, ex. #30 | Áudio da Anna idêntico, 6 grupos de pontuação (mother/Emma, teacher/England, Monday/eight, father/Leo, doctor/Brazil, Tuesday/seven). |
 
-Outros exemplos conferidos e idênticos: Object Pronouns Reading 1–5 e Listening 6–10 (Tópico 7 #11–#15, #21–#27), Family Listening 6–10 (Tópico 6 #11–#15), Greetings Writing 11–15 (Tópico 2 #37–#41), Pronouns Writing 11–15 (Tópico 3 #32–#36).
+Outros exemplos conferidos e idênticos: Object Pronouns Reading 1–5, Listening 6–10, Writing 11–15 e Speaking 16–20 (Tópico 7 #11–#15, #21–#27, #28–#37), Family Listening 6–10 (Tópico 6 #11–#15), Greetings Writing 11–15 (Tópico 2 #37–#41), Pronouns Writing 11–15 (Tópico 3 #32–#36).
 
 ---
 
@@ -75,7 +75,7 @@ Como praticamente todos os exercícios foram implementados, a lista abaixo mistu
 - Tópico 3: +5 grammar, +5 listening, +1 reading.
 - Tópico 5: +10 grammar, +5 listening, +1 reading (o doc não previa Grammar para Days).
 - Tópico 6: +10 grammar, +5 listening (o doc não previa Grammar para Family).
-- Tópico 7: +10 grammar, +5 listening, +2 reading, +5 speaking, +5 writing (o doc só especificava Reading e Listening).
+- Tópico 7: +10 grammar, +5 listening, +2 reading (o doc especificava Reading, Listening, Writing e Speaking; todos os 20 foram encontrados).
 
 Todos os extras seguem o mesmo padrão pedagógico dos docs (personagens Mia/Leo/Ben/Anna, mudança de perspectiva, correção de transcrição), sem exercícios de lista ou de lógica pura.
 
