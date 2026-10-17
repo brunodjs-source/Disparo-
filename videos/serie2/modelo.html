@@ -1,0 +1,62 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:Cinzel;src:url(../ads/a01-campinas/fonts/cinzel-latin.woff2)}
+@font-face{font-family:Pf;src:url(../ads/a01-campinas/fonts/playfair-italic-latin.woff2);font-style:italic}
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#F6F1E8;font-family:-apple-system,Helvetica,Arial,sans-serif;color:#161513}
+#bg{position:absolute;inset:0;background:radial-gradient(900px 700px at 85% 12%,rgba(232,179,106,.30),transparent 60%),radial-gradient(700px 600px at 10% 95%,rgba(154,95,42,.10),transparent)}
+#lab{position:absolute;top:330px;left:0;right:0;text-align:center;font-family:Cinzel;letter-spacing:.32em;font-size:30px;color:#9A5F2A}
+#lab:after{content:"";display:block;width:70px;height:3px;background:#C48C34;margin:18px auto 0}
+#stage{position:absolute;left:60px;right:60px;top:420px;height:500px;display:flex;align-items:center;justify-content:center}
+#cap{position:absolute;left:70px;right:70px;top:960px;text-align:center;font-weight:900;font-size:66px;line-height:1.15;perspective:600px}
+#cap span{display:inline-block;margin:0 8px;transform-origin:50% 80%}
+#cap .hl{color:#A8701F}
+#brand{position:absolute;top:1440px;left:0;right:0;text-align:center;font-family:Cinzel;letter-spacing:.3em;font-size:22px;color:#7a6f62}
+canvas{position:absolute;inset:0}
+.num{font-weight:900;font-size:170px;letter-spacing:-.02em;text-align:center;line-height:1}
+.sub{font-family:Cinzel;letter-spacing:.25em;font-size:28px;color:#9A5F2A;text-align:center;margin-bottom:16px}
+.then{display:inline-block;margin-top:26px;font-weight:900;font-size:64px;color:#fff;background:#c0392b;padding:14px 34px;border-radius:18px}
+.cards{display:flex;flex-direction:column;gap:22px;width:860px}
+.card{display:flex;align-items:center;gap:26px;background:#fff;border-radius:26px;padding:26px 34px;font-size:46px;font-weight:800;box-shadow:0 16px 40px rgba(60,40,10,.10)}
+.ic{width:62px;height:62px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;color:#fff;font-size:38px;font-weight:900}
+.word{position:relative;display:inline-block;font-weight:900;font-size:110px;text-align:center}
+.strike{position:absolute;left:-10px;top:52%;height:14px;background:#c0392b;border-radius:7px}
+.gpill{display:inline-block;background:linear-gradient(90deg,#E8B36A,#9A5F2A);color:#fff;font-weight:900;font-size:76px;padding:22px 50px;border-radius:90px;margin-top:30px}
+.big1{font-family:Cinzel;letter-spacing:.2em;font-size:52px;color:#161513;text-align:center}
+.big2{font-family:Pf;font-style:italic;font-size:130px;color:#A8701F;text-align:center;line-height:1.05}
+.duo{display:flex;gap:30px}.dcard{width:420px;border-radius:30px;padding:40px 30px;text-align:center}
+.dcard b{display:block;font-size:52px}.dcard span{display:block;font-size:40px;margin-top:12px}
+.fun{display:flex;flex-direction:column;align-items:center;gap:14px}
+.fl{height:92px;border-radius:20px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:44px;color:#fff}
+.vs{display:flex;align-items:center;gap:40px}.vsb{width:380px;height:380px;border-radius:40px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:900}
+.vsb b{font-size:150px;line-height:1}.vsb span{font-size:32px;font-family:Cinzel;letter-spacing:.2em;margin-top:14px}
+.bub{background:#fff;border-radius:44px;padding:34px 46px;box-shadow:0 20px 50px rgba(0,0,0,.12);font-size:62px;font-weight:800;display:flex;gap:26px;align-items:center}
+.av{width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,#E8B36A,#9A5F2A);flex:none}
+</style></head><body><div id="bg"></div><canvas id="pc" width="1080" height="1920"></canvas>
+<div id="lab"></div><div id="stage"></div><div id="cap"></div>
+<div id="brand">ESTRATEGISTA · <i style="font-family:Pf;letter-spacing:0">de lançamento</i></div>
+<script>
+const TL=__TIMELINE__,S=TL.segs,TOTAL=TL.total;
+const cl=x=>Math.max(0,Math.min(1,x)),eo=x=>1-Math.pow(1-cl(x),3),back=x=>{x=cl(x);const c=1.7;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const st=document.getElementById('stage'),cap=document.getElementById('cap'),lab=document.getElementById('lab');
+const W=(i,k)=>k<0?-99:k>=90?1e9:S[i].wt[Math.min(k,S[i].wt.length-1)];
+const pop=(t,a)=>`opacity:${cl((t-a)/.25)};transform:scale(${back((t-a)/.45)})`;
+const fmt=n=>Math.round(n).toLocaleString('pt-BR');
+function scene(i,t){const v=S[i].vis,s=S[i];let h="";
+ if(v.t=="count"){const a=W(i,v.at),p=eo((t-a)/1.1),n=v.from+(v.to-v.from)*p;h=`<div style="${pop(t,s.start)}">${v.label?`<div class=sub>${v.label}</div>`:""}<div class=num>${v.pre}${fmt(n)}${v.suf}</div>${v.then?`<div style="text-align:center"><span class=then style="${pop(t,a+1.2)}">${v.then}</span></div>`:""}</div>`}
+ if(v.t=="cards"){const col={ok:"#3b9b5c",bad:"#c0392b",gold:"#C48C34"}[v.tone],ic={ok:"✓",bad:"✕",gold:"→"}[v.tone];h=`<div class=cards>${v.items.map((x,k)=>{const a=W(i,v.at[k]);return `<div class=card style="opacity:${cl((t-a)/.25)};transform:translateX(${(1-eo((t-a)/.45))*-120}px)"><div class=ic style="background:${col}">${ic}</div>${x}</div>`}).join("")}</div>`}
+ if(v.t=="cross"){const a=W(i,v.at),b=W(i,v.bat);h=`<div style="text-align:center"><div class=word style="color:${t>a?'#9a9086':'#161513'};font-size:${v.a.length>12?78:110}px">${v.a}<div class=strike style="width:${eo((t-a)/.35)*105}%"></div></div><br><span class=gpill style="${pop(t,b)}">${v.b}</span></div>`}
+ if(v.t=="big"){const a=W(i,v.at);h=`<div><div class=big1 style="${pop(t,s.start)}">${v.l1}</div><div class=big2 style="${pop(t,a)}">${v.l2}</div></div>`}
+ if(v.t=="duo"){h=`<div class=duo>${[[v.a,v.as,'#fff','#161513'],[v.b,v.bs,'#161513','#F3EDE2']].map((d,k)=>{const a=W(i,v.at[k]);return `<div class=dcard style="background:${d[2]};color:${d[3]};box-shadow:0 18px 40px rgba(0,0,0,.12);${pop(t,a)}"><b>${d[0]}</b><span style="color:${k?'#E8B36A':'#9A5F2A'}">${d[1]}</span></div>`}).join("")}</div>`}
+ if(v.t=="funnel"){h=`<div class=fun>${v.title?`<div class=sub style="${pop(t,W(i,6))}">${v.title}</div>`:""}${v.items.map((x,k)=>{const a=W(i,v.at[k]),on=t>=a;return `<div class=fl style="width:${860-k*140}px;background:${on?'linear-gradient(90deg,#E8B36A,#9A5F2A)':'#e4ddd0'};transform:scale(${on?back((t-a)/.45):1})">${x}</div>`}).join("")}${v.done?`<div style="${pop(t,W(i,v.done))};font-size:70px;color:#3b9b5c;font-weight:900">✓ venda</div>`:""}</div>`}
+ if(v.t=="vs"){const a=W(i,v.at[0]),b=W(i,v.at[1]);h=`<div class=vs><div class=vsb style="background:#161513;color:#E8B36A;${pop(t,a)}"><b>${v.a}</b><span style="color:#F3EDE2">DONO</span></div><div style="font-weight:900;font-size:60px;${pop(t,b-.2)}">vs</div><div class=vsb style="background:#fff;color:#161513;box-shadow:0 18px 40px rgba(0,0,0,.12);${pop(t,b)};transform:rotate(${t>b+.6?Math.sin(t*14)*3:0}deg) scale(${back((t-b)/.45)})"><b>${v.b}</b><span style="color:#9A5F2A">CLT</span></div></div>`}
+ if(v.t=="cta"){const kw=TL.kw,a=W(i,1),k=Math.floor(cl((t-a)/.7)*kw.length);h=`<div class=bub style="${pop(t,s.start)}"><div class=av></div><span>${kw.slice(0,k)}${k<kw.length&&Math.floor(t*3)%2?"|":""}</span></div>`}
+ return h}
+const P=[];
+function burst(dt){const c=document.getElementById('pc').getContext('2d');c.clearRect(0,0,1080,1920);if(dt<0||dt>.9)return;for(let k=0;k<26;k++){const an=k/26*6.283,r=60+dt*520;c.globalAlpha=1-dt/.9;c.fillStyle=k%2?"#E8B36A":"#9A5F2A";c.beginPath();c.arc(540+Math.cos(an)*r,670+Math.sin(an)*r*.7,7*(1-dt),0,6.3);c.fill()}}
+function render(t){let i=S.findIndex((s,k)=>t>=s.start-.15&&(!S[k+1]||t<S[k+1].start-.15));if(i<0)i=0;const s=S[i];
+ const fo=cl((t-s.start+.15)/.3);st.style.opacity=fo;st.style.transform=`translateY(${(1-eo((t-s.start+.15)/.45))*50}px)`;
+ st.innerHTML=scene(i,t);lab.textContent=s.label;lab.style.opacity=cl((t-s.start+.15)/.3);
+ const toks=s.text.split(" ");let wi=0;cap.innerHTML=toks.map(tok=>{const c=tok.toLowerCase().replace(/[.,:?!]/g,"");const tt=s.wt[Math.min(wi,s.wt.length-1)];if(c)wi++;const p=back((t-tt+.02)/.25),on=t>=tt-.02;
+  return `<span class="${s.hl.includes(c)?'hl':''}" style="opacity:${on?1:.0};transform:scale(${on?.6+.4*p:.6}) rotateX(${(1-p)*45}deg)">${tok}</span>`}).join("");
+ cap.style.fontSize=(toks.length>9?56:66)+"px";burst(i>0?t-s.start+.15:-1)}
+render(0);
+</script></body></html>
