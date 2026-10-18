@@ -22,9 +22,18 @@ html,body{margin:0;background:transparent;width:1080px;height:1920px;overflow:hi
 #brand{position:absolute;bottom:110px;left:0;right:0;text-align:center;font-family:Cinzel;letter-spacing:.3em;font-size:22px;color:#fff;opacity:.85;text-shadow:0 2px 8px #000}
 #wipe{position:absolute;top:0;bottom:0;width:1300px;left:-1300px;background:linear-gradient(90deg,transparent,#E8B36A 40%,#fff 50%,#E8B36A 60%,transparent);opacity:.85}
 canvas{position:absolute;inset:0}
+#cin{position:absolute;inset:0;background:#0b0a09;display:none;overflow:hidden;color:#F3EDE2}
+#cin .s{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.gl{font-weight:900;font-size:120px;line-height:.95;text-align:center;position:relative;letter-spacing:-.02em}
+.gl b{position:absolute;inset:0;mix-blend-mode:screen}
+.cm{position:absolute;left:90px;display:flex;gap:18px;align-items:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:30px;padding:18px 26px;font-size:36px;font-weight:700;backdrop-filter:blur(4px)}
+.cm i{width:56px;height:56px;border-radius:50%;flex:none}
+.ht{position:absolute;font-size:64px}
+#gr{position:absolute;inset:0;pointer-events:none;opacity:.12}
+
 </style></head><body>
 <div id="back"></div>
-<div id="front"><canvas id="cf" width="1080" height="1920"></canvas><div id="br"><div id="brl"></div><div id="brc"></div></div><div id="tag"><b>Pablo</b><i>Marketing · Tzur Capital</i></div><div id="cta"><div><i></i><span id="ct"></span></div></div><div id="cap"></div><div id="wipe"></div><div id="brand">ESTRATEGISTA · <i style="font-family:Pf;letter-spacing:0">de lançamento</i></div></div>
+<div id="front"><canvas id="cf" width="1080" height="1920"></canvas><div id="br"><div id="brl"></div><div id="brc"></div></div><div id="tag"><b>Pablo</b><i>Marketing · Tzur Capital</i></div><div id="cta"><div><i></i><span id="ct"></span></div></div><div id="cin"></div><canvas id="gr" width="540" height="960" style="width:1080px;height:1920px;display:none"></canvas><div id="cap"></div><div id="wipe"></div><div id="brand">ESTRATEGISTA · <i style="font-family:Pf;letter-spacing:0">de lançamento</i></div></div>
 <script>
 const E=__EDIT__,Wd=E.words;let LAYER="front";
 const cl=x=>Math.max(0,Math.min(1,x)),eo=x=>1-Math.pow(1-cl(x),3),back=x=>{x=cl(x);const c=1.7;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
@@ -33,7 +42,7 @@ const HL=["6","20","milhões","pablo","faltando","seis","sete","oito","dígitos"
 const LT=[[1.7,4.25,"R$ 6 MI","#fff",230,470],[4.28,8.0,"R$ 20 MI","#F5C46E",250,440],[9.9,13.3,"PABLO","#F3EDE2",260,560],[15.7,17.4,"FALTAVA<br>ALGO","#F3EDE2",190,530],
 [20.45,23.0,"6 MESES","#F5C46E",230,550],[23.05,24.08,"7 DÍGITOS","#fff",190,570],[24.11,28.0,"8 DÍGITOS","#F5C46E",200,560],
 [30.4,33.2,"VENDER<br>MAIS?","#fff",210,520],[33.28,36.3,"ESTRATÉGIA","#F5C46E",150,580],[37.45,38.85,"FUNIL","#F3EDE2",260,560],[39.75,40.5,"PERSONA","#F5C46E",200,570],
-[42.2,44.5,"NÃO FOI<br>SORTE","#F3EDE2",200,510],[45.05,48.0,"TRAVOU?","#e2574c",220,560],[48.7,54.3,"ESTRATEGISTA","#F5C46E",130,590]];
+[42.2,44.5,"NÃO FOI<br>SORTE","#F3EDE2",200,510]];
 // B-roll nos cortes
 const CUTS=E.cuts.map(c=>c.start).filter(s=>s>0);
 const BR=[["QUEM CONTA",t=>`<div class=bb style="transform:scale(${back(t/.5)})">O cliente</div><span class=gp style="opacity:${cl((t-.4)/.3)}">conta o resultado</span>`],
@@ -49,12 +58,37 @@ function render(t,layer){LAYER=layer;document.getElementById('back').style.displ
  // front
  const bi=CUTS.findIndex(c=>t>=c-.7&&t<c+.9),br=document.getElementById('br');
  if(bi>=0){const c=CUTS[bi],lt=t-(c-.7),fo=cl(lt/.2)*(1-cl((t-(c+.65))/.25));br.style.display="block";br.style.opacity=fo;br.style.transform=`scale(${1.06-.06*eo(lt/.4)})`;document.getElementById('brl').textContent=BR[bi][0];document.getElementById('brc').innerHTML=BR[bi][1](lt)}else br.style.display="none";
- const dk=bi>=0;const cap=document.getElementById('cap');cap.className=dk?"dk":"";document.getElementById('brand').style.color=dk?"#7a6f62":"#fff";document.getElementById('brand').style.textShadow=dk?"none":"";
+ const dk=bi>=0;const cap=document.getElementById('cap');cap.style.top=(t>=44.45?1590:1330)+'px';cap.className=dk?"dk":"";document.getElementById('brand').style.color=dk?"#7a6f62":"#fff";document.getElementById('brand').style.textShadow=dk?"none":"";
  let gi=G.findIndex((gr,k)=>Wd[gr[0]][0]<=t&&(!G[k+1]||Wd[G[k+1][0]][0]>t));const last=Wd[Wd.length-1][0];
  cap.innerHTML=(gi<0||t>last+1.2)?"":G[gi].map(i=>{const w=Wd[i],p=back((t-w[0]+.02)/.25),on=t>=w[0]-.02,c=w[1].toLowerCase();return `<span class="${HL.includes(c)?'hl':''}" style="opacity:${on?1:0};transform:scale(${on?.6+.4*p:.6}) rotateX(${(1-p)*40}deg)">${w[1]}</span>`}).join("");
  const tg=document.getElementById('tag');tg.style.opacity=cl((t-9.6)/.4)*(1-cl((t-13.0)/.3));tg.style.transform=`translateX(${-(1-eo((t-9.6)/.5))*500}px)`;
  const kw="ESTRATEGISTA",a=48.7,k=Math.floor(cl((t-a)/.8)*kw.length),cta=document.getElementById('cta');cta.style.opacity=cl((t-48.35)/.3);cta.style.transform=`scale(${back((t-48.35)/.5)})`;document.getElementById('ct').textContent="Comenta "+kw.slice(0,k);
  const cut=CUTS.find(s=>(t>=s-.95&&t<s-.6)||(t>=s+.75&&t<s+1.1));const st=cut===undefined?null:(t<cut?cut-.95:cut+.75);document.getElementById('wipe').style.left=st===null?"-1300px":(-1300+(t-st)/.35*2600)+"px";
+
+ const C0=44.45,cin=document.getElementById('cin'),gr=document.getElementById('gr');
+ if(t>=C0){const lt=t-C0;cin.style.display="block";gr.style.display="block";
+  const sh=(a,dur,amp)=>{const x=cl((t-a)/dur);return x<1?(Math.sin(t*90)*amp*(1-x)):0};
+  let h="",kick=0;
+  if(t<46.15){const r=cl((t-44.6)/.3);kick=sh(45.1,.4,22);const g=Math.floor(t*24)%5==0?12:0;
+   h=`<div class=s style="transform:translate(${kick}px,${sh(45.1,.4,10)}px) scale(${1.15-.15*eo(lt/.6)})"><div style="font-family:Cinzel;letter-spacing:.3em;font-size:30px;color:#e2574c;margin-bottom:30px;opacity:${r}">ALERTA</div><div class=gl style="opacity:${r}">SE O SEU<br>NEGÓCIO<br><span style="color:#e2574c">TRAVOU</span><b style="color:#0ff;transform:translate(${-g}px,0);opacity:.5">SE O SEU<br>NEGÓCIO<br>TRAVOU</b><b style="color:#f0f;transform:translate(${g}px,0);opacity:.5">SE O SEU<br>NEGÓCIO<br>TRAVOU</b></div>
+   <svg width="860" height="300" viewBox="0 0 860 300" style="margin-top:60px"><path d="M20 260L220 150L380 120L520 122L840 121" stroke="#e2574c" stroke-width="10" fill="none" stroke-linecap="round" stroke-dasharray="1000" stroke-dashoffset="${1000*(1-eo((t-44.7)/.9))}" style="filter:drop-shadow(0 0 14px #e2574c)"/></svg></div>`}
+  else if(t<48.3){const lt2=t-46.15;let nums="";for(let k=0;k<26;k++){const x=(k*137)%1080,y=(k*263)%1700+100,sp=1+k%4,z=(lt2*sp*1.5)%1;nums+=`<div style="position:absolute;left:${x}px;top:${y}px;font-weight:900;font-size:${40+k%5*24}px;color:rgba(245,196,110,${.15+.5*(1-z)});transform:scale(${.5+z*2});filter:blur(${z*6}px)">${['R$','%','+','x','7','8','20','6'][k%8]}</div>`}
+   h=`<div class=s>${nums}<div class=gl style="font-size:110px;transform:scale(${back(lt2/.5)})">NENHUM<br><span style="color:#F5C46E">NÚMERO</span></div><div style="font-size:52px;font-weight:800;margin-top:30px;opacity:${cl((lt2-.6)/.3)}">me chama aqui</div></div>`}
+  else if(t<50.6){const lt3=t-48.3;const names=["@nutri.ana","@dra.julia","@consorcio.rafa","@adv.marcos","@prof.lu","@clinica.vida","@mentora.bia","@dr.pedro"];let cms="";
+   names.forEach((n,k)=>{const a=k*.22,p=cl((lt3-a)/.35),y=1250-(lt3-a)*300;if(lt3>a)cms+=`<div class=cm style="top:${y}px;opacity:${p*(y<250?cl((y-120)/130):1)};transform:scale(${.8+.2*p})"><i style="background:hsl(${k*45},45%,55%)"></i><span><b style="opacity:.6;font-size:28px">${n}</b><br>ESTRATEGISTA</span></div>`});
+   let hearts="";for(let k=0;k<14;k++){const a=k*.15,p=lt3-a;if(p>0)hearts+=`<div class=ht style="left:${780+Math.sin(k*2+p*3)*80}px;top:${1250-p*450}px;opacity:${1-cl(p/1.4)};color:${k%2?'#e2574c':'#F5C46E'};transform:scale(${.6+cl(p/.3)*.6})">♥</div>`}
+   const cnt=Math.floor(eo(lt3/2)*1287);
+   h=`<div class=s style="justify-content:flex-start;padding-top:170px"><div style="font-family:Cinzel;letter-spacing:.3em;font-size:30px;color:#F5C46E">COMENTA</div><div class=gl style="font-size:118px;color:#F5C46E;text-shadow:0 0 40px rgba(245,196,110,.6);transform:scale(${back(lt3/.4)})">ESTRATEGISTA</div><div style="font-size:40px;font-weight:700;margin-top:16px;opacity:.8">${cnt.toLocaleString('pt-BR')} comentários</div></div>${cms}${hearts}`}
+  else{const lt4=t-50.6;const fl=cl(1-Math.abs(lt4-.15)/.25);
+   h=`<div class=s><svg width="900" height="420" viewBox="0 0 900 420"><path d="M30 390L230 360L420 300L620 170L870 40" stroke="#F5C46E" stroke-width="12" fill="none" stroke-linecap="round" stroke-dasharray="1100" stroke-dashoffset="${1100*(1-eo(lt4/1))}" style="filter:drop-shadow(0 0 18px #F5C46E)"/></svg>
+   <div style="margin-top:40px;display:flex;align-items:center;gap:26px;opacity:${cl((lt4-1)/.4)};transform:scale(${.9+.1*eo((lt4-1)/.6)})"><svg viewBox="30 0 80 152" style="height:170px;filter:drop-shadow(0 0 22px rgba(232,179,106,.7))"><defs><linearGradient id="o9" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F5D08F"/><stop offset="1" stop-color="#9A5F2A"/></linearGradient></defs><circle cx="70" cy="15" r="5" fill="#F5D08F"/><path d="M40 30H52V48H64V30H76V48H88V30H100V62L90 74L92 122L104 134V146H36V134L48 122L50 74L40 62Z" fill="url(#o9)"/></svg><div style="font-family:Cinzel;font-size:50px;letter-spacing:.3em">ESTRATEGISTA<div style="font-family:Pf;font-style:italic;font-size:44px;letter-spacing:0;color:#E8B36A">de lançamento</div></div></div>
+   <div style="position:absolute;top:0;bottom:0;width:300px;left:${-400+cl((lt4-1.4)/.8)*1700}px;background:linear-gradient(90deg,transparent,rgba(255,240,210,.35),transparent);transform:skewX(-20deg)"></div></div>
+   <div style="position:absolute;inset:0;background:radial-gradient(circle at 80% 15%,rgba(255,230,180,${fl}),transparent 60%)"></div>`}
+  cin.innerHTML=h+`<div style="position:absolute;inset:0;background:radial-gradient(circle,transparent 55%,rgba(0,0,0,.7))"></div><div style="position:absolute;inset:0;background:linear-gradient(120deg,rgba(255,150,60,${.12+.08*Math.sin(t*2)}),transparent 40%)"></div>`;
+  cin.style.opacity=cl(lt/.12);
+  const gx=gr.getContext('2d'),id=gx.createImageData(540,960);for(let i=0;i<id.data.length;i+=4){const v=Math.random()*255;id.data[i]=id.data[i+1]=id.data[i+2]=v;id.data[i+3]=255}gx.putImageData(id,0,0);
+  document.getElementById('cta').style.display="none";document.getElementById('brand').style.display="none";
+ } else {cin.style.display="none";gr.style.display="none";document.getElementById('brand').style.display="block"}
  const cv=document.getElementById('cf'),x=cv.getContext('2d');x.clearRect(0,0,1080,1920);const dt=t-4.28;
  if(dt>0&&dt<4.5){P.forEach(p=>{const y=p.y+p.vy*dt*30+120*dt*dt,xx=p.x+p.vx*dt*30+Math.sin(dt*3+p.r)*30;x.save();x.translate(xx,y);x.rotate(p.r+p.vr*dt*30);x.fillStyle=p.c;x.globalAlpha=1-cl((dt-3.6)/.9);x.fillRect(-p.w/2,-p.w/4,p.w,p.w/2);x.restore()})}}
 render(0,"front");
