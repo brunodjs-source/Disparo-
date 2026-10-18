@@ -1,0 +1,61 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:Cinzel;src:url(/home/user/Disparo-/videos/ads/a01-campinas/fonts/cinzel-latin.woff2)}
+@font-face{font-family:Pf;src:url(/home/user/Disparo-/videos/ads/a01-campinas/fonts/playfair-italic-latin.woff2);font-style:italic}
+html,body{margin:0;background:transparent;width:1080px;height:1920px;overflow:hidden;font-family:-apple-system,Helvetica,Arial,sans-serif}
+#back,#front{position:absolute;inset:0}
+.L{position:absolute;left:0;right:0;text-align:center;font-weight:900;letter-spacing:-.02em;line-height:.9;perspective:900px}
+.L span{display:inline-block;transform-origin:50% 100%}
+#cap{position:absolute;left:70px;right:70px;top:1330px;text-align:center;font-weight:900;font-size:68px;line-height:1.12;color:#fff;text-shadow:0 4px 18px rgba(0,0,0,.85),0 0 3px #000}
+#cap span{display:inline-block;margin:0 9px;transform-origin:50% 80%}
+#cap .hl{color:#F5C46E}#cap.dk{color:#161513;text-shadow:none}#cap.dk .hl{color:#A8701F}
+#br{position:absolute;inset:0;background:radial-gradient(900px 700px at 85% 10%,rgba(232,179,106,.3),transparent),#F6F1E8;display:none}
+#brl{position:absolute;top:330px;left:0;right:0;text-align:center;font-family:Cinzel;letter-spacing:.32em;font-size:30px;color:#9A5F2A}
+#brc{position:absolute;left:60px;right:60px;top:430px;height:560px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:24px;color:#161513}
+.bb{font-weight:900;font-size:96px;text-align:center;line-height:1}
+.gp{display:inline-block;background:linear-gradient(90deg,#E8B36A,#9A5F2A);color:#fff;font-weight:900;font-size:64px;padding:18px 44px;border-radius:80px}
+.cd{background:#fff;border-radius:24px;padding:22px 34px;font-size:46px;font-weight:800;box-shadow:0 14px 34px rgba(60,40,10,.12);width:760px}
+#tag{position:absolute;left:60px;top:1150px;background:rgba(20,18,16,.85);border-left:8px solid #E8B36A;padding:20px 32px;border-radius:14px;color:#F3EDE2;opacity:0}
+#tag b{display:block;font-size:46px}#tag i{font-family:Pf;font-size:36px;color:#E8B36A}
+#cta{position:absolute;left:60px;right:60px;top:180px;text-align:center;opacity:0}
+#cta div{display:inline-flex;align-items:center;gap:22px;background:#fff;border-radius:44px;padding:26px 40px;font-size:56px;font-weight:800;box-shadow:0 18px 40px rgba(0,0,0,.25)}
+#cta i{width:84px;height:84px;border-radius:50%;background:linear-gradient(135deg,#E8B36A,#9A5F2A)}
+#brand{position:absolute;bottom:110px;left:0;right:0;text-align:center;font-family:Cinzel;letter-spacing:.3em;font-size:22px;color:#fff;opacity:.85;text-shadow:0 2px 8px #000}
+#wipe{position:absolute;top:0;bottom:0;width:1300px;left:-1300px;background:linear-gradient(90deg,transparent,#E8B36A 40%,#fff 50%,#E8B36A 60%,transparent);opacity:.85}
+canvas{position:absolute;inset:0}
+</style></head><body>
+<div id="back"></div>
+<div id="front"><canvas id="cf" width="1080" height="1920"></canvas><div id="br"><div id="brl"></div><div id="brc"></div></div><div id="tag"><b>Pablo</b><i>Marketing · Tzur Capital</i></div><div id="cta"><div><i></i><span id="ct"></span></div></div><div id="cap"></div><div id="wipe"></div><div id="brand">ESTRATEGISTA · <i style="font-family:Pf;letter-spacing:0">de lançamento</i></div></div>
+<script>
+const E=__EDIT__,Wd=E.words;let LAYER="front";
+const cl=x=>Math.max(0,Math.min(1,x)),eo=x=>1-Math.pow(1-cl(x),3),back=x=>{x=cl(x);const c=1.7;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const HL=["6","20","milhões","pablo","faltando","seis","sete","oito","dígitos","estratégia","estratégia,","estratégia.","funil","persona.","sorte,","estrategista","estrategista.","travou,","público","marketing"];
+// letreiros 3D atrás da pessoa: [início, fim, texto, cor, tamanho, y]
+const LT=[[1.7,4.25,"R$ 6 MI","#fff",230,470],[4.28,8.0,"R$ 20 MI","#F5C46E",250,440],[9.9,13.3,"PABLO","#F3EDE2",260,560],[15.7,17.4,"FALTAVA<br>ALGO","#F3EDE2",190,530],
+[20.45,23.0,"6 MESES","#F5C46E",230,550],[23.05,24.08,"7 DÍGITOS","#fff",190,570],[24.11,28.0,"8 DÍGITOS","#F5C46E",200,560],
+[30.4,33.2,"VENDER<br>MAIS?","#fff",210,520],[33.28,36.3,"ESTRATÉGIA","#F5C46E",150,580],[37.45,38.85,"FUNIL","#F3EDE2",260,560],[39.75,40.5,"PERSONA","#F5C46E",200,570],
+[42.2,44.5,"NÃO FOI<br>SORTE","#F3EDE2",200,510],[45.05,48.0,"TRAVOU?","#e2574c",220,560],[48.7,54.3,"ESTRATEGISTA","#F5C46E",130,590]];
+// B-roll nos cortes
+const CUTS=E.cuts.map(c=>c.start).filter(s=>s>0);
+const BR=[["QUEM CONTA",t=>`<div class=bb style="transform:scale(${back(t/.5)})">O cliente</div><span class=gp style="opacity:${cl((t-.4)/.3)}">conta o resultado</span>`],
+["O QUE FALTAVA",t=>["Anúncio","Alta demanda","? Estratégia"].map((x,k)=>`<div class=cd style="opacity:${cl((t-k*.25)/.25)};transform:translateX(${(1-eo((t-k*.25)/.4))*-120}px);${k==2?'border:4px dashed #C48C34;color:#A8701F':''}">${x}</div>`).join("")],
+["EM POUCO TEMPO",t=>`<svg width="820" height="420" viewBox="0 0 820 420"><path d="M30 390H800M30 390V20" stroke="#cfc6b6" stroke-width="4"/><path d="M50 360L250 330L420 280L600 160L780 40" stroke="#C48C34" stroke-width="12" fill="none" stroke-linecap="round" stroke-dasharray="1000" stroke-dashoffset="${1000*(1-eo(t/1.1))}"/></svg><span class=gp style="opacity:${cl((t-.8)/.3)}">7 → 8 dígitos/mês</span>`],
+["O QUE MUDOU",t=>["Modelos de campanha","Funil de verdade","Público e persona"].map((x,k)=>`<div class=cd style="opacity:${cl((t-k*.25)/.25)};transform:translateX(${(1-eo((t-k*.25)/.4))*120}px)">✓ ${x}</div>`).join("")],
+["A LIÇÃO",t=>`<div class=bb style="color:#9a9086;position:relative">SORTE<div style="position:absolute;left:-10px;top:52%;height:14px;background:#c0392b;border-radius:7px;width:${eo((t-.3)/.35)*108}%"></div></div><span class=gp style="transform:rotate(-6deg) scale(${back((t-.7)/.4)});opacity:${cl((t-.7)/.2)}">ESTRATÉGIA</span>`]];
+const P=[];for(let i=0;i<160;i++)P.push({x:Math.random()*1080,y:-50-Math.random()*900,vx:(Math.random()-.5)*6,vy:6+Math.random()*9,r:Math.random()*6.28,vr:(Math.random()-.5)*.3,c:["#E8B36A","#fff","#C48C34","#F5C46E","#e2483d","#3d8be2"][i%6],w:12+Math.random()*12});
+const G=[];let g=[];Wd.forEach((w,i)=>{g.push(i);if(g.length>=4||/[.,!?]$/.test(w[1])||(Wd[i+1]&&Wd[i+1][0]-w[0]>0.9)){G.push(g);g=[]}});if(g.length)G.push(g);
+function render(t,layer){LAYER=layer;document.getElementById('back').style.display=layer=="back"?"block":"none";document.getElementById('front').style.display=layer=="front"?"block":"none";
+ if(layer=="back"){const b=document.getElementById('back');b.innerHTML=LT.filter(l=>t>=l[0]-.05&&t<l[1]+.35).map(l=>{const p=eo((t-l[0])/.55),out=cl((t-l[1])/.35),ext=[...Array(14)].map((_,k)=>`${k*1.5}px ${k*2}px 0 ${k<13?'rgba(60,40,15,.85)':'rgba(0,0,0,.4)'}`).join(",");
+  return `<div class=L style="top:${l[5]}px;font-size:${l[4]}px;color:${l[3]};opacity:${1-out}"><span style="transform:translateY(${(1-p)*260+out*-80}px) rotateX(${(1-p)*55}deg) scale(${.85+.15*p});text-shadow:${ext},0 30px 60px rgba(0,0,0,.5)">${l[2]}</span></div>`}).join("");return}
+ // front
+ const bi=CUTS.findIndex(c=>t>=c-.7&&t<c+.9),br=document.getElementById('br');
+ if(bi>=0){const c=CUTS[bi],lt=t-(c-.7),fo=cl(lt/.2)*(1-cl((t-(c+.65))/.25));br.style.display="block";br.style.opacity=fo;br.style.transform=`scale(${1.06-.06*eo(lt/.4)})`;document.getElementById('brl').textContent=BR[bi][0];document.getElementById('brc').innerHTML=BR[bi][1](lt)}else br.style.display="none";
+ const dk=bi>=0;const cap=document.getElementById('cap');cap.className=dk?"dk":"";document.getElementById('brand').style.color=dk?"#7a6f62":"#fff";document.getElementById('brand').style.textShadow=dk?"none":"";
+ let gi=G.findIndex((gr,k)=>Wd[gr[0]][0]<=t&&(!G[k+1]||Wd[G[k+1][0]][0]>t));const last=Wd[Wd.length-1][0];
+ cap.innerHTML=(gi<0||t>last+1.2)?"":G[gi].map(i=>{const w=Wd[i],p=back((t-w[0]+.02)/.25),on=t>=w[0]-.02,c=w[1].toLowerCase();return `<span class="${HL.includes(c)?'hl':''}" style="opacity:${on?1:0};transform:scale(${on?.6+.4*p:.6}) rotateX(${(1-p)*40}deg)">${w[1]}</span>`}).join("");
+ const tg=document.getElementById('tag');tg.style.opacity=cl((t-9.6)/.4)*(1-cl((t-13.0)/.3));tg.style.transform=`translateX(${-(1-eo((t-9.6)/.5))*500}px)`;
+ const kw="ESTRATEGISTA",a=48.7,k=Math.floor(cl((t-a)/.8)*kw.length),cta=document.getElementById('cta');cta.style.opacity=cl((t-48.35)/.3);cta.style.transform=`scale(${back((t-48.35)/.5)})`;document.getElementById('ct').textContent="Comenta "+kw.slice(0,k);
+ const cut=CUTS.find(s=>(t>=s-.95&&t<s-.6)||(t>=s+.75&&t<s+1.1));const st=cut===undefined?null:(t<cut?cut-.95:cut+.75);document.getElementById('wipe').style.left=st===null?"-1300px":(-1300+(t-st)/.35*2600)+"px";
+ const cv=document.getElementById('cf'),x=cv.getContext('2d');x.clearRect(0,0,1080,1920);const dt=t-4.28;
+ if(dt>0&&dt<4.5){P.forEach(p=>{const y=p.y+p.vy*dt*30+120*dt*dt,xx=p.x+p.vx*dt*30+Math.sin(dt*3+p.r)*30;x.save();x.translate(xx,y);x.rotate(p.r+p.vr*dt*30);x.fillStyle=p.c;x.globalAlpha=1-cl((dt-3.6)/.9);x.fillRect(-p.w/2,-p.w/4,p.w,p.w/2);x.restore()})}}
+render(0,"front");
+</script></body></html>
