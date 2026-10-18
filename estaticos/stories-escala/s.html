@@ -1,0 +1,47 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:Cinzel;src:url(../../videos/ads/a01-campinas/fonts/cinzel-latin.woff2)}
+@font-face{font-family:Pf;src:url(../../videos/ads/a01-campinas/fonts/playfair-italic-latin.woff2);font-style:italic}
+body{margin:0;width:1080px;height:1920px;background:#141210;color:#F3EDE2;font-family:-apple-system,Helvetica,Arial,sans-serif;position:relative;overflow:hidden}
+.f{position:absolute;top:0;left:0;width:1080px;height:1400px;background:center top/cover;-webkit-mask-image:linear-gradient(180deg,#000 55%,transparent 98%);transform-origin:50% 30%}
+.g{position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,18,16,.25) 0,rgba(20,18,16,0) 25%,rgba(20,18,16,.2) 42%,rgba(20,18,16,.92) 58%,#141210 66%),radial-gradient(800px 600px at 50% 62%,rgba(196,140,52,.2),transparent)}
+.top{position:absolute;top:920px;left:90px;font-family:Cinzel;letter-spacing:.3em;color:#E8B36A;font-size:28px}
+.bar{position:absolute;top:120px;left:90px;right:90px;display:flex;gap:10px}.bar i{flex:1;height:5px;background:rgba(255,255,255,.2);border-radius:3px}.bar i.on{background:#E8B36A}
+.t{position:absolute;left:90px;right:90px;top:1000px}
+.l{opacity:0;transform:translateY(40px);filter:blur(8px);font-size:76px;line-height:1.1;font-weight:800;margin:0 0 26px}
+.l i{font-family:Pf;font-weight:400;color:#E8B36A}
+.l.s{font-size:44px;font-weight:500;color:#d8cfc0;line-height:1.3}
+.l.n{font-size:58px;display:flex;gap:28px;align-items:baseline;margin-bottom:18px}.l.n b{font-family:Cinzel;color:#E8B36A;font-size:48px;width:60px}
+.m{position:absolute;bottom:140px;left:0;right:0;text-align:center;font-family:Cinzel;letter-spacing:.3em;font-size:24px;color:#a89c8a}
+</style></head><body><div class="f"></div><div class="g"></div><div class="bar"><i></i><i></i><i></i></div><div class="top" id="tp"></div><div class="t" id="c"></div><div class="m">ESTRATEGISTA · <i style="font-family:Pf;letter-spacing:0">de lançamento</i></div>
+<script>
+const S={
+1:{tp:'ESCALA 7X7?',L:[
+`<div class=l>Escala 7x7?</div>`,
+`<div class=l><i>Nem a sua 5x2 aguenta.</i></div>`,
+`<div class="l s">Trabalhar mais não é escalar.</div>`,
+`<div class="l s">É só cansar mais rápido.</div>`]},
+2:{tp:'ESCALA DE VERDADE',L:[
+`<div class=l style="font-size:64px">Tem data, sequência <i>e equipe.</i></div>`,
+`<div class="l n"><b>01</b>Pesquisa</div>`,
+`<div class="l n"><b>02</b>Oferta</div>`,
+`<div class="l n"><b>03</b>Aquecimento</div>`,
+`<div class="l n"><b>04</b>Carrinho</div>`]},
+3:{tp:'QUEM FAZ O QUÊ',L:[
+`<div class=l>Você atende.</div>`,
+`<div class=l><i>Eu desenho e comando.</i></div>`,
+`<div class="l s">Quer o checklist das 4 etapas?</div>`,
+`<div class="l s" style="color:#E8B36A;font-weight:700">Me chama no direct: ETAPAS</div>`]}};
+const q=new URLSearchParams(location.search),n=+q.get('n'),s=S[n];
+document.querySelector('.f').style.backgroundImage='url(foto'+n+'.jpg)';
+document.getElementById('tp').textContent=s.tp;
+document.getElementById('c').innerHTML=s.L.join('');
+document.querySelectorAll('.bar i').forEach((e,i)=>{if(i<n-1)e.classList.add('on')});
+const E=x=>1-Math.pow(1-Math.min(Math.max(x,0),1),3);
+window.render=t=>{
+ document.querySelector('.f').style.transform=`scale(${1.12-0.1*t/10})`;
+ const bi=document.querySelectorAll('.bar i')[n-1];bi.style.background=`linear-gradient(90deg,#E8B36A ${t*10}%,rgba(255,255,255,.2) ${t*10}%)`;
+ const st=s.L.length>4?1.6:2.1;
+ document.querySelectorAll('.l').forEach((e,i)=>{const p=E((t-0.6-i*st)/0.7);e.style.opacity=p;e.style.transform=`translateY(${40*(1-p)}px)`;e.style.filter=`blur(${8*(1-p)}px)`});
+};
+render(10);
+</script></body></html>
