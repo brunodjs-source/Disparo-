@@ -1,0 +1,201 @@
+{
+ "total": 36.43,
+ "kw": "",
+ "segs": [
+  {
+   "start": 3.18,
+   "end": 5.16,
+   "text": "",
+   "label": "DENTISTAS ATIVOS",
+   "vis": {
+    "t": "count",
+    "from": 0,
+    "to": 474,
+    "pre": "+",
+    "suf": " mil",
+    "then": "",
+    "at": 0
+   },
+   "hl": [],
+   "wt": [
+    3.18,
+    3.8,
+    4.4,
+    4.8,
+    4.96
+   ]
+  },
+  {
+   "start": 5.48,
+   "end": 8.8,
+   "text": "",
+   "label": "HORA DE CADEIRA",
+   "vis": {
+    "t": "big",
+    "l1": "SÓ HORA",
+    "l2": "de cadeira",
+    "at": 5
+   },
+   "hl": [],
+   "wt": [
+    5.48,
+    6.26,
+    6.58,
+    6.82,
+    7.12,
+    7.68,
+    8.14,
+    8.3
+   ]
+  },
+  {
+   "start": 9.36,
+   "end": 13.32,
+   "text": "",
+   "label": "O MESMO DIAGNÓSTICO",
+   "vis": {
+    "t": "cards",
+    "items": [
+     "Diagnóstico",
+     "Conclusão",
+     "Diagnóstico"
+    ],
+    "at": [
+     6,
+     10,
+     10
+    ],
+    "tone": "gold"
+   },
+   "hl": [],
+   "wt": [
+    9.36,
+    9.82,
+    10.24,
+    10.66,
+    11.04,
+    11.14,
+    11.38,
+    12.1,
+    12.24,
+    12.34,
+    12.66
+   ]
+  },
+  {
+   "start": 13.84,
+   "end": 17.92,
+   "text": "",
+   "label": "SUA TÉCNICA",
+   "vis": {
+    "t": "big",
+    "l1": "SUA TÉCNICA",
+    "l2": "que os dentistas querem aprender",
+    "at": 4
+   },
+   "hl": [],
+   "wt": [
+    13.84,
+    14.08,
+    14.44,
+    14.86,
+    15.08,
+    15.48,
+    15.84,
+    16.04,
+    16.64,
+    17.18
+   ]
+  },
+  {
+   "start": 17.92,
+   "end": 19.5,
+   "text": "",
+   "label": "UM MERCADO",
+   "vis": {
+    "t": "big",
+    "l1": "UM MERCADO",
+    "l2": "",
+    "at": 1
+   },
+   "hl": [],
+   "wt": [
+    17.92,
+    18.9,
+    19.12
+   ]
+  },
+  {
+   "start": 22.7,
+   "end": 24.24,
+   "text": "",
+   "label": "O LANÇAMENTO",
+   "vis": {
+    "t": "big",
+    "l1": "EU DESENHO SEU LANÇAMENTO",
+    "l2": "Bruno · Estrategista de Lançamento",
+    "at": 2
+   },
+   "hl": [],
+   "wt": [
+    22.7,
+    22.82,
+    23.52,
+    23.7
+   ]
+  },
+  {
+   "start": 24.46,
+   "end": 29.04,
+   "text": "",
+   "label": "DA CADEIRA PARA A AULA",
+   "vis": {
+    "t": "cross",
+    "a": "DISPUTAR PACIENTE",
+    "b": "FORMAR QUEM DISPUTA",
+    "at": 2,
+    "bat": 6
+   },
+   "hl": [],
+   "wt": [
+    24.46,
+    24.94,
+    25.42,
+    26.38,
+    26.88,
+    27.24,
+    27.58,
+    27.96,
+    28.18,
+    28.24,
+    28.28
+   ]
+  },
+  {
+   "start": 29.28,
+   "end": 31.58,
+   "text": "",
+   "label": "2º PRODUTO",
+   "vis": {
+    "t": "duo",
+    "a": "1º",
+    "as": "SERVIÇO",
+    "b": "2º",
+    "bs": "PRODUTO",
+    "at": [
+     0,
+     4
+    ]
+   },
+   "hl": [],
+   "wt": [
+    29.28,
+    29.56,
+    29.76,
+    30.52,
+    30.78,
+    31.18
+   ]
+  }
+ ]
+}
