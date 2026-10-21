@@ -1,0 +1,1 @@
+{"type":"object","properties":{"data":{"type":"string"},"decisao":{"type":"string"},"opcao":{"type":"string"},"confianca":{"type":"string"},"conferir_em":{"type":"string"}}}
