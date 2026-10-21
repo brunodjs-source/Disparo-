@@ -1,0 +1,393 @@
+Revista de Iniciação Científica em Odontologia 2022; 20:e004
+ISSN 1677-3527
+                                                                                                  ARTIGO ORIGINAL
+
+
+  Análise de infrações éticas atrelada à publicidade e propaganda em perfis de
+        clínicas odontológicas do estado da Paraíba em uma rede social
+     ANALYSIS OF ETHICAL INFRACTIONS LINKED TO ADVERTISING AND
+ ADVERTISING IN PROFILES OF DENTAL CLINICS IN THE STATE OF PARAÍBA IN A
+                            SOCIAL NETWORK
+
+Anderson Christian Ramos Gonçalves¹; Faldryene de Sousa Queiroz Feitosa²; Luciana Ellen Dantas Costa².
+
+ ¹Graduando(a) em Odontologia. Universidade Federal de Campina Grande, Patos, Paraíba – Brasil.
+ ²Docente do curso de Odontologia. Universidade Federal de Campina Grande, Patos, Paraíba – Brasil.
+
+
+
+
+Correspondência: Luciana Ellen Dantas Costa, Av. Universitária s/n - Santa Cecília, Patos, Paraíba; 58708-110, país. E-mail:
+ellendantascosta@yahoo.com.br
+
+
+Editor Acadêmico: Thiago Lucas da Silva Pereira
+
+
+
+Received: 09/05/2022 / Review: 30/06/2022 Accepted: 30/07/2022
+
+
+
+
+ Como citar este artigo: Gonçalves CR, Feitosa FSQ, Costa LED. Análise de infrações éticas atrelada à publicidade e propaganda
+ em perfis de clínicas odontológicas do estado da Paraíba em uma rede social . RevICO. 2022; 20:e004.
+
+
+
+
+       RESUMO
+       Introdução: No Brasil, é evidente o elevado número de cirurgiões-dentistas ativos no mercado de trabalho
+       que buscam estratégias comunicativas para atrair e garantir a clientela. No entanto, têm-se observado um
+       crescimento exponencial de infrações éticas na divulgação dos serviços prestados pela profissão,
+       principalmente nas redes sociais. Objetivo: Analisar as infrações éticas atreladas à publicidade e
+       propaganda em perfis de clínicas odontológicas do estado da Paraíba na rede social Instagram®.
+       Metodologia: O estudo observacional transversal foi realizado numa amostra de 78 perfis de clínicas
+       odontológicas. Foram avaliadas postagens públicas à luz do Código de Ética Odontológico e da Resolução
+       CFO nº 196/2019. Buscou-se perfis abertos por meio de termos chaves de pesquisa: "clínica odontológica”,
+       "dental", “dentista”, “odontologia" combinados com: “Paraíba", “PB”. Resultados: Em 91% dos perfis
+       avaliados, apresentaram postagens com exibição do termo “diagnóstico x conclusão. Outro ponto a ser
+       destacado é que itens obrigatórios para a comunicação e divulgação odontológica não são seguidos
+       mediante o CEO, como não apresentar nome e número de inscrição do responsável técnico e inscrição no
+       Conselho profissional (CRO-PB), com 84,6% e 59%, respectivamente. Conclusão: Diante do exposto, fica
+       evidente que a maioria das páginas de clínicas odontológicas avaliadas nesse estudo está em desacordo com
+       o CEO vigente. Nessa óptica, é necessário que haja maior orientação e fiscalização por parte dos órgãos
+       responsáveis, como também os profissionais devem estar atentos e fazer cumprir os preceitos éticos zelando
+       pelo bom prestígio da profissão.
+       Descritores: Código de Ética. Ética Odontológica. Clínicas Odontológicas.
+
+
+
+
+                                                                                                                                 22
+   RevICO. 2022; 20:e004
+
+
+Introdução
+        No cenário atual brasileiro, existe um elevado número de cirurgiões-dentistas atuando no mercado
+de trabalho1. Diante deste cenário, os profissionais são motivados a buscarem novas estratégias de marketing
+para garantir a clientela e se destacar no mercado de trabalho2. Nesse âmbito, uma das estratégias mais
+utilizadas é o marketing na modalidade de propaganda e publicidade, a qual pode ser realizada por diversos
+meios, tais como: revistas, jornais, websites e redes sociais3.
+        Tem se evidenciado um crescimento exponencial do uso de redes sociais no Brasil como estratégias
+comunicativas, tendo em vista que cerca de 83% dos brasileiros têm acesso à internet, o que facilita a
+comunicação, podendo ser repassada de forma rápida, fácil e ser vista por qualquer indivíduo4. Mediante este
+cenário, é frequente que clínicas odontológicas e cirurgiões-dentistas tenham perfis em redes sociais como o
+Instagram®, com a finalidade de alcançar um número maior de pessoas em sua região e garantir visibilidade
+no mercado de trabalho, bem como clientela5.
+        No âmbito odontológico, foram criadas normas para regulamentar o anúncio, a publicidade e
+propaganda neste meio. Tais normativas estão presentes no Código de Ética Odontológico (CEO) e Resolução
+CFO nº 196/2019, os quais afirmam que todo e qualquer meio de anúncio da profissão deve ser realizado por
+intermédio do código vigente6. No entanto, hodiernamente, a literatura aponta alguns estudos que relatam
+um número expressivo de infrações éticas cometidas em perfis nas redes sociais de clínicas odontológicas e
+de cirurgiões-dentistas, sendo constatado uma variação de 76,0% a 97,5% 5, 7, 8.
+        Nessa perspectiva, o presente artigo tem por finalidade realizar uma análise de infrações éticas
+atrelada à publicidade e propaganda em perfis de entidades prestadoras de atendimento odontológico clínico
+direto e indireto na rede social Instagram®, para as quais atuem no mercado de trabalho no estado da Paraíba,
+no nordeste brasileiro.
+Metodologia
+
+Tipo de Estudo e Qualificação da Amostra
+
+        Trata-se de um estudo observacional transversal, realizado através da análise de perfis na rede social
+Instagram® de entidades prestadoras de atendimento odontológico clínico na Paraíba. Inicialmente, foi
+criado um perfil público na rede social com o seguinte usuário: @pesquisa.infracoeseticas, com o objetivo de
+recrutar os perfis, bem como divulgar informações sobre essa pesquisa.
+        A estratégia de busca utilizada se deu mediante a própria ferramenta de busca da rede social, a qual
+permite que os perfis sejam encontrados por diversas categorias, tais como: contas, tags e locais. A busca foi
+desenvolvida por meio da categoria locais, na qual são utilizadas as combinações dos seguintes termos “chave”
+de pesquisa: "clínica odontológica”, "dental", “dentista”, “odontologia" combinados com: “Paraíba", “PB”. A
+amostra se deu por conveniência, totalizando 78 perfis analisados nessa busca.
+        Para melhor sistematização da análise do material coletado foi utilizado um roteiro de análise
+composto por 12 itens divididos em três sessões, a primeira relacionada ao profissional, a segunda relativa a
+pagamentos e serviços e a terceira se os perfis apresentam algum tipo de irregularidade ética em relação aos
+pressupostos definidos pelo CEO no que tange o anúncio, publicidade e propaganda e pela Resolução
+196/2019 que trata da divulgação de auto-retratos (selfies) e de imagens relativas ao diagnóstico e resultado
+final de tratamento odontológico9. Os dados foram coletados entre os meses de abril e maio de 2022.
+
+                                                                                                                 23
+   RevICO. 2022; 20:e004
+
+
+
+
+Análise dos Dados
+        Os dados obtidos foram digitados em um banco de dados no programa Excel pertencente ao pacote
+da Microsoft Office, posteriormente importados para análise estatística no software SPSS® (Statistical
+Package for the Social Sciences) versão 21.0, e, posteriormente analisados por meio de estatística descritiva
+através de frequências relativas e absolutas para as variáveis categóricas.
+
+
+Critérios Éticos da Pesquisa
+        Foram observados e obedecidos todos os aspectos éticos prescritos na Resolução nº 466/12 do
+Conselho Nacional de Saúde. Previamente a sua condução, o estudo foi aprovado pelo Comitê de Ética em
+Pesquisa/Centro de Formação da Professores de Cajazeiras/PB/UFCG (CAAE: 51159621.0.0000.5575/
+Parecer nº 5.387.648).
+
+
+Resultados e Discussão
+        Durante a busca, foram encontrados 78 perfis de entidades prestadoras de serviços odontológicos.
+Esses perfis foram analisados mediantes os 12 itens de investigação baseados no CEO e na Resolução
+196/2019, no que diz respeito ao anúncio, publicidade e propaganda. Os itens de investigação, bem como os
+resultados obtidos encontram-se a seguir na tabela 1.
+        Ao observar a tabela 1, evidencia-se que em 75% das variáveis de investigação apresentam infrações
+éticas por parte dos perfis de clínicas odontológicas, apenas em três itens os perfis não violam o CEO, são
+eles: apresentação do nome da pessoa física/jurídica, menção de críticas a outros profissionais, anunciar
+serviços profissionais como prêmio em concursos de diversas naturezas ou como aquisição de outros bens.
+        O presente estudo, verificou que mais da metade dos perfis analisados não apresentam itens
+obrigatórios para fins de divulgação como determina o CEO, por exemplo a apresentação do número de
+inscrição no Conselho Regional de Odontologia, no qual 59% dos perfis analisados não apresentaram essa
+informação. Outro item obrigatório é a presença do nome representativo da profissão, mas 20,5% dos perfis
+não apresentam essa informação, para esse item foi possível observar que em algumas situações o nome da
+profissão de “cirurgião-dentista” era utilizada como sinônimo com os seguintes termos: “dentista” e
+“odontólogo”.
+        O artigo 43 do CEO, que trata do anúncio, publicidade e propaganda, afirma que durante a
+comunicação e divulgação é obrigatório para pessoas jurídicas, constar o nome e o número de inscrição do
+responsável técnico. No entanto, esse estudo mostra que essa normativa não é seguida pela maioria dos perfis
+analisados, somando um total de 84,6% que não apresentam tal informação.
+        A Resolução 196/2019, em seu artigo 2 autoriza a divulgação de imagens relativas ao diagnóstico e
+à conclusão dos tratamentos odontológicos quando realizada pelo cirurgião-dentista responsável pela
+execução do procedimento, desde que com autorização prévia do paciente ou de seu representante legal,
+através do Termo de Consentimento Livre e Esclarecido – TCLE. Entretanto, este estudo mostra que
+diversos perfis não cumprem essa exigência e infringem a ética odontológica, 91% dos perfis analisados não
+apresentam essa informação, foi notado que apresentam imagens relativas, mas sem a menção do TCLE. Tal
+
+
+
+                                                                                                                24
+   RevICO. 2022; 20:e004
+
+
+fato tem relação direta a circunstância de a Resolução 196/2019 não explicitar a necessidade da exposição do
+TCLE ou de sua obtenção, bem como da autorização prévia seja por meio verbal ou escrito.
+
+
+Tabela 1. Resultados obtidos após análise dos perfis na rede social.
+
+  ITENS      VARIÁVEIS DE INVESTIGAÇÃO                                                    SIM       NÃO
+
+  1          O perfil possui o nome da pessoa física/jurídica?                            100%      0%
+
+  2          O perfil possui número de inscrição no Conselho Regional de Odontologia      41%       59%
+             da Paraíba?
+
+  3          O perfil apresenta o nome representativo da profissão?                       79,5%     20,5%
+
+  4          O perfil apresenta o nome e número de inscrição do responsável técnico?      15,4%     84,6%
+
+  5          O perfil em suas postagens apresenta valores de procedimentos ou cartões     3,8%      96,2%
+             de descontos?
+
+  6          O perfil apresenta modalidades de pagamento ou serviços gratuitos?           15,4%     84,6%
+
+
+  7          O perfil apresenta imagens que permitam a identificação de equipamentos,     75,6%     24,4%
+             instrumentais, materiais e tecidos biológicos?
+
+  8          O perfil apresenta postagens com exibição do termo “diagnóstico x            9%        91 %
+             conclusão” com menção de autorização prévia do paciente ou do seu
+             representante legal através do Termo de Consentimento Livre e Esclarecido
+             (TCLE)?
+
+  9          O perfil apresenta vídeos e/ou imagens com conteúdo relativo ao transcurso   76,9%     23,1%
+             e/ou realização dos procedimentos?
+
+  10         O perfil do Cirurgião-dentista apresenta anúncio de mais de duas             2,6 %     97,4%
+             especialidades ou especializações não reconhecidas pelo CFO?
+
+  11         O perfil faz menções de críticas a outros profissionais?                          0%   100%
+
+  12         O perfil anuncia serviços profissionais como prêmio em concursos de          0%         100%
+             diversas naturezas ou como aquisição de outros bens?
+
+
+
+Fonte: Autor, 2022.
+
+
+        No campo da odontologia, são utilizados comumente dois tipos de TCLE, um direcionado a utilização
+de autorização prévia dos pacientes em divulgação de autorretratos e resultados e outro utilizado em
+pesquisas científicas. O TCLE mencionado pela Resolução 196/2019 consiste em um documento que
+resguarda o profissional de eventuais questionamentos em relação a divulgação de imagens de tratamentos e
+de pacientes, caso os profissionais realizem, evidenciando a autorização prévia. Já o TCLE direcionado às
+
+                                                                                                               25
+      RevICO. 2022; 20:e004
+
+
+pesquisas científicas, é um documento que assegura os direitos dos participantes em pesquisas, sendo
+necessário relatar os objetivos, riscos, benefícios e demais informações a respeito do estudo a ser realizado 13,
+14.
+
+
+          Dentre outras infrações observadas, destaca-se perfis que apresentam imagens que permitem a
+identificação de equipamentos, instrumentais, materiais e tecidos biológicos, com 75,6% dos perfis
+apresentando este tipo de conteúdo. Outra infração com percentual significativo, foi de o perfil apresentar
+vídeos e/ou imagens com conteúdo relativo ao transcurso e/ou realização dos procedimentos, no qual 76,9%
+dos perfis exibem esse material na rede social.
+          A elaboração desse estudo é de fundamental importância para divulgar o panorama atual das
+publicações no Instagram® por parte das entidades que prestam serviços odontológicos no estado da Paraíba.
+Estratégias de marketing são permitidas no meio odontológico, desde que a mesma esteja conforme os
+pressupostos estabelecidos pelo CEO vigente e suas resoluções, como também essas estratégias não devem
+promover desvalorização da profissão. Apesar disso, é evidenciado na literatura o crescente número de
+instauração de processos éticos a respeito da publicidade irregular e infrações frequentes5, 7, 8, 10.
+          O estudo realizado por Soares et al. (2019)8 relatou que 76% dos 113 perfis analisados nas redes
+sociais do Facebook® e Instagram®, não exibia itens obrigatórios de divulgação conforme o CEO, como por
+exemplo o número de inscrição no Conselho Regional de Odontologia (CRO). Outro estudo descrito por
+Lima, Cruz e Silva (2016)10, em uma análise de maior amostra com 257 perfis, mostrou que 85,2% deles não
+exibiam o registro em CRO. Além desses, o estudo realizado por Penteado et al. (2020)5 menciona que 64,60%
+dos perfis verificados não comunicam essa informação. Tais estudos corroboram com os resultados obtidos
+nesta pesquisa, em que 59% dos perfis analisados não divulgam essa informação obrigatória.
+          O CEO no capítulo que tange o anúncio, a publicidade e propaganda, no artigo 43 afirma “Na
+comunicação e divulgação é obrigatório constar, (...), no caso de pessoas jurídicas, também o nome e o número
+de inscrição do responsável técnico”. O presente estudo mostrou que esse foi um dos pressupostos que mais
+apresentaram infração, com 84,6% dos perfis não apresentando tal informação. Essa pesquisa corrobora com
+os achados de Garbin et al. (2018)7, Lima, Cruz e Silva (2016)10 e Soares et al. (2019)8 que relataram
+percentuais de 76,5%, 86,27% e 97,74%, respectivamente.
+          Outros itens de divulgação obrigatória são o perfil possuir o nome da pessoa física/jurídica e
+apresentar o nome representativo da profissão. O estudo realizado por Lima, Cruz e Silva (2016)10 relata que
+a identificação profissional nas publicações com o nome da pessoa física/jurídica e denominação da profissão
+“cirurgião-dentista” mostraram percentuais distintos, para o primeiro item 97,14% dos perfis cumprem a
+exigência legal, no entanto o segundo item 94,29% não cumprem. Os achados em relação ao item 1 é
+semelhante ao encontrado nesse estudo, em que 100% dos perfis apresentam o nome da pessoa física/jurídica.
+Em contraposição, os achados em relação a denominação da profissão apenas 20,5% dos perfis não o
+mencionam, sendo possível destacar que os perfis têm ficado mais atentos quanto à violação deste item do
+CEO.
+          No que diz respeito ao perfil apresentar valores referentes a procedimentos e/ou cartões de descontos,
+serviços gratuitos e modalidades de pagamento, nosso estudo constatou que apenas 3,8% e 15,4% dos perfis
+analisados infringem a ética odontológica nesses quesitos, respectivamento. Esse achado é significativo
+
+
+
+                                                                                                                    26
+   RevICO. 2022; 20:e004
+
+
+quando comparado aos encontrados no estudo realizado por Costa et al. (2019)11 que observou a infração de
+7,8% dos websites observados, ficando evidente que nesse âmbito também é presente a violação ética.
+        Penteado et al. (2020)5 em relação ao perfil apresentar o anúncio de mais de duas especialidades ou
+especializações não reconhecidas pelo Conselho Federal de Odontologia, mostrou que 16,1% os perfis
+verificados infringem esse item do CEO. Entretanto, os achados dessa pesquisa evidenciam uma redução desse
+tipo de violação, mostrando que apenas 2,6% dos perfis analisados infringem essa temática do CEO.
+        Itens de investigação, tais como: apresentar menções de críticas a outros profissionais e anunciar
+serviços serviços profissionais como prêmio em concursos de diversas naturezas ou como aquisição de outros
+bens não foram observados em nenhum dos perfis analisados. Esses percentuais também foram observados
+em outros estudos, como na análise realizada por Soares et al. (2019)8 que não evidenciou infração e Lima,
+Cruz e Silva (2016)10 que menciona 4,29% dos perfis infringindo tal normativa do CEO.
+        A Resolução 196/2019 no inciso 1 do artigo 1, relata que ficam proibidas imagens que permitam a
+identificação de equipamentos, instrumentais, materiais e tecidos biológicos, como também ficam
+expressamente proibida a divulgação de vídeos e/ou imagens com conteúdo relativo ao transcurso e/ou à
+realização dos procedimentos, exceto em publicações científicas e divulgação do termo “diagnóstico x
+conclusão” sem autorização prévia. No entanto, o presente estudo mostrou percentuais significativos em
+relação a violação desses pressupostos dessa resolução. Simplicio (2019)12 relata que mesmo com
+obrigatoriedade de fornecer essas informações, nem todos os profissionais a cumprem.
+        Desse modo, é válido ressaltar que foram notadas limitações na literatura quanto a investigação de
+itens relacionados a Resolução 196/2019 não sendo observado em nenhum outro estudo, assim, este estudo
+apresenta uma nova abordagem para realizar o monitoramento deontológico da rede social Instagram®.
+
+
+Conclusão
+        Diante do exposto, é perceptível que muitos perfis de entidades prestadoras de serviço odontológico
+na Paraíba violam o CEO vigente e a resolução analisada. As infrações éticas mais frequentes foram a
+apresentação do termo “diagnóstico x conclusão” sem autorização prévia do paciente ou responsável com
+menção do TCLE, seguida de não apresentação do nome e número de inscrição do responsável técnico e
+apresentação de vídeos e/ou imagens com conteúdo relativo ao transcurso e/ou realização de procedimentos.
+        É notório que há uma necessidade de uma maior orientação e fiscalização por parte do Conselho
+Regional de Odontologia da Paraíba nas redes sociais com a finalidade de diminuir tais infrações relatadas,
+bem como de tais atos promover repercussões negativas para a profissão e seus autores sejam
+responsabilizados. Além disso, é evidente que há certa necessidade dos profissionais se manterem atualizados
+mediantes o CEO vigente e resoluções do Conselho Federal, tal necessidade reflete nos elevados índices de
+infração no que tange a Resolução 196/2019 verificada por este estudo. Os profissionais devem estar atentos
+e fazer cumprir os preceitos éticos zelando pelo bom prestígio da profissão.
+
+
+Disponibilização dos dados
+       Os dados usados para dar suporte aos achados deste estudo podem ser disponibilizados mediante
+solicitação ao autor correspondente.
+
+
+
+
+                                                                                                               27
+  RevICO. 2022; 20:e004
+
+
+     ABSTRACT
+     Introduction: In Brazil, the high number of dentists active in the job market who seek communicative
+     strategies to attract and guarantee customers is evident. However, there has been an exponential growth
+     of ethical infractions in the dissemination of services provided by the profession, especially on social
+     networks. Objective: To analyze ethical infractions linked to advertising and advertising in profiles of
+     dental clinics in the state of Paraíba on the social network Instagram®. Methodology: The observational
+     cross-sectional study was carried out on a sample of 78 profiles of dental clinics. Public postings were
+     evaluated in light of the Dental Ethics Code and CFO Resolution No. 196/2019. Open profiles were sought
+     through key search terms: "dental clinic", "dental", "dentist", "dentistry" combined with: "Paraíba", "PB".
+     Results: In 91% of the evaluated profiles, they presented posts displaying the term “diagnosis x conclusion.
+     Another point to be highlighted is that mandatory items for dental communication and disclosure are not
+     followed by the CEO, such as not presenting the name and registration number of the technical officer and
+     registration in the Professional Council (CRO -PB), with 84.6% and 59%, respectively. Conclusion: In
+     view of the above, it is evident that most pages of dental clinics evaluated in this study are in disagreement
+     with the current CEO. guidance and supervision by the responsible bodies, as well as professionals must
+     be attentive and enforce ethical precepts, ensuring the good prestige of the profession.
+
+     Keywords: Ethics Code. Dental Ethics. Dental Clinics.
+
+
+
+Referências
+   1. Brasil. Conselho Federal de Odontologia [homepage]. Quantidade geral de profissionais e entidades
+       ativas. 2021. Disponível em: https:// website.cfo.org.br/estatisticas/quantidade-geral-de-entidades-
+       e-profissionais-ativos/. Acesso em: 23 mai. 2022.
+   2. Magalhães LV, Recalde TSF, Coltri MV, Barbosa HDF, Guimarães MA, Silva RHAD. Dental and
+       medical advertising: comparative analysis of the rules of professional conduct. RGO-Revista Gaúcha
+       de Odontologia, v. 66, p. 166-171, 2018.
+   3. Viola NV, Oliveira ACM, Dotta EAV. Marketing em Odontologia: uma ferramenta que faz a
+       diferença. Rev. bras. odontol., Rio de Janeiro, v. 68, n. 2, p. 248-51, jul./dez. 2011.
+   4. Brasil. Ministério das Comunicações [homepage]. Pesquisa Nacional por Amostra de Domicílios
+       (PNAD) 2019. Disponível em: https://www.gov.br/mcom/pt-br/noticias/2021/abril/pesquisa-
+       mostra-que-82-7-dos domicilios-brasileiros-tem-acesso-a-internet. Acesso em: 22 mai. 2022.
+   5. Penteado MLR, Oenning ACC, Silva RHA, Nascimento MCC, Silva RF, Miamoto P. Análise ético-
+       jurídica da publicidade odontológica no Instagram®. Revista Brasileira de Odontologia Legal. 2020;
+       7(1):4-16.
+   6. Brasil. Res. CFO nº 118/2012. Código de Ética Odontológica aprovado pela Resolução CFO-
+       118/2012                           [homepage].                            Disponível                           em:
+       https://website.cfo.org.br/wpcontent/uploads/2018/03/codigo_etica.pdf. Acesso em: 22 mai. 2022.
+   7. Garbin CAS, Ortega MM, Garbin AJI, Saliba TA. O uso das redes sociais na odontologia: uma análise
+       dos aspectos éticos de páginas de clínicas odontológicas. Revista Brasileira de Odontologia Legal.
+       2018; 5 (1): 22-29.
+
+
+
+
+                                                                                                                            28
+RevICO. 2022; 20:e004
+
+
+8. Soares KM, Rolim AKA, Silva DFB, Silva CAM, Campos FAT, Silva MW, Macedo-Costa MR,
+    Santos CAO. Descumprimento do Código de Ética Odontológica em redes sociais–análise de
+    irregularidades vinculadas à publicidade e propaganda. Revista Eletrônica Acervo Saúde. 2019; 11
+    (16): 1-7.
+9. Brasil. Res. CFO n. 196 de 29 de janeiro de 2019 [homepage]. Autoriza a divulgação de autoretratos
+    (selfie) e de imagens relativas ao diagnóstico e ao resultado final de tratamentos odontológicos e dá
+    outras                      providências.                       Disponível                       em:
+    https://sistemas.cfo.org.br/visualizar/atos/RESOLUÇÃO/SEC/2019/196. Acesso em 22 mai.
+    2022.
+10. Lima AIC, Cruz RA, Silva RA. Análise dos perfis de clínicas odontológicas e de cirurgiões-dentistas
+    em duas redes sociais quanto aos aspectos éticos, de propaganda e publicidade. Revista Brasileira de
+    Odontologia Legal. 2016; 3(2): 66-73.
+11. Costa EDCP. Silva RC, Leite IF, Pimentel MG, Peixoto MOB, Tenório-Neto JF. Publicidade e
+    propaganda em websites de cirurgiões-dentistas nas regiões brasileiras: aspectos éticos e legais.
+    Revista Eletrônica Acervo Saúde, n. 32, p. e1261-e1261, 2019.
+12. Simplicio AHM. Social     media   and dentistry: Ethical and legal aspects. Dental Press J Orthod.
+    2019; 24(6):80–9.
+13. Brasil. Conselho Federal de Odontologia [homepage]. Resolução CFO – 196/2019. Disponível em:
+    https://website.cfo.org.br/resolucao-cfo-196-2019/. Acesso em 13 jun. 2022.
+14. Brasil. Comitê de Ética em Pesquisa – Centro de Formação de Professores (CFP-UFCG). Orientação
+    para elaboração do Termo de Consetimento Livre e Esclarecido (TCLE). Discponível em:
+    http://cfp.ufcg.edu.br/portal/images/conteudo/ComiteDeEticaEmPesquisa/Orientacoes-Termo-
+    de-Consentimento-Livre-e-Esclarecido.pdf. Acesso em 13 jun. 2022.
+
+
+
+
+                                                                                                            29
+

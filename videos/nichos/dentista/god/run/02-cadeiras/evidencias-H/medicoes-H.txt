@@ -1,0 +1,34 @@
+Medições da cadeira H, 21/10/2026 (somente leitura, nada instalado, nada alterado na pasta do bruto)
+Pasta medida: /tmp/claude-0/-home-user-Disparo-/54eeb75b-22b3-521e-a4d4-71920aed6701/scratchpad/dent
+
+1) ffprobe raw.mp4
+   video 576x1024, r_frame_rate=600/19 (31,58, taxa máxima), avg_frame_rate=655800/21869 (29,99 fps médio), nb_frames=1093
+   áudio 44100 Hz, 2 canais
+2) ffprobe base.mp4: 1080x1920, 30/1, 1093 quadros, 36,433 s
+   ffprobe mask.mp4: 360x640, 30/1, 1093 quadros, 36,433 s
+   seg.log: "1093 quadros 589.4 s"  (rembg levou 589,4 s para 1093 quadros = 0,54 s por quadro)
+   tr.trf existe (7,9 MB): arquivo de transformações do vidstabdetect (conteúdo não aberto)
+3) ffmpeg loudnorm print_format=summary
+   voz_master.wav: Integrated -14,2 LUFS, True Peak -0,5 dBTP, LRA 1,6 LU, Threshold -24,5 LUFS
+   raw.wav:        Integrated -32,6 LUFS, True Peak -10,1 dBTP, LRA 3,2 LU
+4) Envelope RMS em janelas de 50 ms (numpy, mono 48 kHz), mínimo e máximo dentro de cada pausa de words-raw.json
+   voz_master: mediana geral -16,0 dB; p95 -9,5; p5 -52,2
+     pausa 13,32 a 13,84: min -59,5 / max -13,5
+     pausa 19,50 a 20,10: min -62,5 / max -16,2
+     pausa 22,22 a 22,70: min -61,6 / max -23,1
+     pausa 24,24 a 24,46: min -49,5 / max -16,9
+     pausa 29,04 a 29,28: min -57,8 / max -45,7
+     pausa 31,58 a 32,00: min -47,6 / max -11,9
+     pausa 35,92 a 36,40: min -61,6 / max -13,7
+   raw: mediana -34,4; mínimos nas pausas entre -42,3 e -46,6 (relação voz/ruído do bruto em torno de 8 a 12 dB)
+   rn_bd: mediana -39,3; mínimos nas pausas entre -54,9 e -64,9
+   Leitura: os máximos altos dentro das pausas indicam que os tempos do Whisper não batem com o fim real das palavras
+   (cauda de fala ou respiração dentro da janela). O mínimo é o melhor indicador do chão de ruído.
+   Distância mediana da voz ao chão de ruído em voz_master: 31,6 dB (pausa 31,58) até 46,5 dB (pausa 19,50).
+   Três pausas ficam abaixo de 40 dB de distância: 24,24 (33,5 dB), 31,58 (31,6 dB). 29,04 fica com 41,8 dB.
+5) Filtros ffmpeg disponíveis (ffmpeg -filters): afftdn, arnndn, agate, acompressor, alimiter, deesser, equalizer, highpass,
+   sidechaincompress, loudnorm, ebur128, adeclick, speechnorm, dynaudnorm, vidstabdetect, vidstabtransform, deshake,
+   tmix, minterpolate, zscale, scale, unsharp, lagfun
+6) Ferramentas: rembg, pymatting, onnxruntime e PIL no cbenv do scratchpad; cv2 ausente. Playwright em /opt/node-tools/node_modules,
+   node em /opt/node22/bin/node. faster_whisper no scratchpad/fw.
+7) case-tzur-v2-9x16.mp4: 1080x1920, 54,3 s

@@ -1,0 +1,2 @@
+voz_master.wav fala -14.1 dBFS pausas -35.8 -19.9 -28.5 -48.0 -18.1 | media fala-pausa 16.0 dB, melhor 33.9
+E_voz_final.wav fala -14.2 dBFS pausas -30.9 -20.3 -32.2 -50.9 -18.9 | media fala-pausa 16.5 dB, melhor 36.8

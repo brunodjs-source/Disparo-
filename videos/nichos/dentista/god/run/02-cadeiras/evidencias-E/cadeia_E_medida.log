@@ -1,0 +1,10 @@
+E_voz_final.wav
+Input Integrated:    -14.2 LUFS
+Input True Peak:      -1.5 dBTP
+Input LRA:             1.6 LU
+E_voz_final.m4a
+Input Integrated:    -14.3 LUFS
+Input True Peak:      -1.4 dBTP
+Input LRA:             1.6 LU
+E_voz_final: prob media 0.868, p<0,5: 3, p90-p5 40.7 dB | trecho: e(0.78) passa(0.98) a(0.94) formar(0.94) quem(0.97) disputa.(1.00)
+E_voz_final_m4a: prob media 0.880, p<0,5: 2, p90-p5 40.8 dB | trecho: e(0.75) passa(0.98) a(0.95) formar(0.93) quem(0.98) disputa.(1.00)

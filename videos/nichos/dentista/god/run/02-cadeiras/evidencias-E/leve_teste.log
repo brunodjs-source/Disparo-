@@ -1,0 +1,4 @@
+raw: prob media 0.878, p<0,5: 4, p90-p5 14.4 dB | trecho: e(0.84) passa(0.99) a(0.99) formar(0.98) quem(0.94) disputa.(0.99)
+voz_master: prob media 0.850, p<0,5: 5, p90-p5 41.6 dB | trecho: passa(0.79) a(0.93) forna(0.52) a(0.35) quem(0.99) disputa.(1.00)
+E_sh_mix06: prob media 0.884, p<0,5: 1, p90-p5 19.8 dB | trecho: e(0.77) passa(0.99) a(0.95) formar(0.97) quem(0.93) disputa.(1.00)
+E_afftdn12: prob media 0.883, p<0,5: 3, p90-p5 15.4 dB | trecho: e(0.84) passa(0.98) a(0.99) formar(0.99) quem(0.90) disputa.(0.99)

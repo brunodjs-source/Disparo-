@@ -1,0 +1,12 @@
+alvo TP -1.0 :
+Input Integrated:    -14.2 LUFS
+Input True Peak:      -0.9 dBTP
+    Peak:       -0.9 dBFS
+alvo TP -1.5 :
+Input Integrated:    -14.4 LUFS
+Input True Peak:      -1.3 dBTP
+    Peak:       -1.3 dBFS
+alvo TP -2.0 :
+Input Integrated:    -14.6 LUFS
+Input True Peak:      -1.9 dBTP
+    Peak:       -1.9 dBFS
