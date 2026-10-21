@@ -1,0 +1,106 @@
+{
+ "D1": {
+  "top": "b",
+  "share": 0.71,
+  "votos_por_opcao": {
+   "b": 10,
+   "B": 2,
+   "a": 2
+  },
+  "amplitudeTop": 0.2,
+  "dispersao": 0.2,
+  "pool_logodds": 0.45,
+  "faixa": [
+   0.2,
+   0.7
+  ],
+  "rachada": false,
+  "unanime": false,
+  "n": 14,
+  "convergiu": true,
+  "rotulo": "Baixa",
+  "motivos": [
+   "premissa de alto impacto FRÁGIL"
+  ]
+ },
+ "D2": {
+  "top": "psicologo+advogado",
+  "share": 0.29,
+  "amplitudeTop": 0.1,
+  "dispersao": 0.15,
+  "pool_logodds": 0.27,
+  "faixa": [
+   0.08,
+   0.5
+  ],
+  "rachada": true,
+  "unanime": false,
+  "n": 14,
+  "convergiu": true,
+  "rotulo": "Baixa",
+  "motivos": [
+   "voto sem maioria (peso 0.29)"
+  ],
+  "nota": "11 rótulos de texto livre; 5 votos literais em psicologo+advogado (com e sem espaço) e 6 variantes que fixam psicólogo e testam advogado ou corretor"
+ },
+ "D3": {
+  "top": "Porta dupla por alcance",
+  "share": 0.14,
+  "amplitudeTop": 0.07,
+  "dispersao": 0.15,
+  "pool_logodds": 0.18,
+  "faixa": [
+   0.05,
+   0.38
+  ],
+  "rachada": true,
+  "unanime": false,
+  "n": 14,
+  "convergiu": false,
+  "rotulo": "Baixa",
+  "motivos": [
+   "não convergiu",
+   "voto sem maioria (peso 0.14)"
+  ],
+  "nota": "share baixo vem da grafia: 11 de 14 votos descrevem a mesma porta dupla com palavras diferentes; o rótulo não sobe por isso"
+ },
+ "D4": {
+  "top": "a",
+  "share": 0.71,
+  "votos_por_opcao": {
+   "a": 10,
+   "C": 1,
+   "c": 1,
+   "b": 1,
+   "A": 1
+  },
+  "amplitudeTop": 0.2,
+  "dispersao": 0.2,
+  "pool_logodds": 0.44,
+  "faixa": [
+   0.25,
+   0.75
+  ],
+  "rachada": false,
+  "unanime": false,
+  "n": 14,
+  "convergiu": true,
+  "rotulo": "Média",
+  "motivos": [
+   "nenhuma premissa de alto impacto avaliada"
+  ]
+ },
+ "carimbos": [
+  "NÃO CONVERGIU: D3"
+ ],
+ "chamadas": 95,
+ "falhas": 0,
+ "mudancas_anuladas_sem_fato_novo": 5,
+ "votos_invalidados": [
+  "B D2 final",
+  "D D2 final",
+  "E D3 final",
+  "B D2 delphi",
+  "B D3 delphi"
+ ]
+}

@@ -1,0 +1,1239 @@
+{
+ "nota": "Votos das rodadas primeiro, final e delphi. Os textos de motivo e fato_novo de cada voto estão nos arquivos das cadeiras e dos debates (run/02-cadeiras, run/05-debates); aqui ficam opção, números e marcações.",
+ "primeiro": [
+  {
+   "letra": "A",
+   "decisao": "D1",
+   "opcao": "b",
+   "probabilidade_sucesso": 0.45,
+   "faixa_min": 0.3,
+   "faixa_max": 0.6,
+   "confianca": 0.5,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "A",
+   "decisao": "D2",
+   "opcao": "psicologo+advogado",
+   "probabilidade_sucesso": 0.3,
+   "faixa_min": 0.15,
+   "faixa_max": 0.45,
+   "confianca": 0.35,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "A",
+   "decisao": "D3",
+   "opcao": "a",
+   "probabilidade_sucesso": 0.25,
+   "faixa_min": 0.1,
+   "faixa_max": 0.4,
+   "confianca": 0.3,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "A",
+   "decisao": "D4",
+   "opcao": "a",
+   "probabilidade_sucesso": 0.4,
+   "faixa_min": 0.25,
+   "faixa_max": 0.55,
+   "confianca": 0.35,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "B",
+   "decisao": "D1",
+   "opcao": "b",
+   "probabilidade_sucesso": 0.45,
+   "faixa_min": 0.3,
+   "faixa_max": 0.6,
+   "confianca": 0.5,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "B",
+   "decisao": "D2",
+   "opcao": "psicologo + advogado",
+   "probabilidade_sucesso": 0.35,
+   "faixa_min": 0.2,
+   "faixa_max": 0.5,
+   "confianca": 0.35,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "B",
+   "decisao": "D3",
+   "opcao": "a",
+   "probabilidade_sucesso": 0.2,
+   "faixa_min": 0.08,
+   "faixa_max": 0.35,
+   "confianca": 0.4,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "B",
+   "decisao": "D4",
+   "opcao": "a",
+   "probabilidade_sucesso": 0.4,
+   "faixa_min": 0.25,
+   "faixa_max": 0.55,
+   "confianca": 0.3,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "C",
+   "decisao": "D1",
+   "opcao": "b",
+   "probabilidade_sucesso": 0.45,
+   "faixa_min": 0.3,
+   "faixa_max": 0.6,
+   "confianca": 0.5,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "C",
+   "decisao": "D2",
+   "opcao": "psicologo+advogado",
+   "probabilidade_sucesso": 0.35,
+   "faixa_min": 0.2,
+   "faixa_max": 0.5,
+   "confianca": 0.35,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "C",
+   "decisao": "D3",
+   "opcao": "a",
+   "probabilidade_sucesso": 0.2,
+   "faixa_min": 0.1,
+   "faixa_max": 0.35,
+   "confianca": 0.4,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "C",
+   "decisao": "D4",
+   "opcao": "a",
+   "probabilidade_sucesso": 0.4,
+   "faixa_min": 0.25,
+   "faixa_max": 0.55,
+   "confianca": 0.3,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "D",
+   "decisao": "D1",
+   "opcao": "B",
+   "probabilidade_sucesso": 0.4,
+   "faixa_min": 0.25,
+   "faixa_max": 0.6,
+   "confianca": 0.5,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "D",
+   "decisao": "D2",
+   "opcao": "advogado + psicólogo, publicados depois de 04/11 com revisão ética",
+   "probabilidade_sucesso": 0.3,
+   "faixa_min": 0.15,
+   "faixa_max": 0.45,
+   "confianca": 0.35,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "D",
+   "decisao": "D3",
+   "opcao": "A",
+   "probabilidade_sucesso": 0.2,
+   "faixa_min": 0.08,
+   "faixa_max": 0.35,
+   "confianca": 0.4,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "D",
+   "decisao": "D4",
+   "opcao": "C",
+   "probabilidade_sucesso": 0.4,
+   "faixa_min": 0.25,
+   "faixa_max": 0.55,
+   "confianca": 0.3,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "E",
+   "decisao": "D1",
+   "opcao": "b",
+   "probabilidade_sucesso": 0.5,
+   "faixa_min": 0.3,
+   "faixa_max": 0.7,
+   "confianca": 0.5,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "E",
+   "decisao": "D2",
+   "opcao": "educador financeiro + psicólogo (corretor de imóveis como reserva gravada)",
+   "probabilidade_sucesso": 0.35,
+   "faixa_min": 0.2,
+   "faixa_max": 0.55,
+   "confianca": 0.35,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "E",
+   "decisao": "D3",
+   "opcao": "a",
+   "probabilidade_sucesso": 0.2,
+   "faixa_min": 0.08,
+   "faixa_max": 0.35,
+   "confianca": 0.4,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "E",
+   "decisao": "D4",
+   "opcao": "a",
+   "probabilidade_sucesso": 0.4,
+   "faixa_min": 0.25,
+   "faixa_max": 0.6,
+   "confianca": 0.35,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "F",
+   "decisao": "D1",
+   "opcao": "b",
+   "probabilidade_sucesso": 0.4,
+   "faixa_min": 0.25,
+   "faixa_max": 0.55,
+   "confianca": 0.5,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "F",
+   "decisao": "D2",
+   "opcao": "psicologo+advogado",
+   "probabilidade_sucesso": 0.3,
+   "faixa_min": 0.15,
+   "faixa_max": 0.45,
+   "confianca": 0.35,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "F",
+   "decisao": "D3",
+   "opcao": "b",
+   "probabilidade_sucesso": 0.15,
+   "faixa_min": 0.05,
+   "faixa_max": 0.3,
+   "confianca": 0.45,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "F",
+   "decisao": "D4",
+   "opcao": "c",
+   "probabilidade_sucesso": 0.45,
+   "faixa_min": 0.25,
+   "faixa_max": 0.6,
+   "confianca": 0.3,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "G",
+   "decisao": "D1",
+   "opcao": "b",
+   "probabilidade_sucesso": 0.5,
+   "faixa_min": 0.35,
+   "faixa_max": 0.65,
+   "confianca": 0.5,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "G",
+   "decisao": "D2",
+   "opcao": "psicologo+advogado",
+   "probabilidade_sucesso": 0.3,
+   "faixa_min": 0.15,
+   "faixa_max": 0.45,
+   "confianca": 0.35,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "G",
+   "decisao": "D3",
+   "opcao": "a+b",
+   "probabilidade_sucesso": 0.2,
+   "faixa_min": 0.08,
+   "faixa_max": 0.35,
+   "confianca": 0.4,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "G",
+   "decisao": "D4",
+   "opcao": "b",
+   "probabilidade_sucesso": 0.4,
+   "faixa_min": 0.25,
+   "faixa_max": 0.55,
+   "confianca": 0.35,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "H",
+   "decisao": "D1",
+   "opcao": "a",
+   "probabilidade_sucesso": 0.5,
+   "faixa_min": 0.3,
+   "faixa_max": 0.68,
+   "confianca": 0.55,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "H",
+   "decisao": "D2",
+   "opcao": "psicologo + educador financeiro/IA aplicada",
+   "probabilidade_sucesso": 0.38,
+   "faixa_min": 0.22,
+   "faixa_max": 0.55,
+   "confianca": 0.42,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "H",
+   "decisao": "D3",
+   "opcao": "a",
+   "probabilidade_sucesso": 0.3,
+   "faixa_min": 0.15,
+   "faixa_max": 0.45,
+   "confianca": 0.4,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "H",
+   "decisao": "D4",
+   "opcao": "a",
+   "probabilidade_sucesso": 0.45,
+   "faixa_min": 0.3,
+   "faixa_max": 0.6,
+   "confianca": 0.35,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "I",
+   "decisao": "D1",
+   "opcao": "b",
+   "probabilidade_sucesso": 0.45,
+   "faixa_min": 0.25,
+   "faixa_max": 0.65,
+   "confianca": 0.4,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "I",
+   "decisao": "D2",
+   "opcao": "psicologo + educador financeiro (advogado na fila B)",
+   "probabilidade_sucesso": 0.4,
+   "faixa_min": 0.2,
+   "faixa_max": 0.6,
+   "confianca": 0.35,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "I",
+   "decisao": "D3",
+   "opcao": "a+b",
+   "probabilidade_sucesso": 0.3,
+   "faixa_min": 0.15,
+   "faixa_max": 0.5,
+   "confianca": 0.3,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "I",
+   "decisao": "D4",
+   "opcao": "a",
+   "probabilidade_sucesso": 0.5,
+   "faixa_min": 0.3,
+   "faixa_max": 0.7,
+   "confianca": 0.35,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "J",
+   "decisao": "D1",
+   "opcao": "B",
+   "probabilidade_sucesso": 0.45,
+   "faixa_min": 0.3,
+   "faixa_max": 0.6,
+   "confianca": 0.5,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "J",
+   "decisao": "D2",
+   "opcao": "A",
+   "probabilidade_sucesso": 0.3,
+   "faixa_min": 0.15,
+   "faixa_max": 0.45,
+   "confianca": 0.4,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "J",
+   "decisao": "D3",
+   "opcao": "A",
+   "probabilidade_sucesso": 0.2,
+   "faixa_min": 0.08,
+   "faixa_max": 0.35,
+   "confianca": 0.4,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "J",
+   "decisao": "D4",
+   "opcao": "A",
+   "probabilidade_sucesso": 0.4,
+   "faixa_min": 0.25,
+   "faixa_max": 0.55,
+   "confianca": 0.35,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "K",
+   "decisao": "D1",
+   "opcao": "b",
+   "probabilidade_sucesso": 0.55,
+   "faixa_min": 0.35,
+   "faixa_max": 0.7,
+   "confianca": 0.5,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "K",
+   "decisao": "D2",
+   "opcao": "psicologo+advogado",
+   "probabilidade_sucesso": 0.35,
+   "faixa_min": 0.2,
+   "faixa_max": 0.5,
+   "confianca": 0.4,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "K",
+   "decisao": "D3",
+   "opcao": "a",
+   "probabilidade_sucesso": 0.25,
+   "faixa_min": 0.1,
+   "faixa_max": 0.4,
+   "confianca": 0.35,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "K",
+   "decisao": "D4",
+   "opcao": "a",
+   "probabilidade_sucesso": 0.5,
+   "faixa_min": 0.3,
+   "faixa_max": 0.65,
+   "confianca": 0.4,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "L",
+   "decisao": "D1",
+   "opcao": "b",
+   "probabilidade_sucesso": 0.45,
+   "faixa_min": 0.3,
+   "faixa_max": 0.6,
+   "confianca": 0.5,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "L",
+   "decisao": "D2",
+   "opcao": "psicólogo + advogado",
+   "probabilidade_sucesso": 0.3,
+   "faixa_min": 0.15,
+   "faixa_max": 0.45,
+   "confianca": 0.35,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "L",
+   "decisao": "D3",
+   "opcao": "a",
+   "probabilidade_sucesso": 0.2,
+   "faixa_min": 0.08,
+   "faixa_max": 0.35,
+   "confianca": 0.4,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "L",
+   "decisao": "D4",
+   "opcao": "a",
+   "probabilidade_sucesso": 0.4,
+   "faixa_min": 0.25,
+   "faixa_max": 0.55,
+   "confianca": 0.35,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "M",
+   "decisao": "D1",
+   "opcao": "b",
+   "probabilidade_sucesso": 0.35,
+   "faixa_min": 0.2,
+   "faixa_max": 0.55,
+   "confianca": 0.55,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "M",
+   "decisao": "D2",
+   "opcao": "psicologo+advogado",
+   "probabilidade_sucesso": 0.2,
+   "faixa_min": 0.08,
+   "faixa_max": 0.35,
+   "confianca": 0.4,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "M",
+   "decisao": "D3",
+   "opcao": "a+b",
+   "probabilidade_sucesso": 0.15,
+   "faixa_min": 0.05,
+   "faixa_max": 0.3,
+   "confianca": 0.45,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "M",
+   "decisao": "D4",
+   "opcao": "a",
+   "probabilidade_sucesso": 0.4,
+   "faixa_min": 0.25,
+   "faixa_max": 0.6,
+   "confianca": 0.4,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "N",
+   "decisao": "D1",
+   "opcao": "a",
+   "probabilidade_sucesso": 0.4,
+   "faixa_min": 0.25,
+   "faixa_max": 0.55,
+   "confianca": 0.5,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "N",
+   "decisao": "D2",
+   "opcao": "advogado + psicologo",
+   "probabilidade_sucesso": 0.3,
+   "faixa_min": 0.15,
+   "faixa_max": 0.45,
+   "confianca": 0.35,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "N",
+   "decisao": "D3",
+   "opcao": "a+b",
+   "probabilidade_sucesso": 0.2,
+   "faixa_min": 0.08,
+   "faixa_max": 0.35,
+   "confianca": 0.4,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "N",
+   "decisao": "D4",
+   "opcao": "a",
+   "probabilidade_sucesso": 0.6,
+   "faixa_min": 0.45,
+   "faixa_max": 0.75,
+   "confianca": 0.5,
+   "mudou_de_posicao": false
+  }
+ ],
+ "final": [
+  {
+   "letra": "A",
+   "decisao": "D2",
+   "opcao": "psicologo+advogado",
+   "probabilidade_sucesso": 0.3,
+   "faixa_min": 0.15,
+   "faixa_max": 0.45,
+   "confianca": 0.35,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "A",
+   "decisao": "D3",
+   "opcao": "a",
+   "probabilidade_sucesso": 0.2,
+   "faixa_min": 0.08,
+   "faixa_max": 0.35,
+   "confianca": 0.3,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "B",
+   "decisao": "D2",
+   "opcao": "psicologo + advogado",
+   "probabilidade_sucesso": 0.35,
+   "faixa_min": 0.2,
+   "faixa_max": 0.5,
+   "confianca": 0.35,
+   "mudou_de_posicao": false,
+   "invalidada": true
+  },
+  {
+   "letra": "B",
+   "decisao": "D3",
+   "opcao": "d+a (porta dupla: abaixo de 150, 'comenta a sua profissão' com resposta à mão; a partir de 150, TABULEIRO com PostZen)",
+   "probabilidade_sucesso": 0.22,
+   "faixa_min": 0.08,
+   "faixa_max": 0.35,
+   "confianca": 0.35,
+   "mudou_de_posicao": true
+  },
+  {
+   "letra": "C",
+   "decisao": "D2",
+   "opcao": "psicologo+advogado",
+   "probabilidade_sucesso": 0.33,
+   "faixa_min": 0.18,
+   "faixa_max": 0.5,
+   "confianca": 0.45,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "C",
+   "decisao": "D3",
+   "opcao": "porta dupla por alcance: abaixo de 150 'comenta a sua profissão' com resposta à mão; a partir de 150 TABULEIRO com PostZen testado; planilha de leads obrigatória",
+   "probabilidade_sucesso": 0.25,
+   "faixa_min": 0.12,
+   "faixa_max": 0.4,
+   "confianca": 0.45,
+   "mudou_de_posicao": true
+  },
+  {
+   "letra": "D",
+   "decisao": "D2",
+   "opcao": "advogado + psicólogo, publicados depois de 04/11 com revisão ética",
+   "probabilidade_sucesso": 0.3,
+   "faixa_min": 0.15,
+   "faixa_max": 0.45,
+   "confianca": 0.35,
+   "mudou_de_posicao": false,
+   "invalidada": true
+  },
+  {
+   "letra": "D",
+   "decisao": "D3",
+   "opcao": "D",
+   "probabilidade_sucesso": 0.2,
+   "faixa_min": 0.08,
+   "faixa_max": 0.35,
+   "confianca": 0.4,
+   "mudou_de_posicao": true
+  },
+  {
+   "letra": "E",
+   "decisao": "D2",
+   "opcao": "Psicólogo como primeiro extra; segunda vaga entre advogado e corretor de imóveis, os dois gravados em 26/10 com verba zero e decididos no D+7 por alcance e DM qualificada",
+   "probabilidade_sucesso": 0.35,
+   "faixa_min": 0.2,
+   "faixa_max": 0.5,
+   "confianca": 0.5,
+   "mudou_de_posicao": true
+  },
+  {
+   "letra": "E",
+   "decisao": "D3",
+   "opcao": "a",
+   "probabilidade_sucesso": 0.2,
+   "faixa_min": 0.08,
+   "faixa_max": 0.35,
+   "confianca": 0.4,
+   "mudou_de_posicao": false,
+   "invalidada": true
+  },
+  {
+   "letra": "F",
+   "decisao": "D2",
+   "opcao": "psicologo+advogado (corretor gravado em 26/10 como reserva, verba zero, troca pelas duas reguas no dia 7)",
+   "probabilidade_sucesso": 0.28,
+   "faixa_min": 0.12,
+   "faixa_max": 0.42,
+   "confianca": 0.35,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "F",
+   "decisao": "D3",
+   "opcao": "Porta dupla por alcance: abaixo de 150, 'comenta a sua profissao' com resposta a mao e pergunta de faturamento na DM; a partir de 150, TABULEIRO com PostZen testado; planilha de leads e UTM por nicho na bio",
+   "probabilidade_sucesso": 0.15,
+   "faixa_min": 0.05,
+   "faixa_max": 0.3,
+   "confianca": 0.45,
+   "mudou_de_posicao": true
+  },
+  {
+   "letra": "G",
+   "decisao": "D2",
+   "opcao": "psicologo + (advogado ou corretor de imoveis), os dois gravados em 26/10 com verba zero, ordem pela leitura do provimento da OAB e pelas medianas do buzzfy_niche_report",
+   "probabilidade_sucesso": 0.3,
+   "faixa_min": 0.15,
+   "faixa_max": 0.45,
+   "confianca": 0.5,
+   "mudou_de_posicao": true
+  },
+  {
+   "letra": "G",
+   "decisao": "D3",
+   "opcao": "Porta dupla por alcance: abaixo de 150, o CTA é 'comenta a sua profissão' com resposta à mão e qualificação na DM; a partir de 150, o TABULEIRO no comentário fixado pelo PostZen testado; planilha de leads e UTM por nicho obrigatórias",
+   "probabilidade_sucesso": 0.2,
+   "faixa_min": 0.08,
+   "faixa_max": 0.35,
+   "confianca": 0.45,
+   "mudou_de_posicao": true
+  },
+  {
+   "letra": "H",
+   "decisao": "D2",
+   "opcao": "psicologo + segunda vaga testada entre advogado e corretor de imoveis (gravados em 26/10, verba zero)",
+   "probabilidade_sucesso": 0.33,
+   "faixa_min": 0.18,
+   "faixa_max": 0.48,
+   "confianca": 0.5,
+   "mudou_de_posicao": true
+  },
+  {
+   "letra": "H",
+   "decisao": "D3",
+   "opcao": "porta dupla por alcance: abaixo de 150 'comenta a sua profissao' com resposta a mao e qualificacao por faturamento na DM; a partir de 150 TABULEIRO com PostZen testado; planilha de leads obrigatoria",
+   "probabilidade_sucesso": 0.25,
+   "faixa_min": 0.12,
+   "faixa_max": 0.4,
+   "confianca": 0.45,
+   "mudou_de_posicao": true
+  },
+  {
+   "letra": "I",
+   "decisao": "D2",
+   "opcao": "Psicólogo como primeiro extra; segunda vaga entre advogado e corretor de imóveis, os dois gravados em 26/10 com verba zero, e o corretor sai primeiro se o provimento da OAB não for lido até 26/10",
+   "probabilidade_sucesso": 0.35,
+   "faixa_min": 0.15,
+   "faixa_max": 0.55,
+   "confianca": 0.35,
+   "mudou_de_posicao": true
+  },
+  {
+   "letra": "I",
+   "decisao": "D3",
+   "opcao": "Porta dupla por alcance: abaixo de 150, o CTA é 'comenta a sua profissão' com resposta à mão; a partir de 150, o TABULEIRO com PostZen testado; planilha de leads obrigatória",
+   "probabilidade_sucesso": 0.3,
+   "faixa_min": 0.12,
+   "faixa_max": 0.45,
+   "confianca": 0.35,
+   "mudou_de_posicao": true
+  },
+  {
+   "letra": "J",
+   "decisao": "D2",
+   "opcao": "Psicólogo fechado como primeiro extra; segunda vaga entre advogado e corretor de imóveis, os dois gravados em 26/10 com verba zero e decididos pelas duas réguas no dia 7",
+   "probabilidade_sucesso": 0.32,
+   "faixa_min": 0.15,
+   "faixa_max": 0.48,
+   "confianca": 0.45,
+   "mudou_de_posicao": true
+  },
+  {
+   "letra": "J",
+   "decisao": "D3",
+   "opcao": "Porta dupla por alcance: abaixo de 150, o CTA é 'comenta a sua profissão' com resposta à mão; a partir de 150, o TABULEIRO com PostZen testado; planilha de leads obrigatória",
+   "probabilidade_sucesso": 0.22,
+   "faixa_min": 0.08,
+   "faixa_max": 0.38,
+   "confianca": 0.4,
+   "mudou_de_posicao": true
+  },
+  {
+   "letra": "K",
+   "decisao": "D2",
+   "opcao": "psicologo+advogado",
+   "probabilidade_sucesso": 0.3,
+   "faixa_min": 0.15,
+   "faixa_max": 0.45,
+   "confianca": 0.4,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "K",
+   "decisao": "D3",
+   "opcao": "a",
+   "probabilidade_sucesso": 0.22,
+   "faixa_min": 0.1,
+   "faixa_max": 0.35,
+   "confianca": 0.45,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "L",
+   "decisao": "D2",
+   "opcao": "psicólogo + advogado",
+   "probabilidade_sucesso": 0.3,
+   "faixa_min": 0.15,
+   "faixa_max": 0.45,
+   "confianca": 0.35,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "L",
+   "decisao": "D3",
+   "opcao": "d",
+   "probabilidade_sucesso": 0.2,
+   "faixa_min": 0.08,
+   "faixa_max": 0.35,
+   "confianca": 0.4,
+   "mudou_de_posicao": true
+  },
+  {
+   "letra": "M",
+   "decisao": "D2",
+   "opcao": "psicologo+advogado",
+   "probabilidade_sucesso": 0.18,
+   "faixa_min": 0.07,
+   "faixa_max": 0.33,
+   "confianca": 0.4,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "M",
+   "decisao": "D3",
+   "opcao": "a+d",
+   "probabilidade_sucesso": 0.15,
+   "faixa_min": 0.05,
+   "faixa_max": 0.3,
+   "confianca": 0.45,
+   "mudou_de_posicao": true
+  },
+  {
+   "letra": "N",
+   "decisao": "D2",
+   "opcao": "advogado + psicologo",
+   "probabilidade_sucesso": 0.3,
+   "faixa_min": 0.15,
+   "faixa_max": 0.45,
+   "confianca": 0.4,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "N",
+   "decisao": "D3",
+   "opcao": "porta dupla: (a) TABULEIRO a partir de 150 de alcance + 'comenta a sua profissão' com resposta à mão abaixo de 150, no lugar de (b) seguir + bio",
+   "probabilidade_sucesso": 0.25,
+   "faixa_min": 0.1,
+   "faixa_max": 0.4,
+   "confianca": 0.35,
+   "mudou_de_posicao": true
+  }
+ ],
+ "delphi": [
+  {
+   "letra": "A",
+   "decisao": "D2",
+   "opcao": "psicologo+advogado",
+   "probabilidade_sucesso": 0.3,
+   "faixa_min": 0.1,
+   "faixa_max": 0.5,
+   "confianca": 0.4,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "A",
+   "decisao": "D3",
+   "opcao": "a+d (porta dupla: abaixo de 150 'comenta a sua profissão' com resposta à mão e pergunta de faturamento na DM; a partir de 150 TABULEIRO com PostZen testado; planilha de leads e UTM por nicho)",
+   "probabilidade_sucesso": 0.25,
+   "faixa_min": 0.1,
+   "faixa_max": 0.4,
+   "confianca": 0.45,
+   "mudou_de_posicao": true
+  },
+  {
+   "letra": "B",
+   "decisao": "D2",
+   "opcao": "psicologo + advogado",
+   "probabilidade_sucesso": 0.35,
+   "faixa_min": 0.2,
+   "faixa_max": 0.5,
+   "confianca": 0.35,
+   "mudou_de_posicao": false,
+   "invalidada": true
+  },
+  {
+   "letra": "B",
+   "decisao": "D3",
+   "opcao": "d+a (porta dupla: abaixo de 150, 'comenta a sua profissão' com resposta à mão; a partir de 150, TABULEIRO com PostZen)",
+   "probabilidade_sucesso": 0.22,
+   "faixa_min": 0.08,
+   "faixa_max": 0.35,
+   "confianca": 0.35,
+   "mudou_de_posicao": true,
+   "invalidada": true
+  },
+  {
+   "letra": "C",
+   "decisao": "D2",
+   "opcao": "psicologo+advogado",
+   "probabilidade_sucesso": 0.3,
+   "faixa_min": 0.12,
+   "faixa_max": 0.5,
+   "confianca": 0.45,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "C",
+   "decisao": "D3",
+   "opcao": "porta dupla por alcance: abaixo de 150 'comenta a sua profissão' com resposta à mão; a partir de 150 TABULEIRO com PostZen testado; planilha de leads obrigatória",
+   "probabilidade_sucesso": 0.22,
+   "faixa_min": 0.1,
+   "faixa_max": 0.38,
+   "confianca": 0.4,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "D",
+   "decisao": "D2",
+   "opcao": "psicólogo + advogado, com corretor de imóveis gravado em 26/10 como reserva (verba zero); extras publicados depois de 04/11, advogado só após leitura do provimento de publicidade da OAB, senão corretor entra no lugar",
+   "probabilidade_sucesso": 0.3,
+   "faixa_min": 0.15,
+   "faixa_max": 0.45,
+   "confianca": 0.35,
+   "mudou_de_posicao": true
+  },
+  {
+   "letra": "D",
+   "decisao": "D3",
+   "opcao": "D",
+   "probabilidade_sucesso": 0.2,
+   "faixa_min": 0.08,
+   "faixa_max": 0.35,
+   "confianca": 0.4,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "E",
+   "decisao": "D2",
+   "opcao": "Psicólogo como primeiro extra; segunda vaga entre advogado e corretor de imóveis, os dois gravados em 26/10 com verba zero e decididos no D+7 por alcance e DM qualificada",
+   "probabilidade_sucesso": 0.3,
+   "faixa_min": 0.1,
+   "faixa_max": 0.5,
+   "confianca": 0.5,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "E",
+   "decisao": "D3",
+   "opcao": "a",
+   "probabilidade_sucesso": 0.2,
+   "faixa_min": 0.08,
+   "faixa_max": 0.35,
+   "confianca": 0.45,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "F",
+   "decisao": "D2",
+   "opcao": "psicologo+advogado (corretor gravado em 26/10 como reserva, verba zero, troca pelas duas reguas no dia 7)",
+   "probabilidade_sucesso": 0.3,
+   "faixa_min": 0.1,
+   "faixa_max": 0.5,
+   "confianca": 0.45,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "F",
+   "decisao": "D3",
+   "opcao": "Porta dupla por alcance: abaixo de 150, 'comenta a sua profissao' com resposta a mao e pergunta de faturamento na DM; a partir de 150, TABULEIRO com PostZen testado; planilha de leads e UTM por nicho na bio",
+   "probabilidade_sucesso": 0.25,
+   "faixa_min": 0.08,
+   "faixa_max": 0.4,
+   "confianca": 0.5,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "G",
+   "decisao": "D2",
+   "opcao": "psicologo + (advogado ou corretor de imoveis), os dois gravados em 26/10 com verba zero, ordem pela leitura do provimento da OAB e pelas medianas do buzzfy_niche_report",
+   "probabilidade_sucesso": 0.3,
+   "faixa_min": 0.12,
+   "faixa_max": 0.5,
+   "confianca": 0.45,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "G",
+   "decisao": "D3",
+   "opcao": "Porta dupla por alcance: abaixo de 150, o CTA é 'comenta a sua profissão' com resposta à mão e qualificação na DM; a partir de 150, o TABULEIRO no comentário fixado pelo PostZen testado; planilha de leads e UTM por nicho obrigatórias",
+   "probabilidade_sucesso": 0.25,
+   "faixa_min": 0.1,
+   "faixa_max": 0.4,
+   "confianca": 0.45,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "H",
+   "decisao": "D2",
+   "opcao": "psicologo + segunda vaga testada entre advogado e corretor de imoveis (gravados em 26/10, verba zero)",
+   "probabilidade_sucesso": 0.3,
+   "faixa_min": 0.15,
+   "faixa_max": 0.45,
+   "confianca": 0.45,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "H",
+   "decisao": "D3",
+   "opcao": "porta dupla por alcance: abaixo de 150 'comenta a sua profissao' com resposta a mao e qualificacao por faturamento na DM; a partir de 150 TABULEIRO com PostZen testado; planilha de leads obrigatoria",
+   "probabilidade_sucesso": 0.25,
+   "faixa_min": 0.1,
+   "faixa_max": 0.4,
+   "confianca": 0.4,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "I",
+   "decisao": "D2",
+   "opcao": "Psicólogo como primeiro extra; segunda vaga entre advogado e corretor de imóveis, os dois gravados em 26/10 com verba zero, e o corretor sai primeiro se o provimento da OAB não for lido até 26/10",
+   "probabilidade_sucesso": 0.3,
+   "faixa_min": 0.1,
+   "faixa_max": 0.5,
+   "confianca": 0.5,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "I",
+   "decisao": "D3",
+   "opcao": "Porta dupla por alcance: abaixo de 150, o CTA é 'comenta a sua profissão' com resposta à mão; a partir de 150, o TABULEIRO com PostZen testado; planilha de leads obrigatória",
+   "probabilidade_sucesso": 0.22,
+   "faixa_min": 0.08,
+   "faixa_max": 0.38,
+   "confianca": 0.55,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "J",
+   "decisao": "D2",
+   "opcao": "Psicólogo fechado como primeiro extra; segunda vaga entre advogado e corretor de imóveis, os dois gravados em 26/10 com verba zero e decididos pelas duas réguas no dia 7",
+   "probabilidade_sucesso": 0.3,
+   "faixa_min": 0.12,
+   "faixa_max": 0.5,
+   "confianca": 0.5,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "J",
+   "decisao": "D3",
+   "opcao": "Porta dupla por alcance: abaixo de 150, o CTA é 'comenta a sua profissão' com resposta à mão; a partir de 150, o TABULEIRO com PostZen testado; planilha de leads obrigatória",
+   "probabilidade_sucesso": 0.15,
+   "faixa_min": 0.05,
+   "faixa_max": 0.3,
+   "confianca": 0.55,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "K",
+   "decisao": "D2",
+   "opcao": "psicologo+advogado",
+   "probabilidade_sucesso": 0.3,
+   "faixa_min": 0.12,
+   "faixa_max": 0.5,
+   "confianca": 0.45,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "K",
+   "decisao": "D3",
+   "opcao": "a+d (porta dupla: TABULEIRO com PostZen a partir de 150 de alcance; abaixo disso, 'comenta a sua profissão' com resposta à mão e qualificação na DM; planilha de leads)",
+   "probabilidade_sucesso": 0.3,
+   "faixa_min": 0.1,
+   "faixa_max": 0.45,
+   "confianca": 0.45,
+   "mudou_de_posicao": true
+  },
+  {
+   "letra": "L",
+   "decisao": "D2",
+   "opcao": "psicologo + segunda vaga testada entre advogado e corretor de imoveis (gravados em 26/10, verba zero, decididos no D+7 por alcance e DM qualificada)",
+   "probabilidade_sucesso": 0.3,
+   "faixa_min": 0.15,
+   "faixa_max": 0.45,
+   "confianca": 0.45,
+   "mudou_de_posicao": true
+  },
+  {
+   "letra": "L",
+   "decisao": "D3",
+   "opcao": "d",
+   "probabilidade_sucesso": 0.2,
+   "faixa_min": 0.08,
+   "faixa_max": 0.35,
+   "confianca": 0.5,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "M",
+   "decisao": "D2",
+   "opcao": "psicologo+advogado",
+   "probabilidade_sucesso": 0.2,
+   "faixa_min": 0.08,
+   "faixa_max": 0.35,
+   "confianca": 0.4,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "M",
+   "decisao": "D3",
+   "opcao": "a+d",
+   "probabilidade_sucesso": 0.15,
+   "faixa_min": 0.05,
+   "faixa_max": 0.3,
+   "confianca": 0.45,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "N",
+   "decisao": "D2",
+   "opcao": "advogado + psicologo",
+   "probabilidade_sucesso": 0.3,
+   "faixa_min": 0.12,
+   "faixa_max": 0.45,
+   "confianca": 0.35,
+   "mudou_de_posicao": false
+  },
+  {
+   "letra": "N",
+   "decisao": "D3",
+   "opcao": "porta dupla: (a) TABULEIRO a partir de 150 de alcance + 'comenta a sua profissão' com resposta à mão abaixo de 150, no lugar de (b) seguir + bio",
+   "probabilidade_sucesso": 0.22,
+   "faixa_min": 0.08,
+   "faixa_max": 0.35,
+   "confianca": 0.4,
+   "mudou_de_posicao": false
+  }
+ ],
+ "mudancas": [
+  {
+   "letra": "B",
+   "decisao": "D3",
+   "de": "a",
+   "para": "d+a (porta dupla: abaixo de 150, 'comenta a sua profissão' com resposta à mão; a partir de 150, TABULEIRO com PostZen)"
+  },
+  {
+   "letra": "C",
+   "decisao": "D3",
+   "de": "a",
+   "para": "porta dupla por alcance: abaixo de 150 'comenta a sua profissão' com resposta à mão; a partir de 150 TABULEIRO com PostZen testado; planilha de leads obrigatória"
+  },
+  {
+   "letra": "D",
+   "decisao": "D3",
+   "de": "A",
+   "para": "D"
+  },
+  {
+   "letra": "E",
+   "decisao": "D2",
+   "de": "educador financeiro + psicólogo (corretor de imóveis como reserva gravada)",
+   "para": "Psicólogo como primeiro extra; segunda vaga entre advogado e corretor de imóveis, os dois gravados em 26/10 com verba zero e decididos no D+7 por alcance e DM qualificada"
+  },
+  {
+   "letra": "F",
+   "decisao": "D2",
+   "de": "psicologo+advogado",
+   "para": "psicologo+advogado (corretor gravado em 26/10 como reserva, verba zero, troca pelas duas reguas no dia 7)"
+  },
+  {
+   "letra": "F",
+   "decisao": "D3",
+   "de": "b",
+   "para": "Porta dupla por alcance: abaixo de 150, 'comenta a sua profissao' com resposta a mao e pergunta de faturamento na DM; a partir de 150, TABULEIRO com PostZen testado; planilha de leads e UTM por nicho na bio"
+  },
+  {
+   "letra": "G",
+   "decisao": "D2",
+   "de": "psicologo+advogado",
+   "para": "psicologo + (advogado ou corretor de imoveis), os dois gravados em 26/10 com verba zero, ordem pela leitura do provimento da OAB e pelas medianas do buzzfy_niche_report"
+  },
+  {
+   "letra": "G",
+   "decisao": "D3",
+   "de": "a+b",
+   "para": "Porta dupla por alcance: abaixo de 150, o CTA é 'comenta a sua profissão' com resposta à mão e qualificação na DM; a partir de 150, o TABULEIRO no comentário fixado pelo PostZen testado; planilha de leads e UTM por nicho obrigatórias"
+  },
+  {
+   "letra": "H",
+   "decisao": "D2",
+   "de": "psicologo + educador financeiro/IA aplicada",
+   "para": "psicologo + segunda vaga testada entre advogado e corretor de imoveis (gravados em 26/10, verba zero)"
+  },
+  {
+   "letra": "H",
+   "decisao": "D3",
+   "de": "a",
+   "para": "porta dupla por alcance: abaixo de 150 'comenta a sua profissao' com resposta a mao e qualificacao por faturamento na DM; a partir de 150 TABULEIRO com PostZen testado; planilha de leads obrigatoria"
+  },
+  {
+   "letra": "I",
+   "decisao": "D2",
+   "de": "psicologo + educador financeiro (advogado na fila B)",
+   "para": "Psicólogo como primeiro extra; segunda vaga entre advogado e corretor de imóveis, os dois gravados em 26/10 com verba zero, e o corretor sai primeiro se o provimento da OAB não for lido até 26/10"
+  },
+  {
+   "letra": "I",
+   "decisao": "D3",
+   "de": "a+b",
+   "para": "Porta dupla por alcance: abaixo de 150, o CTA é 'comenta a sua profissão' com resposta à mão; a partir de 150, o TABULEIRO com PostZen testado; planilha de leads obrigatória"
+  },
+  {
+   "letra": "J",
+   "decisao": "D2",
+   "de": "A",
+   "para": "Psicólogo fechado como primeiro extra; segunda vaga entre advogado e corretor de imóveis, os dois gravados em 26/10 com verba zero e decididos pelas duas réguas no dia 7"
+  },
+  {
+   "letra": "J",
+   "decisao": "D3",
+   "de": "A",
+   "para": "Porta dupla por alcance: abaixo de 150, o CTA é 'comenta a sua profissão' com resposta à mão; a partir de 150, o TABULEIRO com PostZen testado; planilha de leads obrigatória"
+  },
+  {
+   "letra": "L",
+   "decisao": "D3",
+   "de": "a",
+   "para": "d"
+  },
+  {
+   "letra": "M",
+   "decisao": "D3",
+   "de": "a+b",
+   "para": "a+d"
+  },
+  {
+   "letra": "N",
+   "decisao": "D3",
+   "de": "a+b",
+   "para": "porta dupla: (a) TABULEIRO a partir de 150 de alcance + 'comenta a sua profissão' com resposta à mão abaixo de 150, no lugar de (b) seguir + bio"
+  }
+ ],
+ "mudancas_anuladas_sem_fato_novo": 5
+}
