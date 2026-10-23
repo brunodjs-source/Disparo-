@@ -14,5 +14,16 @@ O Instagram é operado pelo sistema em `conteudo/sistema-instagram/00-SISTEMA.md
 - 3 posts por dia não aumentaram seguidores. Ritmo: 5 reels + 2 carrosséis por semana + stories diários.
 - Uma palavra-chave por mês (TABULEIRO), só em post com alcance de 150 ou mais.
 
+## Edição de vídeo (aprendizados: PDF "42 efeitos" + reels medidos)
+Referência completa: `conteudo/edicao/42-efeitos-referencia.txt`. Motor próprio: HTML com render(t) determinístico + Playwright + ffmpeg (mesma lógica da HyperFrames).
+- Cada efeito entra na palavra que ele ilustra, nunca antes (tempo pela transcrição palavra a palavra do Whisper).
+- No máximo 1 efeito novo a cada 2 segundos. Legenda o vídeo inteiro. O vídeo sem som precisa fazer sentido.
+- Nada encosta na borda, fica em cima da boca, no rodapé ou na lateral direita (botões do Instagram).
+- Movimento com mola ou curva suave, nunca linear; elementos em sequência com 2 a 4 quadros de diferença.
+- Identidade: escolher 4 a 6 efeitos por tipo de vídeo e repetir. Base fixa da marca: Connect Hook (gancho palavra a palavra), Legenda Gigante, CTA de Comentário, letreiro 3D atrás da cabeça, preto e ouro (#141210 / #E8B36A, Cinzel + Playfair itálico).
+- Antes do render final: folha com 4 quadros por segundo, nota de 0 a 10 por efeito, corrigir o que ficar abaixo de 8.
+- Combinações: bastidor (Storyboard, Grade de vídeos, Punch-in, Flash, Comentário caindo); depoimento/entrevista (Nome e cargo, Legenda Gigante, Marca-texto, Look cinemático, Title Card); oferta (Connect Hook, Contagem, Barras, CTA de Comentário).
+- Interface recriada (feed, notificação, busca) nunca usa logo ou marca de outra empresa.
+
 ## Regras de texto
 Português do Brasil, sem travessão, sem emoji, sem promessa de resultado, sem citar HighClass, Júnior Prazeres ou Felipe Roser. No máximo uma frase "não é X, é Y" por peça.

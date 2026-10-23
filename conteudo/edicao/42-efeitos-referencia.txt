@@ -1,0 +1,440 @@
+Mais de 40 efeitos de edicao com o Claude: o prompt de cada
+um e o setup no Claude e no ChatGPT
+
+
+Connect Hook, Gravity Drop, Legenda Gigante, Barra de Prompt, Storyboard, Icone com Impacto, Arquivo Arrastado,
+Timeline de Editor, Jiggle Delete, Slide de Cor, Cor no Conta-Gotas, Look Cinematico, Title Card, Grade de Videos
+Tocando, Feed de Reels, Card de Video, CTA de Comentario e Comentario Caindo: sao os 18 do video, e aqui eles vem
+com o prompt de cada um, mais 24 efeitos pra fechar 42.
+
+Nenhum desses efeitos e gerado por IA de video: o Claude ou o ChatGPT escreve a animacao em codigo, HTML com
+movimento controlado pelo tempo, e um motor de render transforma em video quadro a quadro. Por isso o efeito cai na
+palavra certa, sai igual toda vez e da pra exportar com fundo transparente pra por em cima do seu video.
+
+Nesta pagina tem os 2 caminhos de setup, pelo app do Claude ou do ChatGPT sem instalar nada e pelo Claude Code ou
+pelo Codex com a HyperFrames, o motor aberto da HeyGen, os 42 prompts de efeito, 7 prompts de edicao, do prompt
+base a revisao, e como aplicar no video do seu negocio.
+
+Do primeiro efeito ao Reel editado
+Sao 9 passos: o 1 escolhe o caminho, o 2 e o 3 sao o caminho do app, do 4 ao 8 o caminho do Claude Code ou do
+Codex, e o 9 aplica no seu negocio.
+
+1. Escolha o caminho
+Pelo app do Claude ou do ChatGPT voce testa qualquer efeito hoje, sem instalar nada: ele aparece na previa, voce grava a tela com
+fundo verde e recorta no editor. Pelo Claude Code ou pelo Codex, o agente de codigo do ChatGPT, com a HyperFrames, o efeito
+renderiza quadro a quadro, no tempo exato da fala, com fundo transparente de verdade. Pra Reel toda semana, o segundo caminho
+compensa. 1) App: gratis pra testar, tempo aproximado, recorte por fundo verde 2) Claude Code ou Codex: tempo exato, transparencia
+real, edicao inteira de uma vez
+
+2. No app: o prompt base e o primeiro efeito
+Abra um chat no Claude ou no ChatGPT e cole o prompt 1, o prompt base, com as cores e a fonte da sua marca. Depois cole o prompt
+6, a versao pra gravar a tela, com o nome do efeito e o prompt dele la embaixo. No Claude o HTML abre como artifact, inclusive no
+plano gratis, e no ChatGPT o bloco de codigo de pagina HTML tem a opcao de previa.
+https://support.claude.com/en/articles/17153992-what-are-artifacts-and-how-do-i-use-them
+
+3. No app: grave a tela e recorte o verde
+Deixe a previa em tela cheia, clique em Comecar e grave a tela. No Mac, Command, Shift e 5 abre a gravacao. No editor, CapCut,
+Premiere ou DaVinci, ponha a gravacao por cima do seu video e use o chroma key pra tirar o verde. O tempo fica aproximado, porque
+gravacao de tela perde quadro, entao ajuste o encaixe na mao. https://support.apple.com/pt-br/102618
+
+4. No Claude Code ou no Codex: instale a HyperFrames
+A HyperFrames e o motor aberto da HeyGen, licenca Apache 2.0, com 69 mil estrelas no GitHub em 21 de outubro de 2026, que
+transforma HTML animado em MP4 abrindo cada quadro num Chrome sem janela e juntando com o FFmpeg. Pede o Node.js 22 ou
+mais novo e o FFmpeg. No Claude Code entra como plugin, e no Codex e em outros agentes, como skills. # precisa do Node.js 22 ou
+mais novo e do FFmpeg
+node --version
+ffmpeg -version
+
+# Claude Code: o plugin oficial da HyperFrames
+claude plugin marketplace add heygen-com/hyperframes
+claude plugin install hyperframes@hyperframes
+
+# Codex, o agente de codigo do ChatGPT: as skills da HyperFrames
+npx skills add heygen-com/hyperframes https://github.com/heygen-com/hyperframes
+
+5. Crie o projeto e transcreva o video
+Um projeto por Reel. Coloque o video gravado na pasta e rode a transcricao, que usa o Whisper no seu computador, sem chave e sem
+custo, e gera o tempo de cada palavra. E esse tempo que faz a Legenda Gigante trocar na silaba certa e o Icone com Impacto cair
+exatamente na palavra que ele ilustra. npx hyperframes init meu-reel
+cd meu-reel
+# copie o seu video pra pasta do projeto, por exemplo assets/bruto.mp4
+
+# tempo de cada palavra da fala, pelo Whisper no seu computador, sem chave
+# o modelo small entende portugues; ele gera o transcript.json
+npx hyperframes transcribe assets/bruto.mp4 --model small
+
+npx hyperframes preview        # previa no navegador, atualiza sozinha
+
+6. Peca a edicao com os efeitos no tempo da fala
+Cole o prompt 1 e depois o prompt 2, com a lista de efeitos que voce quer. Ele devolve primeiro a tabela de segundo, frase e efeito,
+voce aprova, e so ai ele constroi. Pra um efeito so, cole o prompt dele direto. Regra de ouro: no maximo 1 efeito novo a cada 2
+segundos, que efeito demais vira poluicao. Atalho: A HyperFrames tem um catalogo com uns 450 blocos prontos, de transicao,
+legenda, titulo e sobreposicao social. Peca pro agente procurar la antes de construir do zero.
+
+7. Ajuste na previa
+A previa abre no navegador e atualiza sozinha a cada mudanca. Use o prompt 3 pra por o efeito na sua marca e o prompt 4 pra corrigir
+o tempo, sempre pela palavra da transcricao. Mexa num efeito por vez.
+
+8. Revise e renderize
+Antes do render final, o prompt 5 faz o agente olhar uma folha com 4 quadros por segundo e cacar texto cortado, legenda empilhada e
+efeito fora da palavra, com nota por efeito. Depois renderize: em MP4, com tudo junto, ou so os efeitos em WebM ou MOV com fundo
+transparente, pra montar no seu editor de sempre. # video final em MP4, com o seu video e os efeitos juntos
+npx hyperframes render --output final.mp4
+
+# so os efeitos, com fundo transparente, pra por em cima no CapCut ou no Premiere
+npx hyperframes render --format webm --output efeitos.webm
+npx hyperframes render --format mov --output efeitos.mov Atalho: Deu certo quando cada efeito entra na palavra que ele ilustra,
+nenhum texto encosta na borda nem fica em cima da boca, e o video lido no celular, sem som, ainda faz sentido.
+
+9. Aplique no video do seu negocio
+Escolha 4 a 6 efeitos por tipo de video e repita, que e isso que vira identidade. O cartao de combinacoes la embaixo sugere os
+conjuntos pra video de produto, tutorial, depoimento e anuncio. Quando uma edicao for aprovada, o prompt 7 transforma em modelo, e
+o proximo Reel sai trocando so o video e os textos.
+
+Os 18 efeitos do video, com o prompt de cada um
+Na ordem em que aparecem. Troque os colchetes pelo seu texto, imagem e cor. Cole depois do prompt base, o 1, no
+app ou no Claude Code.
+
+1. Connect Hook
+O texto do gancho entrando palavra por palavra no topo, com a palavra-chave em destaque. INSTALL: Efeito Connect Hook: overlay
+vertical 1080 por 1920, fundo transparente, 2,5 segundos. O texto do hook "[seu hook]" entra no topo palavra por palavra, uma a cada
+0,15 segundo, cada palavra subindo 40 px e crescendo de 80% pra 100% com mola, sem passar do ponto mais que 5%. A
+palavra-chave "[palavra]" entra por ultimo, na cor [hex de destaque]. Acima, em fonte pequena e fina, a linha "[ex.: 18 efeitos. 20
+segundos.]". Fonte condensada pesada, branca, com sombra leve pra ler em cima de qualquer video.
+
+2. Gravity Drop
+Palavras caindo com gravidade e quicando ate parar. INSTALL: Efeito Gravity Drop: overlay vertical 1080 por 1920, fundo transparente,
+2 segundos. As palavras "[palavra pequena]" e "[PALAVRA GRANDE]" caem do topo com gravidade, a grande numa serifada enorme e
+a pequena em italico por cima, batem numa linha invisivel a 30% da altura, quicam 2 vezes perdendo forca e param. Cada palavra
+comeca 0,1 segundo depois da anterior. Branco com sombra suave.
+
+3. Legenda Gigante
+Legenda palavra por palavra em caixa, com a palavra principal enorme. INSTALL: Efeito Legenda Gigante: legenda palavra por palavra
+a partir da transcricao com tempo de cada palavra, em 1080 por 1920. Cada grupo de 1 a 3 palavras aparece numa caixa de fundo
+[verde-escuro hex] com cantos levemente arredondados, a palavra principal enorme em fonte condensada pesada e o complemento
+menor em italico logo abaixo. Troca seca na hora exata de cada palavra, com um pop de escala de 104% pra 100% em 3 frames.
+Posicao no terco superior, longe do rodape onde ficam os botoes do Instagram.
+
+4. Barra de Prompt
+Uma barra de chat digitando o prompt e o botao de enviar acendendo. INSTALL: Efeito Barra de Prompt: overlay vertical 1080 por
+1920, fundo transparente, 3 segundos. Uma barra de chat branca, larga e arredondada, entra no topo deslizando de cima. Dentro, o
+rotulo pequeno PROMPT e o texto "[seu prompt]" sendo digitado letra por letra a 18 caracteres por segundo, com cursor piscando. No
+fim, o botao redondo de enviar, a direita, acende na cor [hex] e afunda 2 px, como num clique.
+
+5. Storyboard
+Cartoes de cena abrindo em leque e se alinhando em fila. INSTALL: Efeito Storyboard: overlay vertical 1080 por 1920, fundo
+transparente, 3 segundos. 5 cartoes 9:16 com as miniaturas [imagens das cenas] entram empilhados no canto inferior esquerdo, abrem
+em leque com 8 graus entre cada um e depois se alinham numa fila horizontal. Cada cartao tem borda branca de 6 px, sombra e,
+embaixo, o numero da cena e um titulo de 2 palavras.
+
+6. Icone com Impacto
+Um icone caindo com tremida e onda de choque, depois riscado. INSTALL: Efeito Icone com Impacto: overlay vertical 1080 por 1920,
+fundo transparente, 2 segundos. O icone [imagem do icone, quadrado com cantos arredondados] cai no centro superior com impacto:
+escala de 130% pra 100%, tremida de 3 frames e uma onda de choque circular que se desfaz. Em seguida, um risco vermelho diagonal
+atravessa o icone e a palavra "[strike.]" entra ao lado, em italico serifado.
+
+7. Arquivo Arrastado
+Um arquivo de video arrastado pelo cursor e solto numa area que acende. INSTALL: Efeito Arquivo Arrastado: overlay vertical 1080 por
+1920, fundo transparente, 3 segundos. Um cartao de arquivo com icone de video, o nome "[arquivo.mp4]", o tamanho "[ex.: 25,7 MB]" e
+a resolucao "[1080x1920]" entra pelo canto superior, arrastado por um cursor. Ele e solto numa area tracejada no centro, com o texto
+"Solte o video aqui", que acende na cor [hex] e mostra um check quando o arquivo cai.
+
+8. Timeline de Editor
+A timeline de um editor de video com a cabeca de reproducao andando. INSTALL: Efeito Timeline de Editor: overlay vertical 1080 por
+1920, fundo transparente, 3 segundos. Uma timeline de editor de video escura entra de baixo, ocupando os 25% de baixo: regua de
+tempo com timecode, trilha de video com 5 clipes coloridos, trilha de legenda com blocos pequenos e trilha de audio com forma de
+onda. A cabeca de reproducao vermelha anda da esquerda pra direita e os clipes encaixam um a um quando ela passa.
+
+9. Jiggle Delete
+Icones tremendo como no modo de apagar do iPhone e sumindo um a um. INSTALL: Efeito Jiggle Delete: overlay vertical 1080 por
+1920, fundo transparente, 3 segundos. Um cartao claro com 4 icones de app lado a lado, genericos ou das ferramentas que voce troca
+pela sua [nomes], desenhados como quadrados arredondados com uma letra ou simbolo, cada um com o nome embaixo, entra no meio
+da tela. Os icones tremem como no modo de apagar do iPhone, rotacao de 2 graus pra cada lado em ritmo diferente, com o X no canto,
+e somem um por um encolhendo ate 0, com 0,3 segundo entre cada.
+
+10. Slide de Cor
+Um divisor de antes e depois revelando a cor corrigida. INSTALL: Efeito Slide de Cor: sobre o video [bruto.mp4], 1080 por 1920, 2,5
+segundos. Mostre 2 versoes do mesmo video: a esquerda a original e a direita a versao com cor corrigida, [ex.: mais contraste e pele
+mais quente]. Uma linha vertical branca com um botao redondo de setas no meio divide as 2, com os rotulos ANTES e DEPOIS em
+pilulas escuras, e desliza da esquerda pra direita e volta ate o meio.
+
+11. Cor no Conta-Gotas
+O conta-gotas tirando as cores da imagem e montando a paleta. INSTALL: Efeito Cor no Conta-Gotas: sobre o video, 1080 por 1920, 3
+segundos. Um icone de conta-gotas passa por 5 pontos da imagem, [ex.: a pele, o bone, a parede, a camisa e o fundo], e em cada
+parada um anel aparece e uma amostra de cor com o codigo hex entra numa barra de paleta clara no rodape. No fim, a paleta inteira de
+5 cores fica na tela por 0,5 segundo.
+
+12. Look Cinematico
+Barras de cinema, grao, vinheta e tom de filme em meio segundo. INSTALL: Efeito Look Cinematico: sobre o video, 1080 por 1920, 2
+segundos. Em 0,5 segundo, o video ganha barras pretas de cinema em cima e embaixo, grao de filme leve que muda a cada frame,
+vinheta suave nas bordas e um tom mais quente nas luzes e mais frio nas sombras. Mantenha a pele natural.
+
+13. Title Card
+O video encolhendo pra dentro de uma moldura de celular, com timecode. INSTALL: Efeito Title Card: 1080 por 1920, 2,5 segundos. O
+fundo vira uma cor solida [hex], o video encolhe pra dentro de uma moldura de celular branca e arredondada no centro, com sombra, e
+um timecode em fonte monoespacada "[00:00:14:10]" corre no canto superior esquerdo. Opcional: o titulo "[titulo]" entra em serifada
+acima da moldura.
+
+14. Grade de Videos Tocando
+Um video se multiplicando numa grade com cada celula tocando. INSTALL: Efeito Grade de Videos Tocando: 1080 por 1920, 3
+segundos. Comeca com 1 video [clipe] em tela cheia, que encolhe e se multiplica numa grade de 2 por 2 e depois de 3 por 3, cada
+celula tocando um trecho diferente [clipes] com cantos arredondados e 12 px de espaco. Um titulo "[ex.: UM SEGUNDO SO]" entra em
+cima da grade em caixa preta.
+
+15. Feed de Reels
+O video dentro de uma interface de feed vertical, rolando pro proximo. INSTALL: Efeito Feed de Reels: 1080 por 1920, 3 segundos. O
+video aparece dentro de uma interface de feed vertical: a direita, os icones de curtir, comentar, compartilhar e salvar com contadores
+que sobem, embaixo o nome do perfil [@perfil] com o botao Seguir e uma legenda de 1 linha, e no meio um texto grande "[frase do
+Reel]". No fim, a tela rola pra cima como se fosse pro proximo Reel. Nao use logo nem marca registrada do Instagram.
+
+16. Card de Video
+Um cartao com miniatura e play entrando e comecando a tocar. INSTALL: Efeito Card de Video: overlay vertical 1080 por 1920, fundo
+transparente, 2 segundos. Um cartao com a miniatura de [video], o botao de play no centro e o rotulo "[Card de video]" em serifada
+embaixo entra flutuando de baixo com sombra, para no terco superior, o botao de play pulsa uma vez e a miniatura comeca a tocar
+dentro do cartao.
+
+17. CTA de Comentario
+A caixa de comentario digitando o codigo, com o pedido embaixo. INSTALL: Efeito CTA de Comentario: overlay vertical 1080 por 1920,
+fundo transparente, 3 segundos. Uma caixa de comentario branca e arredondada entra no topo, com um avatar redondo a esquerda, e
+o texto "[CODIGO]" e digitado letra por letra. O botao de enviar, a direita, acende na cor [hex] quando a palavra termina. Embaixo, em 2
+linhas: "Comenta o codigo da legenda" e "[o que a pessoa recebe]".
+
+18. Comentario Caindo
+Comentarios caindo e empilhando, e o ultimo e o seu codigo. INSTALL: Efeito Comentario Caindo: overlay vertical 1080 por 1920,
+fundo transparente, 3 segundos. Comentarios em baloes brancos com avatar, nome e texto curto [liste 4 comentarios] caem de cima um
+depois do outro, a cada 0,4 segundo, e empilham no terco superior, empurrando os de baixo. O ultimo e o campo Adicione um
+comentario, com o seu codigo sendo digitado e o botao Publicar acendendo.
+
+Mais 24 efeitos pra fechar 42
+Os que mais aparecem em Reel de negocio. Mesmo jeito: cole depois do prompt base e troque os colchetes.
+
+19. Contador de numero
+Um numero subindo de 0 ate o valor. INSTALL: Efeito Contador: overlay transparente, 2 segundos. O numero [valor] sobe de 0 ate ele
+desacelerando no fim, com o rotulo "[rotulo]" entrando 3 quadros depois, em fonte condensada pesada.
+
+20. Marca-texto na palavra
+Um traco de marca-texto passando atras de uma palavra da legenda. INSTALL: Efeito Marca-texto: na palavra "[palavra]" da legenda,
+um traco [hex] com bordas irregulares passa da esquerda pra direita atras dela em 0,3 segundo, no tempo exato da palavra.
+
+21. Punch-in
+O zoom rapido no rosto pra dar enfase. INSTALL: Efeito Punch-in: no segundo [s], o video aproxima de 100% pra 118% em 4 quadros,
+centrado no rosto, segura ate [s] e volta suave em 8 quadros.
+
+22. Nome e cargo
+A tarja de nome e cargo no terco inferior. INSTALL: Efeito Nome e cargo: tarja no terco inferior esquerdo, fora da area dos botoes do
+Instagram, com "[Nome]" em negrito e "[cargo]" embaixo, entrando com um traco [hex] que cresce antes do texto, 3 segundos.
+
+23. Notificacao do celular
+Uma notificacao descendo no topo. INSTALL: Efeito Notificacao: overlay transparente, 2,5 segundos. Uma notificacao de celular desce
+do topo com icone, "[app]", "[titulo]" e "[texto curto]", fica 1,5 segundo e sobe.
+
+24. Cursor clicando
+Um cursor indo ate um botao e clicando. INSTALL: Efeito Cursor: overlay transparente, 2 segundos. Um cursor de mouse entra do
+canto, faz uma curva ate o botao "[texto do botao]" e clica, com um anel que se abre no ponto do clique.
+
+25. Grafico de barras
+Barras crescendo em sequencia com o valor em cima. INSTALL: Efeito Barras: overlay transparente, 3 segundos. [3 a 5] barras com os
+rotulos [rotulos] e os valores [valores] crescem em sequencia com mola, e o valor de cada uma conta ate o numero em cima dela.
+
+26. Mapa com pino
+Um mapa aproximando ate a cidade, com o pino caindo. INSTALL: Efeito Mapa: 3 segundos. Um mapa simples do Brasil em traco, sem
+nome de rua, aproxima ate [cidade], onde um pino [hex] cai e quica, com o nome da cidade entrando ao lado.
+
+27. Selo de preco
+Um selo girando e mostrando o preco. INSTALL: Efeito Selo: overlay transparente, 2 segundos. Um selo redondo [hex] entra girando
+180 graus e para, com "[R$ valor]" grande e "[condicao]" pequeno embaixo.
+
+28. Contagem regressiva
+Os numeros 3, 2, 1 trocando no tempo. INSTALL: Efeito Contagem: overlay transparente, 3 segundos. Os numeros 3, 2 e 1 aparecem
+um por segundo no centro, cada um com um anel que se fecha em volta, e no fim a palavra "[palavra]".
+
+29. Checklist marcando
+Itens de lista ganhando check um a um. INSTALL: Efeito Checklist: overlay transparente, 3 segundos. [3 a 5] itens [itens] entram um por
+um no terco superior, e cada um ganha um check [hex] desenhado no tempo em que eu falo dele.
+
+30. Antes e depois lado a lado
+Duas imagens dividindo a tela com rotulo. INSTALL: Efeito Antes e depois: 3 segundos. A tela se divide na horizontal com [imagem
+antes] em cima e [imagem depois] embaixo, cada uma com a pilula ANTES ou DEPOIS, entrando com 4 quadros de diferenca.
+31. Flash de transicao
+Um clarao branco na troca de cena. INSTALL: Efeito Flash: na troca do segundo [s], um clarao branco sobe de 0 a 100% em 2 quadros
+e cai em 6, com um leve desfoque de movimento na imagem que entra.
+
+32. Maquina de escrever
+Uma frase sendo datilografada com cursor. INSTALL: Efeito Maquina de escrever: overlay transparente. A frase "[frase]" e digitada letra
+por letra em fonte monoespacada, no ritmo da fala, com cursor de bloco piscando no fim.
+
+33. Circulo a mao
+Um circulo desenhado a mao em volta de algo na tela. INSTALL: Efeito Circulo: em volta de [o que esta na tela, com a posicao], um
+circulo [hex] com traco irregular de caneta se desenha em 0,4 segundo e fica tremendo de leve.
+
+34. Conversa no celular
+Mensagens chegando numa conversa. INSTALL: Efeito Conversa: 4 segundos. Uma conversa de mensagens generica, sem logo de
+aplicativo, com [3 a 5 mensagens], cada balao entrando com mola e os 3 pontinhos de digitando antes de cada resposta.
+
+35. Lista numerada
+Os itens de uma lista entrando com o numero grande. INSTALL: Efeito Lista: overlay transparente. Cada item [itens] entra no tempo em
+que eu falo dele, com o numero grande [hex] a esquerda e o texto a direita, e os anteriores ficam mais apagados.
+
+36. Revelacao de logo
+O logo se montando no fim do video. INSTALL: Efeito Logo: 2,5 segundos. O logo [arquivo] se revela de dentro pra fora com uma
+mascara circular, seguido do nome "[marca]" e da frase "[slogan]", sobre fundo [hex].
+
+37. Barra de busca
+Uma busca sendo digitada e os resultados aparecendo. INSTALL: Efeito Busca: 3 segundos. Uma barra de busca generica, sem logo
+de buscador, digita "[busca]", e 3 resultados [titulos] aparecem embaixo com 4 quadros de diferenca.
+
+38. Faixa de noticia
+A tarja de jornal com o texto correndo. INSTALL: Efeito Faixa de noticia: overlay no terco inferior, 4 segundos. Uma tarja [hex] com a
+palavra URGENTE a esquerda e o texto "[manchete]" correndo da direita pra esquerda.
+
+39. Post entrando
+Um post recriado de rede social entrando na tela. INSTALL: Efeito Post: overlay transparente, 3 segundos. Um cartao de post generico
+com avatar, nome "[nome]", @ "[perfil]" e o texto "[texto]" entra de baixo e o numero de curtidas sobe. Use so post seu ou com
+permissao.
+
+40. Barra de progresso
+Uma barra fina no topo mostrando quanto falta. INSTALL: Efeito Progresso: uma barra fina [hex] no topo do video inteiro, que cresce da
+esquerda pra direita na duracao total, com marcas nos segundos [s] das partes.
+
+41. Tela dividida com print
+O print do produto em cima e voce embaixo. INSTALL: Efeito Tela dividida: no segundo [s], o video desce pra metade de baixo e o [print
+do site ou do produto] entra na metade de cima, rolando devagar, com 12 px de margem.
+
+42. Confete no resultado
+Uma explosao curta de confete no numero final. INSTALL: Efeito Confete: overlay transparente, 1,5 segundo. Na palavra "[palavra]",
+uma explosao de confete nas cores [hex] sai do centro, cai com gravidade e some antes de cobrir o rosto.
+
+Combinacoes por tipo de video
+De 4 a 6 efeitos por tipo, sempre os mesmos, e o que vira identidade da sua marca.
+
+Video de produto
+Connect Hook, Tela dividida com print, Cursor clicando, Contador de numero, Revelacao de logo e CTA de Comentario.
+
+Tutorial
+Legenda Gigante, Barra de Prompt, Arquivo Arrastado, Timeline de Editor, Checklist marcando e Barra de progresso.
+
+Depoimento de cliente
+Nome e cargo, Legenda Gigante, Marca-texto na palavra, Look Cinematico e Title Card.
+
+Anuncio e oferta
+Connect Hook, Selo de preco, Contagem regressiva, Grafico de barras e CTA de Comentario.
+Bastidor e rotina
+Storyboard, Grade de Videos Tocando, Punch-in, Flash de transicao e Comentario Caindo.
+
+O que precisa e quanto custa
+Precos das paginas oficiais e das lojas de app em 21 de outubro de 2026.
+
+Claude gratis ou ChatGPT gratis
+O caminho do app: o efeito em HTML na previa, pra gravar a tela.
+
+Claude Pro
+Com o Claude Code, pro caminho do render exato. R$ 92 por mes no anual, R$ 129,90 pela App Store e US$ 20 na pagina oficial.
+https://claude.com/pricing
+
+ChatGPT Plus
+Com o Codex, o agente de codigo do ChatGPT, que usa as mesmas skills da HyperFrames. https://developers.openai.com/codex
+
+HyperFrames
+Licenca Apache 2.0, roda no seu computador sem cobrar por video. Pede o Node.js 22 ou mais novo e o FFmpeg, os dois gratis.
+https://hyperframes.heygen.com/quickstart
+
+Editor de video
+Pra montar o efeito transparente por cima, ou pra recortar o fundo verde no caminho do app.
+
+Os 7 prompts de edicao
+O 1 vem antes de qualquer efeito. Do 2 ao 5 sao a edicao no Claude Code ou no Codex, o 6 e a versao pro app e o 7
+vira modelo.
+
+1. 1. O prompt base
+Voce e o meu editor de motion. Vou pedir efeitos de edicao pra video vertical de Reels, um por vez. Regras pra todos:
+
+1. Formato 1080 por 1920, 30 quadros por segundo, duracao que eu disser
+2. Overlay sempre com fundo transparente, pra ir por cima do meu video. Se eu disser "versao pra gravar a tela", use fundo verde puro
+#00FF00
+3. Animacao controlada pelo tempo, que da pra pular pra qualquer segundo e sempre mostrar o mesmo quadro. Nada que dependa do
+relogio do navegador
+4. Movimento com mola ou curva suave, nunca linear. Elementos entram em sequencia, com 2 a 4 quadros de diferenca
+5. Texto em portugues, sem travessao, longe do rodape e da lateral direita, onde ficam os botoes do Instagram
+6. A minha marca: cores [hex], fonte [nome], estilo [ex.: limpo, escuro, verde-escuro com branco]
+
+Confirme as regras e espere o primeiro efeito.
+
+2. 2. A edicao no tempo da fala
+Este e o meu video [bruto.mp4] e a transcricao com o tempo de cada palavra [transcript.json].
+
+Monte a edicao com os efeitos desta lista, no tempo da fala:
+[cole os efeitos que voce quer, ex.: Connect Hook, Legenda Gigante, Barra de Prompt, Timeline de Editor, CTA de Comentario]
+
+1. Me devolva primeiro a tabela: segundo de inicio e fim, a frase falada e o efeito que entra, com o motivo
+2. Cada efeito comeca na palavra que ele ilustra, nunca antes
+3. No maximo 1 efeito novo a cada 2 segundos, e a legenda o video inteiro
+4. Depois da minha aprovacao, construa e abra a previa
+
+3. 3. Efeito na sua marca
+Adapte o efeito [nome] pra minha marca, sem mudar o movimento:
+cores [hex], fonte [nome], cantos [ex.: 16 px], sombra [suave ou nenhuma], e os textos em portugues: [textos].
+
+Me mostre o antes e o depois na previa, no mesmo segundo.
+
+4. 4. Corrigir o tempo
+O efeito [nome] esta entrando [cedo, tarde, rapido ou devagar].
+
+1. Leia de novo o tempo das palavras na transcricao
+2. Faca ele comecar exatamente na palavra "[palavra]" e terminar antes de "[palavra]"
+3. Se a frase for curta demais pro efeito inteiro, encurte as etapas internas, mas nao corte a saida
+4. Me diga o segundo novo de entrada e de saida
+
+5. 5. A revisao antes do render
+Assista a edicao antes de eu renderizar a versao final.
+
+1. Gere uma folha com 4 quadros por segundo do video inteiro e olhe cada efeito
+2. Procure: quadro vazio, texto cortado na borda, texto em cima do rosto ou da boca, legenda empilhada, efeito fora da palavra que ele
+ilustra, cor que some no fundo
+3. De nota de 0 a 10 por efeito e corrija o que tirar menos de 8
+4. Me entregue a tabela final: efeito, nota antes, nota depois e o que mudou
+
+6. 6. Versao pra gravar a tela
+Versao pra gravar a tela: faca o efeito [nome] como uma pagina HTML so, com fundo verde puro #00FF00, em 1080 por 1920 ajustado
+pra caber na janela, com um botao Comecar que some quando clicado e dispara a animacao, e um botao Repetir no fim.
+
+Os textos: [textos]. As cores: [hex].
+
+7. 7. Virar modelo de edicao
+Esta edicao foi aprovada. Transforme os efeitos que usei num modelo de edicao pra eu repetir em todo video.
+
+1. Separe o que e fixo (efeitos, cores, fonte, ritmo) do que muda (textos, tempos, imagens)
+2. Ponha o que muda num arquivo conteudo.json
+3. Escreva um LEIAME.md: trocar o video, rodar a transcricao, preencher o conteudo.json, previa e render
+4. Teste com o proximo video: [bruto-2.mp4]
+
+Antes de postar
+Seis conferencias no celular, com e sem som.
+
+Cada efeito entra na palavra que ele ilustra | Nenhum texto encosta na borda, fica em cima da boca ou atras dos botoes
+do Instagram | No maximo 1 efeito novo a cada 2 segundos | A legenda esta certa, palavra por palavra, com acento |
+Interface recriada nao usa logo nem marca de outra empresa | O video assistido sem som ainda faz sentido
+
+Funciona no Brasil?
+Funciona no Brasil: o Claude e o ChatGPT entendem os prompts em portugues e escrevem os textos da tela com
+acento. O caminho do app e gratis, o Claude Pro sai R$ 110 por mes e o ChatGPT Plus R$ 99,90, e a HyperFrames, o
+Node.js e o FFmpeg nao cobram nada.
+
+Links
+HyperFrames no GitHub: https://github.com/heygen-com/hyperframes | Primeiros passos da HyperFrames:
+https://hyperframes.heygen.com/quickstart | Catalogo da HyperFrames: https://hyperframes.heygen.com/catalog |
+Artifacts no Claude: https://support.claude.com/en/articles/17153992-what-are-artifacts-and-how-do-i-use-them | Codex:
+https://developers.openai.com/codex | Node.js: https://nodejs.org/en/download | FFmpeg:
+https://ffmpeg.org/download.html | Gravar a tela no Mac: https://support.apple.com/pt-br/102618 | Planos do Claude:
+https://claude.com/pricing
+
+
+
+
+Dica do Fabiano
+Nao usa os 42 num video so, escolhe 5 e repete em todo Reel, que e assim que o publico reconhece o seu video antes
+de ler o nome. Comeca pelo Connect Hook, pela Legenda Gigante e pelo CTA de Comentario, que sao os que seguram
+e convertem. E deixa o efeito entrar na palavra que ele ilustra, nunca antes, que efeito adiantado parece erro de edicao.
+
+
+fabiano.app
+
