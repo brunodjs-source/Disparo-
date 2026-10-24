@@ -1,26 +1,27 @@
 # F5 · Capacidade e estoque · @o_estrategista.com.br
 
-Frente F5 da pesquisa do conselho Agência Reunida. Rodada de sábado, 24/10/2026, escrita às 14h10 (São Paulo). Só leitura: nada foi publicado, agendado ou alterado no Instagram, no Buzzfy ou no PostZen. Toda mudança abaixo é proposta para o Bruno executar.
+Frente F5 da pesquisa do conselho Agência Reunida. Rodada de sábado, 24/10/2026, escrita às 15h15 (São Paulo), depois do fato novo das 14h40 (a entrevista vai ao ar na segunda-feira, 02/11/2026; o Bruno marca a Mirna nas postagens). Substitui a versão das 14h10, que está no histórico do git (commit 88433c7). Só leitura: nada foi publicado, agendado ou alterado no Instagram, no Buzzfy ou no PostZen. Toda mudança abaixo é proposta para o Bruno executar.
 
 **Etiquetas:** [FATO] com a fonte ao lado; [ESTIMATIVA] com a conta ou a premissa; [HIPÓTESE] a testar; [PRIOR] palpite do modelo, nível 4, que nunca fecha objeção sozinho. Métrica que falta: "sem dado".
 
-**Horários:** commits do git e datas de arquivo estão em UTC; aqui aparecem no horário de São Paulo (UTC menos 3 h).
+**Horários:** datas de arquivo e de commit estão em UTC no sistema; aqui aparecem no horário de São Paulo (UTC menos 3 h).
 
-**Régua usada nesta frente:** a do Buzzfy, 57 views de normal e pulo normal de 70,9% [FATO, `ig_reel_checkup` desta rodada]. Esta frente não decide mediana; só conta peças, minutos e travas.
+**Régua:** esta frente conta peças, minutos e travas; não decide mediana. Onde cita desempenho, usa a do Buzzfy: normal de 57 views e pulo normal de 70,9% [FATO, `ig_reel_checkup` às 15h05].
 
 ---
 
 ## 0. Respostas curtas
 
-1. **Pronto, renderizado e fora da agenda, com o Bruno em cena nos 3 primeiros segundos: 7 reels.** tl02, tl03, tl04, tl05, Dentista C, case Tzur v2 e pf01 como reel. Nenhum sai sem trava: os 4 timelapses dependem do portão (e da regra "uma vez só" do catálogo); o C, do brief do dentista; o Tzur, da autorização do cliente; o pf01, de DOBRAR.
-2. **Com ficha e sem render, sem gravação:** ob01, ob02 e ob03 (trechos da TV) e 41 estáticos do plano de stories de 25 a 31/10. É trabalho só da agência.
-3. **Sem gravação nova, com edição:** 3 remakes feitos do arquivo do próprio Instagram ("Ele nunca fez um anúncio" 10,14x, "90% dos lançamentos que flopam" 4,42x, "Problema de equipe" 3,61x). Os três são o Bruno falando para a câmera; os 3 arquivos responderam HTTP 200, em 720p. Mais 6 a 9 cortes novos da entrevista.
-4. **Só com gravação do Bruno:** 19 roteiros de nicho, a selfie do REACT (20 min), a regravação do "Você gravou o curso inteiro" (o original não tem pessoa) e 21 reels do Módulo 3. Fila somada: 41 gravações e 1 selfie.
-5. **O que falta não é vaga, é formato.** De 01 a 21/11 o feed fecha sem gravar (estoque e cortes da TV somam de 12 a 18 reels para 15 vagas) [ESTIMATIVA, seção 8]. O que não se fecha sem gravar é o Bruno falando para a câmera, o formato que mediu melhor (4 dos 6 reels da conta com 3x ou mais são o Bruno falando para a câmera: Ele nunca fez um anúncio, Dentista A, 90% e Problema de equipe; dos outros 2, um é slideshow sem pessoa e o outro é pessoal) [FATO, `ig_reel_checkup`], e a linha de nicho do D1 de 21/10. Fora os 3 remakes, os dois só existem com gravação nova.
-6. **Agenda mínima:** 1 bloco por semana, entregue até quarta 23h59, de 24 a 36 min [ESTIMATIVA], com 2 roteiros de nicho no teleprompter e 2 tomadas do gancho de cada. O primeiro bloco (até qua 28/10) pede 3 roteiros (2 para a semana e 1 de reserva) e a selfie do REACT: de 56 a 74 min [ESTIMATIVA].
-7. **Se não gravar:** a troca é decidida no portão de segunda; o estoque sai numa ordem fixa (seção 10); 5 reels por semana se a série da TV passar no portão, 3 se não passar; nunca animação com voz sintética; a conferência de nicho de 11/11 fica "sem dado (n = 0)", sem PARAR.
-8. **A gravação mínima é a menor parte da carga do Bruno.** Stories com sticker postados à mão (27 na semana de 25 a 31/10) e respostas à mão (15 a 30 min por dia, estimativa de 21/10) somam mais que os 24 a 36 min de gravação [ESTIMATIVA com um PRIOR dentro, seção 6].
-9. **Risco de estoque:** tl02 a tl05, mc02 a mc04 e a fonte da entrevista existem só no scratchpad desta sessão, que é temporário. Cópia no Drive: sem dado.
+1. **A agenda mudou depois das 14h10.** O PostZen tem agora 20 publicações de 24/10 a 23/11: 4 publicadas (stories de hoje) e 16 agendadas, com tl02 a tl05 agendados nos sábados 31/10, 07/11, 14/11 e 21/11 às 18h30 [FATO, `listPosts` às 15h08]. A legenda do tl01 trocou a promessa: "O mais votado eu solto inteiro depois que a entrevista for ao ar" [FATO, `listPosts`]. Isso cria um corte novo obrigatório depois de 02/11, trabalho só da agência.
+2. **Vagas abertas de 01/11 a 21/11:** 12 reels (4 por semana, pois cada semana já tem 1 timelapse) e 7 carrosséis (1 da S1 e 2 por semana de S2 a S4) [ESTIMATIVA: regra de 5 reels e 2 carrosséis do CLAUDE.md menos o agendado]. A S1 já tem 6 reels agendados, 1 acima da regra [FATO, `listPosts`]. Se o portão tirar tl03 a tl05, as vagas de reel sobem para 15.
+3. **Pronto, renderizado e fora da agenda: 3 reels, todos com trava.** Dentista C (brief do dentista o guarda para anúncio depois de 18/11), case Tzur v2 (autorização do cliente; fala "comenta estrategista" aos 48,4 s, que dispara a automação ESTRATEGISTA da conta toda) e pf01 como reel (só com DOBRAR) [FATO, seção 3.2].
+4. **Sem gravação, com trabalho só da agência:** ob01 a ob03 (base composta às 14h36 e 14h37, render final sem dado), o "mais votado inteiro", 6 cortes do banco da entrevista, 3 remakes do arquivo do Instagram (Trial Reel), 41 estáticos de story do plano de 25 a 31/10 e 7 carrosséis. Somam de 4 a 10 reels de feed para 12 vagas, mais os 3 remakes fora da contagem de vagas [ESTIMATIVA, seção 8].
+5. **Só com gravação do Bruno:** 19 roteiros de nicho (4 com teleprompter pronto), a selfie do REACT (20 min), o vídeo curto do dia 02/11 e 21 reels do Módulo 3. Desde a fala do dentista (entregue perto de 13h12 de 21/10) não entrou nenhuma gravação nova no repositório nem na pasta de trabalho [FATO, `find`].
+6. **O que falta sem gravar é formato, não vaga.** Sem gravação, as 12 vagas fecham com cortes da TV, em que o Bruno aparece de perfil atrás do monitor [FATO, quadros 0 e 2,5 s de ob01 a ob03]. O formato que mediu melhor, o Bruno falando de frente para a câmera (mediana de 167,5 de alcance contra 32,5 da animação [FATO, F1]), só volta com gravação nova ou com os 3 remakes de 03 a 05/10, em 720p.
+7. **Agenda mínima:** 1 bloco por semana. Bloco 1 até qua 28/10, 23h59: roteiro 1 (consórcio) e roteiro 3 (nutricionista), os dois do teleprompter, com as versões travadas, mais o vídeo curto de 02/11: de 31 a 49 min [ESTIMATIVA]. Blocos 2 a 4: 2 roteiros, de 24 a 42 min; a selfie do REACT entra no bloco 2, depois da exibição [ESTIMATIVA, seção 9]. Piso de uma semana apertada: 1 roteiro, de 12 a 18 min.
+8. **Vídeo curto de 02/11 sem depender do feriado:** gravar no bloco 1 com a data falada ("segunda, 2 de novembro") e sem horário; o horário entra como texto quando a grade sair. A grade da TV Câmara só vai até dom 25/10 [FATO, tvcamaracampinas.com.br às 15h12]. Sem o vídeo, o dia fecha com o estático 7 já renderizado ("Vai ao ar segunda, 02/11"), um estático novo com o horário e as manchetes mc02 e mc03.
+9. **Trial Reel pelo PostZen existe na ferramenta:** a descrição do `createPost` aceita `trialParams` em reel; conta não elegível falha só na hora de publicar [FATO, descrição da ferramenta, lida sem chamar]. Elegibilidade da conta: sem dado. A mesma descrição confirma que marcar pessoa (`userTags`) só vale em post de foto do feed, e que convite de colaborador pede o @ (até 3).
+10. **A gravação é a menor parte da carga do Bruno.** Stories com sticker à mão (27 na S1), respostas à mão e marcação da Mirna em 9 reels e 1 story somam cerca de 5 vezes os minutos de gravação (de 139 a 278 min contra 31 a 49) [ESTIMATIVA com PRIOR dentro, seção 6].
 
 ---
 
@@ -28,127 +29,159 @@ Frente F5 da pesquisa do conselho Agência Reunida. Rodada de sábado, 24/10/202
 
 | Consulta ou arquivo (só leitura) | Hora (SP) | Resultado |
 |---|---|---|
-| PostZen `listPosts`, conta j97772ycndetk3f1wcdbh14p898g4b8w, 24/10 a 23/11 | perto de 13h50 | OK. 16 publicações "scheduled": 6 reels, 1 carrossel, 9 stories. Nada depois de sex 30/10 |
-| Buzzfy `ig_posts` reels (24 itens, sem trial reels) e feed desde 01/09 (16 itens) | perto de 13h50 | OK. Último reel: Dentista A, 21/10 21h. Último post de feed: 20/10 21h30 |
-| Buzzfy `ig_posts` por id com `include_media_urls`, os 3 candidatos a remake | perto de 13h55 | OK. `video_url_withheld: false` nos 3, com `media_url` |
-| Pedido HEAD nos 3 `media_url` (cdninstagram.com) | perto de 13h56 | HTTP 200, `video/mp4` nos 3. A etiqueta de codificação decodificada diz `C3.720` (720p) e duração de 74 s, 69 s e 74 s |
-| GET das 6 imagens de story agendadas para hoje (media.postzen.dev) | perto de 13h57 | HTTP 200. md5 iguais aos de `story-frase-1, 2, 6, 7, 9 e 10.png` |
-| Buzzfy `buzzfy_playbook` (second_life, hot_streaks) | perto de 13h58 | OK |
-| Buzzfy `ig_reel_checkup`, 5 ids (3 remakes, Dentista A, "Você gravou o curso inteiro") | perto de 14h05 | OK. Normal 57 views, pulo 70,9%. Tags de formato dos 3 remakes |
-| `ffprobe` em 60 vídeos do repositório e 21 do scratchpad; quadros 0, 1 a 1,5 e 2,5 a 2,9 s de Dentista C, Tzur v1 e v2, anúncio a01, tl02 a tl05 e pf01 | 13h40 a 14h05 | OK |
-| Logs de render `scratchpad/tv/fila*.log`, `git log`, `du`, `df` | 13h40 a 14h05 | OK |
-| Arquivos: contexto.md, 00-enquadramento.md, F2-playbook-buzzfy.md, pecas-e-calendario.md, catalogo-formatos.md (seções 1, 4, 5, F1, F5 e 8), roteiros-20-videos.md, teleprompter-5-nichos.md, modo-god-nichos/run/10-decision-brief.md e 06-plano-final.md, 00-SISTEMA.md (Módulo 3), stories-objecoes/03-plano-7-dias.md e .json (versão gravada às 13h58), videos/cases/tzur/edit.json, videos/nichos/dentista/engine, videos/tv-camara/engine/ENGINE.md | 13h30 a 14h05 | OK |
+| PostZen `listPosts`, conta j97772ycndetk3f1wcdbh14p898g4b8w, 24/10 03h00 UTC a 24/11 03h00 UTC, ordenado por data | 15h08 | OK. 20 itens: 4 publicados, 16 agendados |
+| PostZen `listCommentAutomations`, mesma conta | 15h14 | OK. 17 automações ativas; TABULEIRO com 0 disparo; ESTRATEGISTA e CASE valem para a conta toda |
+| PostZen: descrição da ferramenta `createPost` (esquema carregado, ferramenta não chamada) | 15h14 | Lida. `trialParams` em reel; `collaborators` até 3 em feed, reel e carrossel; `userTags` só em post de foto do feed |
+| Buzzfy `ig_reel_checkup`, 5 últimos reels | 15h05 | OK. Normal 57 views e 70,9% de pulo; janela de sequência fechada; 5 candidatos a refazer |
+| Buzzfy `ig_reel_checkup`, 5 ids (3 remakes, "Você gravou o curso inteiro", "O que você recusa") | 15h07 | OK, com tags de formato |
+| Buzzfy `ig_posts`, reels de 03 a 06/10 com `include_media_urls` | 15h06 | OK. 4 reels; `video_url_withheld: false` nos 3 remakes |
+| Pedido HEAD nos 3 `media_url` dos remakes (cdninstagram.com) | 15h06 | HTTP 200, `video/mp4`, 7.668.112, 4.917.903 e 5.715.025 bytes; etiqueta `C3.720` (720p) |
+| Buzzfy `buzzfy_playbook` (second_life) | 15h07 | OK |
+| GET das 6 imagens de story de hoje (media.postzen.dev) e md5 contra `estaticos/stories-frases` | 15h10 | HTTP 200 nas 6 |
+| HEAD de tl02 a tl05, pf01 e Dentista B em media.postzen.dev, tamanho contra o render local | 15h11 | HTTP 200; tamanho igual ao do render local nos 6 |
+| tvcamaracampinas.com.br/programacao/2026-11-02 e 2026-10-26 (leitura com `curl`) | 15h12 | HTTP 200, mas redireciona para 24/10; a grade publicada vai de 19/10 a 25/10 |
+| `ffprobe`, `ffmpeg` (quadros 0 e 2,5 s das bases de ob01 a ob03), `du`, `df`, `find`, `md5sum`, `git log`, logs `fila*.log` e `rev_ob/r*.log` | 15h00 a 15h15 | OK |
+| Arquivos: contexto.md, 00-enquadramento.md, F1, F2 e F3 (versões de 14h48 a 15h07), F4, pecas-e-calendario.md, catalogo-formatos.md (seções 1, 4, F1 e 8), roteiros-20-videos.md, teleprompter-5-nichos.md, 10-decision-brief.md, 00-SISTEMA.md (Módulo 3), 03-plano-7-dias.md e .json, fichas `videos/tv-camara/cortes/*.spec.json`, `videos/cases/tzur/edit.json`, `estaticos/stories-frases/s.html` | 15h00 a 15h15 | OK |
 
-Erros de consulta: nenhum. Google Drive não foi consultado: não está na lista de ferramentas desta rodada.
-
-Aviso: o `03-plano-7-dias` estava sendo reescrito durante a rodada (a versão lida no começo tinha 42 stories; a gravada às 13h58 tem 56). As contagens abaixo são da versão das 13h58.
+**Erros de consulta:** nenhum. **Não consultado:** Google Drive (fora da lista de ferramentas desta rodada), `ig_inbox` e qualquer agenda do Bruno.
 
 ---
 
-## 2. O que existe pronto
+## 2. O que mudou desde a versão das 14h10
 
-### 2.1 Já agendado no PostZen (ponto de partida, não é estoque livre)
+| Item | 14h10 | 15h15 |
+|---|---|---|
+| Agenda no PostZen | 16 itens, nada depois de sex 30/10 | 20 itens; tl02 sáb 31/10, tl03 sáb 07/11, tl04 sáb 14/11, tl05 sáb 21/11, todos 18h30 [FATO, `listPosts`; commit 318e97d às 14h41] |
+| Promessa do tl01 | "O mais votado sai no próximo sábado" | "O mais votado eu solto inteiro depois que a entrevista for ao ar" [FATO, `listPosts`] |
+| Legendas | sem data | tl01 e tl02 dizem "A entrevista vai ao ar na segunda, 02/11." [FATO] |
+| Reels na S1 | 5 | 6 (tl02 entrou no sáb 31/10) [FATO] |
+| Arquivo só na pasta temporária | tl02 a tl05, mc02 a mc04, fonte | tl02 a tl05 têm cópia no PostZen com o mesmo tamanho [FATO, HEAD]. Continuam só na pasta temporária: mc02 a mc04, as bases de ob01 a ob03 e a fonte da entrevista |
+| ob01 a ob03 | só ficha | base composta às 14h36 e 14h37 (537, 864 e 453 quadros); fichas de ob02 e ob03 editadas às 15h01; render final sem dado [FATO, `rev_ob/r1.log` a `r3.log`, `git status`] |
+| Voz no ob01 | conferir se é do Bruno | a ficha registra: "Boca conferida no Z2: a Mirna fica parada de 1312,5 a 1326,4 s; quem fala é o Bruno" [FATO, `ob01.spec.json`] |
+| Trial Reel pelo PostZen | sem dado | a ferramenta aceita `trialParams`; elegibilidade da conta sem dado [FATO, descrição do `createPost`] |
+| Estáticos de frase | 7 e 8 com "EM BREVE" | 7, 8 e 9 renderizados de novo com a data de 02/11 [FATO, commit 318e97d] |
 
-[FATO, `listPosts`] 16 publicações: 6 reels (Dentista B sáb 24/10 21h; tl01 dom 25/10 18h30; pb01 seg 26/10 21h; ci01 qua 28/10 21h; po01 qui 29/10 21h; pb02 sex 30/10 21h), 1 carrossel (car01, ter 27/10 12h) e 9 stories (8 hoje, de 14h00 a 20h30, e o pf01 ter 27/10 16h). Os arquivos dessas 16 estão hospedados no PostZen.
+---
 
-### 2.2 Reels renderizados e fora da agenda
+## 3. O que existe pronto
 
-| Peça | Duração | Bruno nos 3 primeiros segundos | Onde está o arquivo | Trava | O que falta |
+### 3.1 Agendado no PostZen (ponto de partida, não é estoque livre)
+
+[FATO, `listPosts` 15h08, horário de São Paulo]
+
+| Semana | Reels | Carrossel | Stories |
+|---|---|---|---|
+| sáb 24/10 (hoje) | Dentista B 21h00 (TABULEIRO) | | 4 publicados (14h00, 14h03, 15h00, 15h01); 4 agendados (16h30, 18h00, 19h30, 20h30) |
+| S1, dom 25 a sáb 31/10 | tl01 dom 18h30; pb01 seg 21h; ci01 qua 21h; po01 qui 21h; pb02 sex 21h; tl02 sáb 18h30 (6) | car01 ter 12h | pf01 ter 16h |
+| S2, dom 01 a sáb 07/11 | tl03 sáb 18h30 (1) | nenhum | nenhum |
+| S3, dom 08 a sáb 14/11 | tl04 sáb 18h30 (1) | nenhum | nenhum |
+| S4, dom 15 a sáb 21/11 | tl05 sáb 18h30 (1) | nenhum | nenhum |
+
+Os arquivos dessas 20 publicações estão hospedados no PostZen.
+
+### 3.2 Reels renderizados e fora da agenda
+
+| Peça | Duração | Bruno nos 3 primeiros segundos | Arquivo | Trava | Esforço para sair |
 |---|---|---|---|---|---|
-| tl02 | 35,3 s | Sim: Bruno no plano CB em 0 e 1,5 s; Z2 em 2,9 s [FATO, quadros extraídos] | Só em `scratchpad/tv/render/` | Portão: tl01 com 0,8x ou mais e pulo abaixo de 75% em 48 h (ter 27/10, 18h30); regra do catálogo "uma vez só" para timelapse; promessa da legenda do tl01 | Cópia fora do scratchpad; o Bruno agenda. Legenda pronta |
-| tl03 | 36,0 s | Sim: CB em 0 e 1,5 s; em 2,9 s o cronômetro sobre o plano aberto [FATO, quadros] | Só no scratchpad | Portão do tl02 | Idem |
-| tl04 | 34,4 s | Sim: CB em 0 e 1,5 s; Z2 em 2,9 s [FATO, quadros] | Só no scratchpad | Portão do tl03 | Idem |
-| tl05 | 35,3 s | Sim: CB em 0 e 1,5 s; Z2 em 2,9 s [FATO, quadros] | Só no scratchpad | Portão do tl04 | Idem |
-| Dentista C (9x16, 4x5 e leve) | 36,4 s | Sim: selfie com "Dentistas," no quadro 0 [FATO, quadros] | `videos/nichos/dentista/render/` | Brief do dentista de 21/10: o C fica como amostra e anúncio 4:5 depois de 18/11, com a Res. CFO 196/2019 conferida [FATO, enquadramento item 7]. É a terceira edição da mesma fala do A (no ar desde 21/10) e do B (hoje 21h). CTA falado "comenta a sua profissão" | Decisão do Bruno; render nenhum |
-| Case Tzur v2 (v1 de 29,8 s também pronto) | 54,3 s | Sim: o primeiro corte é do Bruno (`edit.json`: `"src": "bruno"` com `start: 0`; legenda "Nós conseguimos" em 1 s, palavra do corte dele) [FATO]. Depois entra o depoimento do responsável de marketing do cliente | `videos/cases/tzur/` | Autorização da Tzur Capital em vídeo: bloqueante desde 23/10, status sem dado [FATO, 06-plano-final, seção 7, item 5]. A fala final pede "comenta estrategista" [FATO, `edit.json`], que liga a automação ESTRATEGISTA, contra a regra de uma palavra por mês. Estava previsto para qua 22/10 e não saiu [FATO, 00-SISTEMA e `ig_posts`] | Autorização; re-editar o fim para trocar o CTA |
-| pf01 como reel | 24,0 s | Sim, mas em Z2: o Bruno de costas para a câmera e a Mirna de frente [FATO, quadros] | Scratchpad e PostZen (como story de ter 27/10) | Reel só com DOBRAR de profissão nomeada [FATO, pecas-e-calendario] | Nada |
+| Dentista C (9x16, 4x5 e leve) | 36,4 s | Sim, selfie falando "Dentistas," no quadro 0 [FATO, quadros da versão das 14h10] | `videos/nichos/dentista/render/` | Brief do dentista de 21/10: amostra e anúncio 4:5 depois de 18/11, com a Res. CFO 196/2019 conferida [FATO, enquadramento item 11]. Terceira edição da mesma fala do A (no ar) e do B (hoje 21h) | Zero de agência; decisão do Bruno |
+| Case Tzur v2 (v1 de 29,8 s também pronto) | 54,3 s | Sim, primeiro corte é do Bruno (`edit.json`, `"src": "bruno"`) [FATO] | `videos/cases/tzur/` | Autorização da Tzur Capital: sem dado. A fala pede "comenta estrategista" de 48,4 s a 48,8 s [FATO, `edit.json`], que dispara a automação ESTRATEGISTA, ativa na conta toda [FATO, `listCommentAutomations`] | Re-editar o fim (trocar o CTA): sem medida |
+| pf01 como reel | 24,0 s | Em cena, mas no Z2: o Bruno de costas e a Mirna de frente [FATO, quadros da versão das 14h10] | PostZen (como story de ter 27/10) e pasta temporária | Reel só com DOBRAR de profissão nomeada [FATO, pecas-e-calendario] | Zero |
 
-Fora desta tabela: Dentista A (publicado em 21/10) e Dentista B (agendado hoje).
+### 3.3 Com ficha e base composta, sem render final (agência, sem gravação)
 
-### 2.3 Stories prontos
-
-- **Vídeos da entrevista fora da agenda:** mc02 (4,5 s), mc03 (11,0 s) e mc04 (9,5 s), só no scratchpad [FATO, ffprobe]. O mc04 precisa de render novo sem "como estrategista digital" [FATO, 03-plano-7-dias, "Conferir antes de publicar"]. Os reposts das 9h usam o arquivo do próprio reel do dia anterior.
-- **Estáticos de frase (`estaticos/stories-frases`):** 10 PNG. Seis vão ao ar hoje: 1, 2, 6, 7, 9 e 10 [FATO, md5 iguais aos do PostZen]. Livres: o 3 ("Lançamento é xadrez. A maioria joga dama.") e o 4 ("O lead que não comprou vale mais do que o que comprou."). O 5 repete a frase do 9 ("Nem tudo que vemos é ouro"), que sai hoje às 19h30. O 8 tem o rótulo "NA TV · EM BREVE", vencido depois que a série estreia, e a frase é a capa do car01 de terça.
-- **Plano de 25 a 31/10 (03-plano-7-dias, versão das 13h58):** 56 stories. 15 usam vídeo que já existe; 41 são estáticos com ficha e sem render. 27 estão marcados MANUAL (têm sticker e o Bruno posta pelo app, na hora) e 29 AGENDADO [FATO, contagem no .json].
-- **Destaque "Comece aqui":** capa pronta (`estaticos/destaque-comece-aqui`). Stories animados da Escala (3): já usados [FATO, contexto.md]. `stories-hoje` (3, de 13/10): uso anterior sem dado.
-
-### 2.4 Carrosséis
-
-- car01 (6 lâminas 1080x1350): agendado para ter 27/10 12h. **É o único carrossel pronto.**
-- `estaticos/checklist` (8 slides): são as mesmas 10 perguntas do carrossel publicado em 12/10 [FATO, `q.json` e legenda do post em `ig_posts`]. Já usado.
-
-### 2.5 Fotos e material de base
-
-- 7 fotos de marca: f1 a f5, e1 e e2 [FATO, `estaticos/stories-frases`]. As 3 fotos de `stories-hoje` e o `rosto-torre.jpg` têm o mesmo tamanho em bytes de f3, f4 e f1 (cópias).
-- Fonte da entrevista para cortes novos: `scratchpad/entrevista/src/` (entrevista-1080p.mp4, entrevista-zoom.mp4, entrevista-audio.m4a; a pasta soma 958 MB) [FATO, `du`]. O original fica no rascunho de release do GitHub e no Drive [FATO, ENGINE.md e pecas-e-calendario].
-- Motores prontos: entrevista (`videos/tv-camara/engine`, 9 modelos) e dentista (`videos/nichos/dentista/engine`, modelos A, B e C).
-
-### 2.6 Estoque que não entra no feed orgânico
-
-| Peça | Por que não entra |
-|---|---|
-| v01 a v08 (8 reels de 36 a 38 s) e série 2 r1 a r5 (5 reels e 5 estáticos 4x5) | Animação com voz sintética, já publicados de 11 a 20/10. O CLAUDE.md exige o Bruno nos 3 primeiros segundos de todo reel |
-| Stories s01 a s08 | Chamadas dos reels v01 a v08, com voz sintética (`tts.py`; commit de 11/10 cita "voz feminina"): anunciam reels que já saíram |
-| Anúncio a01-campinas (38,2 s, 9x16 e 4x5) e 4 estáticos 4x5 por nicho | Animação sem o Bruno nos quadros 0, 1 e 2,5 s [FATO, quadros]; peça de anúncio, e a verba é zero até 18/11 (D4 de 21/10) |
-| Reel de 01/01/2025 (9,14x) | Resumo pessoal de fé, fora da grade (`on_profile_grid: false`) e fora do posicionamento [FATO, F1 e `ig_posts`] |
-| 9 PDFs de `materiais/pdfs` e a apresentação BNI | Material das automações e de reunião, não post |
-
----
-
-## 3. Com ficha e sem render (agência, sem gravação)
-
-| Peça | Duração pela ficha | Bruno no quadro 0 | O que falta antes do render | Data sugerida no plano |
+| Peça | Base composta | Quadro 0 e 2,5 s da base | O que falta | Data sugerida no 03-plano |
 |---|---|---|---|---|
-| ob01 (O2 "Não tenho tempo pra lançar") | 13,5 s, ou 12,1 s se o fim da frase for ilegível | Sim, plano CB falando desde o quadro 0 (ficha) | Ouvir 1316,2 a 1326,4 s e confirmar que a boca é do Bruno (a diarização marca M em parte do trecho) | qua 04/11, 21h |
-| ob02 (O1 "Nunca ouvi falar de você") | 25,8 s | Sim, CB em 1199,5 s (ficha) | Ouvir "case" em 1232,3 s (confiança 0,33) | seg 02/11, 21h |
-| ob03 (O8 "Meu consultório vive de indicação") | 9,0 s | Sim, CB em 1635,4 s (ficha) | Conferir os 2 cortes (1636,1 s e 1648,2 s) | sex 06/11, 21h |
-| mc04 (story) | cerca de 5 s | Não se aplica (story) | Novo fim entre 1705,2 e 1705,7 s | sáb 31/10, 11h |
-| 41 estáticos do plano de 7 dias | 1 quadro | Não se aplica | Render no `s.html` | 25 a 31/10 |
+| ob01 (O2 "Não tenho tempo pra lançar") | 537 quadros, 17,9 s | Bruno de perfil atrás do monitor; um braço de camisa azul na borda esquerda [FATO, conferência visual] | Render final com cartão, legenda e CTA; folha de 4 quadros por segundo | qua 04/11, 21h |
+| ob02 (O1 "Nunca ouvi falar de você") | 864 quadros, 28,8 s | Idem [FATO] | Idem; a ficha foi editada às 15h01 | seg 02/11, 21h |
+| ob03 (O8 "Meu consultório vive de indicação") | 453 quadros, 15,1 s | Idem [FATO] | Idem; ficha editada às 15h01 | sex 06/11, 21h |
 
-[FATO, 03-plano-7-dias.md e .json, versão das 13h58]. A voz da Mirna saiu dos 3 reels de objeção nesta versão; a pergunta dela entra só como texto.
+[FATO, `rev_ob/r1.log` a `r3.log` e `conferir.txt`] A revisão de áudio de 5 trechos (comparação entre a transcrição bruta e a voz tratada) estava aberta às 14h38. Os 3 não pedem nada do Bruno; o CTA deles é "Me manda a sua área no direct" [FATO, `ob01.spec.json`]. [HIPÓTESE] O braço na borda é da repórter: conferir se pede marcação.
+
+### 3.4 Stories prontos
+
+- **Vídeos da entrevista fora da agenda:** mc02 (4,5 s), mc03 (11,0 s) e mc04 (9,5 s), só na pasta temporária [FATO, `ls`]. O mc04 pede recorte novo sem "como estrategista digital" [FATO, enquadramento item 8].
+- **Estáticos de frase (10 PNG):** 5 já usados hoje, com md5 igual ao do PostZen: 1 ("Você atende", 16h30), 2 ("Fila é teto", 18h00), 6 (chamada das 21h, 20h30), 9 ("Nem tudo é ouro" com NA TV · SEGUNDA, 02/11, 19h30) e 10 ("A pergunta da TV", 15h00) [FATO, md5]. O estático de bastidor das 14h03 não bate com nenhum arquivo atual: o 7 foi renderizado de novo às 14h41 [FATO, md5 e commit 318e97d].
+- **Livres:** 3 ("Lançamento é xadrez. A maioria joga dama."), 4 ("O lead que não comprou vale mais do que o que comprou."), 7 (BASTIDOR, "Gravei uma entrevista para a TV Câmara Campinas. Vai ao ar segunda, 02/11.") e 8 (NA TV · SEGUNDA, 02/11, "Eu só tinha um computador e um sonho.") [FATO, `s.html`]. O 8 repete a frase do mc01 (publicado hoje às 15h01) e da capa do car01. O 5 repete a frase do 9.
+- **Plano de 25 a 31/10 (03-plano-7-dias.json):** 56 stories, 15 com vídeo que já existe e 41 estáticos com ficha e sem render; 27 MANUAL (sticker, o Bruno posta pelo app) e 29 AGENDADO [FATO, contagem no .json]. De 01/11 em diante: nenhum plano.
+
+### 3.5 Carrosséis
+
+- car01 (6 lâminas): agendado ter 27/10 12h. **Único carrossel pronto.**
+- `estaticos/checklist` (8 slides): as 10 perguntas do carrossel de 12/10, já usado [FATO, versão das 14h10].
+
+### 3.6 Fotos e fonte
+
+- 7 fotos de marca em `estaticos/stories-frases` (f1 a f5, e1, e2) [FATO, `ls`].
+- Fonte da entrevista para cortes novos: `scratchpad/entrevista/src/` com 3 arquivos (1080p de 177 MB, zoom de 259 MB, áudio de 34 MB); a pasta `entrevista` soma 958 MB; `tv/render` soma 2,6 GB [FATO, `ls` e `du`]. O original fica no rascunho de release do GitHub e no Drive [FATO, ENGINE.md].
+- Motores: entrevista (`videos/tv-camara/engine`, 10 modelos, com `objecao.html`) e dentista (modelos A, B e C) [FATO, `ls`].
+
+### 3.7 Estoque que não entra no feed orgânico
+
+| Peça | Motivo |
+|---|---|
+| v01 a v08, série 2 (r1 a r5 e 5 estáticos), stories s01 a s08 | Animação com voz sintética, já publicados de 11 a 20/10; CLAUDE.md exige o Bruno nos 3 primeiros segundos |
+| Anúncio a01-campinas e 4 estáticos por nicho | Voz clonada e animação sem o Bruno no quadro 0; verba zero até 18/11 (D4 de 21/10) |
+| Áudios de `scratchpad/minhavoz` (13/10) | Material da voz clonada do anúncio, sem imagem |
+| Reel de 01/01/2025 (9,14x) | Pessoal, fora da grade e do posicionamento [FATO, F1] |
 
 ---
 
-## 4. Sem gravação nova, com edição
+## 4. Sem gravação nova, com edição da agência
 
-### 4.1 Cortes novos da entrevista (agência; fonte no scratchpad)
+### 4.1 Cortes novos da entrevista
 
-A produzir pelo catálogo e pelo pecas-e-calendario: os assuntos 1 ("Desde criancinha") e 6 ("Zero reais") do índice do tl01, que não têm peça; pb03; CINEMA 02; MITO; PROFISSAO como reel; SALA; PERGUNTA 01 e 02; CARROSSEL 02 a 04 [FATO, pecas-e-calendario "O que falta produzir" e enquadramento D3]. São de 6 a 9 reels e 3 carrosséis, sem minuto do Bruno.
+- **"O mais votado inteiro"** (promessa da legenda do tl01): 1 corte, depois de 02/11 [FATO, `listPosts`]. Se o mais votado for o assunto 2, 3, 5 ou 7, o trecho já saiu cortado antes da exibição (pb01, pb02, ci01, po01); se for o 4, é o pf01; o 1 e o 6 não têm peça [FATO, pecas-e-calendario]. Em todos os casos "inteiro" pede uma versão mais longa que os cortes de 20 a 37 s [HIPÓTESE sobre a leitura da promessa].
+- **Banco do catálogo e do pecas-e-calendario:** pb03 ("eu construí tudo"), CINEMA 02, MITO, PERGUNTA 01 e 02, SALA [FATO]. São 6, nenhum com ficha. CARROSSEL 02 a 04 também.
+- Todos têm o Bruno em cena no plano CB ou Z2, de perfil ou de costas, nunca de frente para a câmera [FATO, recortes fixos do catálogo e quadros de ob01 a ob03].
 
 ### 4.2 Remakes do arquivo do próprio Instagram
 
-| Reel | Normal | Pulo | Duração | Formato pelas tags do Buzzfy | Legenda queimada | Primeiro corte |
+| Reel | Normal | Pulo | Duração | Formato (tags do Buzzfy) | Legenda queimada | Primeiro corte |
 |---|---|---|---|---|---|---|
-| "Ele nunca fez um anúncio" (sáb 03/10, 23h06) | 10,14x | 53,2% | 74,6 s | Selfie, fala própria para a câmera | Não | 9,3 s |
-| "90% dos lançamentos que flopam" (dom 04/10, 11h11) | 4,42x | 45,7% | 69,5 s | Selfie, fala própria | Sim | sem corte medido |
-| "Problema de equipe" (seg 05/10, 21h58) | 3,61x | 49,6% | 74,7 s | Selfie, fala própria | Sim | sem corte medido |
+| R1 "Ele nunca fez um anúncio" (sáb 03/10, 23h06) | 10,14x | 53,2% | 74,6 s | talking head, selfie, fala própria para a câmera | Não | 9,3 s |
+| R2 "90% dos lançamentos que flopam" (dom 04/10, 11h11) | 4,42x | 45,7% | 69,5 s | talking head, selfie | Sim | sem corte medido |
+| R3 "Problema de equipe" (seg 05/10, 21h58) | 3,61x | 49,6% | 74,7 s | talking head, selfie | Sim | sem corte medido |
 
-[FATO, `ig_reel_checkup` e `ig_posts` desta rodada; HEAD HTTP 200 nos 3 arquivos].
+[FATO, `ig_reel_checkup` e `ig_posts` às 15h06 e 15h07; HEAD HTTP 200 nos 3 arquivos, 720p]
 
-- **Regra do playbook:** mudar pelo menos duas coisas reais (abertura nova, legenda se houver fala, corte de 20% a 40%, resposta a um comentário) e postar como Trial Reel, que vai primeiro para quem não segue; se passar do alcance usual, compartilhar no feed [FATO, `buzzfy_playbook` second_life]. Para o "Ele nunca fez um anúncio" a legenda queimada é a mudança disponível; a legenda do post promete "uma saga de 7 dias" que já acabou em 09/10 e precisa sair.
-- **Limite do arquivo:** é a cópia do Instagram, em 720p [FATO, etiqueta `C3.720`]. O render sai em 1080x1920 a partir de 720 de largura; perda visível: [HIPÓTESE] a conferir na folha de quadros. O original do celular existe: sem dado.
-- **Quem posta:** o Bruno, no app, como Trial Reel [FATO, F2]. Se o PostZen agenda Trial Reel: sem dado.
-- **Fora dos remakes sem gravação:** "Você gravou o curso inteiro" (11/10, 3,75x, pulo 86,9%) é slideshow com narração e sem pessoa [FATO, tags `framing: no_person`, `audio: voiceover`]. Refazer com o Bruno em cena é gravação nova.
+- **Regra do playbook:** mudar pelo menos 2 coisas reais (abertura nova, legenda se houver fala, corte de 20% a 40%, resposta a comentário) e postar como Trial Reel; se passar do alcance usual, compartilhar no feed. Remake de reel com 5x ou mais bate o alcance usual em 35% das vezes; de 2x a 5x, em 15% [FATO, `buzzfy_playbook` second_life].
+- **Quem posta:** pelo PostZen, se a conta for elegível a Trial Reel (`trialParams`, graduação MANUAL ou automática) [FATO, descrição do `createPost`]; elegibilidade: sem dado, e a falha só aparece na hora de publicar. Se falhar, o Bruno posta pelo app.
+- **Limite do arquivo:** 720p [FATO]. Original do celular: sem dado. Qualidade no 1080x1920: [HIPÓTESE], conferir na folha de quadros.
+- **R1:** a legenda promete "uma saga de 7 dias" que acabou em 09/10 e precisa sair [FATO, `ig_posts`].
+- **Fora dos remakes sem gravação:** "Você gravou o curso inteiro" (3,75x, pulo 86,9%) é slideshow com narração e sem pessoa [FATO, tags `no_person`, `voiceover`]. Refazer com o Bruno é gravação nova (dia 11 do Módulo 3). Tem automação própria: PESQUISA, ligada a esse post [FATO, `listCommentAutomations`].
 
 ---
 
 ## 5. O que depende de gravação do Bruno
 
-| Item | Quantidade | Minutos do Bruno | Trava antes de gravar ou de publicar | O que destrava |
+| Item | Quantidade | Minutos do Bruno | Trava antes de gravar ou publicar | O que destrava |
 |---|---|---|---|---|
-| Roteiros de nicho (`roteiros-20-videos.md`, 5 nichos, 4 semanas) | 19 (o 2, dentista, já saiu) | 12 a 18 min por roteiro [ESTIMATIVA: 60 a 90 min para 5, linha 9 do próprio documento]. Medida real: sem dado | Advogado: provimento de publicidade da OAB não lido. Nutricionista: vigência da CFN 856 no DOU, prazo 28/10. Consórcio: BCB 285/2023 e regra da ABAC; o teleprompter manda gravar a tomada com e sem a linha dos 41,9%. Psicólogo: regras do CFP; o +151,1% segue sem fonte primária. Linha do case Tzur no teleprompter: gravar também a versão sem case enquanto a autorização não chega [FATO, 10-decision-brief, 06-plano-final e teleprompter] | Linha de nicho do D1 de 21/10 e o formato do Bruno falando para a câmera |
-| Selfie do REACT | 1 sessão: 6 reacts (saem 3), 12 aberturas "Isso eu falei na TV." e a abertura do timelapse | 20 min [estimativa do catálogo, F1 e seção 8] | Mesmo enquadramento dos reels de nicho; o catálogo queria a selfie até qui 29/10 para o REACT 01 no sáb 31/10, data hoje proposta para o tl02 | REACT 01 a 03 e PB versão A |
-| Regravar "Você gravou o curso inteiro" | 1 reel de cerca de 30 s | 12 a 18 min [ESTIMATIVA, mesma conta] | Nenhuma | Remake com rosto do tema que teve 169 de alcance |
-| Reels do Módulo 3 com o Bruno (saga regravada, agenda cheia, médico, psicólogo, live lotada, Tzur lance a lance, convite e outros) | 21 dos 22 reels da tabela (o 1 é o case v2, pronto) [FATO, contagem no 00-SISTEMA] | 18 min cada [ESTIMATIVA, 90 min para 5 reels no 00-SISTEMA] | Sem trava escrita além das regras de texto | Linha geral do Bruno para a câmera |
+| Roteiros de nicho (`roteiros-20-videos.md`) | 19 (o 2 saiu em 21/10). Com teleprompter pronto: consórcio, nutricionista (versões A e B), psicólogo e advogado [FATO, `teleprompter-5-nichos.md`] | 12 a 18 por roteiro [ESTIMATIVA: 60 a 90 min para 5, linha 9 do próprio documento]. Medida real: sem dado | Consórcio: tomada com e sem a linha dos 41,9% (ABAC). Nutricionista: versão A ou B pela vigência da CFN 856 (leitura prevista até 28/10). Psicólogo e advogado: linha do case Tzur, gravar também sem case; advogado só com o provimento da OAB lido; psicólogo: +151,1% segue nível 3 [FATO, teleprompter e 10-decision-brief]. Status das leituras: sem dado | Linha de nicho do D1 de 21/10 e o Bruno falando para a câmera |
+| Selfie do REACT | 1 sessão: 6 reacts (saem 3), 12 aberturas "Isso eu falei na TV." e a abertura do timelapse | 20 [FATO, estimativa do catálogo, ficha F1] | Mesmo enquadramento dos reels de nicho. O gancho "Dei uma entrevista para a TV Câmara Campinas" vale antes; "Fui ao ar" só depois do horário confirmado [FATO, catálogo e 02-provas] | REACT 01 a 03 e PB versão A |
+| Vídeo curto do dia 02/11 (seção 5.1) | 1 fala de 10 a 15 s, 2 tomadas | 3 a 5 [ESTIMATIVA: 2 tomadas de 15 s e preparo] | Horário da exibição: sem dado. Proibido "ao vivo", "rede nacional", "a TV me convidou" e similares [FATO, 02-provas] | Rosto do Bruno no dia da exibição |
+| Reels do Módulo 3 com o Bruno | 21 dos 22 reels da tabela (o dia 1 é o case v2) [FATO, contagem no 00-SISTEMA] | 18 cada [ESTIMATIVA, 90 min para 5 no 00-SISTEMA] | Regras de texto. Sobreposições: dia 11 é o "Você gravou o curso inteiro"; dia 26 (objeção tempo) é coberto pelo ob01; dias 16 e 22 são dentista e advogado | Linha geral do Bruno para a câmera |
 
-**Fila somada:** 19 + 21 + 1 = 41 gravações e 1 selfie [FATO, contagem]. A 2 roteiros por semana entram 8 nas 4 semanas, cerca de 20% da fila [ESTIMATIVA].
+**Fila somada:** 19 + 21 = 40 gravações, mais a selfie do REACT e o vídeo de 02/11 [FATO, contagem]. A 2 roteiros por semana entram 8 nas 4 semanas, 20% da fila [ESTIMATIVA].
 
-**O que aconteceu com a capacidade planejada (fatos, amostra curta):**
-- [FATO, 00-SISTEMA de 21/10] O plano previa 1 sessão de gravação de 90 min por semana (5 reels) e 2 h de edição.
-- [FATO, `git log`] A última gravação nova do Bruno para a câmera no repositório é a do dentista: áudio masterizado em 21/10 às 13h26.
-- [FATO, `ig_posts`] Depois do Dentista A (21/10, 21h) nada foi publicado até 14h de hoje. O reel "Fila é teto" com o Bruno, previsto para qui 23/10 nos "Próximos 7 dias", não saiu e não tem arquivo no repositório.
-- [FATO, enquadramento item 9] A sessão de gravação de seg 26/10 do plano de nichos: confirmação sem dado.
-- Leitura: em 3 dias depois do plano de 90 min por semana entrou 1 fala de 36 s. É pouca amostra para chamar de ritmo, mas basta para não planejar em cima de 90 min [HIPÓTESE].
+### 5.1 Vídeo curto do dia 02/11
+
+- **Função:** chamada para assistir, com o rosto do Bruno, num dia em que o feed pode ficar sem reel (F2 e F4 recomendam nenhum reel extra no dia [FATO]).
+- **Texto sugerido** (sem promessa, sem travessão, sem "hoje" para poder ir agendado, regra do 03-plano [FATO]): "Segunda, 2 de novembro, a minha entrevista para a TV Câmara Campinas vai ao ar no programa Ser Empreendedor. O horário está aqui na tela." Duração de 8 a 12 s lida em ritmo normal [ESTIMATIVA, 25 palavras].
+- **Quando gravar:** no bloco 1 (até qua 28/10). Assim o dia 02/11 não depende do Bruno num feriado [FATO, 02/11 é Finados, enquadramento]. Pode sair no dom 01/11 (véspera) e na seg 02/11, pelo PostZen como story.
+- **Horário:** a grade publicada vai só até dom 25/10 [FATO, site às 15h12]. Quando sair, a agência põe o horário como texto (minutos). Se a grade não sair até dom 01/11 à noite, o texto vira "Confira o horário na grade da TV Câmara Campinas" e o link entra como sticker à mão.
+- **Opção do próprio dia:** se a grade sair e o Bruno quiser, uma tomada nova com o horário falado, postada à mão: de 2 a 5 min [ESTIMATIVA].
+- **Esforço da agência:** legenda queimada e faixa "NA TV" no modelo de manchete: [PRIOR] 15 a 30 min. Sem edição, o Bruno posta a tomada crua com texto do app.
+- **Sem o vídeo:** estático 7 já renderizado, estático novo com o horário (render no `s.html`, minutos) e mc02 ou mc03. O dia fica coberto; perde-se o rosto.
+
+### 5.2 Capacidade observada (fatos, amostra curta)
+
+- [FATO, `git log`] Teleprompter dos 5 nichos no commit de 21/10 às 12h17.
+- [FATO, `ls` na pasta de trabalho] A fala do dentista chegou como `raw.mp4` às 13h12 de 21/10: 36,4 s, 576x1024, uma tomada. Foram 55 min entre o commit do teleprompter e a chegada do arquivo, para 1 de 5 roteiros. Se o texto chegou ao Bruno antes do commit, o intervalo real é maior; o tempo de gravação dentro disso: sem dado.
+- [FATO, `find`] Depois disso, nenhum arquivo de gravação nova do Bruno no repositório nem na pasta de trabalho até 15h15 de hoje. Gravações que estejam no celular dele: sem dado.
+- [FATO, 00-SISTEMA] O plano de 21/10 previa 1 sessão de 90 min por semana (5 reels). A sessão de seg 26/10 do plano de nichos: confirmação sem dado.
+- [FATO, 00-SISTEMA e `ig_posts`] O reel "Fila é teto" previsto para qui 23/10 não saiu e não tem arquivo.
+- Leitura: 1 fala de 36 s em 3 dias depois de um plano de 90 min por semana. Pouca amostra para chamar de ritmo, mas basta para não planejar em cima de 90 min [HIPÓTESE].
+- Arquivo recebido em 576x1024 [FATO]: o render sai em 1080x1920 a partir de uma imagem menor. [HIPÓTESE] Veio comprimido pelo aplicativo de mensagem; pedir o envio como documento ou pelo Drive mantém a resolução.
 
 ---
 
@@ -156,24 +189,26 @@ A produzir pelo catálogo e pelo pecas-e-calendario: os assuntos 1 ("Desde crian
 
 | Tarefa | Quantidade | Minutos | Fonte |
 |---|---|---|---|
-| Stories com sticker postados à mão (enquete, link, compartilhar post) | 27 de 25 a 31/10 | Sem dado. [PRIOR] 1 a 2 min cada: 27 a 54 min na semana | 03-plano-7-dias.json |
-| Respostas à mão ("comenta a sua profissão que eu te respondo") | Todo dia com reel de nicho no ar | 15 a 30 min por dia [ESTIMATIVA do D3 de 21/10]: 105 a 210 min na semana | 10-decision-brief |
-| Postar os remakes como Trial Reel no app | 3 | Sem dado | F2 |
-| Agendar no PostZen (agente não agenda) | De 01 a 21/11: cerca de 15 reels, 6 carrosséis e os stories AGENDADO | Sem dado | enquadramento |
-| Uma vez: print da Mirna, data de exibição, autorização da Tzur, decisão escrita da palavra-chave, ouvir 922,1 a 924,2 s, 1584,3 a 1592,0 s e 1423,0 s, confirmar a parte variável do contrato (story de sex 30/10) | 8 itens | Sem dado | enquadramento, 02-provas, 03-plano |
+| Stories com sticker postados à mão | 27 de 25 a 31/10 | Sem dado. [PRIOR] 1 a 2 min cada: 27 a 54 min na semana | 03-plano-7-dias.json |
+| Marcar a Mirna depois de publicar | 9 reels agendados com plano Z2 ou aberto, ou voz dela (tl01 a tl05, pb01, pb02, ci01, po01), e o story pf01 [FATO, fichas `*.spec.json`] | Sem dado. [PRIOR] 1 a 2 min cada: 10 a 20 min em 4 semanas, 7 a 14 só na S1. Se o app deixa marcar reel já publicado: sem dado | fichas e contexto.md |
+| Convite de colaboração (alternativa à marcação) | Até 3 @ por reel ou carrossel, pelo PostZen | Zero do Bruno, mas pede o @ da Mirna (sem dado) e o aceite dela | descrição do `createPost` |
+| Respostas à mão em comentário e direct | Todo dia com reel de nicho no ar | 15 a 30 min por dia [ESTIMATIVA do D3 de 21/10]: 105 a 210 min na semana | 10-decision-brief |
+| Remakes como Trial Reel | 3 | Zero se o PostZen publicar; sem dado se for pelo app ([PRIOR] 3 a 5 min cada) | `createPost` e F2 |
+| Agendar no PostZen o que o conselho aprovar | S2 a S4: 12 reels, 7 carrosséis e os stories AGENDADO | Sem dado. Os agentes desta pesquisa não agendam | enquadramento |
+| Uma vez | Print da liberação da Mirna; @ dela; horário da exibição; autorização da Tzur; ouvir 922,1 a 924,2 s e 1423,0 s; copiar o estoque para o Drive | Sem dado | enquadramento, seção 13 |
 
-[ESTIMATIVA, com um PRIOR dentro] Somando só o que tem número (gravação mínima, stories manuais pelo PRIOR e respostas): de 156 min (24 + 27 + 105) a 300 min (36 + 54 + 210) por semana. A gravação fica entre 12% e 15% dessa carga. Se faltar tempo ao Bruno, cortar stories manuais (passar para AGENDADO, sem sticker) libera mais minutos do que cortar a gravação, com a perda da medição por objeção.
+[ESTIMATIVA com PRIOR dentro] Numa semana com o bloco mínimo: gravação de 31 a 49 min, stories à mão de 27 a 54, respostas de 105 a 210, marcações de 7 a 14. Soma de 170 a 327 min. A gravação fica entre 15% e 18% da carga. Se faltar tempo, cortar stories à mão (passar a AGENDADO, sem sticker) libera mais minutos do que cortar a gravação, ao custo da medição por objeção.
 
 ---
 
 ## 7. Esforço de produção da agência
 
-- **Render medido** [FATO, `scratchpad/tv/fila*.log`]: pb01, 587 quadros em 60,7 s; pb02, 799 em 90,8 s; mc01, 344 em 36,8 s; tl03, 1.080 em 85,6 s. São de 0,08 a 0,11 s por quadro; o catálogo supunha 0,3 s por quadro por camada. [ESTIMATIVA] Um reel de 35 s captura em cerca de 1,5 min (1.050 x 0,09 s).
-- **Tempo de calendário observado** [FATO, `git log`, horário de SP]: 24/10, motor da entrevista 06h49, fichas e legendas de 10 cortes 07h26, car01 08h02, tl02 08h48 (mixagem 09h05), tl03 a tl05 em revisão 10h55, corrigidos 11h12, renderizados 11h42. 21/10, dentista: áudio 13h26, motor 18h07, os 3 modelos 18h59, com o motor feito do zero e um conselho do modo GOD rodando no mesmo período.
-- **Por peça, com motor pronto** [ESTIMATIVA, tempo de calendário e não de trabalho]: corte da TV com ficha, cerca de 6 min (10 peças em 64 min, do motor às 06h49 ao render do pf01 às 07h53); timelapse, cerca de 50 min (3 em 2h37); carrossel, cerca de 36 min; reel de nicho Modelo A, até 1h50 (5h33 dividido por 3; é teto, porque inclui o motor).
-- **Reel de nicho novo não é só render:** o `dent.html` tem letreiros, painel e rodapé escritos para o dentista; cada fala nova pede `words.json` (Whisper), `headtop.json` (altura da cabeça por quadro) e lista de letreiros nova [FATO, `engine/cap.js` e `dent.html`]. Mais a folha de 4 quadros por segundo com nota por efeito (CLAUDE.md).
-- **Remake do arquivo do Instagram:** sem medida. [PRIOR] 1 a 2 h cada.
-- **Conclusão:** o gargalo da grade é o minuto do Bruno, não a agência.
+- **Captura medida** [FATO, `fila*.log`]: st01, 450 quadros em 37,2 s; tl04, 1.031 em 84,2 s; tl05, 1.059 em 94,3 s e 109,2 s; tl01, 1.095 em 102,9 s a 113,3 s; tl03, 1.080 em 202,2 s. De 0,08 a 0,19 s por quadro. O tl01 foi capturado 4 vezes no dia [FATO, fila3, 5, 7 e 12]: o custo maior foi a revisão.
+- **Tempo de calendário observado** [FATO, `git log` em SP]: motor da entrevista 06h49; fichas e legendas de 10 cortes 07h26; car01 08h02; tl02 08h48; tl03 a tl05 em revisão 10h55, corrigidos 11h12, renderizados 11h42; data nova e tl02 a tl05 agendados 14h41; fichas de ob01 a ob03 14h42. Dentista em 21/10: áudio 13h26, motor 18h07, 3 modelos 18h59.
+- **Por peça, com motor pronto** [ESTIMATIVA, tempo de calendário, não de trabalho]: corte da TV com ficha, cerca de 6 min (10 peças de 06h49 ao pf01 às 07h53); timelapse, cerca de 52 min (3 de 09h05 a 11h42); carrossel, cerca de 36 min (07h26 a 08h02); reel de nicho, teto de 1h51 (5h33 por 3, com o motor feito do zero).
+- **Reel de nicho novo não é só render:** cada fala pede `words.json`, `headtop.json` e letreiros novos, mais a folha de 4 quadros por segundo com nota por efeito [FATO, motor do dentista e CLAUDE.md].
+- **Remake:** sem medida. [PRIOR] 1 a 2 h cada.
+- **Conclusão:** o gargalo da grade é o minuto do Bruno. A agência fecha as 12 vagas em contagem; o que ela não fabrica é o Bruno de frente para a câmera.
 
 ---
 
@@ -181,98 +216,112 @@ A produzir pelo catálogo e pelo pecas-e-calendario: os assuntos 1 ("Desde crian
 
 Demanda pelo CLAUDE.md: 5 reels e 2 carrosséis por semana, mais stories diários.
 
-| Semana | Agendado | Pronto ou com ficha, sem gravação | Só com gravação | Buraco |
-|---|---|---|---|---|
-| S1, 25 a 31/10 | 5 reels da TV e car01 | tl02 (proposto para sáb 31/10, seria o 6º reel); 41 estáticos e 15 vídeos de story | REACT 01 (se a selfie sair até qui 29/10) | 1 carrossel (só o car01 existe) |
-| S2, 01 a 07/11 | Nada | ob01 a ob03; tl03 com portão; remakes como Trial Reel; cortes novos da TV | 2 roteiros do bloco 1 | Stories de 01/11 em diante sem plano; 2 carrosséis |
-| S3, 08 a 14/11 | Nada | tl04 com portão; cortes novos da TV | 2 roteiros do bloco 2 | Stories e 2 carrosséis |
-| S4, 15 a 21/11 | Nada | tl05 com portão; cortes novos da TV | 2 roteiros do bloco 3 | Stories e 2 carrosséis |
+| Semana | Agendado | Vagas abertas | Sem gravação e sem trava externa | Com trava | Com o bloco mínimo |
+|---|---|---|---|---|---|
+| S1, 25 a 31/10 | 6 reels e car01 | 0 reel (1 acima); 1 carrossel | 41 estáticos de story a renderizar | | Nada: o bloco 1 publica na S2 |
+| S2, 01 a 07/11 | tl03 | 4 reels; 2 carrosséis | ob01, ob02, ob03 (3); "mais votado inteiro" (1); remakes R1 a R3 como Trial Reel (fora da conta de vagas) | pf01 (DOBRAR) | Consórcio e nutricionista (2) |
+| S3, 08 a 14/11 | tl04 | 4 reels; 2 carrosséis | Cortes do banco (até 6, sem ficha) | Tzur v2 (autorização) | Psicólogo e o 2º do bloco 2 (2) |
+| S4, 15 a 21/11 | tl05 | 4 reels; 2 carrosséis | Cortes do banco | Dentista C (brief, depois de 18/11) | 2 pela conferência de 11/11 |
 
-**Reels de S2 a S4 (15 vagas)** [ESTIMATIVA]: sem gravação e sem trava externa somam de 12 a 18 (ob01 a ob03: 3; tl03 a tl05: 0 a 3, pelo portão; cortes novos: 6 a 9; remakes: 3, que só ocupam vaga de feed se baterem o alcance usual). Com trava: Dentista C, case Tzur e pf01 (3). Com a gravação mínima: 6 (2 por semana).
+**Reels de S2 a S4 (12 vagas)** [ESTIMATIVA]: sem gravação e sem trava externa, de 4 (ob01 a ob03 e o mais votado) a 10 (com os 6 do banco). Com trava: 3. Com o bloco mínimo: 6. Com gravação, a S2 fecha com 2 nichos, 2 ob e o tl03; sem gravação, com 3 ob, o mais votado e o tl03, todos da entrevista.
 
-**Carrosséis (7 a produzir: 1 da S1 e 6 de S2 a S4)** [ESTIMATIVA]: sem material do Bruno há 8 fontes (CARROSSEL 02 a 04 da TV, e do Módulo 3: Os 5 Lances, Seguidor x comprador em versão nova, Carrinho, Oferta em 5 pilares, Resumo do mês). Com material do Bruno: Recusas, Bastidor do dia do lançamento, Print do carrinho. Nenhum desses 11 tem arquivo hoje: `estaticos/` e `videos/tv-camara/carrossel/` só guardam o checklist (já usado) e o car01 [FATO, lista de pastas e busca por "5 lances"].
+**Carrosséis (7 a produzir)** [ESTIMATIVA]: há 8 fontes sem material do Bruno (CARROSSEL 02 a 04 da TV; do Módulo 3: Os 5 Lances, Seguidor x comprador em versão nova, Carrinho, Oferta em 5 pilares, Resumo do mês) e 3 que pedem material dele (Recusas, Bastidor do dia do lançamento, Print do carrinho). Nenhum dos 11 tem arquivo [FATO, `ls estaticos/` e `videos/tv-camara/carrossel/`]. A cerca de 36 min cada, 7 carrosséis somam cerca de 4 h 12 min de agência [ESTIMATIVA].
 
-**Stories:** o plano cobre só 25 a 31/10. Para S2 a S4 há 5 objeções sem dia (O7, O9, O10, O11, O12) e o banco de provas do 02-provas.md [FATO, 03-plano]. Trabalho só da agência, menos os stickers.
+**Stories:** plano só até 31/10. Para S2 a S4 há 5 objeções sem dia (O7, O9, O10, O11, O12), o banco de provas do 02-provas.md, os estáticos livres 3, 4, 7 e 8 e as manchetes mc02 a mc04 [FATO]. Trabalho só da agência, menos os stickers.
+
+**Concentração de formato sem gravação:** a S1 tem 6 reels da entrevista seguidos [FATO]. Sem gravação, S2 a S4 somam mais 12 da entrevista, 18 em 4 semanas [ESTIMATIVA]. A regra 5 do portão do catálogo ("dois formatos sem selfie seguidos abaixo de 0,5x: só REACT e PB versão A ficam no feed") não tem saída sem gravação, porque os dois pedem selfie [FATO, catálogo seção 8].
 
 ---
 
 ## 9. Agenda mínima de gravação semanal (proposta)
 
 **Regras do bloco**
-- Um bloco por semana, em qualquer dia de seg a qua, com o arquivo entregue até quarta 23h59. A agência edita qui e sex; o portão de segunda aprova; o Bruno agenda.
-- Mesmo enquadramento do Dentista A (selfie, luz de frente, celular na altura dos olhos): o letreiro atrás da cabeça usa o `headtop.json` da selfie e o REACT pede o mesmo enquadramento [FATO, catálogo F1].
-- Cada roteiro com 2 tomadas do gancho: o gatilho intermediário do D1 de 21/10 já prevê trocar o hook se o primeiro nicho ficar abaixo de 53 [FATO, 10-decision-brief]. Onde houver linha travada (ABAC, case Tzur), gravar as 2 versões.
-- Tempo por roteiro: 12 a 18 min [ESTIMATIVA, roteiros-20-videos.md]. Medir o primeiro bloco com cronômetro e corrigir esta tabela no Módulo 7.
-- Reserva: o playbook manda ter 1 ou 2 reels prontos e esperando para o dia em que um estoura [FATO, `buzzfy_playbook` hot_streaks]. Só o bloco 1 grava a reserva; depois, 2 por semana mantêm 1 na fila.
+- 1 bloco por semana, com o arquivo entregue até quarta 23h59. A agência edita quinta e sexta; o portão de segunda aprova; o agendamento segue o que o conselho decidir.
+- Mesmo enquadramento do Dentista A: selfie, luz de frente, celular na altura dos olhos [FATO, ficha F1 do catálogo]. O letreiro atrás da cabeça usa o `headtop.json` da selfie.
+- Enviar o arquivo original (documento ou Drive), não comprimido [HIPÓTESE da seção 5.2].
+- Cada roteiro com 2 tomadas do gancho: o D1 de 21/10 já prevê trocar o gancho se o primeiro nicho ficar abaixo de 53 [FATO, 10-decision-brief]. Onde houver linha travada (ABAC, CFN 856, case Tzur), gravar as 2 versões.
+- Medir o primeiro bloco com cronômetro e corrigir esta tabela no Módulo 7.
+- Reserva: o playbook pede 1 ou 2 reels prontos esperando o dia em que um estoura [FATO, `buzzfy_playbook` hot_streaks, versão das 14h10].
 
-| Bloco | Gravar até | Publica em | Mínimo | Acréscimo recomendado | Minutos [ESTIMATIVA] | Por quê |
+| Bloco | Gravar até | Publica em | Mínimo | Acréscimo | Minutos [ESTIMATIVA] | Por quê |
 |---|---|---|---|---|---|---|
-| 1 | qua 28/10 | S2, 01 a 07/11 | Roteiro 17, Dentista "Curso que ninguém comprou"; roteiro 1, Consórcio "Cota no direct" (na versão do teleprompter, tomadas com e sem a linha da ABAC) | Roteiro 12, Dentista "Guerra de preço" (reserva); selfie do REACT (20 min) | Mínimo 24 a 36; com acréscimo 56 a 74 | O 17 repete o formato do Dentista A e muda só o assunto, como manda o playbook, dentro das 2 semanas depois do A (até cerca de 04/11). O 1 é o primeiro dos 3 nichos fixos do D1 de 21/10, que precisam estar no ar até seg 09/11 para a conferência de qua 11/11 |
-| 2 | qua 04/11 | S3, 08 a 14/11 (nutricionista até seg 09/11, 21h) | Roteiro 3, Nutricionista (versão do teleprompter escolhida pela leitura da CFN 856, prazo 28/10); roteiro 9, Psicólogo "Teto de horas" (o +151,1% não entra; se for a versão do teleprompter, a linha do case vai nas 2 versões) | Roteiro 6, Consórcio "Banco" | 24 a 36 (36 a 54 com o acréscimo) | Fecha os 3 fixos antes de 11/11; psicólogo é o extra fixo do D2 de 21/10 |
-| 3 | qua 11/11 | S4, 15 a 21/11 | Pela conferência de 11/11. Nicho com mediana de 53 ou mais e pulo mediano até 75%: os 2 nichos de maior número recebem o roteiro da semana 3 (11, 12 ou 13). Abaixo: 2 reels do Bruno para a câmera fora de nicho (regravar "Você gravou o curso inteiro" e "Fila é teto", Módulo 3), mudando o assunto e mantendo o formato | Advogado (roteiro 5) só com o provimento da OAB lido | 24 a 36 | A regra pede n de 2 por formato antes de PARAR (red team de 21/10) |
-| 4 | qua 18/11 | S5, de 22/11 em diante | Pelo Módulo 7 de 16/11 | Selfie do REACT, se ainda não existir | 24 a 36 | |
+| 1 | qua 28/10, 23h59 | S2, 01 a 07/11 | Roteiro 1, Consórcio "Cota no direct" (tomadas com e sem a linha da ABAC); roteiro 3, Nutricionista (versões A e B do teleprompter, que mudam nas linhas 1 e 2); vídeo curto de 02/11 | Roteiro 17, Dentista "Curso que ninguém comprou" (reserva) | Mínimo 31 a 49 (24 a 36 dos 2 roteiros, 4 a 8 das versões, 3 a 5 do vídeo); com acréscimo 43 a 67 | Fecha os 3 fixos do D1 de 21/10 (consórcio, dentista com A e B, nutricionista) no ar antes da conferência de qua 11/11, com 48 h. Muda o assunto e mantém o formato do Dentista A, como manda o playbook. Os 2 roteiros e o vídeo já têm texto pronto. Muda a versão das 14h10 (que punha o 17 no mínimo): o 17 vira reserva porque o dentista já tem A e B |
+| 2 | qua 04/11, 23h59 | S3, 08 a 14/11 | Psicólogo do teleprompter (com e sem a linha da Tzur); Advogado do teleprompter só com o provimento da OAB lido, senão roteiro 6, Consórcio "Banco" | Selfie do REACT (20), gravada depois da exibição: o gancho "Fui ao ar na TV Câmara Campinas" só vale depois do horário confirmado | Mínimo 27 a 42; com REACT 47 a 62 | Psicólogo é o extra fixo do D2 de 21/10. O REACT na semana seguinte à exibição usa a data como gancho (F4) sem carregar o bloco 1 |
+| 3 | sex 13/11, 23h59 | S4, 15 a 21/11 | Pela conferência de qua 11/11. Nicho com mediana de 53 ou mais e pulo mediano até 75%: 2 roteiros da semana 3 dos nichos de maior número (11, 12 ou 13). Abaixo: 2 reels do Bruno para a câmera fora de nicho (Módulo 3, dia 11 "Você gravou o curso inteiro" regravado e dia 4 "Agenda cheia"), mudando o assunto e mantendo o formato | Advogado (roteiro 5 ou 10) se o provimento da OAB estiver lido | 24 a 36 | O prazo vai a sexta porque a conferência é na quarta. A regra pede n de 2 por formato antes de PARAR (red team de 21/10) |
+| 4 | qua 18/11, 23h59 | S5, de 22/11 em diante | Pelo Módulo 7 de 16/11 | Selfie do REACT, se não existir | 24 a 36 | |
 
-**Se o Bruno só tiver 15 min numa semana:** gravar 1 roteiro (o próximo da sequência do dentista). Mantém 1 reel por semana do Bruno para a câmera; a linha de nicho do D1 fica com n menor que 3 em 11/11.
+**Soma das 4 semanas** [ESTIMATIVA]: mínimo de 106 a 163 min (cerca de 27 a 41 min por semana); com reserva e REACT, de 138 a 201 min.
+
+**Piso de uma semana apertada:** 1 roteiro, de 12 a 18 min (o próximo da sequência). No bloco 1, o piso é 1 roteiro e o vídeo de 02/11: de 15 a 23 min. A linha de nicho fica com n menor que 3 em 11/11.
 
 ---
 
 ## 10. Plano se ele não gravar
 
-**Gatilho:** nenhum arquivo até quarta 23h59. No portão de segunda, as 2 vagas de nicho da semana seguinte passam para o estoque, nesta ordem:
+**Gatilho:** nenhum arquivo até o prazo do bloco. No portão de segunda, as 2 vagas de nicho da semana seguinte passam para o estoque, nesta ordem:
 
-1. **ob01 a ob03** (trecho da TV, o Bruno falando desde o quadro 0; render da agência). Já ocupam 3 vagas na S2 pelo plano.
-2. **Remakes como Trial Reel**, a 6 h ou mais de qualquer reel do feed (o playbook mede 0,92x para reel com menos de 6 h do anterior): "Ele nunca fez um anúncio" primeiro (10,14x; a mudança que falta é a legenda queimada), depois "90%" e "Problema de equipe". Pede o Bruno no app só para postar.
-3. **tl03 a tl05**, um por sábado, só com o portão do anterior.
-4. **Cortes novos da TV:** o assunto mais votado no tl01 (o 1 e o 6 pedem corte novo), pb03, CINEMA 02, MITO. PROFISSAO como reel só com DOBRAR.
-5. **Case Tzur v2**, só com a autorização escrita da Tzur e o fim re-editado sem "comenta estrategista".
-6. **Dentista C** fica fora até o brief do dentista ser revisto (o brief o guarda para anúncio 4:5 depois de 18/11).
+1. **ob01 a ob03** (render da agência; o Bruno de perfil desde o quadro 0). Já ocupam 3 vagas na S2 pelo 03-plano.
+2. **"O mais votado inteiro"** (corte novo, depois de 02/11; cumpre a promessa da legenda do tl01).
+3. **Remakes R1, R2 e R3 como Trial Reel**, pelo PostZen se a conta for elegível, senão pelo app; a 6 h ou mais de qualquer reel do feed (o playbook mede 0,92x para reel com menos de 6 h do anterior [FATO, F2]). Só ocupam vaga do feed se baterem o alcance usual. São o único Bruno de frente para a câmera disponível sem gravar.
+4. **tl03 a tl05**, já agendados, cada um só com o portão do anterior.
+5. **Cortes do banco:** pb03, CINEMA 02, MITO, PERGUNTA 01 e 02, SALA.
+6. **pf01 como reel**, só com DOBRAR.
+7. **Case Tzur v2**, só com a autorização escrita da Tzur e o fim re-editado sem "comenta estrategista".
+8. **Dentista C** fica fora até o brief do dentista ser revisto.
 
-Nunca: animação com voz sintética (v01 a v08, série 2, s01 a s08, anúncio a01) nem reel sem o Bruno nos 3 primeiros segundos [FATO, CLAUDE.md].
+Nunca: animação com voz sintética, voz clonada, nem reel sem o Bruno nos 3 primeiros segundos [FATO, CLAUDE.md].
 
-**Grade da semana sem gravação** (regra do catálogo, seção 8): 5 reels se a média dos reels da TV ficar em 0,8x ou mais com pulo abaixo de 75%; 3 reels (sábado com rosto e 2 de objeção ou remake) se ficar abaixo de 0,5x ou com pulo médio acima de 75%. Carrosséis e stories seguem, porque não dependem do Bruno.
+**Grade da semana sem gravação** (regra do catálogo, seção 8): 5 reels se a média dos reels da entrevista ficar em 0,8x ou mais com pulo abaixo de 75%; 3 reels (sábado e 2 de objeção ou remake) se ficar abaixo de 0,5x ou com pulo médio acima de 75%. Carrosséis e stories seguem, porque não dependem do Bruno.
+
+**Dia 02/11 sem o vídeo curto:** estático 7, estático com o horário e mc02 ou mc03, todos pelo PostZen; link da grade como sticker à mão, se houver.
 
 **O que se perde sem gravar:**
-- A linha de nicho: a conferência de 11/11 fica sem dado (n = 0). Registrar como "não testado", nunca como PARAR.
-- O Bruno falando para a câmera fica restrito aos 3 remakes de 03 a 05/10. Sequência de estouro (3 a 5 na mesma linha) não tem peça.
-- REACT 01 a 03 e PB versão A não existem.
-- O CTA "comenta a sua profissão" não ganha post novo de nicho.
+- A linha de nicho: a conferência de 11/11 fica "não testado (n = 0)", nunca PARAR.
+- O Bruno de frente para a câmera fica restrito aos 3 remakes de 03 a 05/10, em 720p.
+- REACT 01 a 03 e PB versão A não existem; a regra 5 do portão perde a saída.
+- O CTA "comenta a sua profissão" não ganha post novo.
 
-**Se o Bruno também não postar à mão:** os stories vão só AGENDADO, sem enquete, link e compartilhamento; caem os reposts das 9h e a medição por objeção; os remakes não saem (Trial Reel pelo PostZen: sem dado). Fica no ar o que o PostZen agenda: reels, carrosséis e stories sem sticker.
+**Se o Bruno também não postar à mão:** stories só AGENDADO, sem enquete, link e compartilhamento; cai a medição por objeção; a marcação da Mirna não acontece (o PostZen só convida colaborador com o @); remakes só saem se a conta for elegível a Trial Reel pela API.
 
 ---
 
 ## 11. Riscos de capacidade
 
-1. **Arquivo só no scratchpad.** tl02 a tl05, mc02 a mc04, as fichas renderizadas e a fonte da entrevista (958 MB) estão em `/tmp/claude-0/.../scratchpad/`, temporário [FATO, `find` e `du`]. O que já foi agendado tem cópia no PostZen. O próprio plano manda copiar para o Drive antes de agendar; cópia feita: sem dado.
-2. **Fonte da entrevista e o release público.** A pendência de segurança manda apagar o rascunho de release do GitHub, onde fica o original [FATO, pecas-e-calendario e ENGINE.md]. Sem o scratchpad e sem o release, um corte novo pede baixar o .mov do Drive e refazer o passe de vídeo, cerca de 3 h 15 min [FATO, custo no catálogo].
-3. **Disco:** 12 GB livres de 252 GB [FATO, `df`].
-4. **Remake em 720p** [FATO, etiqueta do arquivo]; qualidade final: [HIPÓTESE].
-5. **Autorizações paradas:** print da Mirna (verbal às 13h20) e Tzur (sem dado). A Mirna aparece no plano Z2 de quase todas as peças da TV [FATO, pecas-e-calendario].
-6. **Leituras regulatórias** antes de gravar ou publicar nicho: OAB, CFN 856, BCB e ABAC, CFP, CFO 196/2019. Status: sem dado.
-7. **Promessa do tl01** ("o mais votado sai no próximo sábado"): se o mais votado for o assunto 1 ou 6, a peça não existe e pede corte novo até sex 30/10 [FATO, enquadramento item 2].
-8. **Plano de stories em edição durante a rodada:** a contagem de 56 pode mudar.
+1. **Arquivo só na pasta temporária:** mc02 a mc04, as bases de ob01 a ob03, as folhas de quadros e a fonte da entrevista (958 MB) [FATO, `ls` e `du`]. As 20 peças agendadas têm cópia no PostZen; tl02 a tl05, pf01 e Dentista B com tamanho idêntico ao render [FATO, HEAD]. Cópia no Drive: sem dado (Drive fora da lista desta rodada).
+2. **Fonte e release público:** a pendência de segurança manda apagar o rascunho de release do GitHub, onde fica o original [FATO, pecas-e-calendario]. Sem a pasta temporária e sem o release, um corte novo pede baixar o .mov do Drive e refazer o passe de vídeo, cerca de 3 h 15 min [FATO, custo no catálogo].
+3. **Disco:** 11 GB livres [FATO, `df`]; a pasta temporária desta sessão ocupa 12 GB [FATO, `du`].
+4. **Promessa do tl01:** o "mais votado inteiro" depois de 02/11 é compromisso público a partir de dom 25/10, 18h30 [FATO, legenda].
+5. **Trial Reel:** elegibilidade da conta sem dado; a falha só aparece na hora de publicar [FATO, descrição do `createPost`].
+6. **Autorizações paradas:** print da Mirna (verbal), @ dela, Tzur [FATO, contexto.md e enquadramento].
+7. **Leituras regulatórias** antes de gravar ou publicar nicho: OAB, CFN 856, ABAC, CFP, CFO 196/2019. Status: sem dado.
+8. **Feriado na exibição:** 02/11 é Finados; disponibilidade do Bruno no dia: sem dado. O vídeo curto gravado no bloco 1 tira essa dependência.
+9. **Resolução da gravação:** a última chegou em 576x1024 [FATO].
+10. **Stories depois de 31/10:** sem plano; 41 estáticos da S1 ainda sem render [FATO].
 
 ---
 
 ## 12. Respostas às perguntas do enquadramento que tocam esta frente
 
-- **P6, Bruno nos 3 primeiros segundos:** Dentista C sim (selfie no quadro 0); tl02 a tl05 sim (CB no quadro 0); ob01 a ob03 sim pela ficha (CB no quadro 0), conferir no render; remakes sim (selfie com fala própria); case Tzur sim (primeiro corte do Bruno); pf01 em Z2, com o Bruno de costas para a câmera.
-- **P11, mínimo de gravação:** 2 roteiros por semana, de 24 a 36 min [ESTIMATIVA], entregues até quarta 23h59; primeiro bloco até qua 28/10, com 3 roteiros e a selfie do REACT (56 a 74 min). Semana sem gravação: seção 10.
-- **P12, Dentista C e remakes:** o C está pronto e com o Bruno no quadro 0, mas o brief do dentista o guarda para anúncio depois de 18/11; no feed seria a terceira edição da mesma fala em 3 dias de distância. Remakes: 3 saem sem gravação (arquivo do Instagram, 720p); 1 pede gravação ("Você gravou o curso inteiro"); o de 01/01/2025 não entra. Nenhum remake está renderizado [FATO, enquadramento item 8].
-- **P14, ob01 a ob03:** com ficha, sem render; produção só da agência, sem o Bruno; datas do plano 02, 04 e 06/11; substituto se não ficarem prontos: os remakes como Trial Reel e os cortes novos da TV.
+- **P12, Bruno nos 3 primeiros segundos:** Dentista C sim (selfie no quadro 0); tl02 a tl05 sim pela ficha (CB no quadro 0); ob01 a ob03 sim, de perfil atrás do monitor, com um braço na borda esquerda [FATO, quadros 0 e 2,5 s das bases]; remakes sim (selfie com fala própria); case Tzur sim; pf01 em Z2, de costas.
+- **P13, mínimo de gravação:** 1 bloco por semana, entregue até quarta 23h59 (sexta no bloco 3). Bloco 1 até qua 28/10: consórcio, nutricionista e o vídeo de 02/11, de 31 a 49 min [ESTIMATIVA]. Blocos 2 a 4: 2 roteiros, de 24 a 42 min. Semana sem gravação: seção 10.
+- **P14, Dentista C e remakes:** C pronto, mas guardado para anúncio depois de 18/11 pelo brief; no feed seria a terceira edição da mesma fala. Remakes: 3 saem sem gravação, como Trial Reel, pelo PostZen se a conta for elegível; nenhum renderizado; "Você gravou o curso inteiro" pede gravação; o de 01/01/2025 não entra.
+- **P16, ob01 a ob03:** base composta às 14h36 e 14h37, render final sem dado, revisão de áudio aberta; sem o Bruno. Substituto se não ficarem prontos: o "mais votado inteiro" e os remakes como Trial Reel.
+- **P21, o que depende só do Bruno:** gravação (bloco 1 até qua 28/10), marcação da Mirna (9 reels e 1 story; a primeira no tl01, dom 25/10, 18h30), stickers (27 na S1), o @ e o print da Mirna, o horário da exibição se a grade não sair, autorização da Tzur, envio do arquivo original, cópia do estoque para o Drive.
 
 ---
 
 ## 13. Lacunas
 
-- Minutos reais de gravação por roteiro: nenhum registro da sessão do dentista.
-- Se a sessão de seg 26/10 existe e quantas horas por semana o Bruno tem para gravar.
-- Cópia no Drive dos renders e da fonte da entrevista.
-- Original em alta dos 3 remakes no celular do Bruno.
-- Status das leituras da OAB, da CFN 856, do BCB e da ABAC, do CFP e da CFO 196/2019.
-- Autorização da Tzur Capital; print da liberação da Mirna; data de exibição do programa.
-- Se o PostZen agenda Trial Reel.
-- Minutos do Bruno por story manual, por agendamento e por resposta (a faixa de 15 a 30 min por dia é estimativa de 21/10).
+- Minutos reais de gravação por roteiro: o único registro são os 55 min entre o commit do teleprompter e a chegada da fala do dentista, que não medem a gravação.
+- Se existe sessão marcada (seg 26/10 ou outra) e quantos minutos por semana o Bruno tem.
+- Horário da exibição de 02/11 (grade publicada só até 25/10).
+- Elegibilidade da conta a Trial Reel pela API.
+- Se o app deixa marcar a Mirna num reel já publicado; @ dela.
+- Render final de ob01 a ob03 e o resultado da revisão de áudio.
+- Cópia no Drive dos renders e da fonte; original em alta dos 3 remakes.
+- Status das leituras da OAB, CFN 856, ABAC, CFP e CFO 196/2019.
+- Autorização da Tzur Capital; print da Mirna.
+- Minutos do Bruno por story à mão, por marcação e por resposta.
 - Tempo de agência por remake e por reel de nicho com o motor pronto.
-- Resultado do portão do tl01 (ter 27/10, 18h30), que decide quantos timelapses entram.
-- Uso anterior dos 3 stories de `stories-hoje`.
+- Resultado dos portões do tl01 (ter 27/10, 18h30) e do tl02 (seg 02/11, 18h30), que decidem quantos timelapses ficam.
+- Qual assunto o tl01 vai eleger, que define o tamanho do "mais votado inteiro".

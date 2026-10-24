@@ -6,8 +6,10 @@
 // C.obj {txt, chave, linha, sai}   C.nome [a, b] (nomeTV)   C.marcas [{palavras, perto}] (marca-texto na frase dita)
 // C.pergunta / C.fato {a, b, rotulo, txt} (caixa baixa: pergunta da TV só como texto, ressalva do número)
 // C.final {a, topo, citacao, fonte, frase[]}   C.cta {a, txt, l1, l2}   C.retime [[t_saida_antigo, t_novo]]
-// Zona segura: texto entre y 218 e 1450 e x 60 a 940.
-document.head.insertAdjacentHTML('beforeend', `<style>.cap{left:60px;right:140px}.cap .bx{max-width:860px;box-sizing:border-box}</style>`);
+// Zona segura: texto e caixas entre y 217 e 1451 e x 60 a 940 em todos os quadros, inclusive nas entradas com mola e escala.
+// Legenda: nenhum quadro com fala sem legenda (conferido com o início e o fim reais de cada palavra, vícios incluídos).
+// .bx até 846 px: com o scale(1.04) da entrada da legenda a caixa vai no máximo de x 60 a 940
+document.head.insertAdjacentHTML('beforeend', `<style>.cap{left:60px;right:140px}.cap .bx{max-width:846px;box-sizing:border-box}</style>`);
 const PROG0 = C.inicio_programa || 875.0;          // 14:35 da gravação = 00:00 do programa
 const limpa = s => s.replace(/[.,!?;:…"“”]/g, '');
 // corrige o início de palavras que o Whisper marcou cedo (as listas de palavras e de frases)
@@ -79,8 +81,10 @@ function blocoMarca(t, M, top) {
   const partes = idx.map(i => {
     const [tw, w] = WD[i], s = limpa(w), on = cl((t - tw + .03) / .2), op = .35 + .65 * on;
     if (i < M.i0 || i > M.i1) return `<span style="display:inline-block;margin:0 .12em;opacity:${op}">${s}</span>`;
-    const m = eo((t - tw) / .28), dir = i < M.i1 ? '-.26em' : '-.1em';
-    return `<span style="position:relative;display:inline-block;margin:0 .12em;isolation:isolate"><i style="position:absolute;left:-.12em;right:${dir};top:4%;bottom:0;background:${OURO};border-radius:8px;transform:scaleX(${m});transform-origin:0 50%;clip-path:polygon(0 8%,100% 0,98% 92%,2% 100%);z-index:-1"></i><span style="color:${m > .5 ? ESC : '#fff'};opacity:${Math.max(op, m)}">${s}</span></span>`;
+    // a palavra fica branca; por cima, uma cópia em ESC recortada pela borda do ouro (o escuro só aparece onde já há ouro)
+    const m = eo((t - tw) / .28), d = i < M.i1 ? .26 : .1;
+    const borda = `max(0px, calc(${(m * 100).toFixed(2)}% + ${(m * (.12 + d) - .12).toFixed(4)}em))`;
+    return `<span style="position:relative;display:inline-block;margin:0 .12em;isolation:isolate"><i style="position:absolute;left:-.12em;right:-${d}em;top:4%;bottom:0;background:${OURO};border-radius:8px;transform:scaleX(${m});transform-origin:0 50%;clip-path:polygon(0 8%,100% 0,98% 92%,2% 100%);z-index:-1"></i><span style="color:#fff;opacity:${Math.max(op, m)}">${s}</span>${m > 0 ? `<span style="position:absolute;left:0;top:-.3em;bottom:-.3em;width:${borda};overflow:hidden"><span style="position:absolute;left:0;top:.3em;white-space:nowrap;color:${ESC}">${s}</span></span>` : ''}</span>`;
   }).join(' ');
   const sc = 1.04 - .04 * cl((t - M.a) / .1);
   return `<div class=cap style="top:${top}px;transform:scale(${sc})"><span class=bx><span class=big style="display:block;font-size:${S}px;line-height:1.1">${partes}</span></span></div>`;
@@ -89,20 +93,33 @@ function legenda(t, top) {
   const M = MARCAS.find(m => t >= m.a && t < m.b);
   if (M) return blocoMarca(t, M, top);
   const h = legendaGigante(t, top); if (h) return h;
-  // palavra longa ou pausa curta dentro da frase: segura o último grupo até o fim da frase (sem buraco na legenda)
-  const f = (C.frases || []).find(x => t >= x.a && t < x.b - .6); if (!f) return '';
+  // buraco entre grupos (palavra longa, pausa curta ou vício de fala que não vira legenda): segura o último grupo,
+  // no estado final, (a) se o próximo grupo começa até 1,0 s depois que este sairia da tela, sem depender do fim da frase,
+  // ou (b) enquanto ainda estamos dentro da frase dele (frase.b vem do fim real da última palavra)
   let gi = -1; for (let k = 0; k < GRUPOS.length; k++) if (WD[GRUPOS[k][0]][0] - .03 <= t) gi = k;
-  if (gi < 0 || WD[GRUPOS[gi][0]][0] < f.a - .05) return '';
-  const g = GRUPOS[gi]; return legendaGigante(WD[g[g.length - 1]][0] + .8, top);
+  if (gi < 0) return '';
+  const g = GRUPOS[gi], nx = GRUPOS[gi + 1], ult = WD[g[g.length - 1]][0];
+  const perto = nx && WD[nx[0]][0] - .03 - (ult + .9) <= 1.0;
+  const f = (C.frases || []).find(x => t >= x.a && t < x.b - .6);
+  if (!perto && !(f && WD[g[0]][0] >= f.a - .05)) return '';
+  const Mg = MARCAS.find(m => g[0] >= m.w0 && g[g.length - 1] <= m.w1);   // grupo de marca-texto: segura o bloco, não troca de estilo
+  return Mg ? blocoMarca(t, Mg, top) : legendaGigante(ult + .8, top);
 }
-// caixa baixa (pergunta da TV só como texto, ressalva do número): filete ouro cresce antes do texto
+// caixa baixa (pergunta da TV só como texto, ressalva do número): filete ouro cresce antes do texto.
+// A caixa fica parada em x 60; o deslize de 24 px é do texto, dentro da caixa (nada sai da zona segura)
 function caixaBaixa(t, P) {
-  if (!P) return ''; const o = vis(t, P.a, Math.min(P.b, FIM), .3, .25); if (!o) return '';
+  if (!P) return ''; const o = vis(t, P.a, Math.min(P.b, FIM - .25), .3, .25); if (!o) return '';   // some por inteiro antes da tela final
   const tr = eo((t - P.a) / .35), tx = eo((t - P.a - .1) / .4);
-  return `<div style="position:absolute;left:60px;right:140px;top:${P.top || 1130}px;opacity:${o};transform:translateX(${(1 - tx) * -24}px)"><div style="display:inline-block;max-width:880px;box-sizing:border-box;background:rgba(20,18,16,.9);border-radius:14px;padding:16px 28px 20px 30px;position:relative;overflow:hidden">
+  return `<div style="position:absolute;left:60px;right:140px;top:${P.top || 1130}px;opacity:${o}"><div style="display:inline-block;max-width:880px;box-sizing:border-box;background:rgba(20,18,16,.9);border-radius:14px;padding:16px 28px 20px 30px;position:relative;overflow:hidden">
    <div style="position:absolute;left:0;top:0;bottom:0;width:7px;background:${OURO};transform:scaleY(${tr});transform-origin:50% 0"></div>
-   <div style="font-family:Cinzel;font-weight:900;font-size:25px;letter-spacing:.14em;color:${OURO}">${P.rotulo}</div>
-   <div style="font-family:Pf;font-style:italic;font-size:${P.tam || 38}px;line-height:1.2;color:${CREME};margin-top:6px;opacity:${tx}">${P.txt}</div></div></div>`;
+   <div style="transform:translateX(${(1 - tx) * -24}px)"><div style="font-family:Cinzel;font-weight:900;font-size:25px;letter-spacing:.14em;color:${OURO}">${P.rotulo}</div>
+   <div style="font-family:Pf;font-style:italic;font-size:${P.tam || 38}px;line-height:1.2;color:${CREME};margin-top:6px;opacity:${tx}">${P.txt}</div></div></div></div>`;
+}
+// Nome e cargo do _base com a caixa parada em x 60: o deslize de 24 px passa para o texto, recortado pela própria caixa
+function nomeFixo(t, a, b, top, left) {
+  const h = nomeTV(t, a, b, top, left); if (!h) return '';
+  const tx = eo((t - a - .2) / .4);
+  return h.replace(/;transform:translateX\([^)]*\)/, '').replace('<div style="opacity:', `<div style="transform:translateX(${(1 - tx) * -24}px);opacity:`);
 }
 // tela final: escurece, cartão de prova (Cinzel e Playfair, linhas em sequência de 3 quadros)
 function cartaoFinal(t) {
@@ -121,13 +138,14 @@ function render(t, camada) {
   if (t < FIM) {
     h += cartao(t) + selo(t) + faixa(t);
     if (t >= SAI + .19) h += legenda(t, 392);
-    if (C.nome) h += nomeTV(t, C.nome[0], Math.min(C.nome[1], FIM - .3), 1130, 60);
+    if (C.nome) h += nomeFixo(t, C.nome[0], Math.min(C.nome[1], FIM - .3), 1130, 60);
     h += caixaBaixa(t, C.pergunta) + caixaBaixa(t, C.fato);
   } else h += selo(t) + faixa(t);
   if (t >= FIM) h += `<div style="position:absolute;inset:0;background:rgba(10,9,8,${(C.final ? .78 : .6) * eo((t - FIM) / .35)})"></div>`;
   h += cartaoFinal(t);
-  // CTA de Comentário 1,8x mais rápido: o texto termina de digitar com 1 s de folga nos últimos 2,5 s
-  if (C.cta) { const K = C.cta, v = K.vel || 1.8; h += ctaComentario(K.a + (t - K.a) * v, K.a, K.txt, K.l1, K.l2, K.top || 1150).replace('right:120px', 'right:140px'); }
+  // CTA de Comentário 1,8x mais rápido: o texto termina de digitar com 1 s de folga nos últimos 2,5 s.
+  // Caixa de x 84 a 934: no pico da mola de entrada (escala 1,011) ela vai no máximo de 79 a 939
+  if (C.cta) { const K = C.cta, v = K.vel || 1.8; h += ctaComentario(K.a + (t - K.a) * v, K.a, K.txt, K.l1, K.l2, K.top || 1150).replace('left:80px;right:120px', 'left:84px;right:146px'); }
   el.innerHTML = h;
 }
 </script></body></html>

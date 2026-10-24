@@ -8,9 +8,9 @@
  "destaques":["certeza","cuidar","situações","digital","alcançar"],
  "chave":{"palavra":"carinho","perto":3.2},
  "marcas":[{"palavras":"muito carinho","perto":3.0},{"palavras":"potencializar o seu negócio","perto":8.1}],
- "nome":[5.1,7.4],
+ "nome":[5.7,7.8],
  "final":{"a":10.1,"topo":"NA TV","citacao":"O tête-à-tête, <q>que até hoje é o melhor marketing.</q>","fonte":"Bruno, na entrevista à TV Câmara Campinas","frase":["O LANÇAMENTO LEVA ESSE OLHO NO OLHO PARA QUEM AINDA NÃO TE CONHECE."],"tam":40,"top":430},
  "cta":{"a":12.6,"txt":"Me manda a sua área no direct","l1":"que eu te digo","l2":"por onde começar."},
  "freeze":10.1,"look":"natural","trilha":"hazy-after-hours","trilha_vol":0.06,
- "sfx":[["pop",0.0,0.2],["swipe",2.8,0.22],["ding_si",3.0,0.28],["tick",5.1,0.22],["ding_si",8.09,0.26],["shutter",10.1,0.2],["pop",12.6,0.22],["typing",12.9,0.14]],
+ "sfx":[["pop",0.0,0.2],["swipe",2.8,0.22],["ding_si",3.0,0.28],["tick",5.7,0.22],["ding_si",8.09,0.26],["shutter",10.1,0.2],["pop",12.6,0.22],["typing",12.9,0.14]],
  "fade":[0,0.3]}
