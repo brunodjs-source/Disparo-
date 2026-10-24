@@ -1,0 +1,219 @@
+<!doctype html><html><head><meta charset="utf-8"></head><body><script>/*__BASE__*/
+// TL_REGUA · a régua do tempo: o marketing de antes e o de hoje. A base (tempo real + acelerado + congelado) vem pronta do timeremap.py.
+// Base do formato: a RÉGUA na parede (linha creme, estações com rótulo, cursor ouro com o relógio da gravação), a legenda e o rótulo "NA TV · min".
+// C.gancho {a, ate, top, txt, chave, linha}          C.respiros [[a, b, "mm:ss"]] (tempo real)   C.acelerados [[a, b]]   C.legenda_off [[a, b]]
+// C.lacuna {a, encolhe, cresce, janelas [[a,b],[a,b]], preenche, fim}  frase "[ ] até hoje é o melhor marketing" com a caixa vazia no lugar do sujeito
+// C.regua {a, y, x0, x1, estacoes [{x, txt}], barra {a, dur, de, ate}, rebobina}   C.cursor [[t, estação]]   C.relogio [[t_saida, s_gravacao]]
+// C.pinos [{t, n, est, titulo, min}]  C.pinos_some   C.coluna {a, some, volta, min, itens [{t, txt}]}   C.nome [a, b, top]
+// C.carimbo {a, b, txt, selo, cx, cy}   C.fecho {a, some, cta_txt, cta1, cta2, cta_top}
+const RG = C.regua, EST = RG.estacoes, RY = RG.y, LAC = C.lacuna, FE = C.fecho, CB = C.carimbo, CO = C.coluna;
+const INTER = "'Inter Display','Inter',sans-serif", MONO = "'DejaVu Sans Mono',monospace";
+const mw = (txt, font) => { _mc.font = font; return _mc.measureText(txt).width; };
+const dentro = (t, ivs) => (ivs || []).some(([a, b]) => t >= a && t < b);
+const respiro = t => (C.respiros || []).find(([a, b]) => t >= a && t < b);
+const acelerado = t => dentro(t, C.acelerados);
+const fimFora = t => 1 - cl((t - FE.some) / .25);                 // em 35,0 tudo some menos a lacuna
+
+// relógio da gravação (linear por partes; salto de 0,01 s = corte seco)
+function relogioS(t) {
+  const R = C.relogio; if (t <= R[0][0]) return R[0][1];
+  for (let i = 0; i < R.length - 1; i++) if (t >= R[i][0] && t <= R[i + 1][0]) return R[i][1] + (R[i + 1][1] - R[i][1]) * (t - R[i][0]) / Math.max(1e-6, R[i + 1][0] - R[i][0]);
+  return R[R.length - 1][1];
+}
+const mmss = s => { s = Math.max(0, s + 1e-3); return `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(Math.floor(s % 60)).padStart(2, '0')}`; };
+
+const molaCurta = x => { x = cl(x); return x >= 1 ? 1 : 1 - Math.exp(-7 * x) * Math.cos(6.5 * x); };   // mola com no máximo 3 % de passada (o salto até HOJE é longo)
+// cursor: pula com mola de 0,4 s na palavra; para trás desliza com eio de 0,5 s (a régua rebobina)
+function cursorX(t) {
+  let x = RG.x0, est = -1;
+  for (const [tk, e] of C.cursor) {
+    if (t < tk) break;
+    const de = x, para = EST[e].x, p = e < est ? eio((t - tk) / .5) : molaCurta((t - tk) / .4);
+    x = de + (para - de) * p; est = e;
+  }
+  return x;
+}
+const barraP = t => RG.barra ? eo((t - RG.barra.a) / RG.barra.dur) : 0;
+const barraX = t => EST[RG.barra.de].x + (EST[RG.barra.ate].x - EST[RG.barra.de].x) * barraP(t);
+
+// faixa escura atrás da régua (a parede é clara)
+function faixa(t) {
+  const o = cl((t - RG.a) / .3) * fimFora(t); if (!o) return '';
+  return `<div style="position:absolute;left:0;right:0;top:470px;height:310px;opacity:${o};background:linear-gradient(180deg,rgba(8,7,6,0) 0%,rgba(8,7,6,.62) 24%,rgba(8,7,6,.62) 78%,rgba(8,7,6,0) 100%)"></div>`;
+}
+
+function regua(t) {
+  if (t < RG.a) return '';
+  const o = fimFora(t); if (!o) return '';
+  const ln = eo((t - RG.a) / .4), x0 = RG.x0, x1 = RG.x1, cx = cursorX(t), fecho = t >= FE.a;
+  let h = `<div style="position:absolute;left:0;top:0;right:0;bottom:0;opacity:${o}">`;
+  // linha creme a 60 %
+  h += `<div style="position:absolute;left:${x0}px;top:${RY - 3}px;height:6px;width:${(x1 - x0) * ln}px;background:rgba(243,237,226,.6);border-radius:3px"></div>`;
+  // rebobina: rastro ouro do cursor voltando
+  if (RG.rebobina && t >= RG.rebobina && t < RG.rebobina + .8) {
+    const de = EST[2].x, k = 1 - cl((t - RG.rebobina - .4) / .4);
+    h += `<div style="position:absolute;left:${Math.min(cx, de)}px;top:${RY - 4}px;height:8px;width:${Math.abs(de - cx)}px;border-radius:4px;opacity:${.8 * k};background:linear-gradient(90deg,${OURO2},rgba(232,179,106,.15))"></div>`;
+  }
+  // barra ouro de 10 px de ANTES até HOJE
+  if (RG.barra && t >= RG.barra.a) {
+    const a = EST[RG.barra.de].x;
+    h += `<div style="position:absolute;left:${a}px;top:${RY - 5}px;height:10px;width:${barraX(t) - a}px;background:${OURO};border-radius:5px;box-shadow:0 0 14px rgba(232,179,106,.55)"></div>`;
+  }
+  // estações: traço + rótulo, acendendo da esquerda para a direita (3 quadros entre elas)
+  EST.forEach((e, k) => {
+    const p = mola((t - RG.a - k * .1) / .3); if (p <= 0) return;
+    const aqui = Math.abs(cx - e.x) < 14 || (RG.barra && t >= RG.barra.a && barraX(t) >= e.x - 2);
+    const cor = aqui ? OURO2 : CREME;
+    h += `<div style="position:absolute;left:${e.x - 2}px;top:${RY - 14}px;width:4px;height:28px;background:${aqui ? OURO2 : 'rgba(243,237,226,.85)'};border-radius:2px;opacity:${cl(p * 2)};transform:scaleY(${p})"></div>`;
+    h += `<div style="position:absolute;left:${e.x - 200}px;width:400px;top:${RY + 20}px;text-align:center;font-family:Cinzel;font-weight:900;font-size:32px;line-height:40px;color:${cor};text-shadow:0 3px 10px rgba(0,0,0,.85);opacity:${cl(p * 2)};transform:translateY(${(1 - p) * 16}px)">${e.txt}</div>`;
+    if (fecho) {   // no fecho: o minuto da entrevista embaixo de cada estação
+      const m = [...(C.pinos || []).map(pn => [pn.est, pn.min]), [EST.length - 1, CO.min]].find(([s]) => s === k);
+      if (m) h += `<div style="position:absolute;left:${e.x - 120}px;width:240px;top:${RY + 66}px;text-align:center;font-family:${MONO};font-size:20px;letter-spacing:.06em;color:#e6dccb;text-shadow:0 2px 8px #000;opacity:${eo((t - FE.a - .15 - k * .07) / .3)}">min ${m[1]}</div>`;
+    }
+  });
+  // pinos anteriores: ponto ouro numerado sobre a linha
+  h += pinosPontos(t);
+  // cursor ouro de 4 px com o relógio da gravação
+  const co = cl((t - RG.a - .15) / .25);
+  h += `<div style="position:absolute;left:${cx - 2}px;top:${RY - 80}px;width:4px;height:92px;background:${OURO2};border-radius:2px;box-shadow:0 0 10px rgba(245,196,110,.6);opacity:${co}"></div>`;
+  h += `<div style="position:absolute;left:${cx - 9}px;top:${RY - 92}px;width:0;height:0;border-left:9px solid transparent;border-right:9px solid transparent;border-top:14px solid ${OURO2};opacity:${co}"></div>`;
+  if (!fecho || t < FE.a + .2) {
+    const txt = mmss(relogioS(t)), w = txt.length * 13.3 + 22, lx = Math.max(60, Math.min(940 - w, cx - w / 2));
+    h += `<div style="position:absolute;left:${lx}px;top:${RY + 68}px;padding:3px 11px;border-radius:7px;background:rgba(20,18,16,.85);border:1px solid rgba(232,179,106,.5);font-family:${MONO};font-size:22px;line-height:26px;color:${CREME};opacity:${co * (1 - cl((t - FE.a) / .2))}">${txt}</div>`;
+  }
+  return h + '</div>';
+}
+
+// pino ativo: título em caixa #141210 que cai na estação; os anteriores viram ponto ouro numerado
+const fimPino = i => i + 1 < C.pinos.length ? C.pinos[i + 1].t : C.pinos_some;
+function pinoCaixa(t) {
+  let h = '';
+  C.pinos.forEach((P, i) => {
+    const fim = fimPino(i); if (t < P.t - .01 || t > fim + .3) return;
+    const tau = t - P.t, off = queda(tau, 150), sai = eio((t - fim) / .3);
+    const fs = Math.min(40, caber(P.titulo, 'Cinzel', 396, 40)), wT = mw(P.titulo, `900 ${fs}px Cinzel`);
+    const w = Math.round(18 + 44 + 14 + 2 + 16 + Math.max(wT, 210) + 22), x = Math.max(60, Math.min(940 - w, EST[P.est].x - w / 2));
+    const o = cl((490 - off + 84 - 450) / 70) * (1 - cl((t - fim - .12) / .14));   // aparece conforme sai de baixo da legenda
+    h += `<div style="position:absolute;left:${x}px;top:${490 - off + sai * 62}px;width:${w}px;height:84px;box-sizing:border-box;opacity:${o};transform:scale(${1 - .7 * sai});transform-origin:${EST[P.est].x - x}px 100%;background:rgba(20,18,16,.92);border:2px solid rgba(232,179,106,.6);border-radius:14px;display:flex;align-items:center;padding:0 22px 0 18px;box-shadow:0 10px 26px rgba(0,0,0,.4)">
+      <span style="font-family:Cinzel;font-weight:900;font-size:50px;line-height:1;color:${OURO2};width:44px;text-align:center">${P.n}</span>
+      <span style="width:2px;align-self:stretch;margin:14px 16px 14px 14px;background:rgba(232,179,106,.5)"></span>
+      <span style="display:flex;flex-direction:column;justify-content:center"><span style="font-family:Cinzel;font-weight:900;font-size:${fs}px;line-height:1.05;color:${CREME};white-space:nowrap">${P.titulo}</span>
+      <span style="font-family:${MONO};font-size:18px;letter-spacing:.06em;color:#cfc6b6;margin-top:5px">NA TV · min ${P.min}</span></span></div>`;
+  });
+  // recorte em y 450: o pino sai de baixo da legenda e cai na régua
+  return h ? `<div style="position:absolute;left:0;right:0;top:450px;bottom:0;overflow:hidden"><div style="position:absolute;left:0;right:0;top:-450px;height:${H}px">${h}</div></div>` : '';
+}
+function pinosPontos(t) {
+  return C.pinos.map((P, i) => {
+    const a = fimPino(i) + .18; if (t < a) return '';
+    const p = back((t - a) / .3), x = EST[P.est].x;
+    return `<div style="position:absolute;left:${x - 16}px;top:${RY - 16}px;width:32px;height:32px;border-radius:50%;background:${OURO};border:2px solid ${ESC};box-sizing:border-box;display:flex;align-items:center;justify-content:center;font-family:Cinzel;font-weight:900;font-size:19px;line-height:1;color:${ESC};transform:scale(${p});opacity:${cl(p * 3)}">${P.n}</div>`;
+  }).join('');
+}
+
+// coluna ANTES: cada item acende na palavra
+function coluna(t) {
+  if (!CO || t < CO.a) return '';
+  const fora = t >= CO.some && t < CO.volta, o = (t < CO.some ? cl((t - CO.a) / .2) : t < CO.volta ? 1 - cl((t - CO.some) / .15) : eo((t - CO.volta) / .3)) * fimFora(t);
+  if (o <= 0 || (fora && t > CO.some + .2)) return '';
+  const ab = eo((t - CO.a) / .3);
+  const L = [[CO.itens[0], CO.itens[1]], [CO.itens[2], CO.itens[3]]];
+  const fs = Math.min(34, caber('PANFLETOS · TÊTE-À-TÊTE', 'Cinzel', 540, 34));
+  const w = Math.round(Math.max(mw('PANFLETOS · TÊTE-À-TÊTE', `900 ${fs}px Cinzel`), mw('BANNERS · OUTDOORS', `900 ${fs}px Cinzel`)) + 56);
+  const item = it => { const q = mola((t - it.t) / .4); if (t < it.t - .01) return `<span style="opacity:0">${it.txt}</span>`;
+    return `<span style="display:inline-block;opacity:${cl(q * 3)};transform:translateY(${(1 - q) * 18}px);color:${t - it.t < .5 ? OURO2 : CREME}">${it.txt}</span>`; };
+  const sep = (it) => `<span style="color:${OURO};opacity:${t >= it.t ? 1 : 0}">&nbsp;·&nbsp;</span>`;
+  return `<div style="position:absolute;left:70px;top:484px;width:${w}px;opacity:${o};transform:scaleY(${.6 + .4 * ab});transform-origin:50% 100%">
+    <div style="background:rgba(20,18,16,.9);border:2px solid rgba(232,179,106,.55);border-radius:14px;padding:12px 26px 14px;font-family:Cinzel;font-weight:900;font-size:${fs}px;line-height:1.22;white-space:nowrap;box-shadow:0 10px 26px rgba(0,0,0,.4)">
+      <div>${item(L[0][0])}${sep(L[0][1])}${item(L[0][1])}</div><div>${item(L[1][0])}${sep(L[1][1])}${item(L[1][1])}</div></div>
+    <div style="position:absolute;left:${EST[0].x - 70 - 1}px;top:100%;width:3px;height:${RY - 16 - 484 - 104}px;background:${OURO}"></div></div>`;
+}
+
+// lacuna: "[ ] até hoje é o melhor marketing" (a caixa vazia é o sujeito que só chega no fim)
+const LW = ['ATÉ', 'HOJE', 'É', 'O', 'MELHOR', 'MARKETING'];
+function tempos(jan) {   // tempos das palavras ditas dentro da janela (sem o "Que")
+  const ws = (C.words || []).filter(w => w[0] >= jan[0] && w[0] < jan[1] && w[1].toLowerCase() !== 'que');
+  return LW.map((x, i) => ws[i] ? ws[i][0] : jan[0]);
+}
+const T1 = tempos(LAC.janelas[0]), T2 = tempos(LAC.janelas[1]);
+const pulso = t => .8 + .2 * Math.sin(2 * Math.PI * 1.3 * t);          // opacidade 0,6 a 1, sem clarão
+function lacunaGrande(t, o, sc) {
+  const fase2 = t >= LAC.cresce, TT = fase2 ? T2 : T1;
+  const pal = (i) => { const on = cl((t - TT[i] + .03) / .2); return `<span style="display:inline-block;margin:0 .12em;opacity:${.35 + .65 * on}">${LW[i]}</span>`; };
+  let suj;
+  if (!fase2) suj = `<span style="display:inline-block;width:120px;height:80px;box-sizing:border-box;border:5px solid ${OURO};border-radius:12px;vertical-align:-18px;margin-right:.18em;opacity:${pulso(t)};background:rgba(232,179,106,.06)"></span>`;
+  else { const a = LAC.cresce; suj = `<span style="display:inline-block;margin-right:.2em">${marca(t, a, `<span style="position:relative;display:inline-block;line-height:1.02;padding:.2em .04em .06em;color:${t >= a + .15 ? ESC : CREME}">${LAC.preenche}</span>`)}</span>`; }
+  const fs = 56;
+  return `<div style="position:absolute;left:70px;width:860px;top:280px;opacity:${o};transform:scale(${sc});transform-origin:100% 0">
+    <div style="background:rgba(20,18,16,.9);border:2px solid rgba(232,179,106,.55);border-radius:18px;padding:16px 24px 18px;text-align:center;font-family:${INTER};font-weight:900;font-size:${fs}px;line-height:1.16;color:${CREME};letter-spacing:-.005em;box-shadow:0 14px 34px rgba(0,0,0,.4)">
+      <div>${suj}${pal(0)}${pal(1)}</div><div>${pal(2)}${pal(3)}${pal(4)}${pal(5)}</div></div></div>`;
+}
+function lacunaPequena(t, o) {
+  const fs = 26, txt = LW.join(' '), wT = mw(txt, `900 ${fs}px "Inter Display"`), w = Math.round(wT + 44 + 12 + 30);
+  return `<div style="position:absolute;left:${930 - w}px;top:232px;width:${w}px;height:50px;box-sizing:border-box;opacity:${o};background:rgba(20,18,16,.88);border:1px solid rgba(232,179,106,.5);border-radius:10px;display:flex;align-items:center;padding:0 15px;font-family:${INTER};font-weight:900;font-size:${fs}px;color:${CREME};white-space:nowrap">
+    <span style="display:inline-block;width:44px;height:30px;box-sizing:border-box;border:3px solid ${OURO};border-radius:6px;margin-right:12px;opacity:${pulso(t)}"></span>${txt}</div>`;
+}
+function lacuna(t) {
+  if (t < LAC.a - .01) return '';
+  if (t < LAC.encolhe) { const p = mola((t - LAC.a) / .45); return lacunaGrande(t, cl((t - LAC.a) / .12), .92 + .08 * p); }
+  if (t < LAC.cresce) {
+    const p = eio((t - LAC.encolhe) / .35); let h = '';
+    if (p < 1) h += lacunaGrande(t, 1 - p, 1 - .55 * p);
+    return h + lacunaPequena(t, cl((t - LAC.encolhe - .2) / .2));
+  }
+  const q = mola((t - LAC.cresce) / .45); let h = '';
+  if (t < LAC.cresce + .15) h += lacunaPequena(t, 1 - cl((t - LAC.cresce) / .12));
+  return h + lacunaGrande(t, cl((t - LAC.cresce) / .12), .55 + .45 * q);
+}
+
+// legenda gigante: tamanho da palavra principal ajustado para caber numa linha
+function grupoAtual(t) { let gi = -1; for (let k = 0; k < GRUPOS.length; k++) if (WD[GRUPOS[k][0]][0] - .03 <= t) gi = k; return gi; }
+function legenda(t, top) {
+  const gi = grupoAtual(t); if (gi < 0) return '';
+  const pal = GRUPOS[gi].map(i => WD[i]), limpa = s => s.replace(/[.,!?;:]/g, '');
+  const pi = pal.reduce((b, w, k) => limpa(w[1]).length > limpa(pal[b][1]).length ? k : b, 0);
+  let tot = 0; pal.forEach((w, k) => { tot += k === pi ? mw(limpa(w[1]).toUpperCase(), `900 84px "Inter Display"`) + 17 : mw(limpa(w[1]), 'italic 400 50px Pf') + 18; });
+  const fs = tot > 750 ? Math.max(54, Math.floor(84 * 750 / tot)) : 84;   // caixa centrada termina antes de x 940
+  return legendaGigante(t, top, { big: `font-size:${fs}px` });
+}
+
+function carimbo(t) {
+  if (!CB || t < CB.a - .01 || t > CB.b + .32) return '';
+  const s = 1.4 - .4 * cl((t - CB.a) / .1), sai = eo((t - CB.b) / .3), o = cl((t - CB.a) / .04) * (1 - sai);   // sai rápido: a resposta entra no lugar
+  const flash = t < CB.a + .1 ? .3 * (1 - cl((t - CB.a) / .1)) : 0;
+  return `${flash ? `<div style="position:absolute;inset:0;background:rgba(255,255,255,${flash})"></div>` : ''}
+  <div style="position:absolute;left:${CB.cx}px;top:${CB.cy}px;opacity:${o};transform:translate(-50%,-50%) rotate(-8deg) scale(${s * (1 + .06 * sai)})">
+    <div style="position:relative;background:rgba(20,18,16,.8);border:6px solid ${OURO};border-radius:14px;padding:14px 40px 10px;font-family:Cinzel;font-weight:900;font-size:110px;line-height:1;color:${OURO};white-space:nowrap;box-shadow:0 16px 40px rgba(0,0,0,.45)">${CB.txt}
+      <span style="position:absolute;left:28px;top:-19px;background:${OURO};color:${ESC};font-family:${INTER};font-weight:800;font-size:20px;line-height:1;letter-spacing:.2em;padding:7px 14px;border-radius:7px">${CB.selo}</span></div></div>`;
+}
+
+function cta(t) {
+  if (t < FE.a) return '';
+  const pn = eo((t - FE.a - .9) / .3);   // painel escuro atrás das linhas do CTA (a mesa é branca)
+  return `<div style="position:absolute;inset:0;opacity:${fimFora(t)};transform:scale(.95);transform-origin:80px ${FE.cta_top}px"><div style="position:absolute;left:96px;right:136px;top:${FE.cta_top + 104}px;height:122px;border-radius:18px;background:rgba(20,18,16,.84);opacity:${pn}"></div>${ctaComentario(t, FE.a, FE.cta_txt, FE.cta1, FE.cta2, FE.cta_top)}</div>`;
+}
+
+function topo(t) {
+  const forte = t < C.gancho.ate || acelerado(t) || t >= FE.a;
+  return forte ? topoEscuro(.72, 1080) : topoEscuro(.55, 900);
+}
+
+function render(t, camada) {
+  const el = document.getElementById(camada); if (camada !== 'front') { el.innerHTML = ''; return; }
+  let h = topo(t);
+  h += faixa(t);
+  // gancho (Connect Hook), sai em 1,88
+  const G = C.gancho; if (t < G.ate + .2) h += `<div style="opacity:${1 - cl((t - G.ate) / .18)}">${connectHook(t, G.a, G.txt, G.chave, G.top, G.linha)}</div>`;
+  // rótulo do trecho nos respiros (o relógio fica no cursor)
+  const R = respiro(t); if (R && t < FE.a) h += rotulo(t, `NA TV · min ${R[2]}`, 236, 56, cl((t - R[0]) / .2));
+  h += regua(t);
+  h += pinoCaixa(t);
+  h += coluna(t);
+  h += lacuna(t);
+  if (!dentro(t, C.legenda_off) && t < FE.a) h += legenda(t, t >= LAC.cresce ? 488 : 300);
+  if (C.nome) h += nomeTV(t, C.nome[0], C.nome[1], C.nome[2], 60);
+  h += carimbo(t);
+  h += cta(t);
+  el.innerHTML = h;
+}
+</script></body></html>

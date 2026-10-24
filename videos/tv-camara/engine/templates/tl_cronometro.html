@@ -1,0 +1,188 @@
+<!doctype html><html><head><meta charset="utf-8"></head><body><script>/*__BASE__*/
+// TL_CRONOMETRO · contagem regressiva até a resposta (timelapse 3). A base (tempo real, acelerado, tela dividida)
+// vem pronta do timeremap.py; aqui só a camada front.
+// C.relogio [[t_saida, s_gravacao]] linear por partes · C.alvo: segundo da gravação em que a resposta chega
+// C.anel {entra, grande:[[a,b]], oculto:[a,b], fecho, rebobina:[a,b], some, zero, c_grande:[x,y,r], c_selo, c_fecho}
+// C.marcos [{t, n, titulo, min, src, sem_ponto}] · C.pergunta {selo, ws, ws2, janelas:[[a,b]] (a última fica aberta até o fim)}
+// C.legenda_alta [[a,b]] (grupo que começa aqui fica no topo) · C.sem_legenda [[a,b]]
+// C.nome [a,b] · C.duplo {a, b, txt} · C.cta {a, texto, linha1, linha2, top, sai}
+const A = C.anel, PG = C.pergunta, MARCOS = C.marcos || [];
+const dentro = (t, ivs) => (ivs || []).some(([a, b]) => t >= a && t < b);
+const lerp = (a, b, p) => a + (b - a) * p;
+const MONO = "'DejaVu Sans Mono',monospace";
+
+// cortes reais da base: cada segmento tem round(dur*30) quadros, então o tempo nominal da ficha vai para o quadro do corte
+const SEGS = (() => { let a = 0, q = 0; return C.segmentos.map(s => { const n = Math.round(s.dur * 30), r = { a, b: a + s.dur, qa: q / 30, qb: (q + n) / 30, tipo: s.tipo }; a += s.dur; q += n; return r; }); })();
+const snap = x => { for (const s of SEGS) { if (Math.abs(x - s.a) < 1e-3) return s.qa; if (Math.abs(x - s.b) < 1e-3) return s.qb; } return x; };
+A.grande = A.grande.map(([a, b]) => [snap(a), snap(b)]); A.oculto = A.oculto.map(snap); A.fecho = snap(A.fecho);
+PG.janelas = PG.janelas.map(([a, b], i) => [snap(a), i === PG.janelas.length - 1 ? 1e9 : snap(b)]);
+C.duplo.a = snap(C.duplo.a); C.duplo.b = snap(C.duplo.b);
+const RAPIDOS = SEGS.filter(s => s.tipo === 'rapido').map(s => [s.qa, s.qb]);
+const emDuplo = t => t >= C.duplo.a && t < C.duplo.b;
+
+// relógio da gravação e o que falta até a resposta
+function relS(t) { const R = C.relogio; if (t <= R[0][0]) return R[0][1];
+  for (let i = 0; i < R.length - 1; i++) if (t >= R[i][0] && t <= R[i + 1][0]) return R[i][1] + (R[i + 1][1] - R[i][1]) * (t - R[i][0]) / Math.max(1e-6, R[i + 1][0] - R[i][0]);
+  return R[R.length - 1][1]; }
+const resta = t => Math.max(0, C.alvo - relS(t));
+function mmss(t) { const r = resta(t); let s = Math.floor(r); if (r > 1e-6 && s === 0) s = 1;   // o 00:00 só aparece na palavra "zero"
+  return `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`; }
+
+// a Legenda Gigante não repete a pergunta fixada: tira as palavras das janelas da pergunta e refaz os grupos
+// (sem terminar grupo de 3 em palavra de ligação, e "zero reais" junto)
+(() => {
+  const fora = WD.filter(w => !dentro(w[0], PG.janelas)); WD.length = 0; WD.push(...fora);
+  const LIG = new Set(['o', 'a', 'os', 'as', 'de', 'do', 'da', 'e', 'em', 'no', 'na', 'um', 'uma', 'com', 'para', 'pra', 'que', 'eu', 'se']);
+  const GRU = new Set(['reais', 'mil', 'milhão']), lp = s => s.toLowerCase().replace(/[.,!?;:]/g, '');
+  const g = []; let cur = [];
+  WD.forEach((w, i) => { const nx = WD[i + 1];
+    const quebra = !nx || /[.,!?;:]$/.test(w[1]) || nx[0] - w[0] > .7 || nx[2] !== w[2];
+    if (cur.length === 2 && !quebra && (LIG.has(lp(w[1])) || GRU.has(lp(nx[1])))) { g.push(cur); cur = []; }
+    cur.push(i); if (quebra || cur.length >= 3) { g.push(cur); cur = []; } });
+  if (cur.length) g.push(cur);
+  GRUPOS.length = 0; GRUPOS.push(...g);
+})();
+function grupoIni(t) { let a = null; for (const g of GRUPOS) if (WD[g[0]][0] - .03 <= t) a = WD[g[0]][0]; return a; }
+function legenda(t) {
+  if (dentro(t, PG.janelas) || dentro(t, C.sem_legenda) || dentro(t, RAPIDOS) || emDuplo(t) || t >= A.fecho) return '';
+  const g0 = grupoIni(t); if (g0 === null) return '';
+  return legendaGigante(t, dentro(g0, C.legenda_alta) ? 236 : 560);
+}
+
+// pergunta fixada: caixa escura, palavras acendendo na voz da repórter
+function pergunta(t) {
+  const J = PG.janelas; let ws = null, o = 0, dy = 0, aceso = true;
+  if (t < J[0][1]) { ws = PG.ws; o = 1; }                                       // aberta desde o quadro 0; sai no corte
+  else if (t >= J[1][0] && t < J[1][1] + .2) { ws = PG.ws2; const e = mola((t - J[1][0]) / .6);
+    o = cl((t - J[1][0]) / .1) * (1 - cl((t - J[1][1]) / .2)); dy = (1 - e) * -26; }
+  else if (t >= J[2][0]) { ws = PG.ws; aceso = false; const e = eo((t - J[2][0]) / .3); o = e; dy = (1 - e) * -14; }   // volta como no quadro 0 (laço)
+  if (!ws || o <= 0) return '';
+  const fs = Math.min(54, caber(ws.map(w => w[1]).join(' ') + '  ', 'Inter Display', 800, 54));
+  const pal = ws.map(([tw, txt]) => { const on = aceso ? cl((t - tw + .03) / .2) : 0, q = /quanto/i.test(txt);
+    return `<span style="display:inline-block;margin:0 .12em;opacity:${.42 + .58 * on};color:${q ? OURO2 : CREME}">${q ? txt.toUpperCase() : txt}</span>`; }).join(' ');
+  return `<div style="position:absolute;left:70px;width:860px;top:236px;height:94px;box-sizing:border-box;background:rgba(20,18,16,.92);border-radius:16px;padding:9px 24px 0;text-align:center;opacity:${o};transform:translateY(${dy}px)">
+    <div style="font-family:${MONO};font-size:20px;letter-spacing:.08em;color:${OURO};line-height:24px;white-space:nowrap">${PG.selo}</div>
+    <div style="font-family:'Inter Display';font-weight:900;font-size:${fs}px;line-height:${fs + 2}px;white-space:nowrap;margin-top:2px">${pal}</div></div>`;
+}
+
+// anel: estado grande, selo ou fecho, com mola nas trocas
+function pesoGrande(t) { let w = 0;
+  for (const [a, b] of A.grande) { if (t < a) continue;
+    w = t < b ? (a <= A.entra + 1e-3 ? 1 : mola((t - a) / .6)) : 1 - mola((t - b) / .6); }
+  return w; }
+function geoAnel(t) {
+  if (t < A.entra || (t >= A.oculto[0] && t < A.oculto[1])) return null;
+  const g = pesoGrande(t), G = A.c_grande, S = A.c_selo, F = A.c_fecho;
+  let x = lerp(S[0], G[0], g), y = lerp(S[1], G[1], g), r = lerp(S[2], G[2], g);
+  if (t >= A.fecho) { const f = mola((t - A.fecho) / .7); x = lerp(x, F[0], f); y = lerp(y, F[1], f); r = lerp(r, F[2], f); }
+  let o = cl((t - A.entra) / .1), s = .7 + .3 * mola((t - A.entra) / .6);
+  if (t >= A.oculto[1]) { o = Math.min(o, cl((t - A.oculto[1]) / .1)); s *= .7 + .3 * mola((t - A.oculto[1]) / .6); }
+  if (t >= A.some) { const e = eio((t - A.some) / .25); o *= 1 - e; s *= 1 - .35 * e; }
+  if (o <= .001) return null;
+  return { x, y, r: r * s, k: r / G[2], o };
+}
+function anel(t) {
+  const g = geoAnel(t); if (!g) return '';
+  const { x, y, r, k, o } = g, u = r / A.c_grande[2];                 // u: escala na tela (estado e entrada)
+  const RR = r * 174 / 190, sw = Math.max(6, 16 * u), CC = 2 * Math.PI * RR;
+  const fr = resta(t) / C.alvo, el = 1 - fr, ang = el * 2 * Math.PI;
+  let s = `<circle cx="${x}" cy="${y}" r="${r}" fill="rgba(20,18,16,.78)"/><circle cx="${x}" cy="${y}" r="${RR}" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="${sw}"/>`;
+  if (fr > 1e-5) {
+    s += `<circle cx="${x}" cy="${y}" r="${RR}" fill="none" stroke="${OURO}" stroke-width="${sw}" stroke-dasharray="${fr * CC} ${CC + 2}" stroke-dashoffset="${-el * CC}" transform="rotate(-90 ${x} ${y})"/>`;
+    s += `<circle cx="${x + RR * Math.sin(ang)}" cy="${y - RR * Math.cos(ang)}" r="${sw * .5 + 2}" fill="${CREME}"/>`;
+  }
+  for (const m of MARCOS) {                                              // pontos numerados no trilho, onde a cabeça passou
+    if (m.sem_ponto || t < m.t || relS(t) < m.src - .5) continue;
+    const a = m.src / C.alvo * 2 * Math.PI, p = mola((t - m.t) / .6), rd = Math.max(13, 17 * u) * Math.max(0, p);
+    const px = x + RR * Math.sin(a), py = y - RR * Math.cos(a);
+    s += `<circle cx="${px}" cy="${py}" r="${rd}" fill="${OURO2}" stroke="${ESC}" stroke-width="3"/><text x="${px}" y="${py + rd * .4}" text-anchor="middle" font-family="Inter Display" font-weight="900" font-size="${rd * 1.15}" fill="${ESC}">${m.n}</text>`;
+  }
+  // centro: contagem; na palavra "zero" vira ZERO REAIS com marca-texto; na rebobinada volta a contar
+  const zm = t >= A.zero && t < A.rebobina[0], z = zm ? 1 : 0;              // troca seca, escondida pelo clarão
+  const pd = t >= A.rebobina[0] ? .9 + .1 * mola((t - A.rebobina[0]) / .6) : 1;   // dígitos voltam com mola na rebobinada
+  const wR = WD.find(w => w[0] > A.zero && /^reais/i.test(w[1])), tR = wR ? wR[0] : A.zero;
+  const lbl = cl((k - .72) / .15);
+  const centro = `<div style="position:absolute;left:${x}px;top:${y}px;width:0;height:0;transform:scale(${u});opacity:${o}">
+    <div style="position:absolute;left:-190px;width:380px;top:-60px;text-align:center;opacity:${1 - z}">
+      <div style="font-family:${MONO};font-weight:700;font-size:88px;line-height:88px;color:${CREME};transform:scale(${pd})">${mmss(t)}</div>
+      <div style="font-family:${MONO};font-size:20px;letter-spacing:.16em;color:${OURO};margin-top:14px;opacity:${lbl}">ATÉ A RESPOSTA</div></div>
+    <div style="position:absolute;left:-190px;width:380px;top:-96px;text-align:center;opacity:${z}">
+      <div style="font-family:Cinzel;font-weight:900;font-size:78px;line-height:96px;transform:scale(${.86 + .14 * mola((t - A.zero) / .6)})">${marca(t, A.zero, `<span style="position:relative;padding:0 4px;color:${t >= A.zero + .15 ? ESC : CREME}">ZERO</span>`)}</div>
+      <div style="font-family:Cinzel;font-weight:900;font-size:50px;line-height:56px;color:${CREME};opacity:${cl((t - tR + .03) / .15)}">REAIS</div>
+      <div style="font-family:${MONO};font-size:22px;color:#e6dccb;margin-top:10px;opacity:${lbl * cl((t - tR) / .2)}">${(MARCOS.find(m => !m.titulo) || {}).min || ''}</div></div></div>`;
+  return `<div style="opacity:${o}"><svg width="${W}" height="${H}" style="position:absolute;left:0;top:0">${s}</svg></div>${centro}`;
+}
+
+// título do marco ao lado do selo (Cinzel com caber, até 2 linhas) e o minuto real da entrevista
+function linhas(txt) {
+  if (caber(txt, 'Cinzel', 580, 46) >= 40) return [txt];
+  const ws = txt.split(' '); let melhor = null, nota = 1e9;
+  for (let i = 1; i < ws.length; i++) { const a = ws.slice(0, i).join(' '), b = ws.slice(i).join(' ');
+    const n = Math.max(a.length, b.length) - (/,$/.test(ws[i - 1]) ? 4 : 0); if (n < nota) { nota = n; melhor = [a, b]; } }
+  return melhor;
+}
+function marcoTitulo(t) {
+  if (t >= A.fecho || (t >= A.oculto[0] && t < A.oculto[1])) return '';
+  let i = -1; MARCOS.forEach((m, j) => { if (t >= m.t) i = j; }); if (i < 0) return '';
+  const m = MARCOS[i]; let a0 = m.t;
+  if (m.titulo) {                                    // títulos não voltam depois de o anel crescer ou sumir
+    const fim = Math.min(...A.grande.map(([a]) => a).filter(a => a > m.t), A.oculto[0] > m.t ? A.oculto[0] : 1e9);
+    if (t >= fim) return '';
+  } else {                                           // marco sem título (o ZERO do anel): o minuto volta a cada selo
+    for (const [, b] of A.grande) if (b > m.t && b <= t) a0 = Math.max(a0, b);
+    if (A.oculto[1] > m.t && A.oculto[1] <= t) a0 = Math.max(a0, A.oculto[1]);
+  }
+  const o = cl(1 - pesoGrande(t) * 2); if (o <= 0) return '';
+  const p = mola((t - a0) / .6), p2 = mola((t - a0 - .1) / .6);   // o minuto entra 3 quadros depois
+  let h = '';
+  if (m.titulo) {
+    const L = linhas(m.titulo), fs = Math.min(46, ...L.map(l => caber(l, 'Cinzel', 580, 46))), alt = L.length * Math.round(fs * 1.06) + 24;
+    h += `<div style="position:absolute;left:250px;top:${456 - alt}px;opacity:${o * cl(p * 3)};transform:translateX(${(1 - p) * -40}px)">
+      <div style="display:flex;align-items:center;gap:16px;background:rgba(20,18,16,.9);border-left:6px solid ${OURO};border-radius:12px;padding:12px 20px 12px 16px;height:${alt - 24}px">
+      <span style="font-family:Cinzel;font-weight:900;font-size:${Math.round(fs * 1.15)}px;line-height:1;color:${OURO2}">${m.n}</span>
+      <span style="font-family:Cinzel;font-weight:900;font-size:${fs}px;line-height:${Math.round(fs * 1.06)}px;color:${CREME};white-space:nowrap">${L.join('<br>')}</span></div></div>`;
+  }
+  h += `<div style="position:absolute;left:250px;top:466px;opacity:${o * cl(p2 * 3)};transform:translateX(${(1 - p2) * -30}px);font-family:${MONO};font-size:22px;letter-spacing:.06em;color:#e6dccb;background:rgba(20,18,16,.84);padding:5px 12px;border-radius:8px;white-space:nowrap">${m.min}</div>`;
+  return h;
+}
+
+// tela dividida: faixa AO MESMO TEMPO na emenda
+function faixaDuplo(t) {
+  const D = C.duplo; if (!emDuplo(t)) return '';
+  const p = mola((t - D.a) / .6), q = cl((t - D.a - .1) / .15);
+  return `<div style="position:absolute;left:0;width:${W}px;top:959px;height:2px;background:${OURO};transform:scaleX(${cl(p)})"></div>
+  <div style="position:absolute;left:60px;width:880px;top:930px;height:60px;box-sizing:border-box;background:${ESC};border-top:2px solid ${OURO};border-bottom:2px solid ${OURO};border-radius:6px;display:flex;align-items:center;justify-content:center;opacity:${cl(p * 3)};transform:scaleX(${.6 + .4 * p})">
+  <span style="font-family:${MONO};font-size:22px;letter-spacing:.14em;color:${CREME};opacity:${q};white-space:nowrap">${D.txt}</span></div>`;
+}
+
+// CTA de comentário: caixa recuada para ficar entre x 70 e 930 (longe dos botões do app); sai antes do laço
+function cta(t) {
+  const K = C.cta; if (!K || t < K.a) return '';
+  const o = 1 - eio((t - (K.sai || 1e9)) / .25); if (o <= 0) return '';
+  // mesmo desenho do ctaComentario da base, com a frase de baixo em caixa escura (a mesa é branca)
+  const p = back((t - K.a) / .45), n = Math.floor(cl((t - K.a - .3) / (K.texto.length / 16)) * K.texto.length), on = n >= K.texto.length;
+  const cur = Math.floor(t * 2.5) % 2 ? '|' : '&nbsp;', q = eo((t - K.a - 1) / .3);
+  return `<div style="position:absolute;left:70px;width:860px;top:${K.top}px;opacity:${o * cl(p * 2)};transform:scale(${.85 + .15 * p})">
+    <div style="display:flex;align-items:center;gap:20px;background:#fff;border-radius:40px;padding:18px 22px;box-shadow:0 18px 40px rgba(0,0,0,.35)"><i style="width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,${OURO2},#9A5F2A);flex:none"></i><span style="flex:1;font-size:40px;font-weight:800;color:${ESC}">${K.texto.slice(0, n)}<span style="color:#C48C34">${on ? '' : cur}</span></span><i style="width:60px;height:60px;border-radius:50%;background:${on ? OURO : '#ddd'};flex:none"></i></div>
+    <div style="text-align:center;margin-top:18px;opacity:${q};transform:translateY(${(1 - q) * 12}px)"><span style="display:inline-block;background:rgba(20,18,16,.9);border-radius:14px;padding:10px 22px 12px;color:${CREME};font-size:34px;font-weight:800;line-height:1.2;white-space:nowrap">${K.linha1}${K.linha2 ? `<br><span style="font-family:Pf;font-style:italic;color:${OURO2};font-weight:400">${K.linha2}</span>` : ''}</span></div></div>`;
+}
+
+// clarão ouro de 4 quadros na palavra "zero" (um só)
+function clarao(t) { const q = Math.round(t * 30) - Math.ceil(A.zero * 30 - 1e-6); if (q < 0 || q > 3) return '';
+  return `<div style="position:absolute;inset:0;background:rgba(232,179,106,${(.25 * (1 - q / 4)).toFixed(3)})"></div>`; }
+
+function render(t, camada) {
+  const el = document.getElementById(camada); if (camada !== 'front') { el.innerHTML = ''; return; }
+  let h = '';
+  if (!emDuplo(t)) h += dentro(t, RAPIDOS) ? topoEscuro(.72, 1080) : topoEscuro(.5, 900);
+  h += pergunta(t);
+  h += marcoTitulo(t);
+  h += anel(t);
+  h += legenda(t);
+  if (C.nome) h += nomeTV(t, C.nome[0], C.nome[1], 1250);
+  h += faixaDuplo(t);
+  h += cta(t);
+  h += clarao(t);
+  el.innerHTML = h;
+}
+</script></body></html>

@@ -1,0 +1,150 @@
+<!doctype html><html><head><meta charset="utf-8"></head><body><script>/*__BASE__*/
+// TL_FITA · de trás pra frente: a fita rebobinando do fim ao começo. A base (rt + amostra de ré) vem pronta do timeremap.py.
+// Base do formato: o DECK no topo (caixa #141210, dois carretéis genéricos, contador mm:ss da gravação e estado da fita).
+// C.contador [[t_saida, s_gravacao]] linear por partes (salto de 0,01 s = corte seco)
+// C.gancho {a, ate, txt, chave, linha, top}   C.pergunta {a, b, selo}  (palavras de C.words entre a e b)
+// C.assuntos [{t, n, titulo, min, ate, marca?}]  (paradas; t resolvido pelo cortar.py pela palavra dita; fica a 70% na ré seguinte e sai em ate)
+// C.nome [a, b, top?, left?]   C.denovo [a, b]   C.carimbo {a, b, txt, linha}   C.indice {a, b, titulo, cta_txt, cta, cta_top}
+const R = C.contador;
+const DX = 90, DY = 236, DW = 840, DH = 124;          // deck: x 90-930, y 236-360
+const RL = [210 - DX, 298 - DY], RR = [810 - DX, 298 - DY];   // centros dos carretéis dentro do deck
+const TOTAL = 2121;                                   // fim da gravação (35:21): quanto de fita em cada carretel
+function contador(t) {
+  if (t <= R[0][0]) return R[0][1];
+  for (let i = 0; i < R.length - 1; i++) if (t >= R[i][0] && t <= R[i + 1][0]) return R[i][1] + (R[i + 1][1] - R[i][1]) * (t - R[i][0]) / Math.max(1e-6, R[i + 1][0] - R[i][0]);
+  return R[R.length - 1][1];
+}
+function trecho(t) {          // trecho do contador em t; o salto de corte seco (< 0,05 s) não vira estado
+  let i = R.length - 2;
+  for (let k = 0; k < R.length - 1; k++) if (t < R[k + 1][0]) { i = k; break; }
+  if (R[i + 1][0] - R[i][0] < .05 && i + 2 < R.length) i++;
+  return i;
+}
+const taxa = t => { const i = trecho(t); return (R[i + 1][1] - R[i][1]) / Math.max(1e-6, R[i + 1][0] - R[i][0]); };
+const emDeNovo = t => C.denovo && t >= C.denovo[0] && t < C.denovo[1];
+function estado(t) {
+  if (emDeNovo(t)) return 'DE NOVO';
+  const v = taxa(t);
+  return v < -.05 ? 'VOLTANDO' : Math.abs(v) <= .05 ? 'PARADO' : v > 1.5 ? 'AVANÇANDO' : 'PLAY';
+}
+// trechos de ré (para a tinta ouro e para desligar a legenda) e tempo acumulado em PLAY (giro visível dos carretéis)
+const RE = [], PLAYS = [];
+for (let i = 0; i < R.length - 1; i++) {
+  const d = R[i + 1][0] - R[i][0]; if (d < .05) continue; const v = (R[i + 1][1] - R[i][1]) / d;
+  if (v < -.05) { const u = RE[RE.length - 1]; if (u && Math.abs(u[1] - R[i][0]) < .02) u[1] = R[i + 1][0]; else RE.push([R[i][0], R[i + 1][0]]); }
+  else if (v > .05 && v <= 1.5) PLAYS.push([R[i][0], R[i + 1][0]]);
+}
+const emRe = t => RE.some(([a, b]) => t >= a && t < b);
+const pesoRe = t => RE.reduce((w, [a, b]) => Math.max(w, vis(t, a, b, .08, .08)), 0);
+const tPlay = t => PLAYS.reduce((s, [a, b]) => s + Math.max(0, Math.min(t, b) - a), 0);
+const angulo = t => 3 * contador(t) + 48 * tPlay(t);     // 3 x contador: a ré gira para trás; + giro lento no PLAY
+const mmss = s => { s = Math.max(0, s + 1e-3); return `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(Math.floor(s % 60)).padStart(2, '0')}`; };
+
+function carretel(cx, cy, ang, varre, fita) {           // genérico: aro, rolo de fita, seis raios, cubo; borrão quando gira rápido
+  const rf = Math.sqrt(14 * 14 + (44 * 44 - 14 * 14) * cl(fita));
+  const n = Math.max(1, Math.min(10, Math.ceil(Math.abs(varre) / 6)));
+  let raios = '';
+  for (let j = 0; j < n; j++) {
+    const a0 = ang - varre * (n > 1 ? j / (n - 1) : 0), op = n > 1 ? Math.min(1, 1.7 / n) : 1;
+    raios += `<g transform="rotate(${a0.toFixed(2)} ${cx} ${cy})" opacity="${op.toFixed(3)}">` +
+      [0, 60, 120, 180, 240, 300].map(k => `<line x1="${cx}" y1="${cy - 12}" x2="${cx}" y2="${cy - 43}" stroke="${OURO}" stroke-width="6" stroke-linecap="round" transform="rotate(${k} ${cx} ${cy})"/>`).join('') + '</g>';
+  }
+  return `<circle cx="${cx}" cy="${cy}" r="48" fill="rgba(232,179,106,.06)" stroke="${OURO}" stroke-width="3"/>
+    <circle cx="${cx}" cy="${cy}" r="${rf.toFixed(1)}" fill="#3a2c1c" stroke="rgba(232,179,106,.45)" stroke-width="1.5"/>${raios}
+    <circle cx="${cx}" cy="${cy}" r="10" fill="${CREME}"/><circle cx="${cx}" cy="${cy}" r="4" fill="${ESC}"/>`;
+}
+function icone(e, cor) {
+  const p = { 'VOLTANDO': 'M17 0L0 10L17 20ZM36 0L19 10L36 20Z', 'PLAY': 'M0 0L18 10L0 20Z', 'AVANÇANDO': 'M0 0L17 10L0 20ZM19 0L36 10L19 20Z', 'PARADO': 'M1 2H17V18H1Z' }[e];
+  if (p) return `<svg width="${e === 'PLAY' || e === 'PARADO' ? 18 : 36}" height="20" viewBox="0 0 ${e === 'PLAY' || e === 'PARADO' ? 18 : 36} 20" style="margin-right:12px"><path d="${p}" fill="${cor}"/></svg>`;
+  return `<svg width="22" height="22" viewBox="0 0 24 24" style="margin-right:12px"><path d="M6.2 6.6A8 8 0 1 1 4 12" fill="none" stroke="${cor}" stroke-width="3.2" stroke-linecap="round"/><path d="M1.5 4.5L9.5 3.5L6 10.5Z" fill="${cor}"/></svg>`;   // DE NOVO: seta circular
+}
+function deck(t) {
+  const s = contador(t), e = estado(t), ang = angulo(t), varre = ang - angulo(t - 1 / 30);
+  const fr = cl(s / TOTAL), rL = Math.sqrt(196 + 1740 * (1 - fr)), rR = Math.sqrt(196 + 1740 * fr);
+  const quente = e === 'VOLTANDO' || e === 'DE NOVO' || e === 'AVANÇANDO', cor = quente ? OURO2 : CREME;
+  const fita = `<path d="M${RL[0]} ${(RL[1] + rL).toFixed(1)} L${RL[0] + 90} ${DH - 9} L${RR[0] - 90} ${DH - 9} L${RR[0]} ${(RR[1] + rR).toFixed(1)}" fill="none" stroke="#8a6a3c" stroke-width="2"/>`;
+  return `<div style="position:absolute;left:${DX}px;top:${DY}px;width:${DW}px;height:${DH}px;box-sizing:border-box;background:rgba(20,18,16,.88);border:2px solid ${OURO};border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.35)">
+    <svg width="${DW - 4}" height="${DH - 4}" viewBox="2 2 ${DW - 4} ${DH - 4}" style="position:absolute;left:0;top:0">${fita}${carretel(RL[0], RL[1], ang, varre, 1 - fr)}${carretel(RR[0], RR[1], ang, varre, fr)}</svg>
+    <div style="position:absolute;left:180px;right:180px;top:12px;text-align:center">
+      <div style="display:flex;align-items:center;justify-content:center;height:26px;font-family:'DejaVu Sans Mono',monospace;font-size:20px;letter-spacing:.2em;color:${cor}">${icone(e, cor)}${e}</div>
+      <div style="font-family:'DejaVu Sans Mono',monospace;font-size:60px;font-weight:700;line-height:66px;color:${cor};letter-spacing:.04em">${mmss(s)}</div></div></div>`;
+}
+function gancho(t) {
+  const G = C.gancho; if (!G || t > G.ate + .05) return '';
+  const o = 1 - cl((t - (G.ate - .2)) / .2);
+  return `<div style="opacity:${o}">${topoEscuro(.72, 1000)}${connectHook(t, G.a, G.txt, G.chave, G.top || 420, G.linha)}</div>`;
+}
+function pergunta(t) {
+  const P = C.pergunta; if (!P) return '';
+  const ws = (C.words || []).filter(w => w[0] >= P.a - .05 && w[0] < P.b).map(w => [w[0], w[1]]);
+  if (!ws.length) return ''; const a = ws[0][0];
+  if (t < a - .02 || t > P.b) return '';
+  const p = mola((t - a) / .45), o = cl((t - a) / .1) * (1 - cl((t - (P.b - .1)) / .1)), sp = back((t - a - .1) / .35);
+  return `<div style="position:absolute;left:90px;width:840px;top:390px;opacity:${o};transform:translateY(${(1 - p) * -24}px) scale(${.94 + .06 * p});transform-origin:50% 0">
+    <div style="background:rgba(20,18,16,.9);border:2px solid rgba(232,179,106,.6);border-radius:16px;padding:30px 34px 20px;text-align:center;font-weight:900;font-size:42px;line-height:1.12;color:${CREME}">${frasePalavras(t, ws)}</div>
+    <div style="position:absolute;left:26px;top:-16px;background:${OURO};color:${ESC};font-weight:800;font-size:18px;letter-spacing:.2em;padding:5px 14px;border-radius:7px;transform:scale(${sp});transform-origin:0 50%">${P.selo || 'REPÓRTER'}</div></div>`;
+}
+// Marca-texto deste formato: a faixa cobre a caixa alta inteira (padding acima da altura das maiúsculas e abaixo da linha de base)
+// e a palavra só escurece onde a faixa já passou (camada escura recortada na mesma largura da faixa). Margens negativas mantêm o layout.
+function marcaFita(t, a, palavra) {
+  const p = eo((t - a) / .3), pad = 'padding:.2em .14em .1em';
+  return `<span style="position:relative;display:inline-block;${pad};margin:-.2em 0 -.1em;line-height:1;white-space:nowrap">` +
+    `<i style="position:absolute;left:0;top:0;bottom:0;width:${(p * 100).toFixed(2)}%;background:${OURO};border-radius:8px"></i>` +
+    `<span style="position:relative;color:${CREME}">${palavra}</span>` +
+    `<span style="position:absolute;left:0;top:0;right:0;bottom:0;${pad};color:${ESC};clip-path:inset(-10% ${(100 - p * 100).toFixed(2)}% -10% 0)">${palavra}</span></span>`;
+}
+function parada(t, P) {
+  if (t < P.t - .02 || t > P.ate + .25) return '';
+  const e = mola((t - P.t) / .5), o = cl((t - P.t) / .1) * (1 - cl((t - P.ate) / .2)) * (1 - .3 * pesoRe(t)), sobe = eio((t - P.ate) / .22) * 46;
+  const num = back((t - P.t - .07) / .4), tit = eo((t - P.t - .1) / .35), lab = cl((t - P.t - .27) / .2);
+  const fs = caber(P.titulo, 'Cinzel', 700, 50);
+  let txt = P.titulo;
+  if (P.marca) { const ma = P.t + .3; txt = txt.replace(' ' + P.marca, `<span style="display:inline-block;margin-left:.28em">${marcaFita(t, ma, P.marca)}</span>`); }
+  return `<div style="position:absolute;left:70px;width:860px;top:384px;height:112px;opacity:${o};transform:translate(${(1 - e) * -40}px,${-sobe}px)">
+    <div style="position:absolute;inset:0;background:rgba(20,18,16,.9);border-radius:14px;border-left:6px solid ${OURO}"></div>
+    <div style="position:absolute;left:14px;top:0;height:112px;width:110px;display:flex;align-items:center;justify-content:center;font-family:Cinzel;font-weight:900;font-size:110px;line-height:1;color:${OURO2};transform:translateY(${(1 - num) * -30}px) scale(${.7 + .3 * num});opacity:${cl(num * 2)}">${P.n}</div>
+    <div style="position:absolute;left:126px;top:20px;bottom:20px;width:2px;background:rgba(232,179,106,.5)"></div>
+    <div style="position:absolute;left:146px;right:14px;top:14px;height:60px;display:flex;align-items:center;${tit < 1 ? `clip-path:inset(-10px ${(1 - tit) * 100}% -10px -12px)` : ''}"><span class="fit" data-w="670" style="display:inline-block;font-family:Cinzel;font-weight:900;font-size:${fs}px;line-height:1;color:${CREME};white-space:nowrap">${txt}</span></div>
+    <div style="position:absolute;left:146px;top:76px;font-family:'DejaVu Sans Mono',monospace;font-size:20px;letter-spacing:.08em;color:#cfc6b6;opacity:${lab}">NA TV · min ${P.min}</div></div>`;
+}
+function carimbo(t) {
+  const K = C.carimbo; if (!K || t < K.a - .01 || t > K.b + .2) return '';
+  const p = back((t - K.a) / .3), o = cl((t - K.a) / .07) * (1 - cl((t - K.b) / .18)), q = Math.floor((t - K.a) * 30 + 1e-6);
+  const tr = { 2: [6, -4], 3: [-5, 3], 4: [3, -2] }[q] || [0, 0];       // tremida só nos 3 quadros do carimbo
+  return `<div style="position:absolute;left:0;right:0;top:400px;height:620px;opacity:${o};background:linear-gradient(180deg,rgba(8,7,6,0) 0%,rgba(8,7,6,.74) 26%,rgba(8,7,6,.74) 74%,rgba(8,7,6,0) 100%)"></div>
+  <div style="position:absolute;left:80px;right:120px;top:560px;text-align:center;opacity:${o};transform:translate(${tr[0]}px,${tr[1]}px) scale(${1.35 - .35 * p})">
+    <div style="font-family:Cinzel;font-weight:900;font-size:140px;line-height:1;color:${CREME};text-shadow:0 6px 24px rgba(0,0,0,.6)">${K.txt}</div>
+    <div style="margin-top:22px;font-family:'DejaVu Sans Mono',monospace;font-size:24px;letter-spacing:.2em;color:${OURO2};opacity:${cl((t - K.a - .12) / .2)}">${K.linha}</div></div>`;
+}
+function indice(t) {
+  const I = C.indice; if (!I || t < I.a) return '';
+  const p = eo((t - I.a) / .45), sai = 1 - eo((t - I.b) / .25), o = p * sai; if (o <= 0) return '';
+  const L = [...C.assuntos].sort((x, y) => x.n - y.n);
+  return `<div style="position:absolute;inset:0;background:rgba(8,7,6,${.8 * o})"></div>
+  <div style="position:absolute;left:80px;width:840px;top:410px;opacity:${o}">
+    <div style="font-family:Cinzel;font-weight:900;font-size:30px;letter-spacing:.12em;color:${OURO};margin-bottom:22px">${I.titulo}</div>` +
+    L.map((c, i) => { const q = mola((t - I.a - .15 - i * .1) / .5);
+      return `<div style="display:flex;align-items:center;gap:20px;height:86px;opacity:${cl(q * 2)};transform:translateX(${(1 - q) * -50}px)"><span style="font-family:Cinzel;font-weight:900;font-size:60px;line-height:1;color:${OURO2};width:56px;text-align:center">${c.n}</span>
+        <div><div class="fit" data-w="740" style="font-family:Cinzel;font-weight:900;font-size:${caber(c.titulo, 'Cinzel', 740, 40)}px;line-height:1.05;color:${CREME};white-space:nowrap;width:max-content">${c.titulo}</div>
+        <div style="font-family:'DejaVu Sans Mono',monospace;font-size:20px;letter-spacing:.08em;color:#cfc6b6;margin-top:6px">NA TV · min ${c.min}</div></div></div>`; }).join('') +
+  `</div><div style="opacity:${sai}">${ctaComentario(t, I.a, I.cta_txt, '', '', I.cta_top || 1000)}</div>
+  <div style="position:absolute;left:90px;right:140px;top:${(I.cta_top || 1000) + 126}px;text-align:center;color:#fff;font-size:38px;font-weight:800;line-height:1.2;text-shadow:0 3px 12px #000;opacity:${cl((t - I.a - .3) / .3) * sai};transform:translateY(${(1 - eo((t - I.a - .3) / .4)) * 14}px)">${I.cta}</div>`;
+}
+function render(t, camada) {
+  const el = document.getElementById(camada); if (camada !== 'front') { el.innerHTML = ''; return; }
+  let h = '';
+  const w = pesoRe(t); if (w > 0) h += `<div style="position:absolute;inset:0;background:rgba(245,196,110,${(.1 * w).toFixed(3)})"></div>`;   // tinta ouro na ré
+  h += gancho(t);
+  h += carimbo(t);
+  if (C.nome) h += nomeTV(t, C.nome[0], C.nome[1], C.nome[2] || 1250, C.nome[3] || 56);   // [a, b, top, left]: do lado de quem fala
+  const P = C.pergunta, naPergunta = P && t >= P.a - .05 && t < P.b + .05;
+  h += pergunta(t);
+  for (const a of C.assuntos || []) h += parada(t, a);
+  if (!naPergunta && !emRe(t) && !emDeNovo(t) && !(C.indice && t >= C.indice.a)) h += legendaGigante(t, 520);
+  h += indice(t);
+  h += deck(t);
+  el.innerHTML = h;
+  // encaixe pela largura real no DOM (o measureText do canvas subestima o Cinzel 900): determinístico
+  for (const e of el.querySelectorAll('.fit')) { const w = +e.dataset.w, r = e.scrollWidth; if (r > w) e.style.fontSize = (parseFloat(e.style.fontSize) * w / r).toFixed(2) + 'px'; }
+}
+</script></body></html>
