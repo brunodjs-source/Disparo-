@@ -562,5 +562,15 @@
  "_nota": "Legenda literal da voz 951,6-954,4: 'Meu pai foi / um dos PIONEIROS / informáticos do BRASIL' (3 de 4 passes do conferir.py ouviram 'informáticos'; cortar a palavra mudava o sentido para 'pioneiros do Brasil'). Nome e cargo de 6,6 a 7,8 s (fade termina em 8,1, antes da ré), à direita, embaixo do Bruno. Replay do Uau com punch-in de 2,5x no rosto da Mirna (crop 432x768 em x 9, y 536 do Z2). O 'Ainda?' (1380,1 s) virou react do tl05, por isso não entrou aqui.",
  "destaques": [
   "Brasil"
- ]
+ ],
+ "blur_rects": {
+  "base": [
+   [
+    520,
+    1560,
+    560,
+    300
+   ]
+  ]
+ }
 }

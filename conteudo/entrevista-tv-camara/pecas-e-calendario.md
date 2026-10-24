@@ -2,7 +2,9 @@
 
 Rodada de 24/10/2026. Fonte: gravação de 35:21 (bastidor de 0:00 a 14:30, programa de 14:35 a 29:50, imagens do Bruno no computador depois). Transcrição medium conferida em 2 passes nos trechos usados. O "min" do rótulo conta a partir da abertura do programa.
 
-## Antes de publicar qualquer peça (bloqueia tudo)
+## Antes de publicar qualquer peça
+Atualização de 24/10, 13h20: a Mirna liberou o uso ("pode seguir", dito ao Bruno). Falta guardar isso por escrito (print da conversa) e saber a data de exibição. As peças abaixo já estão agendadas.
+
 1. **Autorização da Mirna Abreu por escrito**, de uso de imagem e voz nas redes do Bruno. Ela aparece no plano aberto da mesa (Z2) em quase todas as peças, e a voz dela entra em MANCHETE 01 e em CINEMA 01.
 2. **Data de exibição do programa.** Antes dela, só com o ok da produção.
 3. Sem autorização: as fichas trocam os planos para CB (só o Bruno) e cortam a voz dela. A troca é só no JSON da ficha (`planos` e `seg`), sem refazer o modelo.
@@ -35,25 +37,25 @@ Regras do CLAUDE.md conferidas: sem travessão, sem emoji, sem promessa de resul
 > Fui DJ por 20 anos. Na entrevista à TV Câmara Campinas eu contei por que isso nunca foi uma aventura.
 > Antes do digital, eu aprendi como funcionava a noite, as casas e as festas. Foi ali que comecei a fazer estratégia de divulgação, muito antes de chamar isso de lançamento.
 > Manda para um expert que vai lançar este ano.
-> #estrategistadelancamento #lancamento #marketingdigital #empreendedorismo #campinas #carreira
+> #estrategistadelancamento #lancamento #marketingdigital #empreendedorismo #campinas
 
 **pb02**
 > Um restaurante que vendia 45 mil. Colocamos ele para vender 250 mil com o marketing digital.
 > Contei esse caso na TV Câmara Campinas. O número de um caso não se repete igual em outro negócio. O que se repete é a ordem: entender o produto antes de anunciar.
 > Vai lançar nos próximos 90 dias? Me manda a data no direct.
-> #estrategistadelancamento #marketingdigital #restaurante #empreendedorismo #campinas #estrategia
+> #estrategistadelancamento #marketingdigital #restaurante #empreendedorismo #campinas
 
 **ci01**
 > Até hoje o melhor marketing é o olho no olho.
 > Na TV eu disse que nem tudo que vemos é ouro. Muita gente vende o que não consegue cumprir, e o cliente chega machucado. Por isso o encontro ainda decide a venda.
 > E você, o que teria respondido?
-> #estrategistadelancamento #marketingdigital #vendas #confianca #empreendedorismo #campinas
+> #estrategistadelancamento #marketingdigital #vendas #empreendedorismo #campinas
 
 **po01**
 > O Método Xeque-Mate do jeito que eu expliquei na TV: os gatilhos corretos, cada jogada, cada posicionamento e o momento certo.
 > Qual dessas peças falta no seu lançamento? Comenta a palavra.
 > Salva para conferir antes do próximo lançamento.
-> #metodoxequemate #estrategistadelancamento #lancamento #marketingdigital #estrategia #infoproduto
+> #metodoxequemate #estrategistadelancamento #lancamento #marketingdigital #estrategia
 
 **tl01**
 > 35 minutos de gravação em 35 segundos. Bastidor da minha entrevista à TV Câmara Campinas.
@@ -65,7 +67,7 @@ Regras do CLAUDE.md conferidas: sem travessão, sem emoji, sem promessa de resul
 > 6 Zero reais (min 10:30)
 > 7 Método Xeque-Mate (min 12:17)
 > Comenta o número do assunto que você quer ver inteiro. O mais votado sai no próximo sábado.
-> #bastidores #estrategistadelancamento #entrevista #marketingdigital #campinas #empreendedorismo
+> #bastidores #estrategistadelancamento #entrevista #marketingdigital #campinas
 
 **tl02**
 > Parte 2 do bastidor da minha entrevista à TV Câmara Campinas: empreender, os cases e o que mais importa.
@@ -77,34 +79,34 @@ Regras do CLAUDE.md conferidas: sem travessão, sem emoji, sem promessa de resul
 > 6 Ser empreendedor (min 14:16)
 > 7 Famílias felizes (min 15:02)
 > Comenta o número do assunto que você quer ver inteiro.
-> #empreendedorismo #estrategistadelancamento #bastidores #familia #marketingdigital #campinas
+> #empreendedorismo #estrategistadelancamento #bastidores #familia #campinas
 
 **tl03**
 > Você foi investir em equipamento? A pergunta da TV e a minha resposta, com o cronômetro correndo.
 > Comenta o seu primeiro investimento.
-> #empreendedorismo #estrategistadelancamento #bastidores #comecar #marketingdigital #campinas
+> #empreendedorismo #estrategistadelancamento #bastidores #marketingdigital #campinas
 
 **tl04**
 > A entrevista de trás pra frente: do fim da gravação até o 00:00, parando nos 5 momentos que explicam de onde eu vim.
 > Comenta o número da parada que você quer ver inteira.
-> #bastidores #estrategistadelancamento #entrevista #empreendedorismo #marketingdigital #campinas
+> #bastidores #estrategistadelancamento #entrevista #empreendedorismo #campinas
 
 **tl05**
 > O marketing de antes e o de hoje. Banners, outdoors, panfletos, a ascensão do digital desde 2015, a pandemia. E o que até hoje é o melhor marketing.
 > Comenta SIM ou NÃO: o tête-à-tête ainda é o melhor marketing?
-> #marketingdigital #estrategistadelancamento #vendas #mercado #empreendedorismo #campinas
+> #marketingdigital #estrategistadelancamento #vendas #empreendedorismo #campinas
 
 **pf01** (stories da tarde na terça, dia do nicho dentista; reel só se o Módulo 7 mandar DOBRAR profissão nomeada)
 > Dentista, esse case eu contei na TV: uma franquia odontológica muito famosa, um projeto com o diretor de marketing, e saímos de lá com um milhão e meio de faturamento em dois meses.
 > Resultado de um caso não vale como promessa para outro. O que eu mostro é o caminho: estratégia antes do anúncio.
 > Manda para um dentista que precisa ouvir isso.
-> #dentista #odontologia #marketingodontologico #estrategistadelancamento #clinica #campinas
+> #dentista #odontologia #marketingodontologico #estrategistadelancamento #campinas
 
-**car01** (quarta 28/10, 12h)
+**car01** (terça 27/10, 12h)
 > Eu só tinha um computador e um sonho. Quatro frases que eu disse na entrevista à TV Câmara Campinas, com o minuto de cada uma.
 > Qual delas pesa mais no seu próximo lançamento? Comenta o número.
 > Vai lançar nos próximos 90 dias? Me manda a data no direct.
-> #estrategistadelancamento #lancamento #marketingdigital #empreendedorismo #campinas #frases
+> #estrategistadelancamento #lancamento #marketingdigital #empreendedorismo #campinas
 
 **Manchetes nos stories** (sem legenda; sticker)
 - mc01 "Eu só tinha um computador e um sonho": caixa "Me pergunta sobre isso" (tem a voz da Mirna).
@@ -112,23 +114,34 @@ Regras do CLAUDE.md conferidas: sem travessão, sem emoji, sem promessa de resul
 - mc03 "Cada cliente tem um produto específico e a gente vive esse produto": enquete "Concorda?".
 - mc04 "Eu construí patrimônio, eu construí família": caixa "Qual foi a sua virada?".
 
-## Calendário (encaixado no catálogo; nichos às 21h intocados)
+## Calendário agendado no PostZen (horário de São Paulo)
+
+Hashtags cortadas para 5 em todas as legendas (o Buzzfy marcou 6 ou mais). Stories saem sem sticker pelo PostZen: enquete e caixa de pergunta entram à mão no app.
+
+| Data | Hora | Peça | Tipo | Id no PostZen |
+|---|---|---|---|---|
+| sáb 24/10 | 14h00 | st01 bastidor (15 s, anuncia o timelapse de amanhã) | story | m1763qsxtry2ctpf67rj8y0bpd8gxdz4 |
+| sáb 24/10 | 14h03 | estático de bastidor | story | m17akrbjzae47yr9qrg1btznf58gwwhz |
+| sáb 24/10 | 15h00 | estático "A pergunta da TV" | story | m17fqwrdv5ztfhm5jcd328jcn98gx24w |
+| sáb 24/10 | 15h01 | mc01 (a resposta) | story | m179np4c1txva7w5qe3pnyegm18gx0hm |
+| dom 25/10 | 18h30 | **tl01** | reel | m171tvpw4z0c0rxz7fpak824bd8gx35v |
+| seg 26/10 | 21h | **pb01** | reel | m17dqk63b0e1hk75xcevdwmc458gwmfn |
+| ter 27/10 | 12h | **car01** (6 lâminas) | carrossel | m174q9y41reqfn4eqhqrm124f58gwzbr |
+| ter 27/10 | 16h | **pf01** (dia do nicho dentista) | story | m17empvbrp604edk3wzpmxzmj58gw00w |
+| qua 28/10 | 21h | **ci01** | reel | m177cf21jjcv7fa2y1q1twc4n58gwe0n |
+| qui 29/10 | 21h | **po01** | reel | m17ersdnwmmsk5e7fyw4jqwfdx8gwcxt |
+| sex 30/10 | 21h | **pb02** | reel | m1718n57yvmtpyb4xnf3zsw7fn8gwe7q |
+
+Proposto, a agendar depois do render com a marca do gravador desfocada e do conselho do modo GOD:
 
 | Data | Hora | Peça | Condição |
 |---|---|---|---|
-| ter 27/10 a sex 30/10 | manhã | stories: mc02, mc03, mc04 (um por dia) e 5 s do timelapse | data de exibição ou ok da produção |
-| qua 28/10 | 12h | **car01** | idem (a capa mostra a Mirna) |
-| sáb 31/10 | 18h30 | **pb01** (abre a série; o REACT espera a selfie) | autorização da Mirna; sem ela, versão CB |
-| seg 02/11 | | Módulo 7 com 48 h do pb01 | |
-| sáb 07/11 | 18h30 | **tl01** e enquete igual nos stories | autorização |
-| banco | | **tl03, tl04, tl05**: um por sábado depois do tl02, só se o anterior passar de 0,8x da mediana com pulo abaixo de 75% | autorização |
-| sáb 21/11 | 18h30 | **tl02** (se o tl01 passar de 0,8x da mediana; senão vai para o banco) | autorização |
-| dom 08/11 | 18h30 | **pb02** | só com o portão aberto |
-| ter 10/11 | tarde | **pf01** nos stories (dia do nicho dentista) | |
-| sáb 14/11 | 18h30 | PERGUNTA 01 (a fazer, depende da autorização) ou ci01 | |
-| dom 15/11 | 18h30 | **ci01** | portão e autorização |
-| dom 22/11 | 18h30 | **po01** | portão |
-| stories da manhã | | mc01 quando houver autorização | |
+| sáb 31/10 | 18h30 | **tl02** | tl01 acima de 0,8x da mediana |
+| sáb 07/11 | 18h30 | **tl03** | o anterior acima de 0,8x com pulo abaixo de 75% |
+| sáb 14/11 | 18h30 | **tl04** | idem |
+| sáb 21/11 | 18h30 | **tl05** | idem |
+| seg 02/11 | | Módulo 7 com a semana inteira da série | |
+| stories da manhã | | mc02, mc03, mc04 (um por dia) | |
 
 Portão, medição e regras de PARAR / DOBRAR: seção 8 do `catalogo-formatos.md`.
 

@@ -571,5 +571,15 @@
   "claro",
   "escalando"
  ],
- "trilha_ini": 4.0
+ "trilha_ini": 4.0,
+ "blur_rects": {
+  "base": [
+   [
+    520,
+    1560,
+    560,
+    300
+   ]
+  ]
+ }
 }
