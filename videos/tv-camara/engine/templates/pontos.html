@@ -12,7 +12,7 @@ function preparar() { ALVOS = C.assuntos.map(a => {
   RAIO.push(G * .39);
   x.font = `900 ${fs}px Cinzel`; x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillStyle = '#fff';
   x.fillText(a.palavra, CX, 350); const d = x.getImageData(0, 0, 1080, 700).data, pts = [];
-  for (let yy = G / 2; yy < 700; yy += G) for (let xx = 0; xx < 1080; xx += G) if (d[(yy * 1080 + xx) * 4 + 3] > 140) pts.push([xx, yy - 350 + (ZY0 + ZY1) / 2]);
+  for (let yy = Math.floor(G / 2); yy < 700; yy += G) for (let xx = 0; xx < 1080; xx += G) if (d[(yy * 1080 + xx) * 4 + 3] > 140) pts.push([xx, yy - 350 + (ZY0 + ZY1) / 2]);
   pts.sort((p, q) => p[0] - q[0] || p[1] - q[1]); return pts;
 });
 N = Math.max(...ALVOS.map(a => a.length)) + 40;

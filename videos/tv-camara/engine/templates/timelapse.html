@@ -22,9 +22,9 @@ function predio(t) {           // andares na parede: o novo entra embaixo, os an
     const ent = mola((t - c.t) / .55), y = BASE - PASSO * sobe + (1 - ent) * 140;
     if (sobe > 2.6) return '';
     const o = cl(ent * 2) * (sobe <= 1 ? 1 : sobe <= 2 ? 1 - .45 * (sobe - 1) : .55 * cl((2.6 - sobe) / .6)) * w;
-    const cor = sobe < .5 ? CREME : '#8f877c', fs = caber(c.titulo, 'Cinzel', 760, sobe < .5 ? 64 : 50);
+    const cor = sobe < .5 ? CREME : '#cfc6b6', fs = caber(c.titulo, 'Cinzel', 760, sobe < .5 ? 64 : 50);
     return `<div style="position:absolute;left:70px;right:130px;top:${y - fs}px;display:flex;align-items:baseline;gap:20px;justify-content:center;opacity:${o};transform:scale(${.9 + .1 * ent})">
-      <span style="font-family:Cinzel;font-weight:900;font-size:${fs * .9}px;color:${OURO2}">${c.n}</span><span style="font-family:Cinzel;font-weight:900;font-size:${fs}px;color:${cor};text-shadow:0 4px 16px rgba(0,0,0,.55);white-space:nowrap">${c.titulo}</span></div>`;
+      <span style="font-family:Cinzel;font-weight:900;font-size:${fs * .9}px;color:${OURO2}">${c.n}</span><span style="font-family:Cinzel;font-weight:900;font-size:${fs}px;color:${cor};text-shadow:0 3px 6px rgba(0,0,0,.75),0 6px 22px rgba(0,0,0,.6);white-space:nowrap">${c.titulo}</span></div>`;
   }).join('');
 }
 function barra(t) {
@@ -53,7 +53,7 @@ function render(t, camada) {
   const el = document.getElementById(camada); if (camada !== 'front') { el.innerHTML = ''; return; }
   let h = '';
   const fimL = C.lista && t >= C.lista.a;
-  h += topoEscuro(.5, 900);
+  h += topoEscuro(emRespiro(t) || (C.pouso && t >= C.pouso[0]) ? .5 : .72, emRespiro(t) || (C.pouso && t >= C.pouso[0]) ? 900 : 1080);
   if (!fimL) {
     h += barra(t);
     const G = C.gancho; if (G && t < G.ate + .3) h += `<div style="opacity:${1 - cl((t - G.ate) / .25)}">${connectHook(t, G.a, G.txt, G.chave, 330, G.linha)}</div>`;

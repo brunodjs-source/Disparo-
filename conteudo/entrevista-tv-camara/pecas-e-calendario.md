@@ -19,8 +19,9 @@ Rodada de 24/10/2026. Fonte: gravação de 35:21 (bastidor de 0:00 a 14:30, prog
 | tl01 | TIMELAPSE | gravação inteira | | 36,5 s | 35 minutos em 35 segundos, relógio, 6 andares de assunto, o 5 escondido como laço até o pouso em "ouro", índice na torre |
 | pf01 | PROFISSAO (dentista) | 20:28 a 20:49 | 05:52 | 24 s | Franquia odontológica, faixa "NA TV" que para na frase, CTA de envio |
 | mc01 a mc04 | MANCHETE (stories) | vários | | 4,6 a 11,5 s | Loop com faixa "NA TV" e ticker de outras frases |
+| car01 | CARROSSEL | 4 frases | 03:29, 08:33, 11:45, 13:45 | 6 lâminas 4:5 | Capa "Eu só tinha um computador e um sonho." com círculo na câmera da TV; vigas 250 MIL, OURO, PRODUTO, FAMÍLIA que atravessam a borda e passam atrás da cabeça; lista na torre |
 
-Arquivos renderizados: `scratchpad/tv/render/<id>.mp4` desta sessão (temporário). Fichas para refazer: `videos/tv-camara/cortes/<id>.spec.json`.
+Arquivos renderizados: `scratchpad/tv/render/<id>.mp4` e `scratchpad/tv/car01/lamina-N.png` desta sessão (temporário; já enviados no chat). Fichas para refazer: `videos/tv-camara/cortes/<id>.spec.json`; carrossel: `videos/tv-camara/carrossel/car01.html` com `cap_car.js`.
 
 ## Legendas (prontas para colar)
 
@@ -68,6 +69,12 @@ Regras do CLAUDE.md conferidas: sem travessão, sem emoji, sem promessa de resul
 > Manda para um dentista que precisa ouvir isso.
 > #dentista #odontologia #marketingodontologico #estrategistadelancamento #clinica #campinas
 
+**car01** (quarta 28/10, 12h)
+> Eu só tinha um computador e um sonho. Quatro frases que eu disse na entrevista à TV Câmara Campinas, com o minuto de cada uma.
+> Qual delas pesa mais no seu próximo lançamento? Comenta o número.
+> Vai lançar nos próximos 90 dias? Me manda a data no direct.
+> #estrategistadelancamento #lancamento #marketingdigital #empreendedorismo #campinas #frases
+
 **Manchetes nos stories** (sem legenda; sticker)
 - mc01 "Eu só tinha um computador e um sonho": caixa "Me pergunta sobre isso" (tem a voz da Mirna).
 - mc02 "Hoje eu sou estrategista de marketing digital e lançamento de produto": enquete "Você sabia?".
@@ -79,7 +86,7 @@ Regras do CLAUDE.md conferidas: sem travessão, sem emoji, sem promessa de resul
 | Data | Hora | Peça | Condição |
 |---|---|---|---|
 | ter 27/10 a sex 30/10 | manhã | stories: mc02, mc03, mc04 (um por dia) e 5 s do timelapse | data de exibição ou ok da produção |
-| qua 28/10 | 12h | carrossel da entrevista (a fazer) | idem |
+| qua 28/10 | 12h | **car01** | idem (a capa mostra a Mirna) |
 | sáb 31/10 | 18h30 | **pb01** (abre a série; o REACT espera a selfie) | autorização da Mirna; sem ela, versão CB |
 | seg 02/11 | | Módulo 7 com 48 h do pb01 | |
 | sáb 07/11 | 18h30 | **tl01** e enquete igual nos stories | autorização |
@@ -94,5 +101,5 @@ Portão, medição e regras de PARAR / DOBRAR: seção 8 do `catalogo-formatos.m
 
 ## O que falta produzir
 - REACT 01 a 03: precisa de 20 minutos de selfie (6 reacts e 12 aberturas "Isso eu falei na TV.").
-- CARROSSEL 01 a 04 e PERGUNTA 01 e 02.
+- CARROSSEL 02 a 04 e PERGUNTA 01 e 02.
 - Banco: MITO ("até hoje é o melhor marketing?"), pb03 ("eu construí tudo"), CINEMA 02.

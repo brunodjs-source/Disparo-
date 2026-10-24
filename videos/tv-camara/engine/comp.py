@@ -63,12 +63,15 @@ GRAO = [np.asarray(Image.fromarray(rng.normal(0, 1, (H // 2, W // 2)).astype(np.
 yy, xx = np.mgrid[0:H, 0:W]; VIN = (((xx - W/2) / (W*0.62))**2 + ((yy - H/2) / (H*0.62))**2).astype(np.float32)
 VIN = np.clip(1 - 0.55 * np.clip(VIN - 0.35, 0, 1), 0, 1)[..., None]
 
+_ult = {}
 for f in range(N):
     frames = {}
     for n, s in streams.items():
         b = s.stdout.read(1080*1920*3)
-        if len(b) < 1080*1920*3: raise SystemExit(f"fonte {n} acabou no quadro {f}")
-        frames[n] = np.frombuffer(b, np.uint8).reshape(1920, 1080, 3)
+        if len(b) < 1080*1920*3:
+            if f >= N - 3 and n in _ult: frames[n] = _ult[n]; continue   # fonte 1 ou 2 quadros mais curta: segura o último
+            raise SystemExit(f"fonte {n} acabou no quadro {f}")
+        frames[n] = _ult[n] = np.frombuffer(b, np.uint8).reshape(1920, 1080, 3)
     mk = None
     if mask_p:
         mb = mask_p.stdout.read(1080*1920)

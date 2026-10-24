@@ -1,0 +1,68 @@
+<!doctype html><html><head><meta charset="utf-8">
+<!-- CARROSSEL 01 · O que eu disse na TV. Faixa contínua de 6 lâminas (6480x1350): a viga de cada lâmina atravessa a borda
+     e continua na seguinte. Fundos e recortes da pessoa (rembg) ficam no scratchpad (imagem da repórter: fora do git). -->
+<style>
+@font-face{font-family:Cinzel;src:url(/home/user/Disparo-/videos/ads/a01-campinas/fonts/cinzel-latin.woff2)}
+@font-face{font-family:Pf;src:url(/home/user/Disparo-/videos/ads/a01-campinas/fonts/playfair-italic-latin.woff2);font-style:italic}
+html,body{margin:0;width:6480px;height:1350px;background:#141210;overflow:hidden;font-family:"Inter Display","Inter",sans-serif}
+.l{position:absolute;top:0;width:1080px;height:1350px;overflow:visible}
+.bg{position:absolute;inset:0;background-size:cover}
+.n{position:absolute;left:70px;top:56px;font-family:'DejaVu Sans Mono',monospace;font-size:24px;color:#cfc6b6;letter-spacing:.08em}
+.viga{position:absolute;font-family:Cinzel;font-weight:900;font-size:220px;line-height:1;white-space:nowrap;color:#F3EDE2;text-shadow:0 10px 40px rgba(0,0,0,.45)}
+.fr{position:absolute;left:70px;right:90px;top:880px;font-family:Pf;font-style:italic;font-size:54px;line-height:1.2;color:#F3EDE2}
+.mk{position:relative;display:inline-block;isolation:isolate;color:#141210;padding:0 6px}
+.mk:before{content:"";position:absolute;inset:8% -6px 2%;background:#E8B36A;border-radius:8px;z-index:-1;clip-path:polygon(0 8%,100% 0,98% 92%,2% 100%)}
+.min{position:absolute;left:70px;top:1262px;font-family:'DejaVu Sans Mono',monospace;font-size:24px;color:#a49b8d}
+.gt{position:absolute;left:0;right:0;top:0;height:620px;background:linear-gradient(180deg,rgba(8,7,6,.82),rgba(8,7,6,.5) 55%,rgba(8,7,6,0))}
+.gb{position:absolute;left:0;right:0;bottom:0;height:640px;background:linear-gradient(0deg,rgba(8,7,6,.93),rgba(8,7,6,.78) 55%,rgba(8,7,6,0))}
+</style></head><body>
+<script>
+const L = [
+ null,
+ {viga: '250 MIL', y: 110, fr: 'Um restaurante que vendia 45 mil, colocamos ele para vender <span class=mk>250 mil</span> com o marketing digital.', min: 'min 03:29'},
+ {viga: 'OURO', y: 330, fr: 'Hoje, na era de internet, nem tudo que vemos é <span class=mk>ouro</span>. Muitas pessoas vendem algo que elas não conseguem cumprir.', min: 'min 08:33'},
+ {viga: 'PRODUTO', y: 110, fr: 'Cada cliente tem um produto <span class=mk>específico</span> e a gente vive esse produto.', min: 'min 11:45'},
+ {viga: 'FAMÍLIA', y: 330, fr: 'Eu construí patrimônio, eu construí <span class=mk>família</span>, eu construí tudo através da profissão que hoje eu executo.', min: 'min 13:45'},
+];
+const TORRE = 'M40 30H52V48H64V30H76V48H88V30H100V62L90 74L92 122L104 134V146H36V134L48 122L50 74L40 62Z';
+let h = '';
+// lâmina 1: capa
+h += `<div class=l style="left:0"><div class=bg style="background-image:url(bg1.jpg)"></div><div class=gt style="height:760px"></div><div class=gb style="height:520px"></div>
+ <div class=n>1/6</div>
+ <div style="position:absolute;left:70px;right:80px;top:130px;font-family:Cinzel;font-weight:900;font-size:86px;line-height:1.06;color:#F3EDE2;text-shadow:0 6px 30px rgba(0,0,0,.5)">EU SÓ TINHA UM COMPUTADOR E UM <span style="color:#F5C46E">SONHO.</span></div>
+ <svg style="position:absolute;left:-30px;top:470px" width="260" height="220" viewBox="0 0 260 220"><path d="M30 118 C 26 62, 98 34, 158 44 C 222 56, 236 112, 206 150 C 176 188, 92 196, 52 166 C 30 150, 26 128, 40 104" fill="none" stroke="#E8B36A" stroke-width="6" stroke-linecap="round"/></svg>
+ <div style="position:absolute;left:220px;top:590px;font-family:Pf;font-style:italic;font-size:40px;color:#F5C46E;text-shadow:0 3px 12px rgba(0,0,0,.9)">a câmera da TV</div>
+ <div style="position:absolute;left:70px;right:80px;top:1080px"><div style="font-family:Pf;font-style:italic;font-size:50px;color:#F3EDE2">O que eu disse na TV sobre começar</div>
+ <div style="margin-top:14px;font-size:26px;font-weight:700;letter-spacing:.08em;color:#cfc6b6">ENTREVISTA À TV CÂMARA CAMPINAS · BRUNO, ESTRATEGISTA DE LANÇAMENTO</div></div></div>`;
+// lâminas 2 a 5
+for (let k = 1; k <= 4; k++) {
+  const d = L[k];
+  h += `<div class=l style="left:${k * 1080}px"><div class=bg style="background-image:url(bg${k + 1}.jpg)"></div><div class=gt></div><div class=gb></div></div>`;
+}
+// lâmina 6: as 4 vigas dentro da torre
+h += `<div class=l style="left:5400px"><div class=bg style="background-image:url(bg6.jpg);filter:brightness(.35)"></div>
+ <svg viewBox="30 0 80 152" style="position:absolute;left:560px;top:150px;height:1050px;opacity:.14"><path d="${TORRE}" fill="#E8B36A"/></svg>
+ <div class=n>6/6</div>
+ <div style="position:absolute;left:70px;top:600px">${['250 MIL', 'OURO', 'PRODUTO', 'FAMÍLIA'].map((w, i) => `<div style="display:flex;align-items:baseline;gap:26px;margin-bottom:10px"><span style="font-family:Cinzel;font-weight:900;font-size:60px;color:#F5C46E;width:52px">${i + 1}</span><span style="font-family:Cinzel;font-weight:900;font-size:76px;color:#F3EDE2">${w}</span></div>`).join('')}</div>
+ <div style="position:absolute;left:70px;right:90px;top:1040px;font-size:40px;font-weight:800;line-height:1.2;color:#fff">Qual dessas pesa mais no seu próximo lançamento? Comenta o número.</div>
+ <div style="position:absolute;left:70px;top:1160px;font-family:Pf;font-style:italic;font-size:38px;color:#F5C46E">Salva para reler antes de lançar.</div>
+ <div class=min style="top:1262px">@o_estrategista.com.br</div></div>`;
+document.body.innerHTML = h;
+// vigas por cima de tudo, atrás só da pessoa recortada; cada uma cruza a borda direita da sua lâmina
+document.fonts.ready.then(() => {
+  const c = document.createElement('canvas').getContext('2d'); c.font = '900 220px Cinzel';
+  let v = '';
+  for (let k = 1; k <= 4; k++) {
+    const d = L[k], w = c.measureText(d.viga).width, x = k * 1080 + Math.max(120, 1080 - .6 * w);
+    v += `<div class=viga style="left:${x}px;top:${d.y}px">${d.viga}</div>`;
+  }
+  // pessoa recortada só na faixa de cima (cabeça), escurecida pelo mesmo degradê do fundo; os textos vêm por último
+  for (let k = 1; k <= 4; k++) v += `<div style="position:absolute;left:${k * 1080}px;top:0;width:1080px;height:640px;overflow:hidden">
+    <img src="pessoa${k + 1}.png" style="position:absolute;left:0;top:0;width:1080px;height:1350px">
+    <div class=gt style="-webkit-mask-image:url(pessoa${k + 1}.png);-webkit-mask-size:1080px 1350px;-webkit-mask-repeat:no-repeat;mask-image:url(pessoa${k + 1}.png);mask-size:1080px 1350px;mask-repeat:no-repeat"></div></div>`;
+  for (let k = 1; k <= 4; k++) { const d = L[k];
+    v += `<div class=l style="left:${k * 1080}px;pointer-events:none"><div class=n>${k + 1}/6</div><div class=fr>${d.fr}</div><div class=min>${d.min} · Entrevista à TV Câmara Campinas</div></div>`; }
+  document.body.insertAdjacentHTML('beforeend', v);
+  document.body.dataset.pronto = 1;
+});
+</script></body></html>

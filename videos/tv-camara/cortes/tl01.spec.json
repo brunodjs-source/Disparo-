@@ -18,7 +18,7 @@
  "voz_trechos":[[1.8,1388.8,3.15],[10.0,997.5,2.1],[19.2,1510.4,1.9],[27.0,1387.5,5.38]],
  "falantes":[[19.0,21.2,"B"]],
  "planos":[{"t0":0,"t1":40,"plano":"BASE"}],
- "gancho":{"a":0,"ate":1.75,"txt":"35 MINUTOS EM 35 SEGUNDOS","chave":"SEGUNDOS","linha":"BASTIDOR DA ENTREVISTA À TV CÂMARA CAMPINAS"},
+ "gancho":{"a":-0.35,"ate":1.5,"txt":"35 MINUTOS EM 35 SEGUNDOS","chave":"SEGUNDOS","linha":"BASTIDOR DA ENTREVISTA À TV CÂMARA CAMPINAS"},
  "relogio_a":4.95,
  "relogio":[[4.95,0],[7.1,900],[10.0,997.5],[12.1,999.6],[14.5,1084],[16.9,1234],[19.2,1510.4],[21.1,1512.3],[23.4,1612],[26.0,2121],[27.0,1387.5],[32.45,1392.95]],
  "rebobina":[26.0,27.0],
