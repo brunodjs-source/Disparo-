@@ -2,7 +2,7 @@
 // OBJEÇÃO · reel de quebra de objeção com trechos da entrevista (Bruno em CB desde o quadro 0, cortes secos com punch-in).
 // Quadro 0: cartão #141210 com OBJEÇÃO (Cinzel ouro), VOCÊ DIZ: e a frase do cliente em Playfair itálico entrando palavra a palavra
 // (chave em ouro) e a linha menor; embaixo, legenda compacta da fala do Bruno. Em C.obj.sai o cartão sobe e vira selo no topo,
-// a faixa NA TV (minuto real do programa, que corre e pula nos cortes) entra 3 quadros depois e a Legenda Gigante assume.
+// a faixa NA TV (emissora e programa, sem minuto: a edição da TV pode cortar) entra 3 quadros depois e a Legenda Gigante assume.
 // C.obj {txt, chave, linha, sai}   C.nome [a, b] (nomeTV)   C.marcas [{palavras, perto}] (marca-texto na frase dita)
 // C.pergunta / C.fato {a, b, rotulo, txt} (caixa baixa: pergunta da TV só como texto, ressalva do número)
 // C.final {a, topo, citacao, fonte, frase[]}   C.cta {a, txt, l1, l2}   C.retime [[t_saida_antigo, t_novo]]
@@ -10,7 +10,6 @@
 // Legenda: nenhum quadro com fala sem legenda (conferido com o início e o fim reais de cada palavra, vícios incluídos).
 // .bx até 846 px: com o scale(1.04) da entrada da legenda a caixa vai no máximo de x 60 a 940
 document.head.insertAdjacentHTML('beforeend', `<style>.cap{left:60px;right:140px}.cap .bx{max-width:846px;box-sizing:border-box}</style>`);
-const PROG0 = C.inicio_programa || 875.0;          // 14:35 da gravação = 00:00 do programa
 const limpa = s => s.replace(/[.,!?;:…"“”]/g, '');
 // corrige o início de palavras que o Whisper marcou cedo (as listas de palavras e de frases)
 for (const [ant, novo] of (C.retime || [])) {
@@ -58,19 +57,12 @@ function selo(t) {
   const p = eo((t - SAI - .12) / .35), o = cl((t - SAI - .12) / .25) * (1 - cl((t - FIM) / .2));
   return `<div style="position:absolute;left:60px;right:140px;top:218px;text-align:center;opacity:${o};transform:translateY(${(1 - p) * 18}px) scale(${.94 + .06 * p})"><div style="display:inline-flex;align-items:baseline;gap:16px;max-width:860px;box-sizing:border-box;background:rgba(20,18,16,.92);border:2px solid rgba(232,179,106,.6);border-radius:16px;padding:9px 22px 11px"><span style="font-family:Cinzel;font-weight:900;font-size:22px;letter-spacing:.18em;color:${OURO}">OBJEÇÃO</span><span style="font-family:Pf;font-style:italic;font-size:34px;color:${CREME};white-space:nowrap">“${OBJ.txt}”</span></div></div>`;
 }
-// minuto real do programa no ponto t da peça (pula nos cortes)
-function minuto(t) {
-  const V = C.voz_trechos || [[0, C.seg[0], C.dur]]; let v = V[0];
-  for (const x of V) if (t >= x[0] - .001) v = x;
-  const s = Math.max(0, v[1] + Math.min(t - v[0], v[2]) - PROG0);
-  return `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
-}
-// faixa NA TV logo abaixo do selo, 3 quadros depois dele
+// faixa NA TV logo abaixo do selo, 3 quadros depois dele (sem minuto do programa: o minuto da gravação é estimativa e a edição da TV pode cortar)
 const FX = C.faixa_txt || 'TV CÂMARA CAMPINAS · SER EMPREENDEDOR';
 function faixa(t) {
   const a = SAI + .22; if (t < a) return '';
   const p = eo((t - a) / .35), o = cl((t - a) / .25) * (1 - cl((t - FIM) / .2));
-  return `<div style="position:absolute;left:60px;right:140px;top:290px;text-align:center;opacity:${o};transform:translateY(${(1 - p) * 14}px)"><div style="display:inline-flex;align-items:center;gap:12px;background:rgba(20,18,16,.8);border-radius:10px;padding:6px 14px 6px 7px"><span style="background:${OURO};color:${ESC};font-family:Cinzel;font-weight:900;font-size:21px;padding:4px 10px 2px;border-radius:5px;white-space:nowrap">NA TV</span><span style="font-size:${FX.length > 40 ? 18 : 20}px;font-weight:800;letter-spacing:${FX.length > 40 ? '.04em' : '.08em'};color:#e6dccb;white-space:nowrap">${FX}</span><span style="font-family:'DejaVu Sans Mono',monospace;font-size:19px;color:${OURO2};white-space:nowrap">MIN ${minuto(t)}</span></div></div>`;
+  return `<div style="position:absolute;left:60px;right:140px;top:290px;text-align:center;opacity:${o};transform:translateY(${(1 - p) * 14}px)"><div style="display:inline-flex;align-items:center;gap:12px;background:rgba(20,18,16,.8);border-radius:10px;padding:6px 14px 6px 7px"><span style="background:${OURO};color:${ESC};font-family:Cinzel;font-weight:900;font-size:21px;padding:4px 10px 2px;border-radius:5px;white-space:nowrap">NA TV</span><span style="font-size:${FX.length > 40 ? 18 : 20}px;font-weight:800;letter-spacing:${FX.length > 40 ? '.04em' : '.08em'};color:#e6dccb;white-space:nowrap">${FX}</span></div></div>`;
 }
 // bloco de marca-texto: as palavras do trecho acendem no tempo da fala, a frase marcada ganha o fundo ouro palavra a palavra
 function blocoMarca(t, M, top) {
@@ -89,10 +81,26 @@ function blocoMarca(t, M, top) {
   const sc = 1.04 - .04 * cl((t - M.a) / .1);
   return `<div class=cap style="top:${top}px;transform:scale(${sc})"><span class=bx><span class=big style="display:block;font-size:${S}px;line-height:1.1">${partes}</span></span></div>`;
 }
+// Legenda Gigante numa linha só: se a palavra grande mais as pequenas passam da caixa (.bx até 846 px, 794 de texto),
+// a grande encolhe até caber (mín. 56 px), em vez de jogar a última palavra sozinha para a 2ª linha ("POTENCIALIZAR o / seu").
+// Mesma escolha da palavra grande do _base: destaque, senão a mais longa; a palavra-chave vence.
+const _mg = document.createElement('canvas').getContext('2d'), _cabe = {};
+function cabeGrupo(gi) {
+  if (gi in _cabe) return _cabe[gi];
+  const lp = s => s.replace(/[.,!?;:]/g, ''), pal = GRUPOS[gi].map(i => WD[i]);
+  let pi = pal.reduce((b, w, k) => (PRINC.has(lp(w[1]).toLowerCase()) ? k : b), -1);
+  if (pi < 0) pi = pal.reduce((b, w, k) => lp(w[1]).length > lp(pal[b][1]).length ? k : b, 0);
+  const K = C.chave, kk = K ? pal.findIndex(w => Math.abs(w[0] - K.t) < .05) : -1; if (kk >= 0) pi = kk;
+  _mg.font = '900 84px "Inter Display", Inter, sans-serif'; const big = _mg.measureText(lp(pal[pi][1]).toUpperCase()).width + 17;
+  _mg.font = 'italic 400 50px Pf'; const sm = pal.reduce((s, w, k) => k === pi ? s : s + _mg.measureText(lp(w[1])).width + 18, 0);
+  const livre = 794 - sm - 6;
+  return (_cabe[gi] = big <= livre ? {} : { big: `font-size:${Math.max(56, Math.floor(84 * livre / big))}px` });
+}
+function grupoEm(t) { let gi = -1; for (let k = 0; k < GRUPOS.length; k++) if (WD[GRUPOS[k][0]][0] - .03 <= t) gi = k; return gi; }
 function legenda(t, top) {
   const M = MARCAS.find(m => t >= m.a && t < m.b);
   if (M) return blocoMarca(t, M, top);
-  const h = legendaGigante(t, top); if (h) return h;
+  const g0 = grupoEm(t), h = legendaGigante(t, top, g0 >= 0 ? cabeGrupo(g0) : {}); if (h) return h;
   // buraco entre grupos (palavra longa, pausa curta ou vício de fala que não vira legenda): segura o último grupo,
   // no estado final, (a) se o próximo grupo começa até 1,0 s depois que este sairia da tela, sem depender do fim da frase,
   // ou (b) enquanto ainda estamos dentro da frase dele (frase.b vem do fim real da última palavra)
@@ -103,7 +111,7 @@ function legenda(t, top) {
   const f = (C.frases || []).find(x => t >= x.a && t < x.b - .6);
   if (!perto && !(f && WD[g[0]][0] >= f.a - .05)) return '';
   const Mg = MARCAS.find(m => g[0] >= m.w0 && g[g.length - 1] <= m.w1);   // grupo de marca-texto: segura o bloco, não troca de estilo
-  return Mg ? blocoMarca(t, Mg, top) : legendaGigante(ult + .8, top);
+  return Mg ? blocoMarca(t, Mg, top) : legendaGigante(ult + .8, top, cabeGrupo(gi));
 }
 // caixa baixa (pergunta da TV só como texto, ressalva do número): filete ouro cresce antes do texto.
 // A caixa fica parada em x 60; o deslize de 24 px é do texto, dentro da caixa (nada sai da zona segura)

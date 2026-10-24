@@ -6,14 +6,24 @@ let TKW = 0;
 function faixa(t) {
   if (!TKW) { _mc.font = '700 30px Inter'; TKW = _mc.measureText(TK).width; }
   const x = -((t / C.dur) * TKW) % TKW;
-  return `<div style="position:absolute;left:56px;top:1100px;font-size:26px;font-weight:700;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.9)">Bruno · <i style="font-family:Pf;font-weight:400;color:${OURO2}">Estrategista de Lançamento</i> · Entrevista à TV Câmara Campinas</div>
+  // nome e cargo numa tarja escura colada na faixa (sobre a parede clara o ouro em itálico sumia)
+  return `<div style="position:absolute;left:40px;right:140px;top:1100px;padding:9px 24px;box-sizing:border-box;white-space:nowrap;overflow:hidden;background:rgba(20,18,16,.8);border-radius:14px 14px 0 0;font-size:26px;font-weight:700;color:#fff">Bruno · <i style="font-family:Pf;font-weight:400;color:${OURO2}">Estrategista de Lançamento</i> · Entrevista à TV Câmara Campinas</div>
   <div style="position:absolute;left:40px;right:140px;top:1150px;height:180px;background:rgba(20,18,16,.92);border-top:4px solid ${OURO};border-radius:0 0 14px 14px;overflow:hidden">
     <div style="position:absolute;left:24px;top:22px;display:flex;align-items:center;gap:18px"><span style="background:${OURO};color:${ESC};font-family:Cinzel;font-weight:900;font-size:30px;padding:6px 14px 4px;border-radius:6px">NA TV</span><span style="font-family:Pf;font-style:italic;font-size:34px;color:${CREME}">${C.titulo_faixa || 'o que eu disse na entrevista'}</span></div>
     <div style="position:absolute;left:0;right:0;top:108px;height:50px;overflow:hidden;border-top:1px solid rgba(232,179,106,.35)"><div style="position:absolute;top:8px;left:${x}px;white-space:nowrap;font-size:30px;font-weight:700;color:#d8cfc0">${TK}${TK}${TK}</div></div>
   </div>`;
 }
+// entre dois grupos da fala (até 2 s), segura o grupo anterior até o próximo entrar: a palavra longa
+// que passa de 0,9 s não some no meio e o loop curto não pisca sem legenda
+function legendaSegura(t, top) {
+  const h = legendaGigante(t, top); if (h) return h;
+  let gi = -1; for (let k = 0; k < GRUPOS.length; k++) if (WD[GRUPOS[k][0]][0] - .03 <= t) gi = k;
+  if (gi < 0 || gi === GRUPOS.length - 1) return '';
+  const g = GRUPOS[gi], ult = WD[g[g.length - 1]][0];
+  return WD[GRUPOS[gi + 1][0]][0] - ult > 2 ? '' : legendaGigante(ult + .85, top);
+}
 function render(t, camada) {
   const el = document.getElementById(camada); if (camada !== 'front') { el.innerHTML = ''; return; }
-  el.innerHTML = topoEscuro(.45, 800) + legendaGigante(t, 330) + faixa(t);
+  el.innerHTML = topoEscuro(.45, 800) + legendaSegura(t, 330) + faixa(t);
 }
 </script></body></html>

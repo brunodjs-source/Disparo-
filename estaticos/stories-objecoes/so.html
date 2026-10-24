@@ -1,0 +1,221 @@
+<!doctype html><html><head><meta charset="utf-8">
+<!-- Stories de objeção (1080x1920). render(item) desenha um item de conteudo/stories-objecoes/04-estaticos.json.
+     Variante "foto": visual de estaticos/stories-frases/s.html (foto com véu, rótulo, frase em Playfair itálico, palavra em <b> em Cinzel ouro, sub, assinatura).
+     Variante "balao": fundo #141210 liso, rótulo O QUE EU MAIS OUÇO em Cinzel 48 px ouro, frase do cliente num balão de mensagem genérico (sem logo, sem app, sem avatar).
+     Zona segura: texto entre x 80 e 1000 e entre y 220 e 1250; faixa y 1300 a 1560 livre (sticker do Bruno); assinatura em y 1600.
+     A frase começa em 84 px; se não couber acima do rosto (teto por foto), desce de 2 em 2 até 64 px e o relatório registra. -->
+<style>
+@font-face{font-family:Cinzel;src:url(/home/user/Disparo-/videos/ads/a01-campinas/fonts/cinzel-latin.woff2)}
+@font-face{font-family:Pf;src:url(/home/user/Disparo-/videos/ads/a01-campinas/fonts/playfair-italic-latin.woff2);font-style:italic}
+:root{--preto:#141210;--ouro:#E8B36A;--creme:#F3EDE2;--cinza:#d8cfc0}
+html,body{margin:0;width:1080px;height:1920px;background:var(--preto);overflow:hidden;font-family:"Inter Display","Inter",sans-serif}
+#bg{position:absolute;inset:0;background-size:cover;background-position:center 30%;background-repeat:no-repeat}
+#v{position:absolute;inset:0}
+.rot{position:absolute;left:80px;top:250px;font-family:'DejaVu Sans Mono',monospace;font-size:26px;letter-spacing:.14em;color:var(--cinza);white-space:nowrap;text-shadow:0 2px 14px rgba(0,0,0,.85),0 0 4px rgba(0,0,0,.6)}
+/* a frase em itálico começa 12 px para dentro: a tinta de A, f, g, j e p passa da caixa e assim fica alinhada ao fio em x 80 */
+/* lining-nums: o Playfair itálico usa algarismos de estilo antigo ("o2/11" com o zero igual ao "o", "1o dias", 2 parecendo z); com lnum o algarismo fica alto e distinto da letra */
+.fr{position:absolute;left:92px;width:906px;top:1000px;font-family:Pf;font-style:italic;font-size:84px;line-height:1.12;color:var(--creme);text-shadow:0 6px 30px rgba(0,0,0,.6);overflow-wrap:normal;word-break:normal;hyphens:manual;text-wrap:pretty;font-variant-numeric:lining-nums}
+.fr b,.bl b{font-family:Cinzel;font-style:normal;font-weight:900;color:var(--ouro);letter-spacing:.01em}
+.sub{margin-left:-12px;font-family:"Inter Display","Inter",sans-serif;font-style:normal;font-size:40px;font-weight:700;line-height:1.22;color:var(--cinza);margin-top:22px;text-wrap:pretty}
+.fio{position:absolute;left:80px;width:120px;height:4px;background:var(--ouro)}
+.ass{position:absolute;left:80px;top:1600px;font-size:30px;font-weight:700;color:#cfc6b6;letter-spacing:.04em;white-space:nowrap}
+.ass i{font-family:Pf;font-weight:400;color:var(--ouro)}
+.ass span{font-size:26px;color:#a49b8d}
+.nw{white-space:nowrap}
+/* balão */
+.rotb{position:absolute;left:80px;font-family:Cinzel;font-size:48px;font-weight:700;letter-spacing:.06em;color:var(--ouro);white-space:nowrap;line-height:1.1}
+#balsvg{position:absolute;left:0;top:0;overflow:visible}
+.bl{position:absolute;left:80px;width:920px;box-sizing:border-box;padding:58px 64px 62px;font-family:Pf;font-style:italic;font-size:84px;line-height:1.14;color:var(--creme);overflow-wrap:normal;word-break:normal;hyphens:manual;text-wrap:pretty;font-variant-numeric:lining-nums}
+</style></head><body><div id=bg></div><div id=v></div><svg id=balsvg width=1080 height=1920></svg><div id=t></div>
+<script>
+const FOTOS = '../stories-frases/';
+// Posição da foto (e1 e e2 com o pos calibrado em s.html; f1 quadrada inteira no topo) e teto: y mínimo do fio de ouro, para a frase não cobrir o rosto.
+const FOTO = {
+  'f1.jpg': {quad: true, pos: 'center 60px', teto: 840},
+  // f2 subida: o queixo fica em y ~730 e a frase não cobre a boca. luz: a luminária (x 0 a 205, y 140 a 420) fica atrás do rótulo; um véu radial só nesse canto baixa o brilho
+  'f2.jpg': {size: '1180px auto', pos: 'center -260px', teto: 760, luz: 'ellipse 330px 230px at 40px 268px'},
+  'f3.jpg': {pos: 'center 30%', teto: 750},
+  'f4.jpg': {pos: 'center 30%', teto: 700},
+  'f5.jpg': {pos: 'center 30%', teto: 560},
+  'e1.jpg': {pos: 'center -360px', teto: 780, claro: true},
+  'e2.jpg': {pos: 'center -330px', teto: 700, claro: true},
+};
+const BASE = 1250, MIN_PX = 64, MAX_PX = 84;
+const ASS = `<div class=ass id=ass>Bruno · <i>Estrategista de Lançamento</i><br><span>@o_estrategista.com.br</span></div>`;
+
+// palavra com hífen (tête-à-tête, Xeque-Mate) nunca quebra na linha
+// palavra de uma letra (a, o, e, é, à) não fica sozinha no fim da linha: cola na seguinte com espaço fixo; número curto cola na palavra de antes
+const NOMES = ['TV Câmara Campinas', 'Ser Empreendedor', 'Mirna Abreu', 'Vivo Fibra'];   // nome próprio não quebra no meio
+function semQuebra(html) {
+  // aceita espaço comum ou fixo entre as palavras do nome (o sub já chega com a última palavra colada por espaço fixo)
+  for (const n of NOMES) html = html.replace(new RegExp(n.split(' ').join('[ \\u00a0]'), 'g'), n.replace(/ /g, '\u00a0'));
+  return html.split(/(<[^>]+>)/).map(s => s.startsWith('<') ? s : s
+    .replace(/[^\s<>]*-[^\s<>]*/g, m => `<span class=nw>${m}</span>`)
+    .replace(/(^|[\s“"(])([AaOoEeÉéÀà]) (?=\S)/g, '$1$2\u00a0')
+    .replace(/(^|[\s“"(])([AaOoEeÉéÀà]) (?=\S)/g, '$1$2\u00a0')   // 2ª passada: "é o melhor"
+    .replace(/(\S) (\d[\d.,\/]*[.,:;!?]?)(?=\s|$)/g, '$1\u00a0$2')).join('');   // número curto não fica sozinho: "Fibra 9.", "NET 4", "Parte 2"
+}
+function carregar(src) { return new Promise(r => { const im = new Image(); im.onload = () => r(im); im.onerror = () => r(null); im.src = src; }); }
+
+async function render(it) {
+  // carrega as fontes antes de medir (sem isso a 1ª medida sai com a fonte reserva)
+  await Promise.all(['italic 84px Pf', '900 84px Cinzel', '700 48px Cinzel', '700 40px "Inter Display"'].map(f => document.fonts.load(f)));
+  await document.fonts.ready;
+  const t = document.getElementById('t'), bg = document.getElementById('bg'), v = document.getElementById('v'), svg = document.getElementById('balsvg');
+  t.innerHTML = ''; svg.innerHTML = ''; bg.style.backgroundImage = 'none'; v.style.background = 'none';
+  const rel = {id: it.id, variante: it.variante, px: MAX_PX, ajuste: ''};
+  if (it.variante === 'balao') await balao(it, rel); else await foto(it, rel);
+  await document.fonts.ready;
+  await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+  rel.checagem = checar(it);
+  return rel;
+}
+
+async function foto(it, rel) {
+  const cfg = FOTO[it.foto] || {pos: 'center 30%', teto: 640};
+  const bg = document.getElementById('bg'), src = FOTOS + it.foto;
+  if (!(await carregar(src))) rel.ajuste += 'FOTO NÃO CARREGOU. ';
+  bg.style.backgroundImage = `url(${src})`; bg.style.backgroundPosition = cfg.pos;
+  bg.style.backgroundSize = cfg.quad ? '1180px auto' : (cfg.size || 'cover');
+  const t = document.getElementById('t');
+  t.innerHTML = `<div class=rot id=rot>${it.rotulo}</div><div class=fr id=fr><span id=frt>${semQuebra(it.frase_html)}</span>${it.sub ? `<div class=sub id=sub>${semQuebra(it.sub.replace(/ (\S+)$/, '\u00a0$1'))}</div>` : ''}</div><div class=fio id=fio></div>${ASS}`;
+  const fr = document.getElementById('fr');
+  let px = MAX_PX, top;
+  for (;;) {
+    fr.style.fontSize = px + 'px';
+    top = posicionar(fr);
+    if (top - 40 >= cfg.teto || px <= MIN_PX) break;
+    px -= 2;
+  }
+  rel.px = px;
+  if (px < MAX_PX) rel.ajuste += `frase reduzida de ${MAX_PX} para ${px} px para não cobrir o rosto (teto do fio em y ${cfg.teto}). `;
+  if (top - 40 < cfg.teto) rel.ajuste += `NÃO COUBE: mesmo em ${MIN_PX} px o fio fica em y ${Math.round(top - 40)}, acima do teto ${cfg.teto}. `;
+  document.getElementById('fio').style.top = (top - 40) + 'px';
+  rel.fio = Math.round(top - 40);
+  // véu: igual ao s.html (escurece a partir de 52%); quando a frase sobe, o escuro sobe junto
+  // foto clara (e1, e2): o escuro começa antes do fio, para o creme da frase não brigar com parede e mesa brancas
+  const s1 = cfg.claro ? top - 150 : Math.min(998, top - 30), a1 = cfg.claro ? .62 : .55;
+  const s2 = Math.min(1344, top + (cfg.claro ? 220 : 320)), s0 = Math.min(576, s1 - 160);
+  // foto clara: véu sem a faixa clara do meio e base quase opaca (a foto de e1/e2 termina em y ~1560 e o corte não aparece)
+  // topo da foto clara: escuro (.8 a .78) até y 310, atrás do rótulo (y 250 a 285 e a sombra), para o creme do rótulo passar de 4,5:1 sobre a parede;
+  // depois abre em curva suave (smoothstep, sem degrau) até o .38 em y 500 ou em s0, o que vier depois (cabeças em y ~480 na e2 e ~535 na e1); rampa de 190 px ou mais, sem faixa clara
+  const T0 = 310, T1 = Math.max(s0, 500), AT = .78, AB = .38;
+  const curva = [0, .25, .5, .75, 1].map(k => `rgba(14,13,11,${(AB + (AT - AB) * (1 - k * k * (3 - 2 * k))).toFixed(3)}) ${Math.round(T0 + (T1 - T0) * k)}px`).join(',');
+  const v = cfg.claro
+    ? `rgba(14,13,11,.8) 0px,${curva},rgba(14,13,11,${a1}) ${Math.max(s1, T1)}px,rgba(14,13,11,.94) ${s2}px,rgba(14,13,11,.975) 1480px,rgba(14,13,11,.995) 1560px,rgba(14,13,11,.995) 1920px`
+    : `rgba(14,13,11,.55) 0px,rgba(14,13,11,.15) ${s0}px,rgba(14,13,11,${a1}) ${s1}px,rgba(14,13,11,.94) ${s2}px,rgba(14,13,11,.97) 1920px`;
+  const luz = cfg.luz ? `radial-gradient(${cfg.luz},rgba(14,13,11,.86) 0%,rgba(14,13,11,.8) 40%,rgba(14,13,11,.45) 72%,rgba(14,13,11,0) 100%),` : '';
+  document.getElementById('v').style.background = `${luz}linear-gradient(180deg,${v})`;
+}
+
+// a última linha (sub ou frase) termina em y 1250, medida pela caixa real do texto
+function posicionar(fr) {
+  fr.style.top = '1000px';
+  // palavra em Cinzel (reta, sem a sobra do itálico) que abre a linha volta até a tinta encostar em x 80, alinhada ao fio e ao sub
+  const x0 = fr.getBoundingClientRect().left;
+  fr.querySelectorAll('br.qb').forEach(e => e.remove());
+  for (const b of fr.querySelectorAll('#frt b')) {
+    b.style.marginLeft = '';
+    const r = b.getClientRects()[0];
+    if (!r || Math.abs(r.left - x0) >= 1.5) continue;
+    const cs = getComputedStyle(b); CTX.font = `${cs.fontStyle} ${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`; CTX.letterSpacing = cs.letterSpacing === 'normal' ? '0px' : cs.letterSpacing;
+    const tinta = r.left - CTX.measureText(b.textContent.trim().split(/\s+/)[0]).actualBoundingBoxLeft;   // onde a tinta da 1ª letra começa
+    const m = Math.max(0, Math.min(Math.floor(tinta - 80), Math.floor(r.left - 80)));   // nem a tinta nem a caixa passam de x 80
+    b.style.marginLeft = -m + 'px';
+    // com a margem negativa a palavra pode caber na linha de cima e grudar na anterior: quebra fixa mantém a linha original
+    if (Math.abs(b.getClientRects()[0].left - (x0 - m)) > 1.5) { const br = document.createElement('br'); br.className = 'qb'; b.before(br); }
+  }
+  let top = BASE - fr.getBoundingClientRect().height;
+  fr.style.top = top + 'px';
+  const fundo = Math.max(...palavras(fr).map(w => w.r.bottom));
+  if (fundo > BASE) { top -= (fundo - BASE); fr.style.top = top + 'px'; }
+  return top;
+}
+
+async function balao(it, rel) {
+  const t = document.getElementById('t'), svg = document.getElementById('balsvg');
+  t.innerHTML = `<div class=fio id=fio></div><div class=rotb id=rot>${it.rotulo}</div><div class=bl id=fr><span id=frt>${semQuebra(it.frase_html)}</span></div>${ASS}`;
+  const fr = document.getElementById('fr'), rot = document.getElementById('rot'), fio = document.getElementById('fio');
+  const RABO = 46, GAP_ROT = 30, GAP_BAL = 64;
+  let px = MAX_PX, alt, total;
+  for (;;) {
+    fr.style.fontSize = px + 'px';
+    alt = fr.getBoundingClientRect().height;
+    total = 4 + GAP_ROT + rot.getBoundingClientRect().height + GAP_BAL + alt + RABO;
+    if (total <= (BASE - 220) || px <= MIN_PX) break;
+    px -= 2;
+  }
+  rel.px = px;
+  if (px < MAX_PX) rel.ajuste += `frase reduzida de ${MAX_PX} para ${px} px. `;
+  // largura do balão acompanha a linha mais longa (como numa conversa); texto sempre entre x 80 e 1000
+  const dir = Math.max(...palavras(document.getElementById('frt')).map(w => w.r.right));
+  let x0 = 80, x1 = Math.min(1000, Math.ceil(dir + 64 + 2));
+  fr.style.width = (x1 - x0) + 'px';
+  if (Math.abs(fr.getBoundingClientRect().height - alt) > 1) { x1 = 1000; fr.style.width = '920px'; }   // se a linha voltasse a quebrar, fica na largura cheia
+  // bloco (fio, rótulo, balão, rabicho): com sticker, centrado entre y 220 e 1250; sem sticker, termina em y 1250
+  const y0 = it.zona_sticker ? Math.max(250, Math.round(220 + ((BASE - 220) - total) / 2)) : Math.max(250, Math.round(BASE - total));
+  fio.style.top = y0 + 'px';
+  const yr = y0 + 4 + GAP_ROT; rot.style.top = yr + 'px';
+  const yb = yr + rot.getBoundingClientRect().height + GAP_BAL; fr.style.top = yb + 'px';
+  rel.fio = y0;
+  // balão genérico: retângulo de cantos arredondados com rabicho curvo saindo da base, à esquerda (mensagem recebida)
+  const y1 = yb + alt, R = 52;
+  const d = `M ${x0 + R} ${yb} H ${x1 - R} Q ${x1} ${yb} ${x1} ${yb + R} V ${y1 - R} Q ${x1} ${y1} ${x1 - R} ${y1}
+    H ${x0 + 178} C ${x0 + 156} ${y1 + 20} ${x0 + 112} ${y1 + 38} ${x0 + 46} ${y1 + RABO}
+    C ${x0 + 80} ${y1 + 28} ${x0 + 98} ${y1 + 14} ${x0 + 104} ${y1}
+    H ${x0 + R} Q ${x0} ${y1} ${x0} ${y1 - R} V ${yb + R} Q ${x0} ${yb} ${x0 + R} ${yb} Z`;
+  svg.innerHTML = `<defs><linearGradient id=gb x1=0 y1=0 x2=0 y2=1><stop offset=0 stop-color="#2a241d"/><stop offset=1 stop-color="#1f1b16"/></linearGradient></defs>
+    <path d="${d}" fill="url(#gb)" stroke="rgba(232,179,106,.42)" stroke-width="2.5" stroke-linejoin="round"/>`;
+}
+
+const CTX = document.createElement('canvas').getContext('2d');
+// palavras de um elemento com a caixa de cada uma (uma palavra partida em duas linhas tem 2 caixas)
+function palavras(el) {
+  const out = [], w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+  let n, fimComEspaco = true;
+  while ((n = w.nextNode())) {
+    const re = /\S+/g; let m;
+    while ((m = re.exec(n.data))) {
+      const espaco = m.index > 0 ? /\s/.test(n.data[m.index - 1]) : fimComEspaco;
+      const rg = document.createRange(); rg.setStart(n, m.index); rg.setEnd(n, m.index + m[0].length);
+      const rs = [...rg.getClientRects()].filter(q => q.width > 0);
+      if (!rs.length) continue;
+      const r = {left: Math.min(...rs.map(q => q.left)), right: Math.max(...rs.map(q => q.right)), top: Math.min(...rs.map(q => q.top)), bottom: Math.max(...rs.map(q => q.bottom))};
+      // tinta real do glifo (itálico do Playfair passa da caixa: f, g, j, p e aspas)
+      const cs = getComputedStyle(n.parentElement);
+      CTX.font = `${cs.fontStyle} ${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`; CTX.letterSpacing = cs.letterSpacing === 'normal' ? '0px' : cs.letterSpacing;
+      const mt = CTX.measureText(m[0]);
+      r.inkL = rs[0].left - mt.actualBoundingBoxLeft; r.inkR = rs[rs.length - 1].left + mt.actualBoundingBoxRight;
+      out.push({p: m[0], r, partes: rs.length, espaco});
+    }
+    if (n.data.length) fimComEspaco = /\s$/.test(n.data);
+  }
+  return out;
+}
+
+function checar(it) {
+  const erros = [];
+  const txt = ['rot', 'fr'].map(id => document.getElementById(id)).filter(Boolean);
+  const linhas = new Set();
+  for (const el of txt) for (const w of palavras(el)) {
+    if (w.partes > 1) erros.push(`palavra quebrada: ${w.p}`);
+    const L = Math.min(w.r.left, w.r.inkL), Rr = Math.max(w.r.right, w.r.inkR);
+    if (L < 80 - 0.5 || Rr > 1000 + 0.5) erros.push(`fora de x 80-1000: ${w.p} (${Math.round(L)}-${Math.round(Rr)})`);
+    if (w.r.top < 220 - 0.5 || w.r.bottom > 1250 + 0.5) erros.push(`fora de y 220-1250: ${w.p} (${Math.round(w.r.top)}-${Math.round(w.r.bottom)})`);
+  }
+  // espaço entre palavras não pode sumir (ex.: margem negativa puxando a palavra para a linha de cima)
+  const pf = palavras(document.getElementById('frt'));
+  pf.forEach((w, i) => { const a = pf[i - 1]; if (i && w.espaco && Math.abs((a.r.top + a.r.bottom) / 2 - (w.r.top + w.r.bottom) / 2) < 40 && w.r.left - a.r.right < 8) erros.push(`espaço colado: ${a.p} ${w.p}`); });
+  const cs = palavras(document.getElementById('frt')).map(w => (w.r.top + w.r.bottom) / 2).sort((a, b) => a - b);
+  cs.forEach((c, i) => { if (!i || c - cs[i - 1] > 40) linhas.add(c); });
+  for (const w of palavras(document.getElementById('ass'))) if (w.r.top < 1580) erros.push(`assinatura acima de 1580: ${w.p}`);
+  // nada (texto, fio, balão) na faixa 1300-1560 quando zona_sticker
+  if (it.zona_sticker) {
+    const els = [...document.querySelectorAll('#t > *, #balsvg path')].filter(e => e.id !== 'ass');
+    for (const e of els) { const r = e.getBoundingClientRect(); if (r.height && r.bottom > 1300 && r.top < 1560) erros.push(`elemento na zona do sticker: ${e.id || e.tagName} (${Math.round(r.top)}-${Math.round(r.bottom)})`); }
+  }
+  const fr = document.getElementById('fr').getBoundingClientRect();
+  const sv = document.querySelector('#balsvg path');
+  return {ok: !erros.length, erros, linhas_fr: linhas.size, bloco: [Math.round(fr.top), Math.round(fr.bottom)], balao: sv ? (r => [Math.round(r.left), Math.round(r.top), Math.round(r.right), Math.round(r.bottom)])(sv.getBoundingClientRect()) : null};
+}
+</script></body></html>

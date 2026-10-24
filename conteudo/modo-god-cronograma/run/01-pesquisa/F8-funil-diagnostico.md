@@ -1,6 +1,8 @@
-# F8 · Do conteúdo ao diagnóstico de 30 minutos · rodada de 24/10/2026
+# F8 · Do conteúdo ao diagnóstico de 30 minutos · rodada de 24/10/2026, versão das 15h45
 
-Frente F8 (funil-diagnostico) da pesquisa do conselho Agência Reunida para @o_estrategista.com.br. Leituras ao vivo, somente leitura, entre 14h05 e 14h25 de sábado 24/10/2026 (horário de São Paulo). Nada foi publicado, agendado, alterado ou enviado no Instagram, no Buzzfy, no PostZen ou no site. Nenhum formulário foi enviado e nenhum teste foi respondido: as páginas foram baixadas com GET e lidas no código.
+Frente F8 (funil-diagnostico) da pesquisa do conselho Agência Reunida para @o_estrategista.com.br. Substitui a versão das 14h25 deste arquivo (histórico no git, commit 88433c7), escrita antes do fato novo: a entrevista à TV Câmara Campinas vai ao ar na **segunda-feira, 02/11/2026** (mensagem do Bruno: "Vai pro ar segunda dia 2" e "pode seguir pois as postagens vou marcar ela"). Horário da exibição: sem dado.
+
+Leituras ao vivo, somente leitura, entre 15h30 e 15h45 de sábado 24/10/2026 (horário de São Paulo). Nada foi publicado, agendado, alterado ou enviado no Instagram, no Buzzfy, no PostZen ou no site. Nenhum formulário foi enviado e nenhum teste foi respondido: as páginas e os scripts foram baixados com GET e lidos no código. Toda mudança abaixo é ação do Bruno, com prazo.
 
 Etiquetas: [FATO] com a fonte ao lado; [ESTIMATIVA] com a conta ou a premissa; [HIPÓTESE] a testar; [PRIOR] palpite do modelo, evidência nível 4, que nunca fecha uma objeção sozinho. Métrica que falta: "sem dado".
 
@@ -8,231 +10,255 @@ Etiquetas: [FATO] com a fonte ao lado; [ESTIMATIVA] com a conta ou a premissa; [
 
 ## 0. Consultas feitas (todas responderam; nenhum erro de consulta)
 
-| # | Fonte | Consulta e parâmetros | Resultado |
-|---|---|---|---|
-| 1 | PostZen `listCommentAutomations` | accountId j97772ycndetk3f1wcdbh14p898g4b8w | 17 automações, todas com isActive true |
-| 2 | PostZen `listCommentAutomationLogs` | uma chamada por automação, as 17, limit 50 | 16 com total 0; CHECKLIST com total 1 |
-| 3 | PostZen `listPosts` | mesma conta, limit 100, sortBy scheduledFor | 36 posts: 22 publicados (12/10 a 24/10) e 14 agendados (24/10 a 30/10) |
-| 4 | Buzzfy `ig_account_stats` | 30 dias (24/09 17h17 a 24/10 17h17 UTC) | ok |
-| 5 | Buzzfy `ig_account_stats` | 7 dias (17/10 a 24/10) | ok |
-| 6 | Buzzfy `ig_posts` | since 2026-09-24, limit 50 | 35 itens |
-| 7 | Buzzfy `ig_post_stats` | Dentista A, carrossel Checklist, reel Médico, carrossel Saga 7, 2 stories de hoje | ok; os 2 stories com dado provisório (menos de 1 h no ar) |
-| 8 | Buzzfy `ig_post_stats` | "Ele nunca fez um anúncio", "90%", "Problema de equipe" | ok |
-| 9 | Site (GET, sem envio) | `/tabuleiro/?o=ig-tabuleiro`, `/v2/`, `/?o=ig-case`, `/primeiro-lance/`, `/lancamento-para-dentistas/`, `js/tabuleiro.js`, `js/main.js` | todos 200 |
-| 10 | Site de materiais (GET, sem envio) | `estrategista-materiais-videon8ns-projects.vercel.app/m/checklist?o=ig-checklist` | 200 |
+| # | Fonte | Consulta e parâmetros | Hora (SP) | Resultado |
+|---|---|---|---|---|
+| 1 | PostZen `listCommentAutomations` | accountId j97772ycndetk3f1wcdbh14p898g4b8w | 15h30 | 17 automações, todas isActive true; textos, botões e palavras iguais aos das 14h05 |
+| 2 | PostZen `listCommentAutomationLogs` | uma chamada por automação, as 17, limit 50 | 15h31 | 16 com total 0; CHECKLIST com total 1 (o mesmo registro das 14h05) |
+| 3 | PostZen `listPosts` | mesma conta, de 24/10 00h a 30/11 23h59, sortBy scheduledFor, limit 100 | 15h32 | 20 posts: 4 stories publicados hoje (14h00, 14h03, 15h00, 15h01) e 16 agendados (24/10 16h30 a 21/11 18h30), já com tl02 a tl05 |
+| 4 | Buzzfy `ig_account_stats` | 30 dias (24/09 15h30 a 24/10 15h30) | 15h30 | ok |
+| 5 | Buzzfy `ig_account_stats` | 7 dias (17/10 a 24/10) | 15h30 | ok, 0 de anúncio |
+| 6 | Buzzfy `ig_follower_growth` | 30 dias | 15h31 | ok; 22 e 23/10 pendentes |
+| 7 | Buzzfy `ig_posts` | since 2026-09-24, limit 50; e kind stories | 15h31 | 35 itens de feed; 5 stories ativos |
+| 8 | Buzzfy `ig_post_stats` | 32 ids em 3 chamadas: os 19 reels desde 24/09, os 5 posts de palavra-chave sem leitura, Checklist, Saga 7, "Antes de qualquer tabuleiro" e os 5 stories de hoje | 15h33 a 15h41 | ok; stories com dado provisório |
+| 9 | Site (GET) | `/tabuleiro/?o=ig-tabuleiro`, `/v2/`, `/?o=ig-case`, `/primeiro-lance/`, `js/tabuleiro.js`, `js/main.js`, `js/cinema.js` | 15h33 a 15h35 | todos 200 |
+| 10 | Site de materiais (GET) | `estrategista-materiais-videon8ns-projects.vercel.app/m/checklist?o=ig-checklist` | 15h33 | 200 |
+| 11 | Contêiner GTM público (GET) | `googletagmanager.com/gtm.js?id=GTM-W2LS6RKN` | 15h36 | 200; GA4 G-F91ET225YW com 6 eventos |
+| 12 | TV Câmara (GET) | `/programacao/2026-11-02`, `/programacao/2026-10-26`, `/termos` | 15h37 | 200; as duas datas redirecionam para 24/10 (grade de 02/11 não publicada) |
 
-Não usei ferramenta fora da lista permitida (nada de `ig_comments`, `ig_inbox` ou `getCommentAutomation`). Quando cito o direct, a fonte é o arquivo de outra frente que leu o `ig_inbox`.
+Não usei ferramenta fora da lista permitida (nada de `ig_comments`, `ig_inbox` ou `getCommentAutomation`). Quando cito o direct, a fonte é o `stories-objecoes/01-objecoes.md`, que leu o `ig_inbox` em outra rodada.
 
 ---
 
 ## 1. Resumo
 
-1. [FATO, `listCommentAutomations`] 17 automações ativas com 15 palavras diferentes. Só 3 levam a diagnóstico (TABULEIRO, CASE, ESTRATEGISTA). As outras 14 levam a PDF ou material com formulário de 9 campos. 6 valem para a conta toda: 5 de comentário (CASE, ESTRATEGISTA, ETAPAS, FUNIL, CAIXA) e 1 de resposta de story (ETAPAS).
-2. [FATO, logs das 17] Um disparo em todas as automações somadas: CHECKLIST, comentário "Checklist" no carrossel de 12/10, do perfil `bruno26111982`, com direct e resposta pública enviados. [HIPÓTESE] É teste do próprio Bruno. Se for, a conta tem 0 lead real vindo de automação.
-3. [FATO] TABULEIRO tem 0 log e está ligada só ao reel Dentista B, agendado para hoje às 21h e ainda não publicado. Há precedente de que a ligação por post do PostZen funciona depois da publicação: a CHECKLIST também foi ligada pelo id do PostZen e o log dela traz o id do Instagram do carrossel (18010053242992517).
-4. [FATO, `ig_account_stats`] 30 dias: 447 visitas ao perfil, 7 cliques no site (1,6%), 0 toque em botão de link, 14 comentários. Últimos 7 dias, sem anúncio: 74 visitas, 0 clique, 2 comentários.
-5. [FATO, `ig_posts` e `ig_post_stats`] 19 peças pediram palavra-chave e renderam 3 comentários. Os 4 reels com o Bruno em cena somam 771 de alcance e 5 comentários. O Dentista A (169 de alcance, pedido "comenta aqui que eu te respondo") teve 0 comentário.
-6. [FATO, site] O link da bio vai para `/v2/` ("A Partida", versão cinema). Os 6 botões dessa página abrem o WhatsApp com a mensagem padrão e não passam pelo Tabuleiro. CASE e ESTRATEGISTA mandam para a página inicial, embora o direct diga "agenda um diagnóstico". Só a TABULEIRO leva ao teste de 12 casas.
-7. [FATO, `js/tabuleiro.js`] O teste termina num botão de WhatsApp com mensagem pronta (nota, gargalo e profissão, esta só quando o link traz `&p=`). A origem (`o=ig-...`) não entra na mensagem. O agendamento acontece na conversa do WhatsApp; o site não tem agenda on-line.
-8. [FATO] Rastreio de clique do PostZen desligado nas 17 automações (linkTracking false). O site tem o contêiner GTM-W2LS6RKN com os eventos `tabuleiro_start`, `tabuleiro_complete` e `generate_lead`, mas nenhuma ferramenta permitida aos agentes lê esses números. Do clique no botão em diante, tudo é sem dado para nós.
-9. [ESTIMATIVA] O caminho da bio, sozinho, não chega a 10 diagnósticos por mês: no ritmo orgânico dos últimos 7 dias são cerca de 317 visitas e 5 cliques por mês. Mesmo que todo clique virasse diagnóstico, seriam 5. Pelo comentário, com até 5 posts TABULEIRO até 22/11 a 169 de alcance e 0,65 comentário por 100 contas, o teto fica em cerca de 5,5 comentários de qualquer tipo. A meta D6 de 5 disparos de TABULEIRO até 22/11 exige que quase todo comentário seja a palavra.
-10. [FATO mais HIPÓTESE] Riscos nas peças já agendadas: "caso" é palavra da automação CASE, que vale para a conta toda, e o CI01 (qua 28/10) pede resposta aberta; o PO01 (qui 29/10) pede "Comenta a palavra" sem automação; o CAR01 (ter 27/10) faz dois pedidos na mesma legenda.
+1. [FATO, `listCommentAutomations` 15h30] Nada mudou nas automações desde as 14h05: 17 ativas, 15 palavras. Só 3 levam a diagnóstico (TABULEIRO, CASE, ESTRATEGISTA); 14 levam a PDF ou material com formulário de 9 campos. 6 valem para a conta toda: CASE ("case", "caso"), ESTRATEGISTA, ETAPAS, FUNIL e CAIXA em comentário, e ETAPAS em resposta de story.
+2. [FATO, logs das 17] Um disparo em todas somadas: CHECKLIST, comentário "Checklist" de `bruno26111982`. [HIPÓTESE] É teste do Bruno; se for, a conta tem 0 lead real vindo de automação. TABULEIRO: 0 log, ligada só ao Dentista B, que sai hoje às 21h.
+3. [FATO, `ig_post_stats`] 19 peças pediram palavra-chave desde 24/09: alcance somado 764, mediana 34, 3 comentários (0,39 por 100 contas). A única delas acima de 150 foi o reel "Você gravou o curso inteiro" (PESQUISA): 169 de alcance, pulo de 86,9%, 5 s assistidos e **0 comentário**. Os 4 reels com o Bruno, sem palavra-chave: 771 de alcance somado e 5 comentários (0,65 por 100). O portão dos 150 é necessário e não basta.
+4. [FATO, `ig_account_stats`] 30 dias: 447 visitas ao perfil, 7 cliques no site (1,57%), 0 toque em botão de link, 14 comentários, 7 respostas de story. Últimos 7 dias, sem anúncio: 571 contas, 74 visitas, 0 clique, 2 comentários, 3 respostas.
+5. [FATO, site às 15h33] A bio leva a `/v2/` ("A Partida", versão cinema): 6 botões abrem o WhatsApp com a mensagem padrão "Quero agendar o Primeiro Lance (diagnóstico de lançamento)." e nenhum leva ao Tabuleiro. Nenhuma das 5 páginas abertas cita a TV Câmara. Não há agenda on-line em nenhuma: o diagnóstico de 30 minutos é marcado na conversa do WhatsApp.
+6. [FATO, `gtm.js` público] O contêiner GTM-W2LS6RKN tem GA4 (G-F91ET225YW) com 6 eventos: `tabuleiro_start`, `tabuleiro_complete` (nota, gargalo, profissão), `generate_lead` (clique em WhatsApp), `cta_click`, `file_download` e `calculadora_complete`. Os números existem no GA4 do Bruno; nenhuma ferramenta permitida aos agentes lê. O `o=ig-...` não entra em nenhum evento nem na mensagem do WhatsApp.
+7. **Semana da exibição.** [FATO, `listPosts`] De dom 01/11 a sex 06/11 não há nada agendado no PostZen. [HIPÓTESE] Quem viu a TV e procura o Bruno chega pela busca, pelo perfil e pela bio, e não por comentário com palavra: a bio e o `/v2/` são a porta da semana, e hoje nenhuma das duas diz o que acontece depois nem cita a TV.
+8. **Risco novo de automação na semana da TV.** A CASE dispara com "caso" e a ESTRATEGISTA com "estrategista", em qualquer post [FATO]. A série usa as duas palavras: "Contei esse caso" (pb02), "um dos casos" (ob02), "BRUNO · ESTRATEGISTA DE LANÇAMENTO" na tela do ob02 [FATO, `listPosts` e `03-plano-7-dias.md`]. Um comentário como "parabéns, estrategista" recebe um direct que diz "Pra eu te mostrar onde o seu dinheiro está vazando" [HIPÓTESE sobre a frequência]. E cada comentário só aceita uma resposta privada [FATO, PostZen]: se a automação responder, o Bruno não consegue mandar a resposta privada dele naquele comentário.
+9. [ESTIMATIVA] Pela bio, a semana da TV rende de 0,5 a 1 clique: 32 a 63 visitas de 02 a 04/11 (10,6 por dia de base ou 21 por dia da meta D1) vezes 1,57%. Pelo comentário, até 22/11, o teto com 5 posts TABULEIRO no nível do Dentista A fica em 3,7 a 5,5 comentários de qualquer tipo. Nenhum dos dois caminhos, sozinho, chega a 10 diagnósticos por mês.
+10. **Encaixe proposto.** TABULEIRO só na peça seguinte do mesmo formato de um reel que passou de 150 em 48 h (catálogo da entrevista, linhas 341 e 591), no máximo 1 por semana, com 4 leituras datadas: Dentista B (seg 26/10, 21h), pb01 (qua 28/10, 21h, abre o pb02), tl02 (seg 02/11, 18h30, abre o tl03) e tl03 (seg 09/11, 18h30, abre o tl04). No dia 02/11, nenhuma palavra: seguir e direct. CASE, ESTRATEGISTA, ETAPAS, FUNIL e CAIXA desligadas pelo Bruno antes do tl01 (dom 25/10, 18h30).
 
 ---
 
-## 2. Mapa das 17 automações [FATO, `listCommentAutomations` e `listCommentAutomationLogs`, 24/10]
+## 2. Mapa das 17 automações [FATO, `listCommentAutomations` e `listCommentAutomationLogs`, 15h30]
 
-Todas: ativas, plataforma Instagram, público "any" (seguidor ou não), direct sem atraso (e resposta pública sem atraso nas 16 de comentário), linkTracking false, alsoMatchInDms false (palavra digitada no direct não dispara nada), matchMode "word" (palavra inteira).
+Todas: ativas, Instagram, público "any" (seguidor ou não), direct sem atraso, resposta pública sem atraso nas 16 de comentário, linkTracking false, alsoMatchInDms false (palavra digitada no direct não dispara nada), matchMode "word" (palavra inteira). Regras do PostZen lidas na descrição das ferramentas [FATO]: um comentário aceita uma resposta privada, uma vez, em até 7 dias; resposta de story vira direct normal dentro da janela de 24 h.
 
-| # | Nome no PostZen | Gatilho | Palavras | Onde vale | Botão leva a | Tipo de destino | Disparos (stats / log) |
+| # | Nome no PostZen | Gatilho | Palavras | Onde vale | Botão leva a | Destino | Disparos (stats / log) |
 |---|---|---|---|---|---|---|---|
-| 1 | TABULEIRO · Reel Dentista B (palavra do mês) | comentário | tabuleiro, tabuleiros (tolera erro) | só o Dentista B (postId m170mzbzy38d7td2vhggm4v2dx8gx767, agendado 24/10 21h) | `/tabuleiro/?o=ig-tabuleiro` | teste de 12 casas, depois WhatsApp | 0 / 0 |
+| 1 | TABULEIRO · Reel Dentista B (palavra do mês) | comentário | tabuleiro, tabuleiros (tolera erro) | só o Dentista B (postId m170mzbzy38d7td2vhggm4v2dx8gx767, sáb 24/10 21h) | `/tabuleiro/?o=ig-tabuleiro` | teste de 12 casas, depois WhatsApp | 0 / 0 |
 | 2 | ETAPAS · resposta de Story (conta toda) | resposta de story | etapas, etapa | todo story | `.../m/checklist?o=ig-story-etapas` | PDF com formulário | 0 / 0 |
 | 3 | CASE · diagnóstico (conta toda, sem citar cliente) | comentário | case, caso (sem tolerância a erro) | todo post | `/?o=ig-case` (página inicial) | página inicial, depois WhatsApp | 0 / 0 |
-| 4 | ESTRATEGISTA · série 2 (conta toda) | comentário | estrategista | todo post | `/?o=ig-estrategista` (página inicial) | página inicial, depois WhatsApp | 0 / 0 |
+| 4 | ESTRATEGISTA · série 2 (conta toda) | comentário | estrategista (tolera erro) | todo post | `/?o=ig-estrategista` (página inicial) | página inicial, depois WhatsApp | 0 / 0 |
 | 5 | ETAPAS · série 2 (conta toda) | comentário | etapas, etapa | todo post | `.../m/checklist?o=ig-etapas` | PDF com formulário | 0 / 0 |
 | 6 | FUNIL · série 2 (conta toda) | comentário | funil | todo post | `.../m/checklist?o=ig-funil` | PDF com formulário | 0 / 0 |
 | 7 | CAIXA · série 2 (conta toda) | comentário | caixa | todo post | `.../m/recuperacao?o=ig-caixa` | PDF com formulário | 0 / 0 |
-| 8 | ETAPAS · Reels Escala 7x7 | comentário | etapas, etapa | um post (postId m1748g817gjwzraqn6wa67h3a18ghjqf, que não aparece entre os 36 posts do `listPosts`) | `.../m/checklist?o=ig-etapas` | PDF com formulário | 0 / 0 |
-| 9 | RECUPERAÇÃO · Reels 07 | comentário | recuperação, recuperacao, recuperaçao, recuperar | reel de 13/10 | `.../m/recuperacao?o=ig-recuperacao` | PDF com formulário | 0 / 0 |
-| 10 | PERPÉTUO · Reels 08 | comentário | perpétuo, perpetuo, perpetua, perpétua | reel de 14/10 | `.../m/perpetuo?o=ig-perpetuo` | material com formulário | 0 / 0 |
+| 8 | ETAPAS · Reels Escala 7x7 | comentário | etapas, etapa | um post (postId m1748g817gjwzraqn6wa67h3a18ghjqf, fora dos posts que o `listPosts` devolve) | `.../m/checklist?o=ig-etapas` | PDF com formulário | 0 / 0 |
+| 9 | RECUPERAÇÃO · Reels 07 | comentário | recuperação e variações, recuperar | reel de 13/10 | `.../m/recuperacao?o=ig-recuperacao` | PDF com formulário | 0 / 0 |
+| 10 | PERPÉTUO · Reels 08 | comentário | perpétuo e variações | reel de 14/10 | `.../m/perpetuo?o=ig-perpetuo` | material com formulário | 0 / 0 |
 | 11 | CARRINHO · Reels 06 | comentário | carrinho, carrinhos | reel de 13/10 | `.../m/carrinho?o=ig-carrinho` | material com formulário | 0 / 0 |
 | 12 | EVENTO · Reels 05 | comentário | evento, eventos | reel de 13/10 | `.../m/evento?o=ig-evento` | material com formulário | 0 / 0 |
-| 13 | PESQUISA · Reels 01 | comentário | pesquisa, pesquisar | reel de 11/10 (ligado pelo id do Instagram 18091659392202122; o reel não está no `listPosts`) | `.../m/pesquisa?o=ig-pesquisa` | material com formulário | 0 / 0 |
+| 13 | PESQUISA · Reels 01 | comentário | pesquisa, pesquisar | reel de 11/10 (id do Instagram 18091659392202122) | `.../m/pesquisa?o=ig-pesquisa` | material com formulário | 0 / 0 |
 | 14 | AQUECIMENTO · Reels 04 | comentário | aquecimento, aquecer | reel de 12/10 | `.../m/aquecimento?o=ig-aquecimento` | material com formulário | 0 / 0 |
-| 15 | CAPTAÇÃO · Reels 03 | comentário | captação, captacao, captaçao | reel de 12/10 | `.../m/captacao?o=ig-captacao` | material com formulário | 0 / 0 |
+| 15 | CAPTAÇÃO · Reels 03 | comentário | captação e variações | reel de 12/10 | `.../m/captacao?o=ig-captacao` | material com formulário | 0 / 0 |
 | 16 | OFERTA · Reels 02 | comentário | oferta, ofertas | reel de 12/10 | `.../m/oferta?o=ig-oferta` | material com formulário | 0 / 0 |
 | 17 | CHECKLIST · carrossel 10 perguntas | comentário | checklist, check list, checklis | carrossel de 12/10 | `.../m/checklist?o=ig-checklist` | PDF com formulário | 1 / 1 |
 
 Leitura:
-- [FATO] 15 palavras de comentário ou story ativas ao mesmo tempo, contra a regra de uma por mês (CLAUDE.md) e contra o PARAR de 21/10 ("12 palavras-chave diferentes", 00-SISTEMA, Módulo 7).
-- [FATO] O texto do direct da TABULEIRO diz que o teste mostra "em qual etapa o seu lançamento trava: pesquisa, oferta, aquecimento ou carrinho". A página mostra o gargalo em um dos 5 Lances (Abertura, Gambito, Meio-Jogo, Xeque-Mate, Promoção) [FATO, `js/tabuleiro.js`]. A promessa do direct e o que a página entrega usam mapas diferentes.
-- [FATO] O direct da TABULEIRO fala de "agenda cheia" e de "transformar a técnica num segundo produto": é texto de dentista. Serve para o Dentista B e não serve para um post de outro tema em novembro.
-- [FATO, página de material] O formulário dos materiais pede 9 campos (nome, WhatsApp, e-mail, Instagram, profissão, seguidores, se já lançou, quando pensa em lançar, maior dificuldade) mais o aceite. O site de materiais está num endereço `*.vercel.app`, fora do domínio da marca. [PRIOR] Endereço fora da marca pesa contra a confiança de quem chega frio.
+- [FATO] 15 palavras ativas ao mesmo tempo, contra a regra de uma por mês (CLAUDE.md) e contra o PARAR de 21/10 ("12 palavras-chave diferentes", 00-SISTEMA, Módulo 7). A decisão segue sem execução 3 dias depois [FATO, F7].
+- [FATO] O direct da TABULEIRO promete mostrar "em qual etapa o seu lançamento trava: pesquisa, oferta, aquecimento ou carrinho"; a página entrega o gargalo em um dos 5 Lances (A Abertura, O Gambito, O Meio-Jogo, O Xeque-Mate, A Promoção) [FATO, `js/tabuleiro.js`]. Mapas diferentes entre a promessa e a entrega.
+- [FATO] O direct da TABULEIRO é texto de dentista ("Para quem tem agenda cheia, é o primeiro passo antes de transformar a técnica num segundo produto"). Serve ao Dentista B e não serve a peça da TV nem a outro nicho.
+- [FATO, página de material] O formulário pede 9 campos (nome, WhatsApp, e-mail, Instagram, profissão, seguidores, se já lançou, quando pensa em lançar, maior dificuldade) mais o aceite, e envia para `/api/lead` no domínio `*.vercel.app`. Para onde vai e se alguém preencheu: sem dado.
+- [FATO] O log do PostZen traz o id do post do Instagram de cada disparo (platformPostId) e não traz data nem hora.
 
 ---
 
 ## 3. O que disparou
 
-- [FATO, `listCommentAutomationLogs` da CHECKLIST] Um registro: comentário "Checklist" (commentId 18093530426454537), autor `bruno26111982`, no post 18010053242992517 (carrossel "10 perguntas antes de abrir o carrinho", 12/10 06h); resposta pública com status "sent"; direct com status "sent", botões mantidos (buttonsDropped false). O registro não traz data nem hora.
-- [FATO, `ig_post_stats`] O carrossel tem 34 de alcance, 2 comentários, 0 visita ao perfil e 0 seguidor.
-- [HIPÓTESE] Os 2 comentários são o "Checklist" e a resposta pública automática da conta ("Te mandei no direct..."), já que a contagem do Instagram pode incluir a resposta do dono. Ler os comentários exige `ig_comments`, fora da lista permitida: sem dado.
-- [HIPÓTESE] O autor é o próprio Bruno testando (o nome de usuário começa com "bruno"). Quem confirma: o Bruno.
-- [FATO, `ig_posts`] Três peças pediram palavra que não tinha automação: Saga 7 (carrossel de 09/10, "Comenta TABULEIRO que eu te mando o diagnóstico gratuito", 71 de alcance, 0 comentário), Médico (reel de 30/09, "Comenta AGENDA", 64 de alcance, 1 comentário) e "Cem mil seguidores" (reel de 01/10, "Comenta o número da sua casa", 0 comentário). Quem comentou não recebeu nada automático.
-- [FATO, `stories-objecoes/01-objecoes.md`, leitura do `ig_inbox` de 12 a 24/10] Nas 50 conversas mais recentes do direct, nenhuma conversa comercial e nenhuma pergunta de preço, prazo ou método.
+- [FATO, log da CHECKLIST] Um registro: comentário "Checklist" (commentId 18093530426454537), autor `bruno26111982`, no post 18010053242992517 (carrossel "10 perguntas antes de abrir o carrinho", 12/10); resposta pública "sent"; direct "sent" com botões mantidos (buttonsDropped false).
+- [FATO, `ig_post_stats`] O carrossel tem 34 de alcance, 2 comentários, 0 visita ao perfil, 0 seguidor. [HIPÓTESE] Os 2 comentários são o "Checklist" e a resposta pública automática da conta. Ler o texto exige `ig_comments`, fora da lista: sem dado.
+- [FATO] A CHECKLIST foi ligada pelo id do PostZen e o log traz o id do Instagram. É o precedente de que a ligação por post agendado funciona depois da publicação, que é o caso da TABULEIRO no Dentista B.
+- [FATO, `ig_posts`] Duas peças pediram palavra sem automação: Saga 7 (09/10, "Comenta TABULEIRO que eu te mando o diagnóstico gratuito", 71 de alcance, 0 comentário) e Médico (30/09, "Comenta AGENDA", 64 de alcance, 1 comentário que não recebeu nada automático).
+- [FATO, `ig_account_stats`] 7 respostas de story em 30 dias e 3 em 7 dias; a ETAPAS de story tem 0 log, então nenhuma resposta trazia "etapa".
+- [FATO, `01-objecoes.md`, leitura do `ig_inbox` de 12 a 24/10] Nas 50 conversas mais recentes do direct: nenhuma conversa comercial, nenhuma pergunta de preço, prazo ou método. Há menções da TV Câmara e da Mirna.
 
 ---
 
-## 4. O caminho hoje, etapa por etapa
+## 4. O caminho hoje e onde ele quebra
 
 ### 4.1 As portas que existem
 
-| Porta | Caminho | Origem que chega ao Bruno | Estado |
+| Porta | Caminho | O que chega ao Bruno | Estado |
 |---|---|---|---|
-| A. Comentário TABULEIRO | comentário no Dentista B, resposta pública, direct com botão "Fazer o diagnóstico", `/tabuleiro/?o=ig-tabuleiro`, 12 perguntas, resultado, botão "Levar meu tabuleiro pro diagnóstico (abre o WhatsApp)", conversa, horário combinado à mão, diagnóstico de 30 min | Mensagem "Fiz O Tabuleiro no site. Deu N de 12 casas de pé e o gargalo caiu no Lance X..." sem a origem e, sem `&p=`, sem a profissão [FATO, `js/tabuleiro.js`] | abre hoje 21h; 0 log |
-| B. Comentário CASE ou ESTRATEGISTA | comentário com "case", "caso" ou "estrategista" em qualquer post, direct, página inicial (texto longo, 35 KB de HTML), botão de WhatsApp com mensagem padrão | "Quero agendar o Primeiro Lance (diagnóstico de lançamento)." [FATO, `js/main.js` e HTML] | ativa; 0 log |
-| C. Link da bio | perfil, `/v2/`, um dos 6 botões "Agendar o Primeiro Lance", WhatsApp com mensagem padrão | mesma mensagem padrão; o Bruno não separa bio de Google | 7 cliques em 30 dias, 0 em 7 dias |
-| D. Link em story | sticker para `/tabuleiro/?o=ig-stories` (plano de stories, postado à mão) e daí igual à porta A | igual à A; o `o` some | depende do plano de stories (F6) |
-| E. Palavra de material | comentário com palavra de material, direct, página na vercel, formulário de 9 campos, PDF, grupo de WhatsApp e, no 3º passo, o Tabuleiro [FATO, F6 seção 7] | sem dado (o formulário vai para um destino que não conferi) | 1 disparo, possivelmente teste |
-| F. Direct à mão | resposta de story sem "etapa", direct espontâneo, comentário de profissão | o que a pessoa escrever | 0 conversa comercial em 50 [FATO, 01-objecoes] |
+| A. Comentário TABULEIRO | comentário no Dentista B, resposta pública, direct com botão "Fazer o diagnóstico", `/tabuleiro/?o=ig-tabuleiro`, 12 perguntas, resultado, botão de WhatsApp, horário combinado à mão | "Fiz O Tabuleiro no site. Deu N de 12 casas de pé e o gargalo caiu no Lance X, nome. [Sou profissão.] Queria olhar isso com você." A profissão só entra com `&p=` no link; a origem nunca [FATO, `js/tabuleiro.js`] | abre hoje 21h; 0 log |
+| B. Comentário CASE ou ESTRATEGISTA | "case", "caso" ou "estrategista" em qualquer post, direct que diz "agenda um diagnóstico gratuito de 30 minutos", página inicial longa (35 KB), botão de WhatsApp | "Quero agendar o Primeiro Lance (diagnóstico de lançamento)." [FATO, `js/main.js`] | ativa; 0 log |
+| C. Link da bio | perfil, `/v2/`, um dos 6 botões "Agendar o Primeiro Lance", WhatsApp | a mesma mensagem padrão; não se separa de quem veio do Google | 7 cliques em 30 dias, 0 em 7 dias |
+| D. Link em story | sticker para `/tabuleiro/?o=ig-stories` (à mão, plano de stories) e daí igual à A | igual à A, sem a origem | depende do plano de stories (F6) |
+| E. Palavra de material | palavra de material, direct, página na vercel, formulário de 9 campos, PDF, grupo de WhatsApp | sem dado | 1 disparo, possível teste |
+| F. Direct à mão | "Me manda a data no direct", resposta de story, comentário de profissão ou de área | o que a pessoa escrever | 0 conversa comercial em 50 [FATO, 01-objecoes] |
+| G. Quem viu a TV (nova, a partir de 02/11) | TV, busca do nome ou do perfil, perfil, bio, `/v2/`, WhatsApp; ou direct espontâneo | mensagem padrão ou direct livre | [HIPÓTESE] Se o programa mostra o @ do Bruno na tela: sem dado. Audiência da TV: sem dado; views da página de cada edição no site: mediana de 80,5 nas 20 últimas [FATO, F4] |
 
 ### 4.2 Números por etapa
 
 | Etapa | 30 dias (24/09 a 24/10) | 7 dias (17 a 24/10) | Fonte |
 |---|---|---|---|
-| Alcance | 3.216 contas, 1.907 de anúncio | 571 contas, 0 de anúncio | [FATO, `ig_account_stats`] |
-| Comentários | 14 | 2 | [FATO, `ig_account_stats`] |
-| Visitas ao perfil | 447 | 74 | [FATO, `ig_account_stats`] |
-| Cliques no site (link da bio) | 7 (1,6% das visitas) | 0 | [FATO, `ig_account_stats`] |
-| Toques em botão de link | 0 | 0 | [FATO, `ig_account_stats`] |
-| Disparos de automação | 1 (CHECKLIST, possível teste) | sem dado por período (o log não traz data) | [FATO, logs] |
-| Cliques no botão do direct | sem dado (linkTracking false) | sem dado | [FATO, `listCommentAutomations`] |
-| Tabuleiro iniciado e concluído | sem dado para os agentes (eventos existem no GTM) | sem dado | [FATO, `js/tabuleiro.js`] |
-| Mensagens no WhatsApp | sem dado | sem dado | só o Bruno vê |
-| Diagnósticos de 30 min agendados | sem dado | sem dado | só o Bruno sabe |
-| Diagnósticos realizados | sem dado | sem dado | só o Bruno sabe |
+| Alcance | 3.216 contas (1.907 de anúncio) | 571 contas (0 de anúncio; 212 seguidores, 360 não seguidores) | [FATO, `ig_account_stats`] |
+| Views | 12.720 (10.513 orgânicas) | 1.896 (story 1.041) | [FATO, `ig_account_stats`] |
+| Comentários | 14 | 2 | [FATO] |
+| Respostas de story | 7 | 3 | [FATO] |
+| Visitas ao perfil | 447 | 74 | [FATO] |
+| Cliques no site (link da bio) | 7 (1,57% das visitas) | 0 | [FATO] |
+| Toques em botão de link | 0 | 0 | [FATO] |
+| Seguidores | +53 e -13 (24/09 a 21/10); de 12 a 21/10, 1 entrada e 7 saídas; 22 e 23/10 pendentes | | [FATO, `ig_follower_growth`] |
+| Disparos de automação | 1 (CHECKLIST, possível teste) | sem dado por período (o log não tem data) | [FATO, logs] |
+| Cliques no botão do direct | sem dado (linkTracking false) | sem dado | [FATO] |
+| Teste iniciado e concluído | existe no GA4 G-F91ET225YW; sem dado para os agentes | sem dado | [FATO, `gtm.js`] |
+| Clique no WhatsApp do site | evento `generate_lead` no GA4; sem dado para os agentes | sem dado | [FATO, `gtm.js` e `js/main.js`] |
+| Mensagens no WhatsApp | sem dado (só o Bruno vê) | sem dado | |
+| Diagnósticos de 30 min agendados | sem dado | sem dado | |
+| Diagnósticos realizados | sem dado | sem dado | |
 | Vendas | 0 | 0 | [FATO, contexto.md] |
 
 ### 4.3 Onde o caminho quebra (do mais pesado ao mais leve)
 
-1. **Topo: pouca gente vê e quase ninguém comenta.** [FATO] 571 contas em 7 dias sem anúncio, 2 comentários. [FATO, `ig_posts` e `ig_post_stats`] Os 4 reels com o Bruno são os únicos com comentário em volume: 308 de alcance e 3 comentários ("Ele nunca fez um anúncio"), 166 e 2 ("90%"), 128 e 0 ("Problema de equipe"), 169 e 0 (Dentista A). Nenhuma automação conserta isso: ela só age depois do comentário.
-2. **Pedido de comentário onde não havia alcance.** [FATO, F1 seção 4.4 conferida com `ig_posts`] 19 peças pediram palavra-chave, com mediana de 34 de alcance, e renderam 3 comentários. A regra dos 150 (CLAUDE.md) existe por causa disso.
-3. **A bio não leva ao teste.** [FATO, `ig_account_stats` e site] O link é `/v2/`, uma página de "versão cinema" que abre com "carregando a partida..." e manda para o WhatsApp com a mensagem padrão. O Módulo 2 do 00-SISTEMA pediu `/tabuleiro/?o=ig-bio` com o texto "Faça o diagnóstico de 12 casas"; não foi aplicado (a bio segue "Estrategista Digital / Ide e pregai o evangelho! / Visitor Host @bnisyrius / Dev @dashpronow"). Dos 447 que visitaram o perfil, 7 clicaram. Nos últimos 7 dias, 74 e 0.
-4. **Palavras demais, e de uso comum.** [FATO] 15 palavras ativas, 5 de comentário valendo para a conta toda. "Caso", "caixa", "funil" e "etapa" são palavras do dia a dia. [HIPÓTESE] Comentário como "no meu caso foi assim" num reel da TV dispara o direct da CASE oferecendo diagnóstico a quem só deu opinião, e isso mistura a contagem de leads. Não testei (seria escrever na conta).
-5. **Destino errado em 2 das 3 automações de diagnóstico.** [FATO] CASE e ESTRATEGISTA dizem "toca no botão e agenda um diagnóstico gratuito de 30 minutos", e o botão abre a página inicial, um texto longo em que o agendamento é um botão de WhatsApp. Não há agenda on-line em nenhuma página aberta [FATO, links de `/`, `/v2/`, `/primeiro-lance/`, `/tabuleiro/`].
-6. **"Diagnóstico" quer dizer duas coisas.** [FATO] O site chama de diagnóstico o teste de 12 casas ("Teste de Lançamento Grátis: diagnóstico em 12 casas", 4 minutos, sem cadastro) e também a conversa de 30 minutos ("O Primeiro Lance", por videochamada ou WhatsApp). A legenda do Dentista B promete "o diagnóstico de 12 casas"; a meta do sistema é "10 diagnósticos por mês" com a porta "diagnóstico gratuito de 30 min" [FATO, 00-SISTEMA, ficha]. A Projeção do 00-SISTEMA soma as duas coisas: "2% de clique no Tabuleiro, são 9 diagnósticos feitos por mês". Sem separar, a contagem da meta fica ambígua.
-7. **A origem se perde e ninguém conta.** [FATO] O `o=ig-...` entra na página, mas a mensagem de WhatsApp não leva a origem, e o evento `tabuleiro_complete` grava só o caminho da página (`location.pathname`), sem o parâmetro. Se o GA4 do contêiner guarda o endereço completo da página: sem dado. O PostZen não conta o clique no botão (linkTracking false). O único passo que os agentes leem depois do comentário é o log de disparo.
-8. **Do WhatsApp à venda, nada registrado.** [FATO, 00-SISTEMA, Módulo 6] Existem 3 perguntas de qualificação e um follow-up de +1, +4 e +10 dias, escritos. Se foram usados com alguém: sem dado. Vendas: 0. Diagnósticos realizados no mês: sem dado.
+1. **Topo: pouca gente vê e quase ninguém comenta.** [FATO] 571 contas em 7 dias, 2 comentários (0,35 por 100). Os 4 reels com o Bruno são os únicos com comentário: "Ele nunca fez um anúncio" 308 de alcance e 3 comentários, "90%" 166 e 2, "Equipe" 128 e 0, Dentista A 169 e 0 [FATO, `ig_post_stats`]. Automação só age depois do comentário.
+2. **Pedido de palavra sem atenção.** [FATO] 19 peças pediram palavra: 764 de alcance somado, mediana 34, 3 comentários. O caso que derruba a leitura simples da regra dos 150: o reel PESQUISA passou de 150 (169) com automação ligada e teve 0 comentário; tinha 86,9% de pulo e 5 s assistidos. O Dentista A, com o mesmo alcance (169), tinha 46% de pulo e 13 s, e pediu "comenta aqui que eu te respondo" sem palavra: 0 comentário também. [HIPÓTESE] Alcance sem retenção não gera comentário; com retenção, a amostra (n de 1) não mostra comentário ainda.
+3. **A bio não diz o que vende e não leva ao teste.** [FATO, `ig_account_stats` e site] A bio segue "Estrategista Digital / Ide e pregai o evangelho! / Visitor Host @bnisyrius / Dev @dashpronow" e o link é `/v2/`, que abre em "carregando a partida..." e manda ao WhatsApp com a mensagem padrão. O Módulo 2 do 00-SISTEMA pediu `/tabuleiro/?o=ig-bio`; não foi aplicado. 447 visitas, 7 cliques; nos 7 dias, 74 e 0.
+4. **Palavras demais e de uso comum, justo na semana da TV.** [FATO] 5 palavras de comentário valem para a conta toda; "caso", "caixa", "funil" e "etapa" são do dia a dia, e "estrategista" é o nome do perfil e o cargo na tela do ob02. [HIPÓTESE] Comentário de parabéns ou de opinião recebe direct de diagnóstico ou de PDF e consome a única resposta privada daquele comentário.
+5. **Destino errado em 2 das 3 automações de diagnóstico.** [FATO] CASE e ESTRATEGISTA dizem "toca no botão e agenda" e o botão abre a página inicial; não há agenda on-line em nenhuma página aberta.
+6. **"Diagnóstico" quer dizer duas coisas.** [FATO] O site chama de diagnóstico o teste de 12 casas ("Teste de Lançamento Grátis: diagnóstico em 12 casas", 4 minutos, sem cadastro) e a conversa de 30 minutos ("Diagnóstico de lançamento gratuito: o Primeiro Lance", videochamada ou WhatsApp). A legenda do Dentista B promete "o diagnóstico de 12 casas"; o estático diário do plano de stories diz "DIAGNÓSTICO · 12 CASAS"; a meta do sistema conta "10 diagnósticos por mês" de 30 minutos; a Projeção do 00-SISTEMA soma as duas coisas ("2% de clique no Tabuleiro, são 9 diagnósticos feitos por mês").
+7. **A origem se perde.** [FATO] O `o=ig-...` fica só no endereço. Os eventos gravam `page_origin: location.pathname` (sem o parâmetro) e a mensagem do WhatsApp não leva a origem. [PRIOR] O GA4 grava o endereço completo da página na visualização por padrão; se essa propriedade guarda: sem dado. O PostZen não conta o clique no botão (linkTracking false).
+8. **Quem chega pela TV não acha a TV.** [FATO] As 5 páginas abertas têm 0 menção à TV Câmara ou ao Ser Empreendedor. [HIPÓTESE] Quem vem da entrevista cai numa página sem ligação com o que acabou de ver.
+9. **Do WhatsApp à venda, nada registrado.** [FATO, 00-SISTEMA, Módulo 6] Existem 3 perguntas de qualificação e um follow-up de +1, +4 e +10 dias, escritos. Se foram usados: sem dado. Vendas: 0.
 
 ---
 
-## 5. Contas que limitam o plano
+## 5. A semana da exibição pelo olhar do funil
 
-Todas são [ESTIMATIVA], com a conta e a premissa ao lado.
+### 5.1 Fatos da semana
 
-**5.1 Taxa de comentário.**
-- Conta toda: 14 comentários sobre 3.216 contas alcançadas = 0,44 por 100 contas. Premissa: alcance de anúncio incluído; comentário do próprio dono pode estar contado.
-- Reels com o Bruno: 5 comentários sobre 771 contas (308 + 166 + 128 + 169) = 0,65 por 100 contas. Premissa: esses 4 pediram "salva", "responde aqui", "marca aqui" ou "comenta aqui", nenhum pediu palavra-chave.
+- [FATO, mensagem do Bruno e contexto.md] Exibição na seg 02/11/2026, Finados. Horário: sem dado. [FATO, site da TV às 15h37] A grade de 26/10 e de 02/11 não está publicada (redireciona para 24/10).
+- [FATO, `listPosts`] Agendado em volta: tl02 sáb 31/10 18h30 (legenda: "A entrevista vai ao ar na segunda, 02/11."), depois nada até tl03 sáb 07/11 18h30. De dom 01/11 a sex 06/11 o PostZen está vazio.
+- [FATO, F4] Proposta da frente da entrevista: ci01 de qua 28/10 para seg 02/11 21h, com legenda versão A que termina em "Segue o perfil: os próximos trechos da entrevista saem aqui."; po01 de qui 29/10 para qua 04/11 21h, com "Comenta qual delas.". [FATO, `03-plano-7-dias.md`] Proposta da frente de stories: ob02 seg 02/11 21h, ob01 qua 04/11 21h, ob03 sex 06/11 21h, todos com "Comenta a sua área que eu te respondo." As vagas de 02 e 04/11 coincidem; o conselho escolhe.
+- [FATO, F4, termos da TV Câmara de 24/05/2026] Pode compartilhar link e citar trecho com a emissora como fonte; não pode republicar conteúdo integral nem usar o conteúdo da emissora para fins comerciais. As peças do "depois" usam a gravação do celular do Bruno.
+- [FATO, contexto.md] O Bruno marca a Mirna pelo app; o PostZen não marca pessoa em reel, carrossel nem story.
 
-**5.2 Teto do caminho da bio.**
-- Ritmo orgânico: 74 visitas em 7 dias × 30 / 7 = cerca de 317 visitas por mês. Com 1,6% de clique (7 de 447), cerca de 5 cliques por mês.
-- Para 10 diagnósticos com 1,6% de clique e 100% de conversão depois do clique (premissa impossível, usada só como piso): 10 / 0,016 = 625 visitas por mês, o dobro do ritmo atual.
-- Leitura: trocar o link da bio de `/v2/` para o Tabuleiro mexe na taxa de clique, que hoje é a parte medida; não mexe no volume de visitas.
+### 5.2 O que o funil pede para a semana
 
-**5.3 Teto de disparos de TABULEIRO até 22/11.**
-- Máximo de posts com a palavra: o Dentista B (24/10) mais 1 por semana em novembro dentro da janela (01 a 07/11, 08 a 14/11, 15 a 21/11 e o domingo 22/11 se cair numa semana nova) = 4 a 5 posts. Regra "no máximo 1 palavra-chave por semana, sempre a mesma no mês" [FATO, 00-SISTEMA, Módulo 1, item 4].
-- Com 5 posts a 169 de alcance (o nível do Dentista A) e 0,65 comentário por 100 contas: 5 × 169 × 0,0065 = 5,5 comentários de qualquer tipo. Com 0,44: 3,7.
-- Comparação: a D6 do enquadramento pede 5 ou mais disparos de TABULEIRO até 22/11. Pela conta, só acontece se cada post TABULEIRO ficar no nível do Dentista A e quase todo comentário for a palavra. A conta mostra o teto otimista; a previsão realista fica abaixo dele.
-- Diagnósticos: a previsão registrada em 21/10 é 1 agendado até 18/11, faixa de 0 a 3, probabilidade 0,2 [FATO, 00-enquadramento, D6]. Não há taxa medida de disparo para clique, de clique para WhatsApp nem de WhatsApp para agendamento. Qualquer número aqui seria [PRIOR].
+1. **A porta da semana é a bio, não o comentário.** [HIPÓTESE] Quem viu a TV procura o nome e chega ao perfil. Hoje encontra quatro identidades na bio e um link que não diz o que acontece ao tocar. A decisão do link (manter `/v2/`, trocar por `/tabuleiro/?o=ig-bio` como o Módulo 2 aprovou, ou `/primeiro-lance/`, que explica os 30 minutos) é do Bruno e precisa estar feita antes de dom 01/11. É a única troca que mexe na etapa medida (1,57% de clique). Qualquer uma das três leva ao mesmo WhatsApp; só a do Tabuleiro chega com a nota e o gargalo na mensagem.
+2. **Nenhuma palavra-chave em 02/11.** O dia é de quem não conhece o Bruno, e a regra do Módulo 1 diz que o pedido de palavra a quem não confia ainda vira zero [FATO, 00-SISTEMA, item 4]. No dia: seguir (ci01, versão A do F4) ou comentar a área (ob02), e nos stories a chamada para assistir e o link do teste, cada um no seu story.
+3. **Uma pergunta que separa quem veio da TV.** Story à mão a partir do horário confirmado: "Chegou pela TV Câmara? Me manda um oi no direct e conta a sua área." Sem palavra e sem automação; o Bruno conta quantos directs citam a TV. É a única atribuição possível da TV ao funil com as ferramentas de hoje [FATO: o `o` não chega ao WhatsApp e o PostZen não conta clique].
+4. **Desligar as 5 automações de conta toda antes do primeiro reel da série** (tl01, dom 25/10, 18h30). Motivo: a série usa "caso" e "estrategista" e atrai comentário de parabéns; a resposta automática consome a resposta privada do comentário e manda PDF ou "dinheiro vazando" a quem só cumprimentou [HIPÓTESE sobre a frequência; FATO sobre a regra de uma resposta privada].
+5. **Responder à mão dentro das janelas.** Comentário: resposta privada em até 7 dias; resposta de story: direct em até 24 h [FATO, PostZen]. Com 0,35 a 0,65 comentário por 100 contas, a carga é pequena: 10 reels da série a 53 a 169 de alcance dão de 2 a 11 comentários [ESTIMATIVA: 10 × 53 × 0,0035 = 1,9; 10 × 169 × 0,0065 = 11].
+6. **Ler a semana com números que existem.** Visitas ao perfil por dia de 02 a 04/11 contra 10,6 [ESTIMATIVA, 74 / 7]; cliques no site; directs que citam a TV (Bruno); mensagens "Fiz O Tabuleiro" e "Quero agendar o Primeiro Lance" (Bruno); `generate_lead` e `tabuleiro_complete` no GA4 (Bruno).
 
-**5.4 Tempo do Bruno.**
-- 10 diagnósticos × 30 minutos = 5 horas por mês só de conversa, sem contar o WhatsApp antes e depois. Respostas à mão em comentário de profissão: tempo por resposta sem dado.
+### 5.3 Contas da semana [ESTIMATIVA]
+
+- Bio, de 02 a 04/11: 10,6 visitas por dia × 3 = 32 visitas × 1,57% = 0,5 clique. Na meta D1 do enquadramento (21 por dia): 63 × 1,57% = 1,0 clique.
+- Para 10 diagnósticos por mês só pela bio, com 1,57% de clique e 100% de conversão depois do clique (premissa impossível, usada como piso): 10 / 0,0157 = 637 visitas por mês: 1,4 vez as 447 de 30 dias com anúncio e 2 vezes o ritmo orgânico de 317 por mês (74 / 7 × 30).
+- Leitura: a TV pode mexer no volume de visitas (sem dado de quanto); a bio mexe na taxa de clique. Uma não substitui a outra.
 
 ---
 
-## 6. Peças já agendadas (24 a 30/10): pedidos e colisões
+## 6. Peças agendadas e propostas: pedidos e colisões
 
-Fonte das legendas e horários: [FATO, `listPosts`, 24/10]. Fonte das palavras: seção 2. As sugestões são do Bruno decidir; nenhum agente mexe no PostZen.
+Fonte das legendas e horários: [FATO, `listPosts` 15h32]. Propostas de outras frentes: F4 e `03-plano-7-dias.md`. As sugestões são do Bruno decidir; nenhum agente mexe no PostZen.
 
-| Quando | Peça | Pedido na legenda ou na fala | Automação que pode disparar | Risco | Sugestão |
-|---|---|---|---|---|---|
-| sáb 24/10 21h | Reel Dentista B | Legenda: "Comenta TABULEIRO que eu te mando o diagnóstico de 12 casas." Fala de 32,0 a 35,3 s: "Dentista, comenta a sua profissão aqui que eu te respondo." [FATO, `videos/nichos/dentista/words.json`; o B usa a mesma gravação do A, contexto.md] | TABULEIRO (só neste post). CASE se o comentário tiver "caso" | Dois pedidos. Quem comenta "dentista" não recebe nada automático; o Bruno precisa responder à mão. [HIPÓTESE] Comentário com "tabuleiro" e "caso" juntos: qual automação responde é sem dado (o Instagram permite uma resposta privada por comentário) | Antes das 21h: pôr `&p=dentista` no botão da TABULEIRO, para a mensagem do WhatsApp dizer "Sou dentista" [FATO: `tabuleiro.js` aceita `p=dentista`]. Responder à mão todo comentário de profissão no mesmo dia (texto na seção 8) |
-| dom 25/10 18h30 | Reel tl01 | "Comenta o número do assunto que você quer ver inteiro." | nenhuma (números não disparam) | baixo para o funil (a promessa "o mais votado sai no próximo sábado" é de outra frente) | manter o pedido de número; nada de palavra |
-| seg 26/10 21h | Reel pb01 | "Manda para um expert que vai lançar este ano." | nenhuma | nenhum | manter |
-| ter 27/10 12h | Carrossel car01 | "Comenta o número." e "Vai lançar nos próximos 90 dias? Me manda a data no direct." | nenhuma | dois pedidos na mesma legenda (regra S6 do F2: um pedido por legenda) | ficar com um. Se o objetivo é lead, ficar com o direct |
-| ter 27/10 16h | Story pf01 | sem texto | ETAPAS de story só se a resposta tiver "etapa" | baixo | nenhuma |
-| qua 28/10 21h | Reel ci01 | "E você, o que teria respondido?" (o tema é cliente que "chega machucado") | CASE ("caso"), CAIXA, FUNIL, ETAPAS, ESTRATEGISTA, todas de conta toda | [HIPÓTESE] alto: resposta aberta sobre experiência ruim usa "no meu caso" com naturalidade e recebe o direct de diagnóstico | desligar a CASE (ou tirar "caso") antes de 28/10 21h; resposta à mão |
-| qui 29/10 21h | Reel po01 | "Qual dessas peças falta no seu lançamento? Comenta a palavra." e "Salva para conferir antes do próximo lançamento." | nenhuma (gatilho, jogada, posicionamento e momento não são palavras de automação) | dois pedidos; "comenta a palavra" parece palavra-chave sem automação, e quem comentar espera resposta | trocar para pergunta aberta ("Qual peça falta no seu?") ou só "Salva"; se ficar, resposta à mão |
-| sex 30/10 21h | Reel pb02 | "Vai lançar nos próximos 90 dias? Me manda a data no direct." | nenhuma | nenhum; é o modelo de chamada para o direct sem promessa | manter |
+| Quando (hoje no PostZen) | Peça | Pedido hoje | Proposta de outra frente | Automação que pode disparar | Risco para o funil | O que o funil pede |
+|---|---|---|---|---|---|---|
+| sáb 24/10 21h | Dentista B | legenda: "Comenta TABULEIRO que eu te mando o diagnóstico de 12 casas."; fala de 32,0 a 35,3 s: "Dentista, comenta a sua profissão aqui que eu te respondo." [FATO, `videos/nichos/dentista/words.json`; B tem 36,37 s como o A] | | TABULEIRO; CASE e ESTRATEGISTA se o comentário trouxer a palavra | dois pedidos; "dentista" não recebe nada automático | antes das 21h, `&p=dentista` no botão da TABULEIRO [FATO: `tabuleiro.js` aceita]; responder à mão os comentários de profissão no mesmo dia |
+| dom 25/10 18h30 | tl01 | "Comenta o número do assunto que você quer ver inteiro. O mais votado eu solto inteiro depois que a entrevista for ao ar." | fica (F4) | nenhuma (números) | compromisso público de soltar o mais votado | manter; contagem à mão |
+| seg 26/10 21h | pb01 | "Manda para um expert que vai lançar este ano." | fica, legenda com a data e o @ (F4) | nenhuma | nenhum | leitura de 48 h em qua 28/10 21h decide TABULEIRO no pb02 |
+| ter 27/10 12h | car01 | "Comenta o número." e "Me manda a data no direct." | fica com os dois pedidos; a cadeira de playbook decide (F4) | nenhuma | dois pedidos (regra S6 do F2: um por legenda) | se ficar um, que seja o direct: é o que leva à conversa |
+| ter 27/10 16h | pf01 (story) | sem texto | | ETAPAS de story só com "etapa" | baixo | no estático do teste do dia (à mão), link com `&p=dentista` (F6) |
+| qua 28/10 21h | ci01 | "E você, o que teria respondido?" | mover para seg 02/11 21h, versão A com "Segue o perfil" (F4) | CASE ("no meu caso"), ESTRATEGISTA | alto se ficar a pergunta aberta com a CASE ligada [HIPÓTESE] | apoiar a versão A ou desligar a CASE antes |
+| qui 29/10 21h | po01 | "Qual dessas peças falta no seu lançamento? Comenta a palavra." e "Salva..." | mover para qua 04/11 21h, "Comenta qual delas." (F4) | nenhuma | "comenta a palavra" parece palavra-chave sem automação | um pedido, com resposta à mão que leva ao teste: o po01 fala dos lances do Método Xeque-Mate, o mesmo mapa do resultado do Tabuleiro |
+| sex 30/10 21h | pb02 | "Vai lançar nos próximos 90 dias? Me manda a data no direct." | fica (F4) | CASE só se o comentário trouxer "caso" (a legenda diz "Contei esse caso") | baixo | se o pb01 passar de 150 em 48 h (e, com o reforço proposto na R3, pulo abaixo de 60%), pode levar TABULEIRO no lugar do direct (catálogo, linha 341), com automação criada pelo Bruno até sex 30/10 20h59; senão, manter o direct |
+| sáb 31/10 18h30 | tl02 | "Comenta o número do assunto que você quer ver inteiro." | fica, com portão (F4) | nenhuma | dois tl seguidos pedindo número | leitura de 48 h em seg 02/11 18h30 decide TABULEIRO no tl03 |
+| seg 02/11 21h (vaga vazia) | ci01 (F4) ou ob02 (03-plano) | | ci01: "Segue o perfil"; ob02: "Comenta a sua área que eu te respondo." | ESTRATEGISTA (cargo na tela do ob02), CASE ("um dos casos") | médio [HIPÓTESE] | sem TABULEIRO no dia; as 5 de conta toda já desligadas |
+| qua 04/11 21h (vaga vazia) | po01 (F4) ou ob01 (03-plano) | | "Comenta qual delas." ou "Comenta a sua área" | nenhuma, com as de conta toda desligadas | baixo | resposta à mão com o link do teste |
+| sex 06/11 21h (vaga vazia) | ob03 (03-plano) | | "Comenta a sua área que eu te respondo." | idem | baixo | idem |
+| sáb 07/11 18h30 | tl03 | "Comenta o seu primeiro investimento." | | nenhuma | baixo | TABULEIRO no lugar do pedido se o tl02 passar no portão |
+| sáb 14/11 18h30 | tl04 | "Comenta o número da parada que você quer ver inteira." | | nenhuma | promete "ver inteira" sem dizer quando | TABULEIRO se o tl03 passar no portão |
+| sáb 21/11 18h30 | tl05 | "Comenta SIM ou NÃO: o tête-à-tête ainda é o melhor marketing?" | | nenhuma | baixo | TABULEIRO se o tl04 passar no portão |
 
-[FATO] Nenhuma das peças de 25 a 30/10 pede TABULEIRO, o que bate com a regra: nenhuma é do mesmo modelo do Dentista A (letreiro, Bruno falando) nem vem de um anterior do mesmo formato com 150 em 48 h.
+[FATO] Hoje só o Dentista B usa palavra-chave com automação. Os pedidos da série são número, enviar, seguir, área e direct, nenhum deles palavra-chave: nenhum fere a regra de uma palavra por mês.
 
 ---
 
 ## 7. Como o cronograma encaixa a TABULEIRO
 
-**R1. Uma palavra, a mesma em outubro e novembro: TABULEIRO.** [FATO, CLAUDE.md: "Uma palavra-chave por mês (TABULEIRO)"]. As outras 14 palavras saem de circulação nas legendas, e as 5 de comentário que valem para a conta toda (CASE, ESTRATEGISTA, ETAPAS, FUNIL, CAIXA) são desligadas pelo Bruno antes do CI01 (qua 28/10 21h). Cada automação tem o campo isActive [FATO, `listCommentAutomations`]; desligar em vez de apagar guarda a configuração para voltar atrás [HIPÓTESE sobre o comportamento do PostZen]. As 10 ligadas a posts antigos podem ficar ou ser desligadas para limpar a contagem: esses posts têm 0 comentário, menos o Checklist com 2 [FATO, `ig_posts`]; alcance novo deles: sem dado.
+**R1. Uma palavra, a mesma em outubro e novembro: TABULEIRO** [FATO, CLAUDE.md]. As outras 14 saem das legendas. As 5 de comentário de conta toda (CASE, ESTRATEGISTA, ETAPAS, FUNIL, CAIXA) são desligadas pelo Bruno antes do tl01 (dom 25/10, 18h30); a ETAPAS de story, antes de dom 25/10 09h00 (F6). Desligar em vez de apagar guarda a configuração [HIPÓTESE sobre o PostZen: o campo isActive existe, FATO]. As 10 ligadas a posts antigos podem ficar: esses posts têm 0 comentário, menos o Checklist com 2.
 
-**R2. No máximo um post TABULEIRO por semana** [FATO, 00-SISTEMA, Módulo 1, item 4].
+**R2. No máximo um post com TABULEIRO por semana** [FATO, 00-SISTEMA, Módulo 1, item 4].
 
-**R3. Condição dos 150, lida em 48 h reais.** Duas leituras possíveis da regra "só em post com alcance de 150 ou mais":
-- (a) Antecipada, que é o precedente de 21/10 [FATO, semanas/2026-10-21.md]: o post seguinte do mesmo formato recebe a palavra quando o anterior passou de 150 em 48 h. O Dentista B recebeu por causa do Dentista A (169).
-- (b) Retroativa [HIPÓTESE]: o post sai com pergunta aberta; se passar de 150 em 48 h, o Bruno cria a automação ligada a ele e deixa um comentário próprio fixado com o pedido TABULEIRO. Cumpre a regra ao pé da letra, mas pega o post já na fase em que entra pouco comentário novo (sem dado sobre a curva de comentários da conta).
-- Para o cronograma, ficar com (a) e registrar (b) como teste se nenhum post de novembro se qualificar por (a).
+**R3. O portão: 150 de alcance em 48 h, lido no `ig_post_stats`, no post anterior do mesmo formato** [FATO, CLAUDE.md; catálogo da entrevista, linhas 133, 341 e 591; precedente do Dentista A em `semanas/2026-10-21.md`]. Proposta de reforço, sem ferir a regra: exigir também pulo abaixo de 60% [HIPÓTESE, base n de 1: o reel PESQUISA teve 169 de alcance, 86,9% de pulo e 0 comentário; o Dentista A, 169 e 46%]. O F7 usa 55% na exceção de sequência; o conselho escolhe um número só.
 
-**R4. Qual post de novembro.** O primeiro reel com o Bruno falando para a câmera, no mesmo modelo de um anterior que passou de 150 em 48 h. Candidatos pela leitura de hoje: um reel de nicho no Modelo A (letreiro), se o Bruno gravar com o teleprompter; ou o remake de "Ele nunca fez um anúncio" (308 de alcance, Bruno em cena) com o Bruno gravando de novo. O Dentista B só abre caminho para o Modelo B (tela dividida) se ele mesmo passar de 150 em 48 h (leitura na seg 26/10 às 21h). Peças da TV, timelapses e estáticos não recebem a palavra.
+**R4. O que é "mesmo formato".** Proposta: a linha de produção da peça. Nicho falado (Dentista A, B e C contam como uma linha, porque o B já recebeu a palavra pelo A [FATO]); P&B da entrevista (pb01, pb02); timelapse (tl01 a tl05); cinema (ci01); pontos (po01); objeção (ob01 a ob03). O precedente vale para o próximo da linha, uma vez. O B consumiu o precedente do A; a linha de nicho só reabre se o próprio B passar no portão.
 
-**R5. Uma automação nova por post TABULEIRO, criada pelo Bruno.** A atual está presa ao Dentista B e o texto do direct é de dentista. Para cada post novo: palavra "tabuleiro", botão para `/tabuleiro/?o=ig-tab-AAMMDD` (um `o` por post) e `&p=<profissão>` quando o post for de nicho. Texto do direct na seção 8, sem citar "4 etapas" (a página mostra 5 Lances).
+**R5. Leituras datadas e o que cada uma abre.**
 
-**R6. Abaixo de 150, sem palavra.** Pedido de seguir, salvar, enviar, pergunta aberta ou chamada para o direct (seção 8), com resposta à mão. É a "porta dupla" escolhida em 21/10 [FATO, `modo-god-nichos/run/10-decision-brief.md`, D3]. A decisão escrita do Bruno sobre se "comenta a sua profissão" conta como segunda palavra tinha prazo em 24/10: sem dado.
+| Leitura (48 h) | Data e hora | Se passar | Se não passar |
+|---|---|---|---|
+| Dentista B | seg 26/10, 21h | próximo reel de nicho falado (Dentista C ou gravação nova) pode levar TABULEIRO | próximo de nicho sai sem palavra, com "comenta a sua profissão" e resposta à mão |
+| pb01 | qua 28/10, 21h | pb02 (sex 30/10) pode levar TABULEIRO | pb02 fica com o direct |
+| tl02 | seg 02/11, 18h30 | tl03 (sáb 07/11) pode levar TABULEIRO | tl03 fica com a pergunta |
+| ci01, se for para 02/11 | qua 04/11, 21h | nenhum outro cinema pronto | |
+| tl03 | seg 09/11, 18h30 | tl04 (sáb 14/11) | tl04 fica com o número |
+| tl04 | seg 16/11, 18h30 | tl05 (sáb 21/11) | tl05 fica com SIM ou NÃO |
+| reel de nicho com TABULEIRO ou sem | 48 h depois de cada um | o próximo de nicho | |
 
-**R7. Um pedido por legenda.** Se a peça pede TABULEIRO, não pede salvar nem direct. Se pede direct, não pede número.
+Se duas linhas abrirem na mesma semana, uma só leva a palavra (R2). Proposta de desempate: nicho falado antes de corte da TV, porque o teste aceita a profissão no link e o público do nicho é o Tier 1 da ficha [HIPÓTESE].
 
-**R8. Stories carregam o link, não a palavra.** A TABULEIRO não dispara em resposta de story [FATO, gatilho "comment"]. O pedido diário do plano de stories é o link `/tabuleiro/?o=ig-stories` (F6 e `stories-objecoes/03-plano-7-dias.md`). Os dois stories que dizem que a resposta "cai na automação ETAPAS" estão errados como a automação está hoje [FATO, F6 seção 7].
+**R6. Nunca no dia 02/11** (seção 5.2) e nunca em story [FATO: a TABULEIRO dispara com comentário, não com resposta de story]. No story, o pedido é o link do teste (F6).
 
-**Encaixe por semana (só a parte do funil; a grade completa é de outras frentes).**
+**R7. Uma automação para novembro, criada pelo Bruno.** A de hoje é presa ao Dentista B e tem texto de dentista. Duas formas:
+- (a) Uma por post, como hoje: botão com `o=ig-tab-AAMMDD` e `&p=<profissão>` em post de nicho. Custo: uma automação nova a cada post; quem comentar "tabuleiro" em outro post não recebe nada.
+- (b) Uma só, de conta toda, a partir de dom 01/11, com texto genérico (seção 8), e a do Dentista B desligada no mesmo momento (dois gatilhos na mesma palavra: qual responde é sem dado). O pedido continua só nos posts que passaram no portão; o log do PostZen já traz o post de cada disparo [FATO], então a origem por post não se perde no PostZen. Custo: a profissão sai do link (o texto da mensagem fica sem "Sou dentista").
+- Proposta: (b), pelo custo operacional menor e porque "tabuleiro" não é palavra do dia a dia [HIPÓTESE]. Decisão do Bruno.
 
-| Semana | Post com TABULEIRO | Condição | Chamada nas outras peças | Leitura |
-|---|---|---|---|---|
-| sáb 24/10 | Dentista B, 21h | precedente do Dentista A (169) | stories do dia sem palavra | seg 26/10 21h: alcance, pulo, comentários e logs da TABULEIRO |
-| 25 a 31/10 | nenhum | nenhuma peça do mesmo modelo | número (tl01), enviar (pb01), direct (car01, pb02), pergunta aberta (ci01, po01) com resposta à mão | Módulo 7 de seg 02/11 |
-| 01 a 07/11 | até 1 | reel do Bruno no modelo de um anterior com 150 em 48 h (Modelo A, ou Modelo B se o Dentista B passar de 150) | direct e pergunta aberta | 48 h depois do post e seg 09/11 |
-| 08 a 14/11 | até 1 | mesma regra | idem | 48 h depois e seg 16/11 |
-| 15 a 21/11 | até 1 | mesma regra | idem | 48 h depois e seg 23/11 |
-| dom 22/11 | 0 ou 1 | mesma regra, se cair numa semana sem TABULEIRO | idem | seg 23/11 |
+**R8. Um pedido por legenda.** Post com TABULEIRO não pede salvar, número nem direct.
 
-Se nenhum reel de novembro se qualificar, a palavra fica sem post no mês. Pôr TABULEIRO num post sem a condição para "não perder o mês" vai contra a regra e contra o dado da seção 4.3, item 2.
+**R9. Teto honesto.** Até 22/11 cabem no máximo 5 posts com a palavra (Dentista B e um por semana de S1 a S4). [ESTIMATIVA] 5 × 169 × 0,65 por 100 = 5,5 comentários de qualquer tipo; com 0,44 por 100 (conta toda), 3,7. A meta D6 do enquadramento (3 disparos de perfis que não são do Bruno até 22/11) só acontece se pelo menos 3 linhas abrirem e quase todo comentário for a palavra. Diagnósticos: a previsão de 21/10 é 1 agendado até 18/11, faixa de 0 a 3, probabilidade 0,2 [FATO, `10-decision-brief.md`, D3]. Taxas de disparo para clique, clique para WhatsApp e WhatsApp para agendamento: sem dado.
 
 ---
 
 ## 8. Chamadas para o direct sem promessa de resultado
 
-Critério de texto (CLAUDE.md): sem promessa de resultado, sem travessão, sem emoji, no máximo uma "não é X, é Y" por peça. Nenhuma palavra digitada no direct dispara automação [FATO, alsoMatchInDms false nas 17], então pedir uma palavra no direct cria uma segunda palavra sem automação. As chamadas abaixo não pedem palavra.
+Critério (CLAUDE.md): sem promessa de resultado, sem travessão, sem emoji, no máximo uma "não é X, é Y" por peça. Nada de palavra para digitar no direct: nenhuma palavra no direct dispara automação [FATO, alsoMatchInDms false nas 17], e pedir uma cria uma segunda palavra sem automação. Nada da lista do `02-provas.md` ("ao vivo", "entrevista exclusiva", "fui convidado pela TV", "a TV Câmara recomenda", "rede nacional") e nada de "foi ao ar" antes do horário confirmado (F4).
 
-**Na legenda (feed), uma por peça:**
-1. "Vai lançar nos próximos 90 dias? Me manda a data no direct." (já em uso no pb02 e no car01)
-2. "Quer olhar o seu lançamento comigo por 30 minutos? Me chama no direct."
-3. "Me conta no direct qual é a sua área e quando pensa em lançar."
-4. Em post TABULEIRO (só com a condição da R3): "Comenta TABULEIRO que eu te mando o teste de 12 casas." Variante do Módulo 6 que segue valendo: "Comenta TABULEIRO que eu te mostro em qual casa o seu lançamento trava." (é o que o teste entrega). Evitar a variante "o mesmo diagnóstico que fiz com a Tzur" enquanto a autorização da Tzur estiver pendente [FATO, F5].
+**Antes da exibição (25/10 a 01/11), na legenda, uma por peça:**
+1. "Vai lançar nos próximos 90 dias? Me manda a data no direct." (já no car01 e no pb02)
+2. "Me conta no direct qual é a sua área e quando pensa em lançar."
 
-**Em story:**
-- Sticker de link para `/tabuleiro/?o=ig-stories` com o texto "Teste de 12 casas" (o texto bate com o destino).
-- "Responde este story com a sua área." Só com resposta à mão; não dispara nada.
+**No dia (02/11):**
+- Legenda: seguir (ci01, versão A do F4) ou "Comenta a sua área que eu te respondo." (ob02). Um dos dois, não os dois.
+- Story à mão, depois do horário confirmado: "Chegou pela TV Câmara? Me manda um oi no direct e conta a sua área."
+- Story do teste no seu próprio quadro: "Em 4 minutos você vê em qual casa o seu lançamento trava." com o link `/tabuleiro/?o=ig-stories` (texto que bate com o destino, F6).
 
-**Texto do direct para a automação TABULEIRO de novembro (proposta para o Bruno configurar):**
+**Depois (03/11 a 21/11):**
+3. "Quer olhar o seu lançamento comigo por 30 minutos? Me chama no direct."
+4. "Comenta a sua área que eu te respondo." (ob01 a ob03; resposta à mão)
+5. Só em post que passou no portão: "Comenta TABULEIRO que eu te mando o teste de 12 casas." ou "Comenta TABULEIRO que eu te mostro em qual casa o seu lançamento trava." (o que o teste entrega). A variante "o mesmo diagnóstico que fiz com a Tzur" fica de fora enquanto a autorização da Tzur estiver pendente [FATO, F5].
+
+**Texto do direct da TABULEIRO de novembro (proposta para o Bruno configurar):**
 > Oi! Aqui é o Bruno. O Tabuleiro são 12 perguntas sobre o seu próximo lançamento, em 4 minutos e sem cadastro. No fim aparece a casa que está mais vazia. Toca no botão, responde e, se fizer sentido, me manda o resultado no WhatsApp que a gente marca 30 minutos.
 > [Fazer o teste]
 
-Base: "Diagnóstico em 4 minutos", "Nada de e-mail, nada de cadastro" e o botão que abre o WhatsApp [FATO, página `/tabuleiro/`].
+Base: "Diagnóstico em 4 minutos", "Nada de e-mail, nada de cadastro" e o botão que abre o WhatsApp [FATO, `/tabuleiro/`]. Não cita "4 etapas": a página mostra 5 Lances.
 
-**Resposta à mão para comentário de profissão (abaixo de 150 ou no Dentista B):**
+**Resposta à mão para comentário de área ou de profissão (dentro de 7 dias):**
 - Pública: "Te mandei no direct."
-- Privada (uma por comentário, permitida pelo Instagram): "Oi, aqui é o Bruno. Obrigado por comentar. Se quiser ver em qual casa o seu lançamento está mais vazio, são 12 perguntas: estrategistadelancamento.com.br/tabuleiro/?o=ig-manual&p=<profissão>. Se fizer sentido depois, me chama aqui que a gente marca 30 minutos."
-- Profissões aceitas pelo `p`: medico, advogado, psicologo, nutricionista, dentista, consorcio [FATO, `js/tabuleiro.js`].
+- Privada (uma por comentário): "Oi, aqui é o Bruno. Obrigado por comentar. Se quiser ver em qual casa o seu lançamento está mais vazio, são 12 perguntas: estrategistadelancamento.com.br/tabuleiro/?o=ig-manual&p=<profissão>. Se fizer sentido depois, me chama aqui que a gente marca 30 minutos."
+- Profissões que o `p` aceita: medico, advogado, psicologo, nutricionista, dentista, consorcio [FATO, `js/tabuleiro.js`]. Outra área: link sem `p`.
 
-**Follow-up:** usar o do Módulo 6 (+1, +4 e +10 dias) só com quem respondeu. O de +10 dias fala em "4 horários de diagnóstico esta semana": só vale se for verdade naquela semana.
+**Resposta a quem mandou a data ou a área no direct:** as 3 perguntas de qualificação do Módulo 6 (área e seguidores; se já vende on-line e quanto, por alto; se lança em 90 dias). Follow-up de +1, +4 e +10 dias só com quem respondeu; o de +10 ("Abri 4 horários de diagnóstico esta semana") só vale se for verdade naquela semana.
 
-**Evitar (promessa de resultado ou pressão):** "que eu te mostro como vender X", "garantido", "você vai faturar", número de faturamento como promessa para quem lê, "vagas" sem número real de horários, e números de cliente sem autorização. O direct da ESTRATEGISTA ("Pra eu te mostrar onde o seu dinheiro está vazando") afirma um vazamento antes de ver o caso [PRIOR: tom de pressão; a regra do CLAUDE.md não proíbe de forma explícita]. Com a ESTRATEGISTA desligada (R1), o texto sai de circulação.
+**Evitar:** "garantido", "você vai faturar", número de caso como promessa para quem lê (o ob02 e o pb02 já trazem a ressalva "O número de um caso não se repete igual em outro negócio"), "vagas" sem número real de horários, números de cliente sem autorização. O direct da ESTRATEGISTA ("Pra eu te mostrar onde o seu dinheiro está vazando") afirma um vazamento antes de ver o caso [PRIOR: tom de pressão]; desligada a automação (R1), o texto sai de circulação.
 
 ---
 
@@ -240,17 +266,19 @@ Base: "Diagnóstico em 4 minutos", "Nada de e-mail, nada de cadastro" e o botão
 
 | Etapa | Número | Quem lê | Fonte | Observação |
 |---|---|---|---|---|
-| 1. Alcance do post TABULEIRO em 48 h | contas | agente | `ig_post_stats` | condição dos 150 |
-| 2. Comentários do post | total | agente | `ig_post_stats` | pode incluir a resposta pública automática da conta [HIPÓTESE, seção 3] |
-| 3. Disparos e envios da TABULEIRO | total, sent, failed, skipped, gated | agente | `listCommentAutomationLogs` | o log não tem data: guardar o total de cada segunda e fazer a diferença; tirar contas de teste (lista de perfis de teste do Bruno) |
-| 4. Clique no botão do direct | cliques | sem dado hoje | PostZen, se o Bruno ligar o linkTracking [HIPÓTESE: o PostZen passa a contar] | |
-| 5. Teste iniciado e concluído | eventos `tabuleiro_start` e `tabuleiro_complete` | Bruno | GA4 ou GTM (fora das ferramentas dos agentes) | o evento grava o caminho, não o `o` |
-| 6. Mensagens no WhatsApp | quantas começam com "Fiz O Tabuleiro no site" e quantas com "Quero agendar o Primeiro Lance" | Bruno | WhatsApp | as duas frases são fixas no código [FATO]; a primeira vem do teste, a segunda de qualquer outra página |
-| 7. Diagnóstico de 30 min agendado | total | Bruno | agenda dele | contar separado do teste de 12 casas |
-| 8. Diagnóstico realizado | total | Bruno | agenda dele | a meta de 10 por mês conta aqui |
-| 9. Proposta e venda | total | Bruno | anotação dele | |
+| 1. Alcance e pulo do post anterior da linha em 48 h | contas, % | agente | `ig_post_stats` | portão da R3 |
+| 2. Comentários do post com TABULEIRO | total | agente | `ig_post_stats` | pode incluir a resposta pública da conta [HIPÓTESE] |
+| 3. Disparos da TABULEIRO | total, sent, failed, skipped, gated | agente | `listCommentAutomationLogs` | o log não tem data: guardar o total de cada segunda e fazer a diferença; tirar perfis de teste do Bruno; o platformPostId dá o post |
+| 4. Visitas ao perfil e cliques no site | por semana; de 02 a 04/11 por dia | agente | `ig_account_stats` | atraso de até 48 h |
+| 5. Clique no botão do direct | cliques | sem dado hoje | PostZen, se o Bruno ligar o linkTracking [HIPÓTESE sobre o que passa a mostrar] | |
+| 6. Teste iniciado e concluído; clique no WhatsApp | `tabuleiro_start`, `tabuleiro_complete`, `generate_lead` | Bruno | GA4 G-F91ET225YW | os eventos gravam o caminho da página, não o `o` |
+| 7. Mensagens no WhatsApp | quantas começam com "Fiz O Tabuleiro no site" e quantas com "Quero agendar o Primeiro Lance" | Bruno | WhatsApp | as duas frases são fixas no código [FATO] |
+| 8. Directs que citam a TV | total de 02 a 08/11 | Bruno | direct | a única atribuição da TV |
+| 9. Diagnóstico de 30 min agendado | total | Bruno | agenda dele | contar separado do teste de 12 casas |
+| 10. Diagnóstico realizado | total | Bruno | agenda dele | a meta de 10 por mês conta aqui |
+| 11. Proposta e venda | total | Bruno | anotação dele | |
 
-Registro: `conteudo/sistema-instagram/semanas/AAAA-MM-DD.md`, uma linha por etapa, com "sem dado" quando o Bruno não informar.
+Registro: `conteudo/sistema-instagram/semanas/AAAA-MM-DD.md`, uma linha por etapa, com "sem dado" quando o Bruno não informar. O Módulo 7 de seg 02/11 cai no feriado e no dia da exibição; as leituras 1 a 4 não dependem dele.
 
 ---
 
@@ -258,39 +286,45 @@ Registro: `conteudo/sistema-instagram/semanas/AAAA-MM-DD.md`, uma linha por etap
 
 | # | Ação | Prazo | Por quê |
 |---|---|---|---|
-| 1 | Pôr `&p=dentista` no botão da TABULEIRO do Dentista B | hoje antes das 21h | a mensagem do WhatsApp passa a dizer a profissão |
-| 2 | Responder à mão os comentários de profissão do Dentista B | no mesmo dia de cada comentário | a fala do vídeo promete "eu te respondo" |
-| 3 | Dizer se `bruno26111982` é perfil dele e listar perfis de teste | até seg 26/10 | o único disparo do mês pode ser teste |
-| 4 | Desligar CASE, ESTRATEGISTA, ETAPAS (comentário), FUNIL e CAIXA | antes de qua 28/10 21h (ci01) | colisão de palavra comum e regra de uma palavra |
-| 5 | Decidir o que fazer com a ETAPAS de story (opções do F6, seção 7) | antes de dom 25/10 09h02 (primeiro story que cita a ETAPAS) | o plano de stories conta com ela para a resposta de área |
-| 6 | Trocar o link da bio de `/v2/` para `/tabuleiro/?o=ig-bio` (Módulo 2) | quando decidir; é a única troca que mexe na etapa medida (1,6% de clique) | a bio hoje não passa pelo teste |
-| 7 | Ajustar car01 (um pedido) e po01 ("comenta a palavra") | antes de ter 27/10 12h e qui 29/10 21h | seção 6 |
-| 8 | Informar toda segunda as etapas 5 a 9 da seção 9 | toda segunda | sem isso a meta de 10 diagnósticos não é medida |
-| 9 | Decisão escrita sobre "comenta a sua profissão" como segunda palavra | estava para 24/10 | D3 de 21/10 |
-| 10 | Ligar o linkTracking nas automações que ficarem | quando quiser | conta o clique no botão do direct [HIPÓTESE sobre o que o PostZen mostra] |
+| 1 | Pôr `&p=dentista` no botão da TABULEIRO do Dentista B | hoje, antes das 21h | a mensagem do WhatsApp passa a dizer a profissão |
+| 2 | Responder à mão os comentários de profissão do Dentista B | no mesmo dia; no máximo 7 dias | a fala do vídeo promete "eu te respondo" |
+| 3 | Decidir a ETAPAS de story (F6, seção 7) | antes de dom 25/10, 09h00 | o plano de stories conta com ela e ela só dispara com "etapa" |
+| 4 | Desligar CASE, ESTRATEGISTA, ETAPAS (comentário), FUNIL e CAIXA | antes de dom 25/10, 18h30 (tl01) | colisão com "caso" e "estrategista" na série da TV; regra de uma palavra; PARAR de 21/10 sem execução |
+| 5 | Dizer se `bruno26111982` é perfil dele e listar perfis de teste | até seg 26/10 | o único disparo do mês pode ser teste |
+| 6 | Escolher o link e o texto da bio | antes de dom 01/11 | é a porta de quem vem da TV (seção 5.2) |
+| 7 | Responder às leituras de portão (R5) e, se abrir, criar a automação | pb02: até sex 30/10 20h59; tl03: até sáb 07/11 18h29; tl04 e tl05: na sexta anterior | a automação precisa existir antes de o post sair |
+| 8 | Escolher entre automação por post e de conta toda para novembro (R7) | até sáb 31/10 | a de hoje tem texto de dentista |
+| 9 | Ajustar car01 (um pedido) e po01 ("comenta a palavra") | ter 27/10 11h59 e antes da data final do po01 | seção 6 |
+| 10 | Pedir à Mirna o horário da exibição | o quanto antes | sem ele, nenhum story do dia diz a hora (F4) |
+| 11 | Informar toda segunda as etapas 6 a 11 da seção 9 | toda segunda | sem isso a meta de 10 diagnósticos não é medida |
+| 12 | Decisão escrita: "comenta a sua área" ou "a sua profissão" conta como segunda palavra? | estava para 24/10 | D3 de 21/10; os ob01 a ob03 usam o pedido |
+| 13 | Ligar o linkTracking na automação que ficar | quando quiser | contaria o clique no botão do direct [HIPÓTESE] |
 
 ---
 
 ## 11. Lacunas
 
 - Quem é `bruno26111982` e se o único disparo é teste: sem dado.
-- Texto dos 14 comentários do mês e quanto deles é resposta da própria conta: sem dado (`ig_comments` fora da lista permitida).
+- Texto dos 14 comentários do mês e quanto deles é resposta da própria conta: sem dado (`ig_comments` fora da lista).
 - Data e hora dos disparos: o log do PostZen não traz.
 - Cliques no botão do direct: sem dado (linkTracking false).
-- Visitas, testes iniciados e concluídos e cliques no WhatsApp do site: os eventos existem no GTM-W2LS6RKN, mas nenhuma ferramenta permitida lê. Se o GA4 está ligado ao contêiner: sem dado.
-- Mensagens recebidas no WhatsApp, diagnósticos agendados e realizados no mês: sem dado (só o Bruno).
-- Para onde vai o formulário das páginas de material e se alguém preencheu: sem dado (não enviei nada).
-- Qual automação responde quando um comentário traz duas palavras ("tabuleiro" e "caso"): sem dado.
-- Se o Instagram entrega o direct com botão para quem não segue a conta nesta conta: há 1 envio com botão mantido, de um perfil que pode ser do Bruno; sem dado para terceiros.
-- O post ligado à ETAPAS Escala 7x7 (m1748g817gjwzraqn6wa67h3a18ghjqf) não aparece entre os 36 posts do `listPosts`; se a automação ainda aponta para o reel de 18/10: sem dado.
-- Curva de comentários por hora depois da publicação (para a leitura retroativa da R3): sem dado.
-- Tempo de carregamento da `/v2/` no celular: sem dado.
+- Números do GA4 G-F91ET225YW (testes iniciados e concluídos, cliques no WhatsApp) e se a propriedade guarda o endereço com o `o`: sem dado para os agentes.
+- Mensagens no WhatsApp, diagnósticos agendados e realizados, propostas: sem dado (só o Bruno).
+- Destino do formulário `/api/lead` das páginas de material e se alguém preencheu: sem dado.
+- Qual automação responde quando um comentário traz duas palavras, ou quando duas automações têm a mesma palavra: sem dado.
+- Se o Instagram entrega o direct com botão para quem não segue esta conta: 1 envio com botão mantido, de perfil que pode ser do Bruno; sem dado para terceiros.
+- Horário da exibição de 02/11 e se o programa mostra o @ do Bruno: sem dado. Audiência da TV: sem dado.
+- Alcance da conta em feriado (02/11, 15/11, 20/11): sem dado.
+- Curva de comentários por hora depois da publicação: sem dado.
+- Se a regra dos 150 com pulo abaixo de 60% separa post que gera comentário de post que não gera: n de 1 de cada lado; sem dado para afirmar.
+- O post ligado à ETAPAS Escala 7x7 (m1748g817gjwzraqn6wa67h3a18ghjqf) não aparece no `listPosts`: se ainda aponta para o reel de 18/10, sem dado.
 
 ---
 
 ## 12. Fontes
 
-- PostZen, 24/10/2026, entre 14h05 e 14h16: `listCommentAutomations` (accountId j97772ycndetk3f1wcdbh14p898g4b8w); `listCommentAutomationLogs` das 17 automações (ids na seção 2: TABULEIRO qs747t4bq23a1qpnjskexg34vs8gx7hx, CHECKLIST qs7de23c7nzxzw2k4yjshgm5gd8g5dmx, CASE qs79dctypcnz18m9wbeb7cg4en8gh8fm, ESTRATEGISTA qs7309wynnp8dgvy96k67nfj558ggz2r, ETAPAS story qs78ccqc3nf0axhc59frr8mewx8ghnvj, ETAPAS série 2 qs7e2jwpb31ezb4j5yhrc33pr58gg2fm, FUNIL qs71kgp5n4q612z8rsxm281xv18ggsma, CAIXA qs7a5zdzhvnwcgbvq1nw8mqhv98ghgk3, ETAPAS Escala qs7dq2rat6g8bqgxestrsbtpcd8gh99h, RECUPERAÇÃO qs778j27er6qrvcgabhp21w8p18g4cs6, PERPÉTUO qs7erh1mjx3k60s7pwbyf32ccx8g5wjk, CARRINHO qs7dgrqzmagwwsp4tycewr9f7s8g5znd, EVENTO qs79jy0xghkfp4cbpf77c2va1d8g519c, PESQUISA qs7a2m00grw2kqpbqr6b90xhb98g5v6b, AQUECIMENTO qs7057drwtjy4v1rxbeks131358g5j07, CAPTAÇÃO qs7b0pe73a3ym5mq4gc3svnq3h8g581c, OFERTA qs75rd7mmagmpbw73s0v8dx48n8g4pj7); `listPosts` (mesma conta).
-- Buzzfy, 24/10/2026, 14h17 a 14h22: `ig_account_stats` (30 e 7 dias), `ig_posts` (desde 24/09), `ig_post_stats` (18386625754239681, 18010053242992517, 17995270031834903, 18337869829273388, 17954380989271814, 18118234495799066, 18354334132173198, 18121966600729052, 17889060588617582).
-- Site, 24/10/2026, 14h16 a 14h20, GET: https://estrategistadelancamento.com.br/tabuleiro/?o=ig-tabuleiro, https://estrategistadelancamento.com.br/v2/, https://estrategistadelancamento.com.br/?o=ig-case, https://estrategistadelancamento.com.br/primeiro-lance/, https://estrategistadelancamento.com.br/lancamento-para-dentistas/, https://estrategistadelancamento.com.br/js/tabuleiro.js?v=2026-10-22, https://estrategistadelancamento.com.br/js/main.js?v=2026-10-22, https://estrategista-materiais-videon8ns-projects.vercel.app/m/checklist?o=ig-checklist.
-- Repositório: `CLAUDE.md`; `conteudo/modo-god-cronograma/contexto.md`; `conteudo/modo-god-cronograma/run/00-enquadramento.md` (D3, D6, perguntas 16 e 19); `conteudo/sistema-instagram/00-SISTEMA.md` (ficha, Módulos 1, 6 e 7, Projeção); `conteudo/sistema-instagram/semanas/2026-10-21.md`; `conteudo/modo-god-nichos/run/10-decision-brief.md` (D3); `conteudo/stories-objecoes/01-objecoes.md` (leitura do direct) e `03-plano-7-dias.md`; `videos/nichos/dentista/words.json`; frentes irmãs `F1-auditoria-conta.md` (seção 4.4), `F2-playbook-buzzfy.md` (S6), `F5-capacidade-e-estoque.md` (Tzur) e `F6-stories-e-objecoes.md` (seção 7).
+- PostZen, 24/10/2026, 15h30 a 15h32: `listCommentAutomations` (accountId j97772ycndetk3f1wcdbh14p898g4b8w); `listCommentAutomationLogs` das 17 automações (TABULEIRO qs747t4bq23a1qpnjskexg34vs8gx7hx, ETAPAS story qs78ccqc3nf0axhc59frr8mewx8ghnvj, CASE qs79dctypcnz18m9wbeb7cg4en8gh8fm, ESTRATEGISTA qs7309wynnp8dgvy96k67nfj558ggz2r, ETAPAS série 2 qs7e2jwpb31ezb4j5yhrc33pr58gg2fm, FUNIL qs71kgp5n4q612z8rsxm281xv18ggsma, CAIXA qs7a5zdzhvnwcgbvq1nw8mqhv98ghgk3, ETAPAS Escala qs7dq2rat6g8bqgxestrsbtpcd8gh99h, RECUPERAÇÃO qs778j27er6qrvcgabhp21w8p18g4cs6, PERPÉTUO qs7erh1mjx3k60s7pwbyf32ccx8g5wjk, CARRINHO qs7dgrqzmagwwsp4tycewr9f7s8g5znd, EVENTO qs79jy0xghkfp4cbpf77c2va1d8g519c, PESQUISA qs7a2m00grw2kqpbqr6b90xhb98g5v6b, AQUECIMENTO qs7057drwtjy4v1rxbeks131358g5j07, CAPTAÇÃO qs7b0pe73a3ym5mq4gc3svnq3h8g581c, OFERTA qs75rd7mmagmpbw73s0v8dx48n8g4pj7, CHECKLIST qs7de23c7nzxzw2k4yjshgm5gd8g5dmx); `listPosts` (mesma conta, 24/10 a 30/11).
+- Buzzfy, 24/10/2026, 15h30 a 15h41: `ig_account_stats` (30 e 7 dias), `ig_follower_growth` (30 dias), `ig_posts` (desde 24/09; stories ativos), `ig_post_stats` (18386625754239681, 18354334132173198, 18121966600729052, 17889060588617582, 18010053242992517, 18337869829273388, 17995270031834903, 17912745426542222, 18475767697117883, 17907942183576061, 18132487157503394, 18035848712883339, 18108193625266844, 18113139875614712, 18130543543811478, 18093643208680305, 18012829418994819, 18156735856556789, 18117956657006877, 18118217153074281, 18091659392202122, 18093434834176117, 17872136757645672, 18016028789753059, 18143385994717530, 18124578748833604 e os stories 18126070586490029, 17957608836082053, 17954380989271814, 18118234495799066, 18052167683804505).
+- Site, 24/10/2026, 15h33 a 15h36, GET: https://estrategistadelancamento.com.br/tabuleiro/?o=ig-tabuleiro, https://estrategistadelancamento.com.br/v2/, https://estrategistadelancamento.com.br/?o=ig-case, https://estrategistadelancamento.com.br/primeiro-lance/, https://estrategistadelancamento.com.br/js/tabuleiro.js?v=2026-10-22, https://estrategistadelancamento.com.br/js/main.js?v=2026-10-22, https://estrategistadelancamento.com.br/js/cinema.js, https://estrategista-materiais-videon8ns-projects.vercel.app/m/checklist?o=ig-checklist, https://www.googletagmanager.com/gtm.js?id=GTM-W2LS6RKN.
+- TV Câmara, 24/10/2026, 15h37, GET: https://www.tvcamaracampinas.com.br/programacao/2026-11-02 e /2026-10-26 (redirecionam para 24/10), https://www.tvcamaracampinas.com.br/termos (200; conteúdo lido pela F4).
+- Repositório: `CLAUDE.md`; `conteudo/modo-god-cronograma/contexto.md`; `run/00-enquadramento.md` (D3, D6, perguntas 15 e 18); `conteudo/sistema-instagram/00-SISTEMA.md` (ficha, Módulos 1, 6 e 7, Projeção); `conteudo/sistema-instagram/semanas/2026-10-21.md`; `conteudo/modo-god-nichos/run/10-decision-brief.md` (D3); `conteudo/entrevista-tv-camara/pecas-e-calendario.md` e `catalogo-formatos.md` (linhas 133, 214, 341 e 591); `conteudo/stories-objecoes/01-objecoes.md` (leitura do direct) e `03-plano-7-dias.md` (ob01 a ob03, stories de 01 e 02/11); `videos/nichos/dentista/words.json` e `render/dentista-B-9x16.mp4` (36,37 s); frentes irmãs `F1-auditoria-conta.md`, `F4-entrevista-tv.md` (seções 0, 4 e 5), `F5-capacidade-e-estoque.md` (Tzur), `F6-stories-e-objecoes.md` (seção 7) e `F7-horarios-e-portao.md` (exceção de sequência).

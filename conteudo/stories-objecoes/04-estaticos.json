@@ -1,0 +1,559 @@
+{
+ "_nota": "Um item por arquivo único a renderizar (1080x1920). Fonte: 03-plano-7-dias.json. Fora daqui: repost de lâmina (car01) e de vídeo. variante foto = modelo estaticos/stories-frases/s.html (foto, rótulo, frase com no máximo uma palavra em <b>, sub). variante balao = fundo #141210 sem foto, rótulo O QUE EU MAIS OUÇO em Cinzel 48 px e a frase do cliente num balão de mensagem genérico, sem logo. zona_sticker true: a faixa y 1300 a 1560 fica livre para a enquete ou o link, que o Bruno põe no app. Os itens de 2026-11-01 e 2026-11-02 são provisórios até o conselho do modo GOD.",
+ "itens": [
+  {
+   "id": "2510-0900",
+   "usos": [
+    "2026-10-25 09:00"
+   ],
+   "variante": "foto",
+   "foto": "e1.jpg",
+   "rotulo": "BASTIDOR · SER EMPREENDEDOR",
+   "frase_html": "Você diz: “Nunca ouvi falar de você.” Justo. Então começa por aqui: o que eu disse na TV e um caso com <b>número</b>.",
+   "sub": "Vai ao ar segunda, 02/11, na TV Câmara Campinas.",
+   "modo": "AGENDADO",
+   "sticker": "AGENDADO · Sem sticker",
+   "zona_sticker": false
+  },
+  {
+   "id": "2510-0902",
+   "usos": [
+    "2026-10-25 09:02"
+   ],
+   "variante": "foto",
+   "foto": "f4.jpg",
+   "rotulo": "PROVA · CASE",
+   "frase_html": "Cliente do mercado financeiro: de 6 para 20 milhões por <b>mês</b>.",
+   "sub": "Fato do caso, contado pelo marketing do cliente. O número de um caso não se repete igual em outro negócio.",
+   "modo": "MANUAL",
+   "sticker": "MANUAL · Enquete: Quer saber o que mudou nesse caso? SIM / AGORA NÃO, com a linha \"Votou SIM? Responde este story.\" acima dela (a resposta cai na automação ETAPAS)",
+   "zona_sticker": true
+  },
+  {
+   "id": "2510-1230",
+   "usos": [
+    "2026-10-25 12:30",
+    "2026-10-26 17:32",
+    "2026-10-27 16:01",
+    "2026-10-28 17:33",
+    "2026-10-29 17:32",
+    "2026-10-30 12:02",
+    "2026-10-31 12:03",
+    "2026-11-01 12:02",
+    "2026-11-02 12:01"
+   ],
+   "variante": "foto",
+   "foto": "f1.jpg",
+   "rotulo": "DIAGNÓSTICO · 12 CASAS",
+   "frase_html": "Em 4 minutos você vê em qual <b>casa</b> o seu lançamento trava.",
+   "sub": "Toque no link: Diagnóstico de 12 casas.",
+   "modo": "MANUAL",
+   "sticker": "MANUAL · Link estrategistadelancamento.com.br/tabuleiro/?o=ig-stories (texto do link: Diagnóstico de 12 casas)",
+   "zona_sticker": true
+  },
+  {
+   "id": "2510-1730",
+   "usos": [
+    "2026-10-25 17:30"
+   ],
+   "variante": "foto",
+   "foto": "f3.jpg",
+   "rotulo": "DOM · 18H30 · NO FEED",
+   "frase_html": "35 minutos de entrevista em 35 <b>segundos</b>.",
+   "sub": "Bastidor da TV Câmara Campinas.",
+   "modo": "AGENDADO",
+   "sticker": "AGENDADO · Sem sticker (dia e hora no texto)",
+   "zona_sticker": false
+  },
+  {
+   "id": "2610-1200",
+   "usos": [
+    "2026-10-26 12:00"
+   ],
+   "variante": "balao",
+   "foto": null,
+   "rotulo": "O QUE EU MAIS OUÇO",
+   "frase_html": "“Não tenho tempo pra lançar. Quando a agenda <b>folgar</b>, eu vejo.”",
+   "sub": "",
+   "modo": "MANUAL",
+   "sticker": "MANUAL · Enquete: Você já pensou isso? SIM / NÃO",
+   "zona_sticker": true
+  },
+  {
+   "id": "2610-1201",
+   "usos": [
+    "2026-10-26 12:01"
+   ],
+   "variante": "foto",
+   "foto": "f3.jpg",
+   "rotulo": "A VIRADA",
+   "frase_html": "A sua agenda não vai folgar. Você grava as aulas. O resto da <b>partida</b> é comigo.",
+   "sub": "Você atende. Eu comando.",
+   "modo": "AGENDADO",
+   "sticker": "AGENDADO · Sem sticker",
+   "zona_sticker": false
+  },
+  {
+   "id": "2610-1731",
+   "usos": [
+    "2026-10-26 17:31"
+   ],
+   "variante": "foto",
+   "foto": "e2.jpg",
+   "rotulo": "NA TV · A EQUIPE EXECUTA",
+   "frase_html": "“...fui treinando a própria <b>equipe</b> para que eles pudessem executar...”",
+   "sub": "Vai ao ar segunda, 02/11, na TV Câmara Campinas.",
+   "modo": "AGENDADO",
+   "sticker": "AGENDADO · Sem sticker",
+   "zona_sticker": false
+  },
+  {
+   "id": "2610-2030",
+   "usos": [
+    "2026-10-26 20:30"
+   ],
+   "variante": "foto",
+   "foto": "f2.jpg",
+   "rotulo": "SEG · 21H · NO FEED",
+   "frase_html": "“Na verdade, não foi uma <b>aventura</b>.”",
+   "sub": "Fui DJ por 20 anos. Segunda, 21h, no feed.",
+   "modo": "AGENDADO",
+   "sticker": "AGENDADO · Sem sticker (dia e hora no texto)",
+   "zona_sticker": false
+  },
+  {
+   "id": "2710-1430",
+   "usos": [
+    "2026-10-27 14:30"
+   ],
+   "variante": "balao",
+   "foto": null,
+   "rotulo": "O QUE EU MAIS OUÇO",
+   "frase_html": "“Isso é pra infoprodutor. O meu consultório vive de <b>indicação</b>.”",
+   "sub": "",
+   "modo": "MANUAL",
+   "sticker": "MANUAL · Enquete: O seu consultório vive de indicação? SIM / NÃO",
+   "zona_sticker": true
+  },
+  {
+   "id": "2710-1431",
+   "usos": [
+    "2026-10-27 14:31"
+   ],
+   "variante": "foto",
+   "foto": "f2.jpg",
+   "rotulo": "NA TV · VAI AO AR SEG, 02/11",
+   "frase_html": "O tête-à-tête, “que até hoje é o melhor <b>marketing</b>.”",
+   "sub": "Eu disse isso na TV Câmara Campinas. E mantenho.",
+   "modo": "AGENDADO",
+   "sticker": "AGENDADO · Sem sticker",
+   "zona_sticker": false
+  },
+  {
+   "id": "2710-1432",
+   "usos": [
+    "2026-10-27 14:32"
+   ],
+   "variante": "foto",
+   "foto": "f4.jpg",
+   "rotulo": "A VIRADA",
+   "frase_html": "Indicação funciona. O lançamento leva o seu olho no olho para quem ainda não te <b>conhece</b>.",
+   "sub": "Numa aula aberta, muita gente te vê pensar.",
+   "modo": "AGENDADO",
+   "sticker": "AGENDADO · Sem sticker",
+   "zona_sticker": false
+  },
+  {
+   "id": "2710-1433",
+   "usos": [
+    "2026-10-27 14:33"
+   ],
+   "variante": "foto",
+   "foto": "e2.jpg",
+   "rotulo": "CONTEI NA TV",
+   "frase_html": "Projeto com o diretor de marketing de uma franquia <b>odontológica</b>.",
+   "sub": "Terça, 16h: o trecho da entrevista.",
+   "modo": "AGENDADO",
+   "sticker": "AGENDADO · Sem sticker",
+   "zona_sticker": false
+  },
+  {
+   "id": "2810-1200",
+   "usos": [
+    "2026-10-28 12:00"
+   ],
+   "variante": "balao",
+   "foto": null,
+   "rotulo": "O QUE EU MAIS OUÇO",
+   "frase_html": "“Já paguei marqueteiro e me <b>queimei</b>. Todo mundo promete e some.”",
+   "sub": "",
+   "modo": "MANUAL",
+   "sticker": "MANUAL · Enquete: Já pagou por promessa que não veio? SIM / NÃO",
+   "zona_sticker": true
+  },
+  {
+   "id": "2810-1201",
+   "usos": [
+    "2026-10-28 12:01"
+   ],
+   "variante": "foto",
+   "foto": "f3.jpg",
+   "rotulo": "A VIRADA",
+   "frase_html": "Por isso eu não começo prometendo número. Começo pelo <b>diagnóstico</b>.",
+   "sub": "Se faltar o básico, eu digo não.",
+   "modo": "AGENDADO",
+   "sticker": "AGENDADO · Sem sticker",
+   "zona_sticker": false
+  },
+  {
+   "id": "2810-1730",
+   "usos": [
+    "2026-10-28 17:30"
+   ],
+   "variante": "foto",
+   "foto": "e2.jpg",
+   "rotulo": "NA TV · TV CÂMARA CAMPINAS",
+   "frase_html": "“Muitas pessoas vendem algo que elas não conseguem <b>cumprir</b>.”",
+   "sub": "Vai ao ar segunda, 02/11, no programa Ser Empreendedor.",
+   "modo": "AGENDADO",
+   "sticker": "AGENDADO · Sem sticker",
+   "zona_sticker": false
+  },
+  {
+   "id": "2810-1731",
+   "usos": [
+    "2026-10-28 17:31"
+   ],
+   "variante": "foto",
+   "foto": "f2.jpg",
+   "rotulo": "NA TV",
+   "frase_html": "“Os clientes chegam pra gente <b>machucados</b>.”",
+   "sub": "Eu recebo quem já se machucou.",
+   "modo": "AGENDADO",
+   "sticker": "AGENDADO · Sem sticker",
+   "zona_sticker": false
+  },
+  {
+   "id": "2810-1732",
+   "usos": [
+    "2026-10-28 17:32"
+   ],
+   "variante": "foto",
+   "foto": "f4.jpg",
+   "rotulo": "CRITÉRIO",
+   "frase_html": "Se faltam 10 dias para o carrinho, eu digo <b>não</b>.",
+   "sub": "Eu escolho a partida antes de aceitar.",
+   "modo": "AGENDADO",
+   "sticker": "AGENDADO · Sem sticker",
+   "zona_sticker": false
+  },
+  {
+   "id": "2810-2030",
+   "usos": [
+    "2026-10-28 20:30"
+   ],
+   "variante": "foto",
+   "foto": "f5.jpg",
+   "rotulo": "QUA · 21H · NO FEED",
+   "frase_html": "Por que o tête-à-tête ainda é o melhor <b>marketing</b>.",
+   "sub": "O que eu disse na TV. Quarta, 21h.",
+   "modo": "AGENDADO",
+   "sticker": "AGENDADO · Sem sticker (dia e hora no texto)",
+   "zona_sticker": false
+  },
+  {
+   "id": "2910-1200",
+   "usos": [
+    "2026-10-29 12:00"
+   ],
+   "variante": "balao",
+   "foto": null,
+   "rotulo": "O QUE EU MAIS OUÇO",
+   "frase_html": "“Já tentei lançar. A live <b>lotou</b> e ninguém comprou.”",
+   "sub": "",
+   "modo": "MANUAL",
+   "sticker": "MANUAL · Enquete: Já aconteceu com você? SIM / NÃO",
+   "zona_sticker": true
+  },
+  {
+   "id": "2910-1201",
+   "usos": [
+    "2026-10-29 12:01"
+   ],
+   "variante": "foto",
+   "foto": "f2.jpg",
+   "rotulo": "A VIRADA",
+   "frase_html": "O lançamento morre semanas antes do <b>carrinho</b>.",
+   "sub": "Numa casa que ninguém olhou.",
+   "modo": "AGENDADO",
+   "sticker": "AGENDADO · Sem sticker",
+   "zona_sticker": false
+  },
+  {
+   "id": "2910-1730",
+   "usos": [
+    "2026-10-29 17:30"
+   ],
+   "variante": "foto",
+   "foto": "f5.jpg",
+   "rotulo": "NA TV · VAI AO AR SEG, 02/11",
+   "frase_html": "“E o que eu chamo aqui na empresa é o método <b>Xeque-Mate</b>.”",
+   "sub": "Quinta, 21h, eu explico no feed.",
+   "modo": "AGENDADO",
+   "sticker": "AGENDADO · Sem sticker",
+   "zona_sticker": false
+  },
+  {
+   "id": "2910-1731",
+   "usos": [
+    "2026-10-29 17:31"
+   ],
+   "variante": "foto",
+   "foto": "f3.jpg",
+   "rotulo": "MÉTODO XEQUE-MATE",
+   "frase_html": "Cada <b>lance</b> tem data, responsável, número esperado e plano B.",
+   "sub": "Em qual casa o seu travou?",
+   "modo": "AGENDADO",
+   "sticker": "AGENDADO · Sem sticker",
+   "zona_sticker": false
+  },
+  {
+   "id": "2910-2030",
+   "usos": [
+    "2026-10-29 20:30"
+   ],
+   "variante": "foto",
+   "foto": "f4.jpg",
+   "rotulo": "QUI · 21H · NO FEED",
+   "frase_html": "Cada jogada, cada posicionamento e o <b>momento</b>.",
+   "sub": "Método Xeque-Mate. Quinta, 21h, no feed.",
+   "modo": "AGENDADO",
+   "sticker": "AGENDADO · Sem sticker (dia e hora no texto)",
+   "zona_sticker": false
+  },
+  {
+   "id": "3010-1200",
+   "usos": [
+    "2026-10-30 12:00"
+   ],
+   "variante": "balao",
+   "foto": null,
+   "rotulo": "O QUE EU MAIS OUÇO",
+   "frase_html": "“Quanto custa? Estrategista deve ser <b>caro</b>.”",
+   "sub": "",
+   "modo": "MANUAL",
+   "sticker": "MANUAL · Enquete: Já travou nessa pergunta? SIM / NÃO",
+   "zona_sticker": true
+  },
+  {
+   "id": "3010-1201",
+   "usos": [
+    "2026-10-30 12:01"
+   ],
+   "variante": "foto",
+   "foto": "f4.jpg",
+   "rotulo": "A VIRADA",
+   "frase_html": "Caro é a sua agenda ser o único jeito de você <b>faturar</b>.",
+   "sub": "Preço, só depois do diagnóstico.",
+   "modo": "AGENDADO",
+   "sticker": "AGENDADO · Sem sticker",
+   "zona_sticker": false
+  },
+  {
+   "id": "3010-1730",
+   "usos": [
+    "2026-10-30 17:30"
+   ],
+   "variante": "foto",
+   "foto": "f3.jpg",
+   "rotulo": "ALINHAMENTO",
+   "frase_html": "Quando tem percentual, parte do que eu recebo depende da venda do seu <b>infoproduto</b>.",
+   "sub": "Por isso eu escolho a partida antes de aceitar.",
+   "modo": "AGENDADO",
+   "sticker": "AGENDADO · Sem sticker",
+   "zona_sticker": false
+  },
+  {
+   "id": "3010-1731",
+   "usos": [
+    "2026-10-30 17:31"
+   ],
+   "variante": "foto",
+   "foto": "f2.jpg",
+   "rotulo": "DIAGNÓSTICO · 30 MIN",
+   "frase_html": "Nos primeiros 30 minutos eu não vou te ensinar nada novo. Vou te mostrar onde você está <b>perdendo</b>.",
+   "sub": "Fechando comigo ou não. Responde este story com a sua área.",
+   "modo": "AGENDADO",
+   "sticker": "AGENDADO · Sem sticker: o pedido é a resposta ao story, que cai na automação ETAPAS",
+   "zona_sticker": false
+  },
+  {
+   "id": "3010-2030",
+   "usos": [
+    "2026-10-30 20:30"
+   ],
+   "variante": "foto",
+   "foto": "e2.jpg",
+   "rotulo": "SEX · 21H · NO FEED",
+   "frase_html": "O caso de um <b>restaurante</b> que eu contei na TV.",
+   "sub": "A entrevista vai ao ar segunda, 02/11, na TV Câmara Campinas.",
+   "modo": "AGENDADO",
+   "sticker": "AGENDADO · Sem sticker (dia e hora no texto)",
+   "zona_sticker": false
+  },
+  {
+   "id": "3110-1100",
+   "usos": [
+    "2026-10-31 11:00"
+   ],
+   "variante": "foto",
+   "foto": "e1.jpg",
+   "rotulo": "NA TV",
+   "frase_html": "“Eu construí patrimônio, eu construí <b>família</b>.”",
+   "sub": "Vai ao ar segunda, 02/11, na TV Câmara Campinas.",
+   "modo": "AGENDADO",
+   "sticker": "AGENDADO · Sem sticker",
+   "zona_sticker": false
+  },
+  {
+   "id": "3110-1200",
+   "usos": [
+    "2026-10-31 12:00"
+   ],
+   "variante": "balao",
+   "foto": null,
+   "rotulo": "O QUE EU MAIS OUÇO",
+   "frase_html": "“Tenho medo de me expor e dar <b>errado</b>. Meus pacientes vão ver.”",
+   "sub": "",
+   "modo": "AGENDADO",
+   "sticker": "AGENDADO · Sem sticker",
+   "zona_sticker": false
+  },
+  {
+   "id": "3110-1201",
+   "usos": [
+    "2026-10-31 12:01"
+   ],
+   "variante": "foto",
+   "foto": "f5.jpg",
+   "rotulo": "A VIRADA",
+   "frase_html": "Esse medo é de quem tem nome a zelar. Cada lance tem plano B escrito <b>antes</b>.",
+   "sub": "Você entra pra ensinar.",
+   "modo": "AGENDADO",
+   "sticker": "AGENDADO · Sem sticker",
+   "zona_sticker": false
+  },
+  {
+   "id": "3110-1202",
+   "usos": [
+    "2026-10-31 12:02"
+   ],
+   "variante": "foto",
+   "foto": "e2.jpg",
+   "rotulo": "NA TV · TV CÂMARA CAMPINAS",
+   "frase_html": "“...você demonstra pra ele a sua <b>autoridade</b>.”",
+   "sub": "Programa Ser Empreendedor, com a repórter Mirna Abreu.",
+   "modo": "AGENDADO",
+   "sticker": "AGENDADO · Sem sticker",
+   "zona_sticker": false
+  },
+  {
+   "id": "3110-1730",
+   "usos": [
+    "2026-10-31 17:30"
+   ],
+   "variante": "foto",
+   "foto": "f3.jpg",
+   "rotulo": "SÁB · 18H30 · NO FEED",
+   "frase_html": "Parte 2 do bastidor: empreender, os cases e a <b>família</b>.",
+   "sub": "Entrevista à TV Câmara Campinas.",
+   "modo": "AGENDADO",
+   "sticker": "AGENDADO · Sem sticker (dia e hora no texto)",
+   "zona_sticker": false
+  },
+  {
+   "id": "3110-1930",
+   "usos": [
+    "2026-10-31 19:30"
+   ],
+   "variante": "foto",
+   "foto": "f2.jpg",
+   "rotulo": "SUA VEZ",
+   "frase_html": "O que mais te <b>trava</b> para lançar?",
+   "sub": "",
+   "modo": "MANUAL",
+   "sticker": "MANUAL · Enquete: TEMPO / MEDO DE ERRAR EM PÚBLICO",
+   "zona_sticker": true
+  },
+  {
+   "id": "0111-1200",
+   "usos": [
+    "2026-11-01 12:00"
+   ],
+   "variante": "foto",
+   "foto": "e1.jpg",
+   "rotulo": "BASTIDOR · SEG, 02/11",
+   "frase_html": "A entrevista que eu gravei vai ao ar na <b>segunda</b>, 02/11.",
+   "sub": "TV Câmara Campinas, programa Ser Empreendedor, com a repórter Mirna Abreu.",
+   "modo": "AGENDADO",
+   "sticker": "AGENDADO · Sem sticker",
+   "zona_sticker": false
+  },
+  {
+   "id": "0111-1201",
+   "usos": [
+    "2026-11-01 12:01"
+   ],
+   "variante": "foto",
+   "foto": "e2.jpg",
+   "rotulo": "NA TV · SEG, 02/11",
+   "frase_html": "“Cada cliente tem um produto específico e a gente vive esse <b>produto</b>.”",
+   "sub": "Programa Ser Empreendedor, com a repórter Mirna Abreu.",
+   "modo": "AGENDADO",
+   "sticker": "AGENDADO · Sem sticker",
+   "zona_sticker": false
+  },
+  {
+   "id": "0211-0900",
+   "usos": [
+    "2026-11-02 09:00"
+   ],
+   "variante": "foto",
+   "foto": "e1.jpg",
+   "rotulo": "SEG, 02/11 · TV CÂMARA CAMPINAS",
+   "frase_html": "Segunda, 02/11: vai ao ar a minha <b>entrevista</b>.",
+   "sub": "Programa Ser Empreendedor, com a repórter Mirna Abreu. Canal 11.3 aberto, NET 4 e Vivo Fibra 9.",
+   "modo": "AGENDADO",
+   "sticker": "AGENDADO · Sem sticker",
+   "zona_sticker": false
+  },
+  {
+   "id": "0211-1200",
+   "usos": [
+    "2026-11-02 12:00"
+   ],
+   "variante": "foto",
+   "foto": "e2.jpg",
+   "rotulo": "NA TV · SEG, 02/11",
+   "frase_html": "“...saber convencer as pessoas quebrando a <b>objeção</b> delas...”",
+   "sub": "Programa Ser Empreendedor, com a repórter Mirna Abreu.",
+   "modo": "AGENDADO",
+   "sticker": "AGENDADO · Sem sticker",
+   "zona_sticker": false
+  },
+  {
+   "id": "0211-2030",
+   "usos": [
+    "2026-11-02 20:30"
+   ],
+   "variante": "foto",
+   "foto": "f4.jpg",
+   "rotulo": "SEG · 21H · NO FEED",
+   "frase_html": "Nunca ouviu falar de mim? Começa por este <b>caso</b>.",
+   "sub": "Contei na TV Câmara Campinas. Segunda, 21h, no feed.",
+   "modo": "AGENDADO",
+   "sticker": "AGENDADO · Sem sticker (dia e hora no texto)",
+   "zona_sticker": false
+  }
+ ]
+}

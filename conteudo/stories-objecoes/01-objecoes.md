@@ -61,12 +61,12 @@ Tempos em segundos da gravação inteira (`videos/tv-camara/dados/transcricao.js
 - **Prova real:**
   - [FATO] Entrevista à TV Câmara Campinas, programa Ser Empreendedor, repórter Mirna Abreu: convite de terceiro, com uso de imagem e voz autorizado em 24/10.
   - [FATO] "Bom, o primeiro de tudo foi fazendo, tendo case de sucesso, né?" (1227,9 a 1233,8 s).
-  - [FATO] "Até que hoje eu sou estrategista de marketing digital e lançamento de produto." (1199,5 a 1204,0 s).
-  - [FATO, fato do caso] Franquia odontológica: "saímos de lá com um milhão e meio de faturamento com dois meses" (1234,4 a 1249,2 s). O projeto foi feito "com o diretor de marketing".
+  - [FATO] "Eu sou estrategista de marketing digital e lançamento de um produto." (1199,9 a 1204,0 s; a leitura limpa começa em "Eu" e "um produto" vem da pontuação forçada, `videos/tv-camara/cortes/ob02.spec.json`).
+  - [FATO, fato do caso] Franquia odontológica: "saímos de lá com um milhão e meio de faturamento em dois meses" (1234,4 a 1249,2 s; "em", não "com", pela pontuação forçada, `videos/tv-camara/cortes/ob02.spec.json`). O projeto foi feito "com o diretor de marketing".
   - [FATO] Case da bio aprovada: de 6 para 20 mi/mês. Não citar o nome, não chamar de lançamento, não dizer que o Bruno causou sozinho, não prometer igual.
 - **Uso:**
   - Primeiro story de hoje: estático com e1.jpg (câmera da TV filmando o Bruno), rótulo "BASTIDOR · TV CÂMARA CAMPINAS", frase curta do contra-argumento com "bastidor" em ouro.
-  - Em seguida o vídeo mc02 (já renderizado: "Hoje eu sou estrategista de marketing digital e lançamento de produto", com enquete "Você sabia?").
+  - Em seguida o vídeo mc02 ("Eu sou estrategista de marketing digital e lançamento de um produto.", com enquete "Você sabia?"). O render atual começa em "Até que hoje": vai ser refeito começando em "Eu".
   - Destaque PROVA.
 
 ### O2 · "Não tenho tempo pra lançar." · força 9

@@ -1,60 +1,11 @@
-{
- "fmt": "manchete",
- "look": "natural",
- "trilha": "hazy-after-hours",
- "trilha_vol": 0.035,
- "fade": [
-  0,
-  0
- ],
- "max_chars": 30,
- "id": "mc04",
- "seg": [
-  1700.6,
-  1710.15
- ],
- "serie": "MANCHETE",
- "falantes": [
-  [
-   0,
-   10,
-   "B"
-  ]
- ],
- "chave": {
-  "palavra": "família",
-  "perto": 4.1
- },
- "ticker": [
-  "Nem tudo que vemos é ouro",
-  "Uma profissão por 20 anos",
-  "O método Xeque-Mate",
-  "Até hoje é o melhor marketing",
-  "Eu só tinha um computador e um sonho"
- ],
- "planos": [
-  {
-   "t0": 0,
-   "t1": 60,
-   "plano": "CB",
-   "zoom": [
-    [
-     0,
-     1.0
-    ],
-    [
-     4.8,
-     1.06
-    ],
-    [
-     9.6,
-     1.0
-    ]
-   ],
-   "foco": [
-    470,
-    620
-   ]
-  }
- ]
-}
+{"id":"mc04","fmt":"manchete","serie":"MANCHETE","max_chars":30,
+ "manchete":"Eu construí patrimônio, eu construí família.",
+ "_trechos":"gravação 1700,967-1705,567 no voz_mix. Fim no vale de energia entre 'família,' (a voz cai abaixo de -24 dB em 1705,40 s) e 'eu construí tudo' (volta em 1705,62 s): sai 'eu construí tudo através da profissão que hoje eu executo como estrategista digital' (1705,8 a 1709,7 s), termo que o Módulo 1 tirou da bio. Início antes em 1700,6 s pegava a cauda de 'construí' da frase anterior (-19 dB) sem fade: agora começa no silêncio (-32 dB) 0,26 s antes de 'Eu'. O 'Eu' estava marcado em 1700,66 s na transcrição; o som começa em 1701,22 s (envelope e Whisper com contexto longo: 1701,08 a 1701,40) e a transcrição local foi retimada. 'família,' vira 'família.' porque a frase termina ali.",
+ "seg":[1700.967,1705.567],
+ "voz_trechos":[[0,1700.967,4.6]],
+ "falantes":[[0,5,"B"]],
+ "correcoes":{"família,":"família."},
+ "chave":{"palavra":"família","perto":3.73},
+ "ticker":["Nem tudo que vemos é ouro","Uma profissão por 20 anos","O método Xeque-Mate","Até hoje é o melhor marketing","Eu só tinha um computador e um sonho"],
+ "planos":[{"t0":0,"t1":60,"plano":"CB","zoom":[[0,1.0],[2.3,1.06],[4.6,1.0]],"foco":[470,620]}],
+ "look":"natural","trilha":"hazy-after-hours","trilha_vol":0.035,"fade":[0,0]}

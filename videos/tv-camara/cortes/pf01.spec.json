@@ -3,8 +3,10 @@
  "gancho":{"a":0,"ate":2.0,"txt":"DENTISTA, ESSE CASE EU CONTEI NA TV","chave":"DENTISTA","linha":"FRANQUIA ODONTOLÓGICA"},
  "planos":[{"t0":0,"t1":6.45,"plano":"Z2","zoom":[[0,1.0],[6.45,1.03]],"foco":[760,860]},
            {"t0":6.45,"t1":40,"plano":"CB","zoom":[[6.45,1.0],[6.5,1.0],[6.63,1.08],[6.9,1.08],[7.2,1.03],[24,1.05]],"foco":[470,620]}],
- "nome":[2.3,4.6],
- "faixa":{"a":4.6,"para":16.55,"ate":19.6,"txt":"saímos de lá com um milhão e meio de faturamento com dois meses"},
+ "nome":[2.3,4.3],
+ "faixa":{"a":4.6,"para":16.55,"ate":19.6,"txt":"saímos de lá com um milhão e meio de faturamento em dois meses"},
+ "trocas":[["com dois meses.","em dois meses."]],
+ "_trechos":"gravação 1227,90-1249,30, mesmo trecho do ob02 (ver _trechos do ob02.spec.json): 'com dois meses' virou 'em dois meses' na faixa e na legenda (8 decodificações livres e a pontuação forçada dão 'em'); 'saímos' e 'tendo' ficam; o 'Bom' marcado em 1227,92 s fica embaixo do gancho (até 2,0 s). O nome sai em 4,3 s (some em 4,6 s, quando a faixa entra) para as duas tarjas não se cruzarem.",
  "cta":{"a":21.5,"txt":"Manda para um dentista que precisa ouvir isso."},
  "look":"natural","trilha":"complicated","trilha_vol":0.09,
  "sfx":[["pop",0.05,0.2],["swipe",4.6,0.3],["tick",16.55,0.35],["whoosh",21.5,0.22]],"fade":[0,0.3]}

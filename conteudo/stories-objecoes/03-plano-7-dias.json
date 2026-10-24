@@ -1,5 +1,5 @@
 {
- "semana": "2026-10-25 a 2026-10-31",
+ "semana": "2026-10-25 a 2026-10-31, mais 2026-11-01 e 2026-11-02 (provisórios até o conselho do modo GOD)",
  "conta": "@o_estrategista.com.br",
  "arquivo_md": "/home/user/Disparo-/conteudo/stories-objecoes/03-plano-7-dias.md",
  "arquivo_json": "/home/user/Disparo-/conteudo/stories-objecoes/03-plano-7-dias.json",
@@ -12,11 +12,11 @@
      "hora": "09:00",
      "tipo": "estatico",
      "foto": "e1.jpg",
-     "rotulo": "BASTIDOR · TV CÂMARA CAMPINAS",
+     "rotulo": "BASTIDOR · SER EMPREENDEDOR",
      "frase_html": "Você diz: “Nunca ouvi falar de você.” Justo. Então começa por aqui: o que eu disse na TV e um caso com <b>número</b>.",
-     "sub": "Programa Ser Empreendedor, com a repórter Mirna Abreu.",
+     "sub": "Vai ao ar segunda, 02/11, na TV Câmara Campinas.",
      "sticker": "AGENDADO · Sem sticker",
-     "fonte": "Objeção O1 (01-objecoes.md) + prova B1 (foto e1, câmera da TV filmando o Bruno). A virada leva às duas provas seguintes: o que ele disse na TV (09h01) e o caso com número (09h02)."
+     "fonte": "Objeção O1 (01-objecoes.md) + prova B1 (foto e1, câmera da TV filmando o Bruno). A virada leva às duas provas seguintes: o que ele disse na TV (09h01) e o caso com número (09h02). Aviso da exibição do dia no sub, sem horário."
     },
     {
      "hora": "09:01",
@@ -24,7 +24,7 @@
      "video": "/tmp/claude-0/-home-user-Disparo-/54eeb75b-22b3-521e-a4d4-71920aed6701/scratchpad/tv/render/mc02.mp4",
      "rotulo": "NA TV",
      "sticker": "AGENDADO · Sem sticker",
-     "fonte": "Prova M11: \"Até que hoje eu sou estrategista de marketing digital e lançamento de produto.\" (1199,5 a 1204,0 s, conferido em 2 passes). Manchete pronta."
+     "fonte": "Prova M11: \"Eu sou estrategista de marketing digital e lançamento de um produto.\" (1199,9 a 1204,0 s). A leitura limpa começa em \"Eu\" (1199,90 s no voz_mix): a palavra antes de \"que\" não tem leitura estável, e \"um produto\" vem da pontuação forçada (cortes/ob02.spec.json). O mc02 renderizado começa em 1199,45 s e legenda \"Até que hoje eu sou\": vai ser refeito começando em \"Eu\" (a ficha cortes/mc02.spec.json já foi refeita, 1199,90 a 1204,17 s; falta render) e só sobe depois de passar na folha. Manchete pronta."
     },
     {
      "hora": "09:02",
@@ -32,9 +32,9 @@
      "foto": "f4.jpg",
      "rotulo": "PROVA · CASE",
      "frase_html": "Cliente do mercado financeiro: de 6 para 20 milhões por <b>mês</b>.",
-     "sub": "Fato do caso, contado pelo marketing do cliente.",
+     "sub": "Fato do caso, contado pelo marketing do cliente. O número de um caso não se repete igual em outro negócio.",
      "sticker": "MANUAL · Enquete: Quer saber o que mudou nesse caso? SIM / AGORA NÃO, com a linha \"Votou SIM? Responde este story.\" acima dela (a resposta cai na automação ETAPAS)",
-     "fonte": "Prova C1 (bio aprovada no 00-SISTEMA; conhecimento-o-estrategista.md 4.4), subida da noite para o bloco da manhã: é a única prova com número do dia. Sem nome do cliente, sem chamar de lançamento, sem crédito só ao Bruno. Sem prometer post do caso: o vídeo v2 ainda não tem data de reedição."
+     "fonte": "Prova C1 (bio aprovada no 00-SISTEMA; conhecimento-o-estrategista.md 4.4), subida da noite para o bloco da manhã: é a única prova com número do dia. Sem nome do cliente, sem chamar de lançamento, sem crédito só ao Bruno. O sub traz a ressalva aprovada (02-provas.md, linha 145; a mesma do pb02 e da legenda do ob02): o número de um caso não se repete igual em outro negócio. Sem prometer post do caso: o vídeo v2 ainda não tem data de reedição."
     },
     {
      "hora": "12:00",
@@ -119,9 +119,9 @@
      "foto": "e2.jpg",
      "rotulo": "NA TV · A EQUIPE EXECUTA",
      "frase_html": "“...fui treinando a própria <b>equipe</b> para que eles pudessem executar...”",
-     "sub": "Você atende. A equipe executa.",
+     "sub": "Vai ao ar segunda, 02/11, na TV Câmara Campinas.",
      "sticker": "AGENDADO · Sem sticker",
-     "fonte": "Prova M4: 1320,6 a 1325,0 s, lido igual nos 2 passes de conferir.py. A frase não acaba em \"executar\": segue em \"aquilo que era...\" (1325,0 a 1326,4 s, leitura incerta), por isso as reticências. O segmento está marcado M (f0 214,7 Hz): está em \"Conferir antes de publicar\" e só sai depois de confirmada a voz do Bruno no plano CB. Se não for ele, entra o estático f3 sem aspas \"Equipe, anúncio, número de cada dia e plano B ficam comigo.\""
+     "fonte": "Prova M4: 1320,6 a 1325,1 s, lido igual nos 2 passes de conferir.py. Voz conferida: a ficha do ob01 registra a boca no Z2 (a Mirna fica parada de 1312,5 a 1326,4 s; quem fala é o Bruno). O fim da frase (1325,2 a 1326,4 s) ficou ilegível em 4 leituras e saiu: a citação termina em \"executar...\" com reticências. Aviso da exibição do dia no sub (a linha \"Você atende. A equipe executa.\" repetia o rótulo)."
     },
     {
      "hora": "17:32",
@@ -178,11 +178,11 @@
      "hora": "14:31",
      "tipo": "estatico",
      "foto": "f2.jpg",
-     "rotulo": "NA TV",
+     "rotulo": "NA TV · VAI AO AR SEG, 02/11",
      "frase_html": "O tête-à-tête, “que até hoje é o melhor <b>marketing</b>.”",
      "sub": "Eu disse isso na TV Câmara Campinas. E mantenho.",
      "sticker": "AGENDADO · Sem sticker",
-     "fonte": "Prova M6 como concessão (a indicação funciona), antes da virada e sem enquete: a Mirna diz \"tinha o tête-à-tête\" (1374,8 a 1377,5 s) e o Bruno completa \"Que até hoje é o melhor marketing.\" (1377,7 a 1379,2 s). Puxa o ci01 de quarta."
+     "fonte": "Prova M6 como concessão (a indicação funciona), antes da virada e sem enquete: a Mirna diz \"tinha o tête-à-tête\" (1374,8 a 1377,5 s) e o Bruno completa \"Que até hoje é o melhor marketing.\" (1377,7 a 1379,2 s). Puxa o ci01 de quarta. Aviso da exibição do dia no rótulo."
     },
     {
      "hora": "14:32",
@@ -210,7 +210,7 @@
      "video": "/tmp/claude-0/-home-user-Disparo-/54eeb75b-22b3-521e-a4d4-71920aed6701/scratchpad/tv/render/pf01.mp4",
      "rotulo": "NA TV · DENTISTA",
      "sticker": "AGENDADO · Sem sticker (já está no PostZen, que sobe sem sticker)",
-     "fonte": "Prova C3 para consultório: franquia odontológica, \"saímos de lá com um milhão e meio de faturamento com dois meses\" (1243,8 a 1249,2 s). Já agendado no PostZen (m17empvbrp604edk3wzpmxzmj58gw00w). Fato do caso, nunca promessa."
+     "fonte": "Prova C3 para consultório: franquia odontológica, \"saímos de lá com um milhão e meio de faturamento em dois meses\" (1243,8 a 1249,2 s; \"em\", não \"com\", pela pontuação forçada, cortes/ob02.spec.json). Já agendado no PostZen (m17empvbrp604edk3wzpmxzmj58gw00w). O pf01 renderizado legenda \"com dois meses\": a ficha cortes/pf01.spec.json já tem a troca; falta renderizar, e o Bruno troca a mídia do post antes de ter 27/10, 16h. Fato do caso, nunca promessa."
     },
     {
      "hora": "16:01",
@@ -262,9 +262,9 @@
      "foto": "e2.jpg",
      "rotulo": "NA TV · TV CÂMARA CAMPINAS",
      "frase_html": "“Muitas pessoas vendem algo que elas não conseguem <b>cumprir</b>.”",
-     "sub": "Programa Ser Empreendedor, com a repórter Mirna Abreu.",
+     "sub": "Vai ao ar segunda, 02/11, no programa Ser Empreendedor.",
      "sticker": "AGENDADO · Sem sticker",
-     "fonte": "Prova M8: 1397,1 a 1400,5 s (literal). Sem apontar concorrente."
+     "fonte": "Prova M8: 1397,1 a 1400,5 s (literal). Sem apontar concorrente. Aviso da exibição do dia no sub (o rótulo já diz TV Câmara Campinas)."
     },
     {
      "hora": "17:31",
@@ -351,21 +351,21 @@
      "hora": "17:30",
      "tipo": "estatico",
      "foto": "f5.jpg",
-     "rotulo": "NA TV · MÉTODO",
+     "rotulo": "NA TV · VAI AO AR SEG, 02/11",
      "frase_html": "“E o que eu chamo aqui na empresa é o método <b>Xeque-Mate</b>.”",
      "sub": "Quinta, 21h, eu explico no feed.",
      "sticker": "AGENDADO · Sem sticker",
-     "fonte": "Prova M1: 1611,7 a 1615,2 s; \"Xeque-Mate\" corrigido de \"checkmate\" (correcoes.json)."
+     "fonte": "Prova M1: 1611,7 a 1615,2 s; \"Xeque-Mate\" corrigido de \"checkmate\" (correcoes.json). Aviso da exibição do dia no rótulo."
     },
     {
      "hora": "17:31",
      "tipo": "estatico",
      "foto": "f3.jpg",
      "rotulo": "MÉTODO XEQUE-MATE",
-     "frase_html": "Cada lance tem data, responsável, número esperado e <b>plano B</b>.",
+     "frase_html": "Cada <b>lance</b> tem data, responsável, número esperado e plano B.",
      "sub": "Em qual casa o seu travou?",
      "sticker": "AGENDADO · Sem sticker",
-     "fonte": "Prova M2: texto escrito do método (conhecimento-o-estrategista.md 6.1), não dito na TV. O link passou para o estático seguinte, igual aos outros dias."
+     "fonte": "Prova M2: texto escrito do método (conhecimento-o-estrategista.md 6.1), não dito na TV. O link passou para o estático seguinte, igual aos outros dias. Ouro em \"lance\": uma palavra só em ouro por estático."
     },
     {
      "hora": "17:32",
@@ -443,10 +443,10 @@
      "tipo": "estatico",
      "foto": "f3.jpg",
      "rotulo": "ALINHAMENTO",
-     "frase_html": "Parte do que eu recebo depende da venda do seu <b>infoproduto</b>.",
+     "frase_html": "Quando tem percentual, parte do que eu recebo depende da venda do seu <b>infoproduto</b>.",
      "sub": "Por isso eu escolho a partida antes de aceitar.",
      "sticker": "AGENDADO · Sem sticker",
-     "fonte": "Argumento de valor sem preço, no lugar do M10 (foi para quarta): modelo fixo + percentual (01-objecoes.md O6, base 3.1), usado como alinhamento, nunca como garantia. Conferir com o Bruno antes (lista abaixo)."
+     "fonte": "Argumento de valor sem preço, no lugar do M10 (foi para quarta): percentual (01-objecoes.md O6, base 3.1), usado como alinhamento, nunca como garantia. Forma condicional porque uma das duas referências do 00-SISTEMA (R$25 mil setup + R$8 mil/mês) não tem percentual. Se o Bruno confirmar que todo contrato tem parte variável, o \"Quando tem percentual,\" pode sair (lista abaixo)."
     },
     {
      "hora": "17:31",
@@ -464,9 +464,9 @@
      "foto": "e2.jpg",
      "rotulo": "SEX · 21H · NO FEED",
      "frase_html": "O caso de um <b>restaurante</b> que eu contei na TV.",
-     "sub": "Sexta, 21h, no feed.",
+     "sub": "A entrevista vai ao ar segunda, 02/11, na TV Câmara Campinas.",
      "sticker": "AGENDADO · Sem sticker (dia e hora no texto)",
-     "fonte": "Chamada do reel pb02. O número (C4, 1084,9 a 1096,7 s) fica no reel, que tem a ressalva; no dia do \"é caro\" ele não aparece em estático. Apagar às 21h05."
+     "fonte": "Chamada do reel pb02. O número (C4, 1084,9 a 1096,7 s) fica no reel, que tem a ressalva; no dia do \"é caro\" ele não aparece em estático. Apagar às 21h05. Aviso da exibição do dia no sub (o rótulo já diz sexta, 21h)."
     },
     {
      "hora": "21:05",
@@ -496,9 +496,9 @@
      "foto": "e1.jpg",
      "rotulo": "NA TV",
      "frase_html": "“Eu construí patrimônio, eu construí <b>família</b>.”",
-     "sub": "Programa Ser Empreendedor, com a repórter Mirna Abreu.",
+     "sub": "Vai ao ar segunda, 02/11, na TV Câmara Campinas.",
      "sticker": "AGENDADO · Sem sticker",
-     "fonte": "Prova J10: Bruno, 1701,6 a 1705,3 s (\"matrônio\" corrigido para \"patrimônio\" em correcoes.json). Fica no lugar do vídeo mc04: o mc04 renderizado (seg [1700,6, 1710,15], 9,5 s) inclui \"eu construí tudo através da profissão que hoje eu executo como estrategista digital\" (1705,8 a 1709,7 s), o termo que o Módulo 1 tirou da bio. Se o mc04 for renderizado de novo com o fim entre 1705,2 e 1705,7 s e passar na folha, o vídeo volta para este horário. Puxa o tl02."
+     "fonte": "Prova J10: Bruno, 1701,6 a 1705,3 s (\"matrônio\" corrigido para \"patrimônio\" em correcoes.json). Fica no lugar do vídeo mc04: o mc04 renderizado (seg [1700,6, 1710,15], 9,5 s) inclui \"eu construí tudo através da profissão que hoje eu executo como estrategista digital\" (1705,8 a 1709,7 s), o termo que o Módulo 1 tirou da bio. Se o mc04 for renderizado de novo com o fim entre 1705,2 e 1705,7 s e passar na folha, o vídeo volta para este horário. Puxa o tl02. Aviso da exibição do dia no sub."
     },
     {
      "hora": "12:00",
@@ -514,20 +514,20 @@
      "tipo": "estatico",
      "foto": "f5.jpg",
      "rotulo": "A VIRADA",
-     "frase_html": "Esse medo é de quem tem nome a zelar. Cada lance tem <b>plano B</b> escrito antes.",
+     "frase_html": "Esse medo é de quem tem nome a zelar. Cada lance tem plano B escrito <b>antes</b>.",
      "sub": "Você entra pra ensinar.",
      "sticker": "AGENDADO · Sem sticker",
-     "fonte": "Contra-argumento O5 e uso indicado: f5 com plano B em ouro."
+     "fonte": "Contra-argumento O5 e uso indicado (f5). Ouro em \"antes\", não em \"plano B\": uma palavra só em ouro por estático."
     },
     {
      "hora": "12:02",
      "tipo": "estatico",
      "foto": "e2.jpg",
      "rotulo": "NA TV · TV CÂMARA CAMPINAS",
-     "frase_html": "“Você passa a segurança pro seu cliente, você demonstra pra ele a sua <b>autoridade</b>.”",
+     "frase_html": "“...você demonstra pra ele a sua <b>autoridade</b>.”",
      "sub": "Programa Ser Empreendedor, com a repórter Mirna Abreu.",
      "sticker": "AGENDADO · Sem sticker",
-     "fonte": "Prova O5: Bruno, 1421,7 a 1427,0 s. Conferir \"pro seu\" no áudio: os passes leem \"pro seu\", \"para o seu\" e \"do seu\"."
+     "fonte": "Prova O5: Bruno, 1424,12 a 1426,98 s (todas as palavras com confiança de 0,94 ou mais). O começo \"você passa a segurança pro seu cliente\" (1421,7 a 1423,9 s) saiu: \"a\" e \"pro\" têm confiança 0,29 e 0,32, e os passes leem \"pro seu\", \"para o seu\" e \"do seu\" (item c de scratchpad/tv/ouvir/LEIAME.txt). Se o Bruno confirmar \"pro seu\", a frase longa volta, com reticências na abertura."
     },
     {
      "hora": "12:03",
@@ -567,6 +567,106 @@
      "fonte": "Medição de O2 contra O5 (01-objecoes.md, seção 5). Registrar o resultado no Módulo 7 de 02/11."
     }
    ]
+  },
+  {
+   "data": "2026-11-01 (domingo)",
+   "provisorio": "Provisório até o conselho do modo GOD.",
+   "tema": "Véspera da exibição. Bastidor com a data e uma frase literal da entrevista, depois o pedido único do diagnóstico. Feed: nada agendado (a confirmar no conselho).",
+   "stories": [
+    {
+     "hora": "09:00",
+     "tipo": "video_existente",
+     "video": "/tmp/claude-0/-home-user-Disparo-/54eeb75b-22b3-521e-a4d4-71920aed6701/scratchpad/tv/render/tl02.mp4",
+     "rotulo": "ONTEM NO FEED",
+     "sticker": "MANUAL · Compartilhar o post tl02 (sem outro sticker)",
+     "fonte": "Segundo empurrão do reel de ontem (parte 2 do bastidor). Só se o tl02 tiver saído no sáb 31/10 (portão do tl01 no F4); se não, este story sai. Provisório até o conselho do modo GOD."
+    },
+    {
+     "hora": "12:00",
+     "tipo": "estatico",
+     "foto": "e1.jpg",
+     "rotulo": "BASTIDOR · SEG, 02/11",
+     "frase_html": "A entrevista que eu gravei vai ao ar na <b>segunda</b>, 02/11.",
+     "sub": "TV Câmara Campinas, programa Ser Empreendedor, com a repórter Mirna Abreu.",
+     "sticker": "AGENDADO · Sem sticker",
+     "fonte": "Bastidor (prova B1, foto e1, câmera da TV filmando o Bruno) com a data da exibição e sem horário (sem dado). Nada de HOJE, AMANHÃ ou contagem com sticker: vai agendado. Se o mc04 for refeito com o fim antes de \"como estrategista digital\" e passar na folha, ele pode entrar logo depois deste. Provisório até o conselho do modo GOD."
+    },
+    {
+     "hora": "12:01",
+     "tipo": "estatico",
+     "foto": "e2.jpg",
+     "rotulo": "NA TV · SEG, 02/11",
+     "frase_html": "“Cada cliente tem um produto específico e a gente vive esse <b>produto</b>.”",
+     "sub": "Programa Ser Empreendedor, com a repórter Mirna Abreu.",
+     "sticker": "AGENDADO · Sem sticker",
+     "fonte": "Prova M3: Bruno, 1580,7 a 1584,0 s (literal, frase completa; é o fecho do ob01 e o mc03 de seg 26/10). Em estático é a primeira vez. Provisório até o conselho do modo GOD."
+    },
+    {
+     "tipo": "estatico",
+     "foto": "f1.jpg",
+     "rotulo": "DIAGNÓSTICO · 12 CASAS",
+     "frase_html": "Em 4 minutos você vê em qual <b>casa</b> o seu lançamento trava.",
+     "sub": "Toque no link: Diagnóstico de 12 casas.",
+     "sticker": "MANUAL · Link estrategistadelancamento.com.br/tabuleiro/?o=ig-stories (texto do link: Diagnóstico de 12 casas)",
+     "hora": "12:02",
+     "fonte": "Pedido único do dia: o mesmo estático todos os dias, e o texto bate com o destino (12 casas em 4 minutos, Módulo 6). Provisório até o conselho do modo GOD."
+    }
+   ]
+  },
+  {
+   "data": "2026-11-02 (segunda)",
+   "provisorio": "Provisório até o conselho do modo GOD.",
+   "tema": "Dia da exibição (Finados), horário sem dado. Aviso com a data, frase literal da entrevista, o pedido único do diagnóstico e a chamada do reel. Feed provável: ob02 às 21h (O1, \"Nunca ouvi falar de você.\"), a confirmar no conselho.",
+   "stories": [
+    {
+     "hora": "09:00",
+     "tipo": "estatico",
+     "foto": "e1.jpg",
+     "rotulo": "SEG, 02/11 · TV CÂMARA CAMPINAS",
+     "frase_html": "Segunda, 02/11: vai ao ar a minha <b>entrevista</b>.",
+     "sub": "Programa Ser Empreendedor, com a repórter Mirna Abreu. Canal 11.3 aberto, NET 4 e Vivo Fibra 9.",
+     "sticker": "AGENDADO · Sem sticker",
+     "fonte": "Bastidor (B1) com a data. Canais lidos no site da TV Câmara Campinas em 24/10 (F4). Sem horário (sem dado), sem HOJE, sem \"ao vivo\" e sem \"foi ao ar\". Se o horário chegar da Mirna, o Bruno posta à mão um story com o horário e a menção a ela; esse story não entra no PostZen. Provisório até o conselho do modo GOD."
+    },
+    {
+     "hora": "12:00",
+     "tipo": "estatico",
+     "foto": "e2.jpg",
+     "rotulo": "NA TV · SEG, 02/11",
+     "frase_html": "“...saber convencer as pessoas quebrando a <b>objeção</b> delas...”",
+     "sub": "Programa Ser Empreendedor, com a repórter Mirna Abreu.",
+     "sticker": "AGENDADO · Sem sticker",
+     "fonte": "Prova M5: Bruno, 1304,1 a 1308,3 s (\"de\" em 1303,5 s tem confiança 0,37, por isso a citação começa em \"saber\"; a frase segue na fala da Mirna, por isso as reticências). Liga a entrevista à série de objeções da semana. Provisório até o conselho do modo GOD."
+    },
+    {
+     "tipo": "estatico",
+     "foto": "f1.jpg",
+     "rotulo": "DIAGNÓSTICO · 12 CASAS",
+     "frase_html": "Em 4 minutos você vê em qual <b>casa</b> o seu lançamento trava.",
+     "sub": "Toque no link: Diagnóstico de 12 casas.",
+     "sticker": "MANUAL · Link estrategistadelancamento.com.br/tabuleiro/?o=ig-stories (texto do link: Diagnóstico de 12 casas)",
+     "hora": "12:01",
+     "fonte": "Pedido único do dia: o mesmo estático todos os dias, e o texto bate com o destino (12 casas em 4 minutos, Módulo 6). Provisório até o conselho do modo GOD."
+    },
+    {
+     "hora": "20:30",
+     "tipo": "estatico",
+     "foto": "f4.jpg",
+     "rotulo": "SEG · 21H · NO FEED",
+     "frase_html": "Nunca ouviu falar de mim? Começa por este <b>caso</b>.",
+     "sub": "Contei na TV Câmara Campinas. Segunda, 21h, no feed.",
+     "sticker": "AGENDADO · Sem sticker (dia e hora no texto)",
+     "fonte": "Chamada do reel ob02 (O1), provável para seg 02/11 21h. Fala do Bruno, não do cliente: a objeção na voz do cliente fica no quadro 0 do reel. Se o conselho puser outro reel às 21h (o F4 propõe o ci01), trocar frase e sub por um texto do reel escolhido. Apagar às 21h05. Provisório até o conselho do modo GOD."
+    },
+    {
+     "hora": "21:05",
+     "tipo": "video_existente",
+     "video": "/tmp/claude-0/-home-user-Disparo-/54eeb75b-22b3-521e-a4d4-71920aed6701/scratchpad/tv/render/ob02.mp4",
+     "rotulo": "NO FEED",
+     "sticker": "MANUAL · Compartilhar o post ob02 no story logo depois de publicado (sem outro sticker)",
+     "fonte": "Primeiro empurrão na primeira hora do reel. Apagar a chamada das 20h30. Só se o ob02 tiver saído; o repost de ter 03/11 9h fica para o plano da semana seguinte. Provisório até o conselho do modo GOD."
+    }
+   ]
   }
  ],
  "reels": [
@@ -574,31 +674,59 @@
    "id": "ob01",
    "objecao": "O2 · \"Não tenho tempo pra lançar.\"",
    "gancho_tela": "Quadro 0, plano CB (Bruno em 3/4, falando desde o quadro 0): rótulo VOCÊ DIZ: e \"NÃO TENHO TEMPO PRA LANÇAR.\" em Connect Hook palavra a palavra, \"TEMPO\" em ouro; linha menor: COMO EU MONTEI A MINHA EQUIPE · NA TV. A objeção é do público: ninguém falou em falta de tempo na entrevista (a pergunta da Mirna em 1280,5 s foi \"Qual foi o funil que você fez?\").",
-   "trecho": "1316,2-1326,4 + 1580,7-1584,0 (13,5 s; corte seco com punch-in no meio). Antes, ouvir 1325,0 a 1326,4 s: se o fim da frase for ilegível, o 1º trecho termina em 1325,0 s com o punch-in escondendo o corte (12,1 s).",
-   "frase_resposta": "\"O que eu fiz? Comecei a estruturar e ter a minha própria equipe, e fui treinando a própria equipe para que eles pudessem executar...\" [1325,0 a 1326,4 s: legendar o que estiver no áudio; os passes leram \"aquilo que era jornalidade\" e \"já validado\"] [corte] \"Cada cliente tem um produto específico e a gente vive esse produto.\"",
+   "trecho": "1316,2-1325,1 + 1580,7-1584,1 (12,4 s; corte seco com punch-in no meio). O fim da frase, 1325,2 a 1326,4 s, ficou ilegível em 4 leituras e saiu; o punch-in esconde o corte (cortes/ob01.spec.json).",
+   "frase_resposta": "\"O que eu fiz? Comecei a estruturar e ter a minha própria equipe, e fui treinando a própria equipe para que eles pudessem executar...\" [corte] \"Cada cliente tem um produto específico e a gente vive esse produto.\"",
    "prova": "Faixa NA TV CÂMARA CAMPINAS · SER EMPREENDEDOR durante o trecho; marca-texto em \"equipe\" (1322,2 s) e em \"vive esse produto\"; cartão final: VOCÊ GRAVA AS AULAS. EQUIPE, ANÚNCIO E PLANO B FICAM COMIGO.",
-   "cta": "Me manda a sua área no direct: em 30 minutos eu te mostro em qual casa o seu lançamento trava. (Na tela, com o efeito CTA de Comentário: ME MANDA A SUA ÁREA NO DIRECT. É o mesmo pedido da semana.)",
-   "legenda": "“Não tenho tempo pra lançar.” Faz sentido. A sua agenda não vai folgar, e ela é o teto do seu consultório.\nNa entrevista à TV Câmara Campinas eu contei como estruturei e treinei a minha própria equipe para executar. No lançamento você grava as aulas, aparece no evento e aprova a oferta. Equipe, anúncio, número de cada dia e plano B ficam comigo.\nMe manda a sua área no direct: em 30 minutos eu te mostro em qual casa o seu lançamento trava.\n#estrategistadelancamento #lancamento #marketingdigital #empreendedorismo #campinas"
+   "cta": "Na tela, com o efeito CTA de Comentário (base fixa da marca): COMENTA A SUA ÁREA. Na legenda: \"Comenta a sua área que eu te respondo.\" Sem palavra-chave e sem automação: o Bruno responde à mão.",
+   "legenda": "“Não tenho tempo pra lançar.” Faz sentido. A sua agenda não vai folgar, e ela é o teto do seu consultório.\nNa entrevista à TV Câmara Campinas eu contei como estruturei e treinei a minha própria equipe para executar. No lançamento você grava as aulas, aparece no evento e aprova a oferta. Equipe, anúncio, número de cada dia e plano B ficam comigo.\nComenta a sua área que eu te respondo.\n#estrategistadelancamento #lancamento #marketingdigital #empreendedorismo #campinas",
+   "data_proposta": "qua 04/11, 21h (a confirmar no conselho)"
   },
   {
    "id": "ob02",
    "objecao": "O1 · \"Nunca ouvi falar de você.\" (\"Quem você já fez?\")",
-   "gancho_tela": "Quadro 0, plano CB (Bruno falando desde o quadro 0, em 1199,5 s): rótulo VOCÊ DIZ: e \"NUNCA OUVI FALAR DE VOCÊ.\" palavra a palavra, \"VOCÊ\" em ouro. A voz da Mirna não entra: no corte para o 2º trecho, a pergunta dela aparece só como texto, sem aspas: A TV PERGUNTOU COMO EU MOSTREI AOS MEUS CONTATOS QUE TINHA MUDADO DE ÁREA.",
-   "trecho": "1199,5-1204,0 + 1227,9-1249,2 (25,8 s; corte seco com punch-in; a pergunta da Mirna, 1215,9 a 1227,9 s, fica fora do áudio)",
-   "frase_resposta": "\"Até que hoje eu sou estrategista de marketing digital e lançamento de produto.\" [corte] \"Bom, o primeiro de tudo foi fazendo, tendo case de sucesso, né? Um deles foi uma franquia odontológica muito famosa, onde eu entrei pra fazer ali um projeto com o diretor de marketing e saímos de lá com um milhão e meio de faturamento com dois meses.\"",
-   "prova": "Nome e cargo em 1200,3 s (\"estrategista\"): BRUNO · ESTRATEGISTA DE LANÇAMENTO; faixa TV CÂMARA CAMPINAS · PROGRAMA SER EMPREENDEDOR; marca-texto em \"franquia odontológica\" e em \"um milhão e meio de faturamento com dois meses\", com a linha FATO DO CASO. O NÚMERO DE UM CASO NÃO SE REPETE IGUAL EM OUTRO NEGÓCIO. Um número só na tela, o que o Bruno diz; sem contagem e sem o \"mais de 200 mil\" da pergunta do restaurante.",
-   "cta": "Me manda a sua área no direct: em 30 minutos eu te mostro o que já fiz e em qual casa o seu lançamento trava. (No lugar de PARTIDA, que não tem automação; mesmo pedido da semana.)",
-   "legenda": "“Nunca ouvi falar de você.” Faz sentido. No lançamento quem aparece é você; eu fico no bastidor, desenhando e comandando a partida.\nNa TV Câmara Campinas eu contei um dos casos: um projeto com o diretor de marketing de uma franquia odontológica. Saímos de lá com um milhão e meio de faturamento com dois meses. O número de um caso não se repete igual em outro negócio.\nPor isso eu não peço confiança no escuro. Me manda a sua área no direct: em 30 minutos eu te mostro o que já fiz e em qual casa o seu lançamento trava.\n#estrategistadelancamento #lancamento #marketingdigital #empreendedorismo #campinas"
+   "gancho_tela": "Quadro 0, plano CB (Bruno falando desde o quadro 0, em 1199,9 s, no \"Eu\"): rótulo VOCÊ DIZ: e \"NUNCA OUVI FALAR DE VOCÊ.\" palavra a palavra, \"VOCÊ\" em ouro. A voz da Mirna não entra: no corte para o 2º trecho, a pergunta dela aparece só como texto, sem aspas: A TV PERGUNTOU COMO EU MOSTREI AOS MEUS CONTATOS QUE TINHA MUDADO DE ÁREA.",
+   "trecho": "1199,9-1204,0 + 1227,9-1249,3 (25,5 s; corte seco com punch-in; a pergunta da Mirna, 1204,0 a 1227,9 s, fica fora do áudio; cortes/ob02.spec.json)",
+   "frase_resposta": "\"Eu sou estrategista de marketing digital e lançamento de um produto.\" [corte] \"Bom, o primeiro de tudo foi fazendo, tendo case de sucesso, né? Um deles foi uma franquia odontológica muito famosa, onde eu entrei pra fazer ali um projeto com o diretor de marketing e saímos de lá com um milhão e meio de faturamento em dois meses.\"",
+   "prova": "Nome e cargo em 1200,3 s (\"estrategista\"): BRUNO · ESTRATEGISTA DE LANÇAMENTO; faixa TV CÂMARA CAMPINAS · PROGRAMA SER EMPREENDEDOR; marca-texto em \"franquia odontológica\" e em \"um milhão e meio de faturamento em dois meses\", com a linha FATO DO CASO. O NÚMERO DE UM CASO NÃO SE REPETE IGUAL EM OUTRO NEGÓCIO. Um número só na tela, o que o Bruno diz; sem contagem e sem o \"mais de 200 mil\" da pergunta do restaurante.",
+   "cta": "Na tela, com o efeito CTA de Comentário (base fixa da marca): COMENTA A SUA ÁREA. Na legenda: \"Comenta a sua área que eu te respondo.\" Sem palavra-chave e sem automação: o Bruno responde à mão.",
+   "legenda": "“Nunca ouvi falar de você.” Faz sentido. No lançamento quem aparece é você; eu fico no bastidor, desenhando e comandando a partida.\nNa TV Câmara Campinas eu contei um dos casos: um projeto com o diretor de marketing de uma franquia odontológica. Saímos de lá com um milhão e meio de faturamento em dois meses. O número de um caso não se repete igual em outro negócio.\nPor isso eu não peço confiança no escuro. Comenta a sua área que eu te respondo.\n#estrategistadelancamento #lancamento #marketingdigital #empreendedorismo #campinas",
+   "data_proposta": "seg 02/11, 21h (a confirmar no conselho)"
   },
   {
    "id": "ob03",
    "objecao": "O8 · \"Isso é pra infoprodutor, não pra consultório.\" (\"Sempre trabalhei por indicação.\")",
    "gancho_tela": "Quadro 0, plano CB (Bruno falando desde o quadro 0, em 1635,4 s): rótulo VOCÊ DIZ: e \"MEU CONSULTÓRIO VIVE DE INDICAÇÃO.\" palavra a palavra, \"INDICAÇÃO\" em ouro; linha menor, só como texto e sem a voz da Mirna: A TV PERGUNTOU SE O MARKETING DIGITAL AJUDA EMPRESÁRIOS A REVER AS SUAS ESTRATÉGIAS.",
-   "trecho": "1635,4-1636,1 + 1648,2-1650,9 + 1663,0-1668,6 (9,0 s; dois cortes secos com punch-in; saem 1636,2 a 1648,1 s, com \"enferrujados\" e \"velha guarda\", e 1650,9 a 1662,8 s, de leitura incerta)",
+   "trecho": "1635,2-1636,1 + 1648,1-1650,9 + 1662,9-1668,7 (9,4 s; dois cortes secos com punch-in; saem 1636,15 a 1648,1 s, com \"Eles\", \"enferrujados\", \"velha guarda\" e \"Mas,\", e 1650,9 a 1662,9 s, de leitura incerta; cortes/ob03.spec.json)",
    "frase_resposta": "Bruno: \"Ah, com certeza.\" [corte] \"A gente tem que cuidar deles com muito carinho.\" [corte] \"Mas tem situações que hoje o digital pode alcançar muito mais e potencializar o seu negócio.\" (\"Deles\" são os empresários da pergunta.)",
    "prova": "Faixa NA TV CÂMARA CAMPINAS · SER EMPREENDEDOR; marca-texto em \"muito carinho\" e em \"potencializar o seu negócio\"; cartão final com a frase literal de 1377,7 s: O TÊTE-À-TÊTE, QUE ATÉ HOJE É O MELHOR MARKETING. O LANÇAMENTO LEVA ESSE OLHO NO OLHO PARA QUEM AINDA NÃO TE CONHECE.",
-   "cta": "Me manda a sua área no direct que eu te digo por onde começar.",
-   "legenda": "Indicação funciona e vai continuar funcionando. Na TV eu disse que o tête-à-tête até hoje é o melhor marketing, e mantenho.\nO lançamento leva esse olho no olho para quem ainda não te conhece: numa aula aberta, muita gente te vê pensar de uma vez. Quem sempre trabalhou por indicação merece ser tratado com carinho, e é assim que eu começo.\nMe manda a sua área no direct que eu te digo por onde começar.\n#estrategistadelancamento #lancamento #marketingdigital #empreendedorismo #campinas"
+   "cta": "Na tela, com o efeito CTA de Comentário (base fixa da marca): COMENTA A SUA ÁREA. Na legenda: \"Comenta a sua área que eu te respondo.\" Sem palavra-chave e sem automação: o Bruno responde à mão.",
+   "legenda": "Indicação funciona e vai continuar funcionando. Na TV eu disse que o tête-à-tête até hoje é o melhor marketing, e mantenho.\nO lançamento leva esse olho no olho para quem ainda não te conhece: numa aula aberta, muita gente te vê pensar de uma vez. Quem sempre trabalhou por indicação merece ser tratado com carinho, e é assim que eu começo.\nComenta a sua área que eu te respondo.\n#estrategistadelancamento #lancamento #marketingdigital #empreendedorismo #campinas",
+   "data_proposta": "sex 06/11, 21h (a confirmar no conselho)"
   }
+ ],
+ "exibicao": {
+  "data": "2026-11-02 (segunda)",
+  "horario": "sem dado",
+  "programa": "Ser Empreendedor, TV Câmara Campinas, repórter Mirna Abreu",
+  "regra": "Nunca escrever horário de exibição nem \"foi ao ar\" antes de o horário ser confirmado. Story agendado fica 24 h no ar: nunca HOJE nem AMANHÃ, sempre dia da semana e data (SEG, 02/11). Sem contagem regressiva com sticker em story AGENDADO.",
+  "marcacao_mirna": "O Bruno marca a Mirna pelo app nos posts do feed (o PostZen não marca pessoa)."
+ },
+ "conferir_antes_de_publicar": [
+  "**Exibição:** a entrevista vai ao ar na segunda, 02/11/2026 (mensagem do Bruno, 24/10). O horário é sem dado: nenhum story ou legenda escreve horário de exibição, \"ao vivo\" ou \"foi ao ar\" antes de o horário ser confirmado pela Mirna ou pela grade. Story agendado nunca diz HOJE nem AMANHÃ (fica 24 h no ar): sempre dia da semana e data (\"SEG, 02/11\"). Contagem regressiva com sticker só em story à mão, e só com horário confirmado.",
+  "**Marcar a Mirna:** o Bruno marca a Mirna pelo app nos posts do feed com a entrevista (o PostZen não marca pessoa) e anota no arquivo da semana em quais marcou. Nos ob01 a ob03 ela não aparece nem fala: marcar ou não fica com o conselho (o F4 sugere não marcar onde ela não aparece).",
+  "**mc02 (dom 25/10 09h01), antes de agendar:** o render atual começa em 1199,45 s e legenda \"Até que hoje eu sou\". A ficha `cortes/mc02.spec.json` já foi refeita (1199,90 a 1204,17 s no voz_mix, \"um produto\"); falta renderizar, passar a folha e copiar para o Drive. Sem o render novo, o story das 09h01 sai.",
+  "**pf01 (ter 27/10 16h, já no PostZen):** o render atual legenda \"com dois meses\". A ficha `cortes/pf01.spec.json` já tem a troca para \"em dois meses\" (faixa e legenda); falta renderizar, passar a folha e o Bruno trocar a mídia do post m17empvbrp604edk3wzpmxzmj58gw00w antes de ter 27/10, 16h (os agentes não mexem no PostZen).",
+  "**Story de seg 26/10 17h31 (M4) e ob01:** a voz foi conferida pela boca no Z2 (ficha do ob01: a Mirna fica parada de 1312,5 a 1326,4 s), e o fim ilegível (1325,2 a 1326,4 s) saiu. Segue aberto: \"e ter a\" (1318,6 a 1319,1 s) tem confiança baixa; o 2º passe leu \"entrei a minha\" e \"estruturar minha\". Ouvir no render do ob01.",
+  "**ob02:** \"case\" (1232,3 s) tem confiança 0,33: ouvir no render. O começo em \"Eu\", \"um produto\" e \"em dois meses\" vêm da pontuação forçada (`cortes/ob02.spec.json`); conferir na folha que a legenda queimada diz isso. A pergunta da Mirna entra como texto indireto, sem aspas, e o \"mais de 200 mil\" dela não aparece.",
+  "**ob03:** a ficha corta em 1636,12 s e entra em 1648,10 s. Conferir no render que o corte não pega o começo de \"Eles\" (1636,15 s) e que \"a gente\" entra limpo, sem o \"Mas,\" de 1647,2 a 1647,8 s.",
+  "**Story de sáb 31/10 11h00:** o mc04 renderizado (seg [1700,6, 1710,15], 9,5 s) inclui \"como estrategista digital\" (1705,8 a 1709,7 s), o termo que o Módulo 1 tirou da bio e que contradiz \"Estrategista de Lançamento\". A ficha `videos/tv-camara/cortes/mc04.spec.json` já foi refeita (1700,97 a 1705,57 s, fim depois de \"família.\"); falta renderizar e passar a folha. Até lá, vai o estático e1 com a frase literal.",
+  "**Story de sáb 12h02:** \"pro seu cliente\" (1423,0 s) foi lido como \"pro seu\", \"para o seu\" e \"do seu\", sem resposta do Bruno (item c do LEIAME). O estático já sai só com a parte conferida: “...você demonstra pra ele a sua autoridade.” (1424,12 a 1426,98 s). A frase longa só volta se o Bruno confirmar a forma no áudio.",
+  "**Story de sex 17h30:** o estático já sai na forma condicional: \"Quando tem percentual, parte do que eu recebo depende da venda do seu infoproduto.\" O 00-SISTEMA cita duas referências e uma delas (R$25 mil setup + R$8 mil/mês) não tem percentual. Só tirar o \"Quando tem percentual,\" se o Bruno confirmar que todo contrato de comando tem parte variável. Nunca \"só paga se vender\" nem garantia.",
+  "**Chamadas e reposts:** hoje, sáb 24/10, apagar a chamada das 20h30 depois das 21h. Na semana, cada chamada sai do ar quando o reel entra no story (18h35 ou 21h05). Reposts das 9h só depois de o post de ontem estar publicado. Chamada e compartilhamento do tl02 só se o tl02 sair no sábado (portão do tl01). A chamada de seg 02/11 20h30 e o compartilhamento das 21h05 só valem se o ob02 for confirmado para as 21h; se o conselho escolher outra peça, trocar o texto da chamada.",
+  "**Dom 01/11 e seg 02/11:** provisórios até o conselho do modo GOD. Não agendar antes da decisão.",
+  "**MANUAL:** os 31 stories com sticker (27 de 25 a 31/10, 2 em 01/11 e 2 em 02/11) vão pelo app, na hora, com o arquivo pronto no Drive. Nenhum deles entra no PostZen.",
+  "Os vídeos estão em `scratchpad/tv/render/` desta sessão (temporário): copiar para o Drive antes de agendar.",
+  "Print da autorização da Mirna guardado.",
+  "Medição da semana (Módulo 7, 02/11): votos de cada enquete por objeção, o placar TEMPO x MEDO de sábado, cliques no link do diagnóstico por dia, respostas de story (ETAPAS), o alcance do Dentista B (regra dos 150 do TABULEIRO), o alcance de cada reel na primeira hora, com o compartilhamento à mão, e comentários com a área nos reels de objeção (contagem à mão). A frequência de cada objeção hoje é sem dado."
  ]
 }

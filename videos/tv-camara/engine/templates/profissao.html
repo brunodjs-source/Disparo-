@@ -20,12 +20,23 @@ function ctaEnvio(t) {
    <div style="font-family:Cinzel;font-weight:900;font-size:56px;line-height:1.18;color:${CREME}">${K.txt}</div>
    <div style="width:${eo((t - K.a - .3) / .4) * 140}px;height:3px;background:${OURO};margin:30px auto 0"></div></div>`;
 }
+// entre dois grupos da fala (até 2 s), segura o grupo anterior até o próximo entrar (mesma lógica do manchete.html):
+// a cauda de 'fazendo' e de 'sucesso' (com o 'né?' que a ficha tira) e o quadro entre 'famosa,' e 'onde' não ficam sem legenda
+function legendaSegura(t, top) {
+  const h = legendaGigante(t, top); if (h) return h;
+  let gi = -1; for (let k = 0; k < GRUPOS.length; k++) if (WD[GRUPOS[k][0]][0] - .03 <= t) gi = k;
+  if (gi < 0 || gi === GRUPOS.length - 1) return '';
+  const g = GRUPOS[gi], ult = WD[g[g.length - 1]][0];
+  return WD[GRUPOS[gi + 1][0]][0] - ult > 2 ? '' : legendaGigante(ult + .85, top);
+}
 function render(t, camada) {
   const el = document.getElementById(camada); if (camada !== 'front') { el.innerHTML = ''; return; }
   let h = topoEscuro(.55, 860);
   const G = C.gancho;
   if (G && t < G.ate + .3) h += `<div style="opacity:${1 - cl((t - G.ate) / .25)}">${connectHook(t, G.a, G.txt, G.chave, 330, G.linha)}</div>`;
-  if (!G || t > G.ate) if (!(C.cta && t >= C.cta.a)) h += legendaGigante(t, 400);
+  // a legenda entra quando o gancho já quase sumiu (antes ela pousava em cima do gancho por 0,25 s)
+  const entra = G ? cl((t - G.ate - .2) / .15) : 1;
+  if (entra > 0 && !(C.cta && t >= C.cta.a)) h += `<div style="opacity:${entra}">${legendaSegura(t, 400)}</div>`;
   h += rotulo(t, C.rotulo, 236, 56);
   if (C.nome) h += nomeTV(t, C.nome[0], C.nome[1]);
   h += faixaNA(t) + ctaEnvio(t);

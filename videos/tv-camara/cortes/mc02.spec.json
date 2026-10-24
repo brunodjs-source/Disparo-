@@ -1,60 +1,11 @@
-{
- "fmt": "manchete",
- "look": "natural",
- "trilha": "hazy-after-hours",
- "trilha_vol": 0.035,
- "fade": [
-  0,
-  0
- ],
- "max_chars": 30,
- "id": "mc02",
- "seg": [
-  1199.45,
-  1204.02
- ],
- "serie": "MANCHETE",
- "falantes": [
-  [
-   0,
-   5,
-   "B"
-  ]
- ],
- "chave": {
-  "palavra": "lançamento",
-  "perto": 3.4
- },
- "ticker": [
-  "Nem tudo que vemos é ouro",
-  "Uma profissão por 20 anos",
-  "O método Xeque-Mate",
-  "Eu construí família",
-  "Até hoje é o melhor marketing"
- ],
- "planos": [
-  {
-   "t0": 0,
-   "t1": 60,
-   "plano": "CB",
-   "zoom": [
-    [
-     0,
-     1.0
-    ],
-    [
-     2.325,
-     1.06
-    ],
-    [
-     4.65,
-     1.0
-    ]
-   ],
-   "foco": [
-    470,
-    620
-   ]
-  }
- ]
-}
+{"id":"mc02","fmt":"manchete","serie":"MANCHETE","max_chars":30,
+ "manchete":"Eu sou estrategista de marketing digital e lançamento de um produto.",
+ "_trechos":"gravação 1199,90-1204,167 no voz_mix (35 ms atrás do bruto), mesmas decisões do ob02. Começa em 'Eu': a palavra antes de 'que' não tem leitura estável e o 'hoje' sai reduzido; o vale de energia entre 'hoje' e 'eu' fica em 1199,91 s (voz_mix) e a voz entra pelo voz_trechos, com 40 ms de fade de entrada. 'produto.' virou 'um produto.' (pontuação forçada põe 'de um produto' nas 9 condições). Fim: a vogal de 'produto' acaba em 1203,99 s, a cauda cai ao piso em 1204,17 s e a Mirna entra em 1204,39 s; o 'Então,' da Mirna que a transcrição marca em 1204,04 s (som em 1204,39) sai pela correção vazia; o corte em 1204,167 deixa cerca de 5 quadros depois da frase e volta seco ao quadro 0 (push e ticker com período igual à duração).",
+ "seg":[1199.9,1204.167],
+ "voz_trechos":[[0,1199.9,4.267]],
+ "falantes":[[0,5,"B"]],
+ "correcoes":{"produto.":"um produto.","Então,":""},
+ "chave":{"palavra":"lançamento","perto":2.98},
+ "ticker":["Nem tudo que vemos é ouro","Uma profissão por 20 anos","O método Xeque-Mate","Eu construí família","Até hoje é o melhor marketing"],
+ "planos":[{"t0":0,"t1":60,"plano":"CB","zoom":[[0,1.0],[2.1335,1.06],[4.267,1.0]],"foco":[470,620]}],
+ "look":"natural","trilha":"hazy-after-hours","trilha_vol":0.035,"fade":[0,0]}
