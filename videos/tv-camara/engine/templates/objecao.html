@@ -1,0 +1,133 @@
+<!doctype html><html><head><meta charset="utf-8"></head><body><script>/*__BASE__*/
+// OBJEÇÃO · reel de quebra de objeção com trechos da entrevista (Bruno em CB desde o quadro 0, cortes secos com punch-in).
+// Quadro 0: cartão #141210 com OBJEÇÃO (Cinzel ouro), VOCÊ DIZ: e a frase do cliente em Playfair itálico entrando palavra a palavra
+// (chave em ouro) e a linha menor; embaixo, legenda compacta da fala do Bruno. Em C.obj.sai o cartão sobe e vira selo no topo,
+// a faixa NA TV (minuto real do programa, que corre e pula nos cortes) entra 3 quadros depois e a Legenda Gigante assume.
+// C.obj {txt, chave, linha, sai}   C.nome [a, b] (nomeTV)   C.marcas [{palavras, perto}] (marca-texto na frase dita)
+// C.pergunta / C.fato {a, b, rotulo, txt} (caixa baixa: pergunta da TV só como texto, ressalva do número)
+// C.final {a, topo, citacao, fonte, frase[]}   C.cta {a, txt, l1, l2}   C.retime [[t_saida_antigo, t_novo]]
+// Zona segura: texto entre y 218 e 1450 e x 60 a 940.
+document.head.insertAdjacentHTML('beforeend', `<style>.cap{left:60px;right:140px}.cap .bx{max-width:860px;box-sizing:border-box}</style>`);
+const PROG0 = C.inicio_programa || 875.0;          // 14:35 da gravação = 00:00 do programa
+const limpa = s => s.replace(/[.,!?;:…"“”]/g, '');
+// corrige o início de palavras que o Whisper marcou cedo (as listas de palavras e de frases)
+for (const [ant, novo] of (C.retime || [])) {
+  for (const w of WD) if (Math.abs(w[0] - ant) < .03) w[0] = novo;
+  for (const f of (C.frases || [])) { for (const w of f.ws) if (Math.abs(w[0] - ant) < .03) w[0] = novo; if (Math.abs(f.a - ant) < .03) f.a = novo; }
+}
+const OBJ = C.obj || {}, SAI = OBJ.sai || 1.8;
+const FIM = C.final ? C.final.a : (C.cta ? C.cta.a : C.dur);   // a tela final cobre tudo a partir daqui
+// marca-texto: a frase dita, os grupos da legenda que a contêm e a janela em que o bloco substitui a Legenda Gigante
+const MARCAS = (C.marcas || []).map(m => {
+  const ps = m.palavras.toLowerCase().split(' ');
+  let i0 = -1, bd = 1e9;
+  for (let i = 0; i + ps.length <= WD.length; i++)
+    if (ps.every((p, k) => limpa(WD[i + k][1]).toLowerCase() === p)) { const d = Math.abs(WD[i][0] - (m.perto || 0)); if (d < bd) { bd = d; i0 = i; } }
+  if (i0 < 0) throw new Error('marca não está no trecho: ' + m.palavras);
+  const i1 = i0 + ps.length - 1;
+  const g0 = GRUPOS.findIndex(g => g.includes(i0)), g1 = GRUPOS.findIndex(g => g.includes(i1));
+  const w0 = GRUPOS[g0][0], w1 = GRUPOS[g1][GRUPOS[g1].length - 1], nx = GRUPOS[g1 + 1];
+  return { i0, i1, w0, w1, a: WD[w0][0] - .03, b: Math.min(WD[w1][0] + (m.segura || 1.2), nx ? WD[nx[0]][0] - .03 : 1e9, FIM) };
+});
+// palavra do cartão com a mola do Connect Hook
+function palavraHook(t, a, w, i, chave, step = .12) {
+  const p = mola((t - a - i * step) / .45), k = limpa(w).toLowerCase() === (chave || '').toLowerCase();
+  return `<span style="display:inline-block;margin:0 .1em;color:${k ? OURO2 : CREME};opacity:${cl(p * 3)};transform:translateY(${(1 - p) * 34}px) scale(${.82 + .18 * p});transform-origin:50% 80%">${w}</span>`;
+}
+// cartão da objeção (quadro 0) e legenda compacta embaixo; sobe e some em SAI
+function cartao(t) {
+  if (!OBJ.txt || t > SAI + .45) return '';
+  const p = eio((t - SAI) / .42), ws = OBJ.txt.split(' ');
+  const frase = ws.map((w, i) => palavraHook(t, -.6, (i === 0 ? '“' : '') + w + (i === ws.length - 1 ? '”' : ''), i, OBJ.chave)).join(' ');
+  let leg = '';
+  const f = (C.frases || []).find(x => t >= x.a - .1 && t < x.b);
+  if (f) leg = `<div class=legc style="margin-top:18px;text-align:center;opacity:${1 - cl((p - .3) / .15)}"><span style="display:inline-block;max-width:860px;box-sizing:border-box;background:rgba(20,18,16,.82);border-radius:14px;padding:10px 20px 12px;font-size:40px;font-weight:800;line-height:1.15;color:#fff">${frasePalavras(t, f.ws)}</span></div>`;
+  return `<div style="position:absolute;left:60px;right:140px;top:226px;transform-origin:50% 0;transform:translateY(${-p * 8}px) scale(${1 - .55 * p})">
+   <div style="opacity:${1 - cl((p - .05) / .3)};background:${ESC};border:2px solid rgba(232,179,106,.55);border-radius:24px;padding:24px 34px 26px;box-shadow:0 22px 60px rgba(0,0,0,.45)">
+    <div style="display:flex;align-items:center;gap:16px"><span style="font-family:Cinzel;font-weight:900;font-size:34px;letter-spacing:.2em;color:${OURO}">OBJEÇÃO</span><i style="flex:1;height:2px;background:linear-gradient(90deg,${OURO},rgba(232,179,106,0))"></i></div>
+    <div style="margin-top:14px;font-size:24px;font-weight:800;letter-spacing:.16em;color:#cfc6b6">VOCÊ DIZ:</div>
+    <div style="margin-top:4px;font-family:Pf;font-style:italic;font-size:${OBJ.tam || 70}px;line-height:1.12;margin-left:-.1em">${frase}</div>
+    ${OBJ.linha ? `<div style="margin-top:16px;padding-top:14px;border-top:1px solid rgba(232,179,106,.35);font-size:22px;font-weight:800;letter-spacing:.09em;line-height:1.3;color:#d8cfc0;opacity:${cl((t + .2) / .3)}">${OBJ.linha}</div>` : ''}
+   </div>${leg}</div>`;
+}
+// selo pequeno da objeção no topo (depois que o cartão sobe)
+function selo(t) {
+  if (!OBJ.txt || t < SAI + .1) return '';
+  const p = eo((t - SAI - .12) / .35), o = cl((t - SAI - .12) / .25) * (1 - cl((t - FIM) / .2));
+  return `<div style="position:absolute;left:60px;right:140px;top:218px;text-align:center;opacity:${o};transform:translateY(${(1 - p) * 18}px) scale(${.94 + .06 * p})"><div style="display:inline-flex;align-items:baseline;gap:16px;max-width:860px;box-sizing:border-box;background:rgba(20,18,16,.92);border:2px solid rgba(232,179,106,.6);border-radius:16px;padding:9px 22px 11px"><span style="font-family:Cinzel;font-weight:900;font-size:22px;letter-spacing:.18em;color:${OURO}">OBJEÇÃO</span><span style="font-family:Pf;font-style:italic;font-size:34px;color:${CREME};white-space:nowrap">“${OBJ.txt}”</span></div></div>`;
+}
+// minuto real do programa no ponto t da peça (pula nos cortes)
+function minuto(t) {
+  const V = C.voz_trechos || [[0, C.seg[0], C.dur]]; let v = V[0];
+  for (const x of V) if (t >= x[0] - .001) v = x;
+  const s = Math.max(0, v[1] + Math.min(t - v[0], v[2]) - PROG0);
+  return `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
+}
+// faixa NA TV logo abaixo do selo, 3 quadros depois dele
+const FX = C.faixa_txt || 'TV CÂMARA CAMPINAS · SER EMPREENDEDOR';
+function faixa(t) {
+  const a = SAI + .22; if (t < a) return '';
+  const p = eo((t - a) / .35), o = cl((t - a) / .25) * (1 - cl((t - FIM) / .2));
+  return `<div style="position:absolute;left:60px;right:140px;top:290px;text-align:center;opacity:${o};transform:translateY(${(1 - p) * 14}px)"><div style="display:inline-flex;align-items:center;gap:12px;background:rgba(20,18,16,.8);border-radius:10px;padding:6px 14px 6px 7px"><span style="background:${OURO};color:${ESC};font-family:Cinzel;font-weight:900;font-size:21px;padding:4px 10px 2px;border-radius:5px;white-space:nowrap">NA TV</span><span style="font-size:${FX.length > 40 ? 18 : 20}px;font-weight:800;letter-spacing:${FX.length > 40 ? '.04em' : '.08em'};color:#e6dccb;white-space:nowrap">${FX}</span><span style="font-family:'DejaVu Sans Mono',monospace;font-size:19px;color:${OURO2};white-space:nowrap">MIN ${minuto(t)}</span></div></div>`;
+}
+// bloco de marca-texto: as palavras do trecho acendem no tempo da fala, a frase marcada ganha o fundo ouro palavra a palavra
+function blocoMarca(t, M, top) {
+  const idx = []; for (let i = M.w0; i <= M.w1; i++) idx.push(i);
+  const txt = idx.map(i => limpa(WD[i][1]).toUpperCase()).join(' ');
+  const lin = txt.length > 34 ? 3 : txt.length > 15 ? 2 : 1;
+  const S = Math.max(58, Math.min(84, caber(txt, 'Inter', 760 * lin * (lin > 1 ? .86 : 1), 84)));
+  const partes = idx.map(i => {
+    const [tw, w] = WD[i], s = limpa(w), on = cl((t - tw + .03) / .2), op = .35 + .65 * on;
+    if (i < M.i0 || i > M.i1) return `<span style="display:inline-block;margin:0 .12em;opacity:${op}">${s}</span>`;
+    const m = eo((t - tw) / .28), dir = i < M.i1 ? '-.26em' : '-.1em';
+    return `<span style="position:relative;display:inline-block;margin:0 .12em;isolation:isolate"><i style="position:absolute;left:-.12em;right:${dir};top:4%;bottom:0;background:${OURO};border-radius:8px;transform:scaleX(${m});transform-origin:0 50%;clip-path:polygon(0 8%,100% 0,98% 92%,2% 100%);z-index:-1"></i><span style="color:${m > .5 ? ESC : '#fff'};opacity:${Math.max(op, m)}">${s}</span></span>`;
+  }).join(' ');
+  const sc = 1.04 - .04 * cl((t - M.a) / .1);
+  return `<div class=cap style="top:${top}px;transform:scale(${sc})"><span class=bx><span class=big style="display:block;font-size:${S}px;line-height:1.1">${partes}</span></span></div>`;
+}
+function legenda(t, top) {
+  const M = MARCAS.find(m => t >= m.a && t < m.b);
+  if (M) return blocoMarca(t, M, top);
+  const h = legendaGigante(t, top); if (h) return h;
+  // palavra longa ou pausa curta dentro da frase: segura o último grupo até o fim da frase (sem buraco na legenda)
+  const f = (C.frases || []).find(x => t >= x.a && t < x.b - .6); if (!f) return '';
+  let gi = -1; for (let k = 0; k < GRUPOS.length; k++) if (WD[GRUPOS[k][0]][0] - .03 <= t) gi = k;
+  if (gi < 0 || WD[GRUPOS[gi][0]][0] < f.a - .05) return '';
+  const g = GRUPOS[gi]; return legendaGigante(WD[g[g.length - 1]][0] + .8, top);
+}
+// caixa baixa (pergunta da TV só como texto, ressalva do número): filete ouro cresce antes do texto
+function caixaBaixa(t, P) {
+  if (!P) return ''; const o = vis(t, P.a, Math.min(P.b, FIM), .3, .25); if (!o) return '';
+  const tr = eo((t - P.a) / .35), tx = eo((t - P.a - .1) / .4);
+  return `<div style="position:absolute;left:60px;right:140px;top:${P.top || 1130}px;opacity:${o};transform:translateX(${(1 - tx) * -24}px)"><div style="display:inline-block;max-width:880px;box-sizing:border-box;background:rgba(20,18,16,.9);border-radius:14px;padding:16px 28px 20px 30px;position:relative;overflow:hidden">
+   <div style="position:absolute;left:0;top:0;bottom:0;width:7px;background:${OURO};transform:scaleY(${tr});transform-origin:50% 0"></div>
+   <div style="font-family:Cinzel;font-weight:900;font-size:25px;letter-spacing:.14em;color:${OURO}">${P.rotulo}</div>
+   <div style="font-family:Pf;font-style:italic;font-size:${P.tam || 38}px;line-height:1.2;color:${CREME};margin-top:6px;opacity:${tx}">${P.txt}</div></div></div>`;
+}
+// tela final: escurece, cartão de prova (Cinzel e Playfair, linhas em sequência de 3 quadros)
+function cartaoFinal(t) {
+  const F = C.final; if (!F || t < F.a) return '';
+  const e = k => eo((t - F.a - .1 - k * .1) / .45), lin = [];
+  if (F.topo) lin.push(o => `<div style="font-size:24px;font-weight:800;letter-spacing:.2em;color:#cfc6b6;opacity:${o}">${F.topo}</div>`);
+  if (F.citacao) lin.push(o => `<div style="margin-top:14px;font-family:Pf;font-style:italic;font-size:58px;line-height:1.16;color:${CREME};opacity:${o};transform:translateY(${(1 - o) * 22}px)">${F.citacao.replace(/<q>/g, `<span style="color:${OURO2}">“</span>`).replace(/<\/q>/g, `<span style="color:${OURO2}">”</span>`)}</div>`);
+  if (F.fonte) lin.push(o => `<div style="margin-top:14px;font-size:26px;font-weight:700;color:#e6dccb;opacity:${o}">${F.fonte}</div>`);
+  const antes = lin.length;
+  (F.frase || []).forEach((x, k) => lin.push(o => `${k === 0 && antes ? `<div style="width:${o * 130}px;height:3px;background:${OURO};margin:30px auto 26px"></div>` : ''}<div style="font-family:Cinzel;font-weight:900;font-size:${F.tam || 52}px;line-height:1.16;color:${k === (F.frase.length - 1) && F.frase.length > 1 ? OURO2 : CREME};margin-top:${k ? 18 : 0}px;opacity:${o};transform:translateY(${(1 - o) * 22}px)">${x}</div>`));
+  return `<div style="position:absolute;left:60px;right:140px;top:${F.top || 470}px;text-align:center">${lin.map((f, k) => f(e(k))).join('')}</div>`;
+}
+function render(t, camada) {
+  const el = document.getElementById(camada); if (camada !== 'front') { el.innerHTML = ''; return; }
+  let h = topoEscuro(.42, 720);
+  if (t < FIM) {
+    h += cartao(t) + selo(t) + faixa(t);
+    if (t >= SAI + .19) h += legenda(t, 392);
+    if (C.nome) h += nomeTV(t, C.nome[0], Math.min(C.nome[1], FIM - .3), 1130, 60);
+    h += caixaBaixa(t, C.pergunta) + caixaBaixa(t, C.fato);
+  } else h += selo(t) + faixa(t);
+  if (t >= FIM) h += `<div style="position:absolute;inset:0;background:rgba(10,9,8,${(C.final ? .78 : .6) * eo((t - FIM) / .35)})"></div>`;
+  h += cartaoFinal(t);
+  // CTA de Comentário 1,8x mais rápido: o texto termina de digitar com 1 s de folga nos últimos 2,5 s
+  if (C.cta) { const K = C.cta, v = K.vel || 1.8; h += ctaComentario(K.a + (t - K.a) * v, K.a, K.txt, K.l1, K.l2, K.top || 1150).replace('right:120px', 'right:140px'); }
+  el.innerHTML = h;
+}
+</script></body></html>

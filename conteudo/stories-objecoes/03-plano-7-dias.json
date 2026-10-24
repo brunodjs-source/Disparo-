@@ -1,0 +1,604 @@
+{
+ "semana": "2026-10-25 a 2026-10-31",
+ "conta": "@o_estrategista.com.br",
+ "arquivo_md": "/home/user/Disparo-/conteudo/stories-objecoes/03-plano-7-dias.md",
+ "arquivo_json": "/home/user/Disparo-/conteudo/stories-objecoes/03-plano-7-dias.json",
+ "dias": [
+  {
+   "data": "2026-10-25 (domingo)",
+   "tema": "O1 · \"Nunca ouvi falar de você.\" Bastidor da TV primeiro (estático e1 e vídeo mc02), o caso com número logo depois. Feed: tl01 às 18h30.",
+   "stories": [
+    {
+     "hora": "09:00",
+     "tipo": "estatico",
+     "foto": "e1.jpg",
+     "rotulo": "BASTIDOR · TV CÂMARA CAMPINAS",
+     "frase_html": "Você diz: “Nunca ouvi falar de você.” Justo. Então começa por aqui: o que eu disse na TV e um caso com <b>número</b>.",
+     "sub": "Programa Ser Empreendedor, com a repórter Mirna Abreu.",
+     "sticker": "AGENDADO · Sem sticker",
+     "fonte": "Objeção O1 (01-objecoes.md) + prova B1 (foto e1, câmera da TV filmando o Bruno). A virada leva às duas provas seguintes: o que ele disse na TV (09h01) e o caso com número (09h02)."
+    },
+    {
+     "hora": "09:01",
+     "tipo": "video_existente",
+     "video": "/tmp/claude-0/-home-user-Disparo-/54eeb75b-22b3-521e-a4d4-71920aed6701/scratchpad/tv/render/mc02.mp4",
+     "rotulo": "NA TV",
+     "sticker": "AGENDADO · Sem sticker",
+     "fonte": "Prova M11: \"Até que hoje eu sou estrategista de marketing digital e lançamento de produto.\" (1199,5 a 1204,0 s, conferido em 2 passes). Manchete pronta."
+    },
+    {
+     "hora": "09:02",
+     "tipo": "estatico",
+     "foto": "f4.jpg",
+     "rotulo": "PROVA · CASE",
+     "frase_html": "Cliente do mercado financeiro: de 6 para 20 milhões por <b>mês</b>.",
+     "sub": "Fato do caso, contado pelo marketing do cliente.",
+     "sticker": "MANUAL · Enquete: Quer saber o que mudou nesse caso? SIM / AGORA NÃO, com a linha \"Votou SIM? Responde este story.\" acima dela (a resposta cai na automação ETAPAS)",
+     "fonte": "Prova C1 (bio aprovada no 00-SISTEMA; conhecimento-o-estrategista.md 4.4), subida da noite para o bloco da manhã: é a única prova com número do dia. Sem nome do cliente, sem chamar de lançamento, sem crédito só ao Bruno. Sem prometer post do caso: o vídeo v2 ainda não tem data de reedição."
+    },
+    {
+     "hora": "12:00",
+     "tipo": "video_existente",
+     "video": "/home/user/Disparo-/videos/nichos/dentista/render/dentista-B-9x16.mp4",
+     "rotulo": "ONTEM NO FEED",
+     "sticker": "MANUAL · Compartilhar o post Reel Dentista B + enquete: Você é dentista? SIM / NÃO",
+     "fonte": "Repost do post de ontem (Reel Dentista B, sáb 24/10 21h), o único da semana com a automação TABULEIRO ativa. Entra depois do bloco de bastidor. A palavra-chave só vale com 150 de alcance ou mais: registrar o alcance dele no Módulo 7 de 02/11."
+    },
+    {
+     "hora": "12:30",
+     "tipo": "estatico",
+     "foto": "f1.jpg",
+     "rotulo": "DIAGNÓSTICO · 12 CASAS",
+     "frase_html": "Em 4 minutos você vê em qual <b>casa</b> o seu lançamento trava.",
+     "sub": "Toque no link: Diagnóstico de 12 casas.",
+     "sticker": "MANUAL · Link estrategistadelancamento.com.br/tabuleiro/?o=ig-stories (texto do link: Diagnóstico de 12 casas)",
+     "fonte": "Pedido único do dia: o mesmo estático todos os dias, e o texto bate com o destino (12 casas em 4 minutos, Módulo 6). Substitui a virada antiga (\"em 30 minutos eu te mostro\"), que prometia a conversa e levava ao questionário."
+    },
+    {
+     "hora": "17:30",
+     "tipo": "estatico",
+     "foto": "f3.jpg",
+     "rotulo": "DOM · 18H30 · NO FEED",
+     "frase_html": "35 minutos de entrevista em 35 <b>segundos</b>.",
+     "sub": "Bastidor da TV Câmara Campinas.",
+     "sticker": "AGENDADO · Sem sticker (dia e hora no texto)",
+     "fonte": "Chamada do reel do dia tl01 (pecas-e-calendario.md, PostZen m171tvpw4z0c0rxz7fpak824bd8gx35v). Apagar às 18h35, quando o reel entra no story."
+    },
+    {
+     "hora": "18:35",
+     "tipo": "video_existente",
+     "video": "/tmp/claude-0/-home-user-Disparo-/54eeb75b-22b3-521e-a4d4-71920aed6701/scratchpad/tv/render/tl01.mp4",
+     "rotulo": "NO FEED",
+     "sticker": "MANUAL · Compartilhar o post tl01 no story logo depois de publicado (sem outro sticker)",
+     "fonte": "Primeiro empurrão na primeira hora do reel. Apagar a chamada das 17h30. O repost de seg 9h é o segundo empurrão."
+    }
+   ]
+  },
+  {
+   "data": "2026-10-26 (segunda)",
+   "tema": "O2 · \"Não tenho tempo pra lançar.\" Feed: pb01 às 21h.",
+   "stories": [
+    {
+     "hora": "09:00",
+     "tipo": "video_existente",
+     "video": "/tmp/claude-0/-home-user-Disparo-/54eeb75b-22b3-521e-a4d4-71920aed6701/scratchpad/tv/render/tl01.mp4",
+     "rotulo": "ONTEM NO FEED",
+     "sticker": "MANUAL · Compartilhar o post tl01 + enquete: Viu os 35 minutos? SIM / VOU VER",
+     "fonte": "Segundo empurrão do reel de ontem (bastidor da entrevista); o primeiro foi dom 18h35. Só depois de o tl01 estar publicado."
+    },
+    {
+     "hora": "12:00",
+     "tipo": "estatico",
+     "foto": "sem foto: fundo #141210 e a frase num balão de mensagem genérico, sem logo",
+     "rotulo": "O QUE EU MAIS OUÇO",
+     "frase_html": "“Não tenho tempo pra lançar. Quando a agenda <b>folgar</b>, eu vejo.”",
+     "sticker": "MANUAL · Enquete: Você já pensou isso? SIM / NÃO",
+     "fonte": "Objeção O2, como o cliente fala (01-objecoes.md). Sem o rosto do Bruno: a fala é do cliente. A enquete mede a objeção (frequência hoje sem dado)."
+    },
+    {
+     "hora": "12:01",
+     "tipo": "estatico",
+     "foto": "f3.jpg",
+     "rotulo": "A VIRADA",
+     "frase_html": "A sua agenda não vai folgar. Você grava as aulas. O resto da <b>partida</b> é comigo.",
+     "sub": "Você atende. Eu comando.",
+     "sticker": "AGENDADO · Sem sticker",
+     "fonte": "Contra-argumento O2 (01-objecoes.md) e uso indicado: f3 com partida em ouro."
+    },
+    {
+     "hora": "17:30",
+     "tipo": "video_existente",
+     "video": "/tmp/claude-0/-home-user-Disparo-/54eeb75b-22b3-521e-a4d4-71920aed6701/scratchpad/tv/render/mc03.mp4",
+     "rotulo": "NA TV",
+     "sticker": "AGENDADO · Sem sticker",
+     "fonte": "Prova M3: \"Cada cliente tem um produto específico e a gente vive esse produto.\" (1580,7 a 1583,8 s). Manchete pronta, fora da frase dos 3 milhões."
+    },
+    {
+     "hora": "17:31",
+     "tipo": "estatico",
+     "foto": "e2.jpg",
+     "rotulo": "NA TV · A EQUIPE EXECUTA",
+     "frase_html": "“...fui treinando a própria <b>equipe</b> para que eles pudessem executar...”",
+     "sub": "Você atende. A equipe executa.",
+     "sticker": "AGENDADO · Sem sticker",
+     "fonte": "Prova M4: 1320,6 a 1325,0 s, lido igual nos 2 passes de conferir.py. A frase não acaba em \"executar\": segue em \"aquilo que era...\" (1325,0 a 1326,4 s, leitura incerta), por isso as reticências. O segmento está marcado M (f0 214,7 Hz): está em \"Conferir antes de publicar\" e só sai depois de confirmada a voz do Bruno no plano CB. Se não for ele, entra o estático f3 sem aspas \"Equipe, anúncio, número de cada dia e plano B ficam comigo.\""
+    },
+    {
+     "hora": "17:32",
+     "tipo": "estatico",
+     "foto": "f1.jpg",
+     "rotulo": "DIAGNÓSTICO · 12 CASAS",
+     "frase_html": "Em 4 minutos você vê em qual <b>casa</b> o seu lançamento trava.",
+     "sub": "Toque no link: Diagnóstico de 12 casas.",
+     "sticker": "MANUAL · Link estrategistadelancamento.com.br/tabuleiro/?o=ig-stories (texto do link: Diagnóstico de 12 casas)",
+     "fonte": "Pedido único do dia: o mesmo estático todos os dias, e o texto bate com o destino (12 casas em 4 minutos, Módulo 6). Fecha a sequência da equipe; a caixa \"horas por semana\" saiu."
+    },
+    {
+     "hora": "20:30",
+     "tipo": "estatico",
+     "foto": "f2.jpg",
+     "rotulo": "SEG · 21H · NO FEED",
+     "frase_html": "“Na verdade, não foi uma <b>aventura</b>.”",
+     "sub": "Fui DJ por 20 anos. Segunda, 21h, no feed.",
+     "sticker": "AGENDADO · Sem sticker (dia e hora no texto)",
+     "fonte": "Chamada do reel pb01. Literal 997,6 a 998,8 s. Única construção \"não foi X\" da peça. Apagar às 21h05."
+    },
+    {
+     "hora": "21:05",
+     "tipo": "video_existente",
+     "video": "/tmp/claude-0/-home-user-Disparo-/54eeb75b-22b3-521e-a4d4-71920aed6701/scratchpad/tv/render/pb01.mp4",
+     "rotulo": "NO FEED",
+     "sticker": "MANUAL · Compartilhar o post pb01 no story logo depois de publicado (sem outro sticker)",
+     "fonte": "Primeiro empurrão na primeira hora do reel. Apagar a chamada das 20h30. O repost de ter 9h é o segundo empurrão."
+    }
+   ]
+  },
+  {
+   "data": "2026-10-27 (terça)",
+   "tema": "O8 · \"Isso é pra infoprodutor, não pra consultório.\" Dia do nicho dentista. Feed: car01 às 12h; story pf01 às 16h (já agendado).",
+   "stories": [
+    {
+     "hora": "09:00",
+     "tipo": "video_existente",
+     "video": "/tmp/claude-0/-home-user-Disparo-/54eeb75b-22b3-521e-a4d4-71920aed6701/scratchpad/tv/render/pb01.mp4",
+     "rotulo": "ONTEM NO FEED",
+     "sticker": "MANUAL · Compartilhar o post pb01 + enquete: Você é da área da saúde? SIM / NÃO",
+     "fonte": "Segundo empurrão do reel de ontem (trecho da entrevista). A enquete já abre o tema do dia. Só depois de o pb01 estar publicado."
+    },
+    {
+     "hora": "14:30",
+     "tipo": "estatico",
+     "foto": "sem foto: fundo #141210 e a frase num balão de mensagem genérico, sem logo",
+     "rotulo": "O QUE EU MAIS OUÇO",
+     "frase_html": "“Isso é pra infoprodutor. O meu consultório vive de <b>indicação</b>.”",
+     "sticker": "MANUAL · Enquete: O seu consultório vive de indicação? SIM / NÃO",
+     "fonte": "Objeção O8, como o cliente fala (01-objecoes.md). Fora do horário do carrossel (12h) e do pf01 (16h)."
+    },
+    {
+     "hora": "14:31",
+     "tipo": "estatico",
+     "foto": "f2.jpg",
+     "rotulo": "NA TV",
+     "frase_html": "O tête-à-tête, “que até hoje é o melhor <b>marketing</b>.”",
+     "sub": "Eu disse isso na TV Câmara Campinas. E mantenho.",
+     "sticker": "AGENDADO · Sem sticker",
+     "fonte": "Prova M6 como concessão (a indicação funciona), antes da virada e sem enquete: a Mirna diz \"tinha o tête-à-tête\" (1374,8 a 1377,5 s) e o Bruno completa \"Que até hoje é o melhor marketing.\" (1377,7 a 1379,2 s). Puxa o ci01 de quarta."
+    },
+    {
+     "hora": "14:32",
+     "tipo": "estatico",
+     "foto": "f4.jpg",
+     "rotulo": "A VIRADA",
+     "frase_html": "Indicação funciona. O lançamento leva o seu olho no olho para quem ainda não te <b>conhece</b>.",
+     "sub": "Numa aula aberta, muita gente te vê pensar.",
+     "sticker": "AGENDADO · Sem sticker",
+     "fonte": "Contra-argumento O8 (01-objecoes.md)."
+    },
+    {
+     "hora": "14:33",
+     "tipo": "estatico",
+     "foto": "e2.jpg",
+     "rotulo": "CONTEI NA TV",
+     "frase_html": "Projeto com o diretor de marketing de uma franquia <b>odontológica</b>.",
+     "sub": "Terça, 16h: o trecho da entrevista.",
+     "sticker": "AGENDADO · Sem sticker",
+     "fonte": "Prova C3 (02-provas.md): Bruno, 1234,4 a 1243,8 s, \"uma franquia odontológica muito famosa, onde eu entrei pra fazer ali um projeto com o diretor de marketing\". Sem nome da franquia. É a prova que derruba a objeção e liga ao pf01."
+    },
+    {
+     "hora": "16:00",
+     "tipo": "video_existente",
+     "video": "/tmp/claude-0/-home-user-Disparo-/54eeb75b-22b3-521e-a4d4-71920aed6701/scratchpad/tv/render/pf01.mp4",
+     "rotulo": "NA TV · DENTISTA",
+     "sticker": "AGENDADO · Sem sticker (já está no PostZen, que sobe sem sticker)",
+     "fonte": "Prova C3 para consultório: franquia odontológica, \"saímos de lá com um milhão e meio de faturamento com dois meses\" (1243,8 a 1249,2 s). Já agendado no PostZen (m17empvbrp604edk3wzpmxzmj58gw00w). Fato do caso, nunca promessa."
+    },
+    {
+     "hora": "16:01",
+     "tipo": "estatico",
+     "foto": "f1.jpg",
+     "rotulo": "DIAGNÓSTICO · 12 CASAS",
+     "frase_html": "Em 4 minutos você vê em qual <b>casa</b> o seu lançamento trava.",
+     "sub": "Toque no link: Diagnóstico de 12 casas.",
+     "sticker": "MANUAL · Link estrategistadelancamento.com.br/tabuleiro/?o=ig-stories (texto do link: Diagnóstico de 12 casas)",
+     "fonte": "Pedido único do dia: o mesmo estático todos os dias, e o texto bate com o destino (12 casas em 4 minutos, Módulo 6). Entra à mão logo depois do pf01, que está no PostZen e não aceita sticker depois de publicado. A caixa \"Qual é a sua área?\" saiu: a área chega na pergunta 1 de qualificação."
+    }
+   ]
+  },
+  {
+   "data": "2026-10-28 (quarta)",
+   "tema": "O3 · \"Já paguei marqueteiro e me queimei.\" Feed: ci01 às 21h.",
+   "stories": [
+    {
+     "hora": "09:00",
+     "tipo": "estatico",
+     "foto": "/tmp/claude-0/-home-user-Disparo-/54eeb75b-22b3-521e-a4d4-71920aed6701/scratchpad/tv/car01/lamina-1.png",
+     "rotulo": "ONTEM NO FEED",
+     "frase_html": "Capa do car01: “Eu só tinha um computador e um sonho.”",
+     "sticker": "MANUAL · Compartilhar o carrossel car01 (sem outro sticker)",
+     "fonte": "Repost do carrossel de ontem (4 frases da entrevista). A lâmina já tem o texto; não sobrepor frase. A caixa saiu: um pedido por dia."
+    },
+    {
+     "hora": "12:00",
+     "tipo": "estatico",
+     "foto": "sem foto: fundo #141210 e a frase num balão de mensagem genérico, sem logo",
+     "rotulo": "O QUE EU MAIS OUÇO",
+     "frase_html": "“Já paguei marqueteiro e me <b>queimei</b>. Todo mundo promete e some.”",
+     "sticker": "MANUAL · Enquete: Já pagou por promessa que não veio? SIM / NÃO",
+     "fonte": "Objeção O3, como o cliente fala (01-objecoes.md)."
+    },
+    {
+     "hora": "12:01",
+     "tipo": "estatico",
+     "foto": "f3.jpg",
+     "rotulo": "A VIRADA",
+     "frase_html": "Por isso eu não começo prometendo número. Começo pelo <b>diagnóstico</b>.",
+     "sub": "Se faltar o básico, eu digo não.",
+     "sticker": "AGENDADO · Sem sticker",
+     "fonte": "Contra-argumento O3 (01-objecoes.md); recusas do método (base 3.1). A prova (M10) e o link do diagnóstico vêm às 17h32 e 17h33."
+    },
+    {
+     "hora": "17:30",
+     "tipo": "estatico",
+     "foto": "e2.jpg",
+     "rotulo": "NA TV · TV CÂMARA CAMPINAS",
+     "frase_html": "“Muitas pessoas vendem algo que elas não conseguem <b>cumprir</b>.”",
+     "sub": "Programa Ser Empreendedor, com a repórter Mirna Abreu.",
+     "sticker": "AGENDADO · Sem sticker",
+     "fonte": "Prova M8: 1397,1 a 1400,5 s (literal). Sem apontar concorrente."
+    },
+    {
+     "hora": "17:31",
+     "tipo": "estatico",
+     "foto": "f2.jpg",
+     "rotulo": "NA TV",
+     "frase_html": "“Os clientes chegam pra gente <b>machucados</b>.”",
+     "sub": "Eu recebo quem já se machucou.",
+     "sticker": "AGENDADO · Sem sticker",
+     "fonte": "Prova M9: 1402,0 a 1403,6 s; \"machucados\" em correcoes.json. A caixa saiu: um pedido por dia."
+    },
+    {
+     "hora": "17:32",
+     "tipo": "estatico",
+     "foto": "f4.jpg",
+     "rotulo": "CRITÉRIO",
+     "frase_html": "Se faltam 10 dias para o carrinho, eu digo <b>não</b>.",
+     "sub": "Eu escolho a partida antes de aceitar.",
+     "sticker": "AGENDADO · Sem sticker",
+     "fonte": "Prova M10, trazida da sexta: deck 1a1-infoprodutor-autoridade.html (4 recusas), frase do Bruno, não dita na TV. É a prova de que ele não promete qualquer coisa e sustenta a virada das 12h01. Nunca \"recusei X lançamentos\"."
+    },
+    {
+     "hora": "17:33",
+     "tipo": "estatico",
+     "foto": "f1.jpg",
+     "rotulo": "DIAGNÓSTICO · 12 CASAS",
+     "frase_html": "Em 4 minutos você vê em qual <b>casa</b> o seu lançamento trava.",
+     "sub": "Toque no link: Diagnóstico de 12 casas.",
+     "sticker": "MANUAL · Link estrategistadelancamento.com.br/tabuleiro/?o=ig-stories (texto do link: Diagnóstico de 12 casas)",
+     "fonte": "Pedido único do dia: o mesmo estático todos os dias, e o texto bate com o destino (12 casas em 4 minutos, Módulo 6). Vem logo depois do critério de recusa, como pede a virada das 12h01."
+    },
+    {
+     "hora": "20:30",
+     "tipo": "estatico",
+     "foto": "f5.jpg",
+     "rotulo": "QUA · 21H · NO FEED",
+     "frase_html": "Por que o tête-à-tête ainda é o melhor <b>marketing</b>.",
+     "sub": "O que eu disse na TV. Quarta, 21h.",
+     "sticker": "AGENDADO · Sem sticker (dia e hora no texto)",
+     "fonte": "Chamada do reel ci01 (PostZen m177cf21jjcv7fa2y1q1twc4n58gwe0n). Apagar às 21h05."
+    },
+    {
+     "hora": "21:05",
+     "tipo": "video_existente",
+     "video": "/tmp/claude-0/-home-user-Disparo-/54eeb75b-22b3-521e-a4d4-71920aed6701/scratchpad/tv/render/ci01.mp4",
+     "rotulo": "NO FEED",
+     "sticker": "MANUAL · Compartilhar o post ci01 no story logo depois de publicado (sem outro sticker)",
+     "fonte": "Primeiro empurrão na primeira hora do reel. Apagar a chamada das 20h30. O repost de qui 9h é o segundo empurrão."
+    }
+   ]
+  },
+  {
+   "data": "2026-10-29 (quinta)",
+   "tema": "O4 · \"Já tentei lançar e não vendeu.\" Feed: po01 às 21h.",
+   "stories": [
+    {
+     "hora": "09:00",
+     "tipo": "video_existente",
+     "video": "/tmp/claude-0/-home-user-Disparo-/54eeb75b-22b3-521e-a4d4-71920aed6701/scratchpad/tv/render/ci01.mp4",
+     "rotulo": "ONTEM NO FEED",
+     "sticker": "MANUAL · Compartilhar o post ci01 + enquete: Concorda com o que eu disse na TV? SIM / NÃO",
+     "fonte": "Segundo empurrão do reel de ontem (cinema, voz da Mirna liberada em 24/10). A caixa saiu: um pedido por dia. Só depois de o ci01 estar publicado."
+    },
+    {
+     "hora": "12:00",
+     "tipo": "estatico",
+     "foto": "sem foto: fundo #141210 e a frase num balão de mensagem genérico, sem logo",
+     "rotulo": "O QUE EU MAIS OUÇO",
+     "frase_html": "“Já tentei lançar. A live <b>lotou</b> e ninguém comprou.”",
+     "sticker": "MANUAL · Enquete: Já aconteceu com você? SIM / NÃO",
+     "fonte": "Objeção O4, como o cliente fala (01-objecoes.md; hook 15 do Módulo 4)."
+    },
+    {
+     "hora": "12:01",
+     "tipo": "estatico",
+     "foto": "f2.jpg",
+     "rotulo": "A VIRADA",
+     "frase_html": "O lançamento morre semanas antes do <b>carrinho</b>.",
+     "sub": "Numa casa que ninguém olhou.",
+     "sticker": "AGENDADO · Sem sticker",
+     "fonte": "Contra-argumento O4 (opinião do Bruno, não dado). Sem \"8 em cada 10\"."
+    },
+    {
+     "hora": "17:30",
+     "tipo": "estatico",
+     "foto": "f5.jpg",
+     "rotulo": "NA TV · MÉTODO",
+     "frase_html": "“E o que eu chamo aqui na empresa é o método <b>Xeque-Mate</b>.”",
+     "sub": "Quinta, 21h, eu explico no feed.",
+     "sticker": "AGENDADO · Sem sticker",
+     "fonte": "Prova M1: 1611,7 a 1615,2 s; \"Xeque-Mate\" corrigido de \"checkmate\" (correcoes.json)."
+    },
+    {
+     "hora": "17:31",
+     "tipo": "estatico",
+     "foto": "f3.jpg",
+     "rotulo": "MÉTODO XEQUE-MATE",
+     "frase_html": "Cada lance tem data, responsável, número esperado e <b>plano B</b>.",
+     "sub": "Em qual casa o seu travou?",
+     "sticker": "AGENDADO · Sem sticker",
+     "fonte": "Prova M2: texto escrito do método (conhecimento-o-estrategista.md 6.1), não dito na TV. O link passou para o estático seguinte, igual aos outros dias."
+    },
+    {
+     "hora": "17:32",
+     "tipo": "estatico",
+     "foto": "f1.jpg",
+     "rotulo": "DIAGNÓSTICO · 12 CASAS",
+     "frase_html": "Em 4 minutos você vê em qual <b>casa</b> o seu lançamento trava.",
+     "sub": "Toque no link: Diagnóstico de 12 casas.",
+     "sticker": "MANUAL · Link estrategistadelancamento.com.br/tabuleiro/?o=ig-stories (texto do link: Diagnóstico de 12 casas)",
+     "fonte": "Pedido único do dia: o mesmo estático todos os dias, e o texto bate com o destino (12 casas em 4 minutos, Módulo 6). Responde à pergunta do story anterior."
+    },
+    {
+     "hora": "20:30",
+     "tipo": "estatico",
+     "foto": "f4.jpg",
+     "rotulo": "QUI · 21H · NO FEED",
+     "frase_html": "Cada jogada, cada posicionamento e o <b>momento</b>.",
+     "sub": "Método Xeque-Mate. Quinta, 21h, no feed.",
+     "sticker": "AGENDADO · Sem sticker (dia e hora no texto)",
+     "fonte": "Chamada do reel po01 (PostZen m17ersdnwmmsk5e7fyw4jqwfdx8gwcxt). Palavras da definição dita em 1615,8 a 1624,5 s. Apagar às 21h05."
+    },
+    {
+     "hora": "21:05",
+     "tipo": "video_existente",
+     "video": "/tmp/claude-0/-home-user-Disparo-/54eeb75b-22b3-521e-a4d4-71920aed6701/scratchpad/tv/render/po01.mp4",
+     "rotulo": "NO FEED",
+     "sticker": "MANUAL · Compartilhar o post po01 no story logo depois de publicado (sem outro sticker)",
+     "fonte": "Primeiro empurrão na primeira hora do reel. Apagar a chamada das 20h30. O repost de sex 9h é o segundo empurrão."
+    }
+   ]
+  },
+  {
+   "data": "2026-10-30 (sexta)",
+   "tema": "O6 · \"É caro.\" Nunca preço em story. Feed: pb02 às 21h.",
+   "stories": [
+    {
+     "hora": "09:00",
+     "tipo": "video_existente",
+     "video": "/tmp/claude-0/-home-user-Disparo-/54eeb75b-22b3-521e-a4d4-71920aed6701/scratchpad/tv/render/po01.mp4",
+     "rotulo": "ONTEM NO FEED",
+     "sticker": "MANUAL · Compartilhar o post po01 + enquete: Qual falta no seu? POSICIONAMENTO / MOMENTO",
+     "fonte": "Segundo empurrão do reel de ontem (Método Xeque-Mate na TV). Só depois de o po01 estar publicado."
+    },
+    {
+     "hora": "12:00",
+     "tipo": "estatico",
+     "foto": "sem foto: fundo #141210 e a frase num balão de mensagem genérico, sem logo",
+     "rotulo": "O QUE EU MAIS OUÇO",
+     "frase_html": "“Quanto custa? Estrategista deve ser <b>caro</b>.”",
+     "sticker": "MANUAL · Enquete: Já travou nessa pergunta? SIM / NÃO",
+     "fonte": "Objeção O6, como o cliente fala (01-objecoes.md)."
+    },
+    {
+     "hora": "12:01",
+     "tipo": "estatico",
+     "foto": "f4.jpg",
+     "rotulo": "A VIRADA",
+     "frase_html": "Caro é a sua agenda ser o único jeito de você <b>faturar</b>.",
+     "sub": "Preço, só depois do diagnóstico.",
+     "sticker": "AGENDADO · Sem sticker",
+     "fonte": "Contra-argumento O6 reescrito pelo custo que o Tier 1 sente (fila é teto, Módulo 4). Outra ideia e outra palavra em ouro que a virada de quinta (carrinho)."
+    },
+    {
+     "hora": "12:02",
+     "tipo": "estatico",
+     "foto": "f1.jpg",
+     "rotulo": "DIAGNÓSTICO · 12 CASAS",
+     "frase_html": "Em 4 minutos você vê em qual <b>casa</b> o seu lançamento trava.",
+     "sub": "Toque no link: Diagnóstico de 12 casas.",
+     "sticker": "MANUAL · Link estrategistadelancamento.com.br/tabuleiro/?o=ig-stories (texto do link: Diagnóstico de 12 casas)",
+     "fonte": "Pedido único do dia: o mesmo estático todos os dias, e o texto bate com o destino (12 casas em 4 minutos, Módulo 6). Vem logo depois de \"Preço, só depois do diagnóstico.\""
+    },
+    {
+     "hora": "17:30",
+     "tipo": "estatico",
+     "foto": "f3.jpg",
+     "rotulo": "ALINHAMENTO",
+     "frase_html": "Parte do que eu recebo depende da venda do seu <b>infoproduto</b>.",
+     "sub": "Por isso eu escolho a partida antes de aceitar.",
+     "sticker": "AGENDADO · Sem sticker",
+     "fonte": "Argumento de valor sem preço, no lugar do M10 (foi para quarta): modelo fixo + percentual (01-objecoes.md O6, base 3.1), usado como alinhamento, nunca como garantia. Conferir com o Bruno antes (lista abaixo)."
+    },
+    {
+     "hora": "17:31",
+     "tipo": "estatico",
+     "foto": "f2.jpg",
+     "rotulo": "DIAGNÓSTICO · 30 MIN",
+     "frase_html": "Nos primeiros 30 minutos eu não vou te ensinar nada novo. Vou te mostrar onde você está <b>perdendo</b>.",
+     "sub": "Fechando comigo ou não. Responde este story com a sua área.",
+     "sticker": "AGENDADO · Sem sticker: o pedido é a resposta ao story, que cai na automação ETAPAS",
+     "fonte": "Prova O6: deck 1:1 (frase do Bruno). Única construção \"não X, Y\" da peça. \"Responde este story com a sua área\" entra no lugar de PARTIDA, que não tem automação."
+    },
+    {
+     "hora": "20:30",
+     "tipo": "estatico",
+     "foto": "e2.jpg",
+     "rotulo": "SEX · 21H · NO FEED",
+     "frase_html": "O caso de um <b>restaurante</b> que eu contei na TV.",
+     "sub": "Sexta, 21h, no feed.",
+     "sticker": "AGENDADO · Sem sticker (dia e hora no texto)",
+     "fonte": "Chamada do reel pb02. O número (C4, 1084,9 a 1096,7 s) fica no reel, que tem a ressalva; no dia do \"é caro\" ele não aparece em estático. Apagar às 21h05."
+    },
+    {
+     "hora": "21:05",
+     "tipo": "video_existente",
+     "video": "/tmp/claude-0/-home-user-Disparo-/54eeb75b-22b3-521e-a4d4-71920aed6701/scratchpad/tv/render/pb02.mp4",
+     "rotulo": "NO FEED",
+     "sticker": "MANUAL · Compartilhar o post pb02 no story logo depois de publicado (sem outro sticker)",
+     "fonte": "Primeiro empurrão na primeira hora do reel. Apagar a chamada das 20h30. O repost de sáb 9h é o segundo empurrão."
+    }
+   ]
+  },
+  {
+   "data": "2026-10-31 (sábado)",
+   "tema": "O5 · \"Tenho medo de me expor e dar errado.\" Fecha a semana medindo TEMPO contra MEDO. Feed: tl02 às 18h30.",
+   "stories": [
+    {
+     "hora": "09:00",
+     "tipo": "video_existente",
+     "video": "/tmp/claude-0/-home-user-Disparo-/54eeb75b-22b3-521e-a4d4-71920aed6701/scratchpad/tv/render/pb02.mp4",
+     "rotulo": "ONTEM NO FEED",
+     "sticker": "MANUAL · Compartilhar o post pb02 + enquete: Quer mais casos contados na TV? SIM / NÃO",
+     "fonte": "Segundo empurrão do reel de ontem (restaurante). Só depois de o pb02 estar publicado."
+    },
+    {
+     "hora": "11:00",
+     "tipo": "estatico",
+     "foto": "e1.jpg",
+     "rotulo": "NA TV",
+     "frase_html": "“Eu construí patrimônio, eu construí <b>família</b>.”",
+     "sub": "Programa Ser Empreendedor, com a repórter Mirna Abreu.",
+     "sticker": "AGENDADO · Sem sticker",
+     "fonte": "Prova J10: Bruno, 1701,6 a 1705,3 s (\"matrônio\" corrigido para \"patrimônio\" em correcoes.json). Fica no lugar do vídeo mc04: o mc04 renderizado (seg [1700,6, 1710,15], 9,5 s) inclui \"eu construí tudo através da profissão que hoje eu executo como estrategista digital\" (1705,8 a 1709,7 s), o termo que o Módulo 1 tirou da bio. Se o mc04 for renderizado de novo com o fim entre 1705,2 e 1705,7 s e passar na folha, o vídeo volta para este horário. Puxa o tl02."
+    },
+    {
+     "hora": "12:00",
+     "tipo": "estatico",
+     "foto": "sem foto: fundo #141210 e a frase num balão de mensagem genérico, sem logo",
+     "rotulo": "O QUE EU MAIS OUÇO",
+     "frase_html": "“Tenho medo de me expor e dar <b>errado</b>. Meus pacientes vão ver.”",
+     "sticker": "AGENDADO · Sem sticker",
+     "fonte": "Objeção O5, como o cliente fala (01-objecoes.md). A medição vem na enquete das 19h30."
+    },
+    {
+     "hora": "12:01",
+     "tipo": "estatico",
+     "foto": "f5.jpg",
+     "rotulo": "A VIRADA",
+     "frase_html": "Esse medo é de quem tem nome a zelar. Cada lance tem <b>plano B</b> escrito antes.",
+     "sub": "Você entra pra ensinar.",
+     "sticker": "AGENDADO · Sem sticker",
+     "fonte": "Contra-argumento O5 e uso indicado: f5 com plano B em ouro."
+    },
+    {
+     "hora": "12:02",
+     "tipo": "estatico",
+     "foto": "e2.jpg",
+     "rotulo": "NA TV · TV CÂMARA CAMPINAS",
+     "frase_html": "“Você passa a segurança pro seu cliente, você demonstra pra ele a sua <b>autoridade</b>.”",
+     "sub": "Programa Ser Empreendedor, com a repórter Mirna Abreu.",
+     "sticker": "AGENDADO · Sem sticker",
+     "fonte": "Prova O5: Bruno, 1421,7 a 1427,0 s. Conferir \"pro seu\" no áudio: os passes leem \"pro seu\", \"para o seu\" e \"do seu\"."
+    },
+    {
+     "hora": "12:03",
+     "tipo": "estatico",
+     "foto": "f1.jpg",
+     "rotulo": "DIAGNÓSTICO · 12 CASAS",
+     "frase_html": "Em 4 minutos você vê em qual <b>casa</b> o seu lançamento trava.",
+     "sub": "Toque no link: Diagnóstico de 12 casas.",
+     "sticker": "MANUAL · Link estrategistadelancamento.com.br/tabuleiro/?o=ig-stories (texto do link: Diagnóstico de 12 casas)",
+     "fonte": "Pedido único do dia: o mesmo estático todos os dias, e o texto bate com o destino (12 casas em 4 minutos, Módulo 6). Fecha a sequência do medo."
+    },
+    {
+     "hora": "17:30",
+     "tipo": "estatico",
+     "foto": "f3.jpg",
+     "rotulo": "SÁB · 18H30 · NO FEED",
+     "frase_html": "Parte 2 do bastidor: empreender, os cases e a <b>família</b>.",
+     "sub": "Entrevista à TV Câmara Campinas.",
+     "sticker": "AGENDADO · Sem sticker (dia e hora no texto)",
+     "fonte": "Chamada do reel tl02 (ainda não agendado; se não entrar, trocar por repost do tl01 com \"Perdeu o bastidor?\"). Apagar às 18h35."
+    },
+    {
+     "hora": "18:35",
+     "tipo": "video_existente",
+     "video": "/tmp/claude-0/-home-user-Disparo-/54eeb75b-22b3-521e-a4d4-71920aed6701/scratchpad/tv/render/tl02.mp4",
+     "rotulo": "NO FEED",
+     "sticker": "MANUAL · Compartilhar o post tl02 no story logo depois de publicado (sem outro sticker)",
+     "fonte": "Primeiro empurrão na primeira hora do reel. Apagar a chamada das 17h30. Só se o tl02 tiver saído."
+    },
+    {
+     "hora": "19:30",
+     "tipo": "estatico",
+     "foto": "f2.jpg",
+     "rotulo": "SUA VEZ",
+     "frase_html": "O que mais te <b>trava</b> para lançar?",
+     "sticker": "MANUAL · Enquete: TEMPO / MEDO DE ERRAR EM PÚBLICO",
+     "fonte": "Medição de O2 contra O5 (01-objecoes.md, seção 5). Registrar o resultado no Módulo 7 de 02/11."
+    }
+   ]
+  }
+ ],
+ "reels": [
+  {
+   "id": "ob01",
+   "objecao": "O2 · \"Não tenho tempo pra lançar.\"",
+   "gancho_tela": "Quadro 0, plano CB (Bruno em 3/4, falando desde o quadro 0): rótulo VOCÊ DIZ: e \"NÃO TENHO TEMPO PRA LANÇAR.\" em Connect Hook palavra a palavra, \"TEMPO\" em ouro; linha menor: COMO EU MONTEI A MINHA EQUIPE · NA TV. A objeção é do público: ninguém falou em falta de tempo na entrevista (a pergunta da Mirna em 1280,5 s foi \"Qual foi o funil que você fez?\").",
+   "trecho": "1316,2-1326,4 + 1580,7-1584,0 (13,5 s; corte seco com punch-in no meio). Antes, ouvir 1325,0 a 1326,4 s: se o fim da frase for ilegível, o 1º trecho termina em 1325,0 s com o punch-in escondendo o corte (12,1 s).",
+   "frase_resposta": "\"O que eu fiz? Comecei a estruturar e ter a minha própria equipe, e fui treinando a própria equipe para que eles pudessem executar...\" [1325,0 a 1326,4 s: legendar o que estiver no áudio; os passes leram \"aquilo que era jornalidade\" e \"já validado\"] [corte] \"Cada cliente tem um produto específico e a gente vive esse produto.\"",
+   "prova": "Faixa NA TV CÂMARA CAMPINAS · SER EMPREENDEDOR durante o trecho; marca-texto em \"equipe\" (1322,2 s) e em \"vive esse produto\"; cartão final: VOCÊ GRAVA AS AULAS. EQUIPE, ANÚNCIO E PLANO B FICAM COMIGO.",
+   "cta": "Me manda a sua área no direct: em 30 minutos eu te mostro em qual casa o seu lançamento trava. (Na tela, com o efeito CTA de Comentário: ME MANDA A SUA ÁREA NO DIRECT. É o mesmo pedido da semana.)",
+   "legenda": "“Não tenho tempo pra lançar.” Faz sentido. A sua agenda não vai folgar, e ela é o teto do seu consultório.\nNa entrevista à TV Câmara Campinas eu contei como estruturei e treinei a minha própria equipe para executar. No lançamento você grava as aulas, aparece no evento e aprova a oferta. Equipe, anúncio, número de cada dia e plano B ficam comigo.\nMe manda a sua área no direct: em 30 minutos eu te mostro em qual casa o seu lançamento trava.\n#estrategistadelancamento #lancamento #marketingdigital #empreendedorismo #campinas"
+  },
+  {
+   "id": "ob02",
+   "objecao": "O1 · \"Nunca ouvi falar de você.\" (\"Quem você já fez?\")",
+   "gancho_tela": "Quadro 0, plano CB (Bruno falando desde o quadro 0, em 1199,5 s): rótulo VOCÊ DIZ: e \"NUNCA OUVI FALAR DE VOCÊ.\" palavra a palavra, \"VOCÊ\" em ouro. A voz da Mirna não entra: no corte para o 2º trecho, a pergunta dela aparece só como texto, sem aspas: A TV PERGUNTOU COMO EU MOSTREI AOS MEUS CONTATOS QUE TINHA MUDADO DE ÁREA.",
+   "trecho": "1199,5-1204,0 + 1227,9-1249,2 (25,8 s; corte seco com punch-in; a pergunta da Mirna, 1215,9 a 1227,9 s, fica fora do áudio)",
+   "frase_resposta": "\"Até que hoje eu sou estrategista de marketing digital e lançamento de produto.\" [corte] \"Bom, o primeiro de tudo foi fazendo, tendo case de sucesso, né? Um deles foi uma franquia odontológica muito famosa, onde eu entrei pra fazer ali um projeto com o diretor de marketing e saímos de lá com um milhão e meio de faturamento com dois meses.\"",
+   "prova": "Nome e cargo em 1200,3 s (\"estrategista\"): BRUNO · ESTRATEGISTA DE LANÇAMENTO; faixa TV CÂMARA CAMPINAS · PROGRAMA SER EMPREENDEDOR; marca-texto em \"franquia odontológica\" e em \"um milhão e meio de faturamento com dois meses\", com a linha FATO DO CASO. O NÚMERO DE UM CASO NÃO SE REPETE IGUAL EM OUTRO NEGÓCIO. Um número só na tela, o que o Bruno diz; sem contagem e sem o \"mais de 200 mil\" da pergunta do restaurante.",
+   "cta": "Me manda a sua área no direct: em 30 minutos eu te mostro o que já fiz e em qual casa o seu lançamento trava. (No lugar de PARTIDA, que não tem automação; mesmo pedido da semana.)",
+   "legenda": "“Nunca ouvi falar de você.” Faz sentido. No lançamento quem aparece é você; eu fico no bastidor, desenhando e comandando a partida.\nNa TV Câmara Campinas eu contei um dos casos: um projeto com o diretor de marketing de uma franquia odontológica. Saímos de lá com um milhão e meio de faturamento com dois meses. O número de um caso não se repete igual em outro negócio.\nPor isso eu não peço confiança no escuro. Me manda a sua área no direct: em 30 minutos eu te mostro o que já fiz e em qual casa o seu lançamento trava.\n#estrategistadelancamento #lancamento #marketingdigital #empreendedorismo #campinas"
+  },
+  {
+   "id": "ob03",
+   "objecao": "O8 · \"Isso é pra infoprodutor, não pra consultório.\" (\"Sempre trabalhei por indicação.\")",
+   "gancho_tela": "Quadro 0, plano CB (Bruno falando desde o quadro 0, em 1635,4 s): rótulo VOCÊ DIZ: e \"MEU CONSULTÓRIO VIVE DE INDICAÇÃO.\" palavra a palavra, \"INDICAÇÃO\" em ouro; linha menor, só como texto e sem a voz da Mirna: A TV PERGUNTOU SE O MARKETING DIGITAL AJUDA EMPRESÁRIOS A REVER AS SUAS ESTRATÉGIAS.",
+   "trecho": "1635,4-1636,1 + 1648,2-1650,9 + 1663,0-1668,6 (9,0 s; dois cortes secos com punch-in; saem 1636,2 a 1648,1 s, com \"enferrujados\" e \"velha guarda\", e 1650,9 a 1662,8 s, de leitura incerta)",
+   "frase_resposta": "Bruno: \"Ah, com certeza.\" [corte] \"A gente tem que cuidar deles com muito carinho.\" [corte] \"Mas tem situações que hoje o digital pode alcançar muito mais e potencializar o seu negócio.\" (\"Deles\" são os empresários da pergunta.)",
+   "prova": "Faixa NA TV CÂMARA CAMPINAS · SER EMPREENDEDOR; marca-texto em \"muito carinho\" e em \"potencializar o seu negócio\"; cartão final com a frase literal de 1377,7 s: O TÊTE-À-TÊTE, QUE ATÉ HOJE É O MELHOR MARKETING. O LANÇAMENTO LEVA ESSE OLHO NO OLHO PARA QUEM AINDA NÃO TE CONHECE.",
+   "cta": "Me manda a sua área no direct que eu te digo por onde começar.",
+   "legenda": "Indicação funciona e vai continuar funcionando. Na TV eu disse que o tête-à-tête até hoje é o melhor marketing, e mantenho.\nO lançamento leva esse olho no olho para quem ainda não te conhece: numa aula aberta, muita gente te vê pensar de uma vez. Quem sempre trabalhou por indicação merece ser tratado com carinho, e é assim que eu começo.\nMe manda a sua área no direct que eu te digo por onde começar.\n#estrategistadelancamento #lancamento #marketingdigital #empreendedorismo #campinas"
+  }
+ ]
+}
