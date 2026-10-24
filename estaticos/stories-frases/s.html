@@ -22,13 +22,16 @@ const F = [
  {foto: 'f4.jpg', rot: 'FRASE DO DIA', fr: 'O lead que não comprou vale mais do que o que <b>comprou</b>.'},
  {foto: 'f5.jpg', rot: 'FRASE DO DIA', fr: 'Nem tudo que vemos é <b>ouro</b>.'},
  {foto: 'f1.jpg', rot: 'HOJE · 21H · NO FEED', fr: 'Um recado para quem tem a <b>agenda cheia</b>.', quad: true},
+ {foto: 'e1.jpg', rot: 'BASTIDOR', fr: 'Gravei uma entrevista para a <b>TV Câmara Campinas</b>.', sub: 'Em breve, o que eu disse.', pos: 'center -360px'},
+ {foto: 'f3.jpg', rot: 'NA TV · EM BREVE', fr: 'Eu só tinha um computador e um <b>sonho</b>.'},
+ {foto: 'f5.jpg', rot: 'NA TV · EM BREVE', fr: 'Nem tudo que vemos é <b>ouro</b>.'},
 ];
 function render(i) {
   const d = F[i]; document.getElementById('bg').style.backgroundImage = `url(${d.foto})`;
   const bg = document.getElementById('bg'); bg.style.backgroundPosition = d.quad ? 'center 120px' : (d.pos || 'center 30%');
   bg.style.backgroundSize = d.quad ? '1180px auto' : 'cover'; bg.style.backgroundRepeat = 'no-repeat';   // foto quadrada: inteira no topo
   const t = document.getElementById('t');
-  t.innerHTML = `<div class=rot>${d.rot}</div><div class=fr id=fr>${d.fr}</div>`;
+  t.innerHTML = `<div class=rot>${d.rot}</div><div class=fr id=fr>${d.fr}${d.sub ? `<div style="font-family:Inter Display,Inter,sans-serif;font-style:normal;font-size:40px;font-weight:700;color:#d8cfc0;margin-top:22px">${d.sub}</div>` : ''}</div>`;
   const fr = document.getElementById('fr'), h = fr.getBoundingClientRect().height, top = 1250 - h;   // a frase termina em y 1250
   fr.style.top = top + 'px';
   t.insertAdjacentHTML('beforeend', `<div class=fio style="top:${top - 40}px"></div><div class=ass style="top:1600px">Bruno · <i>Estrategista de Lançamento</i><br><span style="font-size:26px;color:#a49b8d">@o_estrategista.com.br</span></div>`);
