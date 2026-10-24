@@ -31,6 +31,13 @@ for n, t, v in C.get("sfx", []):
     inp += ["-i", f"{SFX}/{n}.wav"]; d = max(0, int(round((t - PICO.get(n, 0)) * 1000)))
     fc.append(f"[{k}:a]aformat=sample_rates=48000:channel_layouts=stereo,adelay={d}|{d},volume={v}[s{k}]"); lab.append(f"[s{k}]"); k += 1
 fc.append(f"[voz]{''.join(lab)}amix=inputs={1+len(lab)}:duration=first:normalize=0,alimiter=limit=0.9[pre]")
-fc.append("[pre]loudnorm=I=-14:TP=-1.5:LRA=9,aresample=48000[a]")
-subprocess.run(["ffmpeg", "-v", "error", "-y", *inp, "-filter_complex", ";".join(fc), "-map", "[a]", "-t", f"{dur:.3f}", OUT], check=True)
+fc.append("[pre]aresample=48000[a]")
+pre = OUT + ".pre.wav"
+subprocess.run(["ffmpeg", "-v", "error", "-y", *inp, "-filter_complex", ";".join(fc), "-map", "[a]", "-t", f"{dur:.3f}", pre], check=True)
+# master em 2 passes (o passe único ficava em -16 LUFS nas peças com muita trilha): mede e aplica loudnorm linear
+import re
+med = subprocess.run(["ffmpeg", "-hide_banner", "-i", pre, "-af", "loudnorm=I=-14:TP=-1.5:LRA=11:print_format=json", "-f", "null", "-"], capture_output=True, text=True).stderr
+d = json.loads(re.search(r"\{[^{}]*\}", med[med.rfind("Parsed_loudnorm"):], re.S).group(0))
+ln = f"loudnorm=I=-14:TP=-1.5:LRA=11:measured_I={d['input_i']}:measured_TP={d['input_tp']}:measured_LRA={d['input_lra']}:measured_thresh={d['input_thresh']}:offset={d['target_offset']}:linear=true"
+subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", pre, "-af", ln + ",aresample=48000", OUT], check=True); os.remove(pre)
 print("mix ok", C.get("id"))
