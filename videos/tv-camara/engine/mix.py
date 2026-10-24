@@ -23,7 +23,7 @@ else:
     fc.append(f"[0:a]aformat=sample_rates=48000:channel_layouts=stereo,afade=t=out:st={max(0, fala - .08):.3f}:d=0.08,apad=whole_dur={dur:.3f},volume={voz_vol},asplit=2[voz][sc]")
     k = 1
 if C.get("trilha"):
-    inp += ["-i", f"{MUS}/{C['trilha']}.mp3"]; tv = C.get("trilha_vol", 0.09)
+    inp += ["-ss", f"{C.get('trilha_ini', 0):.2f}", "-i", f"{MUS}/{C['trilha']}.mp3"]; tv = C.get("trilha_vol", 0.09)   # trilha_ini: pula a introdução da música
     q = "".join(f",volume=enable='between(t,{a},{b})':volume=0" for a, b in C.get("quietude", []))
     fc.append(f"[{k}:a]aformat=sample_rates=48000:channel_layouts=stereo,atrim=0:{dur},asetpts=PTS-STARTPTS,volume={tv}{q},afade=t=in:d=0.6,afade=t=out:st={max(0,dur-1.5)}:d=1.5[mus]")
     fc.append("[mus][sc]sidechaincompress=threshold=0.02:ratio=6:attack=15:release=300[duck]"); lab.append("[duck]"); k += 1

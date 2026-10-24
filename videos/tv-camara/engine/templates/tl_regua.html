@@ -4,8 +4,8 @@
 // C.gancho {a, ate, top, txt, chave, linha}          C.respiros [[a, b, "mm:ss"]] (tempo real)   C.acelerados [[a, b]]   C.legenda_off [[a, b]]
 // C.lacuna {a, encolhe, cresce, janelas [[a,b],[a,b]], preenche, fim}  frase "[ ] até hoje é o melhor marketing" com a caixa vazia no lugar do sujeito
 // C.regua {a, y, x0, x1, estacoes [{x, txt}], barra {a, dur, de, ate}, rebobina}   C.cursor [[t, estação]]   C.relogio [[t_saida, s_gravacao]]
-// C.pinos [{t, n, est, titulo, min}]  C.pinos_some   C.coluna {a, some, volta, min, itens [{t, txt}]}   C.nome [a, b, top]
-// C.carimbo {a, b, txt, selo, cx, cy}   C.fecho {a, some, cta_txt, cta1, cta2, cta_top}
+// C.pinos [{t, n, est, titulo, min}]  C.pinos_some   C.coluna {a, some, volta, min, itens [{t, txt}]}
+// C.carimbo {a, b (início da saída), saida, txt, selo, cx, cy, fs, rot, entra}   C.nome [a, b, top, dir] (dir: borda direita)   C.fecho {a, some, cta_txt, cta1, cta2, cta_top}
 const RG = C.regua, EST = RG.estacoes, RY = RG.y, LAC = C.lacuna, FE = C.fecho, CB = C.carimbo, CO = C.coluna;
 const INTER = "'Inter Display','Inter',sans-serif", MONO = "'DejaVu Sans Mono',monospace";
 const mw = (txt, font) => { _mc.font = font; return _mc.measureText(txt).width; };
@@ -42,9 +42,11 @@ function faixa(t) {
   return `<div style="position:absolute;left:0;right:0;top:470px;height:310px;opacity:${o};background:linear-gradient(180deg,rgba(8,7,6,0) 0%,rgba(8,7,6,.62) 24%,rgba(8,7,6,.62) 78%,rgba(8,7,6,0) 100%)"></div>`;
 }
 
+// durante o carimbo a régua (linha, pontos, rótulos, cursor) cai para 28 %: o carimbo fica sozinho entre a lacuna e a régua
+const apagaCarimbo = t => !CB ? 1 : 1 - .72 * cl((t - CB.a) / .07) * (1 - cl((t - CB.b - (CB.saida || .2)) / .2));
 function regua(t) {
   if (t < RG.a) return '';
-  const o = fimFora(t); if (!o) return '';
+  const o = fimFora(t) * apagaCarimbo(t); if (!o) return '';
   const ln = eo((t - RG.a) / .4), x0 = RG.x0, x1 = RG.x1, cx = cursorX(t), fecho = t >= FE.a;
   let h = `<div style="position:absolute;left:0;top:0;right:0;bottom:0;opacity:${o}">`;
   // linha creme a 60 %
@@ -114,8 +116,8 @@ function pinosPontos(t) {
 // coluna ANTES: cada item acende na palavra
 function coluna(t) {
   if (!CO || t < CO.a) return '';
-  const fora = t >= CO.some && t < CO.volta, o = (t < CO.some ? cl((t - CO.a) / .2) : t < CO.volta ? 1 - cl((t - CO.some) / .15) : eo((t - CO.volta) / .3)) * fimFora(t);
-  if (o <= 0 || (fora && t > CO.some + .2)) return '';
+  const fora = t >= CO.some && t < CO.volta, o = (t < CO.some ? cl((t - CO.a) / .2) : t < CO.volta ? 1 - cl((t - CO.some) / .067) : eo((t - CO.volta) / .3)) * fimFora(t);
+  if (o <= 0 || (fora && t > CO.some + .07)) return '';
   const ab = eo((t - CO.a) / .3);
   const L = [[CO.itens[0], CO.itens[1]], [CO.itens[2], CO.itens[3]]];
   const fs = Math.min(34, caber('PANFLETOS · TÊTE-À-TÊTE', 'Cinzel', 540, 34));
@@ -178,13 +180,24 @@ function legenda(t, top) {
 }
 
 function carimbo(t) {
-  if (!CB || t < CB.a - .01 || t > CB.b + .32) return '';
-  const s = 1.4 - .4 * cl((t - CB.a) / .1), sai = eo((t - CB.b) / .3), o = cl((t - CB.a) / .04) * (1 - sai);   // sai rápido: a resposta entra no lugar
+  const SD = CB ? (CB.saida || .2) : 0;
+  if (!CB || t < CB.a - .01 || t > CB.b + SD) return '';
+  const E = CB.entra || 1.25, s = E - (E - 1) * eo((t - CB.a) / .1), sai = eo((t - CB.b) / SD), o = cl((t - CB.a) / .04) * (1 - sai);   // sai antes da resposta: a legenda entra limpa
   const flash = t < CB.a + .1 ? .3 * (1 - cl((t - CB.a) / .1)) : 0;
   return `${flash ? `<div style="position:absolute;inset:0;background:rgba(255,255,255,${flash})"></div>` : ''}
-  <div style="position:absolute;left:${CB.cx}px;top:${CB.cy}px;opacity:${o};transform:translate(-50%,-50%) rotate(-8deg) scale(${s * (1 + .06 * sai)})">
-    <div style="position:relative;background:rgba(20,18,16,.8);border:6px solid ${OURO};border-radius:14px;padding:14px 40px 10px;font-family:Cinzel;font-weight:900;font-size:110px;line-height:1;color:${OURO};white-space:nowrap;box-shadow:0 16px 40px rgba(0,0,0,.45)">${CB.txt}
+  <div style="position:absolute;left:${CB.cx}px;top:${CB.cy}px;opacity:${o};transform:translate(-50%,-50%) rotate(${CB.rot || -5}deg) scale(${s * (1 + .06 * sai)})">
+    <div style="position:relative;background:rgba(20,18,16,.8);border:6px solid ${OURO};border-radius:14px;padding:14px 40px 10px;font-family:Cinzel;font-weight:900;font-size:${CB.fs || 88}px;line-height:1;color:${OURO};white-space:nowrap;box-shadow:0 16px 40px rgba(0,0,0,.45)">${CB.txt}
       <span style="position:absolute;left:28px;top:-19px;background:${OURO};color:${ESC};font-family:${INTER};font-weight:800;font-size:20px;line-height:1;letter-spacing:.2em;padding:7px 14px;border-radius:7px">${CB.selo}</span></div></div>`;
+}
+
+// Nome e cargo alinhado pela direita (termina em x = dir): fica embaixo do Bruno, que está à direita do plano
+function nomeDir(t, a, b, top, dir) {
+  const o = vis(t, a, b, .3, .3); if (!o) return '';
+  const tr = eo((t - a) / .35), tx = eo((t - a - .2) / .4);
+  return `<div style="position:absolute;right:${W - dir}px;top:${top}px;opacity:${o};transform:translateX(${(1 - tx) * 24}px)"><div style="background:rgba(20,18,16,.88);border-radius:14px;padding:16px 26px 18px;position:relative;overflow:hidden;text-align:right">
+  <div style="position:absolute;right:0;top:0;bottom:0;width:7px;background:${OURO};transform:scaleY(${tr});transform-origin:50% 0"></div>
+  <div style="opacity:${tx}"><b style="display:block;font-size:44px;font-weight:900;color:#fff;line-height:1.05">Bruno</b><i style="display:block;font-family:Pf;font-size:32px;color:${OURO2};line-height:1.2">Estrategista de Lançamento</i>
+  <span style="display:block;font-size:22px;font-weight:600;letter-spacing:.04em;color:#cfc6b6;margin-top:6px">Entrevista à TV Câmara Campinas</span></div></div></div>`;
 }
 
 function cta(t) {
@@ -211,7 +224,7 @@ function render(t, camada) {
   h += coluna(t);
   h += lacuna(t);
   if (!dentro(t, C.legenda_off) && t < FE.a) h += legenda(t, t >= LAC.cresce ? 488 : 300);
-  if (C.nome) h += nomeTV(t, C.nome[0], C.nome[1], C.nome[2], 60);
+  if (C.nome) h += C.nome[3] ? nomeDir(t, C.nome[0], C.nome[1], C.nome[2], C.nome[3]) : nomeTV(t, C.nome[0], C.nome[1], C.nome[2], 60);
   h += carimbo(t);
   h += cta(t);
   el.innerHTML = h;
