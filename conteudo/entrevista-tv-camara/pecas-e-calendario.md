@@ -3,7 +3,7 @@
 Rodada de 24/10/2026. Fonte: gravação de 35:21 (bastidor de 0:00 a 14:30, programa de 14:35 a 29:50, imagens do Bruno no computador depois). Transcrição medium conferida em 2 passes nos trechos usados. O "min" do rótulo conta a partir da abertura do programa.
 
 ## Antes de publicar qualquer peça
-Atualização de 24/10, 13h20: a Mirna liberou o uso ("pode seguir", dito ao Bruno). Falta guardar isso por escrito (print da conversa) e saber a data de exibição. As peças abaixo já estão agendadas.
+Atualização de 24/10: a Mirna liberou o uso ("pode seguir", dito ao Bruno) e o programa **vai ao ar na segunda-feira, 02/11/2026** (horário sem dado). O Bruno marca a Mirna nas postagens pelo app (o PostZen não marca pessoa em reel, carrossel nem story). Falta guardar a liberação por escrito (print da conversa).
 
 1. **Autorização da Mirna Abreu por escrito**, de uso de imagem e voz nas redes do Bruno. Ela aparece no plano aberto da mesa (Z2) em quase todas as peças, e a voz dela entra em MANCHETE 01 e em CINEMA 01.
 2. **Data de exibição do programa.** Antes dela, só com o ok da produção.
@@ -131,17 +131,20 @@ Hashtags cortadas para 5 em todas as legendas (o Buzzfy marcou 6 ou mais). Stori
 | qua 28/10 | 21h | **ci01** | reel | m177cf21jjcv7fa2y1q1twc4n58gwe0n |
 | qui 29/10 | 21h | **po01** | reel | m17ersdnwmmsk5e7fyw4jqwfdx8gwcxt |
 | sex 30/10 | 21h | **pb02** | reel | m1718n57yvmtpyb4xnf3zsw7fn8gwe7q |
+| sáb 31/10 | 18h30 | **tl02** (legenda avisa a exibição de segunda) | reel | m171fp82kqkbcw5h3xggewpev18gwe2g |
+| sáb 07/11 | 18h30 | **tl03** | reel | m17fbsgpqmam5e83vhtaxwcgsn8gwpjr |
+| sáb 14/11 | 18h30 | **tl04** | reel | m17bwhfnzsvax8d8bsjtas6yed8gxkez |
+| sáb 21/11 | 18h30 | **tl05** | reel | m175r38ys7zcrmnd1nzcfhkj458gw4fw |
 
-Proposto, a agendar depois do render com a marca do gravador desfocada e do conselho do modo GOD:
+Mudanças de 24/10 depois da data de exibição: o story das 19h30 de hoje ("Nem tudo que vemos é ouro") passou a ter o rótulo "NA TV · SEGUNDA, 02/11"; a legenda do tl01 avisa a exibição e troca "o mais votado sai no próximo sábado" por "o mais votado eu solto inteiro depois que a entrevista for ao ar". Os cortes de 26 a 30/10 estão antes da exibição: o conselho do modo GOD decide se ficam ou se vão para depois de 02/11.
 
-| Data | Hora | Peça | Condição |
-|---|---|---|---|
-| sáb 31/10 | 18h30 | **tl02** | tl01 acima de 0,8x da mediana |
-| sáb 07/11 | 18h30 | **tl03** | o anterior acima de 0,8x com pulo abaixo de 75% |
-| sáb 14/11 | 18h30 | **tl04** | idem |
-| sáb 21/11 | 18h30 | **tl05** | idem |
-| seg 02/11 | | Módulo 7 com a semana inteira da série | |
-| stories da manhã | | mc02, mc03, mc04 (um por dia) | |
+Regra para tl03 a tl05: se o anterior ficar abaixo de 0,8x da mediana ou com pulo acima de 75%, o seguinte sai do sábado e volta para o banco (Módulo 7 decide).
+
+| Quando | Peça |
+|---|---|
+| seg 02/11 | dia da exibição: chamada para assistir nos stories (a definir no conselho) |
+| seg 02/11 | Módulo 7 com a semana inteira da série |
+| stories da manhã | mc02, mc03, mc04 (um por dia) |
 
 Portão, medição e regras de PARAR / DOBRAR: seção 8 do `catalogo-formatos.md`.
 

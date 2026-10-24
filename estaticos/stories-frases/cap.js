@@ -1,4 +1,4 @@
-// uso: node cap.js  -> story-frase-1.png ... story-frase-10.png (7 a 10: entrevista, sem imagem nem voz da repórter)
+// uso: node cap.js  -> story-frase-1.png ... story-frase-10.png (7 a 10: entrevista; o programa vai ao ar segunda, 02/11)
 const { chromium } = require('/opt/node-tools/node_modules/playwright');
 (async () => {
   const b = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium', args: ['--allow-file-access-from-files'] });
