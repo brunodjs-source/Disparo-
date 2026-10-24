@@ -66,6 +66,20 @@
    "zona_sticker": false
   },
   {
+   "id": "2510-2030",
+   "usos": [
+    "2026-10-25 20:30"
+   ],
+   "variante": "foto",
+   "foto": "f3.jpg",
+   "rotulo": "DOM · 21H · NO FEED",
+   "frase_html": "O que mudou no case de 6 para 20 <b>milhões</b>.",
+   "sub": "Quem conta é o marketing do cliente.",
+   "modo": "AGENDADO",
+   "sticker": "AGENDADO · Sem sticker (dia e hora no texto)",
+   "zona_sticker": false
+  },
+  {
    "id": "2610-1200",
    "usos": [
     "2026-10-26 12:00"

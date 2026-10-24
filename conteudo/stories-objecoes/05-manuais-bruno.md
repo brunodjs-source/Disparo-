@@ -15,7 +15,8 @@ O PostZen sobe story sem sticker. Estes vão pelo app do Instagram, na hora marc
 | 09h02 | estático `2510-0902.png` | Enquete: Quer saber o que mudou nesse caso? SIM / AGORA NÃO, com a linha "Votou SIM? Responde este story." acima dela (a resposta cai na automação ETAPAS) |
 | 12h00 | compartilhar o post Reel Dentista B | Compartilhar o post Reel Dentista B + enquete: Você é dentista? SIM / NÃO |
 | 12h30 | estático `2510-1230.png` | Link estrategistadelancamento.com.br/tabuleiro/?o=ig-stories (texto do link: Diagnóstico de 12 casas) |
-| 18h35 | compartilhar o post tl01 | Compartilhar o post tl01 no story logo depois de publicado (sem outro sticker) |
+| ~~18h35~~ | ~~compartilhar o post tl01~~ | ~~Compartilhar o post tl01 no story logo depois de publicado (sem outro sticker)~~ (pausado: tl01 é da TV) |
+| 21h05 | compartilhar o reel do case de 6 para 20 | Compartilhar o reel do case de 6 para 20 no story logo depois de publicado (sem outro sticker) |
 
 ## seg 26/10
 | Hora | O que postar | Sticker |

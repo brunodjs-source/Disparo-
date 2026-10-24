@@ -38,3 +38,30 @@
 Também mudou em 24/10: o story pf01 (ter 27/10 16h, m17empvbrp604edk3wzpmxzmj58gw00w) trocou de vídeo para a versão com "em dois meses".
 
 Chamadas que dependem do feed (mudam se o conselho mover os cortes): 26/10 20h30 (pb01), 28/10 20h30 (ci01), 29/10 17h30 e 20h30 (po01), 30/10 20h30 (pb02).
+
+## Domingo 25/10: case de 6 para 20
+
+Decisão do Bruno (24/10): o vídeo do case vai ao ar como está, como reel. Ainda não está no PostZen.
+
+| Quando | Post | Id no PostZen |
+|---|---|---|
+| 25/10 20h30 | Story DOM · 21H · NO FEED (`2510-2030.png`, sem sticker) | m173vxc7ttk8ceqzxdnbk8days8gx44h |
+| 25/10 21h00 | Reel do case de 6 para 20 (`case-6-20.mp4`, 54,3 s) | m17184z919q3m3k3p130658phh8gwc29 |
+
+Legenda final do reel (revisada em 24/10: saiu "O que se repete é a ordem.", que não tem base no vídeo e sugeria que o método vale para qualquer negócio; a frase que fica é a mesma do sub do story das 09h02):
+
+```
+De 6 para 20 milhões por mês. Quem conta é o Pablo, responsável pelo marketing do cliente.
+
+A gente mudou os modelos de campanha, montou o funil de verdade e acertou o público e a persona.
+
+O número de um caso não se repete igual em outro negócio.
+
+Se o seu negócio travou, comenta ESTRATEGISTA que eu te respondo.
+
+#estrategistadelancamento #marketingdigital #estrategia #empreendedorismo #campinas
+```
+
+Só informação, não bloqueia (o vídeo vai como está, decisão do Bruno): dentro do vídeo aparecem o nome da empresa do cliente no cartão e no áudio, o texto "6 MESES", duas frases "não é X, é Y" faladas e o CTA falado "comenta estrategista". A legenda e o estático `2510-2030.png` seguem o CLAUDE.md: sem o nome da empresa, sem "não é X, é Y", sem chamar o case de lançamento.
+
+O story do case com enquete (09h02, `2510-0902.png`) e o compartilhamento do reel no story (21h05) vão à mão: ver `05-manuais-bruno.md`.
