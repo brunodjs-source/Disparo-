@@ -1,0 +1,60 @@
+{
+ "fmt": "manchete",
+ "look": "natural",
+ "trilha": "hazy-after-hours",
+ "trilha_vol": 0.035,
+ "fade": [
+  0,
+  0
+ ],
+ "max_chars": 30,
+ "id": "mc02",
+ "seg": [
+  1199.45,
+  1204.02
+ ],
+ "serie": "MANCHETE",
+ "falantes": [
+  [
+   0,
+   5,
+   "B"
+  ]
+ ],
+ "chave": {
+  "palavra": "lançamento",
+  "perto": 3.4
+ },
+ "ticker": [
+  "Nem tudo que vemos é ouro",
+  "Uma profissão por 20 anos",
+  "O método Xeque-Mate",
+  "Eu construí família",
+  "Até hoje é o melhor marketing"
+ ],
+ "planos": [
+  {
+   "t0": 0,
+   "t1": 60,
+   "plano": "CB",
+   "zoom": [
+    [
+     0,
+     1.0
+    ],
+    [
+     2.325,
+     1.06
+    ],
+    [
+     4.65,
+     1.0
+    ]
+   ],
+   "foco": [
+    470,
+    620
+   ]
+  }
+ ]
+}

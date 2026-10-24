@@ -1,0 +1,7 @@
+{"id":"pb01","fmt":"pb","seg":[986.3,1003.95],"extra":1.9,"serie":"CORTE 01","max_chars":54,
+ "planos":[{"t0":0,"t1":8.75,"plano":"Z2","zoom":[[0,1.0],[8.75,1.03]],"foco":[780,860]},
+           {"t0":8.75,"t1":40,"plano":"CB","zoom":[[8.75,1.0],[11.25,1.01],[11.38,1.08],[11.65,1.08],[11.95,1.03],[19.6,1.05]],"foco":[470,620]}],
+ "pb":[[0,40]],"look":"pb","nome":[2.0,4.6],"virada":{"palavra":"na","perto":11.3},"chave":{"palavra":"profissão","perto":15.3},
+ "final":{"a":17.45,"citacao":"Não foi uma aventura. Acabou sendo uma profissão por 20 anos.","cta":"Manda para um expert que vai lançar este ano."},
+ "freeze":17.45,"trilha":"close-up","trilha_vol":0.05,"quietude":[[10.8,11.35]],
+ "sfx":[["ding_si","chave",0.32],["shutter","final",0.2]],"fade":[0,0.35]}

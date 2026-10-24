@@ -1,0 +1,9 @@
+{"id":"po01","fmt":"pontos","seg":[1608.3,1628.31],"extra":3.6,"serie":"CORTE 03","max_chars":34,
+ "planos":[{"t0":0,"t1":40,"plano":"Z2","zoom":[[0,1.0],[23.6,1.05]],"foco":[700,860]}],
+ "assuntos":[{"palavra":"GATILHOS","dita":"gatilhos","perto":1.2},{"palavra":"XEQUE-MATE","dita":"xeque-mate","perto":6.1},
+             {"palavra":"JOGADA","dita":"jogada","perto":11.4},{"palavra":"POSICIONAMENTO","dita":"posicionamento","perto":13.5},{"palavra":"MOMENTO","dita":"momento","perto":16.2}],
+ "lum":[[0,1],[0.9,1],[1.5,0.6]],"sat":[[0,1],[0.9,1],[1.5,0.45]],"look":"natural","nome":[3.0,5.4],
+ "lista":{"a":20.1,"titulo":"MÉTODO XEQUE-MATE"},"cta":"Qual dessas peças falta no seu lançamento? Comenta.",
+ "trilha":"hazy-after-hours","trilha_vol":0.07,
+ "sfx":[["tick",1.17,0.25],["tick",1.3,0.2],["tick",1.42,0.2],["coin",2.0,0.18],["tick",6.11,0.25],["tick",6.24,0.2],["coin",6.9,0.18],["tick",11.41,0.22],["tick",13.47,0.22],["tick",16.21,0.22],["coin",16.9,0.18],["ding_si",20.1,0.3]],
+ "fade":[0,0.3]}

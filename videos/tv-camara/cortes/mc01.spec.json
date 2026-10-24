@@ -1,0 +1,85 @@
+{
+ "fmt": "manchete",
+ "look": "natural",
+ "trilha": "hazy-after-hours",
+ "trilha_vol": 0.035,
+ "fade": [
+  0,
+  0
+ ],
+ "max_chars": 30,
+ "id": "mc01",
+ "seg": [
+  1505.14,
+  1516.62
+ ],
+ "serie": "MANCHETE",
+ "falantes": [
+  [
+   0,
+   1.9,
+   "M"
+  ],
+  [
+   1.9,
+   3.9,
+   "B"
+  ],
+  [
+   3.9,
+   5.25,
+   "M"
+  ],
+  [
+   5.25,
+   7.2,
+   "B"
+  ],
+  [
+   9.6,
+   10.6,
+   "M"
+  ],
+  [
+   10.6,
+   12,
+   "B"
+  ]
+ ],
+ "chave": {
+  "palavra": "sonho",
+  "perto": 6.4
+ },
+ "ticker": [
+  "Nem tudo que vemos é ouro",
+  "Uma profissão por 20 anos",
+  "O método Xeque-Mate",
+  "Eu construí família",
+  "Até hoje é o melhor marketing"
+ ],
+ "planos": [
+  {
+   "t0": 0,
+   "t1": 60,
+   "plano": "CB",
+   "zoom": [
+    [
+     0,
+     1.0
+    ],
+    [
+     5.74,
+     1.06
+    ],
+    [
+     11.48,
+     1.0
+    ]
+   ],
+   "foco": [
+    470,
+    620
+   ]
+  }
+ ]
+}

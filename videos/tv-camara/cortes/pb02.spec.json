@@ -1,0 +1,8 @@
+{"id":"pb02","fmt":"pb","seg":[1072.05,1096.69],"extra":2.0,"serie":"CORTE 02","max_chars":54,
+ "trocas":[["45 mil,","45 mil,",true],["250 mil","250 mil",true]],
+ "planos":[{"t0":0,"t1":12.7,"plano":"Z2","zoom":[[0,1.0],[12.7,1.035]],"foco":[780,860]},
+           {"t0":12.7,"t1":40,"plano":"CB","zoom":[[12.7,1.0],[12.78,1.0],[12.91,1.08],[13.2,1.08],[13.5,1.03],[26.7,1.05]],"foco":[470,620]}],
+ "pb":[[0,40]],"look":"pb","nome":[2.0,4.6],"virada":{"palavra":"por","perto":12.8},"chave":{"palavra":"250 mil","perto":21},
+ "final":{"a":24.75,"citacao":"Um restaurante que vendia 45 mil. Colocamos ele para vender 250 mil com o marketing digital.","cta":"Vai lançar nos próximos 90 dias? Me manda a data no direct."},
+ "freeze":24.75,"trilha":"close-up","trilha_vol":0.05,"quietude":[[12.2,12.85]],
+ "sfx":[["ding_si","chave",0.32],["shutter","final",0.2]],"fade":[0,0.35]}

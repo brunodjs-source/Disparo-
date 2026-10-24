@@ -1,0 +1,19 @@
+<!doctype html><html><head><meta charset="utf-8"></head><body><script>/*__BASE__*/
+// MANCHETE · frase em loop com faixa "NA TV" e ticker de outras frases da entrevista.
+// C.ticker = ["frase curta", ...]  C.chave {t, palavra}  (o push e o ticker têm período igual à duração: o loop emenda)
+const TK = '   ·   ' + (C.ticker || []).join('   ·   ');
+let TKW = 0;
+function faixa(t) {
+  if (!TKW) { _mc.font = '700 30px Inter'; TKW = _mc.measureText(TK).width; }
+  const x = -((t / C.dur) * TKW) % TKW;
+  return `<div style="position:absolute;left:56px;top:1100px;font-size:26px;font-weight:700;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.9)">Bruno · <i style="font-family:Pf;font-weight:400;color:${OURO2}">Estrategista de Lançamento</i> · Entrevista à TV Câmara Campinas</div>
+  <div style="position:absolute;left:40px;right:140px;top:1150px;height:180px;background:rgba(20,18,16,.92);border-top:4px solid ${OURO};border-radius:0 0 14px 14px;overflow:hidden">
+    <div style="position:absolute;left:24px;top:22px;display:flex;align-items:center;gap:18px"><span style="background:${OURO};color:${ESC};font-family:Cinzel;font-weight:900;font-size:30px;padding:6px 14px 4px;border-radius:6px">NA TV</span><span style="font-family:Pf;font-style:italic;font-size:34px;color:${CREME}">${C.titulo_faixa || 'o que eu disse na entrevista'}</span></div>
+    <div style="position:absolute;left:0;right:0;top:108px;height:50px;overflow:hidden;border-top:1px solid rgba(232,179,106,.35)"><div style="position:absolute;top:8px;left:${x}px;white-space:nowrap;font-size:30px;font-weight:700;color:#d8cfc0">${TK}${TK}${TK}</div></div>
+  </div>`;
+}
+function render(t, camada) {
+  const el = document.getElementById(camada); if (camada !== 'front') { el.innerHTML = ''; return; }
+  el.innerHTML = topoEscuro(.45, 800) + legendaGigante(t, 330) + faixa(t);
+}
+</script></body></html>

@@ -5,8 +5,16 @@ Mesma lógica da HyperFrames: HTML com `render(t, camada)` determinístico, capt
 ## Fontes (fora do repo, no scratchpad da sessão; o original fica no rascunho de release `entrevista-tv-camara`)
 - `src/entrevista-1080p.mp4`: plano ABERTO, 1080x1920, 30 fps, já convertido de HDR (tonemap hable).
 - `src/entrevista-zoom.mp4`: plano Z2, recorte nativo 1080x1920 do 4K (x 1080, y 1000), mesmo tempo.
-- `voz_trat.wav`: áudio inteiro tratado (highpass, arnndn, afftdn, compressor, EQ 3 kHz, dynaudnorm), -16 LUFS.
-- `dados/transcricao.json`: segmentos com palavras `[ini, fim, texto, prob]` e falante (`B` Bruno, `M` Mirna).
+- `voz_mix.wav`: áudio inteiro para a mixagem (highpass, afftdn 12 dB, arnndn std com mix 0,55 para não ficar metálico, EQ, compressor, dynaudnorm), -16 LUFS.
+- `dados/transcricao.json` (fora do git: o repositório é público e a entrevista ainda não foi exibida): segmentos com palavras `[ini, fim, texto, prob, falante]` (`B` Bruno, `M` Mirna).
+- `dados/correcoes.json`: correções conferidas em 2 passes (palavra a palavra e trocas de várias palavras).
+
+## Transcrição (aprendido em 24/10)
+- Microfone de sala, longe: o `small` e o áudio com arnndn erraram quase tudo. O `medium` int8 com tratamento leve (sem arnndn) acertou nomes e números, a cerca de 2x o tempo real.
+- Nunca usar `hotwords` nem `initial_prompt`: o modelo escreveu a própria lista no lugar da fala.
+- A diarização por F0 de segmento erra quando os dois falam no mesmo segmento: a ficha corrige com `falantes` por trecho.
+- Trecho escolhido: conferir num segundo passe (`engine/conferir.py`: medium com áudio bruto e com filtro de voz) antes de pôr na tela.
+- O programa começa em 14:35 da gravação (abertura da Mirna); o rótulo "min" usa esse zero. Bastidor de 0:00 a 14:30 e de 29:50 em diante (de 31:00 a TV grava o Bruno de frente no computador: ótimo para abrir reel).
 
 ## Planos (comp.py)
 | Plano | Fonte | Recorte (x, y, w, h) | Uso |
@@ -35,6 +43,12 @@ Tempos dentro do corte são relativos ao início do trecho (`seg[0]`).
 - Começa com `<script>/*__BASE__*/` (injeta `_base.js`: easing, `legendaGigante`, `connectHook`, `letreiro`, `nomeCargo`, `seloTV`, `ctaComentario`, `marca`, `progresso`, cores e fontes) e define `function render(t, camada)` que escreve em `#back` ou `#front`.
 - Camada front é obrigatória em todo quadro (pode ficar vazia). Camada back só se `"back": true` (letreiro atrás das pessoas, recortado pela `mascara`).
 - Regras: efeito na palavra que ele ilustra; 1 efeito novo a cada 2 s; nada encostado na borda, sobre a boca, no rodapé (y > 1650) ou na lateral direita (x > 960); sem logo de terceiros; sem travessão nem emoji.
+
+## Fichas e render
+- Fichas em `videos/tv-camara/cortes/<id>.spec.json`; `cortar.py` monta o `corte.json` (palavras, frases de até `max_chars`, legendas, rótulo, tempo da palavra-chave, efeitos sonoros marcados por "chave", "final" ou "virada").
+- `render.sh cortes/<id>.spec.json [quadros]`: com quadros, gera só a folha de teste; sem, faz o vídeo final e a folha de 4 quadros por segundo no scratchpad.
+- TIMELAPSE: a ficha traz `segmentos` (rt, rapido, amostra; fontes zoom, full, cb) e `voz_trechos`; o `timeremap.py` monta a base.
+- Vídeos e quadros nunca vão para o git (`.gitignore`): têm a imagem da repórter, que depende de autorização.
 
 ## Rodar
 ```

@@ -1,0 +1,60 @@
+{
+ "fmt": "manchete",
+ "look": "natural",
+ "trilha": "hazy-after-hours",
+ "trilha_vol": 0.035,
+ "fade": [
+  0,
+  0
+ ],
+ "max_chars": 30,
+ "id": "mc03",
+ "seg": [
+  1573.25,
+  1584.25
+ ],
+ "serie": "MANCHETE",
+ "falantes": [
+  [
+   0,
+   12,
+   "B"
+  ]
+ ],
+ "chave": {
+  "palavra": "específico",
+  "perto": 8.6
+ },
+ "ticker": [
+  "Nem tudo que vemos é ouro",
+  "Uma profissão por 20 anos",
+  "O método Xeque-Mate",
+  "Eu construí família",
+  "Até hoje é o melhor marketing"
+ ],
+ "planos": [
+  {
+   "t0": 0,
+   "t1": 60,
+   "plano": "CB",
+   "zoom": [
+    [
+     0,
+     1.0
+    ],
+    [
+     5.5,
+     1.06
+    ],
+    [
+     11.0,
+     1.0
+    ]
+   ],
+   "foco": [
+    470,
+    620
+   ]
+  }
+ ]
+}

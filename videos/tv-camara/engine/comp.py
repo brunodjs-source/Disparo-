@@ -59,7 +59,7 @@ if not ONLY:
         "-c:v", "libx264", "-crf", "17", "-preset", "medium", "-pix_fmt", "yuv420p", OUT], stdin=subprocess.PIPE)
 
 rng = np.random.default_rng(11)
-GRAO = [rng.normal(0, 1, (H // 2, W // 2)).astype(np.float32) for _ in range(8)]
+GRAO = [np.asarray(Image.fromarray(rng.normal(0, 1, (H // 2, W // 2)).astype(np.float32)).resize((W, H)), np.float32)[..., None] for _ in range(8)]   # grão já em tamanho cheio (uma vez)
 yy, xx = np.mgrid[0:H, 0:W]; VIN = (((xx - W/2) / (W*0.62))**2 + ((yy - H/2) / (H*0.62))**2).astype(np.float32)
 VIN = np.clip(1 - 0.55 * np.clip(VIN - 0.35, 0, 1), 0, 1)[..., None]
 
@@ -106,7 +106,7 @@ for f in range(N):
     if look in ("cinema", "pb"):
         x = im / 255; sc = x * x * (3 - 2 * x); im = 255 * (x + (sc - x) * 0.55)   # curva em S
         im = np.clip(im, 0, 255) * VIN
-        gr = np.asarray(Image.fromarray(GRAO[f % 8]).resize((W, H)), np.float32)[..., None]
+        gr = GRAO[f % 8]
         im = np.clip(im + gr * (9 if look == "pb" else 6), 0, 255)
     elif look == "natural":
         g = im.mean(2, keepdims=True); im = np.clip(g + (im - g) * 1.06, 0, 255)

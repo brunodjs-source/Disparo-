@@ -1,0 +1,13 @@
+{"id":"ci01","fmt":"cinema","seg":[1377.7,1411.6],"extra":2.7,"serie":"CENA 01","max_chars":46,
+ "correcoes":{"Que":""},
+ "falantes":[[2.35,2.95,"M"],[2.95,4.8,"B"],[4.95,8.8,"M"]],
+ "gancho":{"palavras":["ATÉ HOJE","O MELHOR","MARKETING","TÊTE-À-TÊTE"],"txt":"O MELHOR MARKETING"},
+ "planos":[{"t0":0,"t1":4.95,"plano":"CB","zoom":[[0,1.0],[4.95,1.03]],"foco":[470,640]},
+           {"t0":4.95,"t1":9.0,"plano":"Z2","zoom":[[4.95,1.0],[9.0,1.03]],"foco":[700,860]},
+           {"t0":9.0,"t1":16.95,"plano":"CB","zoom":[[9.0,1.0],[16.95,1.04]],"foco":[470,640]},
+           {"t0":16.95,"t1":23.6,"plano":"Z2","zoom":[[16.95,1.02],[23.6,1.05]],"foco":[760,860]},
+           {"t0":23.6,"t1":40,"plano":"CB","zoom":[[23.6,1.0],[25.9,1.0],[28.4,1.08],[36.6,1.09]],"foco":[470,620]}],
+ "pb":[[0,14.32]],"look":"cinema","nome":[2.6,5.0],"chave":{"palavra":"ouro","perto":14.3},
+ "final":{"a":34.05,"cta":"Manda para quem precisa ouvir isso."},"freeze":34.05,
+ "trilha":"deep-urban","trilha_vol":0.08,"quietude":[[13.8,14.45]],
+ "sfx":[["riser",0.6,0.28],["impact","chave",0.42,0.4],["whoosh","final",0.22]],"fade":[0,0.25]}

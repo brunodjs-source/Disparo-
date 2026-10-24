@@ -17,8 +17,8 @@ html,body{margin:0;background:transparent;width:${W}px;height:${H}px;overflow:hi
 #back,#front{position:absolute;inset:0}
 .cap{position:absolute;left:70px;right:110px;text-align:center;line-height:1.05}
 .cap .bx{display:inline-block;padding:14px 26px 18px;border-radius:18px;background:rgba(20,18,16,.82)}
-.cap .big{display:block;font-weight:900;font-size:86px;color:#fff;letter-spacing:-.01em;text-transform:uppercase}
-.cap .sm{display:block;font-family:Pf;font-style:italic;font-size:46px;color:${OURO2};margin-top:4px}
+.cap .big{font-weight:900;font-size:84px;color:#fff;letter-spacing:-.01em;text-transform:uppercase;line-height:1}
+.cap .sm{font-family:Pf;font-style:italic;font-size:50px;color:${OURO2}}
 .L{position:absolute;left:0;right:0;text-align:center;font-family:Cinzel;font-weight:900;letter-spacing:.02em;line-height:.92;perspective:1000px}
 .L span{display:inline-block;transform-origin:50% 100%;position:relative}
 .pill{position:absolute;left:0;right:0;text-align:center}
@@ -45,9 +45,17 @@ function legendaGigante(t, top, opts = {}) {
   let pi = pal.reduce((b, w, k) => (PRINC.has(limpa(w[1]).toLowerCase()) ? k : b), -1);
   if (pi < 0) pi = pal.reduce((b, w, k) => limpa(w[1]).length > limpa(pal[b][1]).length ? k : b, 0);
   const t0 = pal[0][0], p = cl((t - t0) / .1), sc = 1.04 - .04 * p;
-  const outras = pal.filter((_, k) => k !== pi).map(w => w[1]).join(' ');
   const quem = pal[0][2] === 'M' ? `<span style="display:block;font-size:22px;letter-spacing:.2em;color:#cfc6b6;margin-bottom:6px">REPÓRTER</span>` : '';
-  return `<div class=cap style="top:${top}px;transform:scale(${sc})"><span class=bx style="${opts.bx || ''}">${quem}<span class=big style="${opts.big || ''}">${limpa(pal[pi][1])}</span>${outras ? `<span class=sm>${outras}</span>` : ''}</span></div>`;
+  // ordem de leitura preservada: a palavra principal enorme em caixa alta, as outras em itálico ouro ao redor dela
+  const K = opts.chave || C.chave, kk = K ? pal.findIndex(w => Math.abs(w[0] - K.t) < .05) : -1; if (kk >= 0) pi = kk;
+  const partes = pal.map((w, k) => {
+    const txt = limpa(w[1]);
+    if (k !== pi) return `<span class=sm style="display:inline-block;margin:0 .18em">${txt}</span>`;
+    const ehK = K && txt.toLowerCase() === limpa(K.palavra).toLowerCase() && Math.abs(w[0] - K.t) < .05;
+    const g = ehK ? marca(t, K.t, `<span style="position:relative;color:${t >= K.t + .15 ? ESC : '#fff'}">${txt}</span>`) : txt;
+    return `<span class=big style="display:inline-block;margin:0 .1em;${opts.big || ''}">${g}</span>`;
+  }).join('');
+  return `<div class=cap style="top:${top}px;transform:scale(${sc})"><span class=bx style="${opts.bx || ''}">${quem}<span style="display:flex;flex-wrap:wrap;justify-content:center;align-items:baseline">${partes}</span></span></div>`;
 }
 // Connect Hook: texto entrando palavra por palavra no topo, palavra-chave em ouro
 function connectHook(t, a, texto, chave, top = 220, linha = '') {
@@ -84,7 +92,7 @@ function ctaComentario(t, a, texto, linha1 = 'Comenta aqui', linha2 = '', top = 
   <div style="text-align:center;margin-top:18px;color:#fff;font-size:34px;font-weight:700;text-shadow:0 3px 12px #000;opacity:${cl((t - a - 1) / .3)}">${linha1}${linha2 ? `<br><span style="font-family:Pf;font-style:italic;color:${OURO2};font-weight:400">${linha2}</span>` : ''}</div></div>`;
 }
 // Marca-texto atrás de uma palavra (usado dentro de textos próprios)
-const marca = (t, a, palavra, cor = OURO) => `<span style="position:relative;display:inline-block"><i style="position:absolute;left:-6px;bottom:6%;height:42%;width:${eo((t - a) / .3) * 104}%;background:${cor};opacity:.85;border-radius:6px;z-index:-1"></i>${palavra}</span>`;
+const marca = (t, a, palavra, cor = OURO) => `<span style="position:relative;display:inline-block;isolation:isolate"><i style="position:absolute;left:-10px;top:8%;bottom:4%;width:calc(${eo((t - a) / .3) * 100}% + 20px);background:${cor};border-radius:8px;z-index:-1;clip-path:polygon(0 8%,100% 0,98% 92%,2% 100%)"></i>${palavra}</span>`;
 // barra de progresso fina no topo
 const progresso = (t, cor = OURO) => `<div style="position:absolute;left:0;top:0;height:6px;width:${cl(t / C.dur) * W}px;background:${cor}"></div>`;
 // Nome e cargo da identidade: caixa escura, filete ouro que cresce antes do texto, prova da TV em texto
@@ -114,7 +122,7 @@ function frasePalavras(t, ws, opts = {}) {
 document.body.insertAdjacentHTML('beforeend', '<div style="position:absolute;left:-9999px;top:0;opacity:0"><span style="font-family:Cinzel;font-weight:900">Aa</span><i style="font-family:Pf">Aa</i><b style="font-weight:900">Aa</b><span style="font-family:\'DejaVu Sans Mono\'">0</span></div>');
 const _mc = document.createElement('canvas').getContext('2d');
 // maior tamanho (até max) em que o texto cabe em larg px
-function caber(txt, fonte, larg, max) { _mc.font = `${max}px ${fonte}`; const w = _mc.measureText(txt).width; return Math.min(max, Math.floor(max * larg / Math.max(1, w))); }
+function caber(txt, fonte, larg, max) { _mc.font = (fonte === 'Pf' ? 'italic 400 ' : '900 ') + `${max}px ${fonte}`; const w = _mc.measureText(txt).width; return Math.min(max, Math.floor(max * larg / Math.max(1, w))); }
 // queda com gravidade e quiques amortecidos, forma fechada: devolve o deslocamento acima do alvo (px) no tempo tau
 function queda(tau, alt, g = 5200, rest = .3, quiques = 2) {
   if (tau <= 0) return alt; const th = Math.sqrt(2 * alt / g);

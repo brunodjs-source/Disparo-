@@ -1,0 +1,60 @@
+{
+ "fmt": "manchete",
+ "look": "natural",
+ "trilha": "hazy-after-hours",
+ "trilha_vol": 0.035,
+ "fade": [
+  0,
+  0
+ ],
+ "max_chars": 30,
+ "id": "mc04",
+ "seg": [
+  1700.6,
+  1710.15
+ ],
+ "serie": "MANCHETE",
+ "falantes": [
+  [
+   0,
+   10,
+   "B"
+  ]
+ ],
+ "chave": {
+  "palavra": "família",
+  "perto": 4.1
+ },
+ "ticker": [
+  "Nem tudo que vemos é ouro",
+  "Uma profissão por 20 anos",
+  "O método Xeque-Mate",
+  "Até hoje é o melhor marketing",
+  "Eu só tinha um computador e um sonho"
+ ],
+ "planos": [
+  {
+   "t0": 0,
+   "t1": 60,
+   "plano": "CB",
+   "zoom": [
+    [
+     0,
+     1.0
+    ],
+    [
+     4.8,
+     1.06
+    ],
+    [
+     9.6,
+     1.0
+    ]
+   ],
+   "foco": [
+    470,
+    620
+   ]
+  }
+ ]
+}

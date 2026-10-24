@@ -1,0 +1,8 @@
+# O repositório é público. A transcrição inteira tem a fala da repórter e a entrevista ainda não foi exibida:
+# fica fora do git (cópia de trabalho no scratchpad e no rascunho de release). Vídeos renderizados também ficam fora.
+dados/transcricao.json
+render/
+*.mp4
+*.wav
+*.png
+*.jpg

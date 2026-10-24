@@ -2,16 +2,17 @@
 // PONTOS · chuva de pontos escrevendo o assunto no instante em que o Bruno diz a palavra.
 // C.assuntos = [{t, palavra}]  (t = início da palavra no Whisper; o primeiro pode ser negativo: já formado no quadro 0)
 // C.frases = [{a, b, ws:[[t, txt]]}] (legenda digitada)  C.nome=[a,b]  C.lista={a, titulo}  C.rotulo  C.cta
-const G = 12, ZY0 = 250, ZY1 = 600, CX = 500, LARG = 840;
+const ZY0 = 250, ZY1 = 600, CX = 500, LARG = 860; let RAIO = [];
 const CORES = ['#F5C46E', '#E8B36A', '#C98E45'];
 // alvos de cada palavra: texto em Cinzel 900 desenhado fora da tela e amostrado numa grade de G px
 let ALVOS = null, N = 0, SEM = [];
 function preparar() { ALVOS = C.assuntos.map(a => {
   const cv = document.createElement('canvas'); cv.width = 1080; cv.height = 700; const x = cv.getContext('2d');
-  const fs = Math.min(caber(a.palavra, 'Cinzel', LARG, 210), 210);
+  const fs = Math.min(caber(a.palavra, 'Cinzel', LARG, 220), 220), G = Math.max(7, Math.min(12, Math.round(fs / 12)));
+  RAIO.push(G * .39);
   x.font = `900 ${fs}px Cinzel`; x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillStyle = '#fff';
   x.fillText(a.palavra, CX, 350); const d = x.getImageData(0, 0, 1080, 700).data, pts = [];
-  for (let yy = 0; yy < 700; yy += G) for (let xx = 0; xx < 1080; xx += G) if (d[(yy * 1080 + xx) * 4 + 3] > 140) pts.push([xx, yy - 350 + (ZY0 + ZY1) / 2]);
+  for (let yy = G / 2; yy < 700; yy += G) for (let xx = 0; xx < 1080; xx += G) if (d[(yy * 1080 + xx) * 4 + 3] > 140) pts.push([xx, yy - 350 + (ZY0 + ZY1) / 2]);
   pts.sort((p, q) => p[0] - q[0] || p[1] - q[1]); return pts;
 });
 N = Math.max(...ALVOS.map(a => a.length)) + 40;
@@ -23,19 +24,19 @@ function estado(t) {             // devolve [x, y, raio, cor(0..1 ouro), visíve
   const xs = T.map(p => p[0]), mn = Math.min(...xs), mx = Math.max(...xs);
   const out = [];
   for (let i = 0; i < Math.max(T.length, P.length); i++) {
-    const s = SEM[i];
+    const s = SEM[i], R = RAIO[k], RP = k > 0 ? RAIO[k - 1] : R;
     if (i < T.length) {
       const [tx, ty] = T[i], atraso = .22 * (tx - mn) / Math.max(1, mx - mn) + .08 * s[0];
       if (i < P.length) {        // ponto que já existia: voa com mola até o novo alvo
         const p = mola((t - tk - atraso * .5) / .65);
-        out.push([P[i][0] + (tx - P[i][0]) * p, P[i][1] + (ty - P[i][1]) * p - Math.sin(Math.PI * cl(p)) * 60 * s[1], 4.6, 1, s[3]]);
+        out.push([P[i][0] + (tx - P[i][0]) * p, P[i][1] + (ty - P[i][1]) * p - Math.sin(Math.PI * cl(p)) * 60 * s[1], RP + (R - RP) * cl(p), 1, s[3]]);
       } else {                   // ponto novo: cai do topo com gravidade e quica
         const alt = ty + 40 + s[1] * 160, tau = t - tk - atraso, y = ty - queda(tau, alt, 5200, .24, 1);
         const pousou = tau > Math.sqrt(2 * alt / 5200);
-        out.push([tx, y, 4.6, pousou ? cl((tau - Math.sqrt(2 * alt / 5200)) / .2) : 0, s[3]]);
+        out.push([tx, y, R, pousou ? cl((tau - Math.sqrt(2 * alt / 5200)) / .2) : 0, s[3]]);
       }
     } else {                     // sobra da palavra anterior: encolhe até sumir
-      const r = 4.6 * (1 - cl((t - tk) / .3)); if (r > 0) out.push([P[i][0], P[i][1], r, 1, s[3]]);
+      const r = RP * (1 - cl((t - tk) / .3)); if (r > 0) out.push([P[i][0], P[i][1], r, 1, s[3]]);
     }
   }
   return out;
@@ -62,7 +63,7 @@ function render(t, camada) {
   if (!ALVOS) preparar();
   if (!cv) { el.innerHTML = '<div id=fx></div><canvas id=cv width=1080 height=1920 style="position:absolute;inset:0"></canvas><div id=ov></div>'; cv = document.getElementById('cv').getContext('2d'); ov = document.getElementById('ov'); }
   const fim = C.lista && t >= C.lista.a;
-  document.getElementById('fx').innerHTML = topoEscuro(.55 * cl(t / 2 - .5) + .2, 900);
+  document.getElementById('fx').innerHTML = topoEscuro(.2 + .5 * cl((t - .9) / .6), 900);
   cv.clearRect(0, 0, 1080, 1920);
   if (!fim || t < C.lista.a + .4) {
     const sai = C.lista ? 1 - cl((t - C.lista.a) / .4) : 1;

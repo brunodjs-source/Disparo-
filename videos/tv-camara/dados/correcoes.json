@@ -1,0 +1,57 @@
+{
+ "_nota": "Correções conferidas em 2 passes (medium com áudio bruto e com áudio filtrado). Palavra a palavra; trocas juntam várias palavras.",
+ "palavras": {
+  "autudas": "noturnas",
+  "autudas,": "noturnas,",
+  "checkmate": "Xeque-Mate",
+  "checkmate.": "Xeque-Mate.",
+  "checkmate,": "Xeque-Mate,",
+  "gatinhos": "gatilhos",
+  "matrônio,": "patrimônio,",
+  "matrônio": "patrimônio",
+  "fofoproduto": "infoproduto",
+  "panfredos": "panfletos",
+  "afaturarem": "faturarem",
+  "afaturamos": "faturamos",
+  "seguimento": "segmento",
+  "seguimento.": "segmento."
+ },
+ "trocas": [
+  [
+   "tete a tete",
+   "tête-à-tête"
+  ],
+  [
+   "tete a tete,",
+   "tête-à-tête,"
+  ],
+  [
+   "tete a tete.",
+   "tête-à-tête."
+  ],
+  [
+   "Mundo Pedro",
+   "Dom Pedro"
+  ],
+  [
+   "e não sonhei",
+   "e um sonho."
+  ],
+  [
+   "valeu muita pena,",
+   "valeu muito a pena,"
+  ],
+  [
+   "inclusive uma casa",
+   "inclusive numa casa"
+  ],
+  [
+   "chegam pra gente machucado",
+   "chegam pra gente machucados"
+  ],
+  [
+   "empresas dela.",
+   "empresas delas."
+  ]
+ ]
+}

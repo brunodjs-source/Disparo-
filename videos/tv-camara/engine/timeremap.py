@@ -7,10 +7,17 @@ C = json.load(open(sys.argv[1])); OUT = sys.argv[2]
 SRC = C.get("src_dir", "/tmp/claude-0/-home-user-Disparo-/54eeb75b-22b3-521e-a4d4-71920aed6701/scratchpad/entrevista/src")
 tmp = OUT + ".partes"; os.makedirs(tmp, exist_ok=True); lista = []
 for i, s in enumerate(C["segmentos"]):
-    arq = f"{SRC}/entrevista-{'zoom' if s['fonte'] == 'zoom' else '1080p'}.mp4"; o = f"{tmp}/{i:02d}.mp4"
+    arq = f"{SRC}/entrevista-{'1080p' if s['fonte'] == 'full' else 'zoom'}.mp4"; o = f"{tmp}/{i:02d}.mp4"
     n = int(round(s["dur"] * 30))
-    if s["tipo"] == "rt":
-        cmd = ["-ss", f"{s['src']:.3f}", "-i", arq, "-vf", "fps=30,setsar=1"]
+    rec = "crop=771:1371:309:250,scale=1080:1920:flags=bicubic," if s["fonte"] == "cb" else ""   # plano CB
+    if s["tipo"] == "amostra":   # quadros soltos de src0 a src1 (pode voltar no tempo: rebobinar)
+        fs = f"{tmp}/{i:02d}_q"; os.makedirs(fs, exist_ok=True)
+        for q in range(n):
+            ts = s["src0"] + (s["src1"] - s["src0"]) * q / max(1, n - 1)
+            subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", f"{ts:.3f}", "-i", arq, "-frames:v", "1", f"{fs}/{q:04d}.png"], check=True)
+        cmd = ["-framerate", "30", "-i", f"{fs}/%04d.png", "-vf", "tmix=frames=3:weights='1 2 1',setsar=1"]
+    elif s["tipo"] == "rt":
+        cmd = ["-ss", f"{s['src']:.3f}", "-i", arq, "-vf", f"{rec}fps=30,setsar=1"]
     else:
         v = (s["src1"] - s["src0"]) / s["dur"]
         cmd = ["-ss", f"{s['src0']:.3f}", "-t", f"{s['src1'] - s['src0']:.3f}", "-i", arq,
