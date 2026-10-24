@@ -15,7 +15,8 @@ eio = lambda x: (4*cl(x)**3 if cl(x) < .5 else 1-(-2*cl(x)+2)**3/2)
 
 # recortes fixos medidos no proxy Z2 (1080x1920, nativo do 4K) e no ABERTO (1080x1920, 0,5x)
 PLANOS = {"Z2": ("zoom", (0, 0, 1080, 1920)), "CB": ("zoom", (309, 250, 771, 1371)),
-          "CM": ("zoom", (0, 250, 771, 1371)), "ABERTO": ("full", (0, 0, 1080, 1920))}
+          "CM": ("zoom", (0, 250, 771, 1371)), "ABERTO": ("full", (0, 0, 1080, 1920)),
+          "BASE": ("base", (0, 0, 1080, 1920))}   # BASE: vídeo já montado (timelapse), lido do início
 BLUR = C.get("blur_rects", {})   # {"zoom": [[x,y,w,h],...], "full": [...]}
 
 def keyval(lst, t, default):
@@ -34,9 +35,17 @@ def plano_em(t):
 def em_intervalos(t, ivs):
     return any(a <= t < b for a, b in ivs)
 
+def peso_pb(t, ivs, r=0.2):
+    """1 dentro dos intervalos de P&B, rampa de r segundos nas bordas (a cor volta em 6 quadros)."""
+    w = 0.0
+    for a, b in ivs:
+        w = max(w, min(cl((t - a) / r + 1) if a > 0 else 1.0, cl((b - t) / r)))
+    return w
+
 def ler(nome):
-    ini = C["seg"][0]
-    return subprocess.Popen(["ffmpeg", "-v", "error", "-ss", f"{ini:.3f}", "-i", f"{SRC}/entrevista-{'zoom' if nome=='zoom' else '1080p'}.mp4",
+    ini = 0 if nome == "base" else C["seg"][0]
+    arq = C["base"] if nome == "base" else f"{SRC}/entrevista-{'zoom' if nome=='zoom' else '1080p'}.mp4"
+    return subprocess.Popen(["ffmpeg", "-v", "error", "-ss", f"{ini:.3f}", "-i", arq,
         "-t", f"{C['dur']+0.2:.3f}", "-vf", "fps=30", "-f", "rawvideo", "-pix_fmt", "rgb24", "-"], stdout=subprocess.PIPE)
 
 usa = {PLANOS[p.get("plano", "Z2")][0] for p in C.get("planos", [{"plano": "Z2"}])}
@@ -64,8 +73,12 @@ for f in range(N):
     if mask_p:
         mb = mask_p.stdout.read(1080*1920)
         mk = np.frombuffer(mb, np.uint8).reshape(1920, 1080) if len(mb) == 1080*1920 else None
+    t = f / FPS
+    fz = C.get("freeze")
+    if fz is not None and t >= fz and "_fz" in globals(): frames = _fz
+    elif fz is not None and t < fz: _fz = frames
     if ONLY and f not in ONLY: continue
-    t = f / FPS; p = plano_em(t); fonte, (cx, cy, cw, ch) = PLANOS[p["plano"]]
+    p = plano_em(t); fonte, (cx, cy, cw, ch) = PLANOS[p["plano"]]
     img = frames[fonte].copy()
     for (x, y, w, h) in BLUR.get(fonte, []):
         reg = Image.fromarray(img[y:y+h, x:x+w]).filter(ImageFilter.GaussianBlur(14)); img[y:y+h, x:x+w] = np.asarray(reg)
@@ -80,8 +93,15 @@ for f in range(N):
     if mk is not None:
         mpil = Image.fromarray(mk).transform((W, H), Image.EXTENT, (x0, y0, x0 + zw, y0 + zh), resample=Image.BILINEAR)
         msk = np.asarray(mpil.filter(ImageFilter.GaussianBlur(2)), np.float32)[..., None] / 255
-    if em_intervalos(t, C.get("pb", [])):
-        g = im @ np.array([0.30, 0.59, 0.11], np.float32); g = np.clip((g - 128) * 1.18 + 122, 0, 255); im = np.repeat(g[..., None], 3, 2)
+    wpb = peso_pb(t, C.get("pb", []))
+    if wpb > 0:
+        g = im @ np.array([0.30, 0.59, 0.11], np.float32); g = np.clip((g - 128) * 1.18 + 122, 0, 255)
+        im = im * (1 - wpb) + g[..., None] * wpb
+    sat = keyval(C.get("sat"), t, 1.0)
+    if sat != 1.0:
+        g = im.mean(2, keepdims=True); im = g + (im - g) * sat
+    lum = keyval(C.get("lum"), t, 1.0)
+    if lum != 1.0: im = im * lum
     look = C.get("look", "natural")
     if look in ("cinema", "pb"):
         x = im / 255; sc = x * x * (3 - 2 * x); im = 255 * (x + (sc - x) * 0.55)   # curva em S

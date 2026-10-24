@@ -1,0 +1,38 @@
+<!doctype html><html><head><meta charset="utf-8"></head><body><script>/*__BASE__*/
+// PB · Corte P&B "NA TV": a frase inteira na tela, palavras acendem no tempo da fala, uma palavra em ouro.
+// C.frases = [{a, b, ws:[[t, txt]], tam}]   C.chave = {t, palavra}   C.rotulo   C.nome = [a, b]
+// C.final = {a, citacao, cta}   C.selfie = [0, s] (versão A: trecho inicial em cor sem texto de frase)
+function frase(t) {
+  const V = C.virada;
+  if (V && t >= V.t - .45 && t < V.t - .06) return '';          // 0,4 s de quietude: só o som da sala
+  let f = null; for (const x of C.frases) if (t >= x.a - .1 && t < x.b) f = x;
+  if (!f) return '';
+  const tam = f.tam || (V && Math.abs(f.a - V.t) < .15 ? 84 : (C.tam || 72));
+  return `<div style="position:absolute;left:64px;right:136px;top:${f.top || C.topo_txt || 320}px;text-align:center;font-weight:900;font-size:${tam}px;line-height:1.08;color:${CREME};letter-spacing:-.01em;text-shadow:0 4px 18px rgba(0,0,0,.65)">${frasePalavras(t, f.ws, { chave: C.chave })}</div>`;
+}
+function cartaoFinal(t) {
+  const F = C.final; if (!F || t < F.a) return '';
+  const o = eo((t - F.a) / .35), q = eo((t - F.a - .15) / .45), c = eo((t - F.a - .6) / .4);
+  return `<div style="position:absolute;inset:0;background:rgba(10,9,8,${.74 * o})"></div>
+  <div style="position:absolute;left:80px;right:140px;top:560px;text-align:center;opacity:${q};transform:translateY(${(1 - q) * 24}px)">
+   <div style="font-family:Pf;font-style:italic;font-size:66px;line-height:1.16;color:${CREME}"><span style="color:${OURO2}">“</span>${F.citacao}<span style="color:${OURO2}">”</span></div>
+   <div style="width:${q * 120}px;height:3px;background:${OURO};margin:34px auto 22px"></div>
+   <div style="font-size:30px;font-weight:700;color:#e6dccb;letter-spacing:.02em">Bruno, na entrevista à TV Câmara Campinas</div>
+   ${F.cta ? `<div style="margin-top:44px;font-size:36px;font-weight:800;color:#fff;opacity:${c}">${F.cta}</div>` : ''}</div>`;
+}
+function render(t, camada) {
+  const el = document.getElementById(camada); if (camada !== 'front') { el.innerHTML = ''; return; }
+  const sf = C.selfie && t < C.selfie[1];
+  let h = '';
+  if (!sf) {
+    h += topoEscuro(C.topo || .62);
+    if (!(C.final && t >= C.final.a)) {
+      h += rotulo(t, C.rotulo, 236, 56, cl((t - (C.selfie ? C.selfie[1] : 0)) / .2));
+      h += frase(t);
+    }
+    if (C.nome) h += nomeTV(t, C.nome[0], C.nome[1]);
+    h += cartaoFinal(t);
+  } else if (C.selfie_txt) h += legendaGigante(t, 300);
+  el.innerHTML = h;
+}
+</script></body></html>

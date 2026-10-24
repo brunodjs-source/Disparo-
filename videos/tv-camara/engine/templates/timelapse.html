@@ -1,0 +1,69 @@
+<!doctype html><html><head><meta charset="utf-8"></head><body><script>/*__BASE__*/
+// TIMELAPSE · 35 minutos de gravação em 35 segundos. A base (tempo real + acelerado) vem pronta do timeremap.py.
+// C.gancho {a, txt, chave, linha}  C.relogio [[t_saida, s_gravacao]] (linear por partes)  C.capitulos [{t, n, titulo}]
+// C.respiros [[a, b]] (tempo real: some o prédio, entra a legenda)  C.rebobina [a, b]  C.chave {t, palavra}  C.nome [a,b]
+// C.lista {a, titulo, cta}  C.marcas_prog [frações 0..1 na barra]
+const TORRE = 'M40 30H52V48H64V30H76V48H88V30H100V62L90 74L92 122L104 134V146H36V134L48 122L50 74L40 62Z';
+function relogio(t) {
+  const R = C.relogio; let s = R[0][1];
+  for (let i = 0; i < R.length - 1; i++) if (t >= R[i][0] && t <= R[i + 1][0]) s = R[i][1] + (R[i + 1][1] - R[i][1]) * (t - R[i][0]) / Math.max(1e-6, R[i + 1][0] - R[i][0]);
+  if (t > R[R.length - 1][0]) s = R[R.length - 1][1];
+  const m = Math.floor(s / 60), ss = Math.floor(s % 60);
+  return `${String(m).padStart(2, '0')}:${String(ss).padStart(2, '0')}`;
+}
+const emRespiro = t => (C.respiros || []).some(([a, b]) => t >= a && t < b);
+const pesoPredio = t => { let w = 1; for (const [a, b] of (C.respiros || [])) w = Math.min(w, 1 - cl((t - a) / .25) * (1 - cl((t - b) / .3))); return w; };
+function predio(t) {           // andares na parede: o novo entra embaixo, os antigos sobem e escurecem; só 3 à vista
+  const vis3 = C.capitulos.filter(c => t >= c.t); if (!vis3.length) return '';
+  const w = pesoPredio(t); if (w <= 0) return '';
+  const BASE = 800, PASSO = 118;
+  return vis3.map((c, idx) => {
+    const novos = vis3.slice(idx + 1), sobe = novos.reduce((s, n) => s + mola((t - n.t) / .55), 0);
+    const ent = mola((t - c.t) / .55), y = BASE - PASSO * sobe + (1 - ent) * 140;
+    if (sobe > 2.6) return '';
+    const o = cl(ent * 2) * (sobe <= 1 ? 1 : sobe <= 2 ? 1 - .45 * (sobe - 1) : .55 * cl((2.6 - sobe) / .6)) * w;
+    const cor = sobe < .5 ? CREME : '#8f877c', fs = caber(c.titulo, 'Cinzel', 760, sobe < .5 ? 64 : 50);
+    return `<div style="position:absolute;left:70px;right:130px;top:${y - fs}px;display:flex;align-items:baseline;gap:20px;justify-content:center;opacity:${o};transform:scale(${.9 + .1 * ent})">
+      <span style="font-family:Cinzel;font-weight:900;font-size:${fs * .9}px;color:${OURO2}">${c.n}</span><span style="font-family:Cinzel;font-weight:900;font-size:${fs}px;color:${cor};text-shadow:0 4px 16px rgba(0,0,0,.55);white-space:nowrap">${c.titulo}</span></div>`;
+  }).join('');
+}
+function barra(t) {
+  const p = cl(t / C.dur);
+  return `<div style="position:absolute;left:0;right:0;top:0;height:5px;background:rgba(255,255,255,.12)"></div><div style="position:absolute;left:0;top:0;height:5px;width:${p * W}px;background:${OURO}"></div>` +
+    (C.capitulos || []).map(c => `<div style="position:absolute;top:0;left:${c.t / C.dur * W - 2}px;width:4px;height:12px;background:${t >= c.t ? OURO2 : 'rgba(255,255,255,.45)'}"></div>`).join('');
+}
+function relogioBox(t) {
+  const a = C.relogio_a || 4.2; if (t < a) return '';
+  const rb = C.rebobina && t >= C.rebobina[0] && t < C.rebobina[1];
+  return `<div style="position:absolute;left:56px;top:226px;opacity:${cl((t - a) / .2)}"><div style="font-family:'DejaVu Sans Mono',monospace;font-size:20px;letter-spacing:.18em;color:#d8cfc0">${rb ? 'VOLTANDO' : 'TEMPO DE GRAVAÇÃO'}</div>
+   <div style="font-family:'DejaVu Sans Mono',monospace;font-size:58px;font-weight:700;color:${rb ? OURO2 : CREME};text-shadow:0 3px 14px rgba(0,0,0,.7)">${relogio(t)}</div></div>`;
+}
+function listaTorre(t) {
+  const L = C.lista; if (!L || t < L.a) return '';
+  const p = eo((t - L.a) / .45);
+  return `<div style="position:absolute;inset:0;background:rgba(8,7,6,${.8 * p})"></div>
+  <svg viewBox="30 0 80 152" style="position:absolute;left:90px;top:300px;height:1100px;opacity:${.16 * p}"><path d="${TORRE}" fill="${OURO}"/></svg>
+  <div style="position:absolute;left:96px;right:150px;top:330px;opacity:${p}"><div style="font-family:Cinzel;font-weight:900;font-size:32px;letter-spacing:.12em;color:${OURO};margin-bottom:30px">${L.titulo}</div>` +
+  C.capitulos.map((c, i) => { const q = mola((t - L.a - .2 - i * .1) / .5);
+    return `<div style="display:flex;align-items:baseline;gap:22px;margin-bottom:18px;opacity:${cl(q * 2)};transform:translateX(${(1 - q) * -50}px)"><span style="font-family:Cinzel;font-weight:900;font-size:50px;color:${OURO2};width:52px">${c.n}</span><span style="font-family:Cinzel;font-weight:900;font-size:${caber(c.titulo, 'Cinzel', 700, 48)}px;color:${CREME}">${c.titulo}</span></div>`; }).join('') +
+  `<div style="margin-top:40px;font-size:38px;font-weight:800;line-height:1.2;color:#fff;opacity:${eo((t - L.a - 1) / .4)}">${L.cta}</div></div>`;
+}
+function render(t, camada) {
+  const el = document.getElementById(camada); if (camada !== 'front') { el.innerHTML = ''; return; }
+  let h = '';
+  const fimL = C.lista && t >= C.lista.a;
+  h += topoEscuro(.5, 900);
+  if (!fimL) {
+    h += barra(t);
+    const G = C.gancho; if (G) h += connectHook(t, G.a, G.txt, G.chave, 300, G.linha);
+    h += relogioBox(t);
+    h += predio(t);
+    if (emRespiro(t) || (C.pouso && t >= C.pouso[0])) h += legendaGigante(t, 420);
+    if (C.chave && t >= C.chave.t && t < C.chave.t + 2.2) h += `<div style="position:absolute;left:70px;right:130px;top:700px;text-align:center;font-weight:900;font-size:76px;color:${ESC}">${marca(t, C.chave.t, `<span style="color:${ESC}">${C.chave.palavra}</span>`)}</div>`;
+    if (C.nome) h += nomeTV(t, C.nome[0], C.nome[1]);
+    if (C.rebobina && t >= C.rebobina[0] && t < C.rebobina[1]) h += `<div style="position:absolute;inset:0;background:rgba(245,196,110,${.14 * Math.sin(Math.PI * (t - C.rebobina[0]) / (C.rebobina[1] - C.rebobina[0]))})"></div>`;
+  }
+  h += listaTorre(t);
+  el.innerHTML = h;
+}
+</script></body></html>

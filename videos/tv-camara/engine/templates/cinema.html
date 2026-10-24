@@ -1,0 +1,54 @@
+<!doctype html><html><head><meta charset="utf-8"></head><body><script>/*__BASE__*/
+// CINEMA · fonte de cinema, strobo tipográfico e palavra que cai. Janela 1080x1200 (y 300 a 1500) com barras desde o quadro 0.
+// C.gancho = {palavras:[...], txt}  C.legendas = [{a, b, txt}]  C.chave = {t, palavra, fim}  C.rotulo  C.nome=[a,b]  C.final={a, cta}
+const BT = 300, BB = 1500, BARRA = '#0E0D0B';
+const GRAD = `linear-gradient(180deg,#F5D08F 0%,#E8B36A 45%,#9A5F2A 100%)`;
+const ouroTxt = `background:${GRAD};-webkit-background-clip:text;background-clip:text;color:transparent`;
+function strobe(t) {             // troca de palavra a cada 4 quadros, sem quadro vazio (sem clarão)
+  if (t >= .6) return '';
+  const ps = C.gancho.palavras, i = Math.min(ps.length - 1, Math.floor(t * 30 / 4) % ps.length), w = ps[i];
+  const fs = caber(w, 'Cinzel', 860, 170);
+  return `<div style="position:absolute;left:0;right:0;top:${BT}px;height:${BB - BT}px;background:rgba(0,0,0,.5)"></div>
+  <div style="position:absolute;left:60px;right:120px;top:${(BT + BB) / 2 - fs * .6}px;text-align:center;font-family:Cinzel;font-weight:900;font-size:${fs}px;line-height:1.1;${ouroTxt};filter:drop-shadow(0 6px 20px rgba(0,0,0,.6))">${w}</div>`;
+}
+function topo(t) {               // gancho assentado na barra de cima; na palavra-chave, ela cai no lugar
+  const K = C.chave;
+  if (K && t >= K.t - .02) {
+    const fs = caber(K.palavra, 'Cinzel', 900, 150), y = queda(t - K.t, 420, 5200, .32, 2);
+    return `<div style="position:absolute;left:60px;right:120px;top:${BT - 24 - fs * 1.02 - y}px;text-align:center;font-family:Cinzel;font-weight:900;font-size:${fs}px;line-height:1.02;${ouroTxt}">${K.palavra}</div>`;
+  }
+  if (t < .6) return '';
+  const p = eo((t - .6) / .4), fs = caber(C.gancho.txt, 'Cinzel', 900, 72), sai = K ? 1 - cl((t - K.t + .35) / .3) : 1;
+  return `<div style="position:absolute;left:60px;right:120px;top:${200 - (fs - 72) * .5}px;text-align:center;font-family:Cinzel;font-weight:900;font-size:${fs}px;letter-spacing:.02em;line-height:1.1;${ouroTxt};opacity:${p * sai};transform:translateY(${(1 - p) * 30}px) scale(${1.25 - .25 * p})">${C.gancho.txt}</div>`;
+}
+function legenda(t) {            // legenda de cinema dentro da barra de baixo, uma frase por vez
+  let L = null; for (const x of C.legendas) if (t >= x.a && t < x.b) L = x; if (!L) return '';
+  const o = cl((t - L.a) / .12) * (1 - cl((t - L.b + .1) / .1)), fs = caber(L.txt, 'Pf', 900, 46);
+  return `<div style="position:absolute;left:60px;right:120px;top:1534px;text-align:center;font-family:Pf;font-style:italic;font-size:${fs}px;line-height:1.2;color:${CREME};opacity:${o}">${L.txt}</div>`;
+}
+function fecho(t) {
+  const F = C.final; if (!F || t < F.a) return ['', 0];
+  const p = eio((t - F.a) / .6), q = eo((t - F.a - .3) / .5), c = eo((t - F.a - .9) / .4);
+  const fecha = eio((t - (F.fecha || C.dur - .5)) / .5);
+  return [`<div style="position:absolute;left:0;right:0;top:${BT}px;height:${BB - BT}px;background:rgba(8,7,6,${.78 * p})"></div>
+  <div style="position:absolute;left:60px;right:120px;top:780px;text-align:center;opacity:${q * (1 - fecha)}">
+    <div style="font-family:Cinzel;font-weight:900;font-size:30px;letter-spacing:.3em;${ouroTxt}">ENTREVISTA À TV CÂMARA CAMPINAS</div>
+    <div style="width:${q * 140}px;height:2px;background:${OURO};margin:26px auto"></div>
+    <div style="font-size:34px;font-weight:700;color:${CREME}">Bruno · <i style="font-family:Pf;font-weight:400;color:${OURO2}">Estrategista de Lançamento</i></div>
+    ${F.cta ? `<div style="margin-top:60px;font-size:38px;font-weight:800;color:#fff;opacity:${c}">${F.cta}</div>` : ''}</div>`, fecha];
+}
+function render(t, camada) {
+  const el = document.getElementById(camada); if (camada !== 'front') { el.innerHTML = ''; return; }
+  const [fc, fecha] = fecho(t);
+  const hT = BT + fecha * (960 - BT), hB = (1920 - BB) + fecha * (960 - (1920 - BB));
+  let h = strobe(t);
+  if (!(C.final && t >= C.final.a)) {
+    h += rotulo(t, C.rotulo, BT + 26, 56, cl((t - .6) / .3), true);
+    if (C.nome) h += nomeTV(t, C.nome[0], C.nome[1], 1260);
+  }
+  h += fc;
+  h += `<div style="position:absolute;left:0;right:0;top:0;height:${hT}px;background:${BARRA}"></div><div style="position:absolute;left:0;right:0;bottom:0;height:${hB}px;background:${BARRA}"></div>`;
+  if (!fecha) h += topo(t) + legenda(t);
+  el.innerHTML = h;
+}
+</script></body></html>

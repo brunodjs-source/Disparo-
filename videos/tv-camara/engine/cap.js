@@ -5,8 +5,8 @@ const { chromium } = require('/opt/node-tools/node_modules/playwright'); const f
 (async () => {
   const [CJ, OUT, ...shots] = process.argv.slice(2); const D = __dirname; const C = JSON.parse(fs.readFileSync(CJ, 'utf8'));
   const tpl = fs.readFileSync(path.join(D, 'templates', C.fmt + '.html'), 'utf8')
-    .replace('/*__BASE__*/', fs.readFileSync(path.join(D, 'templates', '_base.js'), 'utf8'))
-    .replace('__DATA__', JSON.stringify(C));
+    .replace('/*__BASE__*/', () => fs.readFileSync(path.join(D, 'templates', '_base.js'), 'utf8'))
+    .replace('__DATA__', () => JSON.stringify(C));
   const tmp = path.join(D, `_${C.id}.html`); fs.writeFileSync(tmp, tpl);
   fs.mkdirSync(OUT + '/back', { recursive: true }); fs.mkdirSync(OUT + '/front', { recursive: true });
   const W = C.w || 1080, H = C.h || 1920, N = Math.round(C.dur * 30);

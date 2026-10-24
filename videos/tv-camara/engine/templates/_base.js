@@ -87,3 +87,39 @@ function ctaComentario(t, a, texto, linha1 = 'Comenta aqui', linha2 = '', top = 
 const marca = (t, a, palavra, cor = OURO) => `<span style="position:relative;display:inline-block"><i style="position:absolute;left:-6px;bottom:6%;height:42%;width:${eo((t - a) / .3) * 104}%;background:${cor};opacity:.85;border-radius:6px;z-index:-1"></i>${palavra}</span>`;
 // barra de progresso fina no topo
 const progresso = (t, cor = OURO) => `<div style="position:absolute;left:0;top:0;height:6px;width:${cl(t / C.dur) * W}px;background:${cor}"></div>`;
+// Nome e cargo da identidade: caixa escura, filete ouro que cresce antes do texto, prova da TV em texto
+function nomeTV(t, a, b, top = 1250, left = 56) {
+  const o = vis(t, a, b, .3, .3); if (!o) return '';
+  const tr = eo((t - a) / .35), tx = eo((t - a - .2) / .4);
+  return `<div style="position:absolute;left:${left}px;top:${top}px;opacity:${o};transform:translateX(${(1 - tx) * -24}px)"><div style="background:rgba(20,18,16,.88);border-radius:14px;padding:16px 26px 18px;position:relative;overflow:hidden">
+  <div style="position:absolute;left:0;top:0;bottom:0;width:7px;background:${OURO};transform:scaleY(${tr});transform-origin:50% 0"></div>
+  <div style="opacity:${tx}"><b style="display:block;font-size:44px;font-weight:900;color:#fff;line-height:1.05">Bruno</b><i style="display:block;font-family:Pf;font-size:32px;color:${OURO2};line-height:1.2">Estrategista de Lançamento</i>
+  <span style="display:block;font-size:22px;font-weight:600;letter-spacing:.04em;color:#cfc6b6;margin-top:6px">Entrevista à TV Câmara Campinas</span></div></div></div>`;
+}
+// rótulo mono com o minuto real da entrevista (prova da citação)
+const rotulo = (t, txt, top = 236, left = 56, o = 1, caixa = false) => `<div style="position:absolute;left:${left}px;top:${top}px;font-family:'DejaVu Sans Mono',monospace;font-size:24px;letter-spacing:.06em;color:#e6dccb;opacity:${o};text-shadow:0 2px 8px rgba(0,0,0,.8);${caixa ? 'background:rgba(14,13,11,.72);padding:6px 12px;border-radius:8px' : ''}">${txt}</div>`;
+// gradiente que escurece o topo (texto claro sobre a parede cinza clara)
+const topoEscuro = (a = .62, ate = 860) => `<div style="position:absolute;left:0;right:0;top:0;height:${ate}px;background:linear-gradient(180deg,rgba(8,7,6,${a}) 0%,rgba(8,7,6,${a * .75}) 45%,rgba(8,7,6,0) 100%)"></div>`;
+// palavras de uma frase acendendo no tempo da fala (35% até ser dita)
+function frasePalavras(t, ws, opts = {}) {
+  return ws.map(([tw, txt]) => {
+    const on = cl((t - tw + .03) / .2), k = opts.chave && opts.chave.t === tw;
+    const op = .35 + .65 * on;
+    if (k) { const m = eo((t - tw) / .3);
+      return `<span style="position:relative;display:inline-block;margin:0 .13em"><i style="position:absolute;left:-8px;right:-8px;top:12%;bottom:6%;background:${OURO};border-radius:8px;transform:scaleX(${m});transform-origin:0 50%;clip-path:polygon(0 8%,100% 0,98% 92%,2% 100%)"></i><span style="position:relative;color:${m > .5 ? ESC : CREME};opacity:${op};text-shadow:${m > .5 ? 'none' : '0 4px 18px rgba(0,0,0,.65)'}">${txt}</span></span>`; }
+    return `<span style="display:inline-block;margin:0 .13em;opacity:${op}">${txt}</span>`;
+  }).join(' ');
+}
+// pré-carrega as fontes (o canvas e o measureText só enxergam fonte já usada no DOM)
+document.body.insertAdjacentHTML('beforeend', '<div style="position:absolute;left:-9999px;top:0;opacity:0"><span style="font-family:Cinzel;font-weight:900">Aa</span><i style="font-family:Pf">Aa</i><b style="font-weight:900">Aa</b><span style="font-family:\'DejaVu Sans Mono\'">0</span></div>');
+const _mc = document.createElement('canvas').getContext('2d');
+// maior tamanho (até max) em que o texto cabe em larg px
+function caber(txt, fonte, larg, max) { _mc.font = `${max}px ${fonte}`; const w = _mc.measureText(txt).width; return Math.min(max, Math.floor(max * larg / Math.max(1, w))); }
+// queda com gravidade e quiques amortecidos, forma fechada: devolve o deslocamento acima do alvo (px) no tempo tau
+function queda(tau, alt, g = 5200, rest = .3, quiques = 2) {
+  if (tau <= 0) return alt; const th = Math.sqrt(2 * alt / g);
+  if (tau < th) return alt - g * tau * tau / 2;
+  let v = g * th * rest, t2 = tau - th;
+  for (let q = 0; q < quiques; q++) { const d = 2 * v / g; if (t2 < d) return v * t2 - g * t2 * t2 / 2; t2 -= d; v *= rest; }
+  return 0;
+}
