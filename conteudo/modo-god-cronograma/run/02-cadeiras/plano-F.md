@@ -343,6 +343,11 @@ Toda legenda e todo estático deste plano: sem travessão, sem emoji, sem promes
 | 21 | Copiar mc02 a mc04, as bases dos ob e a fonte da entrevista para o Drive [FATO 110] | o quanto antes; antes de apagar o release público |
 | 22 | Opcional: mandar o link da edição 1 a 1 à rede quente (BNI, propostas abertas), com uma linha pessoal, nunca em massa | de 03 a 10/11 |
 
+**Bio para a visita de verificação** (o Bruno escolhe; as duas têm 148 caracteres, contados nesta cadeira, abaixo do limite de 150):
+- Versão do Módulo 2, aprovada e não aplicada [FATO, 00-SISTEMA, Módulo 2]: "Você atende. Eu desenho e comando o seu lançamento. / Para experts que já têm audiência e agenda cheia. / Case: de 6 para 20 mi/mês ↓ / Diagnóstico grátis"
+- Versão com a TV, a partir de 02/11 e só com o horário confirmado: "Você atende. Eu desenho e comando o seu lançamento. / Para experts com audiência e agenda cheia. / Entrevista na TV Câmara Campinas / Diagnóstico grátis ↓"
+- Link nas duas: `estrategistadelancamento.com.br/tabuleiro/?o=ig-bio` [FATO 132]. A troca tira da bio "Ide e pregai o evangelho!", "Visitor Host" e "Dev". A fé continua no conteúdo e no destaque QUEM SOU [00-SISTEMA, Módulo 1].
+
 ### P22. Etiquetas e o que falta
 
 Todo número deste plano tem etiqueta. Correções que o plano já usa:
