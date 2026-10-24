@@ -18,6 +18,9 @@ Rodada de 24/10/2026. Fonte: gravação de 35:21 (bastidor de 0:00 a 14:30, prog
 | po01 | PONTOS | 26:48 a 27:08 | 12:13 | 23,7 s | Método Xeque-Mate: GATILHOS, XEQUE-MATE, JOGADA, POSICIONAMENTO, MOMENTO formados em pontos no instante da fala, lista final |
 | tl01 | TIMELAPSE | gravação inteira | | 36,5 s | 35 minutos em 35 segundos, relógio, 6 andares de assunto, o 5 escondido como laço até o pouso em "ouro", índice na torre |
 | tl02 | TIMELAPSE 2 | gravação inteira | | 35,4 s | Empreender, cases só com nicho e valor e família no fim. Laço "eu construí patrimônio, eu construí..." pago em "família"; reacts reais: risada dos dois em câmera lenta e o "O que?" da Mirna; hip-hop-02 |
+| tl03 | TIMELAPSE 3 · A pergunta da TV | 25:16 a 25:40 e bastidor | | 36 s | Pergunta "Você foi investir em equipamento?" fixa no topo, cronômetro contando para trás até a resposta; react: risada dos dois em tela dividida "ao mesmo tempo"; trap-electro-vibes |
+| tl04 | TIMELAPSE 4 · De trás pra frente | gravação inteira ao contrário | | 34,4 s | Fita rebobinando do fim ao 00:00, paradas de 5 a 1 (ensinar empresários, realidade de hoje, quebrar a objeção, pai que estimulava, pai pioneiro); react: "Uau!" em replay; close-up |
+| tl05 | TIMELAPSE 5 · A régua do tempo | 17:03 a 23:03 | | 35,3 s | Marketing de antes e de hoje numa régua de anos (antes, 2015, pandemia, hoje); react: "Ainda?" congelado com carimbo; CTA SIM ou NÃO; uplifting-bass |
 | pf01 | PROFISSAO (dentista) | 20:28 a 20:49 | 05:52 | 24 s | Franquia odontológica, faixa "NA TV" que para na frase, CTA de envio |
 | mc01 a mc04 | MANCHETE (stories) | vários | | 4,6 a 11,5 s | Loop com faixa "NA TV" e ticker de outras frases |
 | car01 | CARROSSEL | 4 frases | 03:29, 08:33, 11:45, 13:45 | 6 lâminas 4:5 | Capa "Eu só tinha um computador e um sonho." com círculo na câmera da TV; vigas 250 MIL, OURO, PRODUTO, FAMÍLIA que atravessam a borda e passam atrás da cabeça; lista na torre |
@@ -76,6 +79,21 @@ Regras do CLAUDE.md conferidas: sem travessão, sem emoji, sem promessa de resul
 > Comenta o número do assunto que você quer ver inteiro.
 > #empreendedorismo #estrategistadelancamento #bastidores #familia #marketingdigital #campinas
 
+**tl03**
+> Você foi investir em equipamento? A pergunta da TV e a minha resposta, com o cronômetro correndo.
+> Comenta o seu primeiro investimento.
+> #empreendedorismo #estrategistadelancamento #bastidores #comecar #marketingdigital #campinas
+
+**tl04**
+> A entrevista de trás pra frente: do fim da gravação até o 00:00, parando nos 5 momentos que explicam de onde eu vim.
+> Comenta o número da parada que você quer ver inteira.
+> #bastidores #estrategistadelancamento #entrevista #empreendedorismo #marketingdigital #campinas
+
+**tl05**
+> O marketing de antes e o de hoje. Banners, outdoors, panfletos, a ascensão do digital desde 2015, a pandemia. E o que até hoje é o melhor marketing.
+> Comenta SIM ou NÃO: o tête-à-tête ainda é o melhor marketing?
+> #marketingdigital #estrategistadelancamento #vendas #mercado #empreendedorismo #campinas
+
 **pf01** (stories da tarde na terça, dia do nicho dentista; reel só se o Módulo 7 mandar DOBRAR profissão nomeada)
 > Dentista, esse case eu contei na TV: uma franquia odontológica muito famosa, um projeto com o diretor de marketing, e saímos de lá com um milhão e meio de faturamento em dois meses.
 > Resultado de um caso não vale como promessa para outro. O que eu mostro é o caminho: estratégia antes do anúncio.
@@ -103,6 +121,7 @@ Regras do CLAUDE.md conferidas: sem travessão, sem emoji, sem promessa de resul
 | sáb 31/10 | 18h30 | **pb01** (abre a série; o REACT espera a selfie) | autorização da Mirna; sem ela, versão CB |
 | seg 02/11 | | Módulo 7 com 48 h do pb01 | |
 | sáb 07/11 | 18h30 | **tl01** e enquete igual nos stories | autorização |
+| banco | | **tl03, tl04, tl05**: um por sábado depois do tl02, só se o anterior passar de 0,8x da mediana com pulo abaixo de 75% | autorização |
 | sáb 21/11 | 18h30 | **tl02** (se o tl01 passar de 0,8x da mediana; senão vai para o banco) | autorização |
 | dom 08/11 | 18h30 | **pb02** | só com o portão aberto |
 | ter 10/11 | tarde | **pf01** nos stories (dia do nicho dentista) | |
