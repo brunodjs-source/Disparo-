@@ -1,0 +1,441 @@
+{
+ "id": "tl02",
+ "fmt": "timelapse",
+ "seg": [
+  0,
+  35.35
+ ],
+ "serie": "TIMELAPSE 2",
+ "segmentos": [
+  {
+   "tipo": "rt",
+   "fonte": "zoom",
+   "src": 1875,
+   "dur": 1.6
+  },
+  {
+   "tipo": "rt",
+   "fonte": "zoom",
+   "src": 1701.45,
+   "dur": 3.2
+  },
+  {
+   "tipo": "rapido",
+   "fonte": "full",
+   "src0": 0,
+   "src1": 931.95,
+   "dur": 1.6
+  },
+  {
+   "tipo": "rt",
+   "fonte": "zoom",
+   "src": 931.95,
+   "dur": 3.25
+  },
+  {
+   "tipo": "rt",
+   "fonte": "zoom",
+   "src": 940.9,
+   "dur": 1.6,
+   "lento": 2
+  },
+  {
+   "tipo": "rapido",
+   "fonte": "full",
+   "src0": 942,
+   "src1": 1092.25,
+   "dur": 2.0
+  },
+  {
+   "tipo": "rt",
+   "fonte": "zoom",
+   "src": 1092.25,
+   "dur": 2.5
+  },
+  {
+   "tipo": "rt",
+   "fonte": "zoom",
+   "src": 1096.6,
+   "dur": 1.0
+  },
+  {
+   "tipo": "rapido",
+   "fonte": "full",
+   "src0": 1097.6,
+   "src1": 1249.3,
+   "dur": 2.1
+  },
+  {
+   "tipo": "rapido",
+   "fonte": "full",
+   "src0": 1249.3,
+   "src1": 1508.5,
+   "dur": 2.1
+  },
+  {
+   "tipo": "rapido",
+   "fonte": "full",
+   "src0": 1508.5,
+   "src1": 1731.5,
+   "dur": 2.1
+  },
+  {
+   "tipo": "rapido",
+   "fonte": "full",
+   "src0": 1731.5,
+   "src1": 1778,
+   "dur": 2.1
+  },
+  {
+   "tipo": "rapido",
+   "fonte": "full",
+   "src0": 1778,
+   "src1": 2121,
+   "dur": 1.0
+  },
+  {
+   "tipo": "amostra",
+   "fonte": "full",
+   "src0": 2120,
+   "src1": 1701.45,
+   "dur": 0.8
+  },
+  {
+   "tipo": "rt",
+   "fonte": "zoom",
+   "src": 1701.45,
+   "dur": 2.2
+  },
+  {
+   "tipo": "rt",
+   "fonte": "cb",
+   "src": 1703.65,
+   "dur": 2.9
+  },
+  {
+   "tipo": "rt",
+   "fonte": "zoom",
+   "src": 1880,
+   "dur": 3.3
+  }
+ ],
+ "voz_trechos": [
+  [
+   1.6,
+   1701.45,
+   3.18
+  ],
+  [
+   6.4,
+   931.95,
+   3.25
+  ],
+  [
+   13.25,
+   1092.25,
+   2.44
+  ],
+  [
+   15.75,
+   1096.6,
+   0.8
+  ],
+  [
+   26.95,
+   1701.45,
+   5.05
+  ]
+ ],
+ "falantes": [
+  [
+   15.7,
+   16.8,
+   "M"
+  ]
+ ],
+ "planos": [
+  {
+   "t0": 0,
+   "t1": 40,
+   "plano": "BASE"
+  }
+ ],
+ "gancho": {
+  "a": -0.35,
+  "ate": 1.4,
+  "txt": "PARTE 2: EMPREENDER EM 35 SEGUNDOS",
+  "chave": "EMPREENDER",
+  "linha": "BASTIDOR DA ENTREVISTA À TV CÂMARA CAMPINAS"
+ },
+ "relogio_a": 4.8,
+ "relogio": [
+  [
+   4.8,
+   0
+  ],
+  [
+   6.4,
+   931.95
+  ],
+  [
+   9.65,
+   935.2
+  ],
+  [
+   9.66,
+   940.9
+  ],
+  [
+   11.25,
+   941.7
+  ],
+  [
+   13.25,
+   1092.25
+  ],
+  [
+   15.75,
+   1094.75
+  ],
+  [
+   15.76,
+   1096.6
+  ],
+  [
+   16.75,
+   1097.6
+  ],
+  [
+   18.85,
+   1249.3
+  ],
+  [
+   20.95,
+   1508.5
+  ],
+  [
+   23.05,
+   1731.5
+  ],
+  [
+   25.15,
+   1778
+  ],
+  [
+   26.15,
+   2121
+  ],
+  [
+   26.95,
+   1701.45
+  ],
+  [
+   32.05,
+   1706.5
+  ]
+ ],
+ "rebobina": [
+  26.15,
+  26.95
+ ],
+ "capitulos": [
+  {
+   "t": 11.3,
+   "n": 1,
+   "titulo": "COM 9 ANOS DE IDADE"
+  },
+  {
+   "t": 16.8,
+   "n": 2,
+   "titulo": "RESTAURANTE · 250 MIL"
+  },
+  {
+   "t": 18.9,
+   "n": 3,
+   "titulo": "ODONTOLOGIA · 1,5 MILHÃO"
+  },
+  {
+   "t": 21.0,
+   "n": 4,
+   "titulo": "ZERO REAIS"
+  },
+  {
+   "t": 23.1,
+   "n": 6,
+   "titulo": "SER EMPREENDEDOR"
+  },
+  {
+   "t": 25.2,
+   "n": 7,
+   "titulo": "FAMÍLIAS FELIZES"
+  }
+ ],
+ "capitulos_lista": [
+  {
+   "n": 1,
+   "titulo": "COM 9 ANOS DE IDADE"
+  },
+  {
+   "n": 2,
+   "titulo": "RESTAURANTE · 250 MIL"
+  },
+  {
+   "n": 3,
+   "titulo": "ODONTOLOGIA · 1,5 MILHÃO"
+  },
+  {
+   "n": 4,
+   "titulo": "ZERO REAIS"
+  },
+  {
+   "n": 5,
+   "titulo": "EU CONSTRUÍ FAMÍLIA",
+   "destaque": true
+  },
+  {
+   "n": 6,
+   "titulo": "SER EMPREENDEDOR"
+  },
+  {
+   "n": 7,
+   "titulo": "FAMÍLIAS FELIZES"
+  }
+ ],
+ "respiros": [
+  [
+   1.6,
+   4.8
+  ],
+  [
+   6.4,
+   11.25
+  ],
+  [
+   13.25,
+   16.75
+  ]
+ ],
+ "pouso": [
+  26.95,
+  32.05
+ ],
+ "chave": {
+  "palavra": "família",
+  "perto": 30.2
+ },
+ "nome": [
+  27.3,
+  29.5
+ ],
+ "lista": {
+  "a": 32.2,
+  "titulo": "EMPREENDER, CASES E FAMÍLIA",
+  "cta": "Comenta o número do assunto que você quer ver inteiro."
+ },
+ "pb": [
+  [
+   1.6,
+   4.8
+  ],
+  [
+   6.4,
+   9.65
+  ],
+  [
+   13.25,
+   15.75
+  ]
+ ],
+ "sat": [
+  [
+   0,
+   1
+  ],
+  [
+   4.7,
+   1
+  ],
+  [
+   4.8,
+   0.1
+  ],
+  [
+   26.15,
+   1
+  ]
+ ],
+ "look": "natural",
+ "trilha": "hip-hop-02",
+ "trilha_vol": 0.13,
+ "sfx": [
+  [
+   "whoosh",
+   4.8,
+   0.3
+  ],
+  [
+   "sub",
+   9.65,
+   0.35
+  ],
+  [
+   "tick",
+   11.3,
+   0.35
+  ],
+  [
+   "pop",
+   15.75,
+   0.25
+  ],
+  [
+   "tick",
+   16.8,
+   0.35
+  ],
+  [
+   "tick",
+   18.9,
+   0.35
+  ],
+  [
+   "tick",
+   21.0,
+   0.35
+  ],
+  [
+   "tick",
+   23.1,
+   0.35
+  ],
+  [
+   "tick",
+   25.2,
+   0.35
+  ],
+  [
+   "whoosh",
+   26.15,
+   0.28
+  ],
+  [
+   "riser",
+   26.95,
+   0.22
+  ],
+  [
+   "ding_si",
+   "chave",
+   0.32
+  ],
+  [
+   "pop",
+   32.2,
+   0.25
+  ]
+ ],
+ "fade": [
+  0,
+  0.3
+ ]
+}
