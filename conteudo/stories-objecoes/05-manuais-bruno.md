@@ -1,5 +1,7 @@
 # Stories para postar à mão (com sticker) · 25/10 a 02/11
 
+> **Pausa da TV (24/10, 18h45):** não poste os itens que compartilham post da entrevista (tl01, pb01, car01, ci01, po01, pb02, tl02) nem os dias 01/11 e 02/11. Continuam valendo: as enquetes de objeção (balões), o diagnóstico com link, o case de 6 para 20, o compartilhamento do Dentista B e a enquete TEMPO / MEDO de sábado.
+
 O PostZen sobe story sem sticker. Estes vão pelo app do Instagram, na hora marcada. Os outros stories da semana já estão agendados no PostZen.
 
 - **Arquivo**: o PNG está em `estaticos/stories-objecoes/png/` (e foi enviado no chat). "Compartilhar o post" é pelo botão de enviar do próprio post, sem arquivo.

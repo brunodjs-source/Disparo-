@@ -114,6 +114,8 @@ Regras do CLAUDE.md conferidas: sem travessão, sem emoji, sem promessa de resul
 - mc03 "Cada cliente tem um produto específico e a gente vive esse produto": enquete "Concorda?".
 - mc04 "Eu construí patrimônio, eu construí família": caixa "Qual foi a sua virada?".
 
+> **PAUSADO em 24/10, 18h45 (pedido do Bruno: "pausar todos da TV até segunda ordem").** Todos os posts do feed da entrevista (tl01 a tl05, pb01, pb02, car01, ci01, po01) e os stories com conteúdo da TV viraram rascunho no PostZen: não publicam, mas continuam lá com mídia, legenda e data. Para voltar, cada um precisa de nova data (updatePost com scheduledFor). Os reels ob01 a ob03 também esperam.
+
 ## Calendário agendado no PostZen (horário de São Paulo)
 
 Hashtags cortadas para 5 em todas as legendas (o Buzzfy marcou 6 ou mais). Stories saem sem sticker pelo PostZen: enquete e caixa de pergunta entram à mão no app.

@@ -2,6 +2,8 @@
 
 28 stories sem sticker, conferidos com listPosts em 24/10 (28 de 28 scheduled, sem duplicado). Os stories com sticker estão em `05-manuais-bruno.md`. Horário de Brasília.
 
+> **PAUSADO em 24/10, 18h45 (pedido do Bruno: "pausar todos da TV até segunda ordem").** Todos os posts do feed da entrevista (tl01 a tl05, pb01, pb02, car01, ci01, po01) e os stories com conteúdo da TV viraram rascunho no PostZen: não publicam, mas continuam lá com mídia, legenda e data. Para voltar, cada um precisa de nova data (updatePost com scheduledFor). Os reels ob01 a ob03 também esperam.
+
 | Quando | Story | Id no PostZen |
 |---|---|---|
 | 25/10 09h00 | BASTIDOR · SER EMPREENDEDOR (`story-2510-0900-2510-0900.png`) | m17985kkjwp2te6kw8c7xwk9wx8gw7zp |
