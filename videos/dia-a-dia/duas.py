@@ -19,7 +19,7 @@ for faixa in (0, 1):
     marcos = [0.0] + [off + CENA * j for j in range(1, 20) if off + CENA * j < D] + [D]
     for a, b in zip(marcos, marcos[1:]):
         p, s0 = src[k % len(src)]
-        if img(p): args += ['-loop', '1', '-t', f'{b-a:.3f}', '-i', p]
+        if img(p): args += ['-loop', '1', '-framerate', '30', '-t', f'{b-a:.3f}', '-i', p]
         else: args += ['-ss', f'{s0 + a + 7*faixa:.3f}', '-t', f'{b-a:.3f}', '-i', p]
         cenas.append((faixa, a, b - a, n)); n += 1; k += 1
 args += ['-f', 'lavfi', '-i', f'color=c=0x141210:s=1080x1920:d={D}:r=30']; bg = n; n += 1
@@ -28,7 +28,7 @@ for faixa in (0, 1):
     for j, (_, a, d, i) in enumerate(seg):
         z = "1+0.0008*on" if j % 2 == 0 else "1.08-0.0008*on"
         fc.append(f"[{i}:v]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},setsar=1,fps=30,"
-                  f"zoompan=z='{z}':d=1:s={W}x{H}:fps=30,trim=duration={d:.3f},setpts=PTS-STARTPTS[f{faixa}_{j}]")
+                  f"trim=duration={d:.3f},setpts=PTS-STARTPTS[f{faixa}_{j}]")
     fc.append(''.join(f'[f{faixa}_{j}]' for j in range(len(seg))) + f'concat=n={len(seg)}:v=1:a=0[p{faixa}]')
 fc.append(f'[{bg}:v][p0]overlay=40:{Y[0]}[x];[x][p1]overlay=40:{Y[1]}[y]')
 cortes = sorted({round(a, 3) for (_, a, _, _) in cenas if a > 0})
@@ -41,7 +41,7 @@ fc.append(f"[y]{flash},drawbox=x=40:y={Y[0]-4}:w={W}:h=2:c=0xE8B36A:t=fill,drawb
 args += ['-i', SFX]; s = n
 fc.append(f"[{s}:a]asplit={len(cortes)}" + ''.join(f'[s{k}]' for k in range(len(cortes))))
 fc += [f"[s{k}]adelay={int(c*1000)}|{int(c*1000)},volume=0.9[d{k}]" for k, c in enumerate(cortes)]
-fc.append(''.join(f'[d{k}]' for k in range(len(cortes))) + f'amix=inputs={len(cortes)}:normalize=0,apad,atrim=duration={D}[a]')
-args += ['-filter_complex', ';'.join(fc), '-map', '[v]', '-map', '[a]', '-t', str(D), '-c:v', 'libx264', '-crf', '20',
+fc.append(''.join(f'[d{k}]' for k in range(len(cortes))) + f'amix=inputs={len(cortes)}:normalize=0:duration=longest,apad=whole_dur={D},atrim=duration={D}[a]')
+args += ['-filter_complex', ';'.join(fc), '-map', '[v]', '-map', '[a]', '-frames:v', str(int(D*30)), '-t', str(D), '-c:v', 'libx264', '-crf', '20',
          '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '160k', '-movflags', '+faststart', out]
 subprocess.run(args, check=True)
