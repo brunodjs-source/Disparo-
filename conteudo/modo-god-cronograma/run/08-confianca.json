@@ -1,0 +1,173 @@
+{
+ "D1": {
+  "estatistica": {
+   "top": "c",
+   "segunda": "e",
+   "share": 0.79,
+   "votos_por_opcao": {
+    "c": 11,
+    "e": 1,
+    "a": 1,
+    "d": 1
+   },
+   "amplitudeTop": 0.12,
+   "dispersao": 0.12,
+   "pool_logodds": 0.16,
+   "faixa": [
+    0.04,
+    0.38
+   ],
+   "rachada": false,
+   "unanime": false,
+   "n": 14
+  },
+  "convergiu": true,
+  "rotulo": "Baixa",
+  "motivos": [
+   "premissa de alto impacto FRÁGIL"
+  ]
+ },
+ "D2": {
+  "estatistica": {
+   "top": "a",
+   "segunda": "e",
+   "share": 0.86,
+   "votos_por_opcao": {
+    "a": 12,
+    "e": 2
+   },
+   "amplitudeTop": 0.15,
+   "dispersao": 0.15,
+   "pool_logodds": 0.26,
+   "faixa": [
+    0.06,
+    0.5
+   ],
+   "rachada": false,
+   "unanime": false,
+   "n": 14
+  },
+  "convergiu": true,
+  "rotulo": "Baixa",
+  "motivos": [
+   "premissa de alto impacto FRÁGIL"
+  ]
+ },
+ "D3": {
+  "estatistica": {
+   "top": "a",
+   "segunda": "e",
+   "share": 0.71,
+   "votos_por_opcao": {
+    "a": 10,
+    "e": 3,
+    "d": 1
+   },
+   "amplitudeTop": 0.13,
+   "dispersao": 0.14,
+   "pool_logodds": 0.13,
+   "faixa": [
+    0.02,
+    0.35
+   ],
+   "rachada": false,
+   "unanime": false,
+   "n": 14
+  },
+  "convergiu": true,
+  "rotulo": "Baixa",
+  "motivos": [
+   "premissa de alto impacto FRÁGIL"
+  ]
+ },
+ "D4": {
+  "estatistica": {
+   "top": "moderador",
+   "segunda": "moderador (linha diária sobre o que a pausa deixou no PostZen; balão com 'Responde este story' 1 pedido por dia útil; link à mão 1 vez por dia; 4 pilares sem TV durante a pausa; ob01 e ob03 sem data até as condições; ob02 no banco)",
+   "share": 0.14,
+   "votos_por_opcao": {
+    "moderador (linha diária sobre o que a pausa deixou no PostZen; balão com 'Responde este story' 1 pedido por dia útil; link à mão 1 vez por dia; 4 pilares sem TV durante a pausa; ob01 e ob03 sem data até as condições; ob02 no banco)": 1,
+    "decisao_moderador (linha diaria sobre o que a pausa deixou no PostZen; baloes com 'Responde este story' pelo PostZen; 1 pedido por dia util; link a mao 1 vez por dia; teto de 2 a mao por dia; 4 pilares sem TV durante a pausa; ob01 e ob03 sem data ate as condicoes; ob02 no banco)": 1,
+    "moderador: linha diária sobre o que a pausa da TV deixou no PostZen (balão de objeção com 'Responde este story' 1 vez por dia útil, link do diagnóstico à mão 1 vez por dia, teto de 2 itens à mão por dia, 4 pilares sem TV durante a pausa, ob01 e ob03 sem data até as condições, ob02 no banco)": 1,
+    "decisao do moderador: linha diaria sobre o que a pausa da TV deixou no PostZen (balao de objecao com 'Responde este story' pelo PostZen, 1 pedido de resposta por dia util, link a mao 1 vez por dia, teto de 2 itens a mao por dia, autoridade em 4 pilares sem TV durante a pausa, ob01 e ob03 sem data ate cumprirem as condicoes, ob02 no banco)": 1,
+    "moderador": 2,
+    "moderador: linha diária sobre o que a pausa deixou no PostZen (balão de objeção pelo PostZen com 'Responde este story', 1 pedido de resposta por dia útil, link à mão 1 vez por dia com teto de 2 itens à mão por dia, autoridade em 4 pilares sem TV durante a pausa, ob01 e ob03 sem data até cumprirem as condições, ob02 no banco)": 1,
+    "moderador (linha diária sobre o que a pausa deixou no PostZen; balão com 'Responde este story' 1 pedido por dia útil; link à mão 1 vez por dia; teto de 2 à mão por dia; 4 pilares sem TV durante a pausa; ob01 e ob03 sem data até as condições; ob02 no banco)": 1,
+    "decisao-moderador (linha diaria sobre o que a pausa deixou no PostZen, balao com 'Responde este story' 1 vez por dia util, link do diagnostico a mao 1 vez por dia, 4 pilares sem TV, ob01 e ob03 sem data, ob02 no banco)": 1,
+    "decisao-moderador (linha diária sobre o que a pausa da TV deixou no PostZen: balão de objeção com 'Responde este story' pelo PostZen 1 vez por dia útil, link do diagnóstico à mão 1 vez por dia, teto de 2 itens à mão por dia, autoridade em 4 pilares sem TV durante a pausa, ob01 e ob03 sem data até as 3 condições, ob02 no banco, base de 342 contas)": 1,
+    "decisao do moderador: S1 sobre os 11 stories que seguem agendados no PostZen, balao de objecao com 'Responde este story' (1 pedido por dia util), link do diagnostico a mao com teto de 2 itens a mao por dia, autoridade em 4 pilares sem TV enquanto durar a pausa, ob01 e ob03 sem data ate cumprirem as condicoes, ob02 no banco": 1,
+    "decisao-moderador (linha diária sobre os 11 stories que a pausa da TV deixou agendados no PostZen; balão de objeção pelo PostZen com 'Responde este story' 1 vez por dia útil; link do diagnóstico à mão 1 vez por dia, teto de 2 itens à mão por dia; autoridade em 4 pilares sem TV enquanto durar a pausa; ob01 e ob03 sem data até a pausa cair por escrito e a abertura com o rosto do Bruno tirar 8 ou mais na folha de quadros; ob02 no banco; base de medida em contas, 342)": 1,
+    "decisao-moderador (linha diária sobre o que a pausa deixou no PostZen: balão de objeção pelo PostZen com 'Responde este story' 1 vez por dia útil, link do diagnóstico à mão 1 vez por dia, teto de 2 itens à mão por dia, autoridade em 4 pilares sem TV durante a pausa, ob01 e ob03 sem data até cumprirem as 3 condições, ob02 no banco)": 1,
+    "decisao-moderador (linha diária sobre o que a pausa da TV deixou no PostZen: balão de objeção com 'Responde este story' 1 vez por dia útil, link do diagnóstico à mão 1 vez por dia, teto de 2 itens à mão por dia, autoridade por 4 pilares sem TV durante a pausa, ob01 e ob03 sem data até as 3 condições, ob02 no banco)": 1
+   },
+   "amplitudeTop": 0.05,
+   "dispersao": 0.15,
+   "pool_logodds": 0.22,
+   "faixa": [
+    0.08,
+    0.4
+   ],
+   "rachada": true,
+   "unanime": false,
+   "n": 14
+  },
+  "convergiu": false,
+  "rotulo": "Baixa",
+  "motivos": [
+   "não convergiu",
+   "voto sem maioria (peso 0.14)"
+  ]
+ },
+ "D5": {
+  "estatistica": {
+   "top": "a",
+   "segunda": "e",
+   "share": 0.86,
+   "votos_por_opcao": {
+    "a": 12,
+    "e": 2
+   },
+   "amplitudeTop": 0.22,
+   "dispersao": 0.22,
+   "pool_logodds": 0.16,
+   "faixa": [
+    0.03,
+    0.5
+   ],
+   "rachada": false,
+   "unanime": false,
+   "n": 14
+  },
+  "convergiu": true,
+  "rotulo": "Baixa",
+  "motivos": [
+   "premissa de alto impacto FRÁGIL"
+  ]
+ },
+ "D6": {
+  "estatistica": {
+   "top": "c",
+   "segunda": "e",
+   "share": 0.86,
+   "votos_por_opcao": {
+    "c": 12,
+    "e": 2
+   },
+   "amplitudeTop": 0.11,
+   "dispersao": 0.11,
+   "pool_logodds": 0.08,
+   "faixa": [
+    0.01,
+    0.3
+   ],
+   "rachada": false,
+   "unanime": false,
+   "n": 14
+  },
+  "convergiu": true,
+  "rotulo": "Baixa",
+  "motivos": [
+   "premissa de alto impacto FRÁGIL"
+  ]
+ }
+}
