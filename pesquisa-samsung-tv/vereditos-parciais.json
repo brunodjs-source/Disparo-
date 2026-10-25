@@ -1,0 +1,968 @@
+[
+ {
+  "id": "menu-servico-5",
+  "verdict": "parcial",
+  "corrections": "1) Mute, 1, 1, 9, Enter com a TV ligada: confirmado por quatro projetos independentes (Apps2Samsung, teste real em UE55RU7020 de 2019; ColorControl presets; iRemote; jbeale/samsung-rs232-pi; wiki postmarketOS). 2) 'Verificado por IR em modelos HG' esta errado: o unico HG testado (HG43U800FAULXL, firmware 25_RSL) recusou a combinacao tanto pela rede quanto pelo controle fisico (issue 635). 3) 'Mute, cima, baixo, Enter' nao tem nenhum teste documentado; vem so de um comentario de codigo do Apps2Samsung que cita um manual 'HU7000F/HU8000F' (o item escreveu HG7000F/HG8000F) que nao consegui abrir. O iRemote lista outra sequencia para Smart Remote (Mute, cima, baixo, OK, Mute, depois de ir em Configuracoes > Saida de som, com ~60% de sucesso), ou seja, nao ha consenso. 4) 'Menu Display OFF mata todas as combinacoes de hotel': fonte unica (Apps2Samsung issue 639 / PR 640, mesmo autor, e o PR diz que a deteccao de hotel nao foi testada em hardware real). 5) 'Interactive esconde Smart Hub e loja': nao confirmado. No HG43U800 a loja esta ausente (EDEN_available false) independentemente do modo, e o proprio PR 640 diz que o contorno e lancar por app ID, nao mudar Hospitality Mode. 6) 'Tizen 9' do HG43U800: a issue so cita firmware 25_RSL_QTV_BB; a versao Tizen nao aparece. 7) Intervalo: Apps2Samsung usa 250 ms (ajustavel de 100 a 600); ColorControl usa 800 ms. Ambos funcionam.",
+  "applies_to_corrected": "Mute 1 1 9 Enter: confirmado pela rede em UE55RU7020 (2019, Tizen 5) e listado como sequencia geral Samsung por quatro projetos independentes, sem lista de anos; recusado no HG43U800FAULXL (firmware 2025). Mute, cima, baixo, Enter: sem teste documentado em nenhum modelo. Menu Display OFF e Hospitality Mode: so Apps2Samsung, sem confirmacao.",
+  "extra_sources": [
+   "https://raw.githubusercontent.com/jbeale/samsung-rs232-pi/HEAD/README.md",
+   "https://raw.githubusercontent.com/Taaloy/postmarketos-wiki-doc/HEAD/postmarketos-wiki/html/en/TVs.html",
+   "https://github.com/Apps2Samsung/Apps2Samsung/pull/640",
+   "https://raw.githubusercontent.com/Maassoft/ColorControl/HEAD/Shared/Contracts/Samsung/SamsungPresets.cs"
+  ],
+  "notes": "Nao consegui abrir o manual de hospitalidade da Samsung (samsung.com bloqueado pelo proxy). Fato: a sequencia 1 1 9 Enter abre o menu em TV de varejo 2019. Hipotese: tudo que envolve HG, Smart Remote, Menu Display e Hospitality Mode."
+ },
+ {
+  "id": "menu-servico-6",
+  "verdict": "parcial",
+  "corrections": "Confirmado: a) as sequencias do factory menu comecam em standby (Info, Menu, Mute, Power e Mute, 1, 8, 2, Power), por wiki postmarketOS (2010 em diante), jbeale/samsung-rs232-pi, ha-samsung-exlink, hemmerling e post de 2011 no AVForums; b) KEY_FACTORY existe na API de rede (docs Home Assistant samsungtv, samsung-tv-ws-api COMMANDS.md, samsung-tv-control keys.ts) e KEY_INFO seguido de KEY_FACTORY abre o menu com a TV ligada (ColorControl presets, oBusk, usuarios em ColorControl #531 e #540); c) protocolo Samsung32 com endereco 0x07 (Flipper-IRDB: Mute 0F, Power 02, Info 1F, Menu 1A, 1 04, 2 05, 8 0D, 9 0E). Nao confirmado ou errado: d) 'SmartThings nao alcanca a TV em standby' nao tem fonte, e o item omite que o SmartThings serve como controle virtual para digitar o codigo Advanced (0098) depois que o menu ja esta aberto pela rede, relatado em S89C e S95D (ColorControl #540); e) 'Mute, cima, baixo, Enter' sem teste documentado (ver item 5); f) o teclado 123: a issue tizen-sim #103 so descreve o teclado e diz que nao verificou se ele gera uma tecla por digito; nenhum teste com menu; g) 'tudo em cerca de 3 s' vem so do Apps2Samsung; nenhuma outra fonte cita o tempo.",
+  "applies_to_corrected": "Sequencias de standby: Samsung LCD 2010 em diante (postmarketOS), sem distincao Orsay/Tizen. KEY_INFO + KEY_FACTORY pela rede: relatos em S90C, S90D, S95B, S95D, S95F, S89C (2022 a 2025) e nos monitores G95SC e Neo G7 (2023). Smart Remote: nenhuma sequencia de setas verificada em nenhum ano.",
+  "extra_sources": [
+   "https://raw.githubusercontent.com/home-assistant/home-assistant.io/current/source/_integrations/samsungtv.markdown",
+   "https://github.com/xchwarze/samsung-tv-ws-api/blob/master/COMMANDS.md",
+   "https://raw.githubusercontent.com/Lucaslhm/Flipper-IRDB/main/TVs/Samsung/Samsung.ir",
+   "https://raw.githubusercontent.com/Taaloy/postmarketos-wiki-doc/HEAD/postmarketos-wiki/html/en/TVs.html",
+   "https://raw.githubusercontent.com/eklundjon/ha-samsung-exlink/HEAD/README.md",
+   "https://github.com/Maassoft/ColorControl/issues/540",
+   "https://github.com/Maassoft/ColorControl/issues/531"
+  ],
+  "notes": "O caminho mais barato e confirmado: qualquer controle IR Samsung com numeros (AA59/BN59, no Flipper-IRDB) para standby, ou PC na rede com KEY_INFO + KEY_FACTORY. O item esta certo em dizer que nao ha teste do teclado virtual."
+ },
+ {
+  "id": "menu-servico-7",
+  "verdict": "sem_fonte",
+  "corrections": "Nao encontrei nenhuma fonte independente que confirme ou negue o caminho FMS > FMS > Factory Menu App > Option > MRT Option nem a chave com.samsung/featureconf/game_bar.auto_launch_support_type. Busca de codigo no GitHub inteiro so devolve o proprio repo oBusk (0 estrelas, 2 commits). O README diz seguir um guia em pfy.ch (https://pfy.ch/programming/disable-samsung-game-bar.html), que o proxy bloqueou; entao ha possivelmente uma segunda fonte, mas nao verificada. O que esta confirmado e so a abertura do menu (KEY_INFO + KEY_FACTORY) e o codigo Advanced 0038 em monitores (ColorControl #479, G95SC). O titulo 'ajuste real mais feito em 2022 em diante' nao tem base: nenhum relato alem do autor. 'G70NC 2023': o README nao da ano; o codigo CG indica linha 2023, mas nao confirmei em fonte Samsung (bloqueada). 'Tizen': o README chama de Tizen; nao verificado alem disso.",
+  "applies_to_corrected": "Relato unico em Odyssey Neo G7 43 (G70NC, LS43CG700NUXEN). Nenhuma TV. Nenhum outro monitor.",
+  "extra_sources": [
+   "https://github.com/oBusk/samsung-service-menu",
+   "https://github.com/Maassoft/ColorControl/issues/479"
+  ],
+  "notes": "Tratar como hipotese, nao fato. Se o Bruno for testar, fotografar o valor atual antes e usar Reboot, nunca o Exit do ColorControl (ver item 8)."
+ },
+ {
+  "id": "menu-servico-8",
+  "verdict": "parcial",
+  "corrections": "a) Confirmado o menu com 7 a 8 itens e Advanced por codigo (ColorControl #596, S90D). Faltou o codigo: 0098 em TVs (S90C, S95C, S95D, S89C em #540; SamsungServiceMenu.razor) e 0038 em monitores (razor; G95SC em #479). Depois do firmware 2111 a posicao do Advanced mudou e o passo automatico do ColorControl falha (#540, #599); digitar o codigo com teclado Bluetooth ou SmartThings com Advanced realcado funciona. 'Hospitality Mode realcado com o resto desabilitado' em firmware hotel: so Apps2Samsung e o PR 640 admite que nao foi testado em hardware real. b) Option > Hospitality Mode (Interactive, Standalone, OFF): so strings do Apps2Samsung, sem fonte independente. c) Arvore FMS: so oBusk, em monitor Neo G7; nenhuma TV. d) Tianyulife e um Smart Monitor M8 (LS32BM80BUCXXF, 2022, Tizen 6.5) acessado por D-Bus/libfactory com root temporario via SDB, nao por menu na tela; o documento nao descreve tuner. Nao serve como mapa do factory menu de TV. e) ColorControl: 'FactoryMenu' e recomendado para a serie 2024 mas 'tambem funciona nas mais antigas'; nao e '2024 em diante'. A saida 'Exit' causou ciclo RGB / modo aging em S90C (#498), S95B e S95F (#531), com recuperacao so por varios power cycles ou enviando Info e depois Factory; o item omite esse risco. f) hemmerling: serie 450 de 2010; 'Option > Factory Reset' esta riscado na pagina (marcado como removido); o reset e segurando Exit por 20 s com a TV ligada. Control > Hotel Option e PIN 0000 apos reset: confirmados.",
+  "applies_to_corrected": "a) S90C, S90D, S95B, S95D, S95F, S89C (2022 a 2025) e monitores G95SC e Neo G7 (2023); b) nenhum modelo verificado; c) so Neo G7 G70NC; d) Smart Monitor M8 2022 via D-Bus, nao TV; e) ColorControl 2018 em diante, FactoryMenu recomendado para 2024 e posteriores; f) serie 450 de 2010.",
+  "extra_sources": [
+   "https://github.com/Maassoft/ColorControl/issues/540",
+   "https://github.com/Maassoft/ColorControl/issues/479",
+   "https://github.com/Maassoft/ColorControl/issues/498",
+   "https://github.com/Maassoft/ColorControl/issues/531",
+   "https://github.com/Maassoft/ColorControl/issues/599",
+   "https://raw.githubusercontent.com/Tianyulife/samsung-m8-cn-to-us/HEAD/README.md",
+   "https://github.com/Apps2Samsung/Apps2Samsung/pull/640"
+  ],
+  "notes": "Acrescentar ao mapa: codigo Advanced 0098/0038 e o aviso de nao usar 'Exit' do ColorControl (usar Reboot ou desligar pelo controle). Itens b) e c) continuam sem verificacao independente."
+ },
+ {
+  "id": "menu-servico-1",
+  "verdict": "parcial",
+  "corrections": "1) As duas sequencias (Info Menu Mute Power e Mute 1 8 2 Power) sao confirmadas por fontes independentes, mas so para TVs anteriores ao Tizen: LN32C450 de 2010 (hemmerling) e J-series 2015 (jbeale/samsung-rs232-pi, que cita a planilha Consumer RS232 Control da Samsung). Para Tizen 2016 a 2024 nenhuma fonte legivel relata sucesso; o proprio Apps2Samsung so mostra as sequencias como instrucao manual (issue 639) e diz que nao sabe se a TV reconhece a combinacao. O ha-samsung-exlink avisa: 'Sequences vary by model/year'. 2) Os '250 ms entre teclas' nao se aplicam a estas sequencias: no Apps2Samsung esse e o intervalo padrao das sequencias enviadas pela rede; para as de standby a unica exigencia e digitar tudo em cerca de 3 s. 3) 'Manuais de instalacao Samsung citados pelo Apps2Samsung' documentam so a sequencia hoteleira Mute Up Down Enter (modelos HG), nao as duas de fabrica. 4) 'Mudancas costumam exigir Return para confirmar' nao aparece em nenhuma fonte. 5) A saida pelo Power vem do hemmerling (2010); ha-samsung-exlink diz 'Exit and power-cycle'.",
+  "applies_to_corrected": "Confirmado em TVs pre-Tizen (2010 LN32C450; J-series 2015). Tizen 2016 a 2024: sem dado de teste; tratar como hipotese. Endereco IR 0x07 (Samsung32/NECx 7,7) confirmado por iRemote e irdb.",
+  "extra_sources": [
+   "https://raw.githubusercontent.com/jbeale/samsung-rs232-pi/main/README.md",
+   "https://raw.githubusercontent.com/eklundjon/ha-samsung-exlink/main/README.md",
+   "https://raw.githubusercontent.com/probonopd/irdb/master/codes/Samsung/TV/7,7.csv"
+  ],
+  "notes": "Fontes citadas conferidas: SamsungRemoteSequences.cs lista 'factory-standby' (Mute 1 8 2 Power) e 'service-standby' (Info Menu Mute Power) como Precondition Standby, nao enviaveis pela rede ('a sleeping set serves neither the REST API nor the remote channel'); en.json confirma 'esperar ate o LED ficar fixo', 'tudo em cerca de 3 segundos', 'menu azul ou cinza no canto superior esquerdo'. Foruns (Reddit, Samsung Community, AVS, XDA) inacessiveis neste ambiente e busca web esgotada; nao achei relato de usuario em TV Tizen."
+ },
+ {
+  "id": "menu-servico-2",
+  "verdict": "parcial",
+  "corrections": "1) O comando 'samsungtv --host IP factory --i-know-what-im-doing' envia SOMENTE KEY_FACTORY (COMMANDS.md: 'Sends KEY_FACTORY'); nao envia KEY_INFO antes. Se KEY_INFO for necessario (como fazem oBusk e ColorControl), mande 'send-key KEY_INFO' primeiro. 2) Anos: o ColorControl declara Tizen 2018 ou mais novo ('older might work'); nao ha relato legivel para 2016 e 2017, entao 'Tizen 2016 em diante' e extrapolacao. 3) S90D (2024) nao esta 'confirmado': a issue 596 diz que o menu abriu UMA vez e depois nunca mais, mesmo apos reboot. 4) oBusk (monitor Neo G7) sai pelo Return/Exit e depois tira da tomada por 30 s, nao pelo Power; o 'nunca mandar KEY_FACTORY de novo' vem so dos relatos do ColorControl (item 4). 5) 'websocket nao atravessa VLAN': a fonte diz que SSDP so funciona na mesma sub-rede e que o pareamento de outra VLAN falhou com ms.channel.timeOut; com --ip pode funcionar, entao o problema e do pareamento, nao certeza.",
+  "applies_to_corrected": "Confirmado por fontes independentes: S95B (2022), S90C (2023), S95F (2025), Odyssey Neo G7 43 (LS43CG700NUXEN) e G95SC (LS49CG954SNXZA). S90D (2024): abriu uma vez, depois falhou. 2016 a 2017: sem dado. ColorControl: 2018 em diante.",
+  "extra_sources": [
+   "https://github.com/oBusk/samsung-service-menu/blob/main/service_menu.py",
+   "https://github.com/xchwarze/samsung-tv-ws-api/blob/master/samsungtvws/cli/remote.py",
+   "https://raw.githubusercontent.com/Maassoft/ColorControl/master/README.md",
+   "https://raw.githubusercontent.com/Maassoft/ColorControl/master/ColorControl/Services/Samsung/SamsungDevice.cs"
+  ],
+  "notes": "Confirmado nas fontes: ColorControl Preset1 = KEY_INFO:600, KEY_FACTORY:3000; texto 'Both types will not reset your settings' e 'FactoryMenu is recommended for 2024 series but will also work for older ones'; oBusk envia KEY_INFO, sleep 0.3 (lib soma ~1 s), KEY_FACTORY na porta 8002, aceitar o aviso na tela, repetir 'open' se nao abrir. Home Assistant: KEY_INFO e KEY_FACTORY constam na tabela de teclas de remote.send_command e a secao 'Samsung TV keeps asking for permission' confirma Device connection manager > Access notification > First time only. Flag --token-file existe no CLI. O guia original pfy.ch nao pode ser aberto."
+ },
+ {
+  "id": "menu-servico-3",
+  "verdict": "parcial",
+  "corrections": "1) 0038 em monitor: confirmado por dois usuarios independentes no G95SC (LS49CG954SNXZA, firmware T-OSCSCWWC-0080-2044.4), em mar/2025 e mar/2026. 2) 0098 em TV: a UNICA fonte e o texto do proprio ColorControl (SamsungPresets.cs, razor, SamsungDevice.cs); nao encontrei nenhum relato de usuario ou repositorio independente confirmando 0098 em TV, e os relatos de 2025 a 2026 sao de falha (521, 596, 599) sem citar codigo. Trate 0098 como nao confirmado. 3) 'Para 2016 a 2021 nenhuma fonte' esta correto; mas tambem para 2022 a 2025 nao ha confirmacao de 0098 em TV, so a afirmacao da ferramenta. 4) Na versao antiga do ColorControl (SamsungDevice.cs) o usuario precisa navegar manualmente ate 'Advanced' antes do Step 2; o passo 1 do achado esta certo. 5) 'Ele muda com atualizacoes' e inferencia das issues 479 e 599, nao afirmacao de fonte.",
+  "applies_to_corrected": "0038: monitor G95SC 2023 (dois relatos). 0098: TVs, sem confirmacao de usuario em nenhum ano; apenas afirmacao do ColorControl. Issues 521, 596 (S90D) e 599 relatam Advanced sem destravar em 2025 a 2026.",
+  "extra_sources": [
+   "https://raw.githubusercontent.com/Maassoft/ColorControl/master/ColorControl/Services/Samsung/SamsungDevice.cs"
+  ],
+  "notes": "Conferido: PresetAdvanced = KEY_0:800, KEY_0:800, KEY_9:800, KEY_8:800; PresetAdvancedMonitor = 0,0,3,8 com 800 ms; razor: 'You can also manually enter the unlock codes 0098 (for TV's) and 0038 (for monitors) while the Advanced item is highlighted'. Busca de codigo no GitHub por '0098' + samsung service menu so retorna o ColorControl. Issue 479 nao menciona 0098 nem qual codigo valia antes. Nenhum doc oficial Samsung. Foruns inacessiveis neste ambiente."
+ },
+ {
+  "id": "menu-servico-4",
+  "verdict": "parcial",
+  "corrections": "1) O 'segurar o botao fisico da TV por 30 s' nao esta na fonte: a issue 531 diz so 'holding the power button down for like 30 seconds', sem dizer se foi o controle ou o botao da TV (a tentativa de 5 s foi no controle). 2) A frase sobre 'nao saber o que faria sem uma segunda TV ligada ao mesmo PC' e da issue 498 (S90C), nao da 531. 3) Todos os relatos do loop vem de issues do ColorControl (3 usuarios, 3 modelos); nao achei relato fora desse repositorio. oBusk saiu do menu em monitor Neo G7 com Return/Exit e desligar da tomada 30 s, sem relatar loop, entao o gatilho conhecido e o 'Exit' do ColorControl (KEY_FACTORY duas vezes), nao qualquer saida. 4) 'Provavel em toda a linha Tizen 2022 em diante' e hipotese sem fonte. 5) Nao ha resposta do mantenedor nas issues; o aviso 'use the Factory button' no app e a unica reacao.",
+  "applies_to_corrected": "Loop relatado em S90C 2023 (issue 498), S95F 2025 e S95B 2022 (issue 531). Outros modelos e anos: sem dado.",
+  "extra_sources": [
+   "https://raw.githubusercontent.com/Maassoft/ColorControl/master/Shared/Contracts/Samsung/SamsungPresets.cs",
+   "https://raw.githubusercontent.com/oBusk/samsung-service-menu/main/README.md"
+  ],
+  "notes": "Conferido: Exit preset = KEY_FACTORY:2500, KEY_FACTORY; Reboot = KEY_POWER:5000 + WOL; razor: 'If the TV is stuck on cycling full screen RGB images, use the Factory button below'. Issue 531: 'cycles white red green blue and then a black screen with some engineering info'; desligar da tomada por minutos nao resolveu; alunsin: 'During that brief window, you have to be quick and send the Info + Factory command to break the loop'; tarball (S95B): evitar Exit do ColorControl, 'power cycle the TV with the remote control to get out of the service menu'. Issue 498: recuperou reabrindo o menu pelo app em outra TV ligada ao mesmo PC."
+ },
+ {
+  "id": "menu-servico-9",
+  "verdict": "parcial",
+  "corrections": "1) OTA foi verificado pelo autor: a unidade recebeu a atualizacao oficial para 1720.7 e manteve Local Set=US, Preventing Import=0 e was.use_china_server=false (README e us-region-change.md). So reset de fabrica e DRM/contas seguem sem verificacao. 2) Preventing Import fica no offset 0x3E65 (o 0x3E23 e so do Local Set). 3) TPID 401 e o ID de GetItem (leitura); 194 e o UID de SetParameter (escrita). 4) Todo o resto vem de um unico autor e uma unica unidade; nenhuma fonte independente confirma UIDs, offsets ou o filtro em TV de varejo.",
+  "applies_to_corrected": "Smart Monitor M8 LS32BM80BUCXXF (2022, Tizen 6.5, firmwares 1651.1 e 1720.7). Nao confirmado em nenhuma TV Tizen de varejo nem no Brasil.",
+  "extra_sources": [
+   "https://github.com/Tianyulife/samsung-m8-cn-to-us/blob/HEAD/us-region-change.md",
+   "https://github.com/Tianyulife/samsung-m8-cn-to-us/tree/HEAD/firmware-analysis/factory-research"
+  ],
+  "notes": "Busca por 'Preventing Import' e 'factory_get_localset_enum' no GitHub so retorna o repositorio do proprio autor. A recomendacao pratica (nao mexer em Local Set, Type, Front Color) e prudente mas e inferencia, nao fato documentado. Cota de WebSearch estava esgotada; verificacao feita por WebFetch e busca de codigo no GitHub."
+ },
+ {
+  "id": "menu-servico-10",
+  "verdict": "parcial",
+  "corrections": "1) 'Tudo nao verificado em hardware' esta desatualizado: em tizen-community-packages#34 (set. 2026) o org.tizen.factory abriu no HG43U800FAULXL via agente de depuracao; o Hotel Option por ID foi recusado. 2) 'IDs de hotel nao existem em varejo' generaliza demais: PR 659 testou so com.samsung.tv.coba.setting e org.tizen.tv.swu-standalone em um unico set Tizen 9, e a sequencia de teclas do Hotel Option abriu num UE55RU7020 de varejo (PR 638); com.samsung.tv.store e org.tizen.MenuEasySetup existem em varejo. 3) Sao os cinco ultimos marcados Caution, nao quatro; so smarthub-reset e wizard apagam (smarthub-reset desloga apps e limpa dados; wizard 'em alguns apaga a configuracao'); ep-hotel-security so abre o menu. 4) O aviso 'tente de novo' nao esta ligado ao launch: a string do en.json e da falha de pareamento. 5) org.tizen.factory existe em TV de varejo pelo menos desde Tizen 4.0 (UE55NU7400, 2018) e em lista independente (arlogilbert/tizen-app-id); abrir nao foi testado.",
+  "applies_to_corrected": "IDs lidos de hospitality HG43U800FAULXL (Tizen 9, 2025). org.tizen.factory presente em varejo 2018 a 2025 (NU7400 Tizen 4.0 e DU7000 Tizen 9), abertura so confirmada no set hospitality via agente. Apps2Samsung 2.8.0 ou superior.",
+  "extra_sources": [
+   "https://github.com/Apps2Samsung/tizen-community-packages/issues/34",
+   "https://github.com/Apps2Samsung/Apps2Samsung/pull/638",
+   "https://github.com/arlogilbert/tizen-app-id/blob/HEAD/README.md",
+   "https://github.com/ardazeytin/samsung-tizen-tv-debloat/blob/HEAD/reference/UE55NU7400-tizen4.0.md",
+   "https://github.com/no-cover/tizenutility/blob/HEAD/js/main.js"
+  ],
+  "notes": "SamsungSystemApps.cs confirma 'launch failed[400]' pelo launcher do Smart Hub e que canal e REST passam pelo mesmo launcher. tizenutility (app sideloaded) tambem tenta org.tizen.factory por launchAppControl, sem resultado documentado. Nao contorna PIN de Security Mode: confirmado."
+ },
+ {
+  "id": "menu-servico-11",
+  "verdict": "confirmado",
+  "corrections": "Sem erro de passo. Detalhes: o oBusk sai do menu por Return/Exit e desliga da tomada por 30 s; o aviso exato da CLI xchwarze e 'This command sends KEY_FACTORY and may damage your TV' (remote.py) e 'may brick/misconfigure the TV' (COMMANDS.md). O 'Exit' do ColorControl que travou S90C/S95B/S95F e o preset KEY_FACTORY:2500 + KEY_FACTORY, o que sustenta 'nunca saia por KEY_FACTORY'.",
+  "applies_to_corrected": "Tizen 2016 a 2025 (API websocket 8001/8002 existe desde 2016 segundo xchwarze e Home Assistant). Modelo string e foto previa lidos no DU7000 (Tizen 9).",
+  "extra_sources": [
+   "https://github.com/Maassoft/ColorControl/blob/HEAD/Shared/Contracts/Samsung/SamsungPresets.cs",
+   "https://github.com/xchwarze/samsung-tv-ws-api/blob/HEAD/samsungtvws/cli/remote.py",
+   "https://github.com/Maassoft/ColorControl/issues/531"
+  ],
+  "notes": "cleanyourtv confirma que o dono do DU7000 fotografou os valores originais de Start Screen Options e o model string 24_KSUE_UB_T09. O 'caminho de resgate' por PC pareado e inferido do #498 (reabriu o menu pelo app numa segunda TV) e do #531 (Info+Factory na janela de segundos); nao e doc oficial. Cota de WebSearch esgotada; sem fontes Samsung oficiais."
+ },
+ {
+  "id": "menu-servico-12",
+  "verdict": "parcial",
+  "corrections": "a) O gatilho documentado foi o preset Exit do ColorControl (KEY_FACTORY duas vezes, 2,5 s de intervalo): S90C (#498), S95F e S95B (#531); recuperacao por power 30 s, varios ciclos, ou Info+Factory na janela de segundos. b) Distorcido: o HG43U800FAULXL de #639/#34 nao tem Smart Hub nem loja por ser firmware hotel (EDEN_available false), nao por Menu Display OFF; Menu Display OFF foi so suspeita, nunca confirmada, e esconde o Hotel Option mas o menu de servico continua acessivel; os 'quatro dias' foram de diagnostico (o caso durou cerca de duas semanas) e o problema real (logout a cada desligamento) ficou sem solucao. d) Errado: o autor verificou OTA depois da troca (1720.7, valores mantidos); sem verificacao ficam reset de fabrica e DRM/contas. e) #599 e um unico relato, sem modelo e sem resposta. f) Confirmado pela doc do Home Assistant (sem websocket entre VLANs; pedir permissao a cada conexao e o padrao nas TVs novas).",
+  "applies_to_corrected": "a) S95B 2022, S90C 2023, S95F 2025 via ColorControl. b) hospitality HG43U800FAULXL Tizen 9 (2025). c) IDs do mesmo set hospitality. d) M8 2022. e) modelo nao informado (jul. 2026). f) Tizen 2016 em diante.",
+  "extra_sources": [
+   "https://github.com/Maassoft/ColorControl/blob/HEAD/Shared/Contracts/Samsung/SamsungPresets.cs",
+   "https://github.com/Apps2Samsung/tizen-community-packages/issues/34",
+   "https://github.com/Tianyulife/samsung-m8-cn-to-us/blob/HEAD/us-region-change.md"
+  ],
+  "notes": "Item c confirmado pelo en.json (smarthub-reset desloga e limpa dados; wizard 'em alguns apaga a configuracao'). Nao encontrei fonte para Shop Option, Local Dimming, FreeSync e placa morta por regiao, como o proprio item admite. Cota de WebSearch esgotada; nenhuma fonte Samsung oficial ou de forum consultada alem do GitHub e Home Assistant."
+ },
+ {
+  "id": "modo-hotel-1",
+  "verdict": "parcial",
+  "corrections": "Os IDs de app existem (Apps2Samsung, lista arlogilbert e export de um HG43U800FAULXL na issue 34 do tizen-community-packages). Mas a frase 'MUTE 1 1 9 apenas abre o app com.samsung.ep.coba.hotel' é inferência do autor do Apps2Samsung, sem confirmação: na issue 34, no HG 2025, o usuário conseguiu abrir o menu Factory pelo agente de depuração mas NÃO conseguiu abrir o Hotel Option lançando o app. Corrigir: 'o Apps2Samsung supõe que o combo abre esse app; não comprovado'. A fonte cleanyourtv (samsung-tizen.md) não contém nada disso: não lista apps nem cita S95B/Tizen 6.5. O design.md do samsung-tv-home só diz que 'ep-hotel-*' estão na lista do S95B, sem nomear os IDs. A 'lista de consumo 2022' (arlogilbert) não declara modelo nem ano; só aparece o nome '2022.SmartTV.Pontus'.",
+  "applies_to_corrected": "IDs vistos: lista arlogilbert (modelo e ano não declarados), HG43U800FAULXL 2025 (export na issue 34), QE65S95B 2022 (só menção genérica a ep-hotel-*). UE55NU7400 2018 Tizen 4.0: confirmado sem apps hotel, com org.tizen.cloning e org.tizen.factory (18_KANTME_UHD). Model strings e EDEN_available confirmados na issue 635.",
+  "extra_sources": [
+   "https://github.com/Apps2Samsung/tizen-community-packages/issues/34",
+   "https://github.com/andrearicci93/vetro/blob/HEAD/app/tests/app-catalog.test.cjs",
+   "https://github.com/Apps2Samsung/Apps2Samsung/issues/635"
+  ],
+  "notes": "Busca de código no GitHub por com.samsung.ep.coba.hotel só devolve Apps2Samsung e arlogilbert (3 arquivos). getAppsInfo e tizen.application.launch são usados no index.html do agente (lido). developer.samsung.com não resolveu daqui."
+ },
+ {
+  "id": "modo-hotel-2",
+  "verdict": "parcial",
+  "corrections": "A sequência MUTE 1 1 9 ENTER e a saída 'desligar e ligar de novo' estão confirmadas por documento oficial Samsung (manual de instalação HG470/570, 2012: 'press MUTE → 1 → 1 → 9 → ENTER'; 'To Exit: AC Power off, and then turn on again. Any changes you made are saved'). Correções: (a) a variante MUTE, CIMA, BAIXO, ENTER para HG 2025 só aparece como comentário do Apps2Samsung citando o guia HU7000F/HU8000F; não achei o guia em fonte independente, e o iRemote lista outra sequência para Tizen sem números (MUTE, CIMA, BAIXO, OK, MUTE, após ir em Configurações > Saída de som). Tratar como não confirmada. (b) Relatos 'UN65KS8000 2016' e 'AVS 2022 a 2024, com 1 2 3 4 levando ao Service Menu' não foram localizados: sem fonte. (c) Em sets de consumo antigos (2009 LN26B350, 2010 LN32C450) o Hotel Option fica dentro do Service Menu (INFO MENU MUTE POWER em standby) como item On/Off, não como menu direto. (d) O 'precisa ser em 2 a 3 segundos' vem do Apps2Samsung e do hotel-media, não do manual.",
+  "applies_to_corrected": "Confirmado: HG 2011/2012 (manual oficial HG470/570), consumo 2011 LN32D467, consumo 2019 UE55RU7020 (pela rede, issue 635). Variante com POWER: Apps2Samsung e iRemote (IR, '~75%'), sem teste documentado. HG 2025 HG43U800FAULXL: recusou (issues 635 e 34). 2016, 2022 a 2024: sem fonte.",
+  "extra_sources": [
+   "https://raw.githubusercontent.com/capital-lan/LN32D467/4417e96396947e602f3aa122642d74634fc36721/%5BHG470570_HOTEL-ZA%5DENG-0316.pdf",
+   "https://github.com/deadboy18/iRemote/blob/main/index.html",
+   "https://raw.githubusercontent.com/hemmerling/dokuwiki-data/master/pages/en/tvradio.html.txt",
+   "https://github.com/Apps2Samsung/tizen-community-packages/issues/34",
+   "https://github.com/sandralawsonbt/docman/blob/main/manual/925917/Samsung-Ln26b350f1.html"
+  ],
+  "notes": "iRemote (macros IR) lista: Hotel Menu MUTE 1 1 9 ENTER ('~85%'), alt com POWER, Service Menu MUTE 1 8 2 POWER (TV em standby), Factory INFO MENU MUTE POWER (standby), PIN reset MUTE 8 2 4 POWER. Fonte de qualidade média, mas coerente com o manual oficial e com o Apps2Samsung."
+ },
+ {
+  "id": "modo-hotel-3",
+  "verdict": "parcial",
+  "corrections": "Funciona em um único set documentado (UE55RU7020WXXN, 2019, HDMI1, pelo app móvel por Wi-Fi, issue 635 de set/2026). O resto é hipótese. Correções: (a) os limites '100 a 600 ms, padrão 250 ms, abaixo de 100 ms perde teclas' são apenas o clamp do código do Apps2Samsung, sem medição independente; o CLI do samsung-tv-ws-api usa 1,0 s de intervalo por padrão. (b) 'Pronto no Apps2Samsung v2.8' confirmado: release v2.8.0 de 2026-09-14 ('TV toolbox: launch hidden apps and send service-menu key sequences over the remote channel', #636), desktop (Windows, Linux, macOS) e Android (apk). (c) 'Sem Modo Desenvolvedor' confirmado só para as funções de controle remoto pelo README; o README não fala do Toolbox. (d) O item deve registrar que no HG 2025 a recusa também veio pelo controle físico, logo não prova nada sobre o caminho de rede.",
+  "applies_to_corrected": "Testado e funcionando: UE55RU7020 2019 (Tizen 5). Recusado: HG43U800FAULXL 2025 (por rede e por controle). Demais anos 2016 em diante: hipótese, sem relato.",
+  "extra_sources": [
+   "https://github.com/Apps2Samsung/Apps2Samsung/releases/tag/v2.8.0",
+   "https://raw.githubusercontent.com/xchwarze/samsung-tv-ws-api/master/COMMANDS.md",
+   "https://raw.githubusercontent.com/xchwarze/samsung-tv-ws-api/master/README.md"
+  ],
+  "notes": "Envio de teclas por WebSocket 8001/8002 com token e prompt de permissão na TV é confirmado pelo samsung-tv-ws-api (Tizen 2016 em diante). Não achei nenhum relato independente de abrir o Hotel Option pela rede fora do Apps2Samsung."
+ },
+ {
+  "id": "modo-hotel-4",
+  "verdict": "parcial",
+  "corrections": "A maior parte da lista bate com o manual oficial HG470/570 (2012): Hospitality Mode Standalone/Interactive; Power On Channel, Volume (Last Saved/User Defined), Source, Option (Last Option); Min Volume 0, Max Volume 100; Panel Button Lock (Unlock/Lock/Power/Menu-Source); Menu OSD > Menu Display ON/OFF; Clock Local Time Manual; Music Mode AV/PC/Comp/Backlight; Welcome Message (5 s, 25 caracteres); Hospitality Logo, Logo DL (samsung.bmp 960x540 ou avi 30 MB), Logo Display Time 3/5/7 s; Cloning Clone TV to USB / Clone USB to TV, Setting Auto Initialize; Channel Editor. Correções: (a) Security (Factory Lock, Password Popup), Smart Service (Apps Editable, Download by App ID), H.Browser/URL Launcher, Virtual Standby e LYNK Cloud não existem no manual de 2012; aparecem só em relatos de HG 2021 (HG43AU800) e HG 2025 (issue 34). (b) 'Menu Display OFF mata as combinações do menu hotel mas deixa o Service Menu' tem uma única fonte (comentário do Apps2Samsung); não confirmado. (c) 'Power On Option: Last Option / Power On / Standby' e 'Clock: Time Channel / TTX': o manual de 2012 só descreve Last Option e Manual (cita TTX como origem). (d) 'Hospitality Mode Off' aparece apenas no relato do HG 2025 (issue 34). (e) Panel Button Lock tem também a opção Menu/Source.",
+  "applies_to_corrected": "Confirmado por documento oficial: HG 2011/2012 (HG470/570). Por relatos GitHub: HG43AU800 2021 (hotel-media), HG43U800FAULXL 2025 (issue 34), consumo LN32D467 2011 (Hospitality Mode, Logo/Message, Cloning). HG 2014 a 2020 e consumo Tizen 2016 a 2024: só trechos, não verificados aqui.",
+  "extra_sources": [
+   "https://raw.githubusercontent.com/capital-lan/LN32D467/4417e96396947e602f3aa122642d74634fc36721/%5BHG470570_HOTEL-ZA%5DENG-0316.pdf",
+   "https://github.com/Apps2Samsung/tizen-community-packages/issues/34",
+   "https://github.com/sandralawsonbt/docman/blob/main/manual/925917/Samsung-Ln26b350f1.html"
+  ],
+  "notes": "Manual oficial lido via PDF mirrorado no repo LN32D467 (texto extraído em /tmp/claude-0/-home-user/ecc3fd7d-108c-5148-9bf5-bf7042299da0/scratchpad/dl/hg470.txt). O manual também confirma a saída: desligar e ligar; mudança de SI Vendor exige tirar da tomada. Fontes citadas akmalcms (HU8000F) e pizzawithcola trazem pouco: a primeira só lista recursos de ficha técnica, a segunda é o relato do HG43AU800."
+ },
+ {
+  "id": "modo-hotel-5",
+  "verdict": "parcial",
+  "corrections": "O núcleo bate com o guia oficial Samsung HG470/570 (PDF de 2012 guardado no repositório citado): nome samsung.bmp ou samsung.avi, BMP até 960 x 540, AVI até 30 MB, a TV não redimensiona, Logo DL mostra Wait/Completed/Failed/No USB/No File, Logo Display Time 3/5/7 s, logo não aparece com Hospitality Logo OFF mesmo carregado, Hospitality Logo DL marcado N/A na clonagem. O guia oficial não diz que Welcome Message sobrepõe o logo (só que exibe a mensagem por 5 s); isso vem só do README. Também só do README, sem segunda fonte: BMP 24 bits sem compressão, cabeçalho V5 do Photoshop, FAT32 com partição única MBR, pendrive USB 3.x não enumerado. O guia oficial exige só 'BMP' e nome exato. Nenhuma fonte alcançável mostra o item Logo/Message numa TV de consumo Tizen 2016 a 2025 nem em HG Tizen; manter como hipótese.",
+  "applies_to_corrected": "Confirmado para chassi T-MST4AUSCB (LN D-series 2011) e HG470/HG570 (guia de 2012). HG Tizen (NE460, NB890, NE690, BU8000, U800F) e consumo Tizen 2016 a 2025: sem fonte verificada.",
+  "extra_sources": [
+   "https://github.com/capital-lan/LN32D467/blob/main/%5BHG470570_HOTEL-ZA%5DENG-0316.pdf",
+   "https://github.com/capital-lan/LN32D467"
+  ],
+  "notes": "Busca no GitHub inteiro só encontra 'Hospitality Logo DL' e 'samsung.bmp' nesse repositório. samsung.com, manualslib e comunidades estavam bloqueados pelo proxy da sessão, então os manuais HG Tizen não puderam ser abertos."
+ },
+ {
+  "id": "modo-hotel-6",
+  "verdict": "parcial",
+  "corrections": "A) MUTE 1 1 9 ENTER confirmado pelo guia oficial HG470/570, pelo iRemote e pelo dumbtv. No HG de 2012 o Hospitality Mode só tem Standalone e Interactive, sem Off; 'Off' aparece nas strings do Apps2Samsung. B) As duas combinações de standby (INFO MENU MUTE POWER e MUTE 1 8 2 POWER) aparecem em três fontes (Apps2Samsung, iRemote, samsung-tui), mas não são universais: no HG43U800F o usuário relatou que a TV liga devagar e nenhum menu abre; o samsung-tui diz que, se a sequência não bate com o firmware, a TV só liga e desliga. O limite de 3 s, o bloco azul/cinza e o caminho Option > Hotel Option vêm só do Apps2Samsung; 'Control' não foi verificado. C) 'Hotel Option recusado, Factory menu abriu' bate com o relato no issue 34, mas o ano 2025 do HG43U800F não é afirmado no tópico. org.tizen.factory e com.samsung.ep.coba.hotel não têm confirmação fora do Apps2Samsung (o tizen-app-id lista org.tizen.ep-hotel-channellist e org.tizen.factory-analysis-viewer, não esses IDs). 'launch failed[400]' só em comentário de código. v2.8: issue 639 fechado pelo PR 640 e release v2.8.0, coerente. D) Reset de fábrica não limpar o modo: nenhuma fonte encontrada, nem a favor nem contra. E) Coerente com issue 34 (sem Smart Hub, sem loja).",
+  "applies_to_corrected": "MUTE 1 1 9 ENTER: HG 2012 em diante e consumo com menu hotel. Standby: relatado em consumo, falhou no HG43U800F. Caminho C: só HG43U800F (ano não confirmado) e só o menu de fábrica abriu.",
+  "extra_sources": [
+   "https://github.com/capital-lan/LN32D467/blob/main/%5BHG470570_HOTEL-ZA%5DENG-0316.pdf",
+   "https://github.com/deadboy18/iRemote/blob/main/index.html",
+   "https://github.com/luisgreen/samsung-tui/blob/main/src/samsung_tui/keys.py",
+   "https://github.com/humblemuzzu/dumbtv/blob/main/docs/OTHER-TVS.md",
+   "https://github.com/arlogilbert/tizen-app-id"
+  ],
+  "notes": "O issue 639 não fala de launch failed 400 nem de U800F; ele propõe mostrar as instruções de standby e detectar set de hotel. A parte D fica como 'sem dado'. Risco alto mantido: samsung-tui e iRemote tratam as combinações de standby como menu de fábrica."
+ },
+ {
+  "id": "modo-hotel-7",
+  "verdict": "parcial",
+  "corrections": "Confirmado por fonte: firmware HG sem Smart Hub nem loja (issue 34 e strings do Apps2Samsung); assistente que re-pergunta Standalone/Interactive ou reseta (palpite do mantenedor no issue 34, não teste); logins apagados ao desligar ficaram sem causa fechada (o mantenedor primeiro culpou ajuste de hotel, depois disse que não há chave documentada); a pesquisa do Q60T só diz 'não mexer em hotel mode' como ajuste de velocidade. Mecanismo documentado que o achado não cita: Setting Auto Initialize ON restaura os itens do lado do hóspede a cada desligar/ligar (guia oficial HG470/570), e no issue 34 esse ajuste apagava apps sideloaded. Os trechos do SamyGO (Broadcasting indisponível), do AVS (idioma trocado) e do QLED 2019 (gerenciamento remoto Samsung) não puderam ser abertos nem encontrados em fonte alternativa; continuam como trechos de busca.",
+  "applies_to_corrected": "HG (2012 guia oficial; HG43U800F no issue 34) para os efeitos de firmware de hotel. Consumo Tizen 2016 a 2024: só trechos não verificados.",
+  "extra_sources": [
+   "https://github.com/capital-lan/LN32D467/blob/main/%5BHG470570_HOTEL-ZA%5DENG-0316.pdf",
+   "https://github.com/Apps2Samsung/Apps2Samsung/issues/639"
+  ],
+  "notes": "Item já marcado como hipótese; a verificação mantém isso. SamyGO, AVS e Samsung Community estavam bloqueados pelo proxy. Recomendação de fotografar as telas continua válida."
+ },
+ {
+  "id": "modo-hotel-8",
+  "verdict": "parcial",
+  "corrections": "Caminho de consumo confirmado por várias fontes independentes: Settings > All Settings > General & Privacy > Start Screen Options em 2022 e 2023 (Q70C Tizen 8); All Settings > Advanced features (Tizen 9 / One UI, 2025 e o DU7000 testado); Settings > General > Smart Features > Autorun Smart Hub / Autorun Last App em modelos anteriores (AU7100 2021 e outros). Samsung tem páginas oficiais citadas por esses repositórios ('Use Autorun start screen options' e 'Enable or disable the Start Screen option on your 2025 Samsung smart TV'), não abertas aqui. O teste do cleanyourtv bate: voltou ao HDMI 1 após usar HDMI, reabriu o app quando aberto fresco, Home abre a Samsung Home; o CleanFrame (The Frame LS03D) confirma 'só retoma o último app, não fixa um launcher'. Correções: o DU7000 é modelo 2024 (série D); o documento diz que o SDB reportou Tizen 9.0, não afirma o ano. O caminho de 2016 'Sistema > Ajustes avançados' não foi encontrado em nenhuma fonte. Caminho de hotel: Power On Channel, Power On Volume e Power On Source constam do guia oficial HG470/570 (valem em Stand Alone); um portal de hotel Tizen usa Power On Source = URL Launcher, mas sem teste em hardware. O relato 'Autorun Last App sobrepõe o Power On em HDMI' segue sem fonte.",
+  "applies_to_corrected": "Start Screen Options: 2022 a 2025 (General & Privacy; Advanced features no Tizen 9). Smart Features: cerca de 2017 a 2021. 2016: sem fonte. Power On do Hotel Option: HG (guia 2012 e portal Tizen); em consumo com Hospitality Mode ligado: sem teste.",
+  "extra_sources": [
+   "https://github.com/victaphu/glass-home-samsung-tv/blob/main/docs/INSTALL.md",
+   "https://github.com/Nderim1/tv-override/blob/main/presets/samsung.toml",
+   "https://github.com/nthnclrk/CleanFrame/blob/main/docs/agent-tv-setup-guide.md",
+   "https://github.com/merlinmb/CleanHome/blob/main/docs/uk-au7100-setup.md",
+   "https://github.com/Liftof/frame-home/blob/main/docs/INSTALL.md",
+   "https://github.com/dedkola/tk-doc/blob/main/content/Misc/ha-samsung-tizen.mdx",
+   "https://github.com/kish210/hotel-media/blob/main/docs/TV-LOCKDOWN-AND-INPUTS.md",
+   "https://github.com/capital-lan/LN32D467/blob/main/%5BHG470570_HOTEL-ZA%5DENG-0316.pdf",
+   "https://www.samsung.com/ae/support/tv-audio-video/use-autorun-start-screen-options-on-your-samsung-tv/",
+   "https://www.samsung.com/sg/support/tv-audio-video/enable-or-disable-the-start-screen-option-on-your-2025-samsung-smart-tv/"
+  ],
+  "notes": "A fonte pizzawithcola citada no achado não fala de Start Screen Options; trata de um HG43AU800A com Hospitality Mode Standalone e Virtual Standby. A fonte HU8000F confirma só 'Power On Mode' e a dúvida sobre .wgt. As duas URLs samsung.com não foram abertas (proxy bloqueado); são as citadas pelos repositórios."
+ },
+ {
+  "id": "modo-hotel-9",
+  "verdict": "parcial",
+  "corrections": "O item diz que o Factory Lock foi 'confirmado em relato' no HG43U800F 2025. Não foi: na issue 34 quem cita 'Hotel Option > Security > Factory Lock' e 'Password Popup' é o colaborador Patrick (PatrickSt1991), sem citar manual, e ninguém na thread abriu o submenu Security nem viu o Factory Lock. A senha de 8 dígitos (padrão 00000000) também vem só desse comentário, não de trecho de manual HG aberto. Trocar 'fato' por 'hipótese com base em relato de desenvolvedor'. Sobre PINs: 0000 e 1234 aparecem no doc cyber_ai_festival e no iRemote ('PIN Reset Mute 8 2 4 Power, resets PIN to 0000 on some models'); 9999 não foi encontrado em nenhuma fonte. O passo 3 (Apps2Samsung não contorna PIN) está correto: SamsungRemoteSequences.cs diz 'Nothing here brute-forces a Security Mode PIN or bypasses a lock'.",
+  "applies_to_corrected": "Firmware de hotel (HG). O app org.tizen.ep-hotel-security existe em inventário independente (arlogilbert/tizen-app-id) e no Apps2Samsung. Nomes exatos Factory Lock e Password Popup: não verificados em manual Samsung nem em segunda fonte. Consumo: sem relato.",
+  "extra_sources": [
+   "https://github.com/arlogilbert/tizen-app-id",
+   "https://raw.githubusercontent.com/Apps2Samsung/Apps2Samsung/33f3946fe707c559e4b77c8755f771c14c52cc4f/Apps2Samsung.Core/Remote/SamsungRemoteSequences.cs",
+   "https://raw.githubusercontent.com/pizzawithcola/cyber_ai_festival/dd7eb75d83f1443a1aac07ebbbac35bd01a36f5e/doc/TV_DISPLAY_SETUP.md"
+  ],
+  "notes": "Busca no GitHub por 'Factory Lock' + 'Password Popup' não retornou nenhum arquivo Samsung. Manuais HG em samsung.com e manualslib não resolveram DNS neste ambiente e a cota de WebSearch estava esgotada, então o nome dos campos segue sem fonte oficial aberta. Risco alto e regra de anotar a senha continuam válidos."
+ },
+ {
+  "id": "modo-hotel-10",
+  "verdict": "parcial",
+  "corrections": "Presença do org.tizen.cloning em TV de consumo está confirmada por 3 fontes independentes: inventário UE55NU7400 Tizen 4.0, lista arlogilbert/tizen-app-id e saída real de 'sdb shell app_launcher' no teste do appium-tizen-tv-driver (set com Xbox Game Pass, portanto 2022 ou mais novo). Menu Cloning no Hotel Option confirmado em 3 fontes (LN32D467 README, plano HG43AU800A, issue 34). Correções: o README do LN32D467 fala em pasta T-MST4AUSCB com 'Hotel Option settings' e logo on/off, mas não cita mapa de canais, então 'mapa de canais' fica como hipótese; o arquivo Tianyulife (samsung-m8) contém ep-hotel-protocol e não serve como prova de set de consumo. Setting Auto Initialize: confirmado na issue 34 (Patrick: reaplica o clone a cada ciclo; desligar não resolveu). Nenhuma fonte mostra o org.tizen.cloning fazendo algo numa TV de consumo.",
+  "applies_to_corrected": "Menu Cloning: HG e linha hospitality D-series 2011 (LN32D467), HG AU800 2021 (plano não testado), HG U800F 2025. App org.tizen.cloning: consumo 2018 (NU7400) e sets mais novos (lista sdb 2022+). Uso real em consumo: sem dado.",
+  "extra_sources": [
+   "https://github.com/arlogilbert/tizen-app-id",
+   "https://github.com/headspinio/appium-tizen-tv-driver/blob/main/packages/appium-tizen-tv-driver/test/unit/sdb.spec.js",
+   "https://raw.githubusercontent.com/Leighk50/VL-WEB-PLATFORM/48dd93681f2ca07a4f97555040d48a4a7d99350c/HOTEL-TV.md"
+  ],
+  "notes": "O item já se declara hipótese e os limites (mesmo modelo, versão, região, sem clone publicado, logo BMP separado) batem com a issue 639 e o README do LN32D467. Manual Samsung oficial de cloning não pôde ser aberto (domínios Samsung bloqueados)."
+ },
+ {
+  "id": "modo-hotel-11",
+  "verdict": "parcial",
+  "corrections": "Fonte independente encontrada: Leighk50/VL-WEB-PLATFORM HOTEL-TV.md, HG49EJ690U testado em hardware. Lá o caminho é H.Browser Mode ON, Vendor Others, URL Launcher Settings > Install Web App apontando para um diretório HTTPS onde o firmware busca sssp_config.xml e um .wgt assinado. Ou seja, o URL Launcher instala um pacote Tizen assinado a partir de uma URL (formato SSSP), e isso responde à dúvida do autor do plano AU800: não é só 'URL pura'. Efeito colateral medido: com H.Browser Mode ON, Guide e Channel List param de funcionar nesse HG49EJ690U. Download by App ID: caminho e ambiguidade da issue 34 conferem (Netflix apareceu após atualização, causa não fechada). Aviso do Apps2Samsung sobre consumo confere com en.json.",
+  "applies_to_corrected": "HG EJ690 (2017-2018, testado), HG AU800 2021 (plano não testado), HG U800F 2025 (Download by App ID). Consumo: sem evidência; caminho continua sendo Modo Desenvolvedor + .wgt assinado.",
+  "extra_sources": [
+   "https://raw.githubusercontent.com/Leighk50/VL-WEB-PLATFORM/48dd93681f2ca07a4f97555040d48a4a7d99350c/HOTEL-TV.md",
+   "https://raw.githubusercontent.com/Apps2Samsung/Apps2Samsung/33f3946fe707c559e4b77c8755f771c14c52cc4f/Apps2Samsung.Core/Localization/Languages/en.json"
+  ],
+  "notes": "Os guias Uniguest, Nevron e VITEC citados pelo plano chinês não puderam ser abertos (DNS bloqueado). Se uma URL de página pura também funciona no URL Launcher continua sem dado; o relato testado usa pacote assinado."
+ },
+ {
+  "id": "modo-hotel-12",
+  "verdict": "parcial",
+  "corrections": "Passos 1, 2, 4, 5, 7 e 8 conferem: en.json ('Change Hospitality Mode and nothing else', 'all of it inside about 3 seconds'), SamsungRemoteSequences.cs ('The last press is POWER: on a set that ignores the combo it simply switches off'), iRemote traz taxas (~85%, ~75%, ~60%) sem fonte. Passo 3 (reset pode mudar DUID; downgrade não suportado) vem do doc tiz0wn citando a FAQ da Samsung, que não pôde ser aberta; manter como fato de segunda mão. Passo 6 não tem fonte aberta: nem o autor nem esta verificação conseguiram abrir AVS Forum ou Samsung Community; os itens 'contador ER, tempo de exibição, data de compra, HDMI quebrado, garantia' ficam como hipótese. O repositório R3bing não fala de garantia nem de taxa de sucesso; só avisa sobre boot loop, tela apagada e 'record initial values'. Trocar 'confiança alta' por média e separar o passo 6 como hipótese.",
+  "applies_to_corrected": "Regras 1, 2, 4, 5, 7, 8: todas as gerações Tizen com menu de hotel ou fábrica. Regra 3: conforme FAQ Samsung via tiz0wn. Regra 6 e o intervalo 'danos de 2016 a 2024': sem fonte verificada.",
+  "extra_sources": [
+   "https://raw.githubusercontent.com/Apps2Samsung/Apps2Samsung/33f3946fe707c559e4b77c8755f771c14c52cc4f/Apps2Samsung.Core/Localization/Languages/en.json",
+   "https://raw.githubusercontent.com/deadboy18/iRemote/e9ae026e9333aff04ea3c78c47987589a23a543c/index.html"
+  ],
+  "notes": "Cota de WebSearch esgotada antes da primeira busca e domínios Samsung sem DNS neste ambiente; relatos de comunidade sobre HDMI e garantia não puderam ser checados. Isso não refuta o passo 6, só o deixa sem fonte."
+ },
+ {
+  "id": "modo-desenvolvedor-5",
+  "verdict": "parcial",
+  "corrections": "1) Na CLI oficial, -t recebe o NOME do alvo (ex.: UE65NU7400, como aparece no Device Manager) e -s recebe o SERIAL (ex.: 192.168.0.10:26101 de 'sdb devices'). O achado troca os dois: para usar o serial, escreva 'tizen install -n App.wgt -s <ip>:26101' (ou -t <nome>). 2) A regra 'nome de arquivo sem espaco e sem acento, senao falha sem erro claro' nao tem fonte em lugar nenhum: tratar como hipotese. 3) O 'tizen install-permit' e da CLI da extensao Samsung TV, nao aparece no command-line-interface.md generico citado; a fonte e o README do jellyfin-tizen e outros repositorios.",
+  "applies_to_corrected": "2015+ (Tizen 2.3+ via Tizen Studio/CLI); push manual via sdb: Tizen 2.x em /opt/usr/apps/tmp, 3.0 em /opt/usr/home/owner/apps_rw/tmp (com '0 setRWIAppID null' antes), 4.0+ em /home/owner/share/tmp/sdk_tools (ou o sdk_toolpath que 'sdb capability' informar).",
+  "extra_sources": [
+   "https://github.com/Samsung/Wits/blob/master/lib/appLaunchHelper.js",
+   "https://github.com/yandex/rtv/blob/master/packages/server/src/platform/tizen/app.ts",
+   "https://github.com/interfaced/zombiebox-platform-tizen/blob/master/cli/sdb.js",
+   "https://github.com/reisxd/tizenbrew-device-manager/blob/main/src/pages/Apps.jsx",
+   "https://github.com/rfsmason/immich-tv-for-samsung/blob/main/scripts/deploy-tizen.mjs"
+  ],
+  "notes": "Confirmado: sintaxe de build-web/package/install/run/uninstall (tizen-docs oficial); install-permit (jellyfin, immich-tv, glass-home e outros); '0 vd_appinstall' e '0 was_execute' via sdb puro aparecem no Wits (repositorio oficial Samsung), no zombiebox e no yandex/rtv, logo nao dependem so do Free My TV; fallback /opt/usr/apps/tmp quando sdbd nao informa sdk_toolpath confirmado por zombiebox (LEGACY_INSTALL_PATH) e yandex (Tizen 2.x). Limitacao: busca web indisponivel nesta rodada e developer.samsung.com inacessivel; usei a copia oficial em github.com/Samsung/tizen-docs."
+ },
+ {
+  "id": "modo-desenvolvedor-6",
+  "verdict": "parcial",
+  "corrections": "1) 'Tizen 3.0+ (2017+)' e restritivo demais: getAppsInfo, getAppInfo, launch e launchAppControl sao 'Since 2.0' na referencia oficial, ou seja, valem desde as primeiras TVs Tizen (2015, Tizen 2.3). 2) A afirmacao 'um app Public nem instala se declarar appmanager.kill' nao foi confirmada: o doc oficial so diz que privilegio Partner exige certificado Partner, sem dizer se a instalacao falha ou se da SecurityError em tempo de execucao. 3) 'iconPath pouco confiavel em Tizen 3 a 5' tem uma unica fonte (CLAUDE.md do proprio Free My TV, mesmo autor do install.py): tratar como hipotese. 4) O teste de 486 apps vem de um unico aparelho (DU7000).",
+  "applies_to_corrected": "Tizen 2.3+ (2015+); testes de campo so em Tizen 9.0 (DU7000, 2024).",
+  "extra_sources": [
+   "https://github.com/Samsung/tizen-docs/blob/master/docs/application/web/api/9.0/device_api/tv/tizen/application.html",
+   "https://github.com/simbasjungles/free-my-tv/blob/main/CLAUDE.md",
+   "https://github.com/estebanbaigts/TV-hub/blob/main/docs/COMPATIBILITE.md"
+  ],
+  "notes": "Confirmado na referencia oficial 9.0: application.launch e Public (launch e launchAppControl); appmanager.kill e Partner; getAppsInfo e getAppInfo nao listam privilegio; application.info (Public) so aparece em ApplicationInformation.size e em getAppMetaData. O sample LaunchApp da Samsung usa launch e launchAppControl, mas nao getAppsInfo."
+ },
+ {
+  "id": "modo-desenvolvedor-7",
+  "verdict": "confirmado",
+  "corrections": "Detalhes a ajustar: a API existe desde Tizen 2.3 (nao 3.0), entao vale para TVs 2015+; em 9.0 o unico WindowType documentado e 'MAIN' (nao ha PIP no enum, so a feature tv.pip); o TVWindow e marcado 'Optional, nao suportado pelo emulador', logo so da para testar em TV real; o campo 'signal' de VIDEOSOURCE so e preenchido quando a janela foi mostrada com show() (Since 5.5). O sample oficial TVWindow nao chama setSource, mas o doc oficial tem exemplo com setSource em fonte HDMI.",
+  "applies_to_corrected": "Tizen 2.3+ (2015+); HDMI em janela medido em T9.0 (2024) num DU7000.",
+  "extra_sources": [
+   "https://github.com/Samsung/tizen-docs/blob/master/docs/application/web/api/9.0/device_api/tv/tizen/tvwindow.html",
+   "https://github.com/Samsung/tizen-docs/blob/master/docs/application/web/api/9.0/device_api/tv/tizen/systeminfo.html",
+   "https://github.com/Samsung/cordova-plugin-toast/blob/master/src/sectv-tizen/tvwindowProxy.js",
+   "https://github.com/NelsonEU/arn0-tv/blob/main/README.md"
+  ],
+  "notes": "Doc oficial (copia em Samsung/tizen-docs 9.0): setSource, show, hide, getSource e getAvailableWindows sao Public com privilegio tv.window, Since 2.3; VIDEOSOURCE e Since 2.3 e sem privilegio proprio; o doc diz que as fontes possiveis vem de getPropertyValue('VIDEOSOURCE'). O cordova-plugin-toast (repositorio oficial Samsung) usa exatamente VIDEOSOURCE + setSource. Teste de campo em T9 vem de uma unica fonte (cleanyourtv), mas o fluxo e documentado. A ressalva do achado (nao e handoff de fonte no sistema todo) esta correta: o arn0-tv chama de 'nao documentado' o que acontece depois de setSource."
+ },
+ {
+  "id": "modo-desenvolvedor-8",
+  "verdict": "parcial",
+  "corrections": "1) API tvinputdevice e Since 2.3 e registerKeyBatch e Since 2.4, entao vale desde 2015/2016, nao so 2017+. 2) O doc oficial diz que mandatorias (ArrowLeft/Right/Up/Down, Enter, Back) 'nao podem ser registradas' e que getSupportedKeys nao as retorna, mas nao diz qual erro sai; InvalidValuesError e documentado para nome 'invalido ou nao suportado'. Tratar 'registerKey devolve InvalidValuesError para mandatoria' como provavel, nao oficial. 3) 'Registrar volume tira o controle de volume do sistema' e 'Exit nao registra' vem de UMA unica medicao (Smart Monitor M7, Tizen 5.5, repo detain/shmup-cup), nao de TV nem de doc oficial: hipotese. 4) 'Home nunca chega ao app' tem duas fontes de campo (shmup-cup em monitor 5.5 e cleanyourtv em DU7000/AU8000), nenhuma oficial.",
+  "applies_to_corrected": "Tizen 2.3+ (registerKey) e 2.4+ (registerKeyBatch), ou seja 2015/2016+; lista de 46 teclas medida num monitor M7 Tizen 5.5 (2020), nao numa TV.",
+  "extra_sources": [
+   "https://github.com/Samsung/tizen-docs/blob/master/docs/application/web/api/9.0/device_api/tv/tizen/tvinputdevice.html",
+   "https://github.com/Samsung/lwnode/blob/main/modules/packages/device-api/src/TizenInputDeviceKeyMap.h",
+   "https://github.com/maikudou/SmartTV/blob/master/keycodes.md",
+   "https://github.com/headspinio/appium-tizen-tv-driver/blob/main/packages/appium-tizen-tv-driver/lib/keymap.js",
+   "https://github.com/SamsungDForum/LaunchApp/blob/master/CallerApp/CallerApp/main.js",
+   "https://github.com/mautilus/sdk/blob/master/js/core/device/tizen.js"
+  ],
+  "notes": "Confirmado: privilegio tv.inputdevice e Public (doc oficial); mandatorias nao registraveis (doc oficial); codigos MediaPlayPause 10252, cores 403 a 406, ChannelUp/Down 427/428, VolumeUp/Down 447/448, Mute 449 batem com o mapa do Samsung/lwnode (repositorio oficial Samsung) e com maikudou e appium; Back 10009 bate com o sample oficial LaunchApp (handleKeydown 10009) e com shmup-cup. Extra: Exit e 10182, Info 457, Guide 458. O mautilus/sdk registra e desregistra teclas de volume, o que sugere que registrar e possivel, mas nao prova o efeito no volume do sistema. Busca web nao disponivel nesta rodada e developer.samsung.com inacessivel; a tabela oficial do guia Remote Control nao pode ser aberta."
+ },
+ {
+  "id": "modo-desenvolvedor-1",
+  "verdict": "confirmado",
+  "corrections": "Pequenos ajustes: (1) o tempo de TV desligada da tomada nas fontes e de 10 a 15 s (Apps2Samsung FAQ, ardazeytin); so a fonte txtsamu fala em 30 a 60 s. (2) Em modelos novos o campo pode estar em Apps ou em App Settings (TizenBrew). (3) Controle sem teclado numerico: apertar 123 (ou segurar Home) e digitar 12345 na tela. (4) A afirmacao de que a DU7000 2024 roda T9.0 vem so do dumbtv e destoa do mapeamento publico (2024 = Tizen 8.0; Tizen 9.0 = 2025). (5) A frase sobre signage/SSSP nao tem fonte.",
+  "applies_to_corrected": "2016+ (Tizen 2.4+). Confirmado de forma independente em 2018 UE55NU7400 (T4.0), 2020 Q60T e T6500 (T5.5), 2025 QEF1 (T9.0) e em guias genericos (TizenBrew: 2017+; free-my-tv: 2016+). 2015 (Tizen 2.3/Orsay) fica fora. Signage/SSSP: sem dado.",
+  "extra_sources": [
+   "https://github.com/reisxd/TizenBrew/blob/main/docs/README.md",
+   "https://github.com/simbasjungles/free-my-tv/blob/main/README.md",
+   "https://github.com/creolben/kodi-tizen/blob/main/tools/tizen/DEVELOPER_MODE_GUIDE.md",
+   "https://github.com/sebastianspicker/tiz0wn/blob/main/docs/setup-macos.md",
+   "https://github.com/DemonKingSwarn/samsung-tv-tizen-root/blob/main/docs/DEBLOAT.md",
+   "https://github.com/Georift/install-jellyfin-tizen",
+   "https://github.com/Samsung/tizen-docs/blob/master/docs/sdk-tools/baseline-sdk/common-tools/smart-development-bridge.md"
+  ],
+  "notes": "Nao consegui abrir developer.samsung.com (bloqueado pelo proxy) nem o orcamento de WebSearch (esgotado). Mesmo assim: 8 fontes independentes concordam com Apps > 12345 > Developer mode On > Host PC IP > reiniciar, e a doc oficial Samsung/tizen-docs confirma 26101 como porta padrao do sdb. O detalhe developerIP 0.0.0.0 (porta aceita e fecha) esta no README do ardazeytin e o txtsamu mostra developerIP preenchido apos reboot. Desligar: Apps > 12345 > Off > reiniciar (kodi-tizen, DemonKingSwarn). A fonte txtsamu so abre pela URL raw com branch master; o link citado da 404."
+ },
+ {
+  "id": "modo-desenvolvedor-2",
+  "verdict": "parcial",
+  "corrections": "(1) filesync_support:push so aparece em Tizen 2.4 e 4.0 (fixture yandex/rtv, appium driver, UE55NU7400). Em Tizen 5.0 (appium), Q60T 2020 (tiz0wn), DU7000 (dumbtv) e Tizen 9.0 (DemonKingSwarn) o valor e pushpull; na pratica o pull continua recusado (dumbtv: /etc/os-release recusado; DemonKingSwarn: sdb pull devolve closed). (2) O texto do erro de pull varia: 'NO support file pull' (T4.0), 'You cannot pull files from this path' (T5.5), 'closed' (T9.0). (3) 'sdb uninstall so remove o que foi instalado por sdb' esta errado para TVs antigas: em T4.0 (2018) o ardazeytin e o cleanyourtv removem apps de loja/operadora por sdb uninstall (so org.tizen.* e com.samsung.* ficam). A recusa 'can not uninstall app' para apps de loja/preinstalados e relatada em Tizen 5.5 (T6500), Tizen 6+ (AeroTizen) e Tizen 9.0 (preloads travados; outros pedem dependencia). (4) O conjunto intershell_support/sdbd_rootperm/rootonoff_support = disabled e shell devolvendo closed esta confirmado em 2.4, 4.0, 5.0, 5.5, 9.0.",
+  "applies_to_corrected": "Sem shell e sem root: varejo 2016+ (confirmado 2.4, 4.0, 5.0, 5.5, 9.0). filesync push-only: 2.4 e 4.0; pushpull de 5.0 em diante, mas pull segue bloqueado. Uninstall de apps de loja: funciona em T4.0 (2018); recusado em 5.5/6+/9.0. O 'mesmo quadro em 2021 e 2022 pelo cleanyourtv' nao se sustenta: o dumbtv testou AU8000 2021 e Q67B 2022 com dev mode desligado, sem sdb.",
+  "extra_sources": [
+   "https://github.com/yandex/rtv/blob/master/packages/server/test/mocks/tizen40/sdb_capability.txt",
+   "https://github.com/headspinio/appium-tizen-tv-driver/blob/main/packages/appium-tizen-tv-driver/test/unit/sdb.spec.js",
+   "https://github.com/sebastianspicker/tiz0wn/blob/main/docs/setup-macos.md",
+   "https://github.com/DemonKingSwarn/samsung-tv-tizen-root/blob/main/docs/DEBLOAT.md",
+   "https://github.com/helalaou/AeroTizen/blob/main/docs/settings.md",
+   "https://github.com/kromatv/kroma/blob/main/docs/tizen-sdb-protocol.md",
+   "https://raw.githubusercontent.com/txtsamu/claude-research/master/samsung-tv-t6500-debloat-and-launcher.md"
+  ],
+  "notes": "A conclusao central (dev mode nao da shell nem root; so instala/lista/push) esta solida em 5+ fontes independentes, incluindo fixtures de teste da Yandex e do driver Appium. O que falha e a generalizacao sobre uninstall e sobre filesync. vd_applist aparece no codigo do Apps2Samsung e nas strings do tizen-core (kroma); getduid confirmado no ardazeytin e no DemonKingSwarn; vd_appinstall confirmado no free-my-tv e no kroma. O cleanyourtv nao traz anos nem modelos, logo nao serve para '2021 e 2022'."
+ },
+ {
+  "id": "modo-desenvolvedor-3",
+  "verdict": "parcial",
+  "corrections": "(1) 'Java para o comando tizen': a doc oficial diz que o SDK 3.7+ ja traz o JDK; so os SDKs 3.5 e 3.6 exigiam JDK 8 ou OpenJDK 12. Nao precisa instalar Java separado com o instalador oficial. (2) 'SDK atual traz perfil Tizen 9.0; perfis abaixo de 6.0 descontinuados': nenhuma pagina oficial lida diz isso. Sem fonte. (3) A imagem vitalets/tizen-webos-sdk e baseada em Tizen Studio 5.5 (antiga) e so amd64; o comando do README e docker run -it --rm -v tvdata:/home/developer vitalets/tizen-webos-sdk bash. (4) O Tizen Agent Skills gera certificados por um skill de certificate manager com perfil Samsung online; o README nao usa a palavra 'oficial', mas o repo e da organizacao Samsung. (5) A rota 'so Python' (install.py) tem como unica fonte o proprio projeto free-my-tv.",
+  "applies_to_corrected": "Deprecacao do Tizen Studio e rotas VS Code / Visual Studio / CLI installer: oficial, qualquer ano de TV. Rosetta em Mac ARM: confirmado (sdb e JDK sao x86_64; tiz0wn e smart-tv-qa-tool). Perfil 9.0 e corte em 6.0: sem dado.",
+  "extra_sources": [
+   "https://github.com/Samsung/tizen-docs/blob/master/docs/sdk-tools/baseline-sdk/setup/prerequisites.md",
+   "https://github.com/Samsung/tizen-docs/blob/master/docs/sdk-tools/baseline-sdk/setup/update-sdk.md",
+   "https://github.com/Samsung/tizen-agent-skills",
+   "https://github.com/sebastianspicker/tiz0wn/blob/main/docs/setup-macos.md",
+   "https://github.com/boris-sionov/smart-tv-qa-tool/blob/main/scripts/download-sdb.sh",
+   "https://github.com/reisxd/TizenBrew/blob/main/docs/README.md"
+  ],
+  "notes": "Duas paginas da doc oficial Samsung/tizen-docs trazem literalmente 'Tizen Studio is deprecated and no longer supported' e que o IDE Eclipse nao deve ser instalado. Sintaxe do CLI installer web-cli_Tizen_SDK_<versao> [opcoes] [diretorio] confirmada (com --accept-license e --no-java-check). A doc de CLI lista tizen package -t wgt -s <perfil>. TizenBrew Installer e uma rota extra sem Tizen Studio para 2017+."
+ },
+ {
+  "id": "modo-desenvolvedor-4",
+  "verdict": "confirmado",
+  "corrections": "Detalhes: a doc oficial nao fala em anos nem em Tizen 7; a regra 'certificado Samsung obrigatorio em 2023+ (Tizen 7+)' vem de tres fontes de comunidade (TizenBrew docs, Apps2Samsung FAQ, free-my-tv). O Agent Skills registra DUID por acquire-duid/--duid-list/--duid-file (limite 50), sem a tela de 10. O erro real de atualizacao com outro certificado e 'install failed[118, -11], reason: Author certificate not match' (Georift). Em Mac, as senhas do certificado vao para o Keychain de login.",
+  "applies_to_corrected": "Certificado Samsung: funciona em qualquer TV Tizen e e obrigatorio em 2023+ (Tizen 7+). Certificado Tizen local: 2016 a 2022 (free-my-tv; jellyfin-tizen sugere trocar para Samsung quando o Tizen falha). Atualizacao exige o mesmo certificado em todos os anos.",
+  "extra_sources": [
+   "https://github.com/reisxd/TizenBrew/blob/main/docs/README.md",
+   "https://github.com/Georift/install-jellyfin-tizen",
+   "https://github.com/jeppevinkel/jellyfin-tizen-builds",
+   "https://github.com/jellyfin/jellyfin-tizen",
+   "https://github.com/Samsung/tizen-docs/blob/master/docs/sdk-tools/baseline-sdk/common-tools/command-line-interface.md",
+   "https://github.com/DemonKingSwarn/samsung-tv-tizen-root/blob/main/docs/DEBLOAT.md"
+  ],
+  "notes": "A doc oficial (Samsung/tizen-docs creating-certificates) confirma: perfil Samsung vs Tizen, autor com login Samsung e timeout de 5 min, aviso de backup (sem ele nao atualiza o app), distribuidor Public/Partner, DUID adicionado automaticamente quando o dispositivo esta conectado, acima de 10 importar txt com ate 50. tizen package -t wgt -s <perfil> confirmado na doc de CLI e no TizenBrew. getduid por sdb confirmado em duas fontes. O link do Agent Skills citado existe e bate com o que foi afirmado, exceto os limites de tela."
+ },
+ {
+  "id": "modo-desenvolvedor-13",
+  "verdict": "parcial",
+  "corrections": "1) A string interna de chassi (ex. 18_KANTME_UHD, 23_PONTUSM_QTV) vem de webapis.productinfo.getModelCode(), nao de getRealModel(); getRealModel() devolve o modelo comercial (ex. QE55Q80CAT). Pelo HTTP, GET http://<tv>:8001/api/v2/ esta correto. 2) O ID hKfNDgSKZ3.tizenplex so aparece em uma fonte (dedkola/tk-doc); a lista comunitaria do samsung-tv-ws-api traz Plex como 3201512006963. Tratar como nao confirmado. 3) org.tizen.browser vale ate 2019; em TVs 2020+ o Internet e 3202010022079 (openHAB e samsung-tv-ws-api). 4) As strings 21_KANTSU2E_UHD_VOICE, 22_NIKEL_UHD e 24_KSUE_UB_T09 so aparecem em cleanyourtv e forks (uma familia de fonte). 18_KANTME_UHD e 20_KANTS2_FHD tem confirmacao independente. 5) org.tizen.menu e org.tizen.tv-viewer aparecem em free-my-tv e andrearicci93/vetro, ambas comunitarias.",
+  "applies_to_corrected": "Dev mode 12345: 2016+ (Tizen 2.4+), confirmado por varios repositorios. Codigos de tecla 10009, 10182, 10252, 403 a 406, 427/428, 447/448, 449: confirmados por multiplas fontes, inclusive o mapa de teclas no repositorio Samsung/lwnode; valem em geral no Tizen TV, nao so em T5.5. Exit 10182 nao e registravel via registerKey (probe do shmup-cup), coerente com 'tratado pelo sistema'. IDs numericos Netflix 3201907018807 e YouTube 111299001912 e 9Ur5IzDKqV.TizenYouTube: confirmados. getSupportedKeys e sdb shell 0 vd_applist: confirmados (vd_applist nao responde em Tizen 2.4 segundo free-my-tv).",
+  "extra_sources": [
+   "https://github.com/openhab/openhab-addons/blob/main/bundles/org.openhab.binding.samsungtv/README.md",
+   "https://github.com/xchwarze/samsung-tv-ws-api/blob/master/APPLICATIONS.md",
+   "https://github.com/Samsung/lwnode/blob/main/modules/packages/device-api/src/TizenInputDeviceKeyMap.h",
+   "https://github.com/maikudou/SmartTV/blob/master/keycodes.md",
+   "https://github.com/mautilus/sdk/blob/master/js/core/device/tizen.js",
+   "https://github.com/txtsamu/claude-research/blob/master/samsung-tv-kants2-exploit/persistent-hook/README.md",
+   "https://github.com/bbc/melanite/blob/master/data/production-devices-Aug-2024.json",
+   "https://github.com/php4vtgqd5-prog/vibelight-tizen/blob/main/tools/dev-harness/mocks/tizen.js",
+   "https://github.com/Couch-OS/couch/blob/main/docs/samsung-tizen.md",
+   "https://github.com/shamanec/GADS/blob/master/provider/devices/tizen.go",
+   "https://github.com/reisxd/TizenTube/blob/main/docs/README.md",
+   "https://github.com/simbasjungles/free-my-tv/blob/main/README.md"
+  ],
+  "notes": "As 4 fontes citadas abrem e dizem o que o achado afirma, com uma excecao: dedkola/tk-doc nao traz strings de modelo nem o endpoint 8001. developer.samsung.com e home-assistant.io ficaram inacessiveis nesta sessao (proxy bloqueou) e a cota de WebSearch estava esgotada; a verificacao usou busca de codigo e issues no GitHub. A tabela oficial de teclas da Samsung nao pode ser conferida diretamente, mas o repositorio Samsung/lwnode confirma 447/448 e varias bases independentes confirmam o restante."
+ },
+ {
+  "id": "modo-desenvolvedor-14",
+  "verdict": "parcial",
+  "corrections": "Instalar por arquivo .wgt/.tpk so existe na versao TV do TizenBrew Installer (TizenBrewInstaller.wgt), nao no Installer Desktop; pelo Desktop o que funciona e user/repo do GitHub. O restante dos passos confere com docs/README.md do TizenBrew: Apps > 12345 > Developer mode On > Host PC IP = IP do PC > reiniciar; Install TizenBrew; login na conta Samsung em Tizen 7+; via CLI sdb devices, tizen install -n TizenBrewStandalone.wgt e Host PC IP 127.0.0.1; USB Demo encerrado pela Samsung. Acrescentar: o repositorio do TizenBrew registra falhas em Tizen 8 e 9 (issues 186, 190, 131, 237, 245), varias ja fechadas; em 2024+ pode exigir versao recente do Installer (v1.1.3 corrigiu certificados).",
+  "applies_to_corrected": "Tizen 3.0+ (2017+), conforme docs do TizenBrew. Conta Samsung obrigatoria em Tizen 7+ (2023+). TVs 2016 (Tizen 2.4) sem TizenBrew; nelas e preciso compilar e instalar o proprio wgt (free-my-tv confirma). Tizen 8/9 (2024/2025): funciona com ressalvas, ver issues.",
+  "extra_sources": [
+   "https://github.com/reisxd/TizenTube/blob/main/docs/README.md",
+   "https://github.com/reisxd/TizenBrewInstaller/releases/expanded_assets/v1.1.3",
+   "https://github.com/jellyfin/jellyfin-tizen/blob/master/README.md",
+   "https://github.com/reisxd/TizenBrew/issues?q=is%3Aissue+tizen+8+OR+tizen+9"
+  ],
+  "notes": "As 3 fontes citadas abrem e sustentam o achado. O README do TizenBrewInstaller confirma Android via Termux (pkg install nodejs e git) e diz que, com o fim do USB Demo Package, o Installer Desktop e o unico caminho sem Tizen Studio. O 'reiniciar segurando o power' esta nos docs do TizenTube."
+ },
+ {
+  "id": "tizenbrew-1",
+  "verdict": "parcial",
+  "corrections": "1) A afirmacao de que modelos hospitalidade (HG) nao tem modo desenvolvedor nao encontrou nenhuma fonte; manter como hipotese ou remover. 2) 'Ajustes > Suporte > Sobre' mostra versao de software, nao necessariamente o rotulo Tizen X; o caminho mais seguro e o ano do modelo (2017 = Tizen 3.0, 2023 = Tizen 7.0, 2024 = Tizen 8.0). 3) 'Tizen 3 a 9' precisa de ressalva: ha issue aberta no Tizen 9 (settings com ERR_ACCESS_DENIED, #245) e historico de falhas de certificado em 2024+. O resto confere: carregador modular do reisxd, licenca GPL-3.0 (arquivo LICENSE e GPLv3), minimo Tizen 3.0 (2017+), guia em docs/README.md, Discord discord.gg/m2P7v8Y2qR, Telegram t.me/tizenbrew, r/TizenTube.",
+  "applies_to_corrected": "TVs Samsung Tizen 3.0+ (2017+), com comportamento menos estavel em Tizen 8/9 (2024/2025). Modelos hospitalidade: sem dado.",
+  "extra_sources": [
+   "https://raw.githubusercontent.com/reisxd/TizenBrew/main/LICENSE",
+   "https://github.com/simbasjungles/free-my-tv/blob/main/README.md",
+   "https://github.com/Yskra/yskra/blob/main/compatibility.md",
+   "https://github.com/reisxd/TizenBrew/issues?q=is%3Aissue+tizen+9"
+  ],
+  "notes": "As duas fontes citadas abrem. O README raiz traz os links de comunidade; docs/README.md traz o requisito 'at least Tizen 3.0 (2017 or newer)'. Versao do Tizen por ano confirmada por tabelas independentes (2016 Tizen 2.4, 2017 Tizen 3.0, 2022 Tizen 6.5, 2023 Tizen 7.0, 2024 Tizen 8.0). Nao foi possivel abrir a pagina oficial da Samsung nesta sessao."
+ },
+ {
+  "id": "tizenbrew-2",
+  "verdict": "confirmado",
+  "corrections": "Nenhuma de passo. Detalhe util: os arquivos da release v1.1.3 sao TizenBrewInstaller-win-x64.exe, -macos-arm64, -macos-x64, -linux-arm64, -linux-x64 e TizenBrewInstaller.wgt (versao TV). O README do Installer nao cita Windows/mac/Linux por nome, mas as releases trazem esses binarios.",
+  "applies_to_corrected": "Tizen 3.0+ (2017+). Login Samsung a partir de Tizen 7 (2023+), conforme docs/README.md ('If you're on Tizen 7 or above, you'll be prompted to sign in to your Samsung account'). Em Tizen 8/9 ha relatos de falha de certificado e instalacao (issues 131, 186, 190, 237), coerente com a ressalva do achado; v1.1.1 e v1.1.3 do Installer corrigiram parte disso.",
+  "extra_sources": [
+   "https://github.com/reisxd/TizenBrewInstaller/releases/expanded_assets/v1.1.3",
+   "https://github.com/reisxd/TizenBrewInstaller/releases",
+   "https://github.com/reisxd/TizenTube/blob/main/docs/README.md",
+   "https://github.com/simbasjungles/free-my-tv/blob/main/README.md"
+  ],
+  "notes": "docs/README.md do TizenBrew confirma cada passo: Apps ou App Settings > 12345 > Developer mode On > Host PC IP > reiniciar; baixar o Installer Desktop (chmod +x em mac/Linux); Install TizenBrew; apps extras (Jellyfin, Moonlight) por user/repo do GitHub ou wgt/tpk (so na versao TV). README do Installer confirma Android via Termux com nodejs e git e o fim do USB Demo Package. free-my-tv confirma de forma independente o fluxo e o login Samsung em TVs 2023+."
+ },
+ {
+  "id": "tizenbrew-3",
+  "verdict": "parcial",
+  "corrections": "Remova 'Tizen Studio 4.6+': nenhuma fonte cita versao minima. O aviso 'nunca use sdb install' e o de 'nao por 127.0.0.1 cedo demais' aparecem so no gist (fonte unica, nao oficial); a doc oficial do TizenBrew nao os menciona. A doc oficial usa 'tizen install -n <wgt>' sem -t; o gist acrescenta '-t <DEVICE_NAME>' (necessario se houver mais de um alvo). Em Tizen 9 a reassinatura sozinha pode nao bastar (issues #190, #234, #237); tenha o Apps2Samsung como plano B.",
+  "applies_to_corrected": "Linha de comando: Tizen 3.0+ (2017+). Reassinatura obrigatoria em Tizen 7+ (2023+); a doc antiga dizia 'Tizen 8 (ou 7) ou mais novo (2024+ [2023+])'. Em Tizen 9 (2025+) o resultado e irregular.",
+  "extra_sources": [
+   "https://raw.githubusercontent.com/reisxd/TizenBrew/main/docs/README.md",
+   "https://github.com/reisxd/TizenBrew/issues/131",
+   "https://github.com/reisxd/TizenBrew/issues/26",
+   "https://github.com/reisxd/TizenBrew/commits/main/docs/README.md"
+  ],
+  "notes": "Comandos 'tizen package -t wgt -s <perfil> -o ./resigned -- TizenBrewStandalone.wgt' e 'tizen install -n ./resigned/...' conferem com a doc oficial. Historico git: nota de 2024 dizia 'reassinar para TVs Tizen 8 (ou 7)'; mantenedor em #131: 'a documentacao ja manda reassinar em Tizen 7/8+'. developer.samsung.com e docs.tizen.org inacessiveis neste ambiente; busca web esgotada, entao nao achei Reddit/XDA independente."
+ },
+ {
+  "id": "tizenbrew-4",
+  "verdict": "parcial",
+  "corrections": "1) A frase 'Tizen 9 via OTA em modelos 2023/2024 pelo firmware 2106.0 desde jul/2025' nao tem fonte: tratar como hipotese ou remover. 2) #131 (QES90D, 2024) nao foi 'resolvido': um usuario conseguiu reassinando, outro nao; fechado como 'not planned' em 22/06/2025. 3) #190 foi fechado pelo proprio relator como 'not planned' em 17/12/2025, sem resposta do mantenedor. 4) Em #133 o bloqueio do cdn.jsdelivr.net e so pergunta do mantenedor, nao causa confirmada. 5) O aviso historico passou por tres fases: 'Tizen 8+ precisa recompilar do fonte' (jun/2024), depois 'Tizen 8 (ou 7)+ precisa reassinar', e foi removido em 03/02/2025 na versao nextgen; a doc atual so diz que Tizen 7+ pede conta Samsung e certificado no instalador.",
+  "applies_to_corrected": "Tizen 8 (linha 2024) e Tizen 9 (linha 2025). Sem dado sobre OTA de Tizen 9 em modelos 2023/2024.",
+  "extra_sources": [
+   "https://github.com/reisxd/TizenBrew/issues/131",
+   "https://github.com/reisxd/TizenBrew/issues/133",
+   "https://github.com/reisxd/TizenBrew/issues/234",
+   "https://github.com/reisxd/TizenBrew/issues/26",
+   "https://github.com/reisxd/TizenBrew/issues/173",
+   "https://github.com/Apps2Samsung/Apps2Samsung/releases"
+  ],
+  "notes": "Confirmado no historico git da docs/README.md: 'Note that you may not be able to install TizenBrew to your TV if your TV is Tizen 8 or newer (2024+). You'll have to rebuild TizenBrew from source'. #245 aberto em 20/10/2026 (UN50DU7700, ERR_ACCESS_DENIED em Settings). #237 fechado em 12/08/2026 com Apps2Samsung v2.7.3. #234 aberto, comentarios ocultos como spam. #173 (QE65S85D, Tizen 9) mesmo 'Unknown Module'. Apps2Samsung v2.8.2 (out/2026) traz 'TizenTube Cobalt proxy address fix for Tizen 9'."
+ },
+ {
+  "id": "tizenbrew-5",
+  "verdict": "confirmado",
+  "corrections": "Detalhe: o MODULES.md documenta so os tipos 'app' e 'mods' (servicos entram via campo serviceFile), e nao cita a keyword npm nem o caminho do config; esses dois vem do codigo-fonte e do registro npm. Internamente o modulo e gravado com prefixo 'npm/<pacote>' ou 'gh/<user>/<repo>' e baixado de cdn.jsdelivr.net. O exemplo NuvioMedia/NuvioTVTizen nao foi verificado.",
+  "applies_to_corrected": "TizenBrew instalado em Tizen 3.0+ (2017+); modulos GitHub, segundo o mantenedor, devem mirar Tizen 6.5+ (2022+). Tela de Settings pode falhar em Tizen 9 (#245).",
+  "extra_sources": [
+   "https://github.com/reisxd/TizenBrew/blob/main/tizenbrew-app/TizenBrew/service-nextgen/service/utils/configuration.js",
+   "https://github.com/reisxd/TizenBrew/blob/main/tizenbrew-app/TizenBrew/service-nextgen/service/utils/moduleLoader.js",
+   "https://github.com/reisxd/TizenBrew/issues/28",
+   "https://registry.npmjs.org/-/v1/search?text=keywords:tizenbrew&size=50",
+   "https://registry.npmjs.org/@foxreis/tizentube"
+  ],
+  "notes": "configuration.js le e grava /home/owner/share/tizenbrewConfig.json e inicia com modules: ['npm/@foxreis/tizentube']. moduleLoader.js busca https://cdn.jsdelivr.net/<modulo>/package.json; sem packageType valido mostra 'Unknown Module'. Issue #28: mantenedor confirma formato user/repo (ex. redphx/better-xcloud). Busca npm por keyword tizenbrew retorna 63 pacotes. Campos websiteURL, main, serviceFile, appName, packageType conferem no MODULES.md e no package.json do TizenTube."
+ },
+ {
+  "id": "tizenbrew-6",
+  "verdict": "parcial",
+  "corrections": "1) 'Install from GitHub' com reisxd/TizenTube provavelmente nao funciona: o package.json aponta main para dist/userScript.js e service para dist/service.js, mas a pasta dist/ esta no .gitignore e nao existe no repositorio; a via que funciona e o npm @foxreis/tizentube (1.15.2), que e o modulo padrao do TizenBrew. 2) Faltou o terceiro build: TizenTubeCobaltTizenTubeProxyAddress.wgt (proxy http://tizentube:8101), adicionado em v2.1.1 (13/09/2026); a v2.1.0 citada tem so TizenTubeCobalt.wgt e TizenTubeOld.wgt. 3) 'Partner Signing' como opcao manual existe na doc do TizenTube; no Apps2Samsung atual (v2.8.x) a escolha Public/Partner e automatica e desde v2.8.0 o TizenTube entra como provedor com partner signing. 4) A doc nao chama o metodo Apps2Samsung de 'recomendado'; e o unico metodo descrito para o standalone.",
+  "applies_to_corrected": "Cobalt: Tizen 6+ (2021+). Old: Tizen 3 a 5.5 (2017 a 2020). Modulo TizenBrew: qualquer TV com TizenBrew funcionando.",
+  "extra_sources": [
+   "https://raw.githubusercontent.com/reisxd/TizenTube/main/README.md",
+   "https://github.com/reisxd/TizenTube/releases",
+   "https://github.com/reisxd/TizenTube/releases/expanded_assets/v2.1.0",
+   "https://github.com/Apps2Samsung/Apps2Samsung",
+   "https://github.com/Apps2Samsung/Apps2Samsung/releases",
+   "https://registry.npmjs.org/@foxreis/tizentube"
+  ],
+  "notes": "Confirmado na doc do TizenTube: Cobalt para Tizen 6 (2021)+; Old para Tizen 3, 4, 5 e 5.5; 'Force Samsung Certificate' e 'Partner Signing'; proxy padrao http://127.0.0.2:8101; causas do 'A network error' (certificado, proxy, Tizen 5.5 ou anterior, sem internet, proxy lento no boot). Release v2.1.0: 'must be resigned with a Samsung Certificate with Partner level privilege'. README: 'TizenTube is a TizenBrew module ... Now works as a standalone app!' e link para app Android TV separado (TizenTube Cobalt). Release v2.0.0: 'You no longer need to use TizenBrew'."
+ },
+ {
+  "id": "tizenbrew-7",
+  "verdict": "parcial",
+  "corrections": "Os passos batem com o README do fork (Tizen Studio, modo dev com IP do PC, scripts .bat/.sh, npm i na raiz e em /mods, npm run build, config.json com isTizen3/porta/launch_method, APK Android com appID Ad6NutHP8l.TizenTube, Launcher na TV, velocidade 1.0001x). Mas o projeto esta parado: ultimo commit 31/03/2024 e ultima release 13/03/2024, sem issues abertas. Nao ha fonte independente que confirme que ainda funciona com o YouTube atual. Hoje o proprio TizenTube oficial (reisxd) distribui TizenTubeOld.wgt para Tizen 3, 4, 5 e 5.5 e TizenTubeCobalt.wgt para Tizen 6+ via Apps2Samsung, sem servidor 24/7, o que torna o caminho Legacy desnecessario para TVs antigas. Tratar como hipotese, nao fato.",
+  "applies_to_corrected": "Tizen 3 (2017) em diante segundo o README do fork; status atual desconhecido por falta de manutencao desde 03/2024. Para Tizen 3 a 5.5 prefira TizenTubeOld.wgt do projeto principal.",
+  "extra_sources": [
+   "https://github.com/ThowZzy/TizenTube-Legacy/commits/main",
+   "https://github.com/ThowZzy/TizenTube-Legacy/releases",
+   "https://github.com/reisxd/TizenTube",
+   "https://github.com/reisxd/TizenTube/blob/main/docs/README.md"
+  ],
+  "notes": "Confirmado pelo README: fork segue outro caminho e o original migrou para TizenBrew (e hoje tambem roda standalone). Nenhuma fonte independente (Reddit, Samsung Community) foi acessivel; busca web indisponivel nesta rodada, so WebFetch."
+ },
+ {
+  "id": "tizenbrew-8",
+  "verdict": "parcial",
+  "corrections": "App oficial existe: o site do Jellyfin lista 'Jellyfin for Tizen' como oficial com link para a Samsung Smart TV App Store, e o mantenedor anthonylavado confirmou em 01/02/2026 (usuarios viram na loja entre 07 e 10/02/2026). Porem a regra '2021+/Tizen 6.0+' nao e oficial: o mantenedor disse que 'nem todos os modelos sao elegiveis ainda, so alguns'. Relatos: 2021 Neo QLED Tizen 6 (UK/Suecia), S95B 2022, Frame 2023, QN85B 2022 e QN85D 2024 (EUA) nao encontram o app; Q60D 2024 e Q7FA encontram. Ausencia relatada na India (M80H 2026 e RU7100 2019); nao achei relato sobre o Brasil. Erro no COMPATIBILITY.md copiado para o achado: o S95C e modelo 2023, nao 2024. Comando Docker, codigos [118,-12]/[118,-11] e variantes (Jellyfin, TrueHD, master, secondary, SmartHub, OSA, TrailerFix) conferem.",
+  "applies_to_corrected": "Loja oficial: desde fev/2026, cobertura por modelo e regiao definida pela Samsung, sem lista publica; nao assuma 2021+. Sideload: Tizen 2017+ via Tizen Studio; Georift exige Docker amd64; TVs com Tizen 7+ (e One UI 8 em 2024) exigem certificado proprio por DUID. SmartHub Preview falha no S95C (Tizen 9) e no QA50L (Tizen 6.5); QE65S90F 2025 funciona com build -SmartHub.",
+  "extra_sources": [
+   "https://github.com/jellyfin/jellyfin.org/blob/master/src/data/clients.ts",
+   "https://github.com/jellyfin/jellyfin-tizen/issues/222",
+   "https://github.com/jellyfin/jellyfin-tizen/issues/420",
+   "https://github.com/jellyfin/jellyfin-tizen/issues/411",
+   "https://github.com/jellyfin/jellyfin-tizen/issues/427",
+   "https://github.com/jeppevinkel/jellyfin-tizen-builds",
+   "https://github.com/Georift/install-jellyfin-tizen/issues/51"
+  ],
+  "notes": "jellyfin.org e samsung.com nao resolveram DNS daqui; usei o repositorio do site e as issues. O README do jellyfin/jellyfin-tizen pede Tizen Studio 4.6+ e Node 20+ e nao cita os codigos 118; eles vem do Georift e do jellyfin-tizen-builds."
+ },
+ {
+  "id": "tizenbrew-9",
+  "verdict": "confirmado",
+  "corrections": "Sem erro de passo. Detalhes a somar: a wiki marca o metodo Tizen Studio como legado/deprecated; o workaround do HDMI externo so aparece na wiki do projeto; na issue #23 o mantenedor chama o problema do Tizen 9 de 'firmware-level issue' da Samsung ligada ao Game Mode, com congelamento no primeiro frame, tela preta e corrupcao acima de 1080p (H.264 ok ate 1080p120; HEVC/AV1 congelam em qualquer resolucao nesse cenario). Com o ForceGM.wgt, manter o toggle Game Mode desligado no app.",
+  "applies_to_corrected": "Tizen 5.5+ (2020+). Apps2Samsung para todos; Docker para 5.5 a 6.5; Tizen Studio para 7+. Conta Samsung para assinar em Tizen 7+ (e 2024/Tizen 8 One UI). Game Mode instavel em Tizen 9 (S90D, QN90D, S90F, QN90F, 2024 com Tizen 9 e 2025).",
+  "extra_sources": [
+   "https://github.com/brightcraft/moonlight-tizen",
+   "https://github.com/OneLiberty/moonlight-chrome-tizen",
+   "https://github.com/brightcraft/moonlight-tizen/issues/23",
+   "https://github.com/brightcraft/moonlight-tizen/issues/42",
+   "https://github.com/brightcraft/moonlight-tizen/issues/73"
+  ],
+  "notes": "Duas fontes alem da wiki: README do projeto pai OneLiberty (Tizen 5.5+, conta Samsung na maioria das TVs) e issue #37 dele ([118,-12] em TVs 2024 Tizen 8 exige assinar com conta propria). Issues do brightcraft sao do mesmo repo, mas com relatos de usuarios em hardware real."
+ },
+ {
+  "id": "tizenbrew-10",
+  "verdict": "confirmado",
+  "corrections": "Pequenos ajustes: o catalogo tizen-community-packages tem 118 pacotes, nao 'dezenas'. A versao estavel atual e v2.8.3 (17/10/2026), com v3.0.0-beta em 22/10/2026; a v2.8.2 (07/10/2026) trouxe o 'TizenTube Cobalt proxy address fix for Tizen 9', opcional, desligado por padrao, que grava o IP da TV no pacote (reservar IP no DHCP). Segundo o PR #713, o Partner Signing e forcado automaticamente para o TizenTube Cobalt (servico on-boot), mas o guia oficial do TizenTube manda ligar 'Force Samsung Certificate' e 'Partner Signing' mesmo assim; no Android escolher tipo 'Partner'. FAQ: conta de desenvolvedor Samsung necessaria em Tizen 7+; a conta so e pedida ao gerar certificado novo.",
+  "applies_to_corrected": "Samsung Tizen 2015+ (Orsay pre-2015 nao suportado). TizenTube Cobalt via Apps2Samsung: Tizen 6 (2021)+; TizenTubeOld: Tizen 3 a 5.5. Proxy fix do Tizen 9 ainda 'nao testado em TV Tizen 9' segundo o PR.",
+  "extra_sources": [
+   "https://github.com/Apps2Samsung/Apps2Samsung/releases",
+   "https://github.com/Apps2Samsung/Apps2Samsung/releases/tag/v2.8.0",
+   "https://github.com/Apps2Samsung/Apps2Samsung/pull/652",
+   "https://github.com/Apps2Samsung/Apps2Samsung/pull/713",
+   "https://github.com/Apps2Samsung/Apps2Samsung/wiki/FAQ",
+   "https://github.com/Apps2Samsung/Apps2Samsung/wiki/Configuration",
+   "https://github.com/reisxd/TizenTube/blob/main/docs/README.md",
+   "https://github.com/brightcraft/moonlight-tizen/wiki/Installation-Guide"
+  ],
+  "notes": "README confirma Windows/Linux/macOS/Android/iOS beta/CLI, deteccao de TV, login Samsung unico, pre-autorizacao por DUID, escolha automatica Public/Partner, Jellyfin embutido, Custom WGT/tpk, MIT. Fonte independente: guia do TizenTube (reisxd) e wiki do Moonlight recomendam o Apps2Samsung. apps2samsung.com nao resolveu DNS."
+ },
+ {
+  "id": "api-rede-1",
+  "verdict": "parcial",
+  "corrections": "1) 8002 com token nao e exclusivo de 2018+: a lista oficial da samsungtvws (README v2.5.0) ja inclui 2017 M5500+ e o exemplo usa port=8002; o HA tenta 8002 e depois 8001 em qualquer Tizen. Reescrever: 2016 (K) so 8001 sem token; 2017+ 8001 e 8002, com token na 8002. 2) ms.channel.timeOut nao esta no event.py da samsungtvws (so ms.channel.connect, ms.channel.unauthorized, ms.channel.ready, ms.channel.clientConnect/Disconnect, ms.error, ed.installedApp.get, ed.apps.launch, ms.remote.imeStart/imeEnd); o evento existe, mas a fonte e o bridge.py do HA e outros clientes (Apps2Samsung, LittleBigMouse, Couch). 3) Caminho na 8080: ollo69 usa /ws/app/YouTube (singular); Toxblh usa /ws/apps/YouTube e o pareamento H/J usa /ws/apps/CloudPINPage (plural). Tratar o caminho como variavel. 4) 9197 = UPnP DMR: as fontes lidas (ollo69 ping_probe, iobroker) so usam 9197 como porta de ping/polling; o rotulo DMR nao foi confirmado. 5) Ha tambem POST /api/v2/remoteControl/imeInput/{base64}?token= no rest.py, que exige token (o achado diz que o REST nao usa token). 6) PowerState so aparece em firmware 2019+ (Couch docs, HA checa se existe).",
+  "applies_to_corrected": "Tizen 2016+. 2016 (K): so ws 8001 sem token. 2017 (M) em diante: 8001 e 8002, token na 8002 (padrao das bibliotecas). PowerState no /api/v2/ so em firmware 2019+. REST de apps sem token em todas; imeInput com token.",
+  "extra_sources": [
+   "https://raw.githubusercontent.com/xchwarze/samsung-tv-ws-api/master/samsungtvws/helper.py",
+   "https://raw.githubusercontent.com/home-assistant/core/dev/homeassistant/components/samsungtv/bridge.py",
+   "https://raw.githubusercontent.com/Toxblh/samsung-tv-control/master/src/samsung.ts",
+   "https://raw.githubusercontent.com/Ape/samsungctl/master/samsungctl/remote_websocket.py",
+   "https://raw.githubusercontent.com/ollo69/ha-samsungtv-smart/master/custom_components/samsungtv_smart/api/samsungws.py",
+   "https://github.com/Couch-OS/couch/blob/main/docs/samsung-tizen.md",
+   "https://github.com/openhab/openhab-addons/blob/main/bundles/org.openhab.binding.samsungtv/src/main/java/org/openhab/binding/samsungtv/internal/handler/SamsungTvHandler.java",
+   "https://github.com/Apps2Samsung/Apps2Samsung/blob/main/Apps2Samsung.Core/Remote/SamsungRemoteClient.cs"
+  ],
+  "notes": "Confirmado por 4 ou mais clientes independentes (samsungtvws, HA, Toxblh, samsungctl, ollo69, openHAB): URL ws://IP:8001|wss://IP:8002/api/v2/channels/samsung.remote.control?name=<base64>[&token=], JSON ms.remote.control com Cmd Click/Press/Release, DataOfCmd, Option false, TypeOfRemote SendRemoteKey; SendInputString com Cmd em base64 e emit custom.remote.textReceived antes; ProcessMouseDevice com Position x/y; REST GET/POST/DELETE/PUT em applications/{id}; campos TokenAuthSupport, FrameTVSupport, PowerState, wifiMac (openHAB, HA, node-red-contrib-samsung). Restricao de sub-rede/VLAN confirmada no README da samsungtvws, docs do HA e README do ollo69. Portas 7678 e 9080: nenhuma fonte encontrada (o achado ja diz sem identificacao). Nenhuma documentacao oficial Samsung cobre essa API; tudo e engenharia reversa. Busca web atingiu a cota; verificacao feita por arquivos brutos do GitHub e search_code."
+ },
+ {
+  "id": "api-rede-2",
+  "verdict": "confirmado",
+  "corrections": "",
+  "applies_to_corrected": "",
+  "extra_sources": [
+   "https://raw.githubusercontent.com/xchwarze/samsung-tv-ws-api/master/samsungtvws/cli/main.py",
+   "https://raw.githubusercontent.com/xchwarze/samsung-tv-ws-api/master/samsungtvws/event.py",
+   "https://raw.githubusercontent.com/home-assistant/core/dev/tests/components/samsungtv/const.py",
+   "https://raw.githubusercontent.com/ollo69/ha-samsungtv-smart/master/README.md",
+   "https://github.com/Couch-OS/couch/blob/main/docs/samsung-tizen.md",
+   "https://github.com/oBusk/samsung-service-menu/blob/main/README.md"
+  ],
+  "notes": "Conferido: TIMEOUT_REQUEST = 31 no const.py do HA, com comentario no bridge.py de que o timeout alto e para esperar o popup; token lido de response.data.token no evento ms.channel.connect (connection.py) e gravado em token_file; Toxblh grava em token.txt e so reenvia se SAVE_TOKEN; token=... so e adicionado quando ssl (8002). Evento ms.channel.unauthorized esta no event.py; Couch e Apps2Samsung tratam unauthorized e timeOut como prompt negado ou ignorado. Caminho do menu confirmado por 2 fontes independentes: docs do HA (Device connection manager > Access notification = First time only; apagar entradas em Device list) e iobroker (Settings / General / External Device Manager / Device Connection Manager). Tokens de exemplo curtos: 123456789 (fixture do HA), 12345678 (Toxblh). Validade: nenhuma fonte da prazo; HA so atualiza quando o token muda (bridge.py). O CLI da samsungtvws tambem imprime o token na primeira conexao (--print-token). Nome do menu em portugues continua sendo traducao, nao conferida em samsung.com."
+ },
+ {
+  "id": "api-rede-3",
+  "verdict": "parcial",
+  "corrections": "1) A regra da 5a letra (model[4] no HA) vale para a linha UN/UE/UA + letra do ano (H, J, K, M, N, R, T, A, B, C, D). Nao vale para QLED: em QE43Q67BA o 5o caractere e Q; a letra do ano fica depois do numero da serie (Q67B = B = 2022). O proprio exemplo do achado contradiz a regra. O HA so usa model[4] para H, J e K, nunca para a geracao inteira. 2) Legacy 55000 nao e so pre-2014: samsungctl diz pre-2016, e a lista da samsungtvws exclui varios H e J (H6003/H6103/H6153/H6201/H6203, J6203) do protocolo criptografado, o que sugere que esses ficam no legacy. Docs do HA dizem que SOME H e J pedem pareamento por PIN; o codigo do HA forca o criptografado para todo H/J. Escrever: 2011-2015 legacy 55000 em geral; H/J com PIN quando listados na samsungtvws. 3) Caminho do pareamento: ws/apps/CloudPINPage e ws/pairing?step= na porta 8080, websocket criptografado em 8000 via socket.io/1 (confirmado). 4) Porta 8001 na 2016 (K) sem token e fallback por PIN para alguns K: confirmado em bridge.py (model_may_require_encryption) e config_flow.py.",
+  "applies_to_corrected": "Orsay 2011-2015: TCP 55000 legacy (D, E, F e parte de H/J). H 2014 e J 2015 das listas da samsungtvws: criptografado 8000 + PIN em 8080. K 2016: ws 8001 sem token, com fallback PIN em alguns. M 2017+: 8001 e 8002 com token. Regra da letra: posicao 5 so para prefixos UN/UE/UA; QLED (QE/QN/QA) usa a letra apos o numero da serie.",
+  "extra_sources": [
+   "https://raw.githubusercontent.com/home-assistant/core/dev/homeassistant/components/samsungtv/config_flow.py",
+   "https://raw.githubusercontent.com/Ape/samsungctl/master/README.md",
+   "https://raw.githubusercontent.com/Ape/samsungctl/master/samsungctl/remote_legacy.py",
+   "https://raw.githubusercontent.com/home-assistant/home-assistant.io/current/source/_integrations/samsungtv.markdown",
+   "https://raw.githubusercontent.com/natalan/samsung-remote/master/README.md"
+  ],
+  "notes": "Confirmado no bridge.py do HA: ENCRYPTED_MODEL_USES_POWER_OFF = {H6400, H6410} e ENCRYPTED_MODEL_USES_POWER = {JU6400, JU641D}; modelos desconhecidos recebem os dois. Lista 2014 H4500/H5500+, 2015 J5500+, 2016 K4300/K5300+, 2017 M5500+ e nota de variacao por regiao confirmadas no README v2.5.0. natalan: TCP 55000, testado em D6000, sem usar a palavra legacy. O repositorio cleanyourtv citado e arquivo local e nao foi aberto."
+ },
+ {
+  "id": "api-rede-4",
+  "verdict": "confirmado",
+  "corrections": "Detalhes menores: KEY_POWEROFF e KEY_POWERON nao estao no COMMANDS.md da samsungtvws (so KEY_POWER), mas estao nas listas do HA, ollo69, Toxblh e natalan. KEY_BLUE nao existe em nenhuma lista; o botao azul e KEY_CYAN. KEY_EXT12 a KEY_EXT39 aparecem so como reticencias no COMMANDS.md; a lista completa esta nas docs do HA. O comando do CLI para KEY_FACTORY chama-se factory (samsungtv --host IP factory --i-know-what-im-doing).",
+  "applies_to_corrected": "",
+  "extra_sources": [
+   "https://raw.githubusercontent.com/Ape/samsungctl/master/README.md",
+   "https://github.com/xchwarze/samsung-tv-ws-api/blob/master/samsungtvws/cli/remote.py",
+   "https://github.com/oBusk/samsung-service-menu/blob/main/README.md",
+   "https://raw.githubusercontent.com/home-assistant/core/dev/homeassistant/components/samsungtv/bridge.py"
+  ],
+  "notes": "Conferido: KEY_POWEROFF vira KEY_POWER nas 2016+ (docs do HA, samsungctl, ollo69); Frame desliga com KEY_POWER segurado 3 s (bridge.py: SendRemoteKey.hold('KEY_POWER', 3) quando FrameTVSupport = true); hold = Press + sleep + Release (remote.py); KEY_HDMI1-4 presentes em Toxblh keys.ts e natalan README e ausentes em COMMANDS.md, docs do HA e Key_codes.md do ollo69, exatamente como o achado diz; KEY_FACTORY no COMMANDS.md sob Factory / Service Menu (Dangerous), com aviso de que pode abrir menu de servico e brickar ou desconfigurar a TV, e flag --i-know-what-im-doing no cli/remote.py; o repo oBusk/samsung-service-menu envia KEY_INFO e depois KEY_FACTORY pela 8002 para abrir o menu de servico. Comandos send-key e hold-key existem no CLI. Nota do COMMANDS.md: lista nao e oficial e teclas podem nao funcionar dependendo de modelo ou firmware. Nenhuma lista oficial da Samsung encontrada."
+ },
+ {
+  "id": "api-rede-5",
+  "verdict": "parcial",
+  "corrections": "1) As cadeias de teclas (KEY_EXIT+2000+KEY_TV+KEY_EXIT e as cadeias KEY_SOURCE) existem so no Key_chaining.md do ollo69 e em forks dele; nenhuma fonte independente as testou. Trate como exemplo a ajustar na sua TV, nao como regra por ano. 2) O valor da TV aberta no SmartThings pode ser 'dtv' em vez de 'digitalTv' (tavicu aceita os dois; relato de uso com 'dtv'). Leia supportedInputSources ou supportedInputSourcesMap antes de mandar o comando. 3) O ollo69 atual le supportedInputSourcesMap (samsungvd.mediaInputSource); o HA core usa supportedInputSources so na capability mediaInputSource. 4) PAT do SmartThings esta obsoleto e desde 30/12/2024 dura 24 h; o ollo69 recomenda a integracao SmartThings nativa do HA. 5) ST_HDMI vai de ST_HDMI1 a ST_HDMI4 (nao so 1 e 2). 6) --key-press-delay na CLI samsungtvws: padrao 1.0 s, confirmado.",
+  "applies_to_corrected": "Cadeias: exemplos de 2017 e 2019 do ollo69, sem teste independente; layout do menu Fonte muda por ano. SmartThings setInputSource: TVs registradas no app SmartThings (ollo69 e HA: Tizen 2016+). tizen.tvwindow: confirmado so no DU7000 2024 (relato local); doc oficial nao acessivel neste ambiente.",
+  "extra_sources": [
+   "https://github.com/tavicu/homebridge-samsung-tizen/blob/master/src/protocols/smartthings.ts",
+   "https://github.com/openhab/openhab-addons/blob/main/bundles/org.openhab.binding.samsungtv/src/main/java/org/openhab/binding/samsungtv/internal/service/SmartThingsApiService.java",
+   "https://raw.githubusercontent.com/pySmartThings/pysmartthings/main/src/pysmartthings/capability.py",
+   "https://raw.githubusercontent.com/xchwarze/samsung-tv-ws-api/master/COMMANDS.md",
+   "https://raw.githubusercontent.com/ollo69/ha-samsungtv-smart/master/README.md"
+  ],
+  "notes": "Key_chaining.md confere: atrasos 200 a 2000 ms, padrao 500, e afirma que ST_TV/ST_HDMI1-3 sao mais rapidos que cadeias. Capability samsungvd.mediaInputSource + setInputSource confirmada em tavicu, openHAB, pysmartthings e HA core. developer.samsung.com e developer.smartthings.com nao resolveram DNS aqui, entao a doc oficial do TV Window nao foi conferida. Busca web esgotou a cota; verificacao feita por fetch direto e busca de codigo no GitHub."
+ },
+ {
+  "id": "api-rede-6",
+  "verdict": "parcial",
+  "corrections": "1) A regra do ollo69 esta errada no achado. App_list.md diz: tanto o ID numerico quanto o alfanumerico ABREM o app; o numerico identifica o app em execucao por polling HTTP (lento, scan_app_http), o alfanumerico identifica via SmartThings. So em poucos apps (ex. Prime Video) o numerico abre mas nao identifica e o alfanumerico identifica mas nao abre; o formato 'id1/id2' resolve esse caso. 2) Alfanumerico do Prime: alem de org.tizen.ignition existem org.tizen.primevideo e evKhCgZelL.AmazonIgnitionLauncher2 em TVs mais novas. Netflix antigo tambem aparece como RN1MCdNq8t.Netflix; YouTube novo pode ser com.samsung.tv.cobalt-yt. 3) Globoplay 3201908019022 nao veio de uma unica lista (esta em APPLICATIONS.md, README do openHAB e lista blog-razrabotchika, com alias org.tizen.globoplayapp), mas um relato brasileiro em AU8000 2021 recebeu 404 nos dois IDs mesmo com o app instalado. Confirmar na propria TV. 4) A regra '2020+ usa o ID da direita' esta so em APPLICATIONS.md; e orientacao, nao regra.",
+  "applies_to_corrected": "IDs numericos: Tizen 2016+, variando por ano e regiao. IDs alfanumericos: confirmados em varios repositorios (Hubitat, listas comunitarias, const.py do ollo69). Globoplay/Telecine/DIRECTV GO: listados em 3 fontes, mas Globoplay falhou (404) em AU8000 2021 no Brasil.",
+  "extra_sources": [
+   "https://github.com/blog-razrabotchika/homebridge-samsung-tizen-applications/blob/master/README.md",
+   "https://github.com/DaveGut/HubitatActive/blob/master/SamsungTvRemote/SamsungTVRemote.groovy",
+   "https://github.com/openhab/openhab-addons/blob/main/bundles/org.openhab.binding.samsungtv/README.md",
+   "https://github.com/pedrolopesme/samsung-tv-remote/blob/main/docs/specs/0002-atalhos-de-apps.md",
+   "https://github.com/TheFab21/ha-samsungtv-smart/blob/main/custom_components/samsungtv_smart/const.py"
+  ],
+  "notes": "Tabela numerica de APPLICATIONS.md confere item por item com o achado. Toxblh apps.ts confirma subconjunto (Netflix 11101200001, YouTube 111299001912, Prime 3201512006785, Disney 3201901017640, Spotify, Apple TV, Steam Link, SmartThings, org.tizen.browser) e nao tem Plex nem Twitch. O App_list.md do ollo69 lista so org.tizen.netflix-app e org.tizen.ignition; os outros alfanumericos vieram de fontes independentes. Nao foi possivel confirmar a atribuicao 'Mishta, jan/2025'."
+ },
+ {
+  "id": "api-rede-7",
+  "verdict": "parcial",
+  "corrections": "1) DELETE /applications/{id} (fechar) nao e servido por varios modelos (Apps2Samsung: 'several do not'); e GET status pode travar em firmware Tizen 9 de hotelaria. Trate fechar como opcional. 2) PUT (instalar da loja) existe so no rest.py da samsungtvws; nenhuma fonte independente confirma que funciona. 3) play_media com ID de app esta no codigo do HA core (MediaType.APP), mas a pagina de documentacao do HA nao o descreve; so documenta media_content_type channel. 4) Na CLI samsungtvws: 'app-run' usa REST, 'app-run-ws' usa o websocket, 'open-browser' confirmado; esses comandos estao no README e em cli/apps.py, nao em COMMANDS.md. 5) O relato AU8000 2021 diz que /api/v2/applications/<appId> 'pode abrir um app', sem detalhar o metodo HTTP.",
+  "applies_to_corrected": "REST GET/POST em 8001: Tizen 2016+, confirmado em codigo independente (Hubitat GET, izumi POST, rusty-biscuit, morning-routine POST/DELETE). DEEP_LINK x NATIVE_LAUNCH: confirmado em samsungtvws e Toxblh helpers.ts (app_type === 2 ? DEEP_LINK : NATIVE_LAUNCH), ainda sem documento Samsung. DELETE: parte dos modelos. PUT: sem confirmacao.",
+  "extra_sources": [
+   "https://raw.githubusercontent.com/Toxblh/samsung-tv-control/master/src/helpers.ts",
+   "https://github.com/Apps2Samsung/Apps2Samsung/blob/main/Apps2Samsung.Core/Remote/SamsungRemoteApps.cs",
+   "https://github.com/yankeeinlondon/rusty-biscuit/blob/main/schematic/definitions/src/samsung_smart_tv/mod.rs",
+   "https://github.com/xchwarze/samsung-tv-ws-api/blob/master/samsungtvws/cli/apps.py",
+   "https://raw.githubusercontent.com/home-assistant/home-assistant.io/current/source/_integrations/samsungtv.markdown"
+  ],
+  "notes": "rest.py confere: GET/POST/DELETE/PUT applications/{id}, porta 8001 padrao, sem token (so rest_ime_input exige). remote.py confere: ed.apps.launch, comentario 'app_type == 2 ? DEEP_LINK : NATIVE_LAUNCH', open_browser = run_app('org.tizen.browser','NATIVE_LAUNCH', url). README do ollo69 confere os 3 metodos e 'use Rest API Call so se os outros 2 nao funcionarem'."
+ },
+ {
+  "id": "api-rede-8",
+  "verdict": "confirmado",
+  "corrections": "",
+  "applies_to_corrected": "",
+  "extra_sources": [
+   "https://github.com/openhab/openhab-addons/blob/main/bundles/org.openhab.binding.samsungtv/src/main/java/org/openhab/binding/samsungtv/internal/protocol/WebSocketV2.java",
+   "https://github.com/Apps2Samsung/Apps2Samsung/blob/main/Apps2Samsung.Core/Remote/SamsungRemoteApps.cs",
+   "https://github.com/pedrolopesme/samsung-tv-remote/blob/main/docs/specs/0002-atalhos-de-apps.md",
+   "https://github.com/vitalets/docker-tizen-webos-sdk/blob/master/README.md",
+   "https://raw.githubusercontent.com/home-assistant/home-assistant.io/current/source/_integrations/samsungtv.markdown",
+   "https://github.com/tavicu/homebridge-samsung-tizen/blob/master/src/protocols/websocket.ts"
+  ],
+  "notes": "Issue #23 confere: GU65TU7079, Tizen 5.5, app_list() nunca retorna, mantenedor diz 'Tizen 5 dont suport this command anymore'. HA core confere: APP_LIST_DELAY = 3 com comentario 'some TVs simply ignore the request'. Independentes: openHAB ('on >2020 TV's this doesn't work'), Apps2Samsung ('dropped from Tizen somewhere around 2020'), relato AU8000 2021 (Tizen 6) com a mensagem ignorada em silencio, e doc do HA ('some older models also expose the installed applications through the WebSocket'). Alternativas: Installed Web App List / App ID - WAS em APPLICATIONS.md e no relato brasileiro; sdb applist e was_execute na issue tavicu #26 e no README do vitalets; data-app-id na issue #26; getAppsInfo com 486 entradas no relato local DU7000; Apps > 12345 em varias fontes. Tamanho da CLI: relato local mede 478 MB mais 216 MB de Java. A doc oficial em developer.samsung.com nao resolveu DNS aqui; a cota de busca web esgotou, verificacao por fetch direto e busca de codigo."
+ },
+ {
+  "id": "api-rede-9",
+  "verdict": "parcial",
+  "corrections": "1) O HA nao tenta mais WOL sozinho: o aviso 'Implicit Wake-On-LAN is deprecated' apareceu no 2026.3 com remocao prevista no 2026.8, e o codigo atual (entity.py em dev) so liga via automacao, senao lanca erro service_unsupported. A automacao gatilho samsungtv.turn_on + wake_on_lan.send_magic_packet e obrigatoria. 2) TVs 2025 (Tizen 9.0): relato na issue #166226 do HA de que WOL nao liga e KEY_POWER so alterna; mantenedor disse nao ter solucao. 3) Detalhe do KEY_POWEROFF: no bridge criptografado H6400/H6410 usa KEY_POWEROFF, JU6400/JU641D usa KEY_POWER, demais H/J recebem os dois. 4) Nome do menu da TV para ligar pela rede continua sem fonte oficial (Samsung nao acessivel nesta rodada).",
+  "applies_to_corrected": "Tizen 2016 a 2024 (WOL por cabo confirmado; Wi-Fi so de standby curto). Modelos 2025 Tizen 9.0: WOL relatado como nao funcional, usar SmartThings. Legacy 55000 e H/J: KEY_POWEROFF ou os dois.",
+  "extra_sources": [
+   "https://github.com/home-assistant/core/issues/166226",
+   "https://raw.githubusercontent.com/home-assistant/core/dev/homeassistant/components/samsungtv/entity.py",
+   "https://raw.githubusercontent.com/xchwarze/samsung-tv-ws-api/master/samsungtvws/connection.py",
+   "https://raw.githubusercontent.com/xchwarze/samsung-tv-ws-api/master/samsungtvws/remote.py",
+   "https://raw.githubusercontent.com/ollo69/ha-samsungtv-smart/master/custom_components/samsungtv_smart/media_player.py",
+   "https://raw.githubusercontent.com/ollo69/ha-samsungtv-smart/master/custom_components/samsungtv_smart/const.py"
+  ],
+  "notes": "Confirmado em fonte: Toxblh envia num_packets 30; ollo69 MAX_WOL_REPEAT = 5; iobroker 'only powered on from shortStandby' no Wi-Fi; HA doc 'Wake on LAN must be enabled on the TV'; bridge.py do HA le info['device']['PowerState'] == 'on' e wifiMac do /api/v2/; Frame: HA bridge.py SendRemoteKey.hold('KEY_POWER', 3) e ollo69 'KEY_POWER,3000'; portas 9110/9119/9197 no README do ollo69. WebSearch sem cota nesta rodada; samsung.com e developer.samsung.com sem DNS."
+ },
+ {
+  "id": "api-rede-10",
+  "verdict": "parcial",
+  "corrections": "1) custom.launchapp, samsungvd.launchService e custom.tvsearch existem como constantes no pysmartthings, mas nem o smartthings.py do ollo69 nem o media_player.py do SmartThings do HA usam launchApp; abrir app por SmartThings nao esta exercitado em codigo lido, e o formato do argumento segue sem confirmacao. 2) Status: pysmartthings usa GET v1/devices/{id}/status (correto no item); o ollo69 usa um caminho proprio /states. 3) mediaPlayback no ollo69 e so constante, nenhum metodo envia play/pause. 4) Escopos do PAT no doc do ollo69: Devices, Installed Applications, Scenes, Applications, Locations, Schedules. 5) A cobranca de US$ 4,99 a partir de out/2026 esta no doc do HA e em comentarios de usuarios na issue #169220; o anuncio oficial da Samsung nao foi lido (dominio inacessivel).",
+  "applies_to_corrected": "TVs registradas no SmartThings (2016+). supportedInputSourcesMap (samsungvd) nas TVs novas, supportedInputSources (mediaInputSource) nas demais. Abrir app por custom.launchapp: nao verificado.",
+  "extra_sources": [
+   "https://github.com/home-assistant/core/issues/133623",
+   "https://github.com/home-assistant/core/issues/169220",
+   "https://raw.githubusercontent.com/pySmartThings/pysmartthings/main/src/pysmartthings/smartthings.py"
+  ],
+  "notes": "PAT de 24 h desde 30/12/2024: confirmado por duas fontes independentes (doc do ollo69 e issue #133623 do HA, titulo original 'Samsung will limit PATs to 24h on Dec 30 2024'; correcao do HA entrou no 2025.3, nao 2025.1). Endpoint, header Bearer e corpo {commands:[{component,capability,command,arguments}]} confirmados no pysmartthings smartthings.py. tvChannelName lido pelo ollo69 como nome do app em execucao. developer.smartthings.com e community.smartthings.com sem DNS nesta rodada."
+ },
+ {
+  "id": "api-rede-11",
+  "verdict": "parcial",
+  "corrections": "1) Passo 5 esta desatualizado: o HA nao tenta mais WOL sozinho. Deprecado no 2026.3 ('Implicit Wake-On-LAN is deprecated'), remocao prevista no 2026.8; o entity.py em dev lanca 'Unable to turn on, as it does not have an automation configured'. A automacao com gatilho samsungtv.turn_on + wake_on_lan.send_magic_packet e obrigatoria. 2) Lista de apps 'ate 2019': o doc do HA diz so 'some older models'; nenhum ano encontrado em fonte. 3) Polling de 10 s e do coordinator para todos os bridges (SCAN_INTERVAL = 10), nao so legacy; o websocket soma a isso os eventos DMR. 4) Porta 9197 nao aparece no codigo do HA (DMR vem da localizacao SSDP); 9197 so consta no README do ollo69. 5) H/J: doc fala em 'manual pairing', o PIN e o mecanismo desse pareamento.",
+  "applies_to_corrected": "Tizen 2016+ (websocket 8001/8002), legacy porta 55000 (pre-2016) e H/J criptografado porta 8000 (2014/2015). Lista de apps: 'alguns modelos mais antigos', ano de corte sem fonte. TVs 2025 Tizen 9.0: WOL relatado como nao funcional (issue #166226).",
+  "extra_sources": [
+   "https://github.com/home-assistant/core/issues/166226",
+   "https://raw.githubusercontent.com/home-assistant/core/dev/homeassistant/components/samsungtv/entity.py",
+   "https://raw.githubusercontent.com/home-assistant/core/dev/homeassistant/components/samsungtv/coordinator.py",
+   "https://raw.githubusercontent.com/home-assistant/core/dev/homeassistant/components/samsungtv/strings.json",
+   "https://raw.githubusercontent.com/xchwarze/samsung-tv-ws-api/master/samsungtvws/remote.py"
+  ],
+  "notes": "Confirmado: descoberta ssdp/zeroconf/dhcp no front matter; remote.send_command com KEY_MENU, KEY_RIGHT, KEY_UP, KEY_UP, KEY_ENTER; play_media channel 590 vira KEY_5, KEY_9, KEY_0 e KEY_ENTER (media_player.py); SOURCES TV e HDMI = KEY_TV/KEY_HDMI; app via ChannelEmitCommand.launch_app (ed.apps.launch) e get_installed_app (ed.installedApp.get); DMR async_subscribe_services; VLAN; Device Connection Manager 'First time only' e limpar lista; LEGACY_PORT 55000 e ENCRYPTED_WEBSOCKET_PORT 8000 no const.py; doc nao cita SmartThings nem modo de imagem."
+ },
+ {
+  "id": "api-rede-12",
+  "verdict": "confirmado",
+  "corrections": "Detalhes menores: o README escreve a cadeia como KEY_SOURCES+500+KEY_ENTER (grafia do README, KEY_SOURCE e o codigo padrao); atraso entre teclas limitado a 200 a 2000 ms (padrao 500); segurar tecla com 'KEY_CODE, ms' limitado a 5 s (KEYHOLD_MAX_DELAY 5.0); ST_CH12 e ST_VOL50 nao estao escritos no README, mas o doc lista ST_CH1 em diante e ST_VOL1 a ST_VOL100 e o codigo aceita qualquer numero; o formato 'id/segundo-id' e app_id/st_app_id (ID do SmartThings), confirmado em App_list.md.",
+  "applies_to_corrected": "Tizen 2016+ (README: 'only for 2016+ TVs model'). Mesma ressalva dos itens 9 e 11 para TVs 2025 Tizen 9.0 quanto a WOL.",
+  "extra_sources": [
+   "https://raw.githubusercontent.com/ollo69/ha-samsungtv-smart/master/custom_components/samsungtv_smart/const.py",
+   "https://raw.githubusercontent.com/ollo69/ha-samsungtv-smart/master/docs/App_list.md",
+   "https://github.com/home-assistant/core/issues/166226"
+  ],
+  "notes": "Fontes sao a documentacao e o codigo do proprio projeto (autoritativas para o que o software faz). Confirmado em README, Key_chaining.md, Smartthings.md, App_list.md, media_player.py, const.py e samsungcast.py: media types send_key, send_text, browser e url; enqueue obrigatorio para YouTube; screenId via http://IP:8080/ws/app/YouTube com casttube; metodos de abertura Control Web Socket Channel, Remote Web Socket Channel e Rest API Call; select_sound_mode e samsungtv_smart.select_picture_mode so com SmartThings; WOL 1 a 5 pacotes com 0,25 s entre eles; portas 9110/9119/9197; ate 4 entidades para ligar/desligar junto; botao de energia alterna Art Mode no Frame; 'Stay near to your TV during configuration'."
+ },
+ {
+  "id": "api-rede-13",
+  "verdict": "confirmado",
+  "corrections": "Detalhe a acrescentar: a samsung-tv-control (Toxblh) tambem aceita port: 55000 e, nesse caso, usa TCP puro (sem websocket), entao ela cobre as duas geracoes; a natalan e que so fala o protocolo legacy. A natalan nao cita ano nem a palavra Orsay no README, so 'Tested with Samsung D6000 TV' (serie D = 2011). saveToken e openYouTubeLink existem no codigo (samsung.ts), nao no README. No 8002 a lib envia e fecha o socket 250 ms depois.",
+  "applies_to_corrected": "natalan: TVs legacy porta 55000 (2011 a 2015). Toxblh: Tizen 2016+ (8001 sem token em 2016, 8002 com token em 2017+) e tambem 55000 legacy. Node-RED (node-red-contrib-samsung-tv-control): 2016 exige a opcao 'TV 2016 (8001 port)'.",
+  "extra_sources": [
+   "https://raw.githubusercontent.com/Toxblh/node-red-contrib-samsung-tv-control/master/README.md",
+   "https://raw.githubusercontent.com/Toxblh/samsung-tv-control/master/package.json",
+   "https://raw.githubusercontent.com/home-assistant/core/dev/homeassistant/components/samsungtv/const.py",
+   "https://raw.githubusercontent.com/xchwarze/samsung-tv-ws-api/master/README.md"
+  ],
+  "notes": "Conferido no codigo: natalan abre net.connect na 55000 e manda ip, mac e nome em base64; Toxblh pede Node 9+, turnOn manda 30 pacotes WOL, isAvailable faz GET http://IP:8001/api/v2/, na 8001 espera 1 s (setTimeout 1000) antes de enviar, default 8002 com wss. KEYS tem KEY_HDMI1..4, KEY_EXIT, KEY_AMBIENT; APPS tem Netflix 11101200001, YouTube 111299001912, Prime 3201512006785, Spotify 3201606009684. Modelos testados UE43NU7400 e UN55NU7100 batem com o README. samsungtvws: Python 3.10+, CLI samsungtv, async, Art Mode, wol e app-run confirmados no README. WebSearch estava sem cota nesta rodada; verificacao feita com os arquivos no GitHub."
+ },
+ {
+  "id": "api-rede-14",
+  "verdict": "parcial",
+  "corrections": "1) PowerState: nem toda TV devolve o campo; o HA (bridge.py) so usa PowerState quando ele existe no /api/v2/, entao o loop precisa de fallback (ex.: tentar o websocket ou TCP 9197). 2) ID do Globoplay 3201908019022 esta na APPLICATIONS.md do samsungtvws, mas o arquivo avisa que 'IDs are not guaranteed to work' e que em TVs 2020+ alguns apps tem ID novo (Netflix 3201907018807, Prime 3201910019365); conferir com samsungtv app-list antes. 3) HA nativo: media_player.play_media com media_content_type app existe no codigo (MediaType.APP), mas a doc so documenta channel; select_source no samsungtv oficial so conhece 'TV' e 'HDMI' (KEY_HDMI generico), nao HDMI1..4. Para HDMI especifica use SmartThings (ollo69 ST_HDMI1..) ou cadeia KEY_SOURCE, cujo padrao muda por ano (2017: KEY_SOURCE+KEY_LEFT x3+KEY_ENTER; 2019: KEY_SOURCE+KEY_DOWN+KEY_UP+KEY_LEFT x3+KEY_ENTER). 4) Opcoes de tela inicial: em 2023/2024 fica em Geral e Privacidade > Opcoes de tela inicial (Q70C Tizen 8, DU7200); no DU7000 com interface Tizen 9 ficou em Recursos avancados; em 2020 (TU6979) e Geral > Recursos Smart (Autorun Smart Hub / Autorun Last App). 5) Anos: 2017+ ja aceitam 8002 com token; so 2016 fica na 8001 sem token.",
+  "applies_to_corrected": "Tizen 2016+. 2016: porta 8001 sem token. 2017+: 8002 com token. Caminho do menu de inicio muda por ano (2020 Recursos Smart; 2022 a 2024 Geral e Privacidade; Tizen 9 Recursos avancados). Resultado do 'ultimo app' testado uma vez no DU7000; Samsung avisa que nem todo app suporta autorun.",
+  "extra_sources": [
+   "https://raw.githubusercontent.com/xchwarze/samsung-tv-ws-api/master/APPLICATIONS.md",
+   "https://raw.githubusercontent.com/xchwarze/samsung-tv-ws-api/master/samsungtvws/connection.py",
+   "https://raw.githubusercontent.com/home-assistant/core/dev/homeassistant/components/samsungtv/bridge.py",
+   "https://raw.githubusercontent.com/home-assistant/core/dev/homeassistant/components/samsungtv/media_player.py",
+   "https://raw.githubusercontent.com/ollo69/ha-samsungtv-smart/master/README.md",
+   "https://raw.githubusercontent.com/helalaou/AeroTizen/main/docs/settings.md",
+   "https://raw.githubusercontent.com/victaphu/glass-home-samsung-tv/main/docs/SAMSUNG-SETTINGS.md",
+   "https://raw.githubusercontent.com/Nderim1/tv-override/main/presets/samsung.toml"
+  ],
+  "notes": "Confirmado: samsungtv wol, app-run ID, --token-file e --key-press-delay (README e COMMANDS.md); rest.py faz POST applications/{id} e connection.py monta http://host:8001/api/v2/ (https so na 8002); HA doc mostra gatilho samsungtv.turn_on com wake_on_lan.send_magic_packet; relato AU8000 (cleanyourtv) confirma que GET :8001/api/v2/ devolve PowerState e que o botao Home continua abrindo a Samsung Home. SmartThings setInputSource nao foi conferido na doc oficial (samsung.com bloqueado nesta sessao), mas ollo69 confirma troca de HDMI via SmartThings. Hipotese segue hipotese: tempos de espera e comportamento apos reinicio longo nao tem segunda fonte."
+ },
+ {
+  "id": "anuncios-privacidade-1",
+  "verdict": "parcial",
+  "corrections": "1) 2017 a 2019: caminho Menu > Suporte > Termos e Politica (ou Smart Hub > Termos e Politica) bate com o aviso oficial da Samsung Ads (versao de 2019). 2) 2020 e 2021: no TU6979 (manual EU) o item e Configuracoes > Termos e Privacidade direto, sem passar por Suporte; o rotulo ja era 'Termos e Privacidade', nao 'Termos e Politica'. 3) 2022 a 2024: Geral e Privacidade > Termos e Privacidade > Escolhas de Privacidade confirmado no Q70C 2023 (Tizen 8) e DU7200 2024; o atalho 'Privacy Choices' no menu lateral da Home ja existe em 2023, nao so em 2025. 4) 2025: caminho 'Suporte > Termos e Privacidade > Escolhas de Privacidade' nao foi confirmado; a unica fonte (AeroTizen) diz que modelos 2025 moveram parte dessas opcoes para Recursos avancados. 5) Os dois relatos de a opcao voltar ligada apos atualizacao nao puderam ser verificados (Samsung Members e smarttvs.org inacessiveis) e nenhuma outra fonte os repete; tratar como hipotese. 6) Na tela de Escolhas de Privacidade deixe 'Concordo com tudo' desmarcado e confirme em OK, senao a mudanca nao salva.",
+  "applies_to_corrected": "Tizen 2017+. Confirmado por fonte: 2017 a 2019 (Suporte > Termos e Politica), 2020 TU6979 (Termos e Privacidade), 2023 Q70C e 2024 DU7200 (Geral e Privacidade > Termos e Privacidade > Escolhas de Privacidade). 2025: sem confirmacao de caminho.",
+  "extra_sources": [
+   "https://raw.githubusercontent.com/victaphu/glass-home-samsung-tv/main/docs/SAMSUNG-SETTINGS.md",
+   "https://raw.githubusercontent.com/Nderim1/tv-override/main/presets/samsung.toml",
+   "https://raw.githubusercontent.com/x-o-r-r-o/Pi-Hole-Block-Lists/master/docs/tv-and-consoles.md",
+   "https://raw.githubusercontent.com/citp/privacy-policy-historical/master/s/sa/sam/samsungpromotions.com.md",
+   "https://github.com/dgomesbr/fightback-consumer-tv/blob/main/RESEARCH-NOTES.md",
+   "https://github.com/dedkola/tk-doc/blob/main/content/Misc/ha-samsung-tizen.mdx"
+  ],
+  "notes": "Canaltech, Consumer Reports, smarttvs.org e Samsung Community nao abriram (proxy 403), e o WebSearch estava sem cota; a verificacao usou copias no GitHub. O nome oficial 'Viewing Information Services' = ACR aparece no texto da politica Samsung Ads; o rotulo em portugues 'Servicos de Informacoes de Visualizacao' so apareceu em um blog BR, plausivel mas de fonte fraca. Versoes de Tizen por ano divergem entre as fontes (Q70C 2023 citado como Tizen 8, DU7200 2024 como Tizen 9 apos atualizacao), entao a coluna 'Tizen X a Y' do achado e aproximada."
+ },
+ {
+  "id": "anuncios-privacidade-2",
+  "verdict": "parcial",
+  "corrections": "1) Confirmado pelo texto do aviso IBA da Samsung Ads (EUA, vigente desde 30/04/2019, copia arquivada): opt-out em Menu > Suporte > Termos e Politica ou Menu > Smart Hub > Termos e Politica; 'resetting your PSID will not stop the delivery of interest-based ads'; e 'opting out ... may not prevent the delivery of generic advertisements'. 2) Redefinir PSID: em Tizen 8 (Q70C 2023) fica em Configuracoes > Todas as Configuracoes > Geral e Privacidade > Termos e Privacidade > Redefinir PSID; o caminho 'aba Condicoes > Restaurar PSID' de modelos antigos nao foi confirmado. 3) Painel online da conta Samsung: a politica Samsung cita account.samsung.com > Configuracoes de informacoes pessoais e o 'Servico de Personalizacao', mas a chave de ACR por TV e a chave geral para todos os aparelhos (relato de 2023) nao puderam ser conferidas; manter como relato. 4) Politica BR de Smart TV e guia TIFA: paginas da Samsung inacessiveis nesta sessao; o que se confirmou de TIFA (via fonte secundaria) e que com LAT ligado a Samsung diz que anuncios personalizados nao podem ser enviados, o que e coerente com 'anuncios genericos continuam', mas nao e a frase literal.",
+  "applies_to_corrected": "Smart TVs Tizen com Smart Hub; os textos oficiais confirmados sao os dos EUA (2019). Localizacao do Redefinir PSID confirmada em Tizen 8 (2023); painel online e politica BR sem confirmacao direta.",
+  "extra_sources": [
+   "https://raw.githubusercontent.com/citp/privacy-policy-historical/master/s/sa/sam/samsungpromotions.com.md",
+   "https://github.com/Secure-Platforms-Lab-W-M/smart-home-privacy-policies/blob/main/content_label/500_samsung.jsonl",
+   "https://raw.githubusercontent.com/victaphu/glass-home-samsung-tv/main/docs/SAMSUNG-SETTINGS.md",
+   "https://raw.githubusercontent.com/pooriaarab/skills/main/ads-samsung/SKILL.md",
+   "https://github.com/SolidEva/sm8250-samsung-MdecService-apk/blob/main/assets/pp/en_us/pp.txt",
+   "https://github.com/troy/simpleoptout/blob/master/README.md"
+  ],
+  "notes": "policy.samsungrs.com, samsung.com/br, samsung.com/au, developer.samsung.com e appleinsider.com retornaram 403 no proxy e o WebSearch estava sem cota; usei copias arquivadas das politicas no GitHub (CITP e outros). O nucleo do achado (opt-out tira so a personalizacao, redefinir PSID sozinho nao basta, fazer os dois) esta confirmado pela politica oficial. Falta fonte para o painel online com chaves por aparelho e para o texto exato da politica brasileira."
+ },
+ {
+  "id": "anuncios-privacidade-7",
+  "verdict": "sem_fonte",
+  "corrections": "Nao foi possivel conferir. As 4 fontes citadas (techtudo, Samsung Community BR, splaitor, conteudohub) e os sites samsung.com, developer.samsung.com, community.samsung.com, Reddit, XDA e Home Assistant nao resolveram pelo proxy deste ambiente, e a cota de WebSearch do turno estava esgotada. Nenhum documento oficial ou fonte independente pode ser aberto.",
+  "applies_to_corrected": "Sem dado. Nao confirmado para nenhum ano.",
+  "extra_sources": [],
+  "notes": "Os passos batem com o que se conhece dos manuais Samsung (Configuracoes > Geral > Gerenciador do Sistema > Modo de Uso, PIN 0000; modelos antigos em Suporte > Modo de Uso), mas isso e memoria, nao fonte. Pedir nova rodada com acesso a samsung.com/br/support antes de publicar como fato. Conferir tambem se em modelos 2022 em diante o caminho e Todas as Configuracoes > Geral e Privacidade > Gerenciador do Sistema > Modo de Uso."
+ },
+ {
+  "id": "anuncios-privacidade-8",
+  "verdict": "parcial",
+  "corrections": "1) HaGeZi native.samsung confirmado: versao 2026.1002, 200 dominios, expira a cada 8 horas, contem todos os hosts citados (samsungacr.com, acr0, acr-br-prd.samsungcloud.tv, samsungads/adhub/tvads, devicelog, prderrordumphsm/ssm). Nao contem sas, time nem cdn. 2) Okazakee v2026.10.07 confirmado: block.txt traz sspapi-prd e adconsent.samsungrs.com, tvpnlogop*.samsungcloud.tv e qoe; Samsung verificado so por resolucao DNS. Mas tambem bloqueia sas.samsungcloudsolution.com (servidor de atualizacao segundo o vetro) e img-resize-cdn-prod.samsungnyc.com (que o HaGeZi liberou). 3) hkamran80 smart-tv.txt (15/09/2025) e perigoso sem allowlist: inclui as zonas samsungcloudsolution.com/.net e samsungqbe.com, osb-apps-v2.samsungqbe.com (loja em manutencao, Perflyst #150), osb.samsungqbe.com, cdn.samsungcloudsolution.net e sas. Usar so com a allowlist do achado 9 ou descartar. 4) vetro confirmado (Q80A, firmware T-NKM2DEUC): rtb-config, tvp-ads-log e tvp-interactive-ad.samsungads.com. 5) RU8000: Perflyst #112 (out/2021) cita so tvx.adgrx.com no RU8000/RU8005, 1 relato; o segundo relato (gist, Flo-63, out/2023) cita tvx e rtb.adgrx.com mas nao informa modelo. 6) A divisao por ano (samsungacr.com 2019 a 2021, samsungcloud.tv 2022 em diante) nao tem fonte; as duas listas bloqueiam ambos sem distinguir ano. 7) Pi-hole v6 so e exigido para a allowlist assinada; a blocklist funciona no v5.",
+  "applies_to_corrected": "Qualquer Tizen; modelos com relato: RU8000 (2019), Q80A (2021); hosts do TV Plus em relatos de 2023 a 2026. Corte por ano dos hosts ACR: sem dado.",
+  "extra_sources": [
+   "https://raw.githubusercontent.com/Perflyst/PiHoleBlocklist/master/SmartTV.txt",
+   "https://github.com/hagezi/dns-blocklists/issues/11088"
+  ],
+  "notes": "Os formatos domains/adblock/dnsmasq/rpz do HaGeZi nao foram abertos um a um (so o arquivo wildcard/onlydomains). HaGeZi #11088 (ago/2026) confirma que tvp-ads-log.samsungads.com e endpoints ACR ficaram bloqueados sem quebrar o TV Plus."
+ },
+ {
+  "id": "anuncios-privacidade-9",
+  "verdict": "parcial",
+  "corrections": "Quase tudo confirmado por 2 ou mais fontes: time.* (Perflyst linha 481, gist dez/2021 e fev/2022, Okazakee allow), cdn.samsungcloudsolution.com (Perflyst #142 NU: Wi-Fi e YouTube; gist Q9FN: YouTube e Plex via samsungcloudsolution.com), otn.samsungcloudcdn.com e otnprd8 a 11 (Perflyst #60 KS7000 e Q9FN; linhas 475 a 484), osb-apps e osb-apps-v2 (#144, #150 Q70T), gpm.samsungqbe.com HbbTV (#82), lcprd1 (gist 2020 a 2022, HaGeZi #792), samsungcloud.tv e zonas (HaGeZi #342, Technitium em #142), unified-ad-segment akamaized (HaGeZi #11088, ago/2026), sas como servidor de atualizacao (vetro) e bloqueado por Okazakee, Perflyst e hkamran80. Correcoes: 1) img-resize-cdn-prod.samsungnyc.com: HaGeZi liberou (#3228, jul/2024, previews de programas e canais), mas Okazakee block.txt e hkamran80 o bloqueiam como anuncio; manter liberado so se as miniaturas sumirem, nao e a causa do TV Plus congelar. 2) auth.samsungosp.com so aparece em comentario da Perflyst (linha 471); Okazakee libera sc-auth e eu-auth2. 3) ns11.whois.co.kr: comentario da Perflyst diz que impede TVs Serie 7 de abrir o YouTube, nao Smart Hub. 4) configprd: vem do excludes do oisd, sem relato de quebra. 5) O relato de mais de 1 hora (gist, jonifen, dez/2021) refere-se a time.samsungcloudsolution.net, nao .com.",
+  "applies_to_corrected": "Confirmado por modelo: KS7000 (2016), NU7xxx e Q9FN (2018), RU7020/RU7179 (2019), Q70T (2020), Q80A (2021), T27H390 (monitor-TV). Relatos 2023 a 2026 (HaGeZi) sem modelo informado. 2022 a 2025 por modelo: sem dado.",
+  "extra_sources": [
+   "https://raw.githubusercontent.com/Okazakee/tv-dns-blocklist/main/pihole/block.txt",
+   "https://raw.githubusercontent.com/Perflyst/PiHoleBlocklist/master/SmartTV-AGH.txt"
+  ],
+  "notes": "Gist (set/2025, NotBob77): a lista inteira passou a quebrar apps, so o TV Plus funcionava; reforca o aviso de nao bloquear zonas. Perflyst #142 contribuidor diz que o repo pode ser considerado sem manutencao."
+ },
+ {
+  "id": "anuncios-privacidade-10",
+  "verdict": "parcial",
+  "corrections": "1) NextDNS: Perflyst #163 confirmado (aberto 15/12/2025, comentario em Samsung 17/07/2026), mas o issue nao lista quais dominios comentados foram bloqueados; time.*, otnprd* e auth.samsungosp.com sao inferencia das linhas comentadas 471 a 485 da SmartTV.txt. Quem respondeu foi um contribuidor (g6094199), nao o mantenedor, e disse que o formato nao muda. HaGeZi #2053 (jan/2024) e so um falso positivo de samsung.attn.tv no NextDNS, nao trata de comentarios. 2) Technitium: confirmado no comentario de 13/03/2026 em Perflyst #142 (entradas samsungcloudsolution.com e .net, linhas 440 a 442, bloqueiam subdominios por correspondencia parcial; no Pi-hole nao). 3) Pi-hole: confirmado no README do Okazakee (ignora @@ e $important, usar pihole/block.txt e allow.txt; allowlist assinada so no v6; 7 regex manuais). 4) ERRO: a SmartTV-AGH.txt (13July2023v2) NAO traz '@@||osb-ussvc.samsungqbe.com^'. As excecoes sao so infolink.pavv.co.kr, 4 hosts myhomescreen.tv e 4 hbbtv .de. Alem disso ela bloqueia ativamente ||osb-apps-v2.samsungqbe.com^ (loja), ||sas.samsungcloudsolution.com^ (atualizacao) e ||cdn.samsungcloudsolution.net^, e tem as ancoras |samsungcloudsolution.com^, |samsungcloudsolution.net^ e |samsungqbe.com^. Para AdGuard Home usar o blocklist.txt do Okazakee ou adicionar as excecoes do achado 9 manualmente.",
+  "applies_to_corrected": "Qualquer TV; depende do resolvedor. NextDNS: relatos dez/2025 e jul/2026. Technitium: mar/2026. AdGuard Home com SmartTV-AGH.txt: nao recomendado sem excecoes.",
+  "extra_sources": [
+   "https://raw.githubusercontent.com/Perflyst/PiHoleBlocklist/master/SmartTV.txt",
+   "https://raw.githubusercontent.com/Okazakee/tv-dns-blocklist/main/pihole/allow.txt"
+  ],
+  "notes": "Okazakee allow.txt inclui osb-ussvc e osb-ussvc-v2.samsungqbe.com, tvpnlinupepgpeu/pus.samsungcloud.tv e ns11.whois.co.kr; e a melhor base de allowlist entre as fontes abertas. Nao foi possivel abrir documentacao do NextDNS ou do Technitium para confirmar o comportamento pelo lado dos resolvedores."
+ },
+ {
+  "id": "anuncios-privacidade-3",
+  "verdict": "parcial",
+  "corrections": "1) Caminho do passo 2 esta errado para 2025: no e-manual oficial 2025 (BN81-27185H, ago/2025, p.107 e 111) a Voz fica em Configuracoes > Todas as Configuracoes > Recursos Avancados > Voz > Bixby Settings > Voice Wake-up (ativacao por voz, com ativacao sem as maos, frase de ativacao e sensibilidade). Em 2022 a 2024 o menu Voz fica em Geral e Privacidade, nao em 'Geral'. 2) O manual diz que Voice Wake-up 'pode nao ser suportado conforme modelo ou regiao' e so funciona com o interruptor do microfone na base da TV ligado; o microfone embutido existe so em certos modelos. Logo a ativacao por voz nao vale para 'todas as Tizen 2018 a 2025 com Bixby', so para modelos com microfone embutido. 3) Passo 1: em TVs anteriores a 2022, 'Servicos de Reconhecimento de Voz' fica em Configuracoes > Suporte > Termos e Privacidade (3 fontes independentes). 4) Passo 3 ('Sair do Bixby' apaga os dados da conta): nenhuma fonte independente encontrada (0 resultados no GitHub; o manual 2025 cita apenas 'configuracoes de perfil do Bixby'). Tratar como hipotese. 5) Passo 4 (Guia de Voz) confirmado: Geral e Privacidade > Acessibilidade > Configuracoes de Guia de Voz > Guia de Voz (arvore de menu S95F 2025 e manual p.263).",
+  "applies_to_corrected": "Reconhecimento de voz em Termos e Privacidade: Tizen 2016 a 2025 (caminho muda em 2022: antes em Suporte, depois em Geral e Privacidade). Ativacao por voz (Voice Wake-up): so modelos com microfone embutido e interruptor de microfone, conforme modelo e regiao; em 2025 fica em Recursos Avancados > Voz. 'Sair do Bixby' e exclusao de dados: sem fonte.",
+  "extra_sources": [
+   "https://raw.githubusercontent.com/kuidream/docs-pythonfy-test/9dc8ba073acf360b21e73cc81d799561de6d0241/preprocess/BN81-27185H-680_EUG_ROPDVBCNF_HK_HKG_250804.0.txt",
+   "https://github.com/whipstein/SamsungController/blob/d46761b6097497967aac9156e9fc833e7b819e65/menu-definitions/s95f-1296.json",
+   "https://github.com/x-o-r-r-o/Pi-Hole-Block-Lists/blob/beb993f084897086280190626ba87cdf2d620d85/docs/tv-and-consoles.md",
+   "https://github.com/dgomesbr/fightback-consumer-tv/blob/b253e5c79ab3387b206329f0fcd28b46e4aa724b/RESEARCH-NOTES.md",
+   "https://github.com/Rake-Pro/pihole-blocklists/blob/27f64f3bf6435e0784114b32ec5d92a46158eda8/README.md"
+  ],
+  "notes": "As fontes citadas (samsung.com/br, techradar, tab-tv, canaltech) nao puderam ser abertas: o proxy recusou o tunel (403) e a busca web esgotou o orcamento. So o AeroTizen foi conferido: ele cita apenas 'Voice Recognition Services' em Privacy Choices, nada sobre Bixby ou ativacao por voz. O e-manual 2025 usado e a versao de Hong Kong; nomes em portugues podem variar."
+ },
+ {
+  "id": "anuncios-privacidade-4",
+  "verdict": "parcial",
+  "corrections": "1) 'Executar TV Plus automaticamente' nao e novidade de 2025: existe no UN50TU7000 de 2020 em Geral > Recursos Smart (junto com Executar Smart Hub e Executar ultimo app) e aparece 'se listado' no DU7200 2024. 2) Em 2025 a arvore de menu do S95F (firmware 1296) confirma Recursos Avancados > Opcao de Tela Inicial com 'Start with Smart Hub Home' (padrao Ligado), 'Autorun Samsung TV Plus' (padrao Ligado) e tres autoruns de Multi View; nessa arvore NAO existe 'Autorun Last App', o que bate com o relato de modelo 2025 sem a opcao. Porem o e-manual 2025 (p.126) ainda descreve 'Executar ultimo app' no mesmo menu, entao depende de modelo e regiao. 3) 2022 a 2024: caminho Geral e Privacidade > Opcao(oes) de Tela Inicial confirmado por 4 fontes independentes (Q70C 2023 Tizen 8, DU7200 2024, tv-override, Customize-Samsung-TV); o nome aparece no plural em 2023 e no singular em 2024. Em Tizen 9 'One UI' (DU7000 2024 e modelos 2025) vai para Recursos Avancados. Aviso util: 'Redefinir de fabrica' e o item logo abaixo (tv-override). 4) 2017 a 2021: Geral > Recursos Smart confirmado por 6 repositorios (TU7000 2020, Q80A 2021 com a chave interna db/menu/smart_hub/ontvsetting/auto_start, etc.).",
+  "applies_to_corrected": "2017 a 2021: Geral > Recursos Smart, incluindo 'Executar TV Plus automaticamente' em modelos 2020. 2022 a 2024 (Tizen 6.5 a 8): Geral e Privacidade > Opcao(oes) de Tela Inicial. Tizen 9 One UI (parte de 2024 e todos de 2025): Recursos Avancados > Opcao de Tela Inicial; 'Executar ultimo app' pode faltar em 2025 (S95F).",
+  "extra_sources": [
+   "https://raw.githubusercontent.com/kuidream/docs-pythonfy-test/9dc8ba073acf360b21e73cc81d799561de6d0241/preprocess/BN81-27185H-680_EUG_ROPDVBCNF_HK_HKG_250804.0.txt",
+   "https://github.com/whipstein/SamsungController/blob/d46761b6097497967aac9156e9fc833e7b819e65/menu-definitions/s95f-1296.json",
+   "https://github.com/dwdas9/SamsungTvMcp/blob/86625ec82b10d173c100f1d64eb7feff72b20704/README.md",
+   "https://github.com/victaphu/glass-home-samsung-tv/blob/57e5be388abedaf168f09356e20bb413b2cef35b/docs/SAMSUNG-SETTINGS.md",
+   "https://github.com/Nderim1/tv-override/blob/f96218bafa12afb8c924ec4edc165b74b6c4fe44/presets/samsung.toml",
+   "https://github.com/andrearicci93/vetro/blob/827b7289090708992eedaca6f2d03d264b390425/CHANGELOG.md",
+   "https://github.com/humblemuzzu/dumbtv/blob/225bb00cc80228d69a793c3be49c0c8c8afa533a/docs/OTHER-TVS.md"
+  ],
+  "notes": "As quatro paginas oficiais samsung.com citadas nao puderam ser abertas (proxy 403); o texto oficial nao foi conferido. O arquivo local do cleanyourtv foi lido e bate com o achado (DU7000 2024 Tizen 9 em Recursos Avancados, valores originais Smart Hub ligado e ultimo app desligado, retorno ao HDMI no reinicio longo). A estrutura do achado esta correta; as correcoes sao de anos e nomes."
+ },
+ {
+  "id": "anuncios-privacidade-5",
+  "verdict": "parcial",
+  "corrections": "1) Para voltar os canais, o e-manual oficial 2025 (p.139) traz a opcao 'Restaurar Samsung TV Plus' dentro de Editar Canais, que 'restaura os canais Samsung TV Plus apagados' (so certos modelos e regioes). Use isso antes de Redefinir Smart Hub. 2) Redefinir Smart Hub em 2025 fica em Suporte > Cuidados com o Dispositivo > Autodiagnostico > Redefinir Smart Hub e, segundo o manual (p.259), apaga conta Samsung, contas de servicos vinculadas, contratos do Smart Hub e dados dos apps, nao so os logins. 3) Passo 4 nao e exclusivo de 2025: a chave 'Executar TV Plus automaticamente' existe no TU7000 2020 (Geral > Recursos Smart) e no S95F 2025 (Recursos Avancados > Opcao de Tela Inicial, padrao Ligado). 4) Passo 3 (Desativar): so a fonte AeroTizen (DU7200 2024, Tizen 9) pode ser conferida; o fio da comunidade US estava bloqueado. Outro repositorio de baixa qualidade fala so em 'Remover' da tela inicial. Manter como relato de fonte unica ate conferir. 5) 'Nao pode ser totalmente removido' bate com o AeroTizen ('It can't be uninstalled'); a pagina oficial BR nao foi aberta. Lancamento no Brasil em 2020 nao conferido.",
+  "applies_to_corrected": "Apagar canais e remover da tela inicial: toda Tizen com TV Plus. 'Restaurar Samsung TV Plus' em Editar Canais: modelos 2025 (certos modelos e regioes). Desativar o app pelo icone: visto so em Tizen 9 de 2024 (fonte unica verificavel). Chave de execucao automatica do TV Plus: 2020 (Recursos Smart) e 2025 (Recursos Avancados), varia por firmware.",
+  "extra_sources": [
+   "https://raw.githubusercontent.com/kuidream/docs-pythonfy-test/9dc8ba073acf360b21e73cc81d799561de6d0241/preprocess/BN81-27185H-680_EUG_ROPDVBCNF_HK_HKG_250804.0.txt",
+   "https://github.com/whipstein/SamsungController/blob/d46761b6097497967aac9156e9fc833e7b819e65/menu-definitions/s95f-1296.json",
+   "https://github.com/dwdas9/SamsungTvMcp/blob/86625ec82b10d173c100f1d64eb7feff72b20704/README.md",
+   "https://github.com/helalaou/AeroTizen/blob/main/docs/settings.md"
+  ],
+  "notes": "Paginas oficiais samsung.com e os dois fios da comunidade Samsung nao puderam ser abertos (proxy 403). O manual 2025 confirma que canais do TV Plus podem ser apagados em Editar Canais (p.139) e que existe restauracao propria; nao diz que o app some quando todos os canais sao apagados."
+ },
+ {
+  "id": "anuncios-privacidade-6",
+  "verdict": "parcial",
+  "corrections": "1) A tese central (nao ha chave oficial para o banner) e confirmada por 3 fontes independentes no GitHub: guia do Q70C 2023 Tizen 8 ('as linhas New & Trending, Live e similares e o banner grande no topo do Smart Hub: nao ha configuracao para eles'), README do AeroTizen ('Top Picks for You nao pode ser removida') e checklist Customize-Samsung-TV ('anuncios e recomendacoes do Smart Hub nao sao removidos'). 2) Faltam duas chaves oficiais que reduzem material promocional e deveriam entrar no achado: Configuracoes > Notificacao > engrenagem > desmarcar 'Promocao Samsung' (pop-ups promocionais) e Inicio > Para Voce > fim da pagina > Opcoes de Midia > 'Som de reproducao automatica' (previews com som), ambas em Q70C 2023 e tv-override. 3) A hipotese 'Personalizacao do Smart Hub' (smarttvs.org) nao tem segunda fonte: 0 resultados no GitHub; o estudo IMC 2024 citado por outro repositorio lista a chave como 'Customization Service' dentro de Escolhas de Privacidade. Manter como hipotese de fonte unica. 4) Anos: as fontes verificadas cobrem 2022 a 2025 (Tizen 6.5 a 9); 2016 a 2021 nao foi conferido. 5) As citacoes da Samsung Brasil (conteudohub), do fio EU com AdGuard e do Reclame Aqui nao puderam ser conferidas.",
+  "applies_to_corrected": "Confirmado para 2022 a 2025 (Tizen 6.5 a 9). 2016 a 2021: sem verificacao.",
+  "extra_sources": [
+   "https://github.com/victaphu/glass-home-samsung-tv/blob/57e5be388abedaf168f09356e20bb413b2cef35b/docs/SAMSUNG-SETTINGS.md",
+   "https://github.com/Nderim1/tv-override/blob/f96218bafa12afb8c924ec4edc165b74b6c4fe44/presets/samsung.toml",
+   "https://github.com/sycu8/Customize-Samsung-TV/blob/bf6acdd74a071f1048063f2e9aeefd2daa46a59e/.cursor/skills/samsung-appletv-home/owner-checklist.md",
+   "https://github.com/dgomesbr/fightback-consumer-tv/blob/b253e5c79ab3387b206329f0fcd28b46e4aa724b/RESEARCH-NOTES.md"
+  ],
+  "notes": "conteudohub, comunidade EU, smarttvs.org e Reclame Aqui bloqueados pelo proxy (403). O README do AeroTizen foi aberto e confirma a frase citada. A conclusao do achado se sustenta; as correcoes acrescentam duas chaves oficiais e rebaixam a hipotese do smarttvs.org."
+ },
+ {
+  "id": "anuncios-privacidade-11",
+  "verdict": "sem_fonte",
+  "corrections": "Nenhuma fonte alcancavel confirma nem nega DNS fixo (8.8.8.8) ou DoH em Tizen. As tres fontes citadas para a alegacao (How-To Geek, privacysmarthome, windowsforum) e o topico da comunidade Samsung BR nao abriram neste ambiente (DNS/proxy bloqueado); Reddit, Pi-hole Discourse e Home Assistant tambem. A unica parte verificada e o DOMAIN-FILTER.md do Vetro: ele lista nomes fixos (time.samsungcloudsolution.com/.net, cdn.samsungcloudsolution.com, sas.samsungcloudsolution.com/.net) ligados aos componentes time-client, network-status e atualizacao no firmware do Q80A (T-NKM2DEUC), mas nao diz nada sobre DoH ou servidor DNS fixo. O README do Vetro tambem nao cita 8.8.8.8 nem DoH.",
+  "applies_to_corrected": "Desconhecido; sem modelo ou ano confirmado. Nomes de host fixos confirmados so no firmware do Q80A (2021).",
+  "extra_sources": [
+   "https://raw.githubusercontent.com/andrearicci93/vetro/main/README.md"
+  ],
+  "notes": "O item ja se declara hipotese e o plano de verificacao (log do Pi-hole, contagem de pacotes porta 53/853/443, NAT redirect) e metodologicamente correto e nao depende de confirmar a alegacao. Manter como hipotese. Busca web indisponivel nesta rodada (cota esgotada), entao a ausencia de fonte reflete limite de acesso, nao prova de inexistencia."
+ },
+ {
+  "id": "anuncios-privacidade-12",
+  "verdict": "parcial",
+  "corrections": "1) hagezi #11088 confere: aberto em 05/08/2026, dominio unified-ad-segment-cdn-ak-us-east-1.akamaized.net na lista Ultimate, TV Plus travando com 'Something went wrong', rotulo 'allow' e corrigido na release 37522026.218.30109 (06/08/2026). 2) Atribuicao errada: o relato de Tubi e Plex (13/03/2024, benjamin174) esta na issue Perflyst/PiHoleBlocklist #150, nao na gist. Na gist constam: YouTube com anuncios na UA55B (24/05/2023, resposta 'You can't remove YouTube ads on your TV'), '1-2 ads por hora' (01/07/2023) e usuario aceitando (06/05/2024). 3) A citacao da Samsung BR ('recurso integrado', 'nao impede a exibicao de anuncios') e o artigo do conteudohub nao puderam ser abertos; tratar como nao verificados. 4) Faltou avisar: a gist tambem registra que a lista completa quebra apps e o proprio TV Plus (lcprd1.samsungcloudsolution.net, time.samsungcloudsolution.net; RU7179 em 02/2022, relato de 25/09/2025), entao o uso de DNS so para ACR/telemetria exige allowlist.",
+  "applies_to_corrected": "Todas as Tizen; evidencias diretas em UA55B (2023), Q70T, RU7179 e listas hagezi/Perflyst. Vale por analogia para LG e Roku, sem fonte propria aqui.",
+  "extra_sources": [
+   "https://github.com/hagezi/dns-blocklists/issues?q=samsung+tv+plus"
+  ],
+  "notes": "A conclusao central (anuncios dentro de apps e do TV Plus chegam pelo mesmo caminho do video e nao saem por DNS) esta apoiada por tres fontes independentes (hagezi, gist, Perflyst). Rebaixado a parcial pela atribuicao errada da fonte e pela citacao Samsung BR nao conferida."
+ },
+ {
+  "id": "anuncios-privacidade-13",
+  "verdict": "sem_fonte",
+  "corrections": "Nenhuma das cinco fontes citadas pode ser aberta neste ambiente (samsung.com, ucl.ac.uk, iapp.org, dallasexpress.com e consumerrights.wiki retornaram erro de DNS ou 403 do proxy); alternativas (arxiv.org, texasattorneygeneral.gov, wikipedia) tambem falharam e a busca web estava esgotada. Nao foi possivel conferir as citacoes da pagina ANS10010616 (PSID, 'nao grava nem assiste', consentimento na configuracao), as conclusoes do estudo UCL/IMC 2024 nem as datas do processo no Texas (dez/2025), do acordo da Samsung (26/02/2026) e do acordo da LG (11/05/2026).",
+  "applies_to_corrected": "Nao verificado. Se confirmado, acordos valem so para o Texas; conteudo do suporte Samsung US vale para firmware dos EUA.",
+  "extra_sources": [],
+  "notes": "Por conhecimento previo (nao conta como fonte): existe o artigo IMC 2024 'Watching TV with the Second-Party: A First Look at Automatic Content Recognition Tracking in Smart TVs' (UCL/UC Davis) que mediu ACR em Samsung e LG e observou que o opt-out interrompe o trafego ACR; e houve acao do procurador-geral do Texas contra fabricantes de TV no fim de 2025. As datas dos acordos de 2026 e as citacoes literais precisam ser conferidas em outra rodada com acesso a esses dominios. A recomendacao pratica (recusar termos opcionais na primeira configuracao e conferir depois) nao depende dessas fontes."
+ },
+ {
+  "id": "anuncios-privacidade-14",
+  "verdict": "parcial",
+  "corrections": "AeroTizen (README confere): passos 12345 > Developer mode > Host PC IP > tirar da tomada por 1 min > './aerotizen certs' (login Samsung uma vez) > './aerotizen install launcher'; modelos testados DU7200 e LS03D (2024, Tizen 9), S90C (2023, Tizen 7), Q60B e S95B (2022, Tizen 6.5); 'de 2020 em diante deve funcionar' e afirmacao sem teste. Correcoes: a) o README nao traz instrucao de desinstalar; so ha opcao nas configuracoes de 'voltar a tela inicial da Samsung'; apagar pelo menu Apps e plausivel em Tizen 6+, mas nao documentado. b) Limite nao citado: issue #47 (25/10/2026, S95B) relata que apos desligar da tomada a TV volta a abrir a Home da Samsung; so o standby mantem o AeroTizen. c) Faltou Stremio na lista de apps em que o botao Inicio nao volta ao launcher (Netflix funciona). Vetro (README confere): experimental, Host PC IP 127.0.0.1, pacote assinado por voce ou via Apps2Samsung, root de chris-ritsen/samsung-tv-root, desenvolvido no Q80A 2021 (T-NKM2DEUC-2301.1), painel HTTP sem login, 'Tizen 6 ou mais recente e o que funcionou, sem faixa confirmada'. Correcoes: a) relatos nas issues ampliam a lista: NU7100 (2018) tambem falha; QN85B (2022, Tizen 6.5, fw 1720.7) roda tudo menos o launcher; QN85A e BU8002 com relatos. b) O projeto de root original diz que o root e volatil (nao sobrevive a reboot), depende de modelo e build de firmware exatos, e uma M75H com Tizen 10 rejeitou a injecao; o autor tambem relata que suas TVs ficam sem internet com o Modo Desenvolvedor ligado. c) Vetro dizer 'toda mudanca reversivel' vale para desligar componentes; desinstalar 'precisa de um instalador para recuperar'.",
+  "applies_to_corrected": "AeroTizen: testado em 2022 a 2024 (Tizen 6.5, 7 e 9); 2020 e 2021 sem teste. Vetro: relatos de 2021 a 2024 (Tizen 6.5 a 9), com falha em Tizen 4 (NU7090, NU7100) e launcher sem funcionar no QN85B; Tizen 10 sem relato e com risco de o root nao funcionar.",
+  "extra_sources": [
+   "https://github.com/helalaou/AeroTizen/issues/47",
+   "https://github.com/andrearicci93/vetro/issues?q=is%3Aissue",
+   "https://github.com/andrearicci93/vetro/issues/2",
+   "https://github.com/andrearicci93/vetro/issues/25",
+   "https://github.com/chris-ritsen/samsung-tv-root",
+   "https://github.com/Apps2Samsung/Apps2Samsung",
+   "https://raw.githubusercontent.com/helalaou/AeroTizen/main/README.md",
+   "https://raw.githubusercontent.com/andrearicci93/vetro/main/README.md"
+  ],
+  "notes": "Os dois projetos sao de outubro de 2026, com relatos de uma a tres semanas; nada e independente dos proprios repositorios. O arquivo local cleanyourtv (DU7000, Tizen 9, 23/10/2026) confirma por outro caminho que app assinado em Modo Desenvolvedor nao tem shell nem root e nao toma o botao Inicio, o que explica os limites do AeroTizen. Risco alto mantido."
+ }
+]

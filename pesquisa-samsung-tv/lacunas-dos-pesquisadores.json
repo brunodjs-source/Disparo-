@@ -1,0 +1,478 @@
+[
+ {
+  "category": "menu-servico",
+  "gap": "Bloqueio de rede: o proxy desta sessao recusou AVSForum (thread '2022-202X Samsung SERVICE MENU'), tab-tv (EN e PT), SamyGO, factory-reset.com, Samsung Community (US, EU, BR), samsung.com, developer.samsung.com, Reddit, XDA, iFixit, archive.org e todos os blogs brasileiros (celsojunior.net, eletronicacorrea, tech-on-dicas). Tudo o que esta nesses sites ficou fora dos achados."
+ },
+ {
+  "category": "menu-servico",
+  "gap": "Lista item a item das secoes Option, Control, Advanced, SVC, Debug, Hotel Option e Shop Option para Tizen 2016 a 2025: nenhuma fonte legivel. Resumos de busca citam 'Type' (codigo do painel), 'Local Set' (tuner/regiao), 'Factory Reset' (zera ER count, Factory Display Time e data de compra) e 'Writing Type' (grava no T-Con), mas sem pagina aberta."
+ },
+ {
+  "category": "menu-servico",
+  "gap": "Codigo antigo '0000' para Advanced (2016 a 2021) e a tabela codigo por ano ou firmware: so o ColorControl (0098 TV, 0038 monitor) e relatos de que mudou apos atualizacao. Nao ha fonte lida para a TV do Bruno ate saber o modelo e o firmware."
+ },
+ {
+  "category": "menu-servico",
+  "gap": "Se a sequencia IR Info Menu Mute Power ainda funciona em firmwares 2023 em diante (relato nao aberto diz que S90C/S95C com FW 2011+ exigem controle de servico ou ColorControl)."
+ },
+ {
+  "category": "menu-servico",
+  "gap": "Teclado virtual do Smart Remote (botao 123) ou controle do app SmartThings disparando qualquer combinacao: nenhum teste documentado; so deducao de que standby e timing impedem."
+ },
+ {
+  "category": "menu-servico",
+  "gap": "Desativar Samsung TV Plus pelo menu de servico (Engineer Option ou MRT Option > 'TV Plus Support'): apenas resumo de busca (tab-tv), nenhuma pagina aberta. Caminho pelo menu normal (Home > editar > Remover/Desativar; Configuracoes > Geral > Recursos Smart > Iniciar TV Plus automaticamente) vem de resumo da pagina Samsung, tambem nao aberta."
+ },
+ {
+  "category": "menu-servico",
+  "gap": "Mudanca de pais do Smart Hub (Mute, Return, Vol+, Ch+, Mute na tela de termos; FF 2 8 9 REW em modelos 2012 a 2015; necessidade de reset total em 2022+): sem nenhuma fonte lida; so resumos de busca que se contradizem."
+ },
+ {
+  "category": "menu-servico",
+  "gap": "Tabela de valores de Local Set para Brasil ou LATAM e se o item aparece em TVs de varejo brasileiras: nada; o mecanismo so foi lido em monitor M8 chines com root."
+ },
+ {
+  "category": "menu-servico",
+  "gap": "Modo loja: 'Usage Mode > Home Mode' com PIN 0000 e a secao 'Shop Option' do menu de servico: sem fonte lida (paginas Samsung bloqueadas)."
+ },
+ {
+  "category": "menu-servico",
+  "gap": "Local Dimming, FreeSync, opcoes de painel e 'Ana Peak' (geracao do painel S90C): so mencoes em resumos de busca, nenhuma pagina aberta."
+ },
+ {
+  "category": "menu-servico",
+  "gap": "O que a rota hospitality do ColorControl faz depois do menu hotel (preset 2: 1 2 3 4 Up; preset 3: Vol+ segurado 5,1 s): lido no codigo, sem explicacao nem relato de resultado."
+ },
+ {
+  "category": "menu-servico",
+  "gap": "Posicao oficial da Samsung (acesso ao menu de servico por ferramentas de terceiros 'nao e suportado e pode anular a garantia'): citada em resumo de busca de um topico da Samsung Community sobre monitor G80SD, nao aberto."
+ },
+ {
+  "category": "menu-servico",
+  "gap": "Abrir org.tizen.factory por ID em TV de varejo (sem firmware hotel): nao testado por ninguem nas fontes lidas; a PR do Apps2Samsung esta marcada como nao verificada em hardware."
+ },
+ {
+  "category": "menu-servico",
+  "gap": "Ferramenta para gravar e restaurar os valores do menu de servico (backup real, nao foto): nenhuma encontrada para Tizen de varejo; o unico backup lido foi de NVRAM via root em monitor M8."
+ },
+ {
+  "category": "modo-hotel",
+  "gap": "Limite desta rodada: o proxy da sessão bloqueou todo host fora do GitHub (samsung.com, Samsung Community, AVS Forum, SamyGO, ManualsLib, PDFs de manuais HG, factory-reset.com, flatpanelshd). Esses conteúdos entraram só por trechos do buscador e NÃO foram abertos. Abrir em máquina com internet livre e confirmar: https://www.bhphotovideo.com/lit_files/1017739.pdf ; https://www.fullcompass.com/common/files/27290-SamsungSeries690IntallationGuide.pdf ; https://factory-reset.com/wiki/Samsung_Service_Menu_Explained ; https://www.avsforum.com/threads/2022-202x-samsung-service-menu-access-details-tips-tricks-mods.3299009/ ; https://us.community.samsung.com/t5/Projectors-Other-TVs/Hospitality-mode-in-Crystal-UHD-TV/td-p/2723845 ; https://us.community.samsung.com/t5/QLED-and-The-Frame-TVs/Hospitality-mode-on-smart-tv/td-p/2422384 ; https://eu.community.samsung.com/t5/tv/un65ks8000-hospitality-mode/td-p/3625713 ; http://forum.samygo.tv/viewtopic.php?t=13131 ; https://www.samsung.com/ae/support/tv-audio-video/use-autorun-start-screen-options-on-your-samsung-tv/"
+ },
+ {
+  "category": "modo-hotel",
+  "gap": "Logo personalizado em TV de consumo Tizen (2016 a 2025): nenhum relato de que o Hotel Option de um set UN/QN/UE mostre Logo/Message e aceite Hospitality Logo DL. Só há confirmação em consumo LN D-series 2011 e em linhas HG. Precisa de teste na TV do Bruno, com foto do menu antes."
+ },
+ {
+  "category": "modo-hotel",
+  "gap": "Se o logo gravado por Logo DL continua aparecendo depois de voltar Hospitality Mode para Off: os manuais (trechos) dizem que o logo só aparece com Hospitality Logo ON, e esse item vive dentro do modo hotel. Sem dado."
+ },
+ {
+  "category": "modo-hotel",
+  "gap": "Interação entre Hospitality Mode Standalone, Start with Smart Hub Home e Autorun Last App: qual vence ao ligar, e se o botão Home muda de destino. Só um relato de fórum (não aberto) de que Autorun Last App sobrepõe o Power On em HDMI. Sem teste."
+ },
+ {
+  "category": "modo-hotel",
+  "gap": "Lista completa do Hotel Option numa TV de consumo Tizen por ano (2016 a 2025) e se Power On Source/Channel/Volume, Max Volume, Welcome Message e Panel Button Lock têm efeito real com Hospitality Mode em Standalone. Só trechos (factory-reset.com, SamyGO) citam parte dos itens; nenhum relato de dono testando volume ou mensagem numa TV de consumo."
+ },
+ {
+  "category": "modo-hotel",
+  "gap": "Consumo 2025 (Tizen 9, ex.: U8000F, QN90F, S95F): nenhum relato de MUTE 1 1 9 abrindo o Hotel Option; o HG 2025 recusou e o manual HU7000F/HU8000F dá MUTE, CIMA, BAIXO, ENTER. Precisa de teste."
+ },
+ {
+  "category": "modo-hotel",
+  "gap": "Smart Remote sem teclado numérico: se o teclado virtual do botão 123 serve para a combinação (sem relato); a sequência MUTE, CIMA, BAIXO, OK, MUTE na tela Sound Output tem um único relato de comunidade (não aberto) mais listas sem base. Alternativa confiável: envio pela rede (achado 3)."
+ },
+ {
+  "category": "modo-hotel",
+  "gap": "Envio da combinação pela rede em outros anos além do RU7020 2019: o autor do Apps2Samsung registra a dúvida de a detecção ficar no caminho IR/micom em alguns modelos. Testar no modelo do Bruno e nos 4 modelos do cleanyourtv (2018, 2021, 2022, 2024)."
+ },
+ {
+  "category": "modo-hotel",
+  "gap": "Senha do Security Mode: nenhum padrão oficial encontrado; 0000/1234/9999 vêm de sites e listas sem fonte; manuais HG (trechos) falam em senha de 8 caracteres. Não usar os padrões como fato."
+ },
+ {
+  "category": "modo-hotel",
+  "gap": "Nenhuma documentação em português do Brasil sobre Hotel Option ou Hospitality Mode foi encontrada; os nomes de menu em pt-BR são desconhecidos. A Samsung Brasil vende hotelaria via LYNK REACH (news.samsung.com/br, não aberto). Verificar manual de instalação pt-BR de uma linha HG vendida no Brasil."
+ },
+ {
+  "category": "modo-hotel",
+  "gap": "Definições de Clock (Manual/Time Channel/TTX), Music Mode (só áudio da entrada AV), Channel Editor e Power On Option (Last/On/Standby) vieram apenas de trechos de manuais HG (LE22C350, HG40ED890U, BU8000) não abertos."
+ },
+ {
+  "category": "modo-hotel",
+  "gap": "Se ligar Hospitality Mode numa TV de consumo pode desativar o controle por IP (porta 8001/8002): o autor do Apps2Samsung planejava testar e não há resultado publicado."
+ },
+ {
+  "category": "modo-hotel",
+  "gap": "Se org.tizen.cloning numa TV de consumo gera um backup restaurável de ajustes: ninguém documentou; o Apps2Samsung considera arquivos de clone 'sem valor' por exigirem mesmo modelo, versão e região."
+ },
+ {
+  "category": "modo-hotel",
+  "gap": "Se 'Download by App ID' e 'Apps Editable' existem no Hotel Option de uma TV de consumo e o que fariam lá; só há relato em HG 2025 (instalação de Netflix por ID, com falha inicial)."
+ },
+ {
+  "category": "modo-hotel",
+  "gap": "Welcome Message numa TV de consumo Tizen: nenhum relato de exibição; os manuais HG (trechos) dizem que mensagem e logo não ficam ativos ao mesmo tempo e que a mensagem dura 5 s ao ligar."
+ },
+ {
+  "category": "modo-hotel",
+  "gap": "Sequências 'MUTE 8 2 4 POWER reseta PIN' e 'Mute segurado + 1 1 9' aparecem em listas sem fonte (iRemote, elektroda marcada como gerada por IA, soft4led); não verificadas, não usar."
+ },
+ {
+  "category": "modo-desenvolvedor",
+  "gap": "Codigos de menu de servico/engenharia (combinacoes de Mute/Info/Power no controle) e modo hotel: nao achei fonte confiavel que eu tenha aberto; nao confirmados e fora do angulo de Modo Desenvolvedor. Precisam de pesquisa dedicada antes de usar, pois mexem em ajustes de painel com risco."
+ },
+ {
+  "category": "modo-desenvolvedor",
+  "gap": "Qual o modelo e o ano exatos da TV do Bruno (ele nao informou). Ler GET http://<ip>:8001/api/v2/ ou webapis.productinfo decide Tizen, Chromium, se precisa certificado Samsung (2023+) e quais APIs existem."
+ },
+ {
+  "category": "modo-desenvolvedor",
+  "gap": "Duracao do certificado Samsung para TV e se expira como o do webOS (cerca de 40 dias): nao confirmei prazo nas fontes lidas."
+ },
+ {
+  "category": "modo-desenvolvedor",
+  "gap": "Se o app proprio consegue abrir a tela de Ajustes do sistema (Settings) sem o botao Home: em Tizen 3 nao ha app-control de settings (abre org.tizen.menu); em anos novos nao testei um caminho suportado."
+ },
+ {
+  "category": "modo-desenvolvedor",
+  "gap": "Quais apps respondem a tizen.application.launch por ano/regiao e se algum abre uma activity de configuracao em vez do app: nao medido."
+ },
+ {
+  "category": "modo-desenvolvedor",
+  "gap": "Estabilidade do resume de standby e do autorun apos ligamento a frio (tirar da tomada), reinicios repetidos e troca entre apps: so ha 1 sequencia testada em 1 modelo (DU7000)."
+ },
+ {
+  "category": "modo-desenvolvedor",
+  "gap": "Confirmacao em 2 relatos independentes do takeover de Home por vconf no mesmo modelo: hoje e cluster de projetos ligados (CleanFrame/arn0-tv/Clean Home) e bloqueado em varios modelos; falta reproducao independente por modelo."
+ },
+ {
+  "category": "modo-desenvolvedor",
+  "gap": "Lista real de teclas registraveis por ano/modelo (getSupportedKeys varia); so ha medicao em Tizen 5.5. Se Home/Menu/Source podem ser capturados em algum ano: pelas fontes, Home nunca chega ao app."
+ },
+ {
+  "category": "modo-desenvolvedor",
+  "gap": "Para que servem as portas 8080, 9080, 7678 (nservice) e 9197 (UPnP DMR) alem do que ja se sabe: nao identificadas com fonte oficial."
+ },
+ {
+  "category": "tizenbrew",
+  "gap": "Nao ha relato confirmado de TizenBrew instalado E totalmente funcional (com modulos) num modelo nativo de 2025/Tizen 9. Os relatos mostram instalacao que trava na tela de Settings (#245), loop de servico (#234) ou falha de certificado (#190). Qual asset exato (Standalone vs NextGeneration) e o passo de rebuild que funciona em Tizen 9 segue sem resposta clara."
+ },
+ {
+  "category": "tizenbrew",
+  "gap": "A validade exata (em dias) dos certificados autor/distribuidor Samsung para TV nao foi encontrada em fonte oficial; so ha relatos de que expiram e de que um update de firmware pode exigir novo certificado. Nao confirmei se ha limite de 30 dias para apps sideload (o limite de 30 dias confirmado e do antigo USB Demo Package)."
+ },
+ {
+  "category": "tizenbrew",
+  "gap": "O status atual do instalador por navegador do TizenTube/TizenBrew (tizenbrew.vercel.app/installer e o limite de 30 dias) nao pôde ser verificado: o dominio estava inacessivel e a doc atual ja removeu a secao de USB Demo Package. Resta a duvida se o metodo browser ainda existe para Tizen 3.0-6.0."
+ },
+ {
+  "category": "tizenbrew",
+  "gap": "Disponibilidade do app oficial do Jellyfin na loja Samsung no Brasil especificamente, e a lista precisa de modelos/Tizen elegiveis, nao foi confirmada em fonte primaria (jellyfin.org estava inacessivel; usei imprensa secundaria que cita 2021+/Tizen 6.0+ e ausencia em algumas regioes)."
+ },
+ {
+  "category": "tizenbrew",
+  "gap": "O catalogo atual completo do Tizen Homebrew (SushyDev) nao foi listado: a pasta catalog/ nao foi enumerada. So sei que aceita GitHub owner/repo, URL, upload e USB."
+ },
+ {
+  "category": "tizenbrew",
+  "gap": "Os foruns oficiais da Samsung (forum.developer.samsung.com, community.samsung.com) e varios blogs estavam inacessiveis nesta sessao, entao alguns detalhes (ex.: confirmacao oficial do fim do USB Demo Packaging Tool, passos exatos de dev mode por modelo em One UI) dependem de fontes secundarias."
+ },
+ {
+  "category": "tizenbrew",
+  "gap": "O mapeamento Tizen-por-ano para 2024=8.0 e 2025=9.0 nao foi confirmado por uma unica pagina oficial Samsung num so lugar (o trecho da doc Samsung pulava 2024/2025); os anos ate 2023 (Tizen 7.0) estao confirmados pela doc Samsung e o Tizen 9 por imprensa."
+ },
+ {
+  "category": "tizenbrew",
+  "gap": "Nao ha resolucao conhecida para o erro ERR_ACCESS_DENIED na tela de Settings do TizenBrew em Tizen 9 (#245), que impede adicionar modulos sem editar /home/owner/share/tizenbrewConfig.json (escrita por sdb recusada nesse caminho)."
+ },
+ {
+  "category": "tizenbrew",
+  "gap": "Nao encontrei tutoriais dedicados em portugues do Brasil para TizenBrew/TizenTube/Jellyfin/Moonlight; o material util esta em ingles e espanhol, e os projetos em pt (JellyTizen/JellyBeam de talesam) tem README em ingles."
+ },
+ {
+  "category": "api-rede",
+  "gap": "Validade do token do websocket: nenhuma fonte lida informa prazo. Falta medir se sobrevive a reinicio, a queda de energia e a atualizacao de firmware (o HA apenas troca o token quando a TV manda outro)."
+ },
+ {
+  "category": "api-rede",
+  "gap": "Se KEY_HDMI1 a KEY_HDMI4, KEY_EXIT e KEY_AMBIENT funcionam na TV do usuario: as listas divergem (Toxblh e natalan tem KEY_HDMI1-4; samsungtvws e HA nao). Precisa de teste no modelo real."
+ },
+ {
+  "category": "api-rede",
+  "gap": "TVs 2024/2025 (Tizen 8 e 9): no repositorio cleanyourtv o websocket de controle do DU7000 nao foi testado; um resultado de busca cita ms.channel.timeOut em um DU8300 (forum Samsung, nao foi possivel abrir). Fica sem confirmacao se a 8002 ainda emite token nessas geracoes."
+ },
+ {
+  "category": "api-rede",
+  "gap": "IDs numericos de Globoplay (3201908019022), Telecine (3201604009182) e DIRECTV GO (3201907018786) vem de uma unica lista comunitaria (Mishta, jan/2025, replicada no APPLICATIONS.md). Nao encontrei o ID alfanumerico do Globoplay nem relato de teste no Brasil."
+ },
+ {
+  "category": "api-rede",
+  "gap": "Nome exato do menu brasileiro para ligar pela rede (Wake on LAN / ligar com dispositivo movel) e do caminho Gerenciador de conexao de dispositivos: samsung.com/br nao pode ser aberto nesta sessao; os nomes em portugues sao traducao minha."
+ },
+ {
+  "category": "api-rede",
+  "gap": "custom.launchapp no SmartThings: formato do argumento (ID numerico ou alfanumerico) e lista oficial de capabilities da TV nao confirmados em fonte lida; developer.smartthings.com e community.smartthings.com estavam bloqueados."
+ },
+ {
+  "category": "api-rede",
+  "gap": "Servicos nas portas 9080 e 7678 continuam sem identificacao. A 8080 foi identificada como /ws/app (estilo DIAL) pelo codigo do ollo69 e pelo pareamento das H/J, mas nao foi testada nas TVs do repositorio."
+ },
+ {
+  "category": "api-rede",
+  "gap": "Se o REST POST /api/v2/applications/{id} exige token em firmwares novos: o rest.py nao envia token e o relato local funcionou no AU8000 (2021); nao ha relato para 2023/2024."
+ },
+ {
+  "category": "api-rede",
+  "gap": "Se Samsung ja ativou a cobranca da SmartThings API (anunciada para outubro de 2026) e o que muda para PAT e OAuth: li apenas o aviso na documentacao do Home Assistant."
+ },
+ {
+  "category": "api-rede",
+  "gap": "Restricao desta sessao: so github.com, raw.githubusercontent.com e pypi.org abriram. Docs da Samsung, SmartThings, site do Home Assistant, Reddit, XDA e Samsung Community nao foram lidos diretamente (os docs do HA foram lidos no repositorio fonte). Conteudo em portugues do Brasil nao foi encontrado em fonte acessivel."
+ },
+ {
+  "category": "visual",
+  "gap": "Modelo exato da TV do Bruno e desconhecido (ano/serie/Tizen), entao os caminhos de menu acima precisam ser confirmados no aparelho; o ano aparece no numero do modelo (ex.: letra apos o tamanho: N=2018, R=2019, T=2020, A=2021, B=2022, C=2023, D=2024, F=2025)."
+ },
+ {
+  "category": "visual",
+  "gap": "samsung.com e community.samsung.com nao abriram neste ambiente (DNS/proxy bloqueados). Os caminhos de menu e listas de modelos oficiais vieram de resumos de busca, nao das paginas lidas por inteiro; confirmar na pagina de suporte do modelo."
+ },
+ {
+  "category": "visual",
+  "gap": "Suporte a Ambient Mode em modelos especificos nao confirmado (ex.: Q60T 2020, Q60A 2021); Crystal UHD de entrada geralmente nao tem. Nao esta claro se os fundos remanescentes do Daily Board continuam apos o encerramento do servico Ambient."
+ },
+ {
+  "category": "visual",
+  "gap": "Nao foi confirmado se o Guia Universal pode ser realmente removido (nao so bloqueado) em 2021-2023; as rotas via Smart Features e External Device Manager sao relatos unicos e conflitantes."
+ },
+ {
+  "category": "visual",
+  "gap": "Lista exata de modelos 2024 com Multi View e o status de Multi View no AU8000/BU8000 nao confirmados."
+ },
+ {
+  "category": "visual",
+  "gap": "Nao ha confirmacao de uma protecao de tela com 'Fotos' em modelos nao-Frame/nao-OLED (QLED/Crystal UHD); em OLED a protecao de tela e padrao e nao pode ser desativada."
+ },
+ {
+  "category": "visual",
+  "gap": "Remapear os botoes fisicos de streaming do controle: nenhum metodo oficial ou alternativo encontrado."
+ },
+ {
+  "category": "visual",
+  "gap": "Daily Board (Tizen 9/2025) nao aceita papel de parede personalizado, so fundos embutidos; exige modelo 2025+ com wake-up por voz (Q8F ou acima) e login na conta Samsung."
+ },
+ {
+  "category": "anuncios-privacidade",
+  "gap": "Limite de acesso: o proxy desta sessao bloqueou samsung.com, developer.samsung.com, policy.samsungrs.com, community.samsung.com, Reddit, XDA, Home Assistant Community, Canaltech, conteudohub e a maioria dos sites de noticias (403). Paginas oficiais e esses foruns foram lidos apenas pelos trechos retornados pela busca; so GitHub, gists e raw.githubusercontent.com foram abertos por completo. A redacao oficial em portugues dos menus 2022 a 2024 ('Termos e Privacidade') nao foi conferida letra por letra no samsung.com/br."
+ },
+ {
+  "category": "anuncios-privacidade",
+  "gap": "Mapa Tizen x ano para o submenu 'Escolhas de Privacidade': fontes divergem (Tizen 8 em 2024 segundo um guia; Tizen 9 no DU7200/DU7000 de 2024 segundo AeroTizen e cleanyourtv). Nao confirmado se o caminho 2025 'Suporte > Termos e Privacidade > Escolhas de Privacidade' vale para o firmware brasileiro."
+ },
+ {
+  "category": "anuncios-privacidade",
+  "gap": "Existencia da chave 'Personalizacao do Smart Hub' (Geral e Privacidade > Smart Hub) que trocaria 'Top Picks for You' por recomendacoes genericas: fonte unica (smarttvs.org), sem confirmacao oficial ou segundo relato."
+ },
+ {
+  "category": "anuncios-privacidade",
+  "gap": "Se as opcoes de IBA/ACR voltam ligadas apos atualizacao de firmware: dois relatos de usuarios, nenhuma confirmacao oficial nem lista de firmwares afetados."
+ },
+ {
+  "category": "anuncios-privacidade",
+  "gap": "Trocar o pais da TV para eliminar o Samsung TV Plus: um unico relato apos reset de fabrica, sem confirmacao de duracao nem de efeito em firmware brasileiro. A opcao 'Desativar' do TV Plus nao foi vista em pagina oficial."
+ },
+ {
+  "category": "anuncios-privacidade",
+  "gap": "DNS fixo ou DoH embutido em Tizen: nenhuma captura de trafego independente encontrada que confirme ou negue; as alegacoes vem de um unico site comercial."
+ },
+ {
+  "category": "anuncios-privacidade",
+  "gap": "Lista 'Native Tracking Protection > Samsung' do NextDNS: o arquivo no repositorio nextdns/metadata nao foi localizado (404 em privacy/native/samsung.json e busca de codigo vazia), entao seu conteudo atual nao foi conferido."
+ },
+ {
+  "category": "anuncios-privacidade",
+  "gap": "Hosts de ACR realmente contatados por uma TV brasileira em 2025 a 2026: acr-br-prd.samsungcloud.tv aparece nas listas HaGeZi e Okazakee, mas nao foi encontrada captura de trafego de um aparelho no Brasil."
+ },
+ {
+  "category": "anuncios-privacidade",
+  "gap": "sas.samsungcloudsolution.com: bloqueado por HaGeZi e Okazakee como 'analytics', mas o firmware do Q80A o referencia como servidor de atualizacao (vetro). Nenhum teste mostra o que acontece com a atualizacao ao bloquea-lo."
+ },
+ {
+  "category": "anuncios-privacidade",
+  "gap": "Mudancas de firmware ou de tela de consentimento apos o acordo do Texas (fev/2026) fora dos EUA, e a alegada chave 'Do Not Sell or Share': sem confirmacao."
+ },
+ {
+  "category": "anuncios-privacidade",
+  "gap": "Qual 'outra configuracao' um usuario brasileiro disse ter bloqueado os anuncios na hora (Samsung Members, set/2025): o trecho nao identifica o menu."
+ },
+ {
+  "category": "anuncios-privacidade",
+  "gap": "Conteudo do comentario de out/2026 no issue Perflyst #150 (osb-apps-v2) e do PR #152 (dominios do The Frame): nao lidos em detalhe."
+ },
+ {
+  "category": "root-firmware",
+  "gap": "Modelo exato e ano/Tizen da TV do dono ainda desconhecido. Sem isso nao da para dizer qual rota de root ou debloat se aplica. Proximo passo: ler GET http://<tv>:8001/api/v2/ para obter a model string (ex.: 22_NIKEL_UHD) e o ano."
+ },
+ {
+  "category": "root-firmware",
+  "gap": "A politica de egress bloqueou WebFetch direto a todos os hosts fora do github.com (403). Fontes como Bishop Fox, Samsung, SamyGO forum, XDA, Vice, MITRE, Synacktiv e MDPI vieram de resumos do WebSearch, nao de leitura direta; detalhes finos (passos exatos, texto literal) nao foram confirmados em primeira mao."
+ },
+ {
+  "category": "root-firmware",
+  "gap": "Status de correcao do SVE-2025-50109 pela Samsung (se ja ha patch, em quais builds e se chega ao Brasil) nao confirmado; o CVE estava como 'coming soon'."
+ },
+ {
+  "category": "root-firmware",
+  "gap": "Se a cadeia de root moderna funciona em Tizen 10 (2026) e nos modelos vendidos no Brasil (sufixos de regiao) nao confirmado; ha indicio de bloqueio do foothold em 1 unidade Tizen 10 (UN50M75HAGXZD)."
+ },
+ {
+  "category": "root-firmware",
+  "gap": "Reivindicacao de root untethered com agente de boot sem PC (fork levkropp) nao tem confirmacao independente e conflita com o upstream, que diz root volatil sem servico instalado na TV."
+ },
+ {
+  "category": "root-firmware",
+  "gap": "Remover componentes de anuncio/telemetria da TV reduz anuncios dentro de apps de streaming? Indicacao de que nao (so afeta componentes da TV), mas sem medicao."
+ },
+ {
+  "category": "root-firmware",
+  "gap": "Downgrade de firmware via root: nenhum procedimento com passos verificados foi encontrado; so relato unico de forum."
+ },
+ {
+  "category": "root-firmware",
+  "gap": "Garantia no Brasil (Codigo de Defesa do Consumidor) versus politica da Samsung sobre root: nao pesquisado em fonte juridica brasileira."
+ },
+ {
+  "category": "root-firmware",
+  "gap": "Lista precisa de CVEs recentes especificos do SO de TV Tizen (fora os de signage MagicINFO) nao encontrada de forma consolidada."
+ },
+ {
+  "category": "root-firmware",
+  "gap": "Nenhum backup completo e restauravel de uma TV Tizen foi demonstrado publicamente; o risco de perda de dados/apps ao debloatar permanece sem rede de seguranca comprovada."
+ },
+ {
+  "category": "brasil",
+  "gap": "Limite de infraestrutura: o proxy da sessao devolveu 403 para samsung.com, community.samsung.com, images.samsung.com, tab-tv, canaltech, tecnoblog, techtudo, YouTube, Reddit, Home Assistant community e XDA. So github.com e raw.githubusercontent.com abriram. Os achados 1 a 7 e 11 usam trechos devolvidos pelo WebSearch dessas paginas (marcadas '[nao aberta]'); a redacao exata dos menus e dos termos precisa ser confirmada abrindo as paginas."
+ },
+ {
+  "category": "brasil",
+  "gap": "A cota de WebSearch da sessao acabou antes de cobrir: texto completo dos itens excludentes do termo de garantia de TV; valores de 'Local Set' para LATAM/Brasil no menu de servico; tutorial em portugues sobre modo hotel; pkgid do Globoplay; topicos do Clube do Hardware e do Promobit sobre identificacao de modelos; lista nominal atual de canais do Samsung TV Plus Brasil."
+ },
+ {
+  "category": "brasil",
+  "gap": "Se o menu de servico (ou as combinacoes de teclas) muda em firmware brasileiro GXZD: nenhum relato em modelo brasileiro com Tizen foi encontrado; so guias europeus/americanos e topicos de 2008 sobre chassis antigos."
+ },
+ {
+  "category": "brasil",
+  "gap": "Letra do ano: F = 2025 e H = 2026 vem de tabelas secundarias; H = 2026 tem um unico codigo real de apoio (UN50M75HAGXZD, 'M75H 2026'). Confirmar na pagina oficial do modelo."
+ },
+ {
+  "category": "brasil",
+  "gap": "Familia de firmware das TVs brasileiras (AKUC como nas americanas, ou outra) nao confirmada; a string lida em um UN50M75HAGXZD com Tizen 10 ('t-x22udhuabc-0100-12') tem formato diferente."
+ },
+ {
+  "category": "brasil",
+  "gap": "Se 'sdb uninstall' remove preloads regionais (Globoplay, apps de operadora) em TVs brasileiras de 2021+ (Tizen 6+): o guia samsung-tizen-tv-debloat prova em Tizen 4.0 (2018) e o AeroTizen afirma que em Tizen 6+ nao remove; nenhum teste em modelo GXZD."
+ },
+ {
+  "category": "brasil",
+  "gap": "Se ligar o modo desenvolvedor ou instalar .wgt afeta a garantia Samsung Brasil: nenhuma fonte, oficial ou de forum, responde."
+ },
+ {
+  "category": "brasil",
+  "gap": "Samsung TV Plus Brasil: se existe a chave 'executar TV Plus automaticamente' nos menus brasileiros anteriores a 2025 e se apagar todos os canais impede o autoplay ao ligar; o espelho i.mjh.nz nao tem EPG 'br' visivel e um pedido (issue #246, jan/2026) segue sem resposta."
+ },
+ {
+  "category": "brasil",
+  "gap": "Videos em portugues apareceram na busca mas nao foram abertos (YouTube bloqueado): 'Como acessar o MENU SECRETO das TVs Samsung' (DzQ-qu-CXtE), 'Menu de servico TV SAMSUNG' (VG7ZcWZAsuA) e 'Como tirar o Samsung TV Plus dos canais da TV' (hecNvALhjd8)."
+ },
+ {
+  "category": "brasil",
+  "gap": "Nomes de menu em portugues para modelos 2019 a 2023 ('Comecar o inicio do Smart Hub', 'Execucao Automatica do Ultimo Aplicativo', 'Escolhas de Privacidade') vieram de fontes secundarias; confirmar na TV real."
+ },
+ {
+  "category": "brasil",
+  "gap": "Busca de issues no GitHub por 'GXZD' e inconclusiva (o buscador nao casa substring dentro do codigo de modelo); nao da para afirmar que nao ha relatos brasileiros em TizenBrew, TizenTube, jellyfin-tizen ou Home Assistant."
+ },
+ {
+  "category": "decodificar-modelo",
+  "gap": "Letra do ano de 2026: so um catalogo (Beggad-tv) lista S95G/S90G como 2026; nao achei pagina Samsung nem segundo relato confirmando G."
+ },
+ {
+  "category": "decodificar-modelo",
+  "gap": "Tabela oficial Samsung (developer.samsung.com general-specifications, web-engine-specifications e tv-model-groups) nao pode ser aberta: o proxy desta sessao devolve 403 para samsung.com, developer.samsung.com, docs.tizen.org, wikipedia, reddit, xda e community.home-assistant.io. As versoes 2025 (Tizen 9.0, M120) e 2026 (Tizen 10.0, M130) vem de duas copias no GitHub, nao da pagina oficial."
+ },
+ {
+  "category": "decodificar-modelo",
+  "gap": "Significado literal de KANT, MUSE, NIKE, PONTUS, OSCAR e KSU e das letras L, M, S, P, E: nenhuma fonte explica; so a correlacao com modelos foi observada."
+ },
+ {
+  "category": "decodificar-modelo",
+  "gap": "Codigo de regiao no firmware de TVs vendidas no Brasil (GXZD): nenhuma amostra de string T-XXXX brasileira foi encontrada; so DEUC (Europa), AKUC (EUA), WWC e WWW."
+ },
+ {
+  "category": "decodificar-modelo",
+  "gap": "Anos e series que possuem Ambient Mode e Multi View: nenhuma tabela por ano encontrada em fonte acessivel."
+ },
+ {
+  "category": "decodificar-modelo",
+  "gap": "Politica de atualizacao do Tizen (quantos anos e quais modelos sobem de versao): a DU7000 2024 ja estava em Tizen 9.0, mas o anuncio oficial da Samsung nao pode ser lido."
+ },
+ {
+  "category": "decodificar-modelo",
+  "gap": "Caminhos de menu em portugues do Brasil: todos os caminhos lidos estao em ingles ou traduzidos por mim; nomes exatos da interface pt-BR nao foram verificados."
+ },
+ {
+  "category": "decodificar-modelo",
+  "gap": "Modelo exato do dono: ainda desconhecido; o primeiro passo pratico e ler Sobre esta TV ou o /api/v2/ e aplicar as tabelas."
+ },
+ {
+  "category": "decodificar-modelo",
+  "gap": "O orcamento de WebSearch desta rodada estava esgotado (limite compartilhado por agentes); toda a pesquisa usou GitHub (code search e raw) e PyPI. Uma segunda rodada com busca web poderia fechar os gaps acima."
+ },
+ {
+  "category": "alternativas",
+  "gap": "Precos no Brasil em 2026 de Chromecast com Google TV, Google TV Streamer, Xiaomi TV Box S 2a e 3a geracao, Fire TV Stick, Apple TV 4K e Shield: sem dado. Lojas (Amazon.com.br, Mercado Livre, Kabum, Magalu, store.google.com/br, mi.com/br, apple.com/br) foram bloqueadas pelo proxy desta sessao e o orcamento de WebSearch estava esgotado."
+ },
+ {
+  "category": "alternativas",
+  "gap": "Disponibilidade oficial no Brasil de Google TV Streamer, Xiaomi TV Box S 3a geracao e NVIDIA Shield: sem dado."
+ },
+ {
+  "category": "alternativas",
+  "gap": "Modelo e ano da TV do usuario (e portanto a versao do Tizen e o caminho exato dos menus): desconhecido; a maioria dos achados depende disso."
+ },
+ {
+  "category": "alternativas",
+  "gap": "Samsung Internet na TV: nao foi encontrado como definir pagina inicial, nem esquema de deep link (tipo tizen://) que permita a uma pagina web abrir apps Tizen. Paginas da Samsung (samsung.com, developer.samsung.com) nao puderam ser abertas."
+ },
+ {
+  "category": "alternativas",
+  "gap": "Confiabilidade do Anynet+ para ligar a TV a partir do standby e trocar de entrada no modelo do usuario: nao testada; ha relato de aparelhos que ignoram ligar por CEC."
+ },
+ {
+  "category": "alternativas",
+  "gap": "Quais teclas do controle Samsung passam por CEC para uma caixa Android TV ou Google TV (navegacao completa ou so play e pause): sem dado alem de um Chromecast de 1a geracao."
+ },
+ {
+  "category": "alternativas",
+  "gap": "Hotel Option em TV de varejo: se 'Power On Source' aparece apos ligar Hospitality Mode, o que acontece com o Smart Hub e se a reversao e limpa: so um relato, sem confirmacao."
+ },
+ {
+  "category": "alternativas",
+  "gap": "Efeito medido de bloqueio por DNS sobre os anuncios da Samsung Home e do Samsung TV Plus: sem dado."
+ },
+ {
+  "category": "alternativas",
+  "gap": "Se o firmware brasileiro bloqueia o Modo Desenvolvedor com 'Nao disponivel' (relato unico de truque de tempo apos religar da tomada): sem confirmacao."
+ },
+ {
+  "category": "alternativas",
+  "gap": "TizenBrew em Tizen 9 e 10 (2024 a 2026): relatos de instabilidade sem resposta do mantenedor; nao ha confirmacao de funcionamento estavel."
+ },
+ {
+  "category": "alternativas",
+  "gap": "Fontes oficiais da Samsung sobre Anynet+, Opcoes da tela inicial e Gerenciador de conexao nao foram lidas diretamente (bloqueadas); o que esta aqui vem de repositorios no GitHub e de um teste de dono documentado no cleanyourtv."
+ }
+]
