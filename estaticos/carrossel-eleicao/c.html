@@ -2,15 +2,16 @@
 @font-face{font-family:Cinzel;src:url(/home/user/Disparo-/videos/ads/a01-campinas/fonts/cinzel-latin.woff2)}
 @font-face{font-family:Pf;src:url(/home/user/Disparo-/videos/ads/a01-campinas/fonts/playfair-italic-latin.woff2);font-style:italic}
 body{margin:0;width:1080px;height:1350px;background:#141210;color:#f3ece0;overflow:hidden}
-#s{position:absolute;inset:0;padding:120px 96px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;
+#s{position:absolute;inset:0;padding:640px 96px 150px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:flex-start;
 background:radial-gradient(circle at 80% 10%,rgba(232,179,106,.16),transparent 55%),#141210}
-.n{font:600 30px Cinzel;color:#E8B36A;letter-spacing:6px;position:absolute;top:96px;left:96px}
-.f{height:3px;width:120px;background:#E8B36A;margin-bottom:48px}
-.t{font:italic 74px/1.22 Pf}.t b{font:700 70px Cinzel;color:#E8B36A;font-style:normal}
-.c .t{font-size:92px}.a{position:absolute;bottom:90px;left:96px;font:600 28px Cinzel;color:#E8B36A;opacity:.8;letter-spacing:3px}
+.img{position:absolute;left:0;top:0;width:1080px;height:760px;background-size:cover;background-position:center 25%}.img:after{content:'';position:absolute;inset:0;background:linear-gradient(rgba(20,18,16,.25),rgba(20,18,16,.15) 40%,#141210 98%)}
+.n{z-index:2;font:600 30px Cinzel;color:#E8B36A;letter-spacing:6px;position:absolute;top:96px;left:96px}
+.f,.t{position:relative;z-index:2}.f{height:3px;width:120px;background:#E8B36A;margin-bottom:48px}
+.t{font:italic 64px/1.22 Pf}.t b{font:700 70px Cinzel;color:#E8B36A;font-style:normal}
+.c .t{font-size:80px}.a{position:absolute;bottom:90px;left:96px;font:600 28px Cinzel;color:#E8B36A;opacity:.8;letter-spacing:3px}
 .p{position:absolute;bottom:90px;right:96px;font:600 28px Cinzel;color:#E8B36A}
 </style><div id=s></div><script>
-const L=[
+const I=['f1.jpg','f5.jpg','f3.jpg','f2.jpg','f4.jpg','f5.jpg','f1.jpg'];const L=[
 'Eleição decidida. O que muda no seu próximo <b>lançamento</b>?',
 'Quando o cenário é incerto, o cliente não para de comprar. Ele compra o que protege o <b>futuro</b> dele.',
 'Conhecimento entra nessa lista: faturar mais com o próprio negócio, se organizar, cuidar da saúde para aguentar a <b>pressão</b>.',
@@ -19,5 +20,5 @@ const L=[
 'Quem só grita oferta vai sentir o mercado travar. Quem conduz a conversa encontra um público mais <b>atento</b>.',
 'Vai lançar nos próximos 90 dias? Me manda a sua área no <b>direct</b>.'];
 function render(i){document.getElementById('s').className=i==0?'c':'';document.getElementById('s').innerHTML=
-`<div class=n>${i==0?'O ESTRATEGISTA':'0'+(i+1)+' / 07'}</div><div class=f></div><div class=t>${L[i]}</div><div class=a>@o_estrategista.com.br</div>${i<6?'<div class=p>ARRASTA →</div>':''}`}
+`<div class=img style="background-image:url(/home/user/Disparo-/estaticos/stories-frases/${I[i]})"></div><div class=n>${i==0?'O ESTRATEGISTA':'0'+(i+1)+' / 07'}</div><div class=f></div><div class=t>${L[i]}</div><div class=a>@o_estrategista.com.br</div>${i<6?'<div class=p>ARRASTA →</div>':''}`}
 </script>
