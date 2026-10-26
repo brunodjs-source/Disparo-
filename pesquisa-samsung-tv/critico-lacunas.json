@@ -1,0 +1,57 @@
+{
+ "gaps": [
+  {
+   "topic": "Controle Solar (SolarCell, sem teclas numericas) e Bluetooth: como digitar 12345, 0000 e as combinacoes MUTE 1 1 9 e de standby",
+   "why": "Nenhum dos 143 achados cita o controle Solar. menu-servico-6 so diz que o teclado virtual do botao 123 nao tem teste, e as sequencias de setas (Mute, Cima, Baixo, OK, Mute) nao foram verificadas em nenhum modelo. Alem disso, o Smart Remote pareado fala por Bluetooth, e as combinacoes de standby exigem IR com endereco 0x07; ninguem apurou se o Solar ainda emite IR para essas teclas ou se e preciso um controle AA59/BN59 com numeros ou um Flipper/IR universal. Sem isso o dono nao consegue executar na pratica os passos de Modo Desenvolvedor, PIN e menu hotel.",
+   "search_hint": "\"controle Solar\" Samsung TV \"botao 123\" digitar 12345 modo desenvolvedor; \"SolarCell remote\" \"service menu\" OR \"hotel menu\" \"no number buttons\"; \"BN59-01432\" OR \"TM2360E\" infrared bluetooth \"MUTE\" \"1 1 9\"; manual do usuario controle Solar pt-BR teclado virtual numeros"
+  },
+  {
+   "topic": "Procedimento verificado de 'desfazer tudo': reset de fabrica (Geral > Redefinir, PIN 0000), Redefinir Smart Hub, o que cada um apaga e o que NAO desfaz (Modo Desenvolvedor, Hotel Option, Local Set, vconf home_appid, apps sideload)",
+   "why": "Reset de fabrica e Redefinir Smart Hub aparecem so de passagem (anuncios-privacidade-5, brasil-4, modo-hotel-12), nunca como item proprio com caminho por ano e alcance. modo-hotel-6 diz que reset nao limpa o modo hotel 'de forma confiavel' (relatos nos dois sentidos), modo-hotel-12 diz que reset pode mudar o DUID, api-rede-8 diz que em alguns modelos so reset desliga o Modo Desenvolvedor. Para o item 7 do plano o dono precisa de uma tabela: acao executada x forma de reverter x o que o reset de fabrica realmente restaura.",
+   "search_hint": "samsung.com/br \"redefinir\" TV \"Geral e Privacidade\" \"Redefinir\" PIN 0000 o que e apagado; \"factory reset\" Samsung Tizen \"developer mode\" still enabled OR \"hotel option\" persists after reset; \"Redefinir Smart Hub\" vs \"Redefinir\" diferenca; samsung \"reset\" \"DUID\" changed certificate"
+  },
+  {
+   "topic": "Atualizacao automatica de software: caminho do menu por ano (Suporte > Atualizacao de software > Atualizacao automatica), se desligar e respeitado, e o efeito das OTAs de 2025 e 2026 (One UI Tizen 9/10) sobre apps sideload, TizenBrew, certificados, home_appid e chaves de privacidade",
+   "why": "Varias correcoes citam que a atualizacao de firmware apaga app sideload, muda o Tizen (2023 para 9.0, 2024 para 9.0), exige novo certificado e pode religar IBA/ACR, mas nenhum achado ensina a controlar a atualizacao automatica nem lista o que as OTAs de 2025 e 2026 mudaram. E o unico mecanismo que pode desfazer sozinho o que o dono fizer nos itens 3, 4 e 5.",
+   "search_hint": "samsung TV \"Atualizacao automatica\" desligar \"Atualizacao de software\" Suporte pt-BR; Samsung TV \"auto update\" off still updates Tizen; \"One UI Tizen\" update 2025 2026 changelog \"developer mode\" sideload removed; TizenBrew \"firmware update\" removed app certificate expired"
+  },
+  {
+   "topic": "E-manual oficial em portugues do Brasil (PDF BN81-xxxxx pt-BR) dos modelos 2022 a 2026 para fixar os nomes exatos dos menus e a arvore de Configuracoes, em vez do manual de Hong Kong",
+   "why": "Todos os caminhos em portugues foram traduzidos pelos pesquisadores ou tirados da versao zh-HK do e-manual 2025 (visual-1, visual-3, brasil-6, brasil-7, decodificar-modelo-6). As lacunas 'brasil' e 'decodificar-modelo' registram que nenhum nome pt-BR foi conferido. O e-manual pt-BR e um unico PDF que resolve de uma vez: Sobre esta TV, Opcoes da tela inicial, Escolhas de Privacidade, Modo de Uso, Gerenciador de conexao de dispositivos, DNS manual, Anynet+, Redefinir, Ligar com dispositivo movel.",
+   "search_hint": "\"e-Manual\" Samsung TV 2025 pt-BR filetype:pdf \"Opcoes da tela inicial\" OR \"Escolhas de Privacidade\"; downloadcenter.samsung.com \"BN81\" \"Portugues (Brasil)\" 2024 2025 2026; samsung.com/br/support/model UN50DU7700GXZD OR UN55CU7700GXZD manual; \"Sobre esta TV\" \"Codigo do modelo\" e-manual Samsung portugues"
+  },
+  {
+   "topic": "Backup e restauracao reais das configuracoes: org.tizen.cloning em TV de consumo, 'Clone TV to USB' fora do modo hotel, restauracao de Smart Hub pela conta Samsung e SmartThings, e uma lista de telas obrigatorias a fotografar antes de mexer",
+   "why": "A unica orientacao de backup e 'fotografe cada tela' (menu-servico-11). modo-hotel-10 confirma que o app org.tizen.cloning existe em TVs de consumo 2018 e 2022+, mas ninguem testou se gera arquivo restauravel sem Hospitality Mode. Ninguem pesquisou se a conta Samsung ou o SmartThings restauram lista de apps, logins ou ajustes apos reset. Para os itens 6 e 7 o dono precisa saber o que e recuperavel e o que nao e antes de entrar em menu de servico ou root.",
+   "search_hint": "\"org.tizen.cloning\" consumer TV launch \"Clone TV to USB\" without hotel mode; Samsung TV \"backup settings\" SmartThings \"restore\" 2024 2025; \"Samsung account\" TV \"restore apps\" after \"reset Smart Hub\"; \"Hotel Option\" \"Cloning\" retail TV \"T-KSU2E\" OR \"T-PTM\" usb folder"
+  },
+  {
+   "topic": "TVs 2024 a 2026 (Tizen 8, 9 e 10): a API local ainda funciona? Porta 8002 filtrada no Frame LS03D, ms.channel.timeOut no DU8300, REST POST sem token em Tizen 9/10, e se o Modo Desenvolvedor passou a ser pre-requisito para controle por rede",
+   "why": "visual-2 registra relato de porta 8002 filtrada em Tizen 9 num LS03D 2024; api-rede-1 confirma o websocket so ate DU7000 2024 e cita o timeOut no DU8300 sem abrir a fonte; api-rede-7 diz que ed.apps.launch falha em 2023+ e o PUT nunca foi testado. O modelo do Bruno pode ser 2024 ou mais novo e todo o item 3 (controlar por script) depende disso. A cobranca da SmartThings API a partir de outubro de 2026 (api-rede-10) tambem precisa de confirmacao de que ja esta valendo.",
+   "search_hint": "\"Tizen 9\" OR \"Tizen 10\" samsungtvws 8002 \"ms.channel.timeOut\" OR \"connection refused\" 2025 2026; home-assistant samsungtv \"DU8300\" OR \"S95F\" OR \"QN90F\" websocket token issue; \"samsung-tv-ws-api\" issue 2026 \"Tizen 10\"; SmartThings \"Personal Plan\" \"$4.99\" API billing started October 2026 home assistant"
+  },
+  {
+   "topic": "Codigos e menus nao pesquisados: PIN reset (MUTE 8 2 4 POWER), senha padrao do Security Mode, 'Info + Settings' (tela de sinal/paineis), Shop Option e Usage Mode Loja via Ferramentas, Local Set Brasil, e os valores que o menu de servico mostra em firmware GXZD",
+   "why": "modo-hotel-9 e as lacunas de modo-hotel marcam MUTE 8 2 4 POWER e os PINs 0000/1234/9999 como 'nao usar', mas e justamente o que o dono precisara se travar o PIN. brasil-3 (sem_fonte) admite zero relato em firmware brasileiro. Nao existe nenhum relato de dono brasileiro mostrando a tela do menu de servico (Option/Control/Advanced) de um modelo GXZD, nem o valor de Local Set para o Brasil, o que impede saber se mudar algo ali derruba o tuner ISDB-T.",
+   "search_hint": "\"MUTE 8 2 4\" OR \"mute 8 2 4 power\" samsung PIN reset Tizen; \"menu de servico\" Samsung TV GXZD foto \"Local Set\" OR \"Option\" Brasil; youtube \"menu secreto\" TV Samsung Tizen Brasil 2023 2024 (DzQ-qu-CXtE, VG7ZcWZAsuA); \"Local Set\" \"BR\" OR \"LATAM\" samsung service menu ISDB; \"Factory Lock\" \"Password Popup\" Samsung hotel manual HG pt-BR"
+  }
+ ],
+ "weak_items": [
+  "menu-servico-1",
+  "menu-servico-3",
+  "menu-servico-4",
+  "menu-servico-5",
+  "menu-servico-6",
+  "menu-servico-7",
+  "modo-hotel-2",
+  "modo-hotel-6",
+  "modo-hotel-9",
+  "modo-desenvolvedor-10",
+  "anuncios-privacidade-7",
+  "anuncios-privacidade-5",
+  "brasil-3",
+  "brasil-11",
+  "root-firmware-7",
+  "alternativas-12"
+ ]
+}

@@ -1,0 +1,768 @@
+[
+ {
+  "title": "Controle Solar emite IR (Samsung32, endereço 0x07) nas teclas que possui, mas sem Info, Menu, dígitos e Power clássico",
+  "what_it_enables": "Saber o que o Solar entrega por infravermelho (setas, OK, Voltar, Home, 123, Volume, Mute, Canal, Play, Power) e o que falta para menu de serviço e hotel. Um Flipper Zero ou IR universal pode completar as teclas ausentes.",
+  "steps": "Capturas no Flipper-IRDB dos Solar BN59-01385C (TM2180E, 2021) e BN59-01391A (TM2281E, 2022, Frame): protocolo Samsung32, endereço 07; Power E6, 123 D2, Cima 60, Baixo 61, Direita 62, Esquerda 65, OK 68, Voltar 58, Home 79, Vol+ 07, Vol- 0B, Mute 0F, Ch+ 12, Ch- 10, Guide 4F, Play/Pause B9. O cabeçalho de Samsung_Smart_Remote.ir diz que o Smart Remote fala Bluetooth com a TV mas também emite IR. O Solar não tem Info (1F), Menu (1A), dígitos (1=04, 2=05, 3=06, 4=08, 5=09, 6=0A, 7=0C, 8=0D, 9=0E, 0=11) nem o Power clássico 02; seu Power envia E6. Para confirmar no seu controle: Flipper em Infrared > Learn, apertar cada tecla do Solar e ver se aparece Samsung32 A:07.",
+  "applies_to": "Fato para os Solar 2021 (BN59-01385C) e 2022 (BN59-01391A). O TM2360E/BN59-01432 (2023 em diante) não tem captura no banco; manter o mesmo mapa é hipótese.",
+  "requirements": "Flipper Zero ou outro receptor IR para conferir; nada precisa ser mudado na TV.",
+  "risk": "baixo",
+  "reversible": "Não altera nada na TV.",
+  "sources": [
+   "https://raw.githubusercontent.com/Lucaslhm/Flipper-IRDB/main/TVs/Samsung/Samsung_BN59-01385C.ir",
+   "https://raw.githubusercontent.com/Lucaslhm/Flipper-IRDB/main/TVs/Samsung/Samsung_BN59-01391A.ir",
+   "https://raw.githubusercontent.com/Lucaslhm/Flipper-IRDB/main/TVs/Samsung/Samsung_Smart_Remote.ir",
+   "https://raw.githubusercontent.com/probonopd/irdb/master/codes/Samsung/TV/7,7.csv"
+  ],
+  "confidence": "alta",
+  "fact_or_hypothesis": "fato"
+ },
+ {
+  "title": "Digitar 12345 (Modo Desenvolvedor) com o botão 123 do Solar ou com o teclado numérico do SmartThings",
+  "what_it_enables": "Abrir o popup Developer Mode em TV cujo controle não tem teclas numéricas, pré-requisito para sdb (porta 26101), TizenBrew, TizenTube e instalação de app próprio.",
+  "steps": "1) Abrir o painel Apps do Smart Hub e ficar dentro dele (guia pt-BR: se o menu não abre, confirmar que está exatamente na aba Apps). 2) Apertar o botão 123 do Solar e digitar 1 2 3 4 5 no teclado virtual (hcbille: use o botão 123 ao digitar 12345; TizenTube: digitar pelo controle ou pelo teclado na tela). 3) Alternativa: teclado numérico do controle do app SmartThings no celular (guia pt-BR TizenBrewInstaller-Termux). 4) No popup: Developer mode On, Host PC IP = IP do PC ou do celular (127.0.0.1 nos fluxos TizenBrew). 5) Reiniciar segurando Power do Solar cerca de 5 s até o logo Samsung (ferdj40 preferiu tirar da tomada por 1 min). 6) Em Tizen 7 ou mais novo, o TizenBrew Installer pede login na conta Samsung para o certificado.",
+  "applies_to": "Tizen 3 (2017) em diante segundo o guia TizenTube; relatos em Tizen 6.0 (2021), 6.5 (BU8000, 2022) e guias de 2024 a 2026. Modelo e Tizen da TV do dono ainda desconhecidos.",
+  "requirements": "Solar com botão 123 pareado por Bluetooth, ou app SmartThings com a TV adicionada; TV e PC/celular na mesma rede Wi-Fi.",
+  "risk": "baixo",
+  "reversible": "Sim: voltar ao mesmo popup (12345 em Apps) e desligar Developer mode; reiniciar.",
+  "sources": [
+   "https://raw.githubusercontent.com/hcbille/install-tizenbrew-tizen/main/README.md",
+   "https://raw.githubusercontent.com/reisxd/TizenTube/main/docs/README.md",
+   "https://raw.githubusercontent.com/wendziin/TizenBrewInstaller-Termux/main/README.md",
+   "https://raw.githubusercontent.com/brunofranca001-hue/mustache-tv/main/README.md",
+   "https://raw.githubusercontent.com/kbssrikar7/samsung-tv-cleanup/main/README.md",
+   "https://raw.githubusercontent.com/ferdj40/samsung-tv-launcher/main/README.md"
+  ],
+  "confidence": "alta",
+  "fact_or_hypothesis": "fato"
+ },
+ {
+  "title": "Teclas numéricas pela rede: KEY_1 a KEY_0, KEY_MUTE, KEY_ENTER, KEY_INFO e KEY_MENU no websocket 8001/8002",
+  "what_it_enables": "Substituir o controle com números por Home Assistant (remote.send_command) ou samsung-tv-ws-api para digitar 12345 no painel Apps ou enviar sequências com a TV ligada, sem Flipper.",
+  "steps": "1) TV ligada e na mesma sub-rede (HA e ws-api avisam que Samsung bloqueia websocket entre VLANs). 2) Primeira conexão: aceitar Permitir na TV; o token fica guardado. 3) HA: remote.send_command com a entidade remote da TV e command [KEY_1, KEY_2, KEY_3, KEY_4, KEY_5] com a aba Apps aberta; a lista de teclas aceitas varia por modelo. 4) Também existem KEY_MUTE, KEY_ENTER, KEY_INFO, KEY_MENU, KEY_POWER, KEY_POWEROFF. 5) Não serve para sequências de standby: a doc do HA liga a TV por Wake on LAN, não por tecla. Se o painel Apps aceita dígitos vindos da rede como se fossem do controle, ninguém testou nos relatos lidos.",
+  "applies_to": "Tizen 2016 em diante (ws-api, HA). Séries H e J (2014/2015) usam protocolo criptografado com pareamento manual.",
+  "requirements": "Home Assistant ou Python com samsung-tv-ws-api; aceitar o prompt Permitir na TV; mesma sub-rede.",
+  "risk": "baixo",
+  "reversible": "Sim: nada é gravado na TV além da autorização do dispositivo, que pode ser removida nas configurações de dispositivos externos.",
+  "sources": [
+   "https://raw.githubusercontent.com/home-assistant/home-assistant.io/current/source/_integrations/samsungtv.markdown",
+   "https://raw.githubusercontent.com/xchwarze/samsung-tv-ws-api/master/README.md"
+  ],
+  "confidence": "media",
+  "fact_or_hypothesis": "hipotese"
+ },
+ {
+  "title": "Sequências de standby (Info, Menu, Mute, Power e Mute 1 8 2 Power) só por IR, com teclas que o Solar não tem",
+  "what_it_enables": "Entender por que o Solar e o websocket não abrem o menu de serviço e o que usar no lugar: controle Samsung antigo com números, Flipper Zero ou celular com emissor IR.",
+  "steps": "Códigos Samsung32, endereço 07: Info 1F, Menu 1A, Mute 0F, Power 02, 1=04, 8=0D, 2=05 (irdb: NECx2 device 7.7, funções 31, 26, 15, 2, 4, 13, 5). Opções: a) controle Samsung antigo com números: a captura do AA59-00741A traz Power 02, Menu 1A, Info 1F, Mute 0F e dígitos; b) Flipper Zero com Samsung_Service_Menu.ir, cuja instrução é desligar a TV e enviar Info, Menu, Mute, Power um após o outro; c) celular com IR (Xiaomi, Redmi, Poco) e o app Universal TV Service Remote, macro Samsung Mute 1 8 2 Power em NEC 38 kHz. O websocket não serve porque a TV precisa estar em standby. Nenhuma das fontes lidas relata teste em Tizen 2022 ou mais novo; a thread do AVSForum sobre 2022+ não pôde ser aberta nesta sessão.",
+  "applies_to": "Códigos IR 0x07 valem para Samsung de várias gerações. Execução em Tizen 2021 em diante: sem teste nas fontes lidas.",
+  "requirements": "Controle com números, Flipper Zero ou celular com emissor IR; TV em standby com o receptor IR desobstruído.",
+  "risk": "alto",
+  "reversible": "Abrir e sair sem mexer não altera nada. Mudar opções pode causar tela preta ou boot loop (aviso do app R3bing). Anotar todos os valores antes de alterar.",
+  "sources": [
+   "https://raw.githubusercontent.com/Lucaslhm/Flipper-IRDB/main/TVs/Samsung/Samsung_Service_Menu.ir",
+   "https://raw.githubusercontent.com/Lucaslhm/Flipper-IRDB/main/TVs/Samsung/Samsung_AA59-00741A.ir",
+   "https://raw.githubusercontent.com/R3bing/Universal-TV-Service-Remote/main/README.md",
+   "https://raw.githubusercontent.com/probonopd/irdb/master/codes/Samsung/TV/7,7.csv"
+  ],
+  "confidence": "media",
+  "fact_or_hypothesis": "hipotese"
+ },
+ {
+  "title": "Tecla discreta FACTORY (0x3B, função 59) e 3SPEED (0x3C, função 60) por IR com a TV ligada",
+  "what_it_enables": "Tentar abrir o menu de serviço com uma única tecla de serviço, sem sequência de standby, usando Flipper ou app IR no celular.",
+  "steps": "Samsung32 endereço 07, comando 3B (Factory) e 3C (3speed); em NECx2 é device 7.7, função 59 e 60. O arquivo Samsung_Service_Menu.ir do Flipper-IRDB já traz as duas teclas. O app R3bing lista Samsung: FACTORY (Device 7.7, Func 59) e 3SPEED (Device 7.7, Func 60) para destravar opções de região e LocalSet, com Samsung marcado como Direct Discrete Key. Com a TV ligada, enviar Factory e observar se o menu aparece; sair com Power ou Exit sem alterar nada. Nenhuma fonte lida confirma funcionamento em Tizen 2021 em diante.",
+  "applies_to": "Códigos documentados para Samsung em geral; sem ano ou versão de Tizen declarada nas fontes.",
+  "requirements": "Flipper Zero ou celular com emissor IR; TV ligada.",
+  "risk": "alto",
+  "reversible": "Mesma ressalva do menu de serviço: só olhar não muda nada; alterações podem travar o painel.",
+  "sources": [
+   "https://raw.githubusercontent.com/Lucaslhm/Flipper-IRDB/main/TVs/Samsung/Samsung_Service_Menu.ir",
+   "https://raw.githubusercontent.com/R3bing/Universal-TV-Service-Remote/main/README.md"
+  ],
+  "confidence": "media",
+  "fact_or_hypothesis": "hipotese"
+ },
+ {
+  "title": "MUTE 1 1 9 ENTER (menu hotel) sem teclas numéricas: códigos IR e tentativa por websocket",
+  "what_it_enables": "Enviar a sequência de menu hotel com Flipper, celular IR ou, como hipótese, pela rede, já que a TV fica ligada nessa sequência.",
+  "steps": "IR Samsung32 endereço 07: Mute 0F, 1 = 04, 9 = 0E, Enter 68 (irdb: funções 15, 4, 14, 104). Com a TV ligada: Mute, 1, 1, 9, Enter. Pela rede, com a TV ligada e pareada: KEY_MUTE, KEY_1, KEY_1, KEY_9, KEY_ENTER via remote.send_command; sem relato de teste. Em TV de varejo (não HG hospitality) nenhuma fonte lida confirma que esse menu exista; o Flipper-IRDB só tem um controle hospitality de terceiros (Broadband/URC) sem sequência Samsung. Se abrir, apenas ler e sair.",
+  "applies_to": "Sem dado por modelo. A sequência circula para linhas hospitality (HG); validade em TV de varejo Tizen não foi verificada nas fontes lidas.",
+  "requirements": "Flipper ou celular IR, ou websocket já autorizado; TV ligada.",
+  "risk": "medio",
+  "reversible": "Opções de modo hotel podem travar menus e o Smart Hub; anotar o estado antes de qualquer mudança.",
+  "sources": [
+   "https://raw.githubusercontent.com/probonopd/irdb/master/codes/Samsung/TV/7,7.csv",
+   "https://raw.githubusercontent.com/Lucaslhm/Flipper-IRDB/main/TVs/Samsung/Samsung_Broadband_Hospitality.ir",
+   "https://raw.githubusercontent.com/home-assistant/home-assistant.io/current/source/_integrations/samsungtv.markdown"
+  ],
+  "confidence": "baixa",
+  "fact_or_hypothesis": "hipotese"
+ },
+ {
+  "title": "Redefinir (reset de fábrica): caminho por geração, PIN 0000 e alcance oficial",
+  "what_it_enables": "Voltar todas as configurações de menu ao padrão de fábrica (imagem, som, canais, Smart Hub, privacidade, Opções da Tela Inicial), com a TV reiniciando na Configuração Inicial. Mantém rede e firmware.",
+  "steps": "Caminhos vistos em páginas abertas (rótulos em inglês, nomes em português não verificados): 2016 a 2019: Configurações > Suporte > Autodiagnóstico > Redefinir (e-manual dessa geração). Cerca de 2020 a 2021: Configurações > Geral > Redefinir (guias com NU7400 Tizen 4.0 e QEF1 Tizen 9 usam esse caminho). 2022 em diante: Configurações > Todas as Configurações > Geral e Privacidade > Redefinir; no Q70C 2023 (Tizen 8) o item fica logo abaixo de Opções da Tela Inicial. Digitar o PIN (0000 em todos os relatos abertos) e confirmar; a TV desliga, religa e abre a Configuração Inicial (cerca de 20 s num relato). O e-manual diz: restaura todas as configurações exceto Internet e rede; a rede tem item próprio em Geral > Rede > Redefinir Rede. Antes: fotografar Opções da Tela Inicial, anotar Host PC IP, DUID, lista de apps e logins; não existe backup restaurável.",
+  "applies_to": "Todas as TVs Tizen 2016 em diante; os limites de ano entre os caminhos divergem entre fontes, então procurar Redefinir em Suporte > Autodiagnóstico, Geral ou Geral e Privacidade conforme a interface.",
+  "requirements": "PIN da TV (0000 padrão nos relatos abertos; se foi alterado e esquecido, a sequência de recuperação da Samsung não foi verificada em página aberta). Controle com acesso ao menu Configurações.",
+  "risk": "medio",
+  "reversible": "Não. Apaga contas, apps, canais e ajustes; só se volta reconfigurando à mão. Firmware e rede ficam.",
+  "sources": [
+   "https://github.com/syedsafiullah777/enterprise-ai-evaluation-dashboard/blob/main/knowledge_base/documents/emanual_0061.txt",
+   "https://github.com/preston-zhang-x/role-aware-rag-platform/blob/main/data/ragbench/emanual/docs/rb_emanual_7b9a258ebc59.html",
+   "https://raw.githubusercontent.com/ardazeytin/samsung-tizen-tv-debloat/main/README.md",
+   "https://github.com/victaphu/glass-home-samsung-tv/blob/main/docs/SAMSUNG-SETTINGS.md",
+   "https://github.com/chaosmanage/samsung-tv-launcher/blob/main/README.md",
+   "https://raw.githubusercontent.com/DemonKingSwarn/samsung-tv-tizen-root/main/docs/DEBLOAT.md",
+   "https://raw.githubusercontent.com/techidaily/site-tech-recovery/749c10e9369bf63d8e691baaae9940b800113772/source/_posts/how-to-reset-a-samsung-tv.md",
+   "https://raw.githubusercontent.com/ByKsTv/Everything/6e30125d9be46cae8a963196eef7ee9ad69e88d7/TVs/README.md"
+  ],
+  "confidence": "alta",
+  "fact_or_hypothesis": "fato"
+ },
+ {
+  "title": "Redefinir Smart Hub: apaga contas, apps e acordos, traz preloads de volta e não muda o DUID",
+  "what_it_enables": "Limpar só a camada de apps e contas (conta Samsung, serviços vinculados, acordos do Smart Hub, aplicativos e seus dados) sem tocar em imagem, som, canais, rede nem firmware.",
+  "steps": "Caminho: Configurações > Suporte > Assistência do Dispositivo (Device Care) > Autodiagnóstico > Redefinir Smart Hub, PIN 0000; em 2016 a 2018 não há Device Care: Suporte > Autodiagnóstico > Redefinir Smart Hub. E-manual: redefine todas as configurações do Smart Hub e apaga todas as informações de contas Samsung, contas de serviços vinculados, acordos de serviço do Smart Hub e aplicativos do Smart Hub. Observado: preloads removidos por sdb voltam (UE55NU7400 Tizen 4.0; QA55QEF1 Tizen 9) e a TV baixa de novo o conjunto regional; registro residual de app sideload com outro certificado (erro [118, -22]) é limpo (Apps2Samsung); todos os logins de apps são perdidos. Depois: entrar de novo na conta Samsung e em cada app. Segundo o doc tiz0wn, que cita a FAQ Samsung, este reset não muda o DUID, ao contrário do reset completo.",
+  "applies_to": "Tizen 2016 em diante; caminho com Device Care a partir de cerca de 2019 (observado de Tizen 4.0 a 9.0).",
+  "requirements": "PIN (0000 padrão). Anotar logins e apps antes. O Developer Mode pode ser desligado junto (ver achado sobre Developer Mode).",
+  "risk": "baixo",
+  "reversible": "Não restaura o que apagou; a volta é refazer login e reinstalar apps da loja. Apps sideload precisam ser reinstalados pelo sdb.",
+  "sources": [
+   "https://github.com/syedsafiullah777/enterprise-ai-evaluation-dashboard/blob/main/knowledge_base/documents/emanual_0061.txt",
+   "https://github.com/preston-zhang-x/role-aware-rag-platform/blob/main/data/ragbench/emanual/docs/rb_emanual_7b9a258ebc59.html",
+   "https://raw.githubusercontent.com/ardazeytin/samsung-tizen-tv-debloat/main/README.md",
+   "https://raw.githubusercontent.com/DemonKingSwarn/samsung-tv-tizen-root/main/docs/DEBLOAT.md",
+   "https://raw.githubusercontent.com/Apps2Samsung/Apps2Samsung/801de93186f68659581d06d439f920a2df76217d/Apps2Samsung.Core/Localization/Languages/en.json",
+   "https://github.com/sebastianspicker/tiz0wn/blob/main/docs/Samsung_Q60T_Debloating_Research_2026-09-25.md",
+   "https://raw.githubusercontent.com/techidaily/site-tech-recovery/749c10e9369bf63d8e691baaae9940b800113772/source/_posts/how-to-reset-a-samsung-tv.md"
+  ],
+  "confidence": "alta",
+  "fact_or_hypothesis": "fato"
+ },
+ {
+  "title": "Developer Mode: desligar pelo diálogo 12345; os resets o desligaram em um relato (Tizen 4.0), sem prova em Tizen 6 a 9",
+  "what_it_enables": "Fechar a porta 26101 (sdb) e parar logs de depuração sem reset, e saber que não dá para contar com o reset para isso em todos os anos.",
+  "steps": "Desligar: Home > Apps > digitar 1 2 3 4 5 (teclado físico ou da tela) > Developer mode: Off > reiniciar desligando de verdade (não standby; vários relatos só aplicam reiniciando na tomada). Conferir: GET http://IP:8001/api/v2/ com developerMode: 0 e porta 26101 fechada. Sobre resets: no UE55NU7645 (2018, Tizen 4.0) o Redefinir Smart Hub desligou o Developer Mode, reativado em Apps > 12345; o mesmo relato fez reset de fábrica e depois reativou o modo dev. No cleanyourtv #441, Developer Mode e sdb seguem ativos após ciclo completo de energia (não é reset). Nenhuma página aberta confirma o efeito do reset em Tizen 6 a 9. Se o diálogo mostrar Not Available, há um truque não confirmado: desligar na tomada, religar e digitar 12345 enquanto Apps carrega. Religar: mesmo diálogo, On, Host PC IP do computador, reiniciar; o certificado continua válido se o DUID não mudou.",
+  "applies_to": "Diálogo 12345 em todo Tizen 2016 em diante; efeito dos resets observado só em 2018/Tizen 4.0; TizenBrew #243 fala do bloqueio Not Available sem citar modelos.",
+  "requirements": "Controle com números ou teclado na tela; acesso ao menu Apps (se o Home foi remapeado, usar a entrada Samsung Home do launcher).",
+  "risk": "baixo",
+  "reversible": "Sim, religando pelo mesmo diálogo e reiniciando.",
+  "sources": [
+   "https://raw.githubusercontent.com/ToRoMo2/Iptvax/main/docs/native-port.md",
+   "https://github.com/ToRoMo2/Iptvax/blob/main/docs/native-port.md",
+   "https://raw.githubusercontent.com/ardazeytin/samsung-tizen-tv-debloat/main/README.md",
+   "https://raw.githubusercontent.com/DemonKingSwarn/samsung-tv-tizen-root/main/docs/DEBLOAT.md",
+   "https://github.com/Gathin23/cleanyourtv/issues/441",
+   "https://github.com/reisxd/TizenBrew/issues/243",
+   "https://github.com/chaosmanage/samsung-tv-launcher/blob/main/README.md"
+  ],
+  "confidence": "media",
+  "fact_or_hypothesis": "hipotese"
+ },
+ {
+  "title": "DUID muda no reset de fábrica (não no Redefinir Smart Hub): refazer certificado distribuidor e reinstalar o app próprio",
+  "what_it_enables": "Evitar install failed -4 (invalid signature) depois do reset e manter o app próprio atualizável no lugar.",
+  "steps": "Antes do reset: guardar o DUID (sdb -s IP:26101 shell 0 getduid, ou campo DUID em GET http://IP:8001/api/v2/), o certificado de autor (.p12 e senha) e o perfil. Depois: religar Developer Mode com o Host PC IP, sdb connect IP:26101, ler o DUID de novo. Se mudou: Certificate Manager > novo certificado distribuidor com o novo DUID (o de autor é por conta Samsung, não por aparelho; um distribuidor pode ter vários DUIDs), Device Manager > Permit to install applications, reinstalar o .wgt. Sintomas de DUID errado: install failed -4 invalid signature ou Invalid format of certificate in signature. Reinstalar com o mesmo certificado de autor; se der [118, -22] por registro residual, Redefinir Smart Hub limpa. Fonte da regra: doc tiz0wn citando a FAQ Device Information and Firmware da Samsung (reset completo pode mudar o DUID, Smart Hub reset não); a página da Samsung não abriu nesta sessão.",
+  "applies_to": "Modelos 2016 em diante segundo a FAQ citada; mecanismo de certificado igual de Tizen 3 a 10; em 2024 em diante o certificado exige conta Samsung (CLI gratuita rejeitada).",
+  "requirements": "Tizen Studio ou CLI com Samsung Certificate Extension, conta Samsung, backup do certificado de autor.",
+  "risk": "baixo",
+  "reversible": "O novo DUID é permanente até outro reset; o custo é só reassinar e reinstalar.",
+  "sources": [
+   "https://github.com/sebastianspicker/tiz0wn/blob/main/docs/Samsung_Q60T_Debloating_Research_2026-09-25.md",
+   "https://github.com/Apps2Samsung/Apps2Samsung/issues/396",
+   "https://gist.github.com/aweussom/28c7e9f06fee0eb7db91476d800cbfa0",
+   "https://raw.githubusercontent.com/Apps2Samsung/Apps2Samsung/801de93186f68659581d06d439f920a2df76217d/Apps2Samsung.Core/Localization/Languages/en.json",
+   "https://github.com/theopenco/llmgateway/blob/main/apps/ui/src/content/blog/2026-10-25-hack-samsung-tv-home-screen-with-ai.md",
+   "https://github.com/merlinmb/CleanHome/blob/main/docs/uk-au7100-setup.md"
+  ],
+  "confidence": "media",
+  "fact_or_hypothesis": "fato"
+ },
+ {
+  "title": "Pareamento do controle por rede (porta 8002): o reset apaga a autorização; refazer e limpar a lista de dispositivos",
+  "what_it_enables": "Recuperar Home Assistant, samsungtvws, couchctl e relays depois do reset, e revogar clientes sem precisar de reset.",
+  "steps": "O token de cada cliente vive na TV, em Gerenciador de Conexão de Dispositivos. Relato CleanHome (UE65AU7100, 2021, Tizen 6.0): Re-pair if the TV is factory reset. Depois do reset: conectar o cliente de novo no 8002 e aceitar Permitir na tela (a porta 8001 sem token responde ms.channel.unauthorized e nunca mostra popup); em Configurações > Geral (ou Geral e Privacidade) > Gerenciador de Dispositivos Externos > Gerenciador de Conexão de Dispositivos: Notificação de acesso = Apenas a primeira vez; Lista de dispositivos: apagar entradas antigas. Para revogar um cliente sem reset, apagar só a entrada dele nessa lista. Limite conhecido: no GU98DU9079 (2024, firmware 2130.0) nem lista limpa nem reinício fizeram o popup aparecer; os mantenedores do Home Assistant classificaram como falha de firmware da TV, sem solução no cliente.",
+  "applies_to": "Tizen 2016 em diante com websocket 8001/8002; nomes de menu variam por ano; caso DU9000 2024 sem solução.",
+  "requirements": "Mesma sub-rede (a TV recusa websocket entre VLANs); alguém na frente da TV para aceitar o popup.",
+  "risk": "baixo",
+  "reversible": "Sim; a lista de dispositivos permite revogar ou autorizar de novo a qualquer hora.",
+  "sources": [
+   "https://github.com/merlinmb/CleanHome/blob/main/docs/uk-au7100-setup.md",
+   "https://github.com/home-assistant/home-assistant.io/blob/current/source/_integrations/samsungtv.markdown",
+   "https://github.com/home-assistant/core/issues/179510",
+   "https://github.com/xchwarze/samsung-tv-ws-api"
+  ],
+  "confidence": "alta",
+  "fact_or_hypothesis": "fato"
+ },
+ {
+  "title": "Hotel Option, menu de fábrica e Factory Reset Lock: fora do alcance do reset de usuário, reverter no mesmo menu",
+  "what_it_enables": "Saber onde os modos de hotel e de serviço moram, como voltar e por que o item Redefinir pode nem aparecer.",
+  "steps": "Hotel Option: com a TV ligada, MUTE, 1, 1, 9 e Enter em 2 a 3 s (Smart Remote sem números: teclado na tela ou controle IR). Lá ficam Hospitality Mode, Menu Display, Download by App ID e, em configuração hoteleira documentada, Factory Reset Lock (exemplo real: Hospitality Mode ON, Factory Reset Lock ON, Menu Display OFF). Com Factory Reset Lock ON o reset pelo menu do usuário fica bloqueado; reverter é no mesmo menu (Hospitality Mode OFF, Factory Reset Lock OFF) e só então reset normal. Menu de serviço: INFO, MENU, MUTE, POWER a partir do standby; nele há a metade hoteleira e Local Set; mudar só o que foi lá mudar e anotar o valor anterior. O iRemote lista ainda MUTE 1 8 2 POWER (serviço) e MUTE 8 2 4 POWER (PIN volta a 0000 em alguns modelos), sem verificação. Nenhuma página aberta confirma que o reset de usuário desligue Hospitality Mode; fóruns Samsung (não abertos) divergem.",
+  "applies_to": "TVs Tizen de varejo e hoteleiras (série HG); sequências variam por modelo e controle; Factory Reset Lock visto em configuração hoteleira Tizen.",
+  "requirements": "Controle com números (ou teclado na tela); PIN do menu hotel se Hotel security estiver configurado.",
+  "risk": "alto",
+  "reversible": "Só pelo mesmo menu; o reset de usuário não garante e pode estar bloqueado.",
+  "sources": [
+   "https://raw.githubusercontent.com/Apps2Samsung/Apps2Samsung/801de93186f68659581d06d439f920a2df76217d/Apps2Samsung.Core/Localization/Languages/en.json",
+   "https://github.com/kish210/hotel-media/blob/main/docs/TV-LOCKDOWN-AND-INPUTS.md",
+   "https://raw.githubusercontent.com/kish210/hotel-media/bc05a49c0e15017b73b99a7fa8971ca8fc3ad852/docs/TV-LOCKDOWN-AND-INPUTS.md",
+   "https://raw.githubusercontent.com/deadboy18/iRemote/e9ae026e9333aff04ea3c78c47987589a23a543c/index.html"
+  ],
+  "confidence": "baixa",
+  "fact_or_hypothesis": "hipotese"
+ },
+ {
+  "title": "Botão Home remapeado (vconf home_appid) e app próprio: desfazer com restore e vd_appuninstall; reset não comprovado",
+  "what_it_enables": "Voltar à Samsung Home sem apostar no reset de fábrica, que nenhum relato aberto testou para esse caso.",
+  "steps": "Antes de mexer, salvar baseline fora da TV: db/appfw/home_appid, startup_appid, booting_appid_backup, db/first_screen/type, db/menu/smart_hub/ontvsetting/auto_start (stock no S90D Tizen 9: csfs, tv-viewer, tv-viewer, csfs, 0). Ordem de reversão dos projetos: 1) desligar a opção dentro do launcher (Use Clean Home as Home screen Off); 2) restore do projeto (couchroot tools/s90d/restore.py; arn0-tv restore, que só aplica se os valores baterem com a baseline; chaosmanage run.py restore e comparar com original.json); 3) remover o app: sdb -s IP:26101 shell 0 vd_appuninstall <app id> (Frame 2025 sem boot foi recuperado assim, sem reset) ou Apps > Remover; a TV volta à Samsung Home; 4) reset de fábrica só como último recurso. No S90D, home_appid sobreviveu a reboot, mas startup_appid foi reescrito pela Samsung; atualização de firmware pode desfazer o remap e quebrar o restore.",
+  "applies_to": "Remap visto em The Frame 2024 e S90D (Tizen 9), Q70B (Tizen 6.5), DU7660 (Tizen 9); exige helper fora da API pública e Developer Mode.",
+  "requirements": "Baseline salva antes; sdb; o certificado de autor original para atualizar ou remover o app.",
+  "risk": "alto",
+  "reversible": "Sim, via restore e desinstalação; o efeito do reset de fábrica sobre home_appid não foi testado em fonte aberta.",
+  "sources": [
+   "https://github.com/splitcipher/couchroot/blob/main/docs/lab/devices/s90d/README.md",
+   "https://github.com/NelsonEU/arn0-tv/blob/main/docs/setup-tv.md",
+   "https://github.com/chaosmanage/samsung-tv-launcher/blob/main/README.md",
+   "https://raw.githubusercontent.com/merlinmb/CleanHome/fba096881e1b93570b4ebb37423216b879f927f9/docs/handover.md",
+   "https://github.com/reisxd/TizenBrew/issues/187",
+   "https://github.com/theopenco/llmgateway/blob/main/apps/ui/src/content/blog/2026-10-25-hack-samsung-tv-home-screen-with-ai.md"
+  ],
+  "confidence": "media",
+  "fact_or_hypothesis": "hipotese"
+ },
+ {
+  "title": "Tabela ação x reversão x reset: o que o reset de fábrica restaura e o que não",
+  "what_it_enables": "Planejar o desfazer tudo sabendo que firmware, modo hotel, DUID e pareamento não voltam ao estado anterior por reset.",
+  "steps": "Cobre (fato): ajustes de menu (anúncios, ACR, Opções da Tela Inicial, Autorun), contas e apps da loja, canais; preloads removidos por sdb voltam (reset ou Redefinir Smart Hub). Cobre em parte: app sideload (Redefinir Smart Hub apaga aplicativos do Smart Hub e limpa registro residual; reset completo provável, não testado); Developer Mode e Host PC IP (desligados por Smart Hub reset e reset em 1 relato Tizen 4.0; reverter pelo diálogo 12345). Muda, não restaura: DUID (reset completo troca; refazer certificado distribuidor); pareamento 8002 (apagado; re-parear). Não cobre: Hotel Option, Local Set e menu de serviço (reverter lá; Factory Reset Lock pode bloquear o reset); vconf home_appid (restore do projeto; reset não testado); firmware e One UI Tizen (sem downgrade); rede (reset mantém; usar Redefinir Rede). Antes: foto da Tela Inicial, DUID, Host PC IP, applist, certificados, logins.",
+  "applies_to": "Tizen 2016 em diante; cada linha herda o alcance do achado correspondente (várias só com 1 relato ou só em Tizen 4.0 e 9).",
+  "requirements": "Os mesmos de cada ação: PIN, sdb e Developer Mode para apps e vconf, controle com números para hotel e serviço.",
+  "risk": "medio",
+  "reversible": "Depende da linha: menus e contas sim; DUID, pareamento, firmware e modo hotel não voltam por reset.",
+  "sources": [
+   "https://raw.githubusercontent.com/ardazeytin/samsung-tizen-tv-debloat/main/README.md",
+   "https://github.com/victaphu/glass-home-samsung-tv/blob/main/docs/SAMSUNG-SETTINGS.md",
+   "https://github.com/syedsafiullah777/enterprise-ai-evaluation-dashboard/blob/main/knowledge_base/documents/emanual_0061.txt",
+   "https://github.com/sebastianspicker/tiz0wn/blob/main/docs/Samsung_Q60T_Debloating_Research_2026-09-25.md",
+   "https://raw.githubusercontent.com/ToRoMo2/Iptvax/main/docs/native-port.md",
+   "https://github.com/merlinmb/CleanHome/blob/main/docs/uk-au7100-setup.md",
+   "https://raw.githubusercontent.com/kish210/hotel-media/bc05a49c0e15017b73b99a7fa8971ca8fc3ad852/docs/TV-LOCKDOWN-AND-INPUTS.md"
+  ],
+  "confidence": "media",
+  "fact_or_hypothesis": "hipotese"
+ },
+ {
+  "title": "Onde desligar a atualizacao automatica de software (e a de apps, separada)",
+  "what_it_enables": "Impedir (ou ao menos nao receber sozinho) o firmware que desfaz as mudancas de Home, apps e privacidade.",
+  "steps": "O ajuste existe e e o primeiro passo que projetos de modding mandam desligar: a vetro lista como quick setting 'Disable automatic firmware update, so a new firmware does not remove root behind your back' e o log da vetro issue #41 confirma 'automatic firmware updates off'. O plugin Homebridge (CHANGELOG v5.2.3) orienta 'don't update your Frames and make sure you disable Auto Update' apos uma OTA remover a API do Art Mode. O caminho que os guias de consumidor descrevem e Configuracoes > Suporte > Atualizacao de Software > Atualizacao automatica (desligar), e a atualizacao automatica de APPS e separada (fica em Apps, no rodape). Confirme o rotulo na sua TV: os nomes mudam por ano e em 2025 varios itens migraram para Recursos Avancados. A opcao fica esmaecida se um app de streaming roda ao fundo ou a TV esta offline.",
+  "applies_to": "Tizen 6 a 10, modelos 2016+. Rotulo e posicao variam por ano/regiao; nao verificado em pagina oficial Samsung por bloqueio de rede.",
+  "requirements": "Acesso pelo controle; TV ligada e online para o menu aparecer.",
+  "risk": "baixo",
+  "reversible": "Sim, basta religar a opcao.",
+  "sources": [
+   "https://raw.githubusercontent.com/tavicu/homebridge-samsung-tizen/master/CHANGELOG.md",
+   "https://github.com/andrearicci93/vetro",
+   "https://github.com/andrearicci93/vetro/issues/41"
+  ],
+  "confidence": "media",
+  "fact_or_hypothesis": "fato"
+ },
+ {
+  "title": "O botao sozinho nao e confiavel: o controle real e bloquear os servidores OTN no DNS",
+  "what_it_enables": "Controlar de fato quando (ou se) o firmware chega, sem depender so do interruptor da TV.",
+  "steps": "A existencia de listas que bloqueiam o update por DNS indica que a comunidade nao confia so no botao. O servidor de OTA confirmado e otn.samsungcloudcdn.com: na issue #60 do Perflyst dois donos (UE49KS7000 e QE55Q9FNA) tiveram de DESbloquear esse host para conseguir atualizar, o que prova que bloquea-lo trava a OTA. A lista SmartTV.txt marca otnprd8-11.samsungcloudsolution.net, samsungotn.net e www.samsungotn.net como 'required for software update'; a samsungnosnooping.txt lista os mesmos otn/samsungotn. Bloqueie no roteador ou Pi-hole e, idealmente, feche a porta 53 externa para a TV nao usar DNS proprio. Nao bloqueie samsung.com/samsungapps inteiros: a DEBLOAT.md avisa que isso 'breaks the app store and firmware updates'; para preloads ela bloqueia osb-*.samsungqbe.com.",
+  "applies_to": "Varios modelos (KS7000, Q9FN citados). Hosts mudam e a lista nao e oficial Samsung.",
+  "requirements": "Pi-hole ou roteador com bloqueio de DNS; opcional travar porta 53 externa.",
+  "risk": "medio",
+  "reversible": "Sim; desbloquear religa o update. Um reset de fabrica tende a religar OTAs.",
+  "sources": [
+   "https://github.com/Perflyst/PiHoleBlocklist/issues/60",
+   "https://raw.githubusercontent.com/Perflyst/PiHoleBlocklist/master/SmartTV.txt",
+   "https://raw.githubusercontent.com/UnbendableStraw/samsungnosnooping/master/Samsungnosnooping.txt",
+   "https://github.com/DemonKingSwarn/samsung-tv-tizen-root/blob/main/docs/DEBLOAT.md"
+  ],
+  "confidence": "media",
+  "fact_or_hypothesis": "fato"
+ },
+ {
+  "title": "O que as OTAs de 2025/2026 trazem: One UI Tizen 9 em 2023/2024 e Tizen 10 em 2025/2026",
+  "what_it_enables": "Entender por que uma OTA desta safra pode quebrar sideload e exigir novo ferramental.",
+  "steps": "Mapa confirmado por strings de firmware lidas em repositorios: TVs 2023/2024 recebem One UI Tizen 9 por firmware (ex.: CU8000 2023 com '23_X22U_UHD_T09'; S90D 2024 em T-PTMDAKUC-0090-2130.0); Tizen 10 ja aparece em conjuntos 2026 (M75H em t-x22udhuabc-0100-..., Tizen 10.0) e esta previsto como OTA para 2025. A TuvaVideos #47 registra que o grupo 2026 roda Tizen 10, Chromium M130 e canvas de app 1920x1080, e que o ferramental de certificado mudou: 'Older versions can't create certificates after Sept 2025' e exige Certificate Extension >= 2.0.73. Downgrade de firmware nao e suportado, entao uma OTA desta safra e, na pratica, de mao unica.",
+  "applies_to": "2023/2024 -> Tizen 9 por OTA; 2025 -> Tizen 10 por OTA (previsto); 2026 ja sai com Tizen 10.",
+  "requirements": "Nenhum do lado do dono; e informativo sobre o conteudo da OTA.",
+  "risk": "baixo",
+  "reversible": "Nao. A atualizacao de Tizen nao tem downgrade oficial.",
+  "sources": [
+   "https://github.com/IncoherentThoughts/TuvaVideos/issues/47",
+   "https://github.com/chris-ritsen/samsung-tv-root",
+   "https://github.com/chris-ritsen/samsung-tv-root/issues/7",
+   "https://github.com/DemonKingSwarn/samsung-tv-tizen-root/blob/main/ROOTING-RESEARCH.md"
+  ],
+  "confidence": "media",
+  "fact_or_hypothesis": "fato"
+ },
+ {
+  "title": "OTA pode apagar app sideload e exige o MESMO certificado; renovar errado forca reinstalar tudo",
+  "what_it_enables": "Planejar para nao perder os apps proprios e os dados ao atualizar o firmware.",
+  "steps": "Relatos confirmam que uma grande atualizacao de Tizen pode quebrar/limpar app sideload (jellyfin #299: apos ir para a nova One UI/Tizen 8 o app parou e o Modo Desenvolvedor sumiu). A TV so aceita update de app assinado com o MESMO author certificate da copia instalada (tizen-toolbox: 'only accept an update signed with the same author certificate'); se o author for perdido, todo app assinado com ele tem de ser desinstalado antes de atualizar. O gifflet PR#1 mostra que renovar gerando NOVO author faz a TV recusar e exige reinstalar tudo; a saida e manter o author e reemitir so o distributor (ligado ao DUID). Tizen 7+ exige certificado com conta Samsung + DUID; um TPK de Tizen 6 pode nao instalar em Tizen 9. Em firmware de varejo nao da para fazer backup dos dados do app. Pratica recomendada: re-assinar e reinstalar a cada ano e apos upgrade de SO.",
+  "applies_to": "Tizen 7+ (certificado por conta Samsung + DUID); gate estrito em 2024+/2026.",
+  "requirements": "Conta Samsung, Certificate Manager, DUID da TV, Certificate Extension >= 2.0.73 (apos set/2025).",
+  "risk": "medio",
+  "reversible": "Parcial: o app e reinstalavel, mas dados/logins podem se perder.",
+  "sources": [
+   "https://github.com/alfrededison/tizen-toolbox",
+   "https://github.com/gifflet/tizen-cert-cli/pull/1",
+   "https://github.com/jellyfin/jellyfin-tizen/issues/299",
+   "https://github.com/OneLiberty/moonlight-chrome-tizen/issues/37",
+   "https://github.com/IncoherentThoughts/TuvaVideos/issues/47"
+  ],
+  "confidence": "alta",
+  "fact_or_hypothesis": "fato"
+ },
+ {
+  "title": "OTA desfaz a tomada do botao Home (home_appid) e pode trazer preloads de volta; reaplicar",
+  "what_it_enables": "Saber que a atualizacao desfaz justamente as mudancas de Home, apps e privacidade, e como refazer.",
+  "steps": "Multiplos projetos de launcher confirmam que o firmware reverte o redirecionamento de Home. DavidNgugi (HOME-BUTTON.md, AU8000 Tizen 6.0): 'A firmware update can restore these keys and the stock DB. Re-apply after any update'. NelsonEU (Q70B Tizen 6.5): 'A firmware update can change or undo any of this... Re-run the read-only query after any firmware update'. ErickRRB (DU7660 2024, Tizen 9) e KSWORK2001 (modelo 2026): a correcao e re-rodar o instalador/apply; o app continua instalado. Preloads removidos voltam via firmware update ou reset (ardazeytin e DemonKingSwarn: factory reset/Reset Smart Hub 'bring the preloads back'). Para privacidade, a pratica dos guias e reconferir ACR (Viewing Information Services) e Interest-Based Ads apos cada OTA; que a OTA religue esses toggles nao foi confirmado em fonte primaria aberta.",
+  "applies_to": "home_appid em Tizen 6 a 10; preloads em qualquer ano; toggles de privacidade variam por ano.",
+  "requirements": "Developer Mode e certificado proprio para reaplicar; re-rodar o script do launcher.",
+  "risk": "medio",
+  "reversible": "Sim, mas e manual: tem de reaplicar a cada OTA.",
+  "sources": [
+   "https://github.com/DavidNgugi/samsung-tv-unlock/blob/main/docs/HOME-BUTTON.md",
+   "https://github.com/NelsonEU/arn0-tv/blob/main/docs/setup-tv.md",
+   "https://github.com/ErickRRB/tizen-tv-home",
+   "https://raw.githubusercontent.com/KSWORK2001/fresh-home/main/README.md",
+   "https://github.com/ardazeytin/samsung-tizen-tv-debloat"
+  ],
+  "confidence": "alta",
+  "fact_or_hypothesis": "fato"
+ },
+ {
+  "title": "OTA mexe no Modo Desenvolvedor e no caminho de root; Tizen 10 endurece o sdb",
+  "what_it_enables": "Entender o impacto da atualizacao sobre o acesso por rede (Dev Mode, sdb 26101) e sobre root.",
+  "steps": "Apos grande atualizacao houve relato de Modo Desenvolvedor sumido (jellyfin #299). Para o sdb (26101) voltar a subir, varios casos exigem power cycle completo: tirar da tomada ~60s, nao so o 'restart' do controle (que em muitos modelos e so standby) - Apps2Samsung #751 (S90F 2025, Tizen 9) e reisxd #185/#228. O caminho de root por injecao de nome de pacote (SVE-2025-50109, divulgado pela Bishop Fox em fev/2026) atinge Tizen <= 9.0; em TV Tizen 10 (M75H, firmware -0100-) o daemon sdb (plugin 3.8.12) passou a validar caracteres e rejeita a injecao (chris-ritsen #7). Nao ha build corrigido nomeado publicamente. De todo modo root e volatil: um reboot limpa, entao OTA ou nao, ele nunca persiste sozinho.",
+  "applies_to": "Tizen <= 9 (injecao funciona); Tizen 10 2026 (M75H) bloqueia; power cycle vale para Dev Mode em 2024/2025.",
+  "requirements": "Developer Mode ligado; power cycle completo (tirar da tomada).",
+  "risk": "baixo",
+  "reversible": "Nao se aplica: root ja e volatil por natureza.",
+  "sources": [
+   "https://github.com/chris-ritsen/samsung-tv-root/issues/7",
+   "https://github.com/DemonKingSwarn/samsung-tv-tizen-root/blob/main/ROOTING-RESEARCH.md",
+   "https://github.com/Apps2Samsung/Apps2Samsung/issues/751",
+   "https://github.com/reisxd/TizenBrew/issues/228"
+  ],
+  "confidence": "media",
+  "fact_or_hypothesis": "fato"
+ },
+ {
+  "title": "E-Manual pt-BR completo (2021, 2024 e 2025) em copias hospedadas pela Gazin",
+  "what_it_enables": "Fixar os nomes exatos dos menus em portugues do Brasil e a arvore de Configuracoes sem traduzir do ingles nem usar a versao zh-HK. Tres guias completos (240 a 286 paginas) foram lidos por extracao de texto.",
+  "steps": "Baixar os PDFs: 2025 (UN55U8100FGXZD, 'Guia do usuario', 286 p., criado em 02/09/2025); 2024 (UN70DU7700GXZD, 'Guia do usuario', 240 p., criado em 28/03/2024); 2021 (UN65AU7700GXZD, 'E-MANUAL', 243 p., criado em 04/02/2021). Extrair o texto com pdftotext -layout e buscar 'Exp. Agora', marca que acompanha cada caminho de menu, escrito como '(botao direcional esquerdo) > Configuracoes > Todas as Configuracoes > ...'. Os manuais impressos de 2023 (CU7700, QN90C) e o 'Guia do usuario simples' 2024 tem 2 paginas e apontam para o guia integrado: 'Menu > Configuracoes > Suporte > Abrir e-Manual' (2023) e 'Configuracoes > Suporte > Abrir Guia do usuario' (2024). Hipotese: a data 02/09/2025 do PDF 2025 coincide com o sufixo 250902 do arquivo oficial BN81-27185F-700_EUG_ROPISDBF_SA_B-POR_250902.0.pdf que trechos de busca atribuem as paginas Samsung Brasil (pagina nao aberta).",
+  "applies_to": "2021 (serie AU), 2024 (serie DU) e 2025 (serie F, Vision AI); cada guia cobre toda a linha do ano. Guias completos de 2022 e 2023 nao localizados em host acessivel.",
+  "requirements": "Leitor de PDF; pdftotext opcional. Sao copias de varejista, nao o downloadcenter da Samsung (bloqueado nesta sessao).",
+  "risk": "baixo",
+  "reversible": "Nao se aplica (somente leitura).",
+  "sources": [
+   "https://gazin-marketplace.s3.amazonaws.com/midias/manuais/smart-tv-samsung-led-55-4k-un55u8100fgxzd-162602030628.pdf",
+   "https://gazin-marketplace.s3.amazonaws.com/midias/manuais/smart-tv-samsung-led-70-4k-wi-fi-tizen-comando-de-voz-un70du7700gxzd-152405481716.pdf",
+   "https://gazin-marketplace.s3.amazonaws.com/midias/manuais/smart-tv-samsung-led-65-4k-wi-fi-tizen-crystal-uhd-un65au7700gxzd-152107031922.pdf",
+   "https://gazin-marketplace.s3.amazonaws.com/midias/manuais/smart-tv-samsung-70-4k-wi-fi-crystal-uhd-comando-de-voz-un70cu7700gxzd-152304461913.pdf",
+   "https://gazin-marketplace.s3.amazonaws.com/midias/manuais/smart-tv-samsung-65-4k-wi-fi-tizen-crystal-uhd-un65du7700gxzd-102408380211.pdf"
+  ],
+  "confidence": "alta",
+  "fact_or_hypothesis": "fato"
+ },
+ {
+  "title": "Nome exato: 'Opcao de Tela Inicial' e 'Comecar com o Inicio do Smart Hub'; o menu pai muda a cada geracao",
+  "what_it_enables": "Controlar o que abre ao ligar a TV (Smart Hub ou ultimo app) com os rotulos reais do menu pt-BR. Corrige 'Opcoes da Tela Inicial' e 'Iniciar com Smart Hub' usados nas pesquisas anteriores.",
+  "steps": "2025: Configuracoes > Todas as Configuracoes > Recursos avancados > Opcao de Tela Inicial. 2024: Configuracoes > Todas as Configuracoes > Geral e Privacidade > Opcao de Tela Inicial. 2021: Configuracoes > Geral > Funcoes Smart. Itens 2024/2025: 'Comecar com o Inicio do Smart Hub', 'Execucao Automatica do Ultimo Aplicativo', 'Executar o Espelhamento do MultiView Automaticamente', 'Realizar Transmissao Multi View Automaticamente', 'Executar o Multi View Automaticamente ao Girar'; 2025 soma 'Executar o aplicativo Samsung Business TV automaticamente'. Em 2021: 'Execucao Automatica do Smart Hub' e 'Execucao Automatica do Ultimo Aplicativo'. O guia avisa: 'Esta funcao pode nao ser compativel, dependendo do aplicativo', coerente com o teste do cleanyourtv (app voltou apos standby, nao apos reinicio). Se a Primeira Tela aparece sempre, desligar 'Comecar com o Inicio do Smart Hub'.",
+  "applies_to": "2021 (Geral > Funcoes Smart), 2024 (Geral e Privacidade), 2025 (Recursos avancados). 2022/2023: sem guia pt-BR conferido; hipotese de que seguem 2024 ou 2021.",
+  "requirements": "Controle remoto; sem PIN.",
+  "risk": "baixo",
+  "reversible": "Sim, interruptores Ligado/Desligado.",
+  "sources": [
+   "https://gazin-marketplace.s3.amazonaws.com/midias/manuais/smart-tv-samsung-led-55-4k-un55u8100fgxzd-162602030628.pdf",
+   "https://gazin-marketplace.s3.amazonaws.com/midias/manuais/smart-tv-samsung-led-70-4k-wi-fi-tizen-comando-de-voz-un70du7700gxzd-152405481716.pdf",
+   "https://gazin-marketplace.s3.amazonaws.com/midias/manuais/smart-tv-samsung-led-65-4k-wi-fi-tizen-crystal-uhd-un65au7700gxzd-152107031922.pdf"
+  ],
+  "confidence": "alta",
+  "fact_or_hypothesis": "fato"
+ },
+ {
+  "title": "'Opcoes de Privacidade' e 'Termos e Privacidade' sao os nomes pt-BR; 'Restaurar o Smart Hub' cancela o acordo",
+  "what_it_enables": "Achar o painel de privacidade na TV com o nome certo (nao e 'Escolhas de Privacidade') e saber que o unico caminho documentado para revogar o acordo do Smart Hub e redefinir o Smart Hub.",
+  "steps": "Painel: item 'Opcoes de Privacidade' na Primeira Tela do Smart Hub (ao lado de Conta da Samsung, Buscar, Ambient, Samsung Daily+, Jogos, Inicio e Menu nos guias 2021, 2024 e 2025). Texto dos termos: 2024/2025 em Configuracoes > Todas as Configuracoes > Geral e Privacidade > Termos e Privacidade; 2021 em Configuracoes > Termos e Privacidade. Para parar de usar o Smart Hub: 'Restaurar o Smart Hub', em 2021/2024 por Configuracoes > Suporte > Cuidados do Dispositivo > Auto Diagnostico > Restaurar o Smart Hub; em 2025 por Configuracoes > Suporte > Cuidados do Dispositivo > Restaurar o Smart Hub. Pede PIN; o guia 2024 diz padrao 0000, alteravel em Geral e Privacidade > Gerenciador de Sistema > Alterar SENHA (2025: Geral e Privacidade > Alterar SENHA). Os guias nao nomeiam os sub-interruptores de anuncios ou de informacoes de visualizacao; isso so aparece no painel da TV.",
+  "applies_to": "2021, 2024 e 2025 (texto quase identico). Sub-opcoes de anuncios e telemetria: sem dado no e-manual.",
+  "requirements": "PIN da TV (padrao 0000 segundo o guia 2024). Restaurar o Smart Hub remove apps baixados e desconecta contas.",
+  "risk": "medio",
+  "reversible": "Parcial: apos 'Restaurar o Smart Hub' e preciso aceitar os termos de novo, reinstalar apps e entrar nas contas.",
+  "sources": [
+   "https://gazin-marketplace.s3.amazonaws.com/midias/manuais/smart-tv-samsung-led-55-4k-un55u8100fgxzd-162602030628.pdf",
+   "https://gazin-marketplace.s3.amazonaws.com/midias/manuais/smart-tv-samsung-led-70-4k-wi-fi-tizen-comando-de-voz-un70du7700gxzd-152405481716.pdf",
+   "https://gazin-marketplace.s3.amazonaws.com/midias/manuais/smart-tv-samsung-led-65-4k-wi-fi-tizen-crystal-uhd-un65au7700gxzd-152107031922.pdf"
+  ],
+  "confidence": "alta",
+  "fact_or_hypothesis": "fato"
+ },
+ {
+  "title": "'Modo de Uso' (Modo Casa / Modo Loja), 'Alterar SENHA' e 'Restaurar configuracoes de fabrica' por ano",
+  "what_it_enables": "Tirar a TV do modo de loja (banner POP e reset periodico de imagem e som), trocar o PIN e usar o nome exato do reset de fabrica em cada geracao.",
+  "steps": "Modo de Uso: 2021 Configuracoes > Geral > Gerenciador de Sistema > Modo de Uso; 2024 Configuracoes > Todas as Configuracoes > Geral e Privacidade > Gerenciador de Sistema > Modo de Uso; 2025 Geral e Privacidade > Modo de Uso. Opcoes: 'Modo Casa' e 'Modo Loja'. Em Modo Loja funcoes sao desativadas e a TV volta ao padrao apos um periodo; 'Um POP (anuncio banner interno do TV)' se resolve mudando para Modo Casa. Reset de fabrica: 2021 Configuracoes > Geral > Restaurar; 2024/2025 Geral e Privacidade > Restaurar configuracoes de fabrica; pede 'Senha de seguranca' e a TV reinicia na configuracao inicial. PIN: 2024 Geral e Privacidade > Gerenciador de Sistema > Alterar SENHA; 2025 Geral e Privacidade > Alterar SENHA. Guia 2025: sequencia no controle para voltar o PIN a 0000 (botao de volume, Aum. Vol., Dim. Vol., Aum. Vol.; um icone se perdeu na extracao, confira no PDF).",
+  "applies_to": "2021, 2024 e 2025. Sequencia de reset do PIN lida so no guia 2025.",
+  "requirements": "PIN para o Modo de Uso em alguns modelos; 'Senha de seguranca' para o reset de fabrica.",
+  "risk": "alto",
+  "reversible": "Modo de Uso e PIN: sim. Reset de fabrica: nao, apaga tudo e exige nova configuracao inicial.",
+  "sources": [
+   "https://gazin-marketplace.s3.amazonaws.com/midias/manuais/smart-tv-samsung-led-55-4k-un55u8100fgxzd-162602030628.pdf",
+   "https://gazin-marketplace.s3.amazonaws.com/midias/manuais/smart-tv-samsung-led-70-4k-wi-fi-tizen-comando-de-voz-un70du7700gxzd-152405481716.pdf",
+   "https://gazin-marketplace.s3.amazonaws.com/midias/manuais/smart-tv-samsung-led-65-4k-wi-fi-tizen-crystal-uhd-un65au7700gxzd-152107031922.pdf"
+  ],
+  "confidence": "alta",
+  "fact_or_hypothesis": "fato"
+ },
+ {
+  "title": "Rede: 'Ligar com Dispositivo Movel', 'Controle Remoto IP', 'Config. IP' e DNS manual, com o menu pai de cada ano",
+  "what_it_enables": "Preparar a TV para controle por rede (SmartThings, Home Assistant, ligar pela rede) e DNS proprio (Pi-hole, AdGuard) com os rotulos pt-BR exatos.",
+  "steps": "Menu pai: 2021 'Geral > Rede'; 2024 'Conexao > Rede'; 2025 'Conexoes > Rede' (plural). Em todos: Rede > Configuracoes Especializadas > 'Ligar com Dispositivo Movel' (liga a TV por SmartThings ou AirPlay na mesma rede), 'Controle Remoto IP' (exige Ligar com Dispositivo Movel ativo; o guia recomenda ativar so com controlador autorizado e Wi-Fi com senha) e 'Wi-Fi'. Status e DNS: Rede > Status da Rede > Config. IP. O guia 2021 detalha: Config. IP > Config. DNS > 'Digitar manualmente' > 'Servidor DNS' (exemplo 8.8.8.8) > OK; os guias 2024/2025 so dizem 'Verifique as definicoes de DNS em Config. IP'. Restaurar rede: Rede > Restaurar Rede. Nome na rede: 2024 Conexao > Nome do Dispositivo ('Ent. Usuario' no fim da lista); 2025 Suporte > Sobre Este TV > Editar Nome. Hipotese: 'Controle Remoto IP' e o interruptor ligado ao controle pelas portas 8001/8002; o guia nao cita portas.",
+  "applies_to": "2021, 2024 e 2025. Caminho completo do DNS manual conferido so em 2021; em 2024/2025 so ate 'Config. IP'.",
+  "requirements": "TV na rede; para Controle Remoto IP, 'Ligar com Dispositivo Movel' ativo.",
+  "risk": "medio",
+  "reversible": "Sim: interruptores e 'Restaurar Rede' voltam ao padrao.",
+  "sources": [
+   "https://gazin-marketplace.s3.amazonaws.com/midias/manuais/smart-tv-samsung-led-55-4k-un55u8100fgxzd-162602030628.pdf",
+   "https://gazin-marketplace.s3.amazonaws.com/midias/manuais/smart-tv-samsung-led-70-4k-wi-fi-tizen-comando-de-voz-un70du7700gxzd-152405481716.pdf",
+   "https://gazin-marketplace.s3.amazonaws.com/midias/manuais/smart-tv-samsung-led-65-4k-wi-fi-tizen-crystal-uhd-un65au7700gxzd-152107031922.pdf"
+  ],
+  "confidence": "alta",
+  "fact_or_hypothesis": "fato"
+ },
+ {
+  "title": "'Anynet+ (HDMI-CEC)' e 'Gerenciador de Conexao de Dispositivos' (Notificacao de Acesso, Lista de Dispositivos) mudam de menu pai",
+  "what_it_enables": "Ligar ou desligar o HDMI-CEC e gerenciar os dispositivos de rede autorizados (lista onde entram celulares e, por hipotese, o aviso 'Permitir' do controle por rede).",
+  "steps": "Anynet+: 2021 Configuracoes > Geral > Gerenciador de Dispositivos Externos > Anynet+ (HDMI-CEC); 2024 Configuracoes > Todas as Configuracoes > Conexao > Gerenciador de Dispositivos Externos > Anynet+ (HDMI-CEC); 2025 Geral e Privacidade > Gerenciador de Dispositivos Externos > Anynet+ (HDMI-CEC). Definir como Ligado, conectar e ligar o aparelho; ate 12 dispositivos e um home theater. Gerenciador de Conexao de Dispositivos: 2021 Geral > Gerenciador de Dispositivos Externos > Gerenciador de Conexao de Dispositivos; 2024 Conexao > Gerenciador de Dispositivos Externos > Gerenciador de Conexao de Dispositivos; 2025 Conexoes > Gerenciador de Conexao de Dispositivos. Sub-itens: 'Notificacao de Acesso' (aviso quando celular ou tablet tenta se conectar) e 'Lista de Dispositivos'. Que o aviso da API de controle remoto apareca aqui e hipotese.",
+  "applies_to": "2021, 2024 e 2025.",
+  "requirements": "Controle remoto; sem PIN.",
+  "risk": "baixo",
+  "reversible": "Sim; a Lista de Dispositivos permite remover o que foi autorizado.",
+  "sources": [
+   "https://gazin-marketplace.s3.amazonaws.com/midias/manuais/smart-tv-samsung-led-55-4k-un55u8100fgxzd-162602030628.pdf",
+   "https://gazin-marketplace.s3.amazonaws.com/midias/manuais/smart-tv-samsung-led-70-4k-wi-fi-tizen-comando-de-voz-un70du7700gxzd-152405481716.pdf",
+   "https://gazin-marketplace.s3.amazonaws.com/midias/manuais/smart-tv-samsung-led-65-4k-wi-fi-tizen-crystal-uhd-un65au7700gxzd-152107031922.pdf"
+  ],
+  "confidence": "alta",
+  "fact_or_hypothesis": "fato"
+ },
+ {
+  "title": "'Sobre a TV' (2024/2025) ou 'Sobre Este TV' (2021): codigo do modelo, versao do software, QR e atalho no controle",
+  "what_it_enables": "Ler o codigo completo do modelo (sufixo GXZD) e a versao do software para decodificar ano e serie sem olhar a etiqueta traseira; conhecer os demais itens do menu Suporte.",
+  "steps": "2024 e 2025: Configuracoes > Suporte > Sobre a TV. 2021: Configuracoes > Suporte > Sobre Este TV. A tela mostra site da Samsung, telefone da central, numero do modelo, versao do software, Licenca de Software Livre e um codigo QR. Atalho: 'pressionar e segurar o botao [icone] por cinco ou mais segundos' ate o pop-up de informacoes do cliente (o icone se perdeu na extracao; um trecho de busca da pagina Samsung Brasil diz Reproduzir/Pausar, pagina nao aberta). Outros itens de Suporte: 'Cuidados do Dispositivo' (Auto Diagnostico, Solicitar suporte), 'Atualizacao de Software', 'Gerenciamento Remoto' (suporte remoto Samsung, pode ser desligado), 'Modo de manutencao' (2024/2025: bloqueia apps e conteudo durante conserto, backup em pendrive), guia integrado: 2021 'Abrir e-Manual', 2024 'Abrir Guia do usuario', 2025 'Dicas e guias do usuario > Abrir Guia do usuario'.",
+  "applies_to": "2021, 2024 e 2025. O guia 2025 usa 'Sobre a TV' e, em outro trecho, 'Sobre Este TV > Editar Nome'.",
+  "requirements": "Nenhum.",
+  "risk": "baixo",
+  "reversible": "Nao se aplica (leitura), exceto 'Gerenciamento Remoto' e 'Modo de manutencao', que sao interruptores.",
+  "sources": [
+   "https://gazin-marketplace.s3.amazonaws.com/midias/manuais/smart-tv-samsung-led-55-4k-un55u8100fgxzd-162602030628.pdf",
+   "https://gazin-marketplace.s3.amazonaws.com/midias/manuais/smart-tv-samsung-led-70-4k-wi-fi-tizen-comando-de-voz-un70du7700gxzd-152405481716.pdf",
+   "https://gazin-marketplace.s3.amazonaws.com/midias/manuais/smart-tv-samsung-led-65-4k-wi-fi-tizen-crystal-uhd-un65au7700gxzd-152107031922.pdf"
+  ],
+  "confidence": "alta",
+  "fact_or_hypothesis": "fato"
+ },
+ {
+  "title": "Arvore de 'Todas as Configuracoes' por ano: Geral (2021), Conexao e Geral e Privacidade (2024), Conexoes e Recursos avancados (2025)",
+  "what_it_enables": "Navegar sem traduzir: saber em qual categoria pt-BR cada funcao caiu em cada geracao e evitar caminhos de outros mercados.",
+  "steps": "Acesso 2024/2025: botao direcional esquerdo > Menu > Configuracoes > Todas as Configuracoes. 2021 (sem esse passo): Imagem, Som, Geral (Rede, Gerenciador de Sistema, Gerenciador de Dispositivos Externos, Funcoes Smart, Restaurar), Transmissao, Suporte. 2024: Imagem, Som, Conexao (Rede, Gerenciador de Dispositivos Externos, Nome do Dispositivo), Transmissao, Geral e Privacidade (Gerenciador de Sistema, Opcao de Tela Inicial, Alimentacao e Economia de Energia, Controle de Conteudo, Acessibilidade, Voz, Termos e Privacidade, Restaurar configuracoes de fabrica), Suporte. 2025: Imagem, Som, Conexoes (Rede, Gerenciador de Conexao de Dispositivos, Bluetooth), Recursos avancados (Modo AI, Opcao de Tela Inicial, Voz, Modo Jogo, Daily Board), Geral e Privacidade (Transmissao, Controle Remoto, Gerenciador de Dispositivos Externos, Modo de Uso, Alterar SENHA, Termos e Privacidade, Restaurar configuracoes de fabrica), Suporte.",
+  "applies_to": "2021, 2024 e 2025. Hipotese: 2022/2023 seguem o padrao 2024 ('Geral e Privacidade'); nao conferido em pt-BR.",
+  "requirements": "Nenhum.",
+  "risk": "baixo",
+  "reversible": "Nao se aplica.",
+  "sources": [
+   "https://gazin-marketplace.s3.amazonaws.com/midias/manuais/smart-tv-samsung-led-55-4k-un55u8100fgxzd-162602030628.pdf",
+   "https://gazin-marketplace.s3.amazonaws.com/midias/manuais/smart-tv-samsung-led-70-4k-wi-fi-tizen-comando-de-voz-un70du7700gxzd-152405481716.pdf",
+   "https://gazin-marketplace.s3.amazonaws.com/midias/manuais/smart-tv-samsung-led-65-4k-wi-fi-tizen-crystal-uhd-un65au7700gxzd-152107031922.pdf"
+  ],
+  "confidence": "alta",
+  "fact_or_hypothesis": "fato"
+ },
+ {
+  "title": "org.tizen.cloning existe no firmware de varejo (2018 a 2022+), mas só abre por app assinado e ninguém registrou o arquivo gerado",
+  "what_it_enables": "Confirma que a ferramenta de clonagem (org.tizen.cloning) está instalada em TVs comuns e pode ser chamada por tizen.application.launch de um app próprio. Se abrir e gravar no pendrive, seria um backup de ajustes sem Hospitality Mode. Se gera arquivo em TV comum: sem dado.",
+  "steps": "1) Ative Modo Desenvolvedor e instale um app web assinado com certificado Samsung (DUID da TV), como já feito no DU7000. 2) No app, chame tizen.application.getAppInfo('org.tizen.cloning') para confirmar presença. 3) Plugue pendrive FAT32 vazio. 4) Chame tizen.application.launch('org.tizen.cloning', ok, erro), fotografe a tela que abrir, espere 1,5 s e cheque getAppsContext() para ver se o app subiu. 5) Se houver opção do tipo 'Clone TV to USB', execute só ela e veja se surge no pendrive uma pasta com o nome do chassi. 6) Nunca use 'Clone USB to TV' com arquivo de outra TV. 7) Não tente pela porta 8001: segundo o Apps2Samsung, o launcher do Smart Hub rejeita IDs de sistema com 'launch failed[400]'; só o agente de depuração (Modo Desenvolvedor) chega ao gerenciador de apps da plataforma.",
+  "applies_to": "Visto em lista real da UE55NU7400 (2018, Tizen 4.0, varejo, de fábrica), manifesto de firmware do Q80A (2021), firmware do Smart Monitor M8 (2022, Tizen 6.5) e em um set hospitality Tizen 9.0. Em TV comum, o que acontece ao abrir: sem dado.",
+  "requirements": "Modo Desenvolvedor, Host PC IP, certificado distribuidor com o DUID, app .wgt próprio ou agente do Apps2Samsung, pendrive. Porta 8001 não serve.",
+  "risk": "medio",
+  "reversible": "Abrir e sair: sim. Gravar no USB não altera a TV. 'Clone USB to TV' sobrescreve canais e ajustes e só volta com outro clone ou reset.",
+  "sources": [
+   "https://raw.githubusercontent.com/ardazeytin/samsung-tizen-tv-debloat/0a5d0858832584cc81c1d1316c64aad983d8fc41/reference/UE55NU7400-tizen4.0.md",
+   "https://raw.githubusercontent.com/andrearicci93/vetro/28d1d4368b420e8a02bbc5c56f4f7fddfe90abf7/app/service/app-facts.js",
+   "https://raw.githubusercontent.com/Tianyulife/samsung-m8-cn-to-us/55d4e49fb0c7d3c31e2000e5e66b0612a16ec143/firmware-analysis/model-identity/consumer-imports.json",
+   "https://raw.githubusercontent.com/Apps2Samsung/Apps2Samsung/801de93186f68659581d06d439f920a2df76217d/Apps2Samsung.Core/Remote/SamsungSystemApps.cs",
+   "https://raw.githubusercontent.com/Apps2Samsung/Apps2Samsung/801de93186f68659581d06d439f920a2df76217d/Apps2Samsung.Core/Agent/Wgt/index.html",
+   "https://raw.githubusercontent.com/Apps2Samsung/Apps2Samsung/801de93186f68659581d06d439f920a2df76217d/Apps2Samsung.Core/Localization/Languages/pt-BR.json",
+   "https://raw.githubusercontent.com/headspinio/appium-tizen-tv-driver/9536be88b97b443e8cb90483849ba9381f919175/packages/appium-tizen-tv-driver/test/unit/sdb.spec.js",
+   "https://raw.githubusercontent.com/arlogilbert/tizen-app-id/2033001b9acb194c963de4de605da7bf22727816/README.md"
+  ],
+  "confidence": "media",
+  "fact_or_hypothesis": "fato"
+ },
+ {
+  "title": "Menu Hotel Option e 'Clone TV to USB' dependem dos pacotes ep-hotel: ausentes na lista de varejo 2018, presentes no manifesto do Q80A 2021",
+  "what_it_enables": "Define se vale tentar MUTE 1 1 9 Enter na TV comum. O menu é o app com.samsung.ep.coba.hotel e a combinação só pede ao sistema para abri-lo; sem o app, nada acontece. A clonagem de hotel grava canais e ajustes do Hotel Option numa pasta com o nome do chassi.",
+  "steps": "1) Com a TV ligada em HDMI ou TV ao vivo, tecle MUTE, 1, 1, 9, Enter (variante: terminar em Power). 2) Se abrir, fotografe tudo e não toque em Hospitality Mode. 3) Entre em Cloning e use só 'Clone TV to USB' com pendrive vazio; guarde a pasta gerada (nome do chassi, ex. T-MST4AUSCB nas HG antigas) sem renomear. 4) Se nada abrir, confira por app assinado com getAppInfo('com.samsung.ep.coba.hotel') e getAppInfo('org.tizen.ephotel-cloning'); se não constar, a TV não tem o menu. 5) 'Clone USB to TV' só com arquivo da própria TV: quem usa clone de outro aparelho herda canais e ajustes dele. 6) Logo de boot (BMP) não entra no clone. 7) Para o chassi do dono (T-KSU2E, T-PTM etc.) nenhuma fonte aberta mostra o nome da pasta; anotar o que a TV gerar.",
+  "applies_to": "Lista real da UE55NU7400 (2018, Tizen 4.0): nenhum pacote hotel. Manifesto do Q80A (2021) e lista de arlogilbert (modelo não informado): com.samsung.ep.coba.hotel e org.tizen.ephotel-cloning presentes. Conteúdo do clone: guia de HG de hotel (chassi T-MST4AUSCB).",
+  "requirements": "Controle com teclado numérico ou app de controle que envie dígitos; pendrive FAT32. Para checar presença do app: Modo Desenvolvedor e app assinado.",
+  "risk": "alto",
+  "reversible": "Ligar Hospitality Mode esconde Smart Hub e loja; desligar exige voltar ao mesmo menu ou ao menu de fábrica, que o Apps2Samsung descreve como fácil de danificar a TV. Clone para USB é inofensivo.",
+  "sources": [
+   "https://raw.githubusercontent.com/ardazeytin/samsung-tizen-tv-debloat/0a5d0858832584cc81c1d1316c64aad983d8fc41/reference/UE55NU7400-tizen4.0.md",
+   "https://raw.githubusercontent.com/andrearicci93/vetro/28d1d4368b420e8a02bbc5c56f4f7fddfe90abf7/app/service/app-facts.js",
+   "https://raw.githubusercontent.com/arlogilbert/tizen-app-id/2033001b9acb194c963de4de605da7bf22727816/README.md",
+   "https://raw.githubusercontent.com/Apps2Samsung/Apps2Samsung/801de93186f68659581d06d439f920a2df76217d/Apps2Samsung.Core/Remote/SamsungSystemApps.cs",
+   "https://raw.githubusercontent.com/Apps2Samsung/Apps2Samsung/801de93186f68659581d06d439f920a2df76217d/Apps2Samsung.Core/Localization/Languages/pt-BR.json",
+   "https://raw.githubusercontent.com/Apps2Samsung/Apps2Samsung/801de93186f68659581d06d439f920a2df76217d/Apps2Samsung.Core/Localization/Languages/en.json",
+   "https://raw.githubusercontent.com/capital-lan/LN32D467/4417e96396947e602f3aa122642d74634fc36721/README.md"
+  ],
+  "confidence": "media",
+  "fact_or_hypothesis": "hipotese"
+ },
+ {
+  "title": "Transfer Channel List (Transmissão > Configurações Avançadas) é o único backup em USB de consumidor fora do modo hotel, e só cobre canais",
+  "what_it_enables": "Exporta a lista de canais (ordem, favoritos, nomes) para um .zip no pendrive e reimporta depois de um reset. ChanSort e TVChanneleditor leem esse .zip. Não salva imagem, som, apps nem conta.",
+  "steps": "1) Pendrive FAT32 na TV. 2) Menu > Transmissão (Broadcasting) > Configurações Avançadas (ou Channel Settings nos antigos) > Transferir Lista de Canais; PIN padrão 0000. 3) 'Transferir para USB' (Export to USB). 4) Copie o .zip para o computador sem renomear: o nome é fixo por modelo, a TV só reconhece o mesmo nome e, se já existir no pendrive, sobrescreve sem perguntar. 5) Após o reset, mesma tela > 'Carregar do USB' (Import from USB). 6) Guarde o original intocado antes de editar no ChanSort. 7) Se a opção não aparecer, atualize o firmware e procure de novo; há relatos de Tizen sem a opção (vistos só em busca, não abertos).",
+  "applies_to": "Séries Tizen J, K, M, N, Q, R e T (2015 a 2020) geram .zip; E/F/H geram .scm. Modelos 2021 em diante e TVs ISDB-T do Brasil: sem dado nas fontes abertas. A wiki do ChanSort parou em 2018.",
+  "requirements": "Pendrive FAT32, PIN da TV (0000 se não alterado), sintonizador com canais já sintonizados.",
+  "risk": "baixo",
+  "reversible": "Sim. Importar substitui a lista atual; basta importar o .zip original guardado.",
+  "sources": [
+   "https://raw.githubusercontent.com/tarihcituranx/TVChanneleditor/eb4c99bcbcee8f080e44982c16ebad2ca371bff6/templates/guide_en.html",
+   "https://raw.githubusercontent.com/PredatH0r/ChanSort/8f9bb2069b3a08f9f3ee09c3d09421fe22b8e987/source/fileformats.md",
+   "https://github.com/PredatH0r/ChanSort/wiki/Samsung"
+  ],
+  "confidence": "alta",
+  "fact_or_hypothesis": "fato"
+ },
+ {
+  "title": "Redefinir Smart Hub apaga apps baixados, logins e a conta na TV; Redefinir total mantém só a rede; nenhuma fonte aberta mostra apps voltando sozinhos",
+  "what_it_enables": "Saber o que é recuperável antes de mexer em menu de serviço ou root: ajustes se refazem à mão, canais voltam pelo .zip, apps precisam ser reinstalados um a um com login. Reset de fábrica devolve os apps pré-instalados removidos (desfazer de debloat).",
+  "steps": "Antes: 1) fotografe Apps > Configurações de Apps ou exporte getAppsInfo() por app assinado; 2) anote logins de cada serviço e a senha do Wi-Fi; 3) exporte canais (achado 3). Redefinir Smart Hub: Configurações > Suporte > Assistência do Dispositivo > Autodiagnóstico > Redefinir Smart Hub, PIN 0000; faça a partir de HDMI ou TV ao vivo. Apaga apps baixados, dados e logins de apps, conta Samsung na TV e acordos; apps pré-instalados ficam. Redefinir total: Configurações > Geral (ou Geral e Privacidade) > Redefinir, PIN 0000; volta imagem, som, Smart Hub e canais ao padrão; a rede não é afetada. Depois: entrar na conta Samsung (obrigatória em Tizen 7+ para instalar apps), reinstalar apps da loja um a um, refazer logins, reimportar canais.",
+  "applies_to": "Caminhos vistos em Q70C 2023 (Tizen 8) e em guia geral; nomes mudam por ano (Device Care x Self Diagnosis). Comportamento descrito para Tizen 4 a 9 nas fontes lidas.",
+  "requirements": "PIN da TV; conta Samsung com senha em mãos; internet para reinstalar apps.",
+  "risk": "medio",
+  "reversible": "Não. Dados e logins apagados não voltam; só se refaz. Apps pré-instalados removidos voltam com reset de fábrica (relato da NU7400).",
+  "sources": [
+   "https://raw.githubusercontent.com/victaphu/glass-home-samsung-tv/f0f84e6dc274341826409c4a344d9e1c65790355/docs/SAMSUNG-SETTINGS.md",
+   "https://raw.githubusercontent.com/techidaily/site-tech-recovery/749c10e9369bf63d8e691baaae9940b800113772/source/_posts/how-to-reset-a-samsung-tv.md",
+   "https://github.com/ardazeytin/samsung-tizen-tv-debloat",
+   "https://raw.githubusercontent.com/Apps2Samsung/Apps2Samsung/801de93186f68659581d06d439f920a2df76217d/Apps2Samsung.Core/Localization/Languages/pt-BR.json",
+   "https://raw.githubusercontent.com/andrearicci93/vetro/28d1d4368b420e8a02bbc5c56f4f7fddfe90abf7/app/service/app-facts.js",
+   "https://raw.githubusercontent.com/reisxd/TizenBrew/main/docs/README.md"
+  ],
+  "confidence": "alta",
+  "fact_or_hypothesis": "fato"
+ },
+ {
+  "title": "Restauração pela conta Samsung ou SmartThings: só há indício de um componente 'BackupAndRestore for Autosetup' no firmware; nenhum teste aberto",
+  "what_it_enables": "O firmware tem capi-bnr-tv (backup e restauração para a configuração inicial automática) e samsung-service-manager coordena conta, nuvem e SmartThings. Sustenta a hipótese de backup de ajustes ligado à conta, mas o que volta (apps, logins, imagem) é sem dado.",
+  "steps": "Protocolo de teste barato, sem root: 1) Entre na conta Samsung na TV e fotografe a tela da conta (Configurações > Geral e Privacidade > Gerenciador de Sistema > Conta Samsung, ou Geral > Contas nos antigos); registre se existe opção de backup ou sincronização e execute-a. 2) Fotografe imagem, som, tela inicial e lista de apps. 3) Faça Redefinir Smart Hub (não o reset total) e, ao reconfigurar, aceite qualquer oferta de 'restaurar' da conta ou do SmartThings no celular. 4) Compare com as fotos: apps instalados, logins, ordem da tela inicial, ajustes de imagem. 5) Registre o resultado em samsung-tizen.md com modelo, ano e Tizen. Só depois disso contar com a conta como backup.",
+  "applies_to": "Componente visto no manifesto do Q80A (2021, T-NKM2DEUC). Menus de conta e qualquer restauração: sem dado por ano. Tizen 7+ exige conta Samsung para instalar apps.",
+  "requirements": "Conta Samsung, TV online, celular com SmartThings para o teste; pendrive para os achados 3 e 6 como rede de segurança.",
+  "risk": "medio",
+  "reversible": "O teste em si implica Redefinir Smart Hub, que não tem volta para logins e dados de apps.",
+  "sources": [
+   "https://raw.githubusercontent.com/andrearicci93/vetro/28d1d4368b420e8a02bbc5c56f4f7fddfe90abf7/app/service/app-facts.js",
+   "https://raw.githubusercontent.com/andrearicci93/vetro/28d1d4368b420e8a02bbc5c56f4f7fddfe90abf7/app/service/app-catalog.js",
+   "https://raw.githubusercontent.com/reisxd/TizenBrew/main/docs/README.md",
+   "https://github.com/Gathin23/cleanyourtv/issues/441"
+  ],
+  "confidence": "baixa",
+  "fact_or_hypothesis": "hipotese"
+ },
+ {
+  "title": "Checklist das telas a fotografar antes de menu de serviço, root ou reset (a única restauração garantida é refazer à mão)",
+  "what_it_enables": "Padroniza o backup por foto que o DU7000 já fez para Start Screen Options. Cada tela listada corresponde a um ajuste que algum relato mudou, que um reset apaga ou que não tem desfazer.",
+  "steps": "Fotografar, com data e modelo: 1) Suporte > Sobre esta TV (modelo, firmware, Tizen). 2) Geral e Privacidade > Start Screen Options (Iniciar com Smart Hub Home, Autorun Last App). 3) Termos e Privacidade / Privacy Choices (Serviços de informação de exibição, Anúncios baseados em interesse); Reset PSID não tem volta. 4) Notificações > engrenagem (Samsung Promotion). 5) Home > For You > Media Options (Autoplay Sound) e a fileira de apps da Home. 6) Apps > Configurações de Apps (lista completa). 7) Imagem e Som > Config. Avançadas, cada subtela. 8) Conexão > Rede > Status > Config. IP > DNS. 9) Gerenciador de Conexão de Dispositivos > Notificação de Acesso e lista. 10) Apps > Modo Desenvolvedor e Host PC IP. 11) Suporte > Atualização de Software > Atualização Automática; upgrade de Tizen não volta. 12) Canais exportados (achado 3). 13) Tela da conta Samsung. Menu de serviço: foto de cada página antes de qualquer tecla.",
+  "applies_to": "Nomes vistos em Q70C 2023 (Tizen 8) e DU7000 2024 (Tizen 9); em 2018 a 2021 Start Screen Options fica em Geral e Privacidade ou Geral. Ajustar os nomes ao menu em pt-BR.",
+  "requirements": "Celular com câmera; 20 minutos; nenhuma ferramenta. Não publicar fotos com DUID, MAC ou IP (aparecem em /api/v2 e nas telas de rede).",
+  "risk": "baixo",
+  "reversible": "Serve justamente para reverter à mão. Exceções sem volta: Reset PSID e upgrade de versão do Tizen.",
+  "sources": [
+   "/tmp/claude-0/-home-user/ecc3fd7d-108c-5148-9bf5-bf7042299da0/scratchpad/r/cleanyourtv/docs/devices/samsung-tizen.md",
+   "https://raw.githubusercontent.com/victaphu/glass-home-samsung-tv/f0f84e6dc274341826409c4a344d9e1c65790355/docs/SAMSUNG-SETTINGS.md",
+   "https://raw.githubusercontent.com/techidaily/site-tech-recovery/749c10e9369bf63d8e691baaae9940b800113772/source/_posts/how-to-reset-a-samsung-tv.md",
+   "https://raw.githubusercontent.com/reisxd/TizenBrew/main/docs/README.md",
+   "https://raw.githubusercontent.com/Apps2Samsung/Apps2Samsung/801de93186f68659581d06d439f920a2df76217d/Apps2Samsung.Core/Localization/Languages/pt-BR.json"
+  ],
+  "confidence": "alta",
+  "fact_or_hypothesis": "fato"
+ },
+ {
+  "title": "Menu de fábrica (org.tizen.factory) chama a clonagem, mas não tem backup nem desfazer; só com root se lê a EEPROM",
+  "what_it_enables": "Explica por que a foto é a única rede de segurança no menu de serviço de uma TV de varejo: o firmware liga org.tizen.factory a org.tizen.cloning, e o único backup de baixo nível documentado (dump de EEPROM antes de mudar Local Set) foi feito com root num Smart Monitor M8.",
+  "steps": "1) Sem root: antes de entrar (INFO > MENU > MUTE > POWER a partir do standby, ou via app assinado em org.tizen.factory), fotografe cada página; altere só o que foi fazer; anote valor antigo e novo (ex. Local Set, Type, Option). 2) Nunca mude Type nem painel. 3) Se algum dia houver root (vetro, TizenBrew com root), copie a EEPROM antes de qualquer gravação e valide o dump: um dump só com FF é inválido e não serve para restaurar, como aconteceu no M8. 4) Para voltar um valor, grave exatamente o original anotado (no M8, restaurar CHI_DTV exigiu 63, não 65). 5) Reboot e OTA mantiveram os valores no M8; retenção após reset de fábrica: sem dado.",
+  "applies_to": "Ligação factory e cloning: manifesto do Q80A (2021). Dump de EEPROM e Local Set: Smart Monitor M8 2022, Tizen 6.5, com root. Sequência do menu de fábrica: strings do Apps2Samsung, não testada aqui.",
+  "requirements": "Controle com INFO, MENU, MUTE e POWER, ou app assinado; para dump: root (não disponível em firmware de varejo sem exploit).",
+  "risk": "alto",
+  "reversible": "Só se o valor original foi anotado; nas fontes lidas não existe 'restaurar padrões' confiável do menu de serviço.",
+  "sources": [
+   "https://raw.githubusercontent.com/andrearicci93/vetro/28d1d4368b420e8a02bbc5c56f4f7fddfe90abf7/app/service/app-facts.js",
+   "https://github.com/Tianyulife/samsung-m8-cn-to-us",
+   "https://raw.githubusercontent.com/Apps2Samsung/Apps2Samsung/801de93186f68659581d06d439f920a2df76217d/Apps2Samsung.Core/Localization/Languages/pt-BR.json",
+   "https://raw.githubusercontent.com/Apps2Samsung/Apps2Samsung/801de93186f68659581d06d439f920a2df76217d/Apps2Samsung.Core/Localization/Languages/en.json",
+   "https://raw.githubusercontent.com/Apps2Samsung/Apps2Samsung/801de93186f68659581d06d439f920a2df76217d/Apps2Samsung.Core/Remote/SamsungSystemApps.cs"
+  ],
+  "confidence": "media",
+  "fact_or_hypothesis": "fato"
+ },
+ {
+  "title": "Backup parcial por app assinado: inventário de apps via getAppsInfo e ajustes de tela inicial salvos e restaurados por um helper (relato de 2022)",
+  "what_it_enables": "Sem shell nem sdb pull, um app próprio ainda exporta a lista de IDs (486 no DU7000) e, segundo um relato no Q60B 2022, salva os valores originais de Home e app de início antes de alterá-los e os restaura com exatidão. É backup de ajustes específicos, não da TV inteira.",
+  "steps": "1) Instale o app de diagnóstico assinado (como no DU7000). 2) Abra em modo debug pelo sdb e, no Web Inspector, rode tizen.application.getAppsInfo(); salve JSON/CSV no computador. 3) Para ajustes de tela inicial, siga o padrão do helper relatado: ler o valor atual, gravar em arquivo local do app, só então alterar; restaurar lendo o arquivo. 4) Não conte com sdb pull: o firmware de varejo responde 'You cannot pull files from this path'. 5) Registre modelo, Tizen e se o helper sobrevive a atualização de firmware (sem dado).",
+  "applies_to": "DU7000 2024 (Tizen 9): inventário funcionou, pull negado. Q60B 2022 (Tizen 6.5): relato de salvar e restaurar Home e app de início; a API usada não foi detalhada no relato aberto.",
+  "requirements": "Modo Desenvolvedor, certificado com DUID, sdb, Web Inspector.",
+  "risk": "baixo",
+  "reversible": "Inventário é só leitura. O helper muda ajustes de Home; a reversão depende do arquivo salvo pelo próprio app.",
+  "sources": [
+   "/tmp/claude-0/-home-user/ecc3fd7d-108c-5148-9bf5-bf7042299da0/scratchpad/r/cleanyourtv/docs/devices/samsung-tizen.md",
+   "https://github.com/Gathin23/cleanyourtv/issues/441"
+  ],
+  "confidence": "media",
+  "fact_or_hypothesis": "hipotese"
+ },
+ {
+  "title": "TVs 2024 serie DU: websocket 8002 devolve ms.channel.timeOut e 8001 ms.channel.unauthorized sem popup, enquanto o REST GET /api/v2/ continua respondendo",
+  "what_it_enables": "Saber que em parte das TVs 2024 com firmware recente o pareamento por websocket falha na propria TV, mesmo na mesma sub-rede. O mantenedor do Home Assistant chamou de falha de firmware. Evita horas de depuracao de rede e aponta as alternativas locais.",
+  "steps": "1) GET http://IP:8001/api/v2/ e https://IP:8002/api/v2/ (ignorar certificado): anotar model (ex. 24_PTM_UHD_T09), TokenAuthSupport e firmware. 2) Na TV: Configuracoes > Geral > Gerenciador de dispositivos externos > Gerenciador de conexao > Notificacao de acesso = perguntar; apagar entradas antigas na Lista de dispositivos. 3) Com o PC na MESMA sub-rede, abrir wss://IP:8002/api/v2/channels/samsung.remote.control?name=BASE64 (samsungtvws ou pair() do samsungframetv). 4) Se vier timeOut em 8002 e unauthorized em 8001 sem popup, mesmo apos desligar da tomada, e o padrao do GU98DU9079UXZG 2024 (fw T-PTMDDEUC-0090-2130.0; HA 2026.8.2) e de um monitor Tizen apos fw 2115: REST vivo, TokenAuthSupport true, nenhum token gerado. Mantenedor: 'firmware glitch', rotulo 'problem in device'; em 15/10/2026 outro usuario relatou o mesmo em varias TVs que antes funcionavam. 5) Alternativas locais: IP Control JSON-RPC porta 1516, Wake-on-LAN, ou Modo Desenvolvedor + sdb para instalar app proprio. 6) Registrar modelo, firmware e resultado.",
+  "applies_to": "Confirmado: GU98DU9079UXZG 2024 (24_PTM_UHD_T09, fw EU 2130.0, Tizen nao informado; outras DU 2024 reportam 9.0) e monitor Odyssey G8 Tizen fw 2115. Nao confirmado em todos os 2024; DU8300 so em relato nao aberto. 2025/2026: sem dado.",
+  "requirements": "Mesma sub-rede, TV ligada fora do Art Mode, Notificacao de acesso em perguntar, cliente samsungtvws ou similar com nome em base64.",
+  "risk": "baixo",
+  "reversible": "Sim: so leitura e tentativa de pareamento; nenhuma alteracao na TV alem da lista de dispositivos.",
+  "sources": [
+   "https://github.com/home-assistant/core/issues/179510",
+   "https://github.com/xchwarze/samsung-tv-ws-api/issues/184",
+   "https://github.com/xchwarze/samsung-tv-ws-api/issues/193"
+  ],
+  "confidence": "alta",
+  "fact_or_hypothesis": "fato"
+ },
+ {
+  "title": "LS03D e DU7200 2024, LS03F 2025, S95H e QN90H 2026: ha relatos de API local funcionando via 8002 com token, IP Control 1516 e Art Mode",
+  "what_it_enables": "Contrapoe a hipotese de porta 8002 filtrada no Frame LS03D: a mesma geracao aparece como testada com websocket 8002 e token. O controle por script continua viavel de 2024 a 2026 quando o pareamento acontece; o segredo nos Frames 2024 e abrir o canal remoto primeiro.",
+  "steps": "1) Usar porta 8002 com arquivo de token separado por TV (SamsungTVWS(host, port=8002, token_file=...)). 2) Nos Frames 2024 o canal de arte nao mostra o popup: chamar pair() do pacote samsungframetv 4.1.1 (abre o canal remoto e a TV exibe Permitir); aceitar em ate 60 s. 3) TV ligada e em modo normal, nao em Art Mode, durante o pareamento. 4) Guardar o token; a TV pode esquecer tokens apos muito tempo desligada; pair() so re-pede quando o token e rejeitado. 5) Se ms.channel.unauthorized: Notificacao de acesso = perguntar, remover o app da Lista de dispositivos, pair(force=True). 6) Para ligar/desligar e modo de imagem sem nuvem, parear tambem o IP Control (porta 1516 em 2020+, prompt na tela), medido pelo TheFab21 num Frame 2024 e num S95H 2026. 7) Nos Neo QLED 2026 (QN90H) a letra H na posicao 5 confunde a deteccao de serie encriptada; a tentativa falha e o fallback para websocket funciona. 8) AeroTizen lista DU7200 e LS03D 2024 (Tizen 9.0) como testados.",
+  "applies_to": "Relatos: AeroTizen testado em DU7200 e LS03D 2024 (Tizen 9.0); samsungframetv: LS03C/LS03D funcionando e LS03F 2025 relatado; TheFab21: Frame 2024 e S95H 2026 (IP Control); danalec: QN90H 2026 via websocket.",
+  "requirements": "Mesma sub-rede; samsungtvws ou samsungframetv 4.1.1; token por TV; aceitar o popup; para IP Control, 'Controle remoto IP' ativo e TV fora do Art Mode.",
+  "risk": "baixo",
+  "reversible": "Sim: remover o dispositivo na Lista de dispositivos da TV e apagar o arquivo de token.",
+  "sources": [
+   "https://github.com/helalaou/AeroTizen",
+   "https://raw.githubusercontent.com/NickWaterton/samsung-tv-ws-api/master/README.md",
+   "https://github.com/NickWaterton/samsung-tv-ws-api/issues/30",
+   "https://github.com/TheFab21/ha-samsungtv-smart",
+   "https://github.com/danalec/ha-samsungtv",
+   "https://github.com/xchwarze/samsung-tv-ws-api/issues/185"
+  ],
+  "confidence": "media",
+  "fact_or_hypothesis": "fato"
+ },
+ {
+  "title": "Sub-rede ou VLAN diferente produz exatamente timeOut em 8002 e unauthorized em 8001 sem popup; SNAT no roteador resolve",
+  "what_it_enables": "Separar falha de rede de falha de firmware antes de culpar o Tizen 9. A documentacao oficial do Home Assistant afirma que TVs Samsung nao aceitam websocket vindo de outra sub-rede, e um caso de 2026 foi resolvido com uma regra de NAT.",
+  "steps": "1) Conferir se o PC ou servidor e a TV estao na mesma sub-rede (ex. ambos em 192.168.0.x). 2) Se estiverem separados, handshake HTTP 101 e portas abertas nao bastam: a TV fecha com timeOut/unauthorized e nunca mostra o popup. 3) Correcao A: mover o controlador para a VLAN da TV e refazer o pareamento. 4) Correcao B: regra de SNAT/masquerade no roteador (pfSense/OPNsense: NAT de saida na regra entre VLANs) para o trafego chegar com IP da sub-rede da TV; no issue #323 (HA 2026.10.1, integracao 8.11.7) o pareamento funcionou na hora. 5) So depois disso repetir o teste do achado 1. 6) A integracao SmartThings (nuvem) nao sofre dessa limitacao, mas passou a exigir plano pago.",
+  "applies_to": "Todas as TVs Tizen 2016+. Reproduzido em outubro de 2026 em Frames 2020/2021 (fw T-MSMDEUC-1500.9 e T-KSU2FDEUC-2743.0).",
+  "requirements": "Acesso ao roteador para criar SNAT, ou possibilidade de mudar o dispositivo de VLAN.",
+  "risk": "baixo",
+  "reversible": "Sim: remover a regra de NAT.",
+  "sources": [
+   "https://raw.githubusercontent.com/home-assistant/home-assistant.io/current/source/_integrations/samsungtv.markdown",
+   "https://github.com/TheFab21/ha-samsungtv-smart/issues/323",
+   "https://github.com/TheFab21/ha-samsungtv-smart"
+  ],
+  "confidence": "alta",
+  "fact_or_hypothesis": "fato"
+ },
+ {
+  "title": "Abrir apps em TVs 2022+: ed.apps.launch pode ser ignorado; REST POST sem token funcionou num Tizen 6.5, mas o fork do HA o descreve como no-op em 2022+",
+  "what_it_enables": "Escolher a ordem de metodos para abrir Netflix, YouTube ou o app proprio por script e confirmar se abriu de fato, em vez de confiar na resposta. Sem teste publicado em Tizen 8, 9 ou 10.",
+  "steps": "1) Metodo 1 (recomendado pelo TheFab21): ms.application.start no canal de controle websocket. 2) Metodo 2: ed.apps.launch no canal samsung.remote.control (mesmo das teclas); num Q60B 2022 (Tizen 6.5) a TV nao respondeu ao ms.channel.emit e ignorou o pedido. 3) Metodo 3: POST http://IP:8001/api/v2/applications/ID sem token; no mesmo Q60B respondeu true e abriu em 1 s (AeroTizen PR #15, mesclado em 23/10/2026, com fallback que espera 3 s e so aceita 200). O README do TheFab21 diz que o REST foi descontinuado pela Samsung e costuma ser no-op em 2022+, reportando sucesso sem abrir nada. 4) Sempre confirmar com GET /api/v2/applications/ID (running e visible) apos 3 s. 5) IDs mudam por ano e versao do Tizen (ex. Internet: org.tizen.browser, 3201907018784 ou 3202010022079): listar os IDs da propria TV antes. 6) Testar os tres metodos na TV do Bruno e registrar, porque nao ha dado para Tizen 8, 9 ou 10.",
+  "applies_to": "Fato no Q60B 2022 (Tizen 6.5) e no README do TheFab21 (2022+). Para 2023 a 2026 (Tizen 7 a 10): hipotese, nenhum teste encontrado.",
+  "requirements": "Token so para os metodos websocket; REST em 8001 sem token. Lista de IDs da propria TV.",
+  "risk": "baixo",
+  "reversible": "Sim: apenas abre apps.",
+  "sources": [
+   "https://github.com/helalaou/AeroTizen/pull/15",
+   "https://github.com/TheFab21/ha-samsungtv-smart",
+   "https://raw.githubusercontent.com/xchwarze/samsung-tv-ws-api/master/APPLICATIONS.md"
+  ],
+  "confidence": "media",
+  "fact_or_hypothesis": "hipotese"
+ },
+ {
+  "title": "Modo Desenvolvedor nao aparece como pre-requisito do controle por rede em nenhuma fonte lida; ele serve para sdb 26101 e instalar app assinado",
+  "what_it_enables": "Evita ativar Modo Desenvolvedor esperando resolver o pareamento em 8002. Define o que ele da (sdb, instalar .wgt, depurar) e o que nao da (shell, root, trocar o destino do botao Home).",
+  "steps": "1) Docs do HA, TheFab21, danalec, Control4, FHEM e samsung-tv-toolbox listam como requisito apenas mesma sub-rede, TV ligada e popup aceito; o toolbox exige Modo Desenvolvedor so para install-app.js e sdb. 2) Evidencias: AU8000 2021, NU7405 2018 e Q67BA 2022 com developerMode 0 tinham 8001/8002 abertas; o DU7000 2024 com Modo Desenvolvedor ligado respondeu GET em 8002 (websocket nao testado); o DU9079 2024 falhou sem mencao a Modo Desenvolvedor; no Q60B 2022 com Modo Desenvolvedor ligado o ed.apps.launch seguiu ignorado. 3) Para ativar: Apps > digitar 12345 no controle > Developer mode ON > Host PC IP = IP do PC > desligar da tomada 30 s. 4) Depois: sdb connect IP:26101; sdb capability mostra rootperm e intershell desativados (sem shell nem root); pull de /etc/os-release e recusado. 5) Relato (CU8070 2023, Tizen 9.0): 8002 recusa conexao por alguns segundos logo apos abrir um app; aguardar e repetir.",
+  "applies_to": "Todas as Tizen 2016+; relatos de 2018 a 2024. Hipotese de que nao altera o pareamento em 2024 a 2026.",
+  "requirements": "Controle com teclado numerico ou teclado na tela; PC na mesma rede; para instalar app, certificado Samsung com o DUID da TV.",
+  "risk": "baixo",
+  "reversible": "Sim: desligar Developer mode no mesmo menu e apagar o Host PC IP.",
+  "sources": [
+   "https://github.com/lvndry/samsung-tv-toolbox",
+   "https://github.com/Gathin23/cleanyourtv/issues/441",
+   "https://github.com/helalaou/AeroTizen",
+   "https://github.com/DidyMond/Control4-Samsung-TV-WebSocket",
+   "https://github.com/Lazgar/fhem-samsung-tizen-ws"
+  ],
+  "confidence": "media",
+  "fact_or_hypothesis": "hipotese"
+ },
+ {
+  "title": "SmartThings API paga (Personal Plan, US$ 4,99/mes) a partir de outubro de 2026: anuncio confirmado na doc do HA; cobranca ativa so em afirmacao de terceiro",
+  "what_it_enables": "Decidir se o controle por script fica 100 por cento local, sem custo, ou se vale pagar a nuvem Samsung para status, ligar a TV e modo de imagem. Nada do caminho local (8001/8002, 1516, WoL, Art Mode) depende do plano.",
+  "steps": "1) Fato: a doc oficial do HA traz 'Upcoming breaking API change (October 2026)': o acesso gratuito a API SmartThings sera eliminado a partir de outubro de 2026 e passara a exigir Personal Plan (US$ 4,99/mes); orienta assinar ou migrar dispositivos. 2) O README do TheFab21 (outubro de 2026) afirma que a eliminacao 'started in October 2026', vale para qualquer cliente de terceiro incluindo o HA, o app SmartThings e o Developer Center seguem gratis, e cotas nao foram publicadas. 3) Nao achei issue no home-assistant/core sobre 'personal plan' (busca retornou 0) nem texto de cobranca no strings.json do componente smartthings. 4) Antes de pagar: validar o fluxo local do achado 2. 5) Se precisar de nuvem (status fora da rede, ligar pela internet): assinar no Developer Center da Samsung e conferir o anuncio oficial em blog.smartthings.com, que nao abriu neste ambiente.",
+  "applies_to": "Qualquer TV Samsung usada por API SmartThings de terceiros (integracao do HA, scripts com PAT ou OAuth2). Nao afeta o app SmartThings nem o controle local.",
+  "requirements": "Conta Samsung e cartao para o plano. Para o modo local, nada.",
+  "risk": "medio",
+  "reversible": "Sim: cancelar a assinatura; o controle local continua.",
+  "sources": [
+   "https://raw.githubusercontent.com/home-assistant/home-assistant.io/current/source/_integrations/smartthings.markdown",
+   "https://github.com/TheFab21/ha-samsungtv-smart",
+   "https://github.com/home-assistant/core/issues?q=is%3Aissue+smartthings+%22personal+plan%22",
+   "https://raw.githubusercontent.com/home-assistant/core/dev/homeassistant/components/smartthings/strings.json"
+  ],
+  "confidence": "media",
+  "fact_or_hypothesis": "hipotese"
+ },
+ {
+  "title": "Energia e standby mudaram de 2024 a 2026: rede viva em standby, PowerState standby no Art Mode, KEY_POWER longo ignorado e turn_on do HA 2026.10 exige automacao",
+  "what_it_enables": "Scripts de ligar, desligar e detectar estado precisam de logica diferente nas TVs novas. Evita falso 'ligada', desligamento que nao acontece e automacao de ligar que parou apos atualizar o HA.",
+  "steps": "1) Frames 2024+ mantem a interface de rede viva em standby e respondem ping (Frames 2020/2021 somem da rede). 2) Frame 2025 (TQ50LS03F, 25_PTM_FTV) devolve PowerState standby no GET /api/v2/ mesmo em Art Mode, enquanto o canal de arte diz on; usar get_artmode_status ou in_artmode() do samsungframetv. 3) Segurar KEY_POWER nao desliga Frames 2025; usar IP Control power_off(). 4) Neo QLED com Instant On ligado mostra 'on' com tela preta; desligar Instant On em Energia para off real. 5) Token rejeitado chega como ms.error 'No Authorized' com o socket aberto: tratar essa resposta, nao so o erro de conexao. 6) No HA 2026.10.2 o turn_on do samsungtv virou gatilho: criar automacao com samsungtv.turn_on e wake_on_lan.send_magic_packet; o MAC do Wi-Fi e do cabo diferem. 7) WoL acorda do standby profundo nos Neo QLED; apps nao abrem sozinhos apos WoL.",
+  "applies_to": "Frames 2024 e 2025, Neo QLED 2022+ (relatos), HA 2026.10.x. S95H 2026 so citado para IP Control.",
+  "requirements": "IP Control pareado para power_off; MAC correto para WoL; HA 2026.10+ para o gatilho turn_on.",
+  "risk": "baixo",
+  "reversible": "Sim: sao ajustes de configuracao e automacao.",
+  "sources": [
+   "https://github.com/TheFab21/ha-samsungtv-smart",
+   "https://raw.githubusercontent.com/NickWaterton/samsung-tv-ws-api/master/README.md",
+   "https://github.com/danalec/ha-samsungtv",
+   "https://github.com/home-assistant/core/issues/187881",
+   "https://github.com/xchwarze/samsung-tv-ws-api/issues/185"
+  ],
+  "confidence": "media",
+  "fact_or_hypothesis": "fato"
+ },
+ {
+  "title": "'Tizen 9' nao identifica o ano: TVs 2023 e 2024 ja rodam 9.0 por atualizacao; classificar pelo prefixo do model string (23_, 24_, 25_) e pelo firmware",
+  "what_it_enables": "Enquadrar a TV do Bruno antes de aplicar qualquer relato: o comportamento da API local segue ano e firmware, nao so a versao do Tizen. Evita confundir um DU 2024 atualizado com um modelo 2025 nativo.",
+  "steps": "1) GET http://IP:8001/api/v2/ e ler device.model: 23_X22U_UHD_T09 (CU8070 2023), 24_KSUE_UB_T09 (DU7000 2024), 24_PTM_UHD_T09 (DU9079 2024), 25_PTM_FTV (LS03F 2025); os dois primeiros digitos sao o ano. 2) Versao do Tizen: na TV em Configuracoes > Suporte > Sobre esta TV, ou sdb capability com Modo Desenvolvedor. 3) Registrado: CU8070 2023 Tizen 9.0 sw 2220; CU7000 2023 Tizen 9.0; DU7000 2024 Tizen 9.0 (sdb); DU7200 e LS03D 2024 Tizen 9.0; S90C 2023 ainda 7.0; firmwareVersion no /api/v2/ vem Unknown em quatro geracoes. 4) Hipotese nao verificada daqui: 2025 nasce com Tizen 9.0 e 2026 com Tizen 10.0 (paginas da Samsung e da imprensa bloqueadas neste ambiente). 5) Ao reportar ou buscar, usar modelo completo com sufixo de regiao (ex. GXZD para Brasil), model string e firmware (ex. T-PTMDDEUC-0090-2130.0), nao so 'Tizen 9'.",
+  "applies_to": "2023 a 2026. Fato para 2023/2024 atualizadas para 9.0; hipotese para a versao nativa de 2025 e 2026.",
+  "requirements": "Rede local; nada mais.",
+  "risk": "baixo",
+  "reversible": "Nao se aplica: apenas leitura.",
+  "sources": [
+   "https://github.com/helalaou/AeroTizen",
+   "https://github.com/Gathin23/cleanyourtv/issues/441",
+   "https://github.com/home-assistant/core/issues/179510",
+   "https://github.com/xchwarze/samsung-tv-ws-api/issues/185"
+  ],
+  "confidence": "media",
+  "fact_or_hypothesis": "fato"
+ }
+]
