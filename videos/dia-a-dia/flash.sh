@@ -37,23 +37,26 @@ done
 ffmpeg -loglevel error -y -f concat -safe 0 -i $LIST -c copy $W/cat.mp4
 D=$(ffprobe -v error -show_entries format=duration -of csv=p=0 $W/cat.mp4)
 # tempos de corte para os sons
-T=0; DL=""; n=0
+T=0; DL=""; n=0; CUTS=""
 for f in $W/s*.mp4; do :; done
 for k in $(seq 0 $((i-1))); do
   d=$(ffprobe -v error -show_entries format=duration -of csv=p=0 $W/s$k.mp4)
   ms=$(python3 -c "print(int($T*1000))")
   if [ $k = 4 ]; then DL="$DL[2:a]adelay=$ms|$ms,volume=0.8[x$k];"; else DL="$DL[1:a]adelay=$ms|$ms,volume=0.9[x$k];"; fi
+  if [ $k = 4 ]; then CUTS="$CUTS ${T}r"; else CUTS="$CUTS $T"; fi
   T=$(python3 -c "print($T+$d)")
 done
+python3 "$R/videos/dia-a-dia/trilha_impacto.py" $W/m.wav $D $CUTS
 MIX=$(for k in $(seq 0 $((i-1))); do printf "[x$k]"; done)
 GOLD=0xE8B36A
-ffmpeg -loglevel error -y -i $W/cat.mp4 -i "$SH" -i "$SW" -filter_complex "\
+ffmpeg -loglevel error -y -i $W/cat.mp4 -i "$SH" -i "$SW" -i $W/m.wav -filter_complex "\
 [0:v]drawbox=x=0:y=1250:w=iw:h=330:color=black@0.45:t=fill,\
 drawtext=fontfile=$IN:text='BASTIDOR':fontsize=34:fontcolor=$GOLD:x=(w-tw)/2:y=1290:alpha='min(1,t/0.4)',\
 drawtext=fontfile=$PF:text='$T1':fontsize=74:fontcolor=white:x=(w-tw)/2:y=1340:alpha='min(1,max(0,(t-0.15)/0.4))',\
 drawtext=fontfile=$PF:text='$T2':fontsize=58:fontcolor=$GOLD:x=(w-tw)/2:y=1440:alpha='min(1,max(0,(t-0.3)/0.4))',\
 drawtext=fontfile=$IN:text='REC':fontsize=30:fontcolor=0xFF3B30:x=110:y=270:enable='lt(mod(t,1),0.6)',\
 drawtext=fontfile=$IN:text='%{eif\:t\:d\:2}s':fontsize=30:fontcolor=white:x=180:y=270[v];\
-[0:a]volume=1[o];$DL[o]${MIX}amix=inputs=$((i+1)):normalize=0,apad=whole_dur=$D[a]" \
- -map "[v]" -map "[a]" -t $D -c:v libx264 -crf 17 -preset slow -pix_fmt yuv420p -c:a aac -b:a 192k -movflags +faststart "$OUT"
+[0:a]volume=0.45[o];[3:a]volume=0.9[mu];$DL[o][mu]${MIX}amix=inputs=$((i+2)):normalize=0,apad=whole_dur=$D[a]" \
+ -map "[v]" -map "[a]" -t $D -c:v libx264 -crf 17 -preset slow -pix_fmt yuv420p -c:a aac -b:a 192k -movflags +faststart $W/fin.mp4
+ffmpeg -loglevel error -y -i $W/fin.mp4 -c:v copy -af "alimiter=limit=0.89:level=false" -c:a aac -b:a 192k -movflags +faststart "$OUT"
 rm -rf $W
