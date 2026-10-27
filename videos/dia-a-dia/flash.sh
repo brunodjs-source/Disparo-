@@ -1,5 +1,6 @@
 #!/bin/bash
 # Stories 9:16 em cortes rapidos: flash branco + click de camera a cada cena, 1 retrocesso.
+# Musica de banco gratuito: MUSIC=arquivo.mp3 MUSIC_START=seg flash.sh ...
 # Uso: flash.sh A.mov B.mov saida.mp4 "TITULO" "subtitulo"
 set -e
 A="$1"; B="$2"; OUT="$3"; T1="$4"; T2="$5"
@@ -46,7 +47,11 @@ for k in $(seq 0 $((i-1))); do
   if [ $k = 4 ]; then CUTS="$CUTS ${T}r"; else CUTS="$CUTS $T"; fi
   T=$(python3 -c "print($T+$d)")
 done
-python3 "$R/videos/dia-a-dia/trilha_impacto.py" $W/m.wav $D $CUTS
+if [ -n "$MUSIC" ]; then
+  ffmpeg -loglevel error -y -ss ${MUSIC_START:-0} -i "$MUSIC" -t $D -af "afade=t=out:st=$(python3 -c "print($D-0.8)"):d=0.8" -ar 48000 -ac 2 $W/m.wav
+else
+  python3 "$R/videos/dia-a-dia/trilha_impacto.py" $W/m.wav $D $CUTS
+fi
 MIX=$(for k in $(seq 0 $((i-1))); do printf "[x$k]"; done)
 GOLD=0xE8B36A
 ffmpeg -loglevel error -y -i $W/cat.mp4 -i "$SH" -i "$SW" -i $W/m.wav -filter_complex "\
