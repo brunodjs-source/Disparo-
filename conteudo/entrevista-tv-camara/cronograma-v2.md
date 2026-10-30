@@ -62,7 +62,7 @@ Link no reel não é clicável: o link vai na bio ou no sticker de link dos stor
 ## Roteiro dia a dia com legendas (aprovado em 30/10, 08h53)
 Horário de São Paulo. Toda legenda: sem travessão, sem emoji, sem promessa de resultado, 5 hashtags.
 
-### Sexta 30/10 · AGENDADO
+### Sexta 30/10 · EM RASCUNHO (aguarda o Bruno ver e aprovar)
 - 19h00 story · estático "Ele era DJ" (PostZen m1721xe8sd4tptqycs4bykqh6d8h8dgt). À mão: sticker de link do set no Mixcloud + enquete "Você sabia?".
 - 21h00 reel · Teaser 1 "Você sabia que eu era DJ?" (24 s, hip-hop-02) (PostZen m173zwhq1a77d0bs29sq4rsnjx8h9tdm). Gatilho: curiosidade.
 > Você sabia que eu era DJ?
@@ -147,3 +147,5 @@ Horário de São Paulo. Toda legenda: sem travessão, sem emoji, sem promessa de
 
 ### 09 a 13/11 (depende do Módulo 7 de segunda 09/11)
 - seg 21h tl03 "Você foi investir em equipamento?" · ter story mc03 · qua 21h tl04 "De trás pra frente" · qui story mc04 · sex 21h tl05 "A régua do tempo". Legendas no `pecas-e-calendario.md`, trocando o rodapé para formato notícia.
+
+Regra (30/10): nada sobe no PostZen como agendado sem o Bruno ver a peça pronta e aprovar. Peças novas entram como rascunho.
