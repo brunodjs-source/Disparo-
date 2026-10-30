@@ -58,3 +58,92 @@ Texto do Bruno: "Por 20 anos exerci a carreira como DJ, tocando com os maiores n
 Link do set: https://www.mixcloud.com/djbrunoferraz2/set-dj-bruno-ferraz-tomorrowland-brasil/ (publicado em 28/09/2014, 1h30, 522 plays).
 Atenção: a descrição do próprio set diz "Set dedicado ao maior festival de música do mundo! O set passa por diferentes pistas da Tomorrowland". Não está escrito que foi tocado no festival. A peça diz "set Tomorrowland Brasil", sem afirmar apresentação no palco, até o Bruno confirmar.
 Link no reel não é clicável: o link vai na bio ou no sticker de link dos stories.
+
+## Roteiro dia a dia com legendas (aprovado em 30/10, 08h53)
+Horário de São Paulo. Toda legenda: sem travessão, sem emoji, sem promessa de resultado, 5 hashtags.
+
+### Sexta 30/10 · AGENDADO
+- 19h00 story · estático "Ele era DJ" (PostZen m1721xe8sd4tptqycs4bykqh6d8h8dgt). À mão: sticker de link do set no Mixcloud + enquete "Você sabia?".
+- 21h00 reel · Teaser 1 "Você sabia que eu era DJ?" (24 s, hip-hop-02) (PostZen m173zwhq1a77d0bs29sq4rsnjx8h9tdm). Gatilho: curiosidade.
+> Você sabia que eu era DJ?
+> Por 20 anos exerci a carreira como DJ, tocando com os maiores nomes da música eletrônica do mundo e me tornando referência para muitos.
+> Foram 35 minutos de entrevista. O que eu contei vai ao ar no domingo, 1º de novembro, às 17h15, na TV Câmara Campinas: canal 11.3 da TV aberta, 04 da Claro e 09 da Vivo.
+> Você já sabia? Me conta aqui nos comentários.
+> #estrategistadelancamento #tvcamaracampinas #empreendedorismo #marketingdigital #campinas
+
+### Sábado 31/10
+- 12h00 story · estático "A pergunta da TV" (manchete com a pergunta, sem resposta) + caixa "O que você responderia?".
+- 18h30 reel · Teaser 2 "A pergunta" (timelapse com strobo, a pergunta fica na tela, a resposta não aparece; trap-electro-vibes). Gatilho: pergunta aberta.
+> Ela me fez uma pergunta que ninguém tinha feito antes.
+> A minha resposta está na entrevista que vai ao ar amanhã, domingo, às 17h15, na TV Câmara Campinas.
+> E você, o que teria respondido? Comenta aqui.
+> #estrategistadelancamento #tvcamaracampinas #bastidores #empreendedorismo #campinas
+- 19h00 story · contagem regressiva para domingo 17h15 (sticker à mão).
+
+### Domingo 01/11 · dia da exibição
+- 10h00 story · estático "Hoje, 17h15" com os canais.
+- 11h00 reel · chamada urgente da Mirna (já pronta, 36 s). Gatilho: autoridade.
+> É hoje. A TV Câmara Campinas exibe às 17h15 a minha entrevista no Ser Empreendedor.
+> Marketing digital, a minha transição de carreira e o que eu aprendi no caminho.
+> Canal 11.3 da TV aberta, 04 da Claro e 09 da Vivo.
+> #estrategistadelancamento #tvcamaracampinas #serempreendedor #marketingdigital #campinas
+- 16h45 story · "Em 30 minutos".
+- 17h15 story · "No ar agora" + canais.
+- 18h30 story · repostar quem marcar o perfil.
+
+### Segunda 02/11
+- 12h00 story · estático da frase "Acabou sendo uma profissão por 20 anos".
+- 21h00 reel · pb01 em formato notícia (close-up). Gatilho: história.
+> Fui DJ por 20 anos. Na entrevista à TV Câmara Campinas eu contei por que isso nunca foi uma aventura.
+> Antes do digital, eu aprendi como funcionava a noite, as casas e as festas. Foi ali que comecei a fazer estratégia de divulgação, muito antes de chamar isso de lançamento.
+> Manda para um expert que vai lançar este ano.
+> #estrategistadelancamento #lancamento #marketingdigital #empreendedorismo #campinas
+
+### Terça 03/11
+- 12h00 carrossel · car01 em formato jornal (capa + 4 frases + lista). Gatilho: história.
+> Eu só tinha um computador e um sonho. Quatro frases que eu disse na entrevista à TV Câmara Campinas, com o minuto de cada uma.
+> Qual delas pesa mais no seu próximo lançamento? Comenta o número.
+> #estrategistadelancamento #lancamento #marketingdigital #empreendedorismo #campinas
+- 16h00 story · pf01 dentista (franquia odontológica).
+
+### Quarta 04/11
+- 12h00 story · estático "De 45 mil para 250 mil".
+- 21h00 reel · pb02 em formato notícia (uplifting-bass). Gatilho: prova.
+> Um restaurante que vendia 45 mil. Colocamos ele para vender 250 mil com o marketing digital.
+> Contei esse caso na TV Câmara Campinas. O número de um caso não se repete igual em outro negócio. O que se repete é a ordem: entender o produto antes de anunciar.
+> Vai lançar nos próximos 90 dias? Me manda a data no direct.
+> #estrategistadelancamento #marketingdigital #restaurante #empreendedorismo #campinas
+
+### Quinta 05/11
+- 12h00 story · estático "Nem tudo que vemos é ouro".
+- 21h00 reel · ci01 em formato notícia (hazy-after-hours). Gatilho: erro comum.
+> Até hoje o melhor marketing é o olho no olho.
+> Na TV eu disse que nem tudo que vemos é ouro. Muita gente vende o que não consegue cumprir, e o cliente chega machucado. Por isso o encontro ainda decide a venda.
+> E você, o que teria respondido?
+> #estrategistadelancamento #marketingdigital #vendas #empreendedorismo #campinas
+
+### Sexta 06/11
+- 12h00 story · estático "Método Xeque-Mate".
+- 21h00 reel · po01 em formato notícia (deep-urban). Gatilho: diagnóstico.
+> O Método Xeque-Mate do jeito que eu expliquei na TV: os gatilhos corretos, cada jogada, cada posicionamento e o momento certo.
+> Qual dessas peças falta no seu lançamento? Comenta aqui.
+> Salva para conferir antes do próximo lançamento.
+> #metodoxequemate #estrategistadelancamento #lancamento #marketingdigital #estrategia
+
+### Sábado 07/11
+- 12h00 story · estático "Eu construí família".
+- 18h30 reel · tl02 em formato notícia (hip-hop-02). Gatilho: história.
+> Parte 2 do bastidor da minha entrevista à TV Câmara Campinas: empreender, os cases e o que mais importa.
+> Comenta o número do assunto que você quer ver inteiro.
+> #empreendedorismo #estrategistadelancamento #bastidores #familia #campinas
+
+### Domingo 08/11
+- 10h00 story · mc02 "Hoje eu sou estrategista".
+- 17h00 carrossel · "Edição extra: os casos que contei na TV". Gatilho: prova.
+> Os casos que eu contei na TV Câmara Campinas, em uma edição só: o restaurante, a franquia odontológica e o que eles têm em comum.
+> O número de um caso não se repete igual em outro negócio. A ordem se repete.
+> Salva e manda para quem vai lançar.
+> #estrategistadelancamento #lancamento #marketingdigital #cases #campinas
+
+### 09 a 13/11 (depende do Módulo 7 de segunda 09/11)
+- seg 21h tl03 "Você foi investir em equipamento?" · ter story mc03 · qua 21h tl04 "De trás pra frente" · qui story mc04 · sex 21h tl05 "A régua do tempo". Legendas no `pecas-e-calendario.md`, trocando o rodapé para formato notícia.

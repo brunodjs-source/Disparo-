@@ -1,0 +1,75 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:Cinzel;src:url(fonts/cinzel-latin.woff2)}
+@font-face{font-family:PI;src:url(fonts/playfair-italic-latin.woff2)}
+@font-face{font-family:Inter;src:url(fonts/Inter-Bold.otf);font-weight:700}
+@font-face{font-family:Inter;src:url(fonts/Inter-ExtraBold.otf);font-weight:800}
+@font-face{font-family:Inter;src:url(fonts/Inter-Black.otf);font-weight:900}
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:transparent}*{box-sizing:border-box}
+.top{position:absolute;left:0;top:210px;width:1080px;height:84px;display:flex}
+.top .u{background:#D7262E;color:#fff;font:900 44px Inter;letter-spacing:4px;display:flex;align-items:center;padding:0 30px;gap:16px}
+.top .dot{width:20px;height:20px;border-radius:50%;background:#fff}
+.top .x{flex:1;background:#141210;color:#F3C987;display:flex;align-items:center;padding-left:26px;font:800 30px Inter;letter-spacing:3px}
+.hook{position:absolute;left:60px;width:960px;top:1180px;font:900 104px Inter;line-height:.98;color:#fff;letter-spacing:-2px;text-transform:uppercase}
+.hook span{background:#D7262E;box-decoration-break:clone;-webkit-box-decoration-break:clone;padding:0 14px}
+.caret{display:inline-block;width:.07em;height:.8em;background:#fff;margin-left:.05em;vertical-align:-.05em}
+.clock{position:absolute;left:60px;top:330px;font:900 64px Inter;color:#fff;letter-spacing:2px;text-shadow:0 4px 20px rgba(0,0,0,.6)}
+.rec{display:inline-block;width:26px;height:26px;border-radius:50%;background:#D7262E;margin-right:14px;vertical-align:4px}
+.lbl{position:absolute;left:60px;width:960px;top:1260px;font:900 70px Inter;color:#fff;line-height:1.02;text-transform:uppercase}
+.lbl span{background:#141210;padding:4px 16px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.lbl b{color:#F3C987;font-weight:900}
+#end{position:absolute;inset:0;background:#F1EBDD}
+#end:after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.025) 0 2px,transparent 2px 4px)}
+.e{position:absolute;left:0;width:1080px;text-align:center;color:#151311}
+.t3{font:900 200px Inter;color:#fff;letter-spacing:-3px}
+.tick{position:absolute;left:0;top:1600px;width:1080px;height:72px;background:#141210;border-top:3px solid #D7262E;display:flex;align-items:center;overflow:hidden;white-space:nowrap;z-index:5}
+.tick .t{background:#D7262E;color:#fff;font:900 30px Inter;letter-spacing:2px;height:69px;display:flex;align-items:center;padding:0 22px;position:relative;z-index:2}
+.tick .r{position:absolute;font:800 32px Inter;color:#fff}.tick .r i{font-style:normal;color:#F3C987}
+#globe{position:absolute;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,#f2f2f2 45%,#bfc6cf);box-shadow:0 14px 34px rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;perspective:500px;z-index:6}
+#globe img{width:160px}
+</style></head><body>
+<div class="top" id="top"><div class="u"><div class="dot" id="dot"></div>URGENTE</div><div class="x">EDIÇÃO EXTRA · TV CÂMARA</div></div>
+<div class="clock" id="clock"></div>
+<div class="hook" id="hook"></div>
+<div class="lbl" id="lbl"></div>
+<div id="end"></div>
+<div class="tick" id="tick"><div class="t">ÚLTIMA HORA</div><div class="r" id="run"></div></div>
+<div id="globe"><img id="gimg" src="logo-tvcamara.png"></div>
+<script>
+const $=id=>document.getElementById(id),cl=x=>Math.max(0,Math.min(1,x)),eout=p=>1-Math.pow(1-cl(p),3),spr=p=>{p=cl(p);return 1-Math.exp(-6*p)*Math.cos(8*p)};
+const _cv=document.createElement('canvas').getContext('2d');function fit(s,size,max){_cv.font=`900 ${size}px Inter`;const w=_cv.measureText(s).width;return w>max?Math.floor(size*max/w):size}
+const EXT=(()=>{let s=[];for(let i=1;i<=12;i++)s.push(`0 ${i*1.6}px 0 ${i<6?'#B01E25':'#6E1217'}`);s.push('0 26px 30px rgba(0,0,0,.4)');return s.join(',')})();
+$('run').innerHTML=('DOMINGO, 1º DE NOVEMBRO, 17H15 <i>·</i> TV CÂMARA CAMPINAS <i>·</i> 11.3 TV ABERTA <i>·</i> 04 CLARO <i>·</i> 09 VIVO <i>·</i> ').repeat(4);
+const HOOK='Você sabia que eu era DJ?',CPS=18,A=0.25;   // gancho digitado
+const B=3.0,C=6.5,D=19.5,DUR=24;                    // pagina, timelapse, final
+function render(t){
+ // na pagina de jornal (B..C) a arte ja traz barra e faixa
+ const inB=t>=B&&t<C;$('top').style.visibility=$('tick').style.visibility=$('globe').style.visibility=inB?'hidden':'visible';
+ $('dot').style.opacity=Math.floor(t*2.5)%2?1:.2;
+ $('top').style.transform=`translateX(${(1-eout(t/0.4))*-1080}px)`;
+ $('run').style.left=(260-((t*170)%2400))+'px';
+ const n=Math.max(0,Math.floor((t-A)*CPS));const h=HOOK.slice(0,n);
+ $('hook').style.display=t<B?'block':'none';$('hook').innerHTML=`<span>${h}${n<HOOK.length||Math.floor(t*3)%2?'<span class="caret"></span>':''}</span>`;
+ // relogio do timelapse: 00:00 a 35:21
+ const p=cl((t-C)/(D-C));$('clock').style.display=t>=C&&t<D?'block':'none';
+ const s=Math.floor(p*2121);$('clock').innerHTML=`<span class="rec"></span>${String(Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`;
+ const L=[[C+0.3,C+6.3,'35 minutos de<br><b>entrevista</b>'],[C+6.5,D,'o que eu contei<br>vai ao ar <b>domingo</b>']];
+ let lb='';for(const [a,b,x] of L)if(t>=a&&t<b){const q=eout((t-a)/0.3);lb=`<span style="display:inline-block;transform:translateY(${(1-q)*40}px);opacity:${q}">${x}</span>`}
+ $('lbl').innerHTML=lb?`<span>${lb}</span>`:'';
+ // globo: gira e muda de lugar a cada bloco
+ const g=$('globe');const P=t<B?[860,320]:t<C?[860,1380]:t<D?[860,330]:[450,1390];g.style.left=P[0]+'px';g.style.top=P[1]+'px';
+ $('gimg').style.transform=`rotateY(${(t*144)%360}deg)`;g.style.transform=`scale(${spr((t-0.5)/0.6)})`;
+ // final: capa de jornal
+ const e=$('end');if(t<D){e.style.display='none'}else{e.style.display='block';const q=t-D;e.style.transform=`translateY(${(1-eout(q/0.4))*1920}px)`;
+  const ty=(s,t0)=>s.slice(0,Math.max(0,Math.floor((t-t0)*CPS)));
+  e.innerHTML=`<div class="e" style="top:330px;font:400 64px Cinzel;letter-spacing:3px">Edição Extra</div>
+  <div class="e" style="top:430px;font:900 34px Inter;letter-spacing:12px;color:#D7262E">VAI AO AR</div>
+  <div class="e t3" style="top:480px;font-size:${fit('DOMINGO',190,860)}px;text-shadow:${EXT}">${ty('DOMINGO',D+0.4)}</div>
+  <div class="e" style="top:720px;font:400 80px PI">1º de novembro</div>
+  <div class="e t3" style="top:820px;font-size:${fit('17H15',290,820)}px;text-shadow:${EXT}">${ty('17H15',D+0.9)}</div>
+  <div class="e" style="top:1170px;font:800 40px Inter;opacity:${cl((q-1.6)/0.4)}">11.3 TV ABERTA · 04 CLARO · 09 VIVO</div>`}
+}
+function events(){const ev=[];for(let i=0;i<HOOK.length;i++)if(HOOK[i]!==' ')ev.push(['k',A+i/CPS]);ev.push(['swap',B-0.25]);
+ for(let k=0;k<26;k++)ev.push(['clic',C+k*0.5]);ev.push(['swap',D-0.25]);for(let i=0;i<7;i++)ev.push(['k',D+0.4+i/CPS]);for(let i=0;i<5;i++)ev.push(['k',D+0.9+i/CPS]);ev.push(['end',D+1.3]);return ev}
+async function frame(t){render(t)}
+render(0);
+</script></body></html>
