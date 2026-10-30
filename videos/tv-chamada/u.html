@@ -37,7 +37,7 @@ html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#0d0c0b
 #tick .tag{position:absolute;left:0;top:0;height:69px;background:#D7262E;color:#fff;font:900 30px Inter;letter-spacing:2px;display:flex;align-items:center;padding:0 22px;z-index:2}
 #tick .run{position:absolute;top:14px;white-space:nowrap;font:800 34px Inter;color:#fff;letter-spacing:1px}
 #tick .run i{font-style:normal;color:#F3C987}
-#globe{position:absolute;width:190px;height:190px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff 0%,#f2f2f2 45%,#bfc6cf 100%);box-shadow:0 14px 34px rgba(0,0,0,.55),inset -14px -18px 30px rgba(0,0,0,.18);display:flex;align-items:center;justify-content:center;perspective:500px;z-index:20}
+#globe{position:absolute;width:190px;height:190px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff 0%,#f2f2f2 45%,#bfc6cf 100%);box-shadow:0 14px 34px rgba(0,0,0,.55),inset -14px -18px 30px rgba(0,0,0,.18);display:flex;align-items:center;justify-content:center;perspective:500px;z-index:40}
 #globe img{width:170px;backface-visibility:visible}
 #globe:after{content:'';position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 32% 26%,rgba(255,255,255,.9),transparent 30%)}
 .react{position:absolute;width:80px;height:80px;z-index:15}
@@ -122,7 +122,7 @@ function render(t){
  // globo: gira 360 e muda de lugar a cada troca
  const g=$('globe');const gi=Math.min(4,seg+(t>=30.6?1:0));let [gx,gy]=GPOS[gi];
  if(tr){const [ax,ay]=GPOS[seg],[bx,by]=GPOS[Math.min(4,seg+1)];const e=ease(frac);gx=ax+(bx-ax)*e;gy=ay+(by-ay)*e-Math.sin(Math.PI*e)*160}
- if(t>=30.6){const e=eout((t-30.6)/0.8);gx=445+( GPOS[3][0]-445)*(1-e);gy=1530+(GPOS[3][1]-1530)*(1-e)}
+ if(t>=30.6){const e=eout((t-30.6)/0.8);gx=445+(GPOS[3][0]-445)*(1-e);gy=1420+(GPOS[3][1]-1420)*(1-e)}
  g.style.left=gx+'px';g.style.top=gy+'px';
  const ang=(t*144)%360;$('gimg').style.transform=`rotateY(${ang}deg)`;
  g.style.transform=`scale(${spr((t-0.6)/0.6)*(t>=30.6?1.15:1)})`;
@@ -146,8 +146,8 @@ function render(t){
   <div class="t3" style="position:relative;width:auto;color:#fff;font-size:190px;text-shadow:${EXT};transform:perspective(900px) translateZ(${fw*90}px)">${h1}${g1?'<span class="caret"></span>':''}</div>
   <div style="font:400 84px PI;text-align:center;margin-top:10px">1º de novembro</div>
   <div class="t3" style="position:relative;width:auto;color:#fff;font-size:300px;text-shadow:${EXT};transform:perspective(900px) translateZ(${fw*120}px)">${h2}${g2?'<span class="caret"></span>':''}</div>
-  <div style="margin:30px auto 0;width:760px;border-top:4px double #151311;border-bottom:4px double #151311;padding:18px 0;text-align:center;font:800 46px Inter;opacity:${cl((p-2.2)/0.4)}">11.3 TV ABERTA · 04 CLARO · 09 VIVO</div>
-  <div class="stamp" style="top:520px;right:60px;opacity:${cl(st*3)};transform:rotate(-14deg) scale(${2.4-1.4*st})">URGENTE</div></div>`}
+  <div style="margin:30px auto 0;width:940px;border-top:4px double #151311;border-bottom:4px double #151311;padding:18px 0;text-align:center;font:800 40px Inter;opacity:${cl((p-2.2)/0.4)}">11.3 TV ABERTA · 04 CLARO · 09 VIVO</div>
+  <div class="stamp" style="top:1210px;right:110px;opacity:${cl(st*3)};transform:rotate(-14deg) scale(${2.4-1.4*st})">URGENTE</div></div>`}
 }
 // eventos de som (maquina de escrever, trocas, carimbo) para a mixagem
 function events(){const ev=[];
