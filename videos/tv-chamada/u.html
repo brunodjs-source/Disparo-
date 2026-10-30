@@ -1,0 +1,160 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:Cinzel;src:url(fonts/cinzel-latin.woff2)}
+@font-face{font-family:PI;src:url(fonts/playfair-italic-latin.woff2)}
+@font-face{font-family:PF;src:url(../v02/fonts/Playfair.ttf)}
+@font-face{font-family:Inter;src:url(fonts/Inter-Medium.otf);font-weight:500}
+@font-face{font-family:Inter;src:url(fonts/Inter-Bold.otf);font-weight:700}
+@font-face{font-family:Inter;src:url(fonts/Inter-ExtraBold.otf);font-weight:800}
+@font-face{font-family:Inter;src:url(fonts/Inter-Black.otf);font-weight:900}
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#0d0c0b}
+*{box-sizing:border-box}
+#stage{position:absolute;inset:0;background:#0d0c0b}
+.grid{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1.4px);background-size:14px 14px}
+.panel{position:absolute;left:0;width:1080px;height:630px;overflow:hidden;transform-origin:50% 50%}
+.vid{position:absolute;left:-20px;top:0;width:1120px;height:630px}
+.cut{position:absolute;left:-20px;top:0;width:1120px;height:630px;mask-mode:luminance;-webkit-mask-size:100% 100%;mask-size:100% 100%}
+.t3{position:absolute;left:0;width:1080px;text-align:center;font:900 150px Inter;color:#fff;letter-spacing:-2px;white-space:nowrap;transform-origin:50% 60%}
+.caret{display:inline-block;width:.08em;height:.8em;background:#D7262E;margin-left:.04em;vertical-align:-.05em}
+.cap{position:absolute;left:30px;right:30px;bottom:26px;text-align:left}
+.cap span{background:#0d0c0b;color:#fff;font:800 40px Inter;line-height:1.38;padding:4px 12px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.cap b{color:#F3C987}
+.page{position:absolute;inset:0;background:#F1EBDD;color:#151311;padding:26px 36px;overflow:hidden}
+.page:after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 20%,rgba(255,255,255,.35),transparent 60%),repeating-linear-gradient(0deg,rgba(0,0,0,.025) 0 2px,transparent 2px 4px);pointer-events:none}
+.mh{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:4px double #151311;padding-bottom:8px}
+.mh .n{font:400 46px Cinzel;letter-spacing:3px}.mh .d{font:700 18px Inter;letter-spacing:3px;text-align:right}
+.hl{font:900 74px Inter;line-height:.98;letter-spacing:-2px;margin-top:16px;text-transform:uppercase;min-height:150px}
+.row{display:flex;gap:24px;margin-top:14px}
+.ph{width:470px;height:300px;background-size:cover;background-position:center;filter:contrast(1.25) grayscale(1);position:relative;flex:none}
+.ph:after{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(0,0,0,.35) 1px,transparent 1.6px);background-size:5px 5px;mix-blend-mode:multiply}
+.sub{font:400 34px PI;line-height:1.2}
+.txt{font:400 17px PF;line-height:1.35;text-align:justify;column-count:2;column-gap:18px;margin-top:10px;color:#2a2622}
+.stamp{position:absolute;right:30px;top:440px;border:7px solid #D7262E;color:#D7262E;font:900 64px Inter;letter-spacing:4px;padding:2px 22px;transform-origin:50% 50%;mix-blend-mode:multiply}
+#top{position:absolute;left:0;top:200px;width:1080px;height:84px;display:flex;align-items:center}
+#top .u{background:#D7262E;color:#fff;font:900 44px Inter;letter-spacing:4px;height:84px;display:flex;align-items:center;padding:0 30px;gap:16px}
+#top .dot{width:20px;height:20px;border-radius:50%;background:#fff}
+#top .x{flex:1;background:#141210;color:#F3C987;height:84px;display:flex;align-items:center;padding-left:26px;font:800 32px Inter;letter-spacing:3px}
+#tick{position:absolute;left:0;top:1596px;width:1080px;height:72px;background:#141210;overflow:hidden;border-top:3px solid #D7262E}
+#tick .tag{position:absolute;left:0;top:0;height:69px;background:#D7262E;color:#fff;font:900 30px Inter;letter-spacing:2px;display:flex;align-items:center;padding:0 22px;z-index:2}
+#tick .run{position:absolute;top:14px;white-space:nowrap;font:800 34px Inter;color:#fff;letter-spacing:1px}
+#tick .run i{font-style:normal;color:#F3C987}
+#globe{position:absolute;width:190px;height:190px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff 0%,#f2f2f2 45%,#bfc6cf 100%);box-shadow:0 14px 34px rgba(0,0,0,.55),inset -14px -18px 30px rgba(0,0,0,.18);display:flex;align-items:center;justify-content:center;perspective:500px;z-index:20}
+#globe img{width:170px;backface-visibility:visible}
+#globe:after{content:'';position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 32% 26%,rgba(255,255,255,.9),transparent 30%)}
+.react{position:absolute;width:80px;height:80px;z-index:15}
+#flash{position:absolute;inset:0;background:#fff;pointer-events:none;z-index:30}
+#end{position:absolute;inset:0;z-index:25}
+svg{position:absolute}
+</style></head><body>
+<svg width="0" height="0"><filter id="warp" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence id="tb" type="fractalNoise" baseFrequency="0.008 0.03" numOctaves="2" seed="4"/><feDisplacementMap id="dm" in="SourceGraphic" scale="0" xChannelSelector="R" yChannelSelector="G"/></filter></svg>
+<div id="stage"><div class="grid"></div>
+ <div id="pa" class="panel"></div><div id="pb" class="panel"></div>
+ <div id="top"><div class="u"><div class="dot" id="dot"></div>URGENTE</div><div class="x">EDIÇÃO EXTRA · SER EMPREENDEDOR</div></div>
+ <div id="tick"><div class="tag">ÚLTIMA HORA</div><div class="run" id="run"></div></div>
+ <div id="rx"></div>
+ <div id="end"></div>
+ <div id="globe"><img id="gimg" src="logo-tvcamara.png"></div>
+ <div id="flash"></div>
+</div>
+<script>
+const Q=new URLSearchParams(location.search), FR=Q.get('fr'), MK=Q.get('mk');
+const $=id=>document.getElementById(id), cl=x=>Math.max(0,Math.min(1,x)), ease=p=>{p=cl(p);return p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2}, eout=p=>1-Math.pow(1-cl(p),3);
+const spr=p=>{p=cl(p);return 1-Math.exp(-6*p)*Math.cos(8*p)};
+const YA=300,YB=950,SW=[7.2,18.6,25.4],TD=0.7; // trocas de painel
+// vPos: 0 = video em cima, 1 = video embaixo
+function vpos(t){let s=0;for(const k of SW){s+= ease((t-k+TD/2)/TD)}return s%2===1||s>3?s:s} // acumulado 0..3
+const TICK='ESTREIA DOMINGO, 1º DE NOVEMBRO, ÀS 17H15 <i>·</i> SER EMPREENDEDOR <i>·</i> TV CÂMARA CAMPINAS <i>·</i> 11.3 TV ABERTA <i>·</i> 04 CLARO <i>·</i> 09 VIVO <i>·</i> ';
+$('run').innerHTML=TICK.repeat(4);
+const W=[["O",2.22],["Ser",2.9],["Empreendedor",3.1],["desta",3.86],["semana",4.36],["vai",4.96],["falar",5.26],["sobre",5.52],["marketing",5.96],["digital",6.5],["e",7.18],["a",7.68],["primeira",7.76],["história",8.04],["é",8.62],["do",9.0],["Bruno,",9.2],["que",9.8],["depois",10.02],["de",10.4],["mais",10.66],["de",10.88],["20",11.12],["anos",11.44],["em",11.78],["outra",12.2],["profissão",12.64],["fez",13.36],["transição",13.68],["de",14.26],["carreira",14.42],["e",14.84],["hoje",15.36],["colhe",15.66],["os",16.3],["frutos",16.5],["desta",16.86],["trajetória.",17.54],["E",18.82],["a",19.08],["gente",19.18],["vai",19.38],["contar",19.62],["também",19.86],["a",20.32],["história",20.56],["da",21.0],["Marília,",21.24],["que",22.0],["atua",22.3],["com",22.7],["consultoria",22.96],["para",23.88],["e-commerce.",24.18],["Domingo,",25.54],["17h15.",26.46],["Eu",27.76],["te",28.08],["espero",28.22],["aqui",28.48],["na",28.82],["TV",28.94],["Câmara",29.18],["Campinas.",29.6]];
+const G=[[0,5,2.22,4.92],[5,10,4.96,7.12],[10,17,7.18,9.75],[17,24,9.8,12.15],[24,31,12.2,14.8],[31,38,14.84,18.6],[38,48,18.82,21.95],[48,54,22.0,25.4],[54,56,25.5,27.7],[56,64,27.76,30.5]];
+const HL=new Set(["Empreendedor","marketing","digital","Bruno,","20","anos","transição","carreira","frutos","Marília,","e-commerce.","Domingo,","17h15.","TV","Câmara","Campinas."]);
+// letreiros 3D: digita atras da pessoa, depois vem para a frente da tela
+const T3=[["SER",2.9,4.6,6.9,170,40],["EMPREENDEDOR",3.1,4.7,6.9,118,215],["20 ANOS",11.0,12.3,13.5,210,90],["TRANSIÇÃO",13.6,14.8,17.8,150,120],["MARÍLIA",21.1,22.2,23.0,190,100],["E-COMMERCE",23.0,24.2,25.2,140,120],["DOMINGO",25.5,26.3,30.4,170,40],["17H15",26.4,27.3,30.4,230,210]];
+const EXT=(()=>{let s=[];for(let i=1;i<=12;i++)s.push(`0 ${i*1.6}px 0 ${i<6?'#B01E25':'#6E1217'}`);s.push('0 26px 30px rgba(0,0,0,.6)');return s.join(',')})();
+const CPS=16; // caracteres por segundo da maquina de escrever
+const PAGES=[
+ {t0:0,t1:7.2,d:'ESPECIAL',h:'Ser Empreendedor estreia na TV',s:'Marketing digital é o tema desta semana',ph:'foto-pb-12.5.jpg'},
+ {t0:7.2,t1:18.6,d:'CARREIRA',h:'Mais de 20 anos em outra profissão',s:'Bruno Israel conta como fez a transição para o marketing',ph:'foto-pb-12.5.jpg'},
+ {t0:18.6,t1:25.4,d:'NEGÓCIOS',h:'Consultoria para e-commerce',s:'A história de Marília Tannuri',ph:'foto-pb-22.jpg'},
+ {t0:25.4,t1:30.6,d:'PROGRAMAÇÃO',h:'Domingo, 17h15',s:'Estreia na TV Câmara Campinas',ph:'foto-pb-27.jpg'}];
+const LOREM='O programa Ser Empreendedor da TV Câmara Campinas apresenta histórias reais de quem decidiu empreender na cidade. Nesta edição, o tema é marketing digital: como planejar, comunicar e vender com estratégia. As entrevistas mostram o caminho de cada convidado, os desafios da mudança e o que aprenderam ao longo da trajetória. O programa vai ao ar no canal 11.3 da TV aberta, no canal 04 da Claro e no canal 09 da Vivo. ';
+function typed(s,t0,t){const n=Math.max(0,Math.floor((t-t0)*CPS));return [s.slice(0,n),n<s.length]}
+function pageHTML(P,t){const [h,go]=typed(P.h,P.t0+0.45,t);const st=spr((t-P.t0-0.5-P.h.length/CPS)/0.35);
+ return `<div class="page"><div class="mh"><div class="n">Edição Extra</div><div class="d">${P.d}<br>CAMPINAS</div></div>
+ <div class="hl">${h}${go||Math.floor(t*2)%2?'<span class="caret"></span>':''}</div>
+ <div class="row"><div class="ph" style="background-image:url('${P.ph}')"></div><div><div class="sub">${P.s}</div><div class="txt">${LOREM}</div></div></div>
+ <div class="stamp" style="opacity:${cl(st*3)};transform:rotate(-12deg) scale(${2.2-1.2*st})">URGENTE</div></div>`}
+function fr(t){return String(Math.min(918,Math.floor(t*30))+1).padStart(5,'0')}
+function vidHTML(t,y){const f=fr(t);let back='',front='';
+ for(const [s,a,b,e,size,dy] of T3){if(t<a||t>e+0.35)continue;const [txt,go]=typed(s,a,t);const fw=cl((t-b)/0.45),out=cl((t-e)/0.35);
+  const style=`top:${dy}px;font-size:${size}px;text-shadow:${EXT};opacity:${1-out}`;
+  const tr=`perspective(900px) translateZ(${eout(fw)*160}px) translateY(${eout(fw)*-10}px) rotateX(${(1-eout(fw))*8}deg)`;
+  const el=`<div class="t3" style="${style};transform:${tr}">${txt}${go?'<span class="caret"></span>':''}</div>`;
+  if(fw>0)front+=el;else back+=el}
+ let cap='';for(const [a,b,s,e] of G){if(t>=s&&t<e){let h='';for(let i=a;i<b;i++){const [w,ws]=W[i];if(t<ws-0.05)break;h+=(HL.has(w)?`<b>${w}</b>`:w)+' '}cap=`<div class="cap"><span>${h.trim()}</span></div>`}}
+ return `<img class="vid" src="${FR}/${f}.jpg"><div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.15),transparent 30%,transparent 70%,rgba(0,0,0,.35))"></div>${back}<img class="cut" src="${MK}/${f}.webp">${front}${cap}`}
+const GPOS=[[860,300],[40,880],[850,960],[445,1380],[445,1380]];
+function render(t){
+ // trocas: k = numero de trocas concluidas (fracionado)
+ let k=0;for(const s of SW)k+=ease((t-s+TD/2)/TD);
+ const seg=Math.min(3,Math.floor(k+1e-6)), frac=k-Math.floor(k);
+ const vidBottomStart=seg%2===1; // posicao no inicio do segmento
+ // durante a troca, o video viaja da posicao atual para a outra
+ const vy0=vidBottomStart?YB:YA, vy1=vidBottomStart?YA:YB;
+ const tr=t<30.6&&frac>0&&frac<1, m=tr?frac:0;
+ const vy=vy0+(vy1-vy0)*m, py=(vy0===YA?YB:YA)+((vy0===YA?YA:YB)-(vy0===YA?YB:YA))*m;
+ const P=PAGES[Math.min(3,seg+(tr&&frac>0.5?1:0))];
+ const w=Math.sin(Math.PI*m); // intensidade do warp
+ const pa=$('pa'),pb=$('pb');
+ pa.innerHTML=vidHTML(t,vy);pa.style.top=vy+'px';
+ pb.innerHTML=t<30.6?pageHTML(P,t):'';pb.style.top=py+'px';
+ const sk=(vy1>vy0?1:-1);
+ pa.style.transform=`perspective(1200px) rotateX(${w*18*sk}deg) scale(${1-0.1*w}) skewX(${w*4}deg)`;
+ pb.style.transform=`perspective(1200px) rotateX(${-w*18*sk}deg) scale(${1-0.1*w}) skewX(${-w*4}deg) rotate(${-0.8+0.8*w}deg)`;
+ pa.style.filter=pb.style.filter=w>0.02?`url(#warp) drop-shadow(${w*14}px 0 0 rgba(215,38,46,.6)) drop-shadow(${-w*14}px 0 0 rgba(0,200,255,.45))`:'none';
+ $('dm').setAttribute('scale',(w*90).toFixed(1));
+ pa.style.zIndex=w>0?2:1;
+ $('flash').style.opacity=tr?Math.max(0,1-Math.abs(m-0.5)*8)*0.85:0;
+ // topo e ticker
+ $('dot').style.opacity=Math.floor(t*2.5)%2?1:0.2;
+ $('run').style.left=(230-((t*170)%2400))+'px';
+ const ub=$('top');ub.style.transform=`translateX(${(1-eout(t/0.5))*-1080}px)`;
+ $('tick').style.transform=`translateY(${(1-eout((t-0.2)/0.5))*120}px)`;
+ // globo: gira 360 e muda de lugar a cada troca
+ const g=$('globe');const gi=Math.min(4,seg+(t>=30.6?1:0));let [gx,gy]=GPOS[gi];
+ if(tr){const [ax,ay]=GPOS[seg],[bx,by]=GPOS[Math.min(4,seg+1)];const e=ease(frac);gx=ax+(bx-ax)*e;gy=ay+(by-ay)*e-Math.sin(Math.PI*e)*160}
+ if(t>=30.6){const e=eout((t-30.6)/0.8);gx=445+( GPOS[3][0]-445)*(1-e);gy=1530+(GPOS[3][1]-1530)*(1-e)}
+ g.style.left=gx+'px';g.style.top=gy+'px';
+ const ang=(t*144)%360;$('gimg').style.transform=`rotateY(${ang}deg)`;
+ g.style.transform=`scale(${spr((t-0.6)/0.6)*(t>=30.6?1.15:1)})`;
+ // reacoes
+ const ICON={h:'<svg viewBox="0 0 24 24" width="80" height="80" style="position:static"><path fill="#E8475F" d="M12 21s-7.5-4.6-9.6-9.3C.9 8.2 3 4.5 6.7 4.5c2.2 0 3.6 1.3 4.3 2.4.7-1.1 2.1-2.4 4.3-2.4 3.7 0 5.8 3.7 4.3 7.2C19.5 16.4 12 21 12 21z"/></svg>',
+  f:'<svg viewBox="0 0 24 24" width="80" height="80" style="position:static"><path fill="#F59E2B" d="M12 22c-4.4 0-7-2.9-7-6.6 0-3.9 3-6 4-9.4.4 2.2 1.5 3.4 2.5 4C11.6 6.6 13.6 4 15.4 2c.1 3.5 3.6 6.2 3.6 11.2C19 18.9 16.4 22 12 22z"/><path fill="#FFD36B" d="M12 21c-2 0-3.2-1.3-3.2-3 0-1.9 1.4-2.8 1.9-4.4.6 1 1.4 1.6 2.2 1.8.3-1.5 1.2-2.6 1.8-3.4.4 2.2 1.7 3.2 1.7 5.4 0 2.2-1.9 3.6-4.4 3.6z"/></svg>',
+  c:'<svg viewBox="0 0 24 24" width="80" height="80" style="position:static"><circle cx="12" cy="12" r="11" fill="#D7262E"/><path fill="#fff" d="M10.5 6h3l-.5 8h-2zM12 15.5a1.5 1.5 0 110 3 1.5 1.5 0 010-3z"/></svg>'};
+ let rx='';const ks=['h','f','h','c','h','f','h'];
+ for(let i=0;i<80;i++){const s0=1.2+i*0.36;const age=t-s0;if(age<0||age>2.8||t>30.4)continue;const r=Math.sin(i*12.9898)*0.5+0.5;
+  const x=930+r*60+Math.sin(age*3+i)*20, y=vy+600-age*300, o=age<0.15?age/0.15:1-cl((age-2.1)/0.7), sc=0.6+0.5*spr(age/0.45)*(0.7+0.3*r);
+  rx+=`<div class="react" style="left:${x}px;top:${y}px;opacity:${o};transform:scale(${sc}) rotate(${(r-0.5)*30}deg)">${ICON[ks[i%7]]}</div>`}
+ $('rx').innerHTML=rx;
+ // cartela final: capa de jornal
+ const E=30.6,end=$('end');
+ if(t<E){end.innerHTML='';end.style.opacity=0}else{const p=t-E;end.style.opacity=1;
+  const [h1,g1]=typed('DOMINGO',E+0.5,t),[h2,g2]=typed('17H15',E+1.05,t);const fw=eout((t-E-1.6)/0.5),st=spr((t-E-2.0)/0.35);
+  end.style.transform=`translateY(${(1-eout(p/0.45))*1920}px) rotate(${(1-eout(p/0.45))*-6}deg)`;
+  end.innerHTML=`<div class="page" style="padding:240px 60px 0">
+  <div class="mh"><div class="n" style="font-size:64px">Edição Extra</div><div class="d" style="font-size:22px">PROGRAMAÇÃO<br>CAMPINAS</div></div>
+  <div style="font:700 30px Inter;letter-spacing:12px;color:#D7262E;margin-top:30px;text-align:center">ESTREIA</div>
+  <div class="t3" style="position:relative;width:auto;color:#fff;font-size:190px;text-shadow:${EXT};transform:perspective(900px) translateZ(${fw*90}px)">${h1}${g1?'<span class="caret"></span>':''}</div>
+  <div style="font:400 84px PI;text-align:center;margin-top:10px">1º de novembro</div>
+  <div class="t3" style="position:relative;width:auto;color:#fff;font-size:300px;text-shadow:${EXT};transform:perspective(900px) translateZ(${fw*120}px)">${h2}${g2?'<span class="caret"></span>':''}</div>
+  <div style="margin:30px auto 0;width:760px;border-top:4px double #151311;border-bottom:4px double #151311;padding:18px 0;text-align:center;font:800 46px Inter;opacity:${cl((p-2.2)/0.4)}">11.3 TV ABERTA · 04 CLARO · 09 VIVO</div>
+  <div class="stamp" style="top:520px;right:60px;opacity:${cl(st*3)};transform:rotate(-14deg) scale(${2.4-1.4*st})">URGENTE</div></div>`}
+}
+// eventos de som (maquina de escrever, trocas, carimbo) para a mixagem
+function events(){const ev=[];
+ for(const [s,a,b] of T3)for(let i=0;i<s.length;i++)if(s[i]!==' ')ev.push(['k',a+i/CPS]);
+ for(const P of PAGES){for(let i=0;i<P.h.length;i+=2)ev.push(['k2',P.t0+0.45+i/CPS]);ev.push(['stamp',P.t0+0.5+P.h.length/CPS])}
+ for(const s of SW)ev.push(['swap',s-0.3]);
+ for(let i=0;i<7;i++)if('DOMINGO'[i])ev.push(['k',30.6+0.5+i/CPS]);for(let i=0;i<5;i++)ev.push(['k',30.6+1.05+i/CPS]);
+ ev.push(['end',30.6]);ev.push(['stamp',32.6]);return ev}
+async function frame(t){render(t);await Promise.all([...document.images].map(i=>i.complete?0:i.decode().catch(()=>0)))}
+</script></body></html>
