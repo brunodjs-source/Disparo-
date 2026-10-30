@@ -1,0 +1,8 @@
+Efeitos sonoros do Mixkit (mixkit.co), Mixkit Sound Effects Free License: uso comercial sem atribuicao.
+tecla.mp3    Mechanical typewriter hit      https://assets.mixkit.co/active_storage/sfx/1382/1382-preview.mp3
+tecla2.mp3   Hard typewriter click          https://assets.mixkit.co/active_storage/sfx/1372/1372-preview.mp3
+sino.mp3     Typewriter return bell         https://assets.mixkit.co/active_storage/sfx/1377/1377-preview.mp3
+whoosh.mp3   Cinematic whoosh fast transition https://assets.mixkit.co/active_storage/sfx/1491/1491-preview.mp3
+impacto.mp3  Movie trailer epic impact      https://assets.mixkit.co/active_storage/sfx/2198/2198-preview.mp3
+carimbo.mp3  Wood hard hit                  https://assets.mixkit.co/active_storage/sfx/2589/2589-preview.mp3
+shutter.mp3  Camera shutter click           https://assets.mixkit.co/active_storage/sfx/1430/1430-preview.mp3
