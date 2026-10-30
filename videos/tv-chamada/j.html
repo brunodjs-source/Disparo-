@@ -1,0 +1,105 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:Cinzel;src:url(fonts/cinzel-latin.woff2)}
+@font-face{font-family:PI;src:url(fonts/playfair-italic-latin.woff2)}
+@font-face{font-family:PF;src:url(../v02/fonts/Playfair.ttf)}
+@font-face{font-family:Inter;src:url(fonts/Inter-Medium.otf);font-weight:500}
+@font-face{font-family:Inter;src:url(fonts/Inter-Bold.otf);font-weight:700}
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:transparent}
+*{box-sizing:border-box}
+.L{position:absolute;inset:0}
+#back{background:#141210}
+.cols{position:absolute;inset:0;opacity:.07;font:400 19px PF;color:#E8DCC2;line-height:1.35;column-count:4;column-gap:30px;padding:40px;text-align:justify;overflow:hidden}
+.t3{position:absolute;left:0;width:1080px;text-align:center;font-family:Cinzel;color:#F3C987;white-space:nowrap;transform-origin:50% 100%}
+.paper{position:absolute;background:#EFE7D6;filter:drop-shadow(0 18px 30px rgba(0,0,0,.55))}
+.tape{position:absolute;width:150px;height:44px;background:rgba(232,220,190,.72);box-shadow:0 2px 6px rgba(0,0,0,.25)}
+.lbl{position:absolute;background:#EFE7D6;color:#141210;padding:10px 22px;font:400 46px PI;box-shadow:0 8px 20px rgba(0,0,0,.45);white-space:nowrap}
+.lbl b{font-weight:400;color:#9A6A1E}
+.mast{position:absolute;left:90px;width:900px;top:150px;text-align:center;color:#EFE7D6}
+.react{position:absolute;width:76px;height:76px}
+#end{position:absolute;inset:0;background:#141210}
+.e{position:absolute;left:0;width:1080px;text-align:center}
+</style></head><body>
+<div id="back" class="L">
+ <div class="cols" id="cols"></div>
+ <div id="t1" class="t3"></div><div id="t2" class="t3"></div><div id="t3" class="t3"></div>
+</div>
+<div id="front" class="L">
+ <div class="mast" id="mast"><div style="font:700 22px Inter;letter-spacing:9px;color:#E8B36A">EDIÇÃO ESPECIAL</div><div style="height:1px;background:#E8B36A;margin:8px 120px"></div></div>
+ <div id="p1" class="paper"></div><div id="p2" class="paper"></div>
+ <div id="tp1" class="tape"></div><div id="tp2" class="tape"></div><div id="tp3" class="tape"></div>
+ <img id="logo" src="logo-tvcamara.png" style="position:absolute;width:250px;background:#fff;padding:10px 14px;border-radius:6px;box-shadow:0 8px 20px rgba(0,0,0,.45)">
+ <div id="cap" class="lbl"></div>
+ <div id="lt" class="lbl" style="font:400 36px Cinzel"></div>
+ <div id="rx"></div>
+ <div id="end">
+  <div class="cols" style="opacity:.06"></div>
+  <div class="e" id="e1" style="top:360px;font:700 30px Inter;letter-spacing:14px;color:#E8B36A">ESTREIA</div>
+  <div class="e t3" id="e2" style="top:420px;font-size:150px">DOMINGO</div>
+  <div class="e" id="e3" style="top:640px;font:400 80px PI;color:#EFE7D6">1º de novembro</div>
+  <div class="e t3" id="e4" style="top:740px;font-size:300px">17H15</div>
+  <div class="e" id="e5" style="top:1160px"><div style="display:inline-block;background:#EFE7D6;color:#141210;padding:26px 50px;transform:rotate(-1.5deg);box-shadow:0 14px 30px rgba(0,0,0,.5)"><div style="font:700 26px Inter;letter-spacing:8px;color:#9A6A1E">ONDE ASSISTIR</div><div style="font:400 50px Cinzel;line-height:1.5;margin-top:8px">11.3 TV aberta<br>04 Claro · 09 Vivo</div></div></div>
+  <img id="e6" src="logo-tvcamara.png" style="position:absolute;left:415px;top:1530px;width:250px;background:#fff;padding:10px 14px;border-radius:6px">
+ </div>
+</div>
+<script>
+const LAYER=new URLSearchParams(location.search).get('layer');
+document.getElementById(LAYER==='back'?'front':'back').style.display='none';
+const COLS=('Ser empreendedor transição de carreira marketing digital lançamento estratégia história trajetória consultoria e-commerce Campinas entrevista televisão domingo estreia ').repeat(220);
+document.getElementById('cols').textContent=COLS;document.querySelector('#end .cols').textContent=COLS;
+const $=id=>document.getElementById(id), cl=x=>Math.max(0,Math.min(1,x)), ease=p=>1-Math.pow(1-cl(p),3);
+const spr=p=>{p=cl(p);return 1-Math.exp(-6*p)*Math.cos(8*p)};
+// geometria compartilhada com o ffmpeg (montar2.sh)
+const PW=920,PH=518,PX=80,Y1=230,Y2=1130,YC=(1920-2*PH)/2; // fechado: um em cima do outro no centro
+function geo(t){const p=spr((t-0.5)/0.9);return [YC+(Y1-YC)*p, YC+PH+(Y2-YC-PH)*p]}
+function rough(seed,w,h,a){let pts=[],r=s=>{s=Math.sin(s)*43758.5453;return s-Math.floor(s)};const n=40;
+ for(let i=0;i<=n;i++)pts.push([i/n*w, r(seed+i)*a]);for(let i=0;i<=n;i++)pts.push([w-r(seed+50+i)*a, i/n*h]);
+ for(let i=n;i>=0;i--)pts.push([i/n*w, h-r(seed+99+i)*a]);for(let i=n;i>=0;i--)pts.push([r(seed+150+i)*a, i/n*h]);
+ return 'polygon('+pts.map(([x,y])=>`${x.toFixed(1)}px ${y.toFixed(1)}px`).join(',')+')'}
+const B=22; // borda de papel
+['p1','p2'].forEach((id,i)=>{const e=$(id);e.style.left=(PX-B)+'px';e.style.width=(PW+2*B)+'px';e.style.height=(PH+2*B)+'px';e.style.clipPath=rough(7+i*31,PW+2*B,PH+2*B,9);
+ // furo: o video aparece por baixo
+ e.style.webkitMask=e.style.mask=`linear-gradient(#000,#000) content-box exclude,linear-gradient(#000,#000)`;e.style.padding=B+'px'});
+const W=[["O",2.22],["Ser",2.9],["Empreendedor",3.1],["desta",3.86],["semana",4.36],["vai",4.96],["falar",5.26],["sobre",5.52],["marketing",5.96],["digital",6.5],["e",7.18],["a",7.68],["primeira",7.76],["história",8.04],["é",8.62],["do",9.0],["Bruno",9.2],["que",9.8],["depois",10.02],["de",10.4],["mais",10.66],["de",10.88],["20",11.12],["anos",11.44],["em",11.78],["outra",12.2],["profissão",12.64],["fez",13.36],["transição",13.68],["de",14.26],["carreira",14.42],["e",14.84],["hoje",15.36],["colhe",15.66],["os",16.3],["frutos",16.5],["desta",16.86],["trajetória",17.54],["E",18.82],["a",19.08],["gente",19.18],["vai",19.38],["contar",19.62],["também",19.86],["a",20.32],["história",20.56],["da",21.0],["Marília",21.24],["que",22.0],["atua",22.3],["com",22.7],["consultoria",22.96],["para",23.88],["e-commerce",24.18],["Domingo,",25.54],["17h15",26.46],["Eu",27.76],["te",28.08],["espero",28.22],["aqui",28.48],["na",28.82],["TV",28.94],["Câmara",29.18],["Campinas",29.6]];
+const G=[[0,5,2.22,4.92],[5,10,4.96,7.12],[10,17,7.18,9.75],[17,24,9.8,12.15],[24,31,12.2,14.8],[31,38,14.84,18.6],[38,48,18.82,21.95],[48,54,22.0,25.4],[54,56,25.5,27.7],[56,64,27.76,30.4]];
+const HL=new Set(["Empreendedor","marketing","digital","Bruno","20","anos","transição","carreira","frutos","Marília","e-commerce","Domingo,","17h15","TV","Câmara","Campinas"]);
+function ext(color,n){let s=[];for(let i=1;i<=n;i++)s.push(`0 ${i*2}px 0 ${color}`);s.push(`0 ${n*2+6}px 26px rgba(0,0,0,.7)`);return s.join(',')}
+const EXT=ext('#8A5A1C',10);
+function rise(id,txt,size,top,t0,t1){const e=$(id);e.textContent=txt;e.style.fontSize=size+'px';e.style.textShadow=EXT;
+ const p=ease((t-t0)/0.7),q=ease((t-t1)/0.4);e.style.top=top+'px';
+ e.style.transform=`perspective(900px) translateY(${(1-p)*size*1.4 - q*size*0.6}px) rotateX(${(1-p)*55}deg)`;e.style.opacity=t<t0||t>t1+0.4?0:1-q}
+let t=0;
+function render(T){t=T;const [y1,y2]=geo(t);
+ if(LAYER==='back'){
+  const gap=y2-(y1+PH); // espaco entre paineis
+  rise('t1','SER EMPREENDEDOR',86,y1+PH+gap/2-60,0.9,4.6);
+  rise('t2','DOMINGO',96,y1+PH+70,4.8,30.2);
+  rise('t3','17H15',150,y1+PH+178,5.1,30.2);
+  return}
+ $('p1').style.top=(y1-B)+'px';$('p2').style.top=(y2-B)+'px';
+ 
+ const tp=[['tp1',PX-40,y1-30,-28],['tp2',PX+PW-110,y1-26,24],['tp3',PX+PW-120,y2+PH-14,-20]];
+ tp.forEach(([id,x,y,r])=>{const e=$(id);e.style.left=x+'px';e.style.top=y+'px';e.style.transform=`rotate(${r}deg)`;e.style.opacity=ease((t-1.2)/0.3)});
+ const lg=$('logo');const lp=spr((t-1.4)/0.6);lg.style.left=(PX+20)+'px';lg.style.top=(y2+PH-70)+'px';lg.style.transform=`rotate(-4deg) scale(${lp})`;
+ $('mast').style.opacity=ease((t-0.3)/0.5);$('mast').style.top=(y1-80)+'px';
+ // legenda em recorte
+ let h='';for(const [a,b,s,e] of G){if(t>=s&&t<e){for(let i=a;i<b;i++){const [w,ws]=W[i];const on=t>=ws-0.05;h+=`<span style="opacity:${on?1:0.35}">${HL.has(w)?'<b>'+w+'</b>':w}</span> `}}}
+ const c=$('cap');c.innerHTML=h;c.style.display=h?'block':'none';c.style.left='50%';c.style.top=(y1+PH-40)+'px';c.style.transform='translateX(-50%) rotate(-1.5deg)';
+ const lt=$('lt');let L=null;if(t>=10&&t<16.8)L='Bruno Israel · Estrategista de Lançamento';if(t>=20&&t<24.6)L='Marília Tannuri · E-commerce';
+ lt.style.display=L?'block':'none';if(L){lt.textContent=L;lt.style.left=(PX+10)+'px';lt.style.top=(y1+20)+'px';lt.style.transform=`rotate(1.5deg) translateX(${(1-ease((t-(t<17?10:20))/0.35))*-80}px)`}
+ // reacoes
+ const ICON={h:'<svg viewBox="0 0 24 24"><path fill="#E8475F" d="M12 21s-7.5-4.6-9.6-9.3C.9 8.2 3 4.5 6.7 4.5c2.2 0 3.6 1.3 4.3 2.4.7-1.1 2.1-2.4 4.3-2.4 3.7 0 5.8 3.7 4.3 7.2C19.5 16.4 12 21 12 21z"/></svg>',
+  f:'<svg viewBox="0 0 24 24"><path fill="#F59E2B" d="M12 22c-4.4 0-7-2.9-7-6.6 0-3.9 3-6 4-9.4.4 2.2 1.5 3.4 2.5 4C11.6 6.6 13.6 4 15.4 2c.1 3.5 3.6 6.2 3.6 11.2C19 18.9 16.4 22 12 22z"/><path fill="#FFD36B" d="M12 21c-2 0-3.2-1.3-3.2-3 0-1.9 1.4-2.8 1.9-4.4.6 1 1.4 1.6 2.2 1.8.3-1.5 1.2-2.6 1.8-3.4.4 2.2 1.7 3.2 1.7 5.4 0 2.2-1.9 3.6-4.4 3.6z"/></svg>',
+  s:'<svg viewBox="0 0 24 24"><path fill="#E8B36A" d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.2 5.8 20.9l1.6-7L2 9.2l7.1-.6z"/></svg>'};
+ let rx='';const ks=['h','f','h','s','h','f'];
+ for(let k=0;k<70;k++){const s0=1.6+k*0.42;const age=t-s0;if(age<0||age>3.2||t>30.4)continue;const r=Math.sin(k*12.9898)*0.5+0.5;
+  const x=PX+PW-120+r*90+Math.sin(age*3+k)*18, y=y2+PH-60-age*330, o=age<0.2?age/0.2:1-cl((age-2.4)/0.8), sc=0.7+0.5*spr(age/0.5)*(0.7+0.3*r);
+  rx+=`<div class="react" style="left:${x}px;top:${y}px;opacity:${o};transform:scale(${sc}) rotate(${(r-0.5)*30}deg)">${ICON[ks[k%6]]}</div>`}
+ $('rx').innerHTML=rx;
+ // final
+ const E=30.5;$('end').style.opacity=ease((t-E)/0.35);
+ [['e1',.15],['e2',.3],['e3',.6],['e4',.8],['e5',1.3],['e6',1.7]].forEach(([id,d])=>{const e=$(id),p=(t-E-d)/0.6;e.style.opacity=cl(p*2.5);
+  if(id==='e2'||id==='e4'){e.style.textShadow=EXT;e.style.transform=`perspective(900px) translateY(${(1-ease(p))*120}px) rotateX(${(1-ease(p))*60}deg)`}
+  else e.style.transform=`translateY(${(1-ease(p))*30}px)`});
+}
+render(0);
+</script></body></html>
