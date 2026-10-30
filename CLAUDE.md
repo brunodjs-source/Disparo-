@@ -24,6 +24,8 @@ Referência completa: `conteudo/edicao/42-efeitos-referencia.txt`. Motor própri
 - Antes do render final: folha com 4 quadros por segundo, nota de 0 a 10 por efeito, corrigir o que ficar abaixo de 8.
 - Combinações: bastidor (Storyboard, Grade de vídeos, Punch-in, Flash, Comentário caindo); depoimento/entrevista (Nome e cargo, Legenda Gigante, Marca-texto, Look cinemático, Title Card); oferta (Connect Hook, Contagem, Barras, CTA de Comentário).
 - Interface recriada (feed, notificação, busca) nunca usa logo ou marca de outra empresa.
+- Som: só efeitos e músicas prontos e masterizados de banco gratuito (efeitos em `videos/sfx-mixkit/`, músicas em `videos/musicas/`, licença anotada). Nunca gerar efeito ou trilha por código.
+- Antes de entregar: auditoria de texto (ex.: `videos/tv-chamada/audit.js`) a 4 quadros por segundo. Nenhum texto pode vazar da margem de 40 px, estourar a caixa ou ficar coberto por logo ou outro elemento.
 
 ## Regras de texto
 Português do Brasil, sem travessão, sem emoji, sem promessa de resultado, sem citar HighClass, Júnior Prazeres ou Felipe Roser. No máximo uma frase "não é X, é Y" por peça.
