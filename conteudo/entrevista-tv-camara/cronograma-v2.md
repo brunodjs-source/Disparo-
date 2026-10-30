@@ -33,7 +33,7 @@ Um por fala: foto em preto e branco reticulada, a frase dita como manchete, "Dis
 
 | Dia | Feed | Gatilho | Stories | Música |
 |---|---|---|---|---|
-| sex 30/10 | 21h reel TEASER 1: timelapse 35 min em 35 s, sem assunto, termina em "domingo 17h15" | CURIOSIDADE | 19h chamada urgente (já pronta) + estático "Edição extra" com enquete "Vai assistir?" | hip-hop-02 |
+| sex 30/10 | 21h reel TEASER 1: timelapse 35 min em 35 s; abre com "Você sabia que eu era DJ?", termina em "domingo 17h15" | CURIOSIDADE | 19h chamada urgente (já pronta) + estático "Edição extra" com enquete "Vai assistir?" | hip-hop-02 |
 | sáb 31/10 | 18h30 reel TEASER 2: a pergunta da TV sem a resposta | PERGUNTA ABERTA | 12h estático bastidor + caixa de pergunta; 19h contagem regressiva (sticker à mão) | trap-electro-vibes |
 | dom 01/11 | 11h reel chamada urgente da Mirna (versão notícia) | AUTORIDADE (TV) | 10h "hoje 17h15"; 16h45 "em 30 minutos"; 17h15 "no ar agora" + canais; 18h30 repost de quem marcar | Epical Drums |
 | seg 02/11 | 21h reel pb01 "profissão por 20 anos" | HISTÓRIA | 12h estático da frase | close-up |
@@ -51,3 +51,10 @@ Regra de corte: se uma peça ficar abaixo de 0,8x da mediana ou com pulo acima d
 - Aprovar este cronograma.
 - Marcar @mirnaabreu.jornalista e @tvcamaracampinas pelo app (o PostZen não marca).
 - Os 28 rascunhos antigos da TV no PostZen serão substituídos pelas peças novas depois da aprovação.
+
+## Teaser 1 · curiosidade DJ (pedido do Bruno em 30/10)
+Abertura (tela e legenda): "Você sabia que eu era DJ?"
+Texto do Bruno: "Por 20 anos exerci a carreira como DJ, tocando com os maiores nomes da música eletrônica do mundo e me tornando referência para muitos."
+Link do set: https://www.mixcloud.com/djbrunoferraz2/set-dj-bruno-ferraz-tomorrowland-brasil/ (publicado em 28/09/2014, 1h30, 522 plays).
+Atenção: a descrição do próprio set diz "Set dedicado ao maior festival de música do mundo! O set passa por diferentes pistas da Tomorrowland". Não está escrito que foi tocado no festival. A peça diz "set Tomorrowland Brasil", sem afirmar apresentação no palco, até o Bruno confirmar.
+Link no reel não é clicável: o link vai na bio ou no sticker de link dos stories.
