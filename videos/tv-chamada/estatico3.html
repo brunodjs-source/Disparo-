@@ -1,0 +1,46 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:Cinzel;src:url(fonts/cinzel-latin.woff2)}
+@font-face{font-family:PI;src:url(fonts/playfair-italic-latin.woff2)}
+@font-face{font-family:PF;src:url(../v02/fonts/Playfair.ttf)}
+@font-face{font-family:Inter;src:url(fonts/Inter-Bold.otf);font-weight:700}
+@font-face{font-family:Inter;src:url(fonts/Inter-ExtraBold.otf);font-weight:800}
+@font-face{font-family:Inter;src:url(fonts/Inter-Black.otf);font-weight:900}
+body{margin:0;background:#0d0c0b}*{box-sizing:border-box}
+.s{position:relative;width:1080px;height:1920px;overflow:hidden;background:#0d0c0b;background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1.4px);background-size:14px 14px}
+.top{position:absolute;left:0;top:220px;width:1080px;height:84px;display:flex}
+.top .u{background:#D7262E;color:#fff;font:900 44px Inter;letter-spacing:4px;display:flex;align-items:center;padding:0 30px;gap:16px}
+.top .dot{width:20px;height:20px;border-radius:50%;background:#fff}
+.top .x{flex:1;background:#141210;color:#F3C987;display:flex;align-items:center;padding-left:26px;font:800 30px Inter;letter-spacing:3px}
+.page{position:absolute;left:50px;top:360px;width:980px;height:1190px;background:#F1EBDD;color:#151311;padding:34px 44px;transform:rotate(-1.2deg);box-shadow:0 30px 60px rgba(0,0,0,.6)}
+.page:after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 15%,rgba(255,255,255,.4),transparent 60%),repeating-linear-gradient(0deg,rgba(0,0,0,.025) 0 2px,transparent 2px 4px)}
+.mh{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:5px double #151311;padding-bottom:10px}
+.mh .n{font:400 54px Cinzel;letter-spacing:3px}.mh .d{font:700 18px Inter;letter-spacing:3px;text-align:right}
+.kick{margin-top:22px;font:900 30px Inter;letter-spacing:6px;color:#D7262E}
+.hl{font:900 112px Inter;line-height:.95;letter-spacing:-3px;margin-top:8px;text-transform:uppercase}
+.ph{margin-top:26px;height:430px;background:url('foto-bruno.jpg') 50% 22%/100% auto;height:330px;filter:contrast(1.3) grayscale(1);position:relative}
+.ph:after{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(0,0,0,.35) 1px,transparent 1.7px);background-size:6px 6px;mix-blend-mode:multiply}
+.cap{font:400 19px PF;color:#3a352f;margin-top:8px}
+.q{margin-top:20px;font:400 40px PI;line-height:1.22}
+.stamp{position:absolute;left:660px;top:900px;border:7px solid #D7262E;color:#D7262E;font:900 44px Inter;letter-spacing:3px;padding:0 18px;transform:rotate(-12deg);mix-blend-mode:multiply;z-index:2}
+.tick{position:absolute;left:0;top:1600px;width:1080px;height:72px;background:#141210;border-top:3px solid #D7262E;display:flex;align-items:center;overflow:hidden;white-space:nowrap}
+.tick .t{background:#D7262E;color:#fff;font:900 30px Inter;letter-spacing:2px;height:69px;display:flex;align-items:center;padding:0 22px}
+.tick .r{font:800 32px Inter;color:#fff;padding-left:20px}.tick .r i{font-style:normal;color:#F3C987}
+.globe{position:absolute;left:820px;top:1360px;width:170px;height:170px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,#f2f2f2 45%,#bfc6cf);box-shadow:0 14px 34px rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;z-index:3}
+.globe img{width:150px;transform:rotateY(25deg)}
+</style></head><body>
+<div class="s" id="story">
+ <div class="top"><div class="u"><div class="dot"></div>URGENTE</div><div class="x">EDIÇÃO EXTRA · CONTAGEM</div></div>
+ <div class="globe"><img src="logo-tvcamara.png"></div>
+ <div class="page">
+  <div class="mh"><div class="n">Edição Extra</div><div class="d">CAMPINAS<br>SÁBADO, 31/10</div></div>
+  <div class="kick">FALTA POUCO</div>
+  <div class="hl" style="font-size:100px">Amanhã, 17h15</div>
+  <div class="ph"></div>
+  <div class="cap">Bruno Israel no Ser Empreendedor, TV Câmara Campinas.</div>
+  <div class="q">Ativa o lembrete e assiste comigo.</div>
+  <div style="margin-top:26px;border-top:3px solid #151311;padding-top:16px;font:800 30px Inter;letter-spacing:1px">11.3 TV ABERTA · 04 CLARO · 09 VIVO<br><span style="color:#D7262E">DOMINGO, 1º DE NOVEMBRO</span></div>
+ </div>
+ <div class="stamp" style="visibility:hidden">URGENTE</div>
+ <div class="tick"><div class="t">ÚLTIMA HORA</div><div class="r">DOMINGO, 17H15 <i>·</i> TV CÂMARA CAMPINAS <i>·</i> 11.3 · 04 CLARO · 09 VIVO</div></div>
+</div>
+</body></html>
