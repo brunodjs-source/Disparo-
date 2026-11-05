@@ -15,16 +15,20 @@ html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:transpa
 .card{display:inline-block;background:#F6EFE4;border-radius:22px;padding:34px 60px;box-shadow:0 20px 50px rgba(0,0,0,.5)}
 </style></head><body>
 <div class="tt" id="tt"></div><div class="sub" id="sub"></div><div class="clock" id="clock"></div>
-<div id="end"><div class="e" id="e1" style="top:560px"><img src="logo-estrategista.png" style="width:820px"></div>
-<div class="e" id="e2" style="top:930px;font:400 46px PI;color:#E8B36A">apresentação no</div>
-<div class="e" id="e3" style="top:1020px"><div class="card"><img src="logo-bni.png" style="width:330px;display:block"></div></div></div>
+<div id="end"><svg id="sv" width="1080" height="1920" style="position:absolute;inset:0"></svg>
+<img id="torre" src="torre.png" style="position:absolute;width:240px;left:420px;top:640px;transform-origin:50% 100%">
+<div id="dot" style="position:absolute;width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#F6CF8E,#C88A44);box-shadow:0 0 30px rgba(232,179,106,.7)"></div>
+<img id="txt" src="logo-texto.png" style="position:absolute;left:150px;top:1040px;width:780px">
+<div id="apn" class="e" style="top:1290px;font:400 44px PI;color:#E8B36A">apresentação no</div>
+<div id="bni" style="position:absolute;left:340px;top:1370px;width:400px;transform-origin:50% 100%"><div class="card" style="padding:26px 40px"><img src="logo-bni.png" style="width:320px;display:block"></div></div>
+</div>
 <script>
 const $=id=>document.getElementById(id),cl=x=>Math.max(0,Math.min(1,x)),eo=p=>1-Math.pow(1-cl(p),3);
-const A=0,B=4.633,C1=B+30*0.5,C2=C1+2.333,D=C2+1.367,DUR=D+3.2;
+const A=0,B=4.633,C1=B+30*0.5,C2=C1+2.333,D=C2+1.367,DUR=D+8.5;
 // legenda palavra a palavra (tempo do Whisper)
 const SUB=[[A,[['e',.04],['já',.22],['gerou',.5],['aí',.94],['mais',1.12],['de',1.38],['60',1.62],['milhões',2.04],['em',2.46],['vendas',2.84],['para',3.18],['os',3.44],['seus',3.6],['clientes.',3.72]]],
  [C1,[['prazer,',.14],['eu',.72],['sou',.74],['o',.88],['Estrategista.',1.08]]],[C2,[['Muito',.15],['obrigado.',.6]]]];
-const TT=[[A+1.1,B,'mais de 60 milhões','em vendas'],[B+0.15,B+2.9,'8 minutos','de palestra'],[B+3.0,B+5.9,'uma sala cheia','de empresários'],[B+6.0,B+8.9,'um tema só:','dinheiro no ralo'],[B+9.0,B+11.9,'4 furos','que quase ninguém vê'],[B+12.0,C1,'o que eu disse','vai sair aqui'],[C1+0.1,C2,'prazer,','eu sou o Estrategista'],[C2,D,'muito','obrigado']];
+const TT=[[A+1.1,B,'mais de 60 milhões','em vendas'],[B+0.15,B+2.9,'8 minutos','de palestra'],[B+3.0,B+5.9,'uma sala cheia','de empresários'],[B+6.0,B+8.9,'empresa sem estratégia','é dinheiro no ralo'],[B+9.0,B+11.9,'4 furos','que quase ninguém vê'],[B+12.0,C1,'o que eu disse','vai sair aqui'],[C1+0.1,C2,'prazer,','eu sou o Estrategista'],[C2,D,'muito','obrigado']];
 function render(t){
  let tt='';for(const [a,b,r,i] of TT)if(t>=a&&t<b){const p=eo((t-a)/0.5),q=cl((t-b+0.25)/0.25);
   tt=`<div class="r" style="opacity:${p*(1-q)};transform:translateY(${(1-p)*-20}px)">${r}</div><div class="i" style="opacity:${eo((t-a-0.12)/0.5)*(1-q)};filter:blur(${(1-eo((t-a-0.12)/0.5))*8}px)">${i}</div>`}
@@ -33,10 +37,36 @@ function render(t){
  $('sub').innerHTML=sb;
  const inB=t>=B&&t<C1;$('clock').style.display=inB?'block':'none';
  const sec=Math.floor(cl((t-B)/(C1-B))*485);$('clock').textContent=`${String(Math.floor(sec/60)).padStart(2,'0')}:${String(sec%60).padStart(2,'0')}  ·  BNI`;
- const e=$('end');e.style.opacity=eo((t-D)/0.4);
- [['e1',.1],['e2',.5],['e3',.7]].forEach(([id,d])=>{const p=eo((t-D-d)/0.6);$(id).style.opacity=p;$(id).style.transform=`translateY(${(1-p)*30}px) scale(${0.96+0.04*p})`});
+ const e=$('end');const u=t-D;e.style.opacity=eo(u/0.35);if(u<0){e.style.display='none';return}e.style.display='block';
+ const spr=p=>{p=cl(p);return 1-Math.exp(-6*p)*Math.cos(8*p)};
+ // ralo: posicao, empurrao da torre
+ const push=eo((u-3.0)/0.7);const rx=540+push*0,ry=1000+push*520,rs=1-push*0.45,rot=u*200;
+ const sh=(u>2.6&&u<3.0)?Math.sin(u*90)*8:0;
+ let svg=`<defs><radialGradient id="hole"><stop offset="0" stop-color="#000"/><stop offset=".7" stop-color="#0d0a07"/><stop offset="1" stop-color="#2b1d10"/></radialGradient>
+ <radialGradient id="coin" cx=".35" cy=".3"><stop offset="0" stop-color="#FFE3A8"/><stop offset=".6" stop-color="#E8B36A"/><stop offset="1" stop-color="#9A6A1E"/></radialGradient></defs>`;
+ const dOp=1-cl((u-4.2)/0.5);
+ svg+=`<g opacity="${dOp}" transform="translate(${rx+sh},${ry}) scale(${rs})"><ellipse rx="270" ry="86" fill="url(#hole)" stroke="#E8B36A" stroke-width="6"/>`;
+ for(let k=0;k<6;k++){const a=(rot+k*60)*Math.PI/180;svg+=`<path d="M0 0 Q ${Math.cos(a)*140} ${Math.sin(a)*44} ${Math.cos(a+1.2)*250} ${Math.sin(a+1.2)*80}" stroke="rgba(232,179,106,.35)" stroke-width="5" fill="none"/>`}
+ for(let k=0;k<5;k++)svg+=`<ellipse rx="${50*k+30}" ry="${16*k+10}" fill="none" stroke="rgba(232,179,106,${.12+.05*k})" stroke-width="2"/>`;
+ svg+=`</g>`;
+ // moedas caindo em espiral para dentro do ralo
+ for(let i=0;i<22;i++){const s0=0.1+i*0.11,a=u-s0;if(a<0||a>1.4||u>2.7)continue;const p=a/1.4;
+  const ang=i*1.7+p*9,rad=(1-p)*300,cx=540+Math.cos(ang)*rad,cy=ry-520*(1-p)*(1-p)+Math.sin(ang)*rad*0.3,sc=1.1-p*0.9;
+  svg+=`<g transform="translate(${cx},${cy}) scale(${sc},${sc*(0.5+0.5*Math.abs(Math.cos(a*9)))})" opacity="${1-cl((p-0.85)/0.15)}"><circle r="34" fill="url(#coin)" stroke="#9A6A1E" stroke-width="3"/><text y="12" text-anchor="middle" font-family="PF" font-size="34" fill="#7A4F14">R$</text></g>`}
+ // anel de impacto na captura
+ const ia=u-2.6;if(ia>0&&ia<0.6)svg+=`<ellipse cx="540" cy="1000" rx="${100+ia*700}" ry="${32+ia*220}" fill="none" stroke="rgba(255,231,196,${1-ia/0.6})" stroke-width="8"/>`;
+ $('sv').innerHTML=svg;
+ // torre: entra pela esquerda num salto de captura e pousa no ralo
+ const tj=cl((u-1.9)/0.7),tx=-300+(420+300)*eo(tj),ty=640-Math.sin(Math.PI*tj)*260;
+ const sq=u>2.6&&u<2.9?1-0.12*Math.sin((u-2.6)/0.3*Math.PI):1;
+ const T=$('torre');T.style.opacity=u>1.9?1:0;T.style.left=tx+'px';T.style.top=ty+'px';T.style.transform=`rotate(${(1-tj)*-25}deg) scale(${2-sq},${sq})`;
+ // bolinha cai em cima da torre
+ const dj=(u-2.9)/0.45,dt=$('dot');dt.style.opacity=u>2.9?1:0;dt.style.left='525px';dt.style.top=(612-(1-spr(dj))*640)+'px';
+ // BNI sai do ralo e vem para a tela
+ const bj=(u-3.6)/0.8,b=$('bni');b.style.opacity=cl(bj*4);b.style.transform=`perspective(900px) translateY(${(1-eo(bj))*150}px) rotateX(${(1-eo(bj))*60}deg) scale(${0.15+0.85*spr(bj)})`;
+ [['txt',4.1],['apn',4.4]].forEach(([id,d])=>{const p=eo((u-d)/0.6);$(id).style.opacity=p;$(id).style.transform=`translateY(${(1-p)*30}px)`});
 }
-function events(){const ev=[];for(let k=0;k<30;k++)ev.push(['clic',B+k*0.5]);ev.push(['swap',C1-0.2]);ev.push(['end',D+0.1]);return ev}
+function events(){const ev=[];for(let k=0;k<30;k++)ev.push(['clic',B+k*0.5]);ev.push(['swap',C1-0.2]);ev.push(['moedas',D+0.2]);ev.push(['moedas',D+1.2]);ev.push(['swap',D+1.9]);ev.push(['stamp',D+2.6]);ev.push(['k',D+3.2]);ev.push(['swap',D+3.0]);ev.push(['pop',D+3.7]);ev.push(['end',D+4.3]);return ev}
 async function frame(t){render(t)}
 render(0);
 </script></body></html>

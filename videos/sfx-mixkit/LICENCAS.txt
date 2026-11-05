@@ -6,3 +6,5 @@ whoosh.mp3   Cinematic whoosh fast transition https://assets.mixkit.co/active_st
 impacto.mp3  Movie trailer epic impact      https://assets.mixkit.co/active_storage/sfx/2198/2198-preview.mp3
 carimbo.mp3  Wood hard hit                  https://assets.mixkit.co/active_storage/sfx/2589/2589-preview.mp3
 shutter.mp3  Camera shutter click           https://assets.mixkit.co/active_storage/sfx/1430/1430-preview.mp3
+moedas.mp3   Clinking coins                 https://assets.mixkit.co/active_storage/sfx/866/866-preview.mp3
+pop.mp3      Unlock game notification       https://assets.mixkit.co/active_storage/sfx/1999/1999-preview.mp3

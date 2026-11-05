@@ -7,7 +7,7 @@ def load(n, a=0, b=None):
     cut = ['-ss', str(a)] + (['-to', str(b)] if b else [])
     raw = subprocess.run(['ffmpeg', '-v', 'error'] + cut + ['-i', f'{R}/{n}.mp3', '-ac', '2', '-ar', str(SR), '-f', 'f32le', '-'], capture_output=True, check=True).stdout
     return np.frombuffer(raw, np.float32).reshape(-1, 2)
-S = {'clic': (load('shutter', 0, 0.5), 0.9), 'k': (load('tecla', 0.10, 0.45), 0.7), 'k2': (load('tecla2', 0, 0.55), 0.35), 'swap': (load('whoosh', 0.1), 0.9),
+S = {'moedas': (load('moedas'), 0.7), 'pop': (load('pop'), 0.6), 'clic': (load('shutter', 0, 0.5), 0.9), 'k': (load('tecla', 0.10, 0.45), 0.7), 'k2': (load('tecla2', 0, 0.55), 0.35), 'swap': (load('whoosh', 0.1), 0.9),
      'stamp': (load('carimbo', 0.54, 1.6), 0.9), 'end': (load('impacto'), 0.9)}
 ev, out, dur = json.load(open(sys.argv[1])), sys.argv[2], float(sys.argv[3])
 mix = np.zeros((int(SR * dur) + SR, 2), np.float32)
