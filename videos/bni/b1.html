@@ -1,0 +1,42 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:PF;src:url(../v02/fonts/Playfair.ttf)}
+@font-face{font-family:PI;src:url(fonts/playfair-italic-latin.woff2)}
+@font-face{font-family:Inter;src:url(fonts/Inter-Bold.otf);font-weight:700}
+@font-face{font-family:Inter;src:url(fonts/Inter-Medium.otf);font-weight:500}
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:transparent}*{box-sizing:border-box}
+/* letreiro no estilo da referencia: serifa reta em cima, italico grande embaixo */
+.tt{position:absolute;left:0;width:1080px;top:300px;text-align:center;color:#FFF6EA;text-shadow:0 4px 30px rgba(60,20,0,.55)}
+.tt .r{font:400 84px PF;line-height:1;letter-spacing:-1px}
+.tt .i{font:400 132px PI;line-height:.95;margin-top:-6px}
+.sub{position:absolute;left:0;width:1080px;top:1330px;text-align:center;font:700 44px Inter;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7)}
+.clock{position:absolute;left:0;width:1080px;top:1330px;text-align:center;font:500 40px Inter;letter-spacing:6px;color:#FFE7C4;text-shadow:0 2px 14px rgba(0,0,0,.7)}
+#end{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,#3a2414,#141210 70%)}
+.e{position:absolute;left:0;width:1080px;text-align:center}
+.card{display:inline-block;background:#F6EFE4;border-radius:22px;padding:34px 60px;box-shadow:0 20px 50px rgba(0,0,0,.5)}
+</style></head><body>
+<div class="tt" id="tt"></div><div class="sub" id="sub"></div><div class="clock" id="clock"></div>
+<div id="end"><div class="e" id="e1" style="top:560px"><img src="logo-estrategista.png" style="width:820px"></div>
+<div class="e" id="e2" style="top:930px;font:400 46px PI;color:#E8B36A">apresentação no</div>
+<div class="e" id="e3" style="top:1020px"><div class="card"><img src="logo-bni.png" style="width:330px;display:block"></div></div></div>
+<script>
+const $=id=>document.getElementById(id),cl=x=>Math.max(0,Math.min(1,x)),eo=p=>1-Math.pow(1-cl(p),3);
+const A=0,B=4.633,C1=B+30*0.5,C2=C1+2.333,D=C2+1.367,DUR=D+3.2;
+// legenda palavra a palavra (tempo do Whisper)
+const SUB=[[A,[['e',.04],['já',.22],['gerou',.5],['aí',.94],['mais',1.12],['de',1.38],['60',1.62],['milhões',2.04],['em',2.46],['vendas',2.84],['para',3.18],['os',3.44],['seus',3.6],['clientes.',3.72]]],
+ [C1,[['prazer,',.14],['eu',.72],['sou',.74],['o',.88],['Estrategista.',1.08]]],[C2,[['Muito',.15],['obrigado.',.6]]]];
+const TT=[[A+1.1,B,'mais de 60 milhões','em vendas'],[B+0.15,B+2.9,'8 minutos','de palestra'],[B+3.0,B+5.9,'uma sala cheia','de empresários'],[B+6.0,B+8.9,'um tema só:','dinheiro no ralo'],[B+9.0,B+11.9,'4 furos','que quase ninguém vê'],[B+12.0,C1,'o que eu disse','vai sair aqui'],[C1+0.1,C2,'prazer,','eu sou o Estrategista'],[C2,D,'muito','obrigado']];
+function render(t){
+ let tt='';for(const [a,b,r,i] of TT)if(t>=a&&t<b){const p=eo((t-a)/0.5),q=cl((t-b+0.25)/0.25);
+  tt=`<div class="r" style="opacity:${p*(1-q)};transform:translateY(${(1-p)*-20}px)">${r}</div><div class="i" style="opacity:${eo((t-a-0.12)/0.5)*(1-q)};filter:blur(${(1-eo((t-a-0.12)/0.5))*8}px)">${i}</div>`}
+ $('tt').innerHTML=tt;
+ let sb='';for(const [s0,ws] of SUB){const e=s0===A?B:s0===C1?C2:D;if(t>=s0&&t<e){let line=ws.filter(w=>t>=s0+w[1]-0.05).map(w=>w[0]);sb=line.slice(-4).join(' ')}}
+ $('sub').innerHTML=sb;
+ const inB=t>=B&&t<C1;$('clock').style.display=inB?'block':'none';
+ const sec=Math.floor(cl((t-B)/(C1-B))*485);$('clock').textContent=`${String(Math.floor(sec/60)).padStart(2,'0')}:${String(sec%60).padStart(2,'0')}  ·  BNI`;
+ const e=$('end');e.style.opacity=eo((t-D)/0.4);
+ [['e1',.1],['e2',.5],['e3',.7]].forEach(([id,d])=>{const p=eo((t-D-d)/0.6);$(id).style.opacity=p;$(id).style.transform=`translateY(${(1-p)*30}px) scale(${0.96+0.04*p})`});
+}
+function events(){const ev=[];for(let k=0;k<30;k++)ev.push(['clic',B+k*0.5]);ev.push(['swap',C1-0.2]);ev.push(['end',D+0.1]);return ev}
+async function frame(t){render(t)}
+render(0);
+</script></body></html>
