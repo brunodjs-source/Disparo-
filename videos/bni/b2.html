@@ -1,0 +1,70 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:PF;src:url(../v02/fonts/Playfair.ttf)}
+@font-face{font-family:PI;src:url(fonts/playfair-italic-latin.woff2)}
+@font-face{font-family:Inter;src:url(fonts/Inter-Bold.otf);font-weight:700}
+@font-face{font-family:Inter;src:url(fonts/Inter-Medium.otf);font-weight:500}
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#141210}*{box-sizing:border-box}
+.L{position:absolute;inset:0;width:1080px;height:1920px}
+.tt{position:absolute;left:0;width:1080px;top:300px;text-align:center;color:#FFF6EA;text-shadow:0 4px 30px rgba(60,20,0,.55);z-index:5}
+.tt .r{font:400 84px PF;line-height:1;letter-spacing:-1px}
+.tt .i{font:400 132px PI;line-height:.95;margin-top:-6px}
+.tt.gold .i{color:#F3C987}
+.sub{position:absolute;left:0;width:1080px;top:1330px;text-align:center;font:700 44px Inter;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.8);z-index:5}
+/* caixa de sistema generica, sem marca de nenhuma empresa */
+.dlg{position:absolute;left:150px;top:820px;width:780px;background:#F4F1EC;border-radius:14px;box-shadow:0 30px 70px rgba(0,0,0,.6);overflow:hidden;z-index:4;font-family:Inter}
+.dlg .bar{background:#2B2622;color:#F4F1EC;font:500 28px Inter;padding:16px 24px;display:flex;justify-content:space-between}
+.dlg .bd{padding:30px 34px;color:#1d1a17}
+.dlg .t{font:700 40px Inter;line-height:1.15}
+.dlg .s{font:500 28px Inter;color:#5a524a;margin-top:12px}
+.dlg .bt{display:flex;gap:18px;justify-content:flex-end;margin-top:28px}
+.dlg .b{font:700 28px Inter;padding:14px 30px;border-radius:10px;background:#E6E0D7;color:#1d1a17}
+.dlg .b.p{background:#B8862F;color:#fff}
+.cur{position:absolute;width:44px;height:60px;z-index:6}
+#end{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,#3a2414,#141210 70%);z-index:8}
+.e{position:absolute;left:0;width:1080px;text-align:center}
+</style></head><body>
+<img id="bg" class="L"><div id="clones"></div><img id="fg" class="L" style="display:none">
+<div id="flash" class="L" style="background:#fff;opacity:0;z-index:7"></div>
+<div class="dlg" id="dlg"><div class="bar"><span>Empresa.exe</span><span>×</span></div><div class="bd">
+ <div class="t">Sua empresa não está respondendo</div><div class="s">O tráfego pago está rodando, mas o dinheiro não volta.</div>
+ <div class="bt"><div class="b">Aguardar</div><div class="b p" id="bp">Contratar estratégia</div></div></div></div>
+<svg class="cur" id="cur" viewBox="0 0 22 30"><path d="M1 1 L1 25 L7 19 L11 29 L15 27 L11 18 L19 18 Z" fill="#fff" stroke="#000" stroke-width="1.6"/></svg>
+<div class="tt" id="tt"></div><div class="sub" id="sub"></div>
+<div id="end"><img src="torre.png" class="e" style="width:170px;left:455px;top:520px">
+<div class="e" style="top:860px;font:400 84px PF;color:#FFF6EA">qual furo trava</div>
+<div class="e" style="top:950px;font:400 132px PI;color:#F3C987">a sua empresa?</div>
+<div class="e" style="top:1170px;font:700 40px Inter;letter-spacing:6px;color:#E8B36A">COMENTA AQUI</div></div>
+<script>
+const Q=new URLSearchParams(location.search),FR=Q.get('fr'),CT=Q.get('ct');
+const $=id=>document.getElementById(id),cl=x=>Math.max(0,Math.min(1,x)),eo=p=>1-Math.pow(1-cl(p),3),spr=p=>{p=cl(p);return 1-Math.exp(-6*p)*Math.cos(8*p)};
+const W=[["Muita", 0.28], ["gente", 0.56], ["só", 1.5], ["contrata,", 1.76], ["fala", 2.32], ["se", 2.86], ["eu", 3.12], ["quero", 3.18], ["fazer", 3.5], ["o", 4.04], ["tráfego", 4.24], ["pago.", 4.52], ["O", 4.98], ["tráfego", 5.22], ["pago", 5.3], ["não", 5.74], ["resolve.", 5.84], ["O", 6.74], ["que", 6.88], ["resolve", 6.98], ["é", 7.3], ["estratégia", 7.48], ["correta.", 7.94], ["Com", 8.9], ["o", 9.1], ["tráfego,", 9.18], ["ele", 9.66], ["vai", 9.78], ["resolver", 9.9], ["no", 10.26], ["final.", 10.5]];
+const F0=2.15,F1=7.48,FRZ=65,END=11.2,DUR=13.8; // trava em 3,0 s e destrava na palavra "estratégia"
+const TT=[[0.3,4.9,'muita gente','só quer tráfego'],[5.22,F1,'o tráfego pago','não resolve'],[F1,8.85,'estratégia','correta',1],[8.9,END,'o tráfego','vem no final']];
+const nf=n=>String(Math.min(337,Math.max(1,n))).padStart(5,'0');
+function render(t){
+ const frozen=t>=F0&&t<F1,idx=frozen?FRZ:Math.round(t*30)+1;
+ $('bg').src=`${FR}/${nf(idx)}.jpg`;
+ $('bg').style.filter=frozen?`saturate(${1-0.5*cl((t-F0)/0.6)}) contrast(1.05)`:'none';
+ // rastro de copias, como janela travada sendo arrastada
+ let cs='';if(frozen&&t>=4.24){const n=Math.min(26,Math.floor((t-4.24)/0.07));
+  for(let i=0;i<=n;i++){const p=i/26,x=Math.sin(p*Math.PI*1.6)*330,y=-p*140+Math.sin(p*9)*30;
+   cs+=`<img src="${CT}/${nf(FRZ)}.webp" class="L" style="transform:translate(${x}px,${y}px);opacity:${0.35+0.65*(i===n?1:p)};filter:${i===n?'none':'saturate(.6) brightness(1.05)'}">`}}
+ $('clones').innerHTML=cs;
+ // caixa de sistema
+ const d=$('dlg'),dp=(t-5.0)/0.35;d.style.display=frozen&&t>=5.0?'block':'none';d.style.transform=`scale(${0.7+0.3*spr(dp)})`;d.style.opacity=cl(dp*3);
+ // cursor vai ate "Contratar estratégia" e clica na palavra
+ const c=$('cur'),cp=eo((t-6.4)/0.9);c.style.display=frozen&&t>=6.4?'block':'none';c.style.left=(1000-cp*(1000-760))+'px';c.style.top=(1500-cp*(1500-1095))+'px';
+ const click=t>=7.25&&t<F1;c.style.transform=`scale(${click?0.85:1})`;$('bp').style.filter=click?'brightness(1.25)':'none';
+ // flash na destrava
+ $('flash').style.opacity=t>=F1&&t<F1+0.18?1-(t-F1)/0.18:0;
+ // letreiro no estilo da referencia
+ let tt='',gold=false;for(const [a,b,r,i,g] of TT)if(t>=a&&t<b){const p=eo((t-a)/0.45),q=cl((t-b+0.2)/0.2);gold=!!g;
+  tt=`<div class="r" style="opacity:${p*(1-q)}">${r}</div><div class="i" style="opacity:${eo((t-a-0.1)/0.45)*(1-q)};filter:blur(${(1-eo((t-a-0.1)/0.45))*8}px)">${i}</div>`}
+ $('tt').innerHTML=tt;$('tt').className='tt'+(gold?' gold':'');$('tt').style.top=frozen&&t>=5.0?'470px':'300px';
+ // legenda palavra a palavra
+ const said=W.filter(w=>t>=w[1]-0.05&&t<END);$('sub').textContent=said.slice(-4).map(w=>w[0]).join(' ');$('sub').style.top=frozen&&t>=5.0?'1560px':'1330px';
+ const e=$('end'),u=t-END;e.style.display=u>=0?'block':'none';e.style.opacity=eo(u/0.4);
+}
+function events(){const ev=[['swap',F0-0.05],['clic',F0],['k2',4.24],['stamp',5.0],['clic',7.25],['end',F1],['swap',END-0.1]];for(let i=0;i<10;i++)ev.push(['k2',4.3+i*0.2]);return ev}
+async function frame(t){render(t);await Promise.all([...document.images].map(i=>i.complete?0:i.decode().catch(()=>0)))}
+</script></body></html>
