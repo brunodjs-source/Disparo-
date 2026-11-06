@@ -24,16 +24,16 @@ html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:transpa
 </div>
 <script>
 const $=id=>document.getElementById(id),cl=x=>Math.max(0,Math.min(1,x)),eo=p=>1-Math.pow(1-cl(p),3);
-const A=0,B=4.633,C1=B+30*0.5,C2=C1+2.333,D=C2+1.367,DUR=D+8.5;
+const A=0,B=4.633,C1=B+30*0.5,C2=C1+0.62,D=C1+4.0,DUR=D+8.5;
 // legenda palavra a palavra (tempo do Whisper)
 const SUB=[[A,[['e',.04],['já',.22],['gerou',.5],['aí',.94],['mais',1.12],['de',1.38],['60',1.62],['milhões',2.04],['em',2.46],['vendas',2.84],['para',3.18],['os',3.44],['seus',3.6],['clientes.',3.72]]],
- [C1,[['prazer,',.14],['eu',.72],['sou',.74],['o',.88],['Estrategista.',1.08]]],[C2,[['Muito',.15],['obrigado.',.6]]]];
-const TT=[[A+1.1,B,'mais de 60 milhões','em vendas'],[B+0.15,B+2.9,'8 minutos','de palestra'],[B+3.0,B+5.9,'uma sala cheia','de empresários'],[B+6.0,B+8.9,'empresa sem estratégia','é dinheiro no ralo'],[B+9.0,B+11.9,'4 furos','que quase ninguém vê'],[B+12.0,C1,'o que eu disse','vai sair aqui'],[C1+0.1,C2,'prazer,','eu sou o Estrategista'],[C2,D,'muito','obrigado']];
+ [C1,[['Muito',.62],['obrigado.',1.04],['Eu',1.72],['sou',1.84],['o',2.06],['Bruno,',2.16],['estrategista.',2.4]]]];
+const TT=[[A+1.1,B,'mais de 60 milhões','em vendas'],[B+0.15,B+2.9,'8 minutos','de palestra'],[B+3.0,B+5.9,'uma sala cheia','de empresários'],[B+6.0,B+8.9,'empresa sem estratégia','é dinheiro no ralo'],[B+9.0,B+11.9,'4 furos','que quase ninguém vê'],[B+12.0,C1,'o que eu disse','vai sair aqui'],[C2,C1+1.7,'muito','obrigado'],[C1+1.72,D,'eu sou o Bruno,','estrategista']];
 function render(t){
  let tt='';for(const [a,b,r,i] of TT)if(t>=a&&t<b){const p=eo((t-a)/0.5),q=cl((t-b+0.25)/0.25);
   tt=`<div class="r" style="opacity:${p*(1-q)};transform:translateY(${(1-p)*-20}px)">${r}</div><div class="i" style="opacity:${eo((t-a-0.12)/0.5)*(1-q)};filter:blur(${(1-eo((t-a-0.12)/0.5))*8}px)">${i}</div>`}
  $('tt').innerHTML=tt;
- let sb='';for(const [s0,ws] of SUB){const e=s0===A?B:s0===C1?C2:D;if(t>=s0&&t<e){let line=ws.filter(w=>t>=s0+w[1]-0.05).map(w=>w[0]);sb=line.slice(-4).join(' ')}}
+ let sb='';for(const [s0,ws] of SUB){const e=s0===A?B:D;if(t>=s0&&t<e){let line=ws.filter(w=>t>=s0+w[1]-0.05).map(w=>w[0]);sb=line.slice(-4).join(' ')}}
  $('sub').innerHTML=sb;
  const inB=t>=B&&t<C1;$('clock').style.display=inB?'block':'none';
  const sec=Math.floor(cl((t-B)/(C1-B))*485);$('clock').textContent=`${String(Math.floor(sec/60)).padStart(2,'0')}:${String(sec%60).padStart(2,'0')}  ·  BNI`;
