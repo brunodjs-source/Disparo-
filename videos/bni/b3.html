@@ -1,0 +1,94 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:PF;src:url(../v02/fonts/Playfair.ttf)}
+@font-face{font-family:PI;src:url(fonts/playfair-italic-latin.woff2)}
+@font-face{font-family:Inter;src:url(fonts/Inter-Bold.otf);font-weight:700}
+@font-face{font-family:Inter;src:url(fonts/Inter-Medium.otf);font-weight:500}
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#141210}*{box-sizing:border-box}
+.L{position:absolute;inset:0;width:1080px;height:1920px}
+.tt{position:absolute;left:0;width:1080px;top:300px;text-align:center;color:#FFF6EA;text-shadow:0 4px 30px rgba(60,20,0,.55);z-index:5}
+.tt .r{font:400 84px PF;line-height:1;letter-spacing:-1px}
+.tt .i{font:400 132px PI;line-height:.95;margin-top:-6px}
+.tt.gold .i{color:#F3C987}
+.sub{position:absolute;left:0;width:1080px;top:1330px;text-align:center;font:700 44px Inter;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.8);z-index:5}
+/* caixa de sistema generica, sem marca de nenhuma empresa */
+.dlg{position:absolute;left:150px;top:820px;width:780px;background:#F4F1EC;border-radius:14px;box-shadow:0 30px 70px rgba(0,0,0,.6);overflow:hidden;z-index:4;font-family:Inter}
+.dlg .bar{background:#2B2622;color:#F4F1EC;font:500 28px Inter;padding:16px 24px;display:flex;justify-content:space-between}
+.dlg .bd{padding:30px 34px;color:#1d1a17}
+.dlg .t{font:700 40px Inter;line-height:1.15}
+.dlg .s{font:500 28px Inter;color:#5a524a;margin-top:12px}
+.dlg .bt{display:flex;gap:18px;justify-content:flex-end;margin-top:28px}
+.dlg .b{font:700 28px Inter;padding:14px 30px;border-radius:10px;background:#E6E0D7;color:#1d1a17}
+.dlg .b.p{background:#B8862F;color:#fff}
+.cur{position:absolute;width:44px;height:60px;z-index:6}
+#end{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,#3a2414,#141210 70%);z-index:8}
+.e{position:absolute;left:0;width:1080px;text-align:center}
+</style></head><body>
+<img id="bg" class="L"><svg id="rl" width="1080" height="1920" class="L"></svg><img id="fg" class="L">
+<div id="flash" class="L" style="background:#fff;opacity:0;z-index:7"></div>
+<div class="tt" id="tt" style="top:230px"></div>
+<div id="cnt" style="position:absolute;left:0;width:1080px;top:1180px;text-align:center;z-index:5;opacity:0">
+ <div id="cv" style="font:400 150px PF;color:#F3C987;text-shadow:0 6px 30px rgba(0,0,0,.6)"></div>
+ <div style="font:500 30px Inter;color:#FFE7C4;margin-top:4px;text-shadow:0 2px 10px rgba(0,0,0,.8)">investidos em publicidade digital no Brasil em 2025<br>fonte: IAB Brasil</div></div>
+<div class="sub" id="sub" style="top:1560px"></div>
+<div id="end"><svg id="sv" width="1080" height="1920" style="position:absolute;inset:0"></svg>
+<img id="torre" src="torre.png" style="position:absolute;width:240px;left:420px;top:640px;transform-origin:50% 100%">
+<div id="dot" style="position:absolute;width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#F6CF8E,#C88A44);box-shadow:0 0 30px rgba(232,179,106,.7)"></div>
+<div class="e" id="q1" style="top:1150px;font:400 76px PF;color:#FFF6EA">qual furo trava</div>
+<div class="e" id="q2" style="top:1235px;font:400 118px PI;color:#F3C987">a sua empresa?</div>
+<div class="e" id="q3" style="top:1440px;font:700 38px Inter;letter-spacing:6px;color:#E8B36A">COMENTA AQUI</div></div>
+<script>
+const Q=new URLSearchParams(location.search),FR=Q.get('fr'),CT=Q.get('ct');
+const $=id=>document.getElementById(id),cl=x=>Math.max(0,Math.min(1,x)),eo=p=>1-Math.pow(1-cl(p),3);
+const W=[["Empresa", 0.14], ["sem", 0.82], ["estratégia", 1.18], ["é", 2.3], ["dinheiro", 2.64], ["indo", 3.38], ["pro", 3.6], ["ralo.", 3.8], ["Então,", 4.75], ["as", 5.09], ["empresas", 5.17], ["estão", 5.37], ["deixando", 5.67], ["o", 6.01], ["dinheiro", 6.17], ["sair", 6.41], ["pelo", 6.73], ["ralo", 6.95], ["por", 7.27], ["conta", 7.65], ["disso.", 7.97]],A2=4.7,END=8.35,DUR=12.6,RO=3.75;
+const TT=[[0.14,2.25,'empresa','sem estratégia'],[2.3,4.6,'é dinheiro','no ralo'],[4.75,END,'o dinheiro','sai pelo ralo']];
+const nf=n=>String(Math.min(251,Math.max(1,n))).padStart(5,'0');
+function ralo(t){ // ralo atras da pessoa, abre na palavra "ralo"
+ const o=eo((t-RO)/0.5);if(o<=0)return '';const rot=t*200,cy=780;
+ let s=`<defs><radialGradient id="h2"><stop offset="0" stop-color="#000"/><stop offset=".7" stop-color="#0d0a07"/><stop offset="1" stop-color="#2b1d10"/></radialGradient><radialGradient id="c2" cx=".35" cy=".3"><stop offset="0" stop-color="#FFE3A8"/><stop offset=".6" stop-color="#E8B36A"/><stop offset="1" stop-color="#9A6A1E"/></radialGradient></defs>`;
+ s+=`<g transform="translate(540,${cy}) scale(${o})" opacity="${o}"><ellipse rx="420" ry="140" fill="url(#h2)" stroke="#E8B36A" stroke-width="7"/>`;
+ for(let k=0;k<7;k++){const a=(rot+k*51)*Math.PI/180;s+=`<path d="M0 0 Q ${Math.cos(a)*220} ${Math.sin(a)*72} ${Math.cos(a+1.2)*390} ${Math.sin(a+1.2)*130}" stroke="rgba(232,179,106,.4)" stroke-width="6" fill="none"/>`}
+ s+=`</g>`;
+ for(let i=0;i<40;i++){const s0=RO+0.1+i*0.11,a=t-s0;if(a<0||a>1.5)continue;const p=a/1.5,ang=i*1.9+p*8,rad=(1-p)*480,
+  x=540+Math.cos(ang)*rad,y=cy-700*(1-p)*(1-p)+Math.sin(ang)*rad*0.3,sc=1.3-p*1.1;
+  s+=`<g transform="translate(${x},${y}) scale(${sc},${sc*(0.5+0.5*Math.abs(Math.cos(a*9)))})" opacity="${1-cl((p-0.85)/0.15)}"><circle r="40" fill="url(#c2)" stroke="#9A6A1E" stroke-width="3"/><text y="14" text-anchor="middle" font-family="PF" font-size="40" fill="#7A4F14">R$</text></g>`}
+ return s}
+function render(t){
+ const idx=Math.round(t*30)+1;$('bg').src=`${FR}/${nf(idx)}.jpg`;$('fg').src=`${CT}/${nf(idx)}.webp`;
+ $('rl').innerHTML=t<END?ralo(t):'';
+ $('flash').style.opacity=t>=A2&&t<A2+0.15?1-(t-A2)/0.15:0;
+ let tt='';for(const [a,b,r,i] of TT)if(t>=a&&t<b){const p=eo((t-a)/0.45),q=cl((t-b+0.2)/0.2);
+  tt=`<div class="r" style="opacity:${p*(1-q)}">${r}</div><div class="i" style="opacity:${eo((t-a-0.1)/0.45)*(1-q)};filter:blur(${(1-eo((t-a-0.1)/0.45))*8}px)">${i}</div>`}
+ $('tt').innerHTML=tt;
+ const said=W.filter(w=>t>=w[1]-0.05&&t<END&&(t<A2?w[1]<A2:w[1]>=A2));$('sub').textContent=said.slice(-4).map(w=>w[0]).join(' ');
+ const cp=cl((t-6.17)/1.7),c=$('cnt');c.style.opacity=t<END?eo((t-6.1)/0.3):0;$('cv').textContent='R$ '+(42.7*eo(cp)).toFixed(1).replace('.',',')+' bi';
+ const e=$('end'),u=t-END+1.9;e.style.display=t>=END?'block':'none';if(t<END)return;e.style.opacity=eo((t-END)/0.3);
+ const spr=p=>{p=cl(p);return 1-Math.exp(-6*p)*Math.cos(8*p)};
+ // ralo: posicao, empurrao da torre
+ const push=eo((u-3.0)/0.7);const rx=540+push*0,ry=1000+push*760,rs=1-push*0.45,rot=u*200;
+ const sh=(u>2.6&&u<3.0)?Math.sin(u*90)*8:0;
+ let svg=`<defs><radialGradient id="hole"><stop offset="0" stop-color="#000"/><stop offset=".7" stop-color="#0d0a07"/><stop offset="1" stop-color="#2b1d10"/></radialGradient>
+ <radialGradient id="coin" cx=".35" cy=".3"><stop offset="0" stop-color="#FFE3A8"/><stop offset=".6" stop-color="#E8B36A"/><stop offset="1" stop-color="#9A6A1E"/></radialGradient></defs>`;
+ const dOp=1-cl((u-4.2)/0.5);
+ svg+=`<g opacity="${dOp}" transform="translate(${rx+sh},${ry}) scale(${rs})"><ellipse rx="270" ry="86" fill="url(#hole)" stroke="#E8B36A" stroke-width="6"/>`;
+ for(let k=0;k<6;k++){const a=(rot+k*60)*Math.PI/180;svg+=`<path d="M0 0 Q ${Math.cos(a)*140} ${Math.sin(a)*44} ${Math.cos(a+1.2)*250} ${Math.sin(a+1.2)*80}" stroke="rgba(232,179,106,.35)" stroke-width="5" fill="none"/>`}
+ for(let k=0;k<5;k++)svg+=`<ellipse rx="${50*k+30}" ry="${16*k+10}" fill="none" stroke="rgba(232,179,106,${.12+.05*k})" stroke-width="2"/>`;
+ svg+=`</g>`;
+ // moedas caindo em espiral para dentro do ralo
+ for(let i=0;i<22;i++){const s0=0.1+i*0.11,a=u-s0;if(a<0||a>1.4||u>2.7)continue;const p=a/1.4;
+  const ang=i*1.7+p*9,rad=(1-p)*300,cx=540+Math.cos(ang)*rad,cy=ry-520*(1-p)*(1-p)+Math.sin(ang)*rad*0.3,sc=1.1-p*0.9;
+  svg+=`<g transform="translate(${cx},${cy}) scale(${sc},${sc*(0.5+0.5*Math.abs(Math.cos(a*9)))})" opacity="${1-cl((p-0.85)/0.15)}"><circle r="34" fill="url(#coin)" stroke="#9A6A1E" stroke-width="3"/><text y="12" text-anchor="middle" font-family="PF" font-size="34" fill="#7A4F14">R$</text></g>`}
+ // anel de impacto na captura
+ const ia=u-2.6;if(ia>0&&ia<0.6)svg+=`<ellipse cx="540" cy="1000" rx="${100+ia*700}" ry="${32+ia*220}" fill="none" stroke="rgba(255,231,196,${1-ia/0.6})" stroke-width="8"/>`;
+ $('sv').innerHTML=svg;
+ // torre: entra pela esquerda num salto de captura e pousa no ralo
+ const tj=cl((u-1.9)/0.7),tx=-300+(420+300)*eo(tj),ty=640-Math.sin(Math.PI*tj)*260;
+ const sq=u>2.6&&u<2.9?1-0.12*Math.sin((u-2.6)/0.3*Math.PI):1;
+ const T=$('torre');T.style.opacity=u>1.9?1:0;T.style.left=tx+'px';T.style.top=ty+'px';T.style.transform=`rotate(${(1-tj)*-25}deg) scale(${2-sq},${sq})`;
+ // bolinha cai em cima da torre
+ const dj=(u-2.9)/0.45,dt=$('dot');dt.style.opacity=u>2.9?1:0;dt.style.left='525px';dt.style.top=(612-(1-spr(dj))*640)+'px';
+
+ [['q1',3.2],['q2',3.35],['q3',3.6]].forEach(([id,d])=>{const p=eo((u-d)/0.5);$(id).style.opacity=p;$(id).style.transform=`translateY(${(1-p)*30}px)`});
+}
+function events(){const ev=[['moedas',RO+0.1],['moedas',RO+1.2],['swap',A2-0.1],['moedas',6.2],['k2',6.3],['swap',END+1.9-0.0],['stamp',END+2.6-1.9+1.9],['k',END+1.3],['pop',END+3.2]];return ev}
+async function frame(t){render(t);await Promise.all([...document.images].map(i=>i.complete?0:i.decode().catch(()=>0)))}
+</script></body></html>
