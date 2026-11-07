@@ -1,0 +1,79 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:PF;src:url(../v02/fonts/Playfair.ttf)}
+@font-face{font-family:PI;src:url(fonts/playfair-italic-latin.woff2)}
+@font-face{font-family:Inter;src:url(fonts/Inter-Bold.otf);font-weight:700}
+@font-face{font-family:Inter;src:url(fonts/Inter-Medium.otf);font-weight:500}
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#141210}*{box-sizing:border-box}
+.L{position:absolute;inset:0;width:1080px;height:1920px}
+.tt{position:absolute;left:0;width:1080px;top:300px;text-align:center;color:#FFF6EA;text-shadow:0 4px 30px rgba(60,20,0,.55);z-index:5}
+.tt .r{font:400 84px PF;line-height:1;letter-spacing:-1px}
+.tt .i{font:400 132px PI;line-height:.95;margin-top:-6px}
+.tt.gold .i{color:#F3C987}
+.sub{position:absolute;left:0;width:1080px;top:1330px;text-align:center;font:700 44px Inter;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.8);z-index:5}
+/* caixa de sistema generica, sem marca de nenhuma empresa */
+.dlg{position:absolute;left:150px;top:820px;width:780px;background:#F4F1EC;border-radius:14px;box-shadow:0 30px 70px rgba(0,0,0,.6);overflow:hidden;z-index:4;font-family:Inter}
+.dlg .bar{background:#2B2622;color:#F4F1EC;font:500 28px Inter;padding:16px 24px;display:flex;justify-content:space-between}
+.dlg .bd{padding:30px 34px;color:#1d1a17}
+.dlg .t{font:700 40px Inter;line-height:1.15}
+.dlg .s{font:500 28px Inter;color:#5a524a;margin-top:12px}
+.dlg .bt{display:flex;gap:18px;justify-content:flex-end;margin-top:28px}
+.dlg .b{font:700 28px Inter;padding:14px 30px;border-radius:10px;background:#E6E0D7;color:#1d1a17}
+.dlg .b.p{background:#B8862F;color:#fff}
+.cur{position:absolute;width:44px;height:60px;z-index:6}
+#end{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,#3a2414,#141210 70%);z-index:8}
+.e{position:absolute;left:0;width:1080px;text-align:center}
+</style></head><body>
+<img id="bg" class="L"><svg id="fx" width="1080" height="1920" class="L"></svg><img id="fg" class="L">
+<div id="flash" class="L" style="background:#fff;opacity:0;z-index:7"></div>
+<div class="tt" id="tt" style="top:230px"></div>
+<div id="big" style="position:absolute;left:0;width:1080px;top:1120px;text-align:center;z-index:5;opacity:0">
+ <div id="bv" style="font:400 230px PF;color:#F3C987;line-height:1;text-shadow:0 8px 40px rgba(0,0,0,.6)"></div>
+ <div style="font:400 46px PI;color:#FFF6EA;text-shadow:0 2px 14px rgba(0,0,0,.8)">não sabem o que realmente<br>precisam fazer</div></div>
+<div id="cards"></div>
+<div class="sub" id="sub" style="top:1560px"></div>
+<div id="end"><svg id="es" width="1080" height="1920" style="position:absolute;inset:0"></svg>
+ <div class="e" id="e1" style="top:330px;font:700 34px Inter;letter-spacing:10px;color:#E8B36A">FURO 1 DE 4</div>
+ <div class="e" id="e2" style="top:380px;font:400 130px PI;color:#F3C987">pesquisa</div>
+ <div class="e" id="e3" style="top:1230px;font:400 64px PF;color:#FFF6EA">você pesquisa</div>
+ <div class="e" id="e4" style="top:1305px;font:400 96px PI;color:#F3C987">antes de anunciar?</div>
+ <div class="e" id="e5" style="top:1470px;font:700 36px Inter;letter-spacing:6px;color:#E8B36A">COMENTA SIM OU NÃO</div>
+ <div class="e" id="e6" style="top:1560px;font:500 30px Inter;color:#cdbfa8">próximo furo: o site</div></div>
+<script>
+const Q=new URLSearchParams(location.search),FR=Q.get('fr'),CT=Q.get('ct');
+const $=id=>document.getElementById(id),cl=x=>Math.max(0,Math.min(1,x)),eo=p=>1-Math.pow(1-cl(p),3),spr=p=>{p=cl(p);return 1-Math.exp(-6*p)*Math.cos(8*p)};
+const W=[["Então,", 0.06], ["para", 0.2], ["isso", 0.4], ["você", 0.68], ["precisa", 0.9], ["fazer", 1.22], ["uma", 1.42], ["pesquisa", 1.86], ["de", 3.16], ["mercado", 4.34], ["para", 4.74], ["entender", 5.2], ["como", 5.44], ["está", 5.8], ["chegando", 6.0], ["esse", 6.44], ["produto", 6.62], ["hoje.", 6.84], ["Então", 8.26], ["olha", 8.5], ["só", 8.66], ["para", 8.84], ["você", 9.02], ["ver.", 9.26], ["Eu", 9.86], ["coloquei", 9.88], ["aqui", 10.38], ["46%", 10.64], ["não", 12.6], ["sabem", 13.9], ["o", 14.56], ["que", 15.1], ["precisam", 15.24], ["realmente", 16.1], ["fazer.", 17.06], ["Colocam", 18.42], ["o", 18.84], ["quê?", 18.96], ["Na", 19.46], ["mão", 19.62], ["de", 19.86], ["uma", 19.98], ["pessoa", 20.1], ["ou", 20.52], ["de", 20.86], ["uma", 20.98], ["agência,", 21.12], ["e", 21.6], ["isso", 21.92], ["não", 22.18], ["vai.", 22.68]],END=23.0,DUR=27.5,NF=690;
+const TT=[[0.0,1.84,'furo 1','pesquisa'],[1.86,6.8,'faça uma pesquisa','de mercado'],[6.84,10.6,'como o seu produto','chega hoje?'],[18.42,END,'a sua empresa está','com quem?']];
+const nf=n=>String(Math.min(NF,Math.max(1,n))).padStart(5,'0');
+// funil dourado em traco, 4 furos; o furo 1 pisca e vaza
+function funil(t,cx,cy,s,lit,seal){let g=`<g transform="translate(${cx},${cy}) scale(${s})">`;
+ g+=`<path d="M-150 -170 L150 -170 L40 40 L40 170 L-40 170 L-40 40 Z" fill="rgba(20,18,16,.55)" stroke="#E8B36A" stroke-width="7" stroke-linejoin="round"/>`;
+ const H=[[-95,-120],[60,-70],[-20,0],[0,110]];
+ H.forEach(([x,y],i)=>{const on=i===0&&lit;const r=on?16+4*Math.sin(t*12):12;
+  g+=`<circle cx="${x}" cy="${y}" r="${r}" fill="${on?'#ff5a3c':'#141210'}" stroke="#E8B36A" stroke-width="4"/>`;
+  if(i===0&&seal>0)g+=`<rect x="${x-26}" y="${y-14}" width="52" height="28" rx="6" fill="#E8B36A" opacity="${seal}" transform="rotate(-12 ${x} ${y})"/>`;
+  if(on){for(let k=0;k<4;k++){const a=((t*1.6+k*0.25)%1);g+=`<circle cx="${x-10-a*80}" cy="${y+a*a*260}" r="${9*(1-a)+4}" fill="#E8B36A" opacity="${1-a}"/>`}}});
+ return g+`</g>`}
+// lupa varrendo a tela na palavra "pesquisa"
+function lupa(t){const p=eo((t-1.86)/2.3);if(t<1.86||t>6.9)return '';const x=1100-p*(1100-800),y=520+Math.sin(t*3)*30,o=1-cl((t-6.4)/0.5);
+ return `<g opacity="${o}" transform="translate(${x},${y}) rotate(-25)"><circle r="120" fill="rgba(255,240,210,.12)" stroke="#E8B36A" stroke-width="14"/><circle r="120" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="3" stroke-dasharray="60 400"/><rect x="-16" y="128" width="32" height="170" rx="14" fill="#B8862F"/></g>`}
+function render(t){
+ const idx=Math.round(t*30)+1;$('bg').src=`${FR}/${nf(idx)}.jpg`;$('fg').src=`${CT}/${nf(idx)}.webp`;
+ let fx='';if(t<END){fx+=funil(t,800,820,0.95*eo(t/0.5),t>=1.86,0);fx+=lupa(t)}$('fx').innerHTML=fx;
+ let tt='';for(const [a,b,r,i] of TT)if(t>=a&&t<b){const p=eo((t-a)/0.45),q=cl((t-b+0.2)/0.2);
+  tt=`<div class="r" style="opacity:${p*(1-q)}">${r}</div><div class="i" style="opacity:${eo((t-a-0.1)/0.45)*(1-q)};filter:blur(${(1-eo((t-a-0.1)/0.45))*8}px)">${i}</div>`}
+ $('tt').innerHTML=tt;
+ // 46% sobe na palavra
+ const bp=(t-10.64)/1.4;$('big').style.opacity=t>=10.6&&t<18.3?eo((t-10.6)/0.3)*(1-cl((t-18.0)/0.3)):0;$('bv').textContent=Math.round(46*eo(bp))+'%';
+ $('big').style.transform=`scale(${0.8+0.2*spr((t-10.64)/0.6)})`;
+ // "uma pessoa" e "uma agencia" caem e somem pelo furo no "nao vai"
+ let cd='';[['uma pessoa',20.1,330],['uma agência',21.12,730]].forEach(([s,a,x])=>{if(t<a||t>=END)return;const p=spr((t-a)/0.5),f=cl((t-22.18)/0.6);
+  cd+=`<div style="position:absolute;left:${x-150-f*(x-760)}px;top:${1150+ (1-p)*-300 + f*-220}px;width:300px;text-align:center;font:700 40px Inter;color:#141210;background:#F3C987;border-radius:40px;padding:16px 0;opacity:${1-f};transform:scale(${1-0.6*f}) rotate(${(x-660)/40+f*40}deg);z-index:5;box-shadow:0 10px 30px rgba(0,0,0,.5)">${s}</div>`});
+ $('cards').innerHTML=cd;
+ const said=W.filter(w=>t>=w[1]-0.05&&t<END);$('sub').textContent=said.slice(-4).map(w=>w[0]).join(' ');
+ const e=$('end'),u=t-END;e.style.display=u>=0?'block':'none';if(u<0)return;e.style.opacity=eo(u/0.35);
+ $('es').innerHTML=funil(t,540,890,1.25,false,eo((u-0.6)/0.4));
+ [['e1',.1],['e2',.25],['e3',1.0],['e4',1.15],['e5',1.5],['e6',1.8]].forEach(([id,d])=>{const p=eo((u-d)/0.5);$(id).style.opacity=p;$(id).style.transform=`translateY(${(1-p)*30}px)`});
+}
+function events(){return [['whoosh_',0],['swap',1.8],['k2',4.34],['stamp',10.64],['moedas',10.7],['k',20.1],['k',21.12],['swap',22.2],['end',END+0.05],['stamp',END+0.6],['pop',END+1.5]].filter(e=>e[0]!=='whoosh_')}
+async function frame(t){render(t);await Promise.all([...document.images].map(i=>i.complete?0:i.decode().catch(()=>0)))}
+</script></body></html>
