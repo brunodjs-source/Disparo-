@@ -1,0 +1,79 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:PF;src:url(../v02/fonts/Playfair.ttf)}
+@font-face{font-family:PI;src:url(fonts/playfair-italic-latin.woff2)}
+@font-face{font-family:Inter;src:url(fonts/Inter-Bold.otf);font-weight:700}
+@font-face{font-family:Inter;src:url(fonts/Inter-Medium.otf);font-weight:500}
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#141210}*{box-sizing:border-box}
+.L{position:absolute;inset:0;width:1080px;height:1920px}
+.tt{position:absolute;left:0;width:1080px;top:300px;text-align:center;color:#FFF6EA;text-shadow:0 4px 30px rgba(60,20,0,.55);z-index:5}
+.tt .r{font:400 84px PF;line-height:1;letter-spacing:-1px}
+.tt .i{font:400 132px PI;line-height:.95;margin-top:-6px}
+.tt.gold .i{color:#F3C987}
+.sub{position:absolute;left:0;width:1080px;top:1330px;text-align:center;font:700 44px Inter;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.8);z-index:5}
+/* caixa de sistema generica, sem marca de nenhuma empresa */
+.dlg{position:absolute;left:150px;top:820px;width:780px;background:#F4F1EC;border-radius:14px;box-shadow:0 30px 70px rgba(0,0,0,.6);overflow:hidden;z-index:4;font-family:Inter}
+.dlg .bar{background:#2B2622;color:#F4F1EC;font:500 28px Inter;padding:16px 24px;display:flex;justify-content:space-between}
+.dlg .bd{padding:30px 34px;color:#1d1a17}
+.dlg .t{font:700 40px Inter;line-height:1.15}
+.dlg .s{font:500 28px Inter;color:#5a524a;margin-top:12px}
+.dlg .bt{display:flex;gap:18px;justify-content:flex-end;margin-top:28px}
+.dlg .b{font:700 28px Inter;padding:14px 30px;border-radius:10px;background:#E6E0D7;color:#1d1a17}
+.dlg .b.p{background:#B8862F;color:#fff}
+.cur{position:absolute;width:44px;height:60px;z-index:6}
+#end{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,#3a2414,#141210 70%);z-index:8}
+.e{position:absolute;left:0;width:1080px;text-align:center}
+</style></head><body>
+<img id="bg" class="L"><svg id="fx" width="1080" height="1920" class="L"></svg><img id="fg" class="L">
+<div class="tt" id="tt" style="top:230px"></div>
+<div id="sb" style="position:absolute;left:120px;top:1110px;width:840px;z-index:5;display:none">
+ <div style="display:flex;align-items:center;gap:22px;background:#F4F1EC;border-radius:60px;padding:22px 34px;box-shadow:0 20px 50px rgba(0,0,0,.55);border:4px solid #E8B36A">
+  <svg width="44" height="44" viewBox="0 0 44 44"><circle cx="18" cy="18" r="13" fill="none" stroke="#B8862F" stroke-width="5"/><path d="M28 28 L40 40" stroke="#B8862F" stroke-width="6" stroke-linecap="round"/></svg>
+  <div id="sq" style="font:500 40px Inter;color:#1d1a17;white-space:nowrap;overflow:hidden"></div></div>
+ <div id="res"></div></div>
+<div class="sub" id="sub" style="top:1560px"></div>
+<div id="end"><svg id="es" width="1080" height="1920" style="position:absolute;inset:0"></svg>
+ <div class="e" id="e1" style="top:330px;font:700 34px Inter;letter-spacing:10px;color:#E8B36A">FURO 3 DE 4</div>
+ <div class="e" id="e2" style="top:380px;font:400 130px PI;color:#F3C987">busca</div>
+ <div class="e" id="e3" style="top:1230px;font:400 64px PF;color:#FFF6EA">o seu cliente</div>
+ <div class="e" id="e4" style="top:1305px;font:400 96px PI;color:#F3C987">te encontra?</div>
+ <div class="e" id="e5" style="top:1470px;font:700 36px Inter;letter-spacing:6px;color:#E8B36A">COMENTA SIM OU NÃO</div>
+ <div class="e" id="e6" style="top:1560px;font:500 30px Inter;color:#cdbfa8">próximo furo: o funil</div></div>
+<script>
+const Q=new URLSearchParams(location.search),FR=Q.get('fr'),CT=Q.get('ct');
+const $=id=>document.getElementById(id),cl=x=>Math.max(0,Math.min(1,x)),eo=p=>1-Math.pow(1-cl(p),3),spr=p=>{p=cl(p);return 1-Math.exp(-6*p)*Math.cos(8*p)};
+const W=[["E",0.0],["o",0.64],["seu",0.72],["cliente?",0.9],["O",1.4],["que",1.44],["ele",1.5],["está",1.66],["procurando?",1.72],["A",2.38],["pergunta",2.4],["é",2.72],["como",3.06],["é",3.22],["que",3.3],["ele",3.38],["vai",3.5],["te",3.62],["encontrar?",3.74],["Como",4.66],["é",4.82],["que",4.92],["o",4.94],["seu",5.04],["cliente",5.16],["te",5.6],["encontra?",5.68],["Você",6.18],["sabe",6.34],["as",6.54],["palavras",6.72],["corretas",6.98],["que",7.96],["hoje",8.24],["ele",8.7],["procura",9.1],["pelo",9.48],["seu",9.66],["trabalho?",9.82],["Então",10.52],["isso",10.76],["é",11.0],["importante",11.12],["você",11.68],["saber.",12.06],["Sem",12.7],["isso,",12.98],["ele",13.38],["não",13.94],["vai",14.12],["te",14.26],["encontrar.",14.38],["Porque",15.34],["um",15.46],["detalhe",15.86],["é",16.4],["você",16.5],["procurar",16.76],["algo",17.4],["superficial,",18.22],["uma",19.5],["notícia,",19.6],["e",20.1],["outro",20.32],["detalhe",20.52],["é",21.0],["procurar",21.1],["realmente",21.44],["o",21.94],["seu",22.26],["produto.",22.42]],END=23.0,DUR=27.5,NF=729,KW=6.72,SUP=16.76,PRO=21.1;
+const TT=[[0.0,1.35,'furo 3','a busca'],[1.4,4.6,'o que o cliente','está procurando?'],[4.66,6.12,'como ele','te encontra?'],[6.18,10.45,'as palavras','certas'],[10.52,15.28,'sem isso','ele não te acha'],[15.34,20.05,'buscar notícia','é superficial'],[20.1,END,'buscar o produto','é intenção de compra',1]];
+const nf=n=>String(Math.min(NF,Math.max(1,n))).padStart(5,'0');
+// funil dourado em traco, 4 furos; o furo 1 pisca e vaza
+function funil(t,cx,cy,s,lit,seal,cur=1,done=[0]){let g=`<g transform="translate(${cx},${cy}) scale(${s})">`;
+ g+=`<path d="M-150 -170 L150 -170 L40 40 L40 170 L-40 170 L-40 40 Z" fill="rgba(20,18,16,.55)" stroke="#E8B36A" stroke-width="7" stroke-linejoin="round"/>`;
+ const H=[[-95,-120],[60,-70],[-20,0],[0,110]];
+ H.forEach(([x,y],i)=>{const on=i===cur&&lit;const r=on?16+4*Math.sin(t*12):12;
+  g+=`<circle cx="${x}" cy="${y}" r="${r}" fill="${on?'#ff5a3c':'#141210'}" stroke="#E8B36A" stroke-width="4"/>`;
+  if((done.includes(i)?1:(i===cur?seal:0))>0)g+=`<rect x="${x-26}" y="${y-14}" width="52" height="28" rx="6" fill="#E8B36A" opacity="${done.includes(i)?1:seal}" transform="rotate(-12 ${x} ${y})"/>`;
+  if(on){for(let k=0;k<4;k++){const a=((t*1.6+k*0.25)%1);g+=`<circle cx="${x-10-a*80}" cy="${y+a*a*260}" r="${9*(1-a)+4}" fill="#E8B36A" opacity="${1-a}"/>`}}});
+ return g+`</g>`}
+const Q1='estrategista de lançamento';
+function render(t){
+ const idx=Math.round(t*30)+1;$('bg').src=`${FR}/${nf(idx)}.jpg`;$('fg').src=`${CT}/${nf(idx)}.webp`;
+ let fx='';if(t<1.4)fx+=funil(t,800,820,0.95*eo(t/0.5)*(1-cl((t-1.1)/0.3)),t>=0.3,0,2,[0,1]);$('fx').innerHTML=fx;
+ let tt='',gold=false;for(const [a,b,r,i,g] of TT)if(t>=a&&t<b){const p=eo((t-a)/0.45),q=cl((t-b+0.2)/0.2);gold=!!g;
+  tt=`<div class="r" style="opacity:${p*(1-q)}">${r}</div><div class="i" style="opacity:${eo((t-a-0.1)/0.45)*(1-q)};filter:blur(${(1-eo((t-a-0.1)/0.45))*8}px)">${i}</div>`}
+ $('tt').innerHTML=tt;$('tt').className='tt'+(gold?' gold':'');
+ // barra de busca generica: aparece em "procurando", digita nas "palavras"
+ const sb=$('sb'),a0=1.72;sb.style.display=t>=a0&&t<END?'block':'none';const sp=spr((t-a0)/0.5);sb.style.transform=`translateY(${(1-sp)*60}px) scale(${0.9+0.1*sp})`;sb.style.opacity=cl((t-a0)/0.25)*(1-cl((t-END+0.25)/0.25));
+ let q='';if(t>=KW){q=Q1.slice(0,Math.floor((t-KW)/0.07))}if(t>=SUP)q='notícia sobre marketing'.slice(0,Math.floor((t-SUP)/0.05));if(t>=PRO)q='contratar '+Q1.slice(0,Math.floor((t-PRO)/0.04));
+ const cur=(Math.floor(t*2.5)%2)?'|':'\u00a0';$('sq').innerHTML=(q||'<span style="color:#9a9188">o que o seu cliente digita?</span>')+`<span style="color:#B8862F">${cur}</span>`;
+ // resultados: notícia some, produto ganha destaque
+ let rs='';const card=(txt,tag,on,d)=>{const p=spr((t-d)/0.5);return `<div style="margin-top:18px;background:${on?'#F3C987':'rgba(244,241,236,.92)'};border-radius:22px;padding:20px 30px;font:700 34px Inter;color:#1d1a17;display:flex;justify-content:space-between;opacity:${cl((t-d)/0.2)};transform:translateY(${(1-p)*40}px);box-shadow:0 14px 34px rgba(0,0,0,.45)"><span>${txt}</span><span style="font:700 26px Inter;color:${on?'#141210':'#8a8178'};letter-spacing:2px">${tag}</span></div>`};
+ if(t>=SUP+0.9&&t<PRO)rs+=card('Notícia: tendências do mês','SÓ LEU',0,SUP+0.9)+card('Artigo: 10 dicas rápidas','SAIU',0,SUP+1.05);
+ if(t>=PRO+0.7)rs+=card('Estrategista de lançamento','CONTATO',1,PRO+0.7)+card('Agende uma conversa','COMPRA',1,PRO+0.85);
+ $('res').innerHTML=rs;
+ const said=W.filter(w=>t>=w[1]-0.05&&t<END);$('sub').textContent=said.slice(-4).map(w=>w[0]).join(' ');
+ const e=$('end'),u=t-END;e.style.display=u>=0?'block':'none';if(u<0)return;e.style.opacity=eo(u/0.35);
+ $('es').innerHTML=funil(t,540,890,1.25,false,eo((u-0.6)/0.4),2,[0,1]);
+ [['e1',.1],['e2',.25],['e3',1.0],['e4',1.15],['e5',1.5],['e6',1.8]].forEach(([id,d])=>{const p=eo((u-d)/0.5);$(id).style.opacity=p;$(id).style.transform=`translateY(${(1-p)*30}px)`});
+}
+function events(){const ev=[['swap',1.3],['pop',1.75],['end',END+0.05],['stamp',END+0.6],['pop',END+1.5],['pop',SUP+0.9],['stamp',PRO+0.7]];for(let k=0;k<8;k++)ev.push(['tecla',KW+k*0.25]);for(let k=0;k<5;k++)ev.push(['tecla',PRO+k*0.2]);return ev}
+async function frame(t){render(t);await Promise.all([...document.images].map(i=>i.complete?0:i.decode().catch(()=>0)))}
+</script></body></html>
