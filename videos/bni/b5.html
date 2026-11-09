@@ -1,0 +1,91 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:PF;src:url(../v02/fonts/Playfair.ttf)}
+@font-face{font-family:PI;src:url(fonts/playfair-italic-latin.woff2)}
+@font-face{font-family:Inter;src:url(fonts/Inter-Bold.otf);font-weight:700}
+@font-face{font-family:Inter;src:url(fonts/Inter-Medium.otf);font-weight:500}
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#141210}*{box-sizing:border-box}
+.L{position:absolute;inset:0;width:1080px;height:1920px}
+.tt{position:absolute;left:0;width:1080px;top:300px;text-align:center;color:#FFF6EA;text-shadow:0 4px 30px rgba(60,20,0,.55);z-index:5}
+.tt .r{font:400 84px PF;line-height:1;letter-spacing:-1px}
+.tt .i{font:400 132px PI;line-height:.95;margin-top:-6px}
+.tt.gold .i{color:#F3C987}
+.sub{position:absolute;left:0;width:1080px;top:1330px;text-align:center;font:700 44px Inter;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.8);z-index:5}
+/* caixa de sistema generica, sem marca de nenhuma empresa */
+.dlg{position:absolute;left:150px;top:820px;width:780px;background:#F4F1EC;border-radius:14px;box-shadow:0 30px 70px rgba(0,0,0,.6);overflow:hidden;z-index:4;font-family:Inter}
+.dlg .bar{background:#2B2622;color:#F4F1EC;font:500 28px Inter;padding:16px 24px;display:flex;justify-content:space-between}
+.dlg .bd{padding:30px 34px;color:#1d1a17}
+.dlg .t{font:700 40px Inter;line-height:1.15}
+.dlg .s{font:500 28px Inter;color:#5a524a;margin-top:12px}
+.dlg .bt{display:flex;gap:18px;justify-content:flex-end;margin-top:28px}
+.dlg .b{font:700 28px Inter;padding:14px 30px;border-radius:10px;background:#E6E0D7;color:#1d1a17}
+.dlg .b.p{background:#B8862F;color:#fff}
+.cur{position:absolute;width:44px;height:60px;z-index:6}
+#end{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,#3a2414,#141210 70%);z-index:8}
+.e{position:absolute;left:0;width:1080px;text-align:center}
+</style></head><body>
+<img id="bg" class="L"><svg id="fx" width="1080" height="1920" class="L"></svg><img id="fg" class="L">
+<div id="flash" class="L" style="background:#fff;opacity:0;z-index:7"></div>
+<div class="tt" id="tt" style="top:230px"></div>
+<div id="big" style="position:absolute;left:0;width:1080px;top:1120px;text-align:center;z-index:5;opacity:0">
+ <div id="bv" style="font:400 230px PF;color:#F3C987;line-height:1;text-shadow:0 8px 40px rgba(0,0,0,.6)"></div>
+ <div style="font:400 46px PI;color:#FFF6EA;text-shadow:0 2px 14px rgba(0,0,0,.8)">não sabem o que realmente<br>precisam fazer</div></div>
+<div id="cards"></div>
+<div class="sub" id="sub" style="top:1560px"></div>
+<div id="end"><svg id="es" width="1080" height="1920" style="position:absolute;inset:0"></svg>
+ <div class="e" id="e1" style="top:330px;font:700 34px Inter;letter-spacing:10px;color:#E8B36A">FURO 2 DE 4</div>
+ <div class="e" id="e2" style="top:380px;font:400 130px PI;color:#F3C987">site</div>
+ <div class="e" id="e3" style="top:1230px;font:400 64px PF;color:#FFF6EA">o seu site</div>
+ <div class="e" id="e4" style="top:1305px;font:400 96px PI;color:#F3C987">traz cliente?</div>
+ <div class="e" id="e5" style="top:1470px;font:700 36px Inter;letter-spacing:6px;color:#E8B36A">COMENTA SIM OU NÃO</div>
+ <div class="e" id="e6" style="top:1560px;font:500 30px Inter;color:#cdbfa8">próximo furo: a busca</div></div>
+<script>
+const Q=new URLSearchParams(location.search),FR=Q.get('fr'),CT=Q.get('ct');
+const $=id=>document.getElementById(id),cl=x=>Math.max(0,Math.min(1,x)),eo=p=>1-Math.pow(1-cl(p),3),spr=p=>{p=cl(p);return 1-Math.exp(-6*p)*Math.cos(8*p)};
+const W=[["Outra", 0.05], ["coisa,", 0.53], ["o", 1.05], ["seu", 1.17], ["site.", 1.27], ["O", 1.91], ["seu", 2.03], ["site", 2.09], ["hoje", 2.55], ["é", 2.87], ["a", 3.47], ["sua", 3.6], ["casa.", 3.7], ["O", 4.25], ["seu", 4.35], ["site", 4.43], ["tem", 4.71], ["levado", 4.85], ["o", 5.21], ["que", 5.43], ["para", 5.49], ["você?", 5.71], ["Você", 6.43], ["só", 6.69], ["tem", 6.89], ["o", 7.07], ["seu", 7.21], ["site", 7.27], ["para", 7.67], ["enfeite", 7.89], ["ou", 8.35], ["tem", 8.59], ["que", 8.77], ["colocar", 9.01], ["ele", 9.27], ["para", 9.61], ["ser", 9.75], ["uma", 9.89], ["referência?", 10.07], ["E", 10.62], ["aí", 11.1], ["eu", 11.32], ["tenho", 11.52], ["os", 11.66], ["números", 11.86], ["aqui.", 12.04], ["Todo", 12.9], ["mundo", 13.08], ["tem", 13.58], ["seu", 13.98], ["site", 14.24], ["próprio.", 14.56], ["52%", 15.1], ["das", 16.18], ["empresas", 17.0], ["têm", 17.18], ["site", 17.6], ["próprio.", 17.84], ["Mas", 18.5], ["só", 18.64], ["29%", 19.12], ["vendem", 21.04], ["pelo", 21.92], ["site", 22.12], ["de", 22.4], ["verdade.", 22.6]],END=23.75,DUR=28.3,NF=713,A2=10.567,P52=15.1,P29=19.12;
+const TT=[[0.0,3.55,'furo 2','site'],[3.6,6.4,'o seu site','é a sua casa'],[6.43,A2,'enfeite','ou referência?'],[A2+0.05,P52-0.05,'você sabe','o que ele traz?'],[P52,P29-0.05,'52% das empresas','têm site'],[P29,END,'só 29%','vendem pelo site']];
+const nf=n=>String(Math.min(NF,Math.max(1,n))).padStart(5,'0');
+// funil dourado em traco, 4 furos; o furo 1 pisca e vaza
+function funil(t,cx,cy,s,lit,seal,cur=1,done=[0]){let g=`<g transform="translate(${cx},${cy}) scale(${s})">`;
+ g+=`<path d="M-150 -170 L150 -170 L40 40 L40 170 L-40 170 L-40 40 Z" fill="rgba(20,18,16,.55)" stroke="#E8B36A" stroke-width="7" stroke-linejoin="round"/>`;
+ const H=[[-95,-120],[60,-70],[-20,0],[0,110]];
+ H.forEach(([x,y],i)=>{const on=i===cur&&lit;const r=on?16+4*Math.sin(t*12):12;
+  g+=`<circle cx="${x}" cy="${y}" r="${r}" fill="${on?'#ff5a3c':'#141210'}" stroke="#E8B36A" stroke-width="4"/>`;
+  if((done.includes(i)?1:(i===cur?seal:0))>0)g+=`<rect x="${x-26}" y="${y-14}" width="52" height="28" rx="6" fill="#E8B36A" opacity="${done.includes(i)?1:seal}" transform="rotate(-12 ${x} ${y})"/>`;
+  if(on){for(let k=0;k<4;k++){const a=((t*1.6+k*0.25)%1);g+=`<circle cx="${x-10-a*80}" cy="${y+a*a*260}" r="${9*(1-a)+4}" fill="#E8B36A" opacity="${1-a}"/>`}}});
+ return g+`</g>`}
+// lupa varrendo a tela na palavra "pesquisa"
+function lupa(t){const p=eo((t-1.86)/2.3);if(t<1.86||t>6.9)return '';const x=1100-p*(1100-800),y=520+Math.sin(t*3)*30,o=1-cl((t-6.4)/0.5);
+ return `<g opacity="${o}" transform="translate(${x},${y}) rotate(-25)"><circle r="120" fill="rgba(255,240,210,.12)" stroke="#E8B36A" stroke-width="14"/><circle r="120" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="3" stroke-dasharray="60 400"/><rect x="-16" y="128" width="32" height="170" rx="14" fill="#B8862F"/></g>`}
+function casa(t){const p=eo((t-3.6)/0.6);if(t<3.6||t>=A2)return '';const cr=cl((t-7.89)/0.4);let g=`<g transform="translate(770,860) scale(${0.6+0.4*p})" opacity="${p}">`;
+ g+=`<path d="M-190 -40 L0 -200 L190 -40" fill="none" stroke="#E8B36A" stroke-width="10" stroke-linejoin="round"/><rect x="-160" y="-40" width="320" height="260" rx="10" fill="rgba(20,18,16,.6)" stroke="#E8B36A" stroke-width="8"/>`;
+ g+=`<rect x="-160" y="-40" width="320" height="40" rx="10" fill="#E8B36A"/><circle cx="-135" cy="-20" r="7" fill="#141210"/><circle cx="-112" cy="-20" r="7" fill="#141210"/><circle cx="-89" cy="-20" r="7" fill="#141210"/>`;
+ g+=`<rect x="-40" y="110" width="80" height="110" rx="6" fill="#141210" stroke="#E8B36A" stroke-width="5"/>`;
+ if(cr>0){g+=`<path d="M60 0 L30 50 L70 90 L35 150" fill="none" stroke="#ff5a3c" stroke-width="7" opacity="${cr}"/>`;for(let k=0;k<5;k++){const a=((t*1.3+k*0.2)%1);g+=`<circle cx="${-10+a*160}" cy="${200+a*a*240}" r="${16*(1-a)+6}" fill="#E8B36A" opacity="${cr*(1-a)}"/>`}}
+ return g+`</g>`}
+function barras(t){if(t<A2+0.3||t>=END)return '';const o=eo((t-A2-0.3)/0.4),b1=eo((t-P52)/0.9)*0.52,b2=eo((t-P29)/0.9)*0.29,H=900;
+ let g=`<g opacity="${o}"><line x1="600" y1="1080" x2="960" y2="1080" stroke="#E8B36A" stroke-width="4"/>`;
+ g+=`<rect x="620" y="${1080-H*b1}" width="140" height="${H*b1}" fill="#E8B36A" rx="8"/><rect x="800" y="${1080-H*b2}" width="140" height="${H*b2}" fill="#ff8a5c" rx="8"/>`;
+ if(b1>0.01)g+=`<text x="690" y="${1060-H*b1}" text-anchor="middle" font-family="PF" font-size="56" fill="#FFF6EA">${Math.round(b1*100)}%</text><text x="690" y="1124" text-anchor="middle" font-family="Inter" font-weight="700" font-size="28" fill="#FFE7C4">têm site</text>`;
+ if(b2>0.01)g+=`<text x="870" y="${1060-H*b2}" text-anchor="middle" font-family="PF" font-size="56" fill="#FFF6EA">${Math.round(b2*100)}%</text><text x="870" y="1124" text-anchor="middle" font-family="Inter" font-weight="700" font-size="28" fill="#FFE7C4">vendem</text>`;
+ return g+`</g>`}
+function render(t){
+ const idx=Math.round(t*30)+1;$('bg').src=`${FR}/${nf(idx)}.jpg`;$('fg').src=`${CT}/${nf(idx)}.webp`;
+ let fx='';if(t<3.6)fx+=funil(t,800,820,0.95*eo(t/0.5)*(1-cl((t-3.3)/0.3)),t>=0.5,0);fx+=casa(t)+barras(t);$('fx').innerHTML=fx;
+ let tt='';for(const [a,b,r,i] of TT)if(t>=a&&t<b){const p=eo((t-a)/0.45),q=cl((t-b+0.2)/0.2);
+  tt=`<div class="r" style="opacity:${p*(1-q)}">${r}</div><div class="i" style="opacity:${eo((t-a-0.1)/0.45)*(1-q)};filter:blur(${(1-eo((t-a-0.1)/0.45))*8}px)">${i}</div>`}
+ $('tt').innerHTML=tt;
+ // 46% sobe na palavra
+ const bp=(t-10.64)/1.4;$('big').style.opacity=0;$('bv').textContent=Math.round(46*eo(bp))+'%';
+ $('big').style.transform=`scale(${0.8+0.2*spr((t-10.64)/0.6)})`;
+ // "uma pessoa" e "uma agencia" caem e somem pelo furo no "nao vai"
+ let cd='';[].forEach(([s,a,x])=>{if(t<a||t>=END)return;const p=spr((t-a)/0.5),f=cl((t-22.18)/0.6);
+  cd+=`<div style="position:absolute;left:${x-150-f*(x-760)}px;top:${1150+ (1-p)*-300 + f*-220}px;width:300px;text-align:center;font:700 40px Inter;color:#141210;background:#F3C987;border-radius:40px;padding:16px 0;opacity:${1-f};transform:scale(${1-0.6*f}) rotate(${(x-660)/40+f*40}deg);z-index:5;box-shadow:0 10px 30px rgba(0,0,0,.5)">${s}</div>`});
+ $('cards').innerHTML=cd;
+ const said=W.filter(w=>t>=w[1]-0.05&&t<END);$('sub').textContent=said.slice(-4).map(w=>w[0]).join(' ');
+ const e=$('end'),u=t-END;e.style.display=u>=0?'block':'none';if(u<0)return;e.style.opacity=eo(u/0.35);
+ $('es').innerHTML=funil(t,540,890,1.25,false,eo((u-0.6)/0.4),1,[0]);
+ [['e1',.1],['e2',.25],['e3',1.0],['e4',1.15],['e5',1.5],['e6',1.8]].forEach(([id,d])=>{const p=eo((u-d)/0.5);$(id).style.opacity=p;$(id).style.transform=`translateY(${(1-p)*30}px)`});
+}
+function events(){return [['swap',3.5],['moedas',7.95],['swap',A2-0.1],['stamp',P52],['stamp',P29],['end',END+0.05],['stamp',END+0.6],['pop',END+1.5]].filter(e=>e[0]!=='whoosh_')}
+async function frame(t){render(t);await Promise.all([...document.images].map(i=>i.complete?0:i.decode().catch(()=>0)))}
+</script></body></html>
