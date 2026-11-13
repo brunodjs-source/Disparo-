@@ -1,7 +1,7 @@
 // Captura pagina com quadros de video (fr) e recortes (ct). Uso: node capf.js pagina saida dur passo inicio fr ct
 const {chromium}=require('/opt/node-tools/node_modules/playwright');const fs=require('fs');
 const [,,html,out,dur,step,start,FR,CT]=process.argv;
-(async()=>{const b=await chromium.launch({executablePath:'/opt/pw-browsers/chromium',args:['--allow-file-access-from-files']});
+(async()=>{const b=await chromium.launch({executablePath:'/opt/pw-browsers/chromium',args:['--allow-file-access-from-files','--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
 const p=await b.newPage({viewport:{width:1080,height:1920}});
 await p.goto('file://'+__dirname+'/'+html+'?fr='+encodeURIComponent('file://'+FR)+'&ct='+encodeURIComponent('file://'+CT));await p.evaluate(()=>document.fonts.ready);
 fs.writeFileSync(out+'/events.json',JSON.stringify(await p.evaluate(()=>events())));
