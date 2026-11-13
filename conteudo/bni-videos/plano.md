@@ -2,7 +2,7 @@
 
 Tema: **Empresa sem estratégia é dinheiro indo pro ralo.** Roteiro falado: funil de cozinha com 4 furos (água = tráfego pago, copo = cliente), quem sou eu (desde 2006, ramo noturno, 3 cases), os 4 furos (Pesquisa, Site, SEO, Funil), a conta (R$ 42,7 bi, de 33% a 44% desperdiçado), 4 perguntas e indicação. Fonte: `bni-apresentacao-6min-funil-furado.md` no Drive.
 
-Vídeo bruto: `G:\Meu Drive\Bruno\O estrategista\Apresentação BNI\Apresentação BNI.mp4` (44 MB). Para baixar, o arquivo precisa estar como "qualquer pessoa com o link".
+Vídeo bruto: `G:\Meu Drive\Bruno\O estrategista\Apresentação BNI\Apresentação BNI.mp4` (44 MB). Link público: https://drive.google.com/file/d/19rDrgVvXTtfUXtC_pyQrDPn_Fqxkxura/view (baixar com drive.usercontent.google.com/download?id=19rDrgVvXTtfUXtC_pyQrDPn_Fqxkxura&export=download&confirm=t).
 
 ## Modelos novos (criados para este material)
 

@@ -1,0 +1,139 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:PF;src:url(../v02/fonts/Playfair.ttf)}
+@font-face{font-family:PI;src:url(fonts/playfair-italic-latin.woff2)}
+@font-face{font-family:Cinzel;src:url(fonts/cinzel-latin.woff2)}
+@font-face{font-family:Inter;src:url(fonts/Inter-Bold.otf);font-weight:700}
+@font-face{font-family:Inter;src:url(fonts/Inter-Medium.otf);font-weight:500}
+@font-face{font-family:Inter;src:url(fonts/Inter-Black.otf);font-weight:900}
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#141210}*{box-sizing:border-box}
+.L{position:absolute;left:0;top:0;width:1080px;height:1920px}
+#cam{position:absolute;inset:0;transform-origin:330px 640px}
+#gl{filter:drop-shadow(0 30px 40px rgba(0,0,0,.55))}
+.tt{position:absolute;left:0;width:1080px;top:250px;text-align:center;color:#FFF6EA;text-shadow:0 6px 34px rgba(40,14,0,.6)}
+.tt .r{font:400 84px PF;line-height:1;letter-spacing:-1px}
+.tt .i{font:400 136px PI;line-height:.95;margin-top:-4px;filter:drop-shadow(0 6px 18px rgba(0,0,0,.55))}
+.tt .i span{background:linear-gradient(180deg,#FFF1D6 0%,#F3C987 45%,#B8862F 100%);-webkit-background-clip:text;background-clip:text;color:transparent;padding:0 2px}
+.tt.big .i{font-size:200px;margin-top:120px;white-space:nowrap}
+#sub{position:absolute;left:60px;width:960px;top:1590px;text-align:center;font:900 50px Inter;color:#fff;text-shadow:0 3px 16px rgba(0,0,0,.85);letter-spacing:-.5px}
+#sub span{display:inline-block;margin:0 9px;transition:none}
+#leak{mix-blend-mode:screen;pointer-events:none}
+.card{position:absolute;border-radius:28px;background:rgba(26,22,19,.82);backdrop-filter:blur(14px);border:2px solid rgba(232,179,106,.55);box-shadow:0 30px 60px rgba(0,0,0,.6);font-family:Inter;color:#FFF6EA}
+.bub{position:absolute;max-width:380px;padding:18px 24px;border-radius:26px;font:500 32px Inter;line-height:1.2;box-shadow:0 12px 30px rgba(0,0,0,.4)}
+.chip{position:absolute;padding:16px 30px;border-radius:50px;background:linear-gradient(180deg,#F6D9A6,#C9953D);color:#141210;font:900 38px Inter;letter-spacing:1px;box-shadow:0 16px 34px rgba(0,0,0,.55)}
+#end{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,#3a2414,#141210 72%)}
+.e{position:absolute;left:0;width:1080px;text-align:center}
+</style>
+<script type="importmap">{"imports":{"three":"./vendor/three.module.min.js"}}</script>
+</head><body>
+<div id="cam">
+ <img id="bg" class="L">
+ <canvas id="gl" class="L" width="1080" height="1920"></canvas>
+ <div class="tt" id="tt"></div>
+ <img id="fg" class="L">
+</div>
+<div id="ui" class="L"></div>
+<div id="leak" class="L"></div>
+<div id="sub"></div>
+<div id="end">
+ <div class="e" id="e1" style="top:300px;font:400 34px Cinzel;letter-spacing:12px;color:#E8B36A">FURO 4 DE 4</div>
+ <div class="e" id="e2" style="top:350px;font:400 140px PI;color:#F3C987">funil</div>
+ <div class="e" id="e3" style="top:1270px;font:400 64px PF;color:#FFF6EA">quem atende</div>
+ <div class="e" id="e4" style="top:1345px;font:400 100px PI;color:#F3C987">o seu cliente?</div>
+ <div class="e" id="e5" style="top:1515px;font:700 36px Inter;letter-spacing:6px;color:#E8B36A">COMENTA AQUI</div>
+ <div class="e" id="e6" style="top:1600px;font:500 30px Inter;color:#cdbfa8">série completa: pesquisa, site, busca e funil</div>
+</div>
+<script type="module">
+import * as THREE from 'three';
+import {RoomEnvironment} from './vendor/RoomEnvironment.js';
+const Q=new URLSearchParams(location.search),FR=Q.get('fr'),CT=Q.get('ct');
+const $=id=>document.getElementById(id),cl=x=>Math.max(0,Math.min(1,x)),eo=p=>1-Math.pow(1-cl(p),3),eio=p=>{p=cl(p);return p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2},spr=p=>{p=cl(p);return 1-Math.exp(-6*p)*Math.cos(9*p)};
+const W=[["E",0],["aí,",0.12],["olha",0.4],["só:",0.46],["o",1.72],["seu",1.9],["anúncio",2.08],["trouxe?",2.5],["O",3.62],["que",3.68],["acontece",3.84],["depois",4.32],["do",4.7],["clique?",4.94],["Olha",5.62],["só",5.8],["para",5.94],["você",6.1],["ver:",6.32],["depois",6.62],["de",6.96],["ficar",7.3],["no",7.64],["seu",7.8],["site,",7.88],["a",8.86],["pessoa",8.94],["realmente",9.22],["chegou",9.7],["e",10.2],["conversou",10.44],["com",10.96],["vocês?",11.1],["A",12.02],["pessoa",12.1],["não",12.42],["conversou",12.86],["com",13.48],["você.",13.64],["A",14.54],["pessoa",14.62],["simplesmente",14.96],["chegou",15.66],["e",16.3],["conversou",16.48],["com",16.68],["o",16.72],["seu",16.8],["site.",16.88],["Por",17.4],["quê?",17.6],["Precisa",17.86],["entender",18.02],["o",18.44],["que",18.64],["está",18.7],["acontecendo.",18.8],["Se",19.26],["você",20.32],["não",20.62],["tiver",20.76],["esse",21.14],["entendimento,",21.34],["você",22.42],["não",22.46],["vai",22.68],["saber",22.9],["o",23.32],["porquê",23.68],["está",24.04],["gastando",24.22],["o",24.5],["seu",24.64],["dinheiro.",24.68],["Você",25.36],["está",25.64],["gastando",25.88],["dinheiro",26.34],["com",26.5],["o",26.72],["tráfego,",26.88],["gastando",27.22],["dinheiro",27.54],["com",27.94],["a",28.5],["agência,",29.24],["gastando",29.74],["dinheiro",29.94],["com",30.2],["pessoas",30.48],["atendendo.",31.2],["E",31.92],["aí,",32.2],["o",32.34],["seu",32.54],["site",32.56],["faz",32.9],["sentido?",33.14]];
+const END=34.0,DUR=38.6,NF=1020,CLK=4.94,ARR=8.86,TYP=10.44,NO=12.42,BOT=14.96,WHY=17.4,TRF=26.88,AGE=29.24,PES=30.48;
+const TT=[[0,3.55,'o anúncio','trouxe?'],[3.62,6.55,'e depois','do clique?'],[6.62,11.95,'o cliente chegou','alguém atendeu?'],[12.02,14.5,'ninguém','respondeu'],[14.54,17.35,'só o site','falou com ele'],[WHY,19.2,'','por quê?',0,1],[19.26,25.3,'sem entender o funil','o dinheiro some'],[25.36,32.1,'tráfego, agência','e equipe'],[32.2,END,'o seu site','faz sentido?']];
+const nf=n=>String(Math.min(NF,Math.max(1,n))).padStart(5,'0');
+// ---------- cena 3D ----------
+const cv=$('gl'),R=new THREE.WebGLRenderer({canvas:cv,alpha:true,antialias:true,preserveDrawingBuffer:true});
+R.setPixelRatio(1);R.setSize(1080,1920,false);R.toneMapping=THREE.ACESFilmicToneMapping;R.toneMappingExposure=1.15;R.outputColorSpace=THREE.SRGBColorSpace;
+const S=new THREE.Scene(),pm=new THREE.PMREMGenerator(R);S.environment=pm.fromScene(new RoomEnvironment(),0.04).texture;
+const C=new THREE.PerspectiveCamera(30,1080/1920,0.1,100);C.position.set(0,0,9);
+const kl=new THREE.DirectionalLight(0xffe2b0,2.2);kl.position.set(-3,4,5);S.add(kl);const rl=new THREE.DirectionalLight(0xff9a50,1.6);rl.position.set(4,-1,-3);S.add(rl);
+const gold=new THREE.MeshStandardMaterial({color:0xE8B36A,metalness:1,roughness:.26,side:THREE.DoubleSide});
+const goldC=new THREE.MeshStandardMaterial({color:0xF0C27A,metalness:1,roughness:.2});
+const prof=[[0.0,-0.95],[0.22,-0.95],[0.22,-0.3],[0.26,-0.2],[1.0,0.95],[1.06,1.0],[1.0,1.03]].map(([r,y])=>new THREE.Vector2(r,y));
+const F=new THREE.Group();F.add(new THREE.Mesh(new THREE.LatheGeometry(prof,96),gold));S.add(F);
+const rAt=y=>y<-0.2?0.22:0.26+(y+0.2)/1.15*0.74;
+const HO=[[0.72,-0.55],[0.42,0.45],[0.12,-0.25],[-0.55,0.3]],holes=[];
+HO.forEach(([y,th])=>{const r=rAt(y)+0.005,p=new THREE.Vector3(r*Math.sin(th),y,r*Math.cos(th));const g=new THREE.Group();g.position.copy(p);g.lookAt(p.clone().multiplyScalar(2).setY(y));
+ const dark=new THREE.Mesh(new THREE.CircleGeometry(0.075,32),new THREE.MeshBasicMaterial({color:0x0a0806}));dark.position.z=0.004;
+ const ring=new THREE.Mesh(new THREE.TorusGeometry(0.085,0.02,16,48),new THREE.MeshStandardMaterial({color:0x8a5a1c,metalness:1,roughness:.35,emissive:0x000000}));
+ const plug=new THREE.Mesh(new THREE.CylinderGeometry(0.095,0.095,0.03,40),goldC);plug.rotation.x=Math.PI/2;plug.position.z=0.012;plug.scale.set(0,0,0);
+ g.add(dark,ring,plug);F.add(g);holes.push({g,ring,plug,p,n:p.clone().setY(0).normalize()})});
+const coinG=new THREE.CylinderGeometry(0.06,0.06,0.014,32),COINS=[];for(let i=0;i<70;i++){const m=new THREE.Mesh(coinG,goldC);m.visible=false;S.add(m);COINS.push(m)}
+const rnd=k=>{const x=Math.sin(k*127.1+311.7)*43758.5453;return x-Math.floor(x)};
+const w2=(px,py)=>[(px-540)*0.002513,(960-py)*0.002513];
+function scene3d(t){
+ let ci=0;const hide=()=>{for(;ci<COINS.length;ci++)COINS[ci].visible=false};
+ const end=t>=END,u=t-END;
+ // posicao: direita no reel, centro no final
+ let [x,y]=w2(745,770),s=0.56*spr(t/0.7);
+ if(end){[x,y]=w2(540,880);s=0.74;}else{s*=1-eio((t-WHY+0.1)/0.3)*(1-eio((t-19.0)/0.4))}
+ F.position.set(x,y,0);F.scale.setScalar(s);
+ F.rotation.y=(end?0.25*Math.sin(u*0.9):0.35*Math.sin(t*0.5))+0.15;F.rotation.x=0.22;F.rotation.z=end?0:0.04*Math.sin(t*0.7);
+ F.visible=t<END?true:true;F.updateMatrixWorld(true);
+ // furo 4 aceso; no final os 4 sao selados
+ holes.forEach((h,i)=>{const lit=!end&&i===3;const pu=0.6+0.4*Math.sin(t*9);h.ring.material.emissive.setRGB(lit?1.0*pu:0,lit?0.22*pu:0,0);
+  const seal=end?spr((u-0.5-i*0.28)/0.5):0;h.plug.scale.setScalar(seal)});
+ // vazamento pelo furo 4
+ const leak=end?0:cl((t-0.4)/0.6)*(t>19.26?1.8:1),h=holes[3];
+ if(leak>0){const wp=h.p.clone().applyMatrix4(F.matrixWorld),wn=h.n.clone().transformDirection(F.matrixWorld);const N=Math.round(14*leak);
+  for(let k=0;k<N&&ci<COINS.length;k++){const a=((t*0.9+k/N)%1),m=COINS[ci++];m.visible=true;const sp=0.5+rnd(k)*0.4;
+   m.position.set(wp.x+wn.x*a*sp*1.2+(rnd(k+9)-.5)*0.05,wp.y-a*a*2.6,wp.z+wn.z*a*sp);m.rotation.set(t*6+k,t*4+k*2,0);m.scale.setScalar(s*(1-a*0.3))}}
+ // rajadas de moedas caindo no funil em trafego, agencia, pessoas
+ [TRF,AGE,PES].forEach((t0,j)=>{for(let k=0;k<12&&ci<COINS.length;k++){const d=t-t0-k*0.035;if(d<0||d>0.75)continue;const p=d/0.75,m=COINS[ci++];m.visible=true;
+  const top=new THREE.Vector3((rnd(j*20+k)-.5)*1.2,1.0,(rnd(j*20+k+5)-.5)*0.6).applyMatrix4(F.matrixWorld);
+  m.position.set(top.x+(rnd(k+j)-.5)*0.2,top.y+(1-p*p)*1.6,top.z+0.3);m.rotation.set(d*14+k,d*9,k);m.scale.setScalar(s*(1-p*0.4))}});
+ hide();R.render(S,C)}
+// ---------- camada 2D ----------
+function punch(t){let z=1+0.035*cl(t/END);for(const [a,amt] of [[CLK,0.1],[NO,0.12],[WHY,0.16],[24.68,0.1],[32.9,0.08]]){const d=t-a;if(d>=0&&d<1.8)z+=amt*spr(d/0.35)*(1-eio((d-0.9)/0.9))}
+ const sh=(t>=WHY&&t<WHY+0.25)?Math.sin(t*90)*6:0;return `translate(${sh}px,0) scale(${z})`}
+function ui(t){let h='';
+ // anuncio + cursor + clique
+ if(t>=3.62&&t<6.6){const p=spr((t-3.62)/0.5),fly=eio((t-CLK-0.35)/0.8);const x=520+fly*180,y=1180-fly*360,sc=(0.85+0.15*p)*(1-0.75*fly);
+  h+=`<div class="card" style="left:${x}px;top:${y}px;width:440px;padding:22px;opacity:${cl((t-3.62)/0.2)*(1-cl((fly-0.8)/0.2))};transform:scale(${sc})"><div style="font:700 22px Inter;letter-spacing:3px;color:#E8B36A">ANÚNCIO</div><div style="margin-top:10px;height:150px;border-radius:16px;background:linear-gradient(135deg,#F3C987,#8a5a1c)"></div><div style="margin-top:14px;font:700 30px Inter">Saiba mais</div></div>`;
+  const cp=eo((t-3.9)/0.9),cx=1000-cp*300,cy=1560-cp*250,ck=t>=CLK&&t<CLK+0.18;
+  if(fly<0.2)h+=`<svg style="position:absolute;left:${cx}px;top:${cy}px;width:52px;height:70px;transform:scale(${ck?0.82:1})" viewBox="0 0 22 30"><path d="M1 1 L1 25 L7 19 L11 29 L15 27 L11 18 L19 18 Z" fill="#fff" stroke="#141210" stroke-width="1.6"/></svg>`;
+  if(t>=CLK&&t<CLK+0.6){const r=eo((t-CLK)/0.6);h+=`<div style="position:absolute;left:${700-80*r}px;top:${1310-80*r}px;width:${160*r}px;height:${160*r}px;border-radius:50%;border:5px solid rgba(243,201,135,${1-r})"></div>`}}
+ // conversa
+ if(t>=6.62&&t<17.4){const o=cl((t-6.62)/0.3)*(1-cl((t-17.1)/0.3)),p=spr((t-6.62)/0.5);
+  h+=`<div class="card" style="left:470px;top:1060px;width:500px;height:470px;opacity:${o};transform:translateY(${(1-p)*50}px)"><div style="padding:22px 26px;border-bottom:1px solid rgba(232,179,106,.3);display:flex;gap:14px;align-items:center"><div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#F3C987,#8a5a1c)"></div><div><div style="font:700 28px Inter">Sua empresa</div><div style="font:500 22px Inter;color:${t>=NO&&t<BOT?'#ff7a5c':'#9fd28a'}">${t>=NO&&t<BOT?'visto, sem resposta':t>=BOT?'resposta automática':'online'}</div></div></div>`;
+  if(t>=ARR){const q=spr((t-ARR)/0.4);h+=`<div class="bub" style="left:24px;top:110px;background:#F4F1EC;color:#1d1a17;transform:scale(${q});transform-origin:0 0">Oi, quanto custa?</div>`}
+  if(t>=TYP&&t<NO){h+=`<div class="bub" style="right:24px;top:210px;background:#E8B36A;color:#141210">${[0,1,2].map(i=>`<span style="display:inline-block;width:14px;height:14px;margin:0 4px;border-radius:50%;background:#141210;opacity:${0.3+0.7*Math.max(0,Math.sin(t*8-i))}"></span>`).join('')}</div>`}
+  if(t>=NO&&t<BOT){const sh=Math.sin((t-NO)*40)*10*(1-cl((t-NO)/0.4));h+=`<div style="position:absolute;right:30px;top:215px;font:900 64px Inter;color:#ff6a4c;transform:translateX(${sh}px)">✕</div>`}
+  if(t>=BOT){const q=spr((t-BOT)/0.4);h+=`<div class="bub" style="right:24px;top:210px;background:#3a332d;color:#cdbfa8;font-size:27px;transform:scale(${q});transform-origin:100% 0">Mensagem automática: deixe seu e-mail</div>`;
+   if(t>=15.66){const q2=spr((t-15.66)/0.4);h+=`<div style="position:absolute;left:24px;top:350px;font:700 26px Inter;color:#ff8a6c;letter-spacing:2px;transform:scale(${q2});transform-origin:0 0">O CLIENTE SAIU DO SITE</div>`}}
+  h+=`</div>`}
+ // tráfego, agência, pessoas
+ [[TRF,'TRÁFEGO',1180],[AGE,'AGÊNCIA',1290],[PES,'PESSOAS',1400]].forEach(([a,l,y])=>{if(t<a||t>=32.1)return;const p=spr((t-a)/0.45),o=1-cl((t-31.8)/0.3);h+=`<div class="chip" style="left:${600+(1-p)*200}px;top:${y}px;opacity:${o*cl((t-a)/0.15)};transform:scale(${0.6+0.4*p})">${l}</div>`});
+ $('ui').innerHTML=h}
+function leakFx(t){let o=0,x=50;for(const r of TT){const d=t-r[0];if(d>=0&&d<0.6){o=Math.max(o,Math.sin(Math.PI*d/0.6)*0.38);x=20+60*d/0.6}}
+ $('leak').style.background=`radial-gradient(ellipse 60% 40% at ${x}% 35%,rgba(255,170,80,${o}),transparent 70%)`}
+function render(t){
+ const idx=Math.round(Math.min(t,END)*30)+1;$('bg').src=`${FR}/${nf(idx)}.jpg`;$('fg').src=`${CT}/${nf(idx)}.webp`;
+ $('cam').style.transform=punch(t);
+ let tt='',big=false;for(const [a,b,r,i,g,bg] of TT)if(t>=a&&t<b){const p=eo((t-a)/0.45),q=cl((t-b+0.2)/0.2);big=!!bg;
+  const ch=[...i].map((c,k)=>{const pp=eo((t-a-0.08-k*0.03)/0.4);return `<span style="display:inline-block;opacity:${pp};transform:translateY(${(1-pp)*40}px)">${c===' '?'&nbsp;':c}</span>`}).join('');
+  tt=`<div class="r" style="opacity:${p*(1-q)};transform:translateY(${(1-p)*20}px)">${r}</div><div class="i" style="opacity:${1-q}">${ch}</div>`}
+ $('tt').innerHTML=tt;$('tt').className='tt'+(big?' big':'');
+ ui(t);leakFx(t);
+ const said=W.filter(w=>t>=w[1]-0.04&&t<END),last=said.slice(-4);
+ $('sub').innerHTML=last.map((w,k)=>{const cur=k===last.length-1,p=spr((t-w[1])/0.25);return `<span style="color:${cur?'#F3C987':'#fff'};transform:scale(${cur?0.9+0.12*p:1})">${w[0]}</span>`}).join('');
+ const e=$('end'),u=t-END;e.style.display=u>=0?'block':'none';$('gl').style.zIndex=u>=0?9:'';
+ if(u>=0){e.style.opacity=eo(u/0.35);[['e1',.1],['e2',.25],['e3',1.6],['e4',1.75],['e5',2.1],['e6',2.4]].forEach(([id,d])=>{const p=eo((u-d)/0.5);$(id).style.opacity=p;$(id).style.transform=`translateY(${(1-p)*30}px)`})}
+ if(u>=0){document.body.appendChild(cv);cv.style.position='absolute';cv.style.zIndex=10}else if(cv.parentNode!==$('cam')){$('cam').insertBefore(cv,$('tt'));cv.style.zIndex=''}
+ scene3d(t)}
+function events(){const ev=[['clic',CLK],['pop',ARR],['stamp',NO],['pop',BOT],['end',WHY],['moedas',TRF],['moedas',AGE],['moedas',PES],['end',END+0.05]];
+ for(let k=0;k<6;k++)ev.push(['k2',TYP+k*0.3]);for(let i=0;i<4;i++)ev.push(['stamp',END+0.5+i*0.28]);
+ for(const r of TT)if(r[0]>0.5&&r[0]!==WHY)ev.push(['swap',r[0]-0.08]);return ev}
+window.render=render;window.events=events;
+window.frame=async t=>{render(t);await Promise.all([...document.images].map(i=>i.complete?0:i.decode().catch(()=>0)));render(t)};
+</script></body></html>
