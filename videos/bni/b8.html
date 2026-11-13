@@ -1,0 +1,123 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:PF;src:url(../v02/fonts/Playfair.ttf)}
+@font-face{font-family:PI;src:url(fonts/playfair-italic-latin.woff2)}
+@font-face{font-family:Cinzel;src:url(fonts/cinzel-latin.woff2)}
+@font-face{font-family:Inter;src:url(fonts/Inter-Bold.otf);font-weight:700}
+@font-face{font-family:Inter;src:url(fonts/Inter-Medium.otf);font-weight:500}
+@font-face{font-family:Inter;src:url(fonts/Inter-Black.otf);font-weight:900}
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#141210}*{box-sizing:border-box}
+.L{position:absolute;left:0;top:0;width:1080px;height:1920px}
+#cam{position:absolute;inset:0;transform-origin:330px 640px}
+#gl{filter:drop-shadow(0 30px 40px rgba(0,0,0,.55))}
+.tt{position:absolute;left:0;width:1080px;top:250px;text-align:center;color:#FFF6EA;text-shadow:0 6px 34px rgba(40,14,0,.6)}
+.tt .r{font:400 84px PF;line-height:1;letter-spacing:-1px}
+.tt .i{font:400 112px PI;line-height:.95;margin-top:-4px;filter:drop-shadow(0 6px 18px rgba(0,0,0,.55))}
+.tt .i span{background:linear-gradient(180deg,#FFF1D6 0%,#F3C987 45%,#B8862F 100%);-webkit-background-clip:text;background-clip:text;color:transparent;padding:0 2px}
+.tt.big .i{font-size:170px;margin-top:120px;white-space:nowrap}
+#sub{position:absolute;left:60px;width:960px;top:1590px;text-align:center;font:900 50px Inter;color:#fff;text-shadow:0 3px 16px rgba(0,0,0,.85);letter-spacing:-.5px}
+#sub span{display:inline-block;margin:0 9px;transition:none}
+#leak{mix-blend-mode:screen;pointer-events:none}
+.card{position:absolute;border-radius:28px;background:rgba(26,22,19,.82);backdrop-filter:blur(14px);border:2px solid rgba(232,179,106,.55);box-shadow:0 30px 60px rgba(0,0,0,.6);font-family:Inter;color:#FFF6EA}
+.bub{position:absolute;max-width:380px;padding:18px 24px;border-radius:26px;font:500 32px Inter;line-height:1.2;box-shadow:0 12px 30px rgba(0,0,0,.4)}
+.chip{position:absolute;padding:16px 30px;border-radius:50px;background:linear-gradient(180deg,#F6D9A6,#C9953D);color:#141210;font:900 38px Inter;letter-spacing:1px;box-shadow:0 16px 34px rgba(0,0,0,.55)}
+#end{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,#3a2414,#141210 72%)}
+.e{position:absolute;left:0;width:1080px;text-align:center}
+</style>
+<script type="importmap">{"imports":{"three":"./vendor/three.module.min.js"}}</script>
+</head><body>
+<div id="cam">
+ <img id="bg" class="L">
+ <canvas id="gl" class="L" width="1080" height="1920"></canvas>
+ <div class="tt" id="tt"></div>
+ <img id="fg" class="L">
+</div>
+<div id="ui" class="L"></div>
+<div id="leak" class="L"></div>
+<div id="sub"></div>
+<div id="end">
+ <div class="e" id="e1" style="top:300px;font:400 34px Cinzel;letter-spacing:12px;color:#E8B36A">A ORDEM DA ESTRATÉGIA</div>
+ <div class="e" id="e2" style="top:350px;font:400 120px PI;color:#F3C987">não some</div>
+ <div class="e" id="e3" style="top:1270px;font:400 64px PF;color:#FFF6EA">qual furo</div>
+ <div class="e" id="e4" style="top:1345px;font:400 100px PI;color:#F3C987">é o seu?</div>
+ <div class="e" id="e5" style="top:1515px;font:700 36px Inter;letter-spacing:6px;color:#E8B36A">COMENTA O NÚMERO</div>
+ <div class="e" id="e6" style="top:1600px;font:500 30px Inter;color:#cdbfa8">1 pesquisa · 2 site · 3 busca · 4 funil</div>
+</div>
+<script type="module">
+import * as THREE from 'three';
+import {RoomEnvironment} from './vendor/RoomEnvironment.js';
+const Q=new URLSearchParams(location.search),FR=Q.get('fr'),CT=Q.get('ct');
+const $=id=>document.getElementById(id),cl=x=>Math.max(0,Math.min(1,x)),eo=p=>1-Math.pow(1-cl(p),3),eio=p=>{p=cl(p);return p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2},spr=p=>{p=cl(p);return 1-Math.exp(-6*p)*Math.cos(9*p)};
+const W=[["Olha",0],["só:",1.04],["os",1.46],["quatro",1.62],["furos",1.94],["que",2.54],["acontecem.",3.1],["O",4.06],["dinheiro",4.14],["não",4.82],["some.",4.92],["Por",6.16],["que",6.34],["o",6.44],["dinheiro",6.62],["não",6.74],["some?",6.94],["O",7.7],["dinheiro",7.84],["está",8.06],["na",8.36],["sua",8.54],["mão.",8.76],["Só",9.18],["que",9.2],["onde",9.36],["você",9.62],["tem",9.94],["colocado",10.12],["a",10.56],["sua",10.68],["estratégia",10.8],["tem",11.5],["deixado",11.98],["algumas",12.72],["coisas",12.98],["furadas.",13.26],["Então",14.38],["você",14.56],["precisa",14.82],["reconhecer",15.12],["onde",16.1],["está",16.6],["o",16.94],["furo.",17.8],["E",18.64],["isso",18.86],["é",19.5],["a",19.6],["estratégia.",19.62],["A",20.6],["ordem",20.98],["da",21.3],["estratégia",21.48],["é",22.0],["fazer",22.72],["uma",23.04],["pesquisa,",23.22],["arrumar",24.46],["a",25.14],["casa",25.3],["e",25.68],["também",26.18],["saber",27.28],["onde",28.06],["o",29.32],["seu",29.36],["cliente",29.48],["vai",29.86],["buscar",30.24],["para",30.6],["encontrar",30.82],["você.",31.08],["E",32.0],["aí",32.06],["a",32.28],["gente",32.48],["faz",32.7],["o",33.06],["funil,",33.44],["e",34.2],["nesse",34.44],["funil",34.54],["entra",34.88],["o",35.08],["tráfego.",35.24],["Muito",36.3],["obrigado.",36.78],["Eu",37.52],["sou",37.64],["o",37.88],["Bruno,",37.98],["estrategista.",38.5]];
+const END=39.8,DUR=44.4,NF=1194,ST=[23.22,25.3,30.24,33.44],TRF=35.24,NAME=37.5;
+const TT=[[0,4.0,'olha só','os 4 furos'],[4.06,7.6,'o dinheiro','não some'],[7.7,9.1,'ele está','na sua mão'],[9.18,14.3,'a estratégia','deixou furos'],[14.38,18.55,'reconheça','onde está o furo'],[18.64,20.5,'isso é','estratégia'],[20.6,23.15,'a ordem','da estratégia'],[23.22,25.25,'1','pesquisa'],[25.3,28.0,'2','arrumar a casa'],[28.06,33.4,'3','ser encontrado'],[33.44,35.2,'4','o funil'],[TRF,36.25,'5 · tráfego','por último']];
+const nf=n=>String(Math.min(NF,Math.max(1,n))).padStart(5,'0');
+// ---------- cena 3D ----------
+const cv=$('gl'),R=new THREE.WebGLRenderer({canvas:cv,alpha:true,antialias:true,preserveDrawingBuffer:true});
+R.setPixelRatio(1);R.setSize(1080,1920,false);R.toneMapping=THREE.ACESFilmicToneMapping;R.toneMappingExposure=1.15;R.outputColorSpace=THREE.SRGBColorSpace;
+const S=new THREE.Scene(),pm=new THREE.PMREMGenerator(R);S.environment=pm.fromScene(new RoomEnvironment(),0.04).texture;
+const C=new THREE.PerspectiveCamera(30,1080/1920,0.1,100);C.position.set(0,0,9);
+const kl=new THREE.DirectionalLight(0xffe2b0,2.2);kl.position.set(-3,4,5);S.add(kl);const rl=new THREE.DirectionalLight(0xff9a50,1.6);rl.position.set(4,-1,-3);S.add(rl);
+const gold=new THREE.MeshStandardMaterial({color:0xE8B36A,metalness:1,roughness:.26,side:THREE.DoubleSide});
+const goldC=new THREE.MeshStandardMaterial({color:0xF0C27A,metalness:1,roughness:.2});
+const prof=[[0.0,-0.95],[0.22,-0.95],[0.22,-0.3],[0.26,-0.2],[1.0,0.95],[1.06,1.0],[1.0,1.03]].map(([r,y])=>new THREE.Vector2(r,y));
+const F=new THREE.Group();F.add(new THREE.Mesh(new THREE.LatheGeometry(prof,96),gold));S.add(F);
+const rAt=y=>y<-0.2?0.22:0.26+(y+0.2)/1.15*0.74;
+const HO=[[0.72,-0.55],[0.42,0.45],[0.12,-0.25],[-0.55,0.3]],holes=[];
+HO.forEach(([y,th])=>{const r=rAt(y)+0.005,p=new THREE.Vector3(r*Math.sin(th),y,r*Math.cos(th));const g=new THREE.Group();g.position.copy(p);g.lookAt(p.clone().multiplyScalar(2).setY(y));
+ const dark=new THREE.Mesh(new THREE.CircleGeometry(0.075,32),new THREE.MeshBasicMaterial({color:0x0a0806}));dark.position.z=0.004;
+ const ring=new THREE.Mesh(new THREE.TorusGeometry(0.085,0.02,16,48),new THREE.MeshStandardMaterial({color:0x8a5a1c,metalness:1,roughness:.35,emissive:0x000000}));
+ const plug=new THREE.Mesh(new THREE.CylinderGeometry(0.095,0.095,0.03,40),goldC);plug.rotation.x=Math.PI/2;plug.position.z=0.012;plug.scale.set(0,0,0);
+ g.add(dark,ring,plug);F.add(g);holes.push({g,ring,plug,p,n:p.clone().setY(0).normalize()})});
+const coinG=new THREE.CylinderGeometry(0.06,0.06,0.014,32),COINS=[];for(let i=0;i<70;i++){const m=new THREE.Mesh(coinG,goldC);m.visible=false;S.add(m);COINS.push(m)}
+const rnd=k=>{const x=Math.sin(k*127.1+311.7)*43758.5453;return x-Math.floor(x)};
+const w2=(px,py)=>[(px-540)*0.002513,(960-py)*0.002513];
+function scene3d(t){
+ let ci=0;const hide=()=>{for(;ci<COINS.length;ci++)COINS[ci].visible=false};
+ const end=t>=END,u=t-END;
+ let [x,y]=w2(745,770),s=0.56*spr(t/0.7);if(end){[x,y]=w2(540,880);s=0.74}
+ F.position.set(x,y,0);F.scale.setScalar(s);
+ F.rotation.y=(end?0.25*Math.sin(u*0.9):0.35*Math.sin(t*0.5))+0.15;F.rotation.x=0.22;F.rotation.z=0;F.updateMatrixWorld(true);
+ const sealT=i=>ST[i];
+ holes.forEach((h,i)=>{const on=t>=1.46+i*0.22&&!end&&t<sealT(i);const pu=0.6+0.4*Math.sin(t*9+i);h.ring.material.emissive.setRGB(on?pu:0,on?0.22*pu:0,0);
+  h.plug.scale.setScalar(end?1:spr((t-sealT(i))/0.5))});
+ // vazamento: 4.06-7.7 e 9.18-20.6 por todos os furos ainda abertos
+ const lk=(t>=4.06&&t<7.6)||(t>=9.18&&t<35.2);
+ if(lk&&!end)holes.forEach((h,i)=>{if(t>=sealT(i))return;const wp=h.p.clone().applyMatrix4(F.matrixWorld),wn=h.n.clone().transformDirection(F.matrixWorld);
+  for(let k=0;k<6&&ci<COINS.length;k++){const a=((t*0.9+k/6+i*0.13)%1),m=COINS[ci++];m.visible=true;m.position.set(wp.x+wn.x*a*0.7,wp.y-a*a*2.4,wp.z+wn.z*a*0.6);m.rotation.set(t*6+k,t*4+k*2,0);m.scale.setScalar(s*(1-a*0.3))}});
+ // na sua mao: moedas sobem e empilham na frente
+ if(t>=7.7&&t<9.2){for(let k=0;k<14&&ci<COINS.length;k++){const p=eo((t-7.7-k*0.04)/0.5),m=COINS[ci++];m.visible=true;const [bx,by]=w2(760,1250);m.position.set(bx+(1-p)*(rnd(k)-.5)*1.5,by+(1-p)*-1.2+k*0.06*p,0.5);m.rotation.set(Math.PI/2*(1-p)+0.25,0,0);m.scale.setScalar(2.4)}}
+ // trafego por ultimo: moedas entram por cima e saem inteiras pelo bico
+ if(t>=TRF&&!end){const top=new THREE.Vector3(0,1.2,0).applyMatrix4(F.matrixWorld),bot=new THREE.Vector3(0,-1.0,0).applyMatrix4(F.matrixWorld);
+  for(let k=0;k<16&&ci<COINS.length;k++){const a=((t-TRF)*0.8+k/16)%1,m=COINS[ci++];m.visible=true;const yy=top.y+0.9-a*(top.y+0.9-bot.y+0.5);const r=a<0.45?(0.45-a)*1.2:0;
+   m.position.set(top.x+Math.sin(k*2.3+t*3)*r,yy,top.z+Math.cos(k*2.3+t*3)*r*0.5);m.rotation.set(t*5+k,k,0);m.scale.setScalar(s)}}
+ hide();R.render(S,C)}
+function punch(t){let z=1+0.035*cl(t/END);for(const [a,amt] of [[4.82,0.1],[8.76,0.08],[15.12,0.12],[19.62,0.08],[TRF,0.1],[NAME,0.12]]){const d=t-a;if(d>=0&&d<1.8)z+=amt*spr(d/0.35)*(1-eio((d-0.9)/0.9))}return `scale(${z})`}
+function ui(t){let h='';
+ // lista da ordem acumulando
+ if(t>=20.6&&t<36.25){const o=cl((t-20.6)/0.3)*(1-cl((t-35.95)/0.3)),p=spr((t-20.6)/0.5);const L=[['Pesquisa',ST[0]],['Arrumar a casa',ST[1]],['Ser encontrado',ST[2]],['O funil',ST[3]],['Tráfego',TRF]];
+  h+=`<div class="card" style="left:500px;top:1090px;width:460px;padding:22px 28px;opacity:${o};transform:translateY(${(1-p)*40}px)"><div style="font:700 22px Inter;letter-spacing:4px;color:#E8B36A;margin-bottom:10px">A ORDEM</div>`;
+  L.forEach(([n,a],i)=>{const on=t>=a,q=spr((t-a)/0.4);h+=`<div style="display:flex;align-items:center;gap:16px;margin:10px 0;font:700 32px Inter;color:${on?'#FFF6EA':'rgba(255,246,234,.35)'}"><div style="width:44px;height:44px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font:900 24px Inter;background:${on?'linear-gradient(180deg,#F6D9A6,#C9953D)':'rgba(255,255,255,.08)'};color:#141210;transform:scale(${on?0.8+0.2*q:1})">${i+1}</div>${n}</div>`});h+=`</div>`}
+ // nome e cargo
+ if(t>=NAME&&t<END){const p=eo((t-NAME)/0.5);h+=`<div style="position:absolute;left:80px;top:1200px;opacity:${p};transform:translateX(${(1-p)*-40}px)"><div style="width:${380*p}px;height:4px;background:linear-gradient(90deg,#F3C987,transparent)"></div><div style="font:400 64px PF;color:#FFF6EA;margin-top:14px">Bruno Israel</div><div style="font:700 26px Inter;letter-spacing:5px;color:#E8B36A;margin-top:6px">ESTRATEGISTA DE LANÇAMENTO</div></div>`}
+ $('ui').innerHTML=h}
+function leakFx(t){let o=0,x=50;for(const r of TT){const d=t-r[0];if(d>=0&&d<0.6){o=Math.max(o,Math.sin(Math.PI*d/0.6)*0.38);x=20+60*d/0.6}}
+ $('leak').style.background=`radial-gradient(ellipse 60% 40% at ${x}% 35%,rgba(255,170,80,${o}),transparent 70%)`}
+function render(t){
+ const idx=Math.round(Math.min(t,END)*30)+1;$('bg').src=`${FR}/${nf(idx)}.jpg`;$('fg').src=`${CT}/${nf(idx)}.webp`;
+ $('cam').style.transform=punch(t);
+ let tt='',big=false;for(const [a,b,r,i,g,bg] of TT)if(t>=a&&t<b){const p=eo((t-a)/0.45),q=cl((t-b+0.2)/0.2);big=!!bg;
+  const ch=[...i].map((c,k)=>{const pp=eo((t-a-0.08-k*0.03)/0.4);return `<span style="display:inline-block;opacity:${pp};transform:translateY(${(1-pp)*40}px)">${c===' '?'&nbsp;':c}</span>`}).join('');
+  tt=`<div class="r" style="opacity:${p*(1-q)};transform:translateY(${(1-p)*20}px)">${r}</div><div class="i" style="opacity:${1-q}">${ch}</div>`}
+ $('tt').innerHTML=tt;$('tt').className='tt'+(big?' big':'');
+ ui(t);leakFx(t);
+ const said=W.filter(w=>t>=w[1]-0.04&&t<END),last=said.slice(-4);
+ $('sub').innerHTML=last.map((w,k)=>{const cur=k===last.length-1,p=spr((t-w[1])/0.25);return `<span style="color:${cur?'#F3C987':'#fff'};transform:scale(${cur?0.9+0.12*p:1})">${w[0]}</span>`}).join('');
+ const e=$('end'),u=t-END;e.style.display=u>=0?'block':'none';$('gl').style.zIndex=u>=0?9:'';
+ if(u>=0){e.style.opacity=eo(u/0.35);[['e1',.1],['e2',.25],['e3',1.6],['e4',1.75],['e5',2.1],['e6',2.4]].forEach(([id,d])=>{const p=eo((u-d)/0.5);$(id).style.opacity=p;$(id).style.transform=`translateY(${(1-p)*30}px)`})}
+ if(u>=0){document.body.appendChild(cv);cv.style.position='absolute';cv.style.zIndex=10}else if(cv.parentNode!==$('cam')){$('cam').insertBefore(cv,$('tt'));cv.style.zIndex=''}
+ scene3d(t)}
+function events(){const ev=[['moedas',4.1],['end',4.82],['moedas',7.75],['swap',15.12],['end',TRF],['moedas',TRF+0.2],['end',END+0.05],['pop',NAME]];ST.forEach(a=>ev.push(['stamp',a]));
+ for(let i=0;i<4;i++)ev.push(['stamp',END+0.5+i*0.28]);for(const r of TT)if(r[0]>0.5&&!ST.includes(r[0])&&r[0]!==TRF)ev.push(['swap',r[0]-0.08]);return ev}
+window.render=render;window.events=events;
+window.frame=async t=>{render(t);await Promise.all([...document.images].map(i=>i.complete?0:i.decode().catch(()=>0)));render(t)};
+</script></body></html>
