@@ -1,69 +1,60 @@
 <!doctype html><html><head><meta charset="utf-8"><style>
 @font-face{font-family:Inter;src:url(../../videos/bni/fonts/Inter-Black.otf);font-weight:900}
 @font-face{font-family:Inter;src:url(../../videos/bni/fonts/Inter-Bold.otf);font-weight:700}
-@font-face{font-family:PI;src:url(../../videos/bni/fonts/playfair-italic-latin.woff2)}
 body{margin:0;background:#111}*{box-sizing:border-box}
-.s{position:relative;width:1080px;height:1350px;overflow:hidden;margin-bottom:20px;font-family:Inter}
-.sky{position:absolute;inset:0}
-.bru{position:absolute;filter:drop-shadow(0 20px 40px rgba(0,0,0,.55))}
-.kick{position:absolute;left:60px;top:70px;display:flex;gap:14px;align-items:center;font:900 30px Inter;letter-spacing:4px;color:#fff}
-.kick .b{background:#ff2e88;padding:10px 18px;transform:skewX(-10deg);box-shadow:6px 6px 0 #1a0b24}
-.kick .p{display:flex;gap:6px}.kick .p i{width:46px;height:14px;background:rgba(255,255,255,.3);transform:skewX(-20deg)}.kick .p i.on{background:#2ff0e6}
-.t{position:absolute;left:60px;width:960px;font:900 italic 108px Inter;line-height:.95;letter-spacing:-3px;color:#fff;text-transform:uppercase;
- -webkit-text-stroke:5px #1a0b24;paint-order:stroke fill;text-shadow:8px 8px 0 #ff2e88,16px 16px 0 #1a0b24}
-.t em{font-style:italic;color:#ffd166}
-.box{position:absolute;left:60px;width:620px;background:rgba(18,8,26,.86);border-left:10px solid #2ff0e6;padding:28px 32px;color:#fff;font:700 38px Inter;line-height:1.28;box-shadow:12px 12px 0 rgba(0,0,0,.45)}
+.s{position:relative;width:1080px;height:1350px;overflow:hidden;margin-bottom:20px;font-family:Inter;background:#1c0b33}
+.pn{position:absolute;overflow:hidden;border:0;background:#2a1450}
+.pn svg{position:absolute;inset:0;width:100%;height:100%}
+.pn img{position:absolute}
+.logo{position:absolute;text-align:center;line-height:.82;font:900 150px Inter;letter-spacing:-6px;color:#fff;-webkit-text-stroke:14px #3b0f5c;paint-order:stroke fill;text-shadow:0 10px 0 #3b0f5c}
+.ttl{position:absolute;left:50px;width:980px;font:900 96px Inter;line-height:.9;letter-spacing:-4px;color:#fff;-webkit-text-stroke:12px #3b0f5c;paint-order:stroke fill;text-shadow:0 9px 0 #3b0f5c}
+.tag{position:absolute;left:50px;top:60px;font:900 30px Inter;letter-spacing:5px;color:#3b0f5c;background:linear-gradient(90deg,#ffd6a5,#ff9ecf);padding:12px 22px;border-radius:6px}
+.box{position:absolute;left:50px;width:640px;background:rgba(40,12,70,.88);border-radius:18px;padding:28px 32px;color:#fff;font:700 38px Inter;line-height:1.28}
 .box b{color:#ffd166}
-.foot{position:absolute;left:60px;bottom:50px;font:700 26px Inter;letter-spacing:3px;color:#fff;opacity:.9}
-.swipe{position:absolute;right:60px;bottom:44px;font:900 30px Inter;color:#1a0b24;background:#ffd166;padding:12px 24px;transform:skewX(-10deg);box-shadow:6px 6px 0 #1a0b24}
+.foot{position:absolute;left:50px;bottom:40px;font:700 24px Inter;letter-spacing:3px;color:#fff}
+.sw{position:absolute;right:50px;bottom:34px;font:900 28px Inter;color:#3b0f5c;background:#fff;padding:10px 22px;border-radius:40px}
 </style></head><body>
 <script>
-// cenario original: ceu de por do sol, sol com faixas, mar, predios e palmeiras em silhueta
-function cena(c){const [a,b,d]=c.sky;let p=`<svg class="sky" viewBox="0 0 1080 1350" preserveAspectRatio="none"><defs><linearGradient id="g${c.id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${a}"/><stop offset=".55" stop-color="${b}"/><stop offset="1" stop-color="${d}"/></linearGradient>
-<linearGradient id="su${c.id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe066"/><stop offset="1" stop-color="#ff3d7f"/></linearGradient>
-<clipPath id="cl${c.id}"><circle cx="${c.sun[0]}" cy="${c.sun[1]}" r="${c.sun[2]}"/></clipPath></defs>
-<rect width="1080" height="1350" fill="url(#g${c.id})"/>`;
- p+=`<g clip-path="url(#cl${c.id})"><rect x="0" y="0" width="1080" height="1350" fill="url(#su${c.id})"/>${[0,1,2,3,4,5].map(i=>`<rect x="0" y="${c.sun[1]+i*22+10}" width="1080" height="${6+i*2}" fill="${b}"/>`).join('')}</g>`;
- // predios
- let x=0,k=0;while(x<1080){const w=50+((k*37)%60),h=180+((k*71)%260);p+=`<rect x="${x}" y="${c.hz-h}" width="${w}" height="${h}" fill="#2a0f3a" opacity=".92"/>`;for(let j=0;j<h/40-1;j++)if((j+k)%3)p+=`<rect x="${x+10}" y="${c.hz-h+18+j*40}" width="${w-20}" height="6" fill="${(j+k)%2?'#2ff0e6':'#ff6ec7'}" opacity=".55"/>`;x+=w+6;k++}
- // mar e reflexos
- p+=`<rect y="${c.hz}" width="1080" height="${1350-c.hz}" fill="#1b0a2e"/>`;for(let i=0;i<14;i++)p+=`<rect x="${c.sun[0]-140+((i*53)%120)}" y="${c.hz+14+i*16}" width="${280-i*14}" height="5" fill="#ff7aa8" opacity="${.7-i*.04}"/>`;
- // palmeiras
- const palm=(px,s,fl)=>{let g=`<g transform="translate(${px},${c.hz+30}) scale(${fl*s},${s})" fill="#14061e"><path d="M-8 0 C-2 -150 10 -300 30 -430 L42 -428 C24 -300 14 -150 10 0 Z"/>`;for(let f=0;f<7;f++){const an=-150+f*45;g+=`<path transform="translate(36,-430) rotate(${an})" d="M0 0 C60 -30 130 -10 190 40 C130 10 70 5 0 12 Z"/>`}return g+`</g>`};
- c.palms.forEach(([px,s,fl])=>p+=palm(px,s,fl));
- return p+`</svg>`}
-const C=[
- {id:1,sky:['#3b0a5c','#ff4f8b','#ffb35c'],sun:[540,690,250],hz:860,palms:[[60,1.25,1],[1010,1.1,-1],[900,.75,-1]]},
- {id:2,sky:['#140b3a','#7a1fa2','#ff5e9a'],sun:[820,760,170],hz:900,palms:[[40,1.0,1],[1040,1.15,-1]]},
- {id:3,sky:['#06223a','#1d6f8a','#ff8a5c'],sun:[260,800,160],hz:920,palms:[[1000,1.2,-1],[90,.8,1]]},
- {id:4,sky:['#2a0d48','#c2367a','#ffc06b'],sun:[540,720,230],hz:880,palms:[[30,1.15,1],[1050,1.2,-1]]},
- {id:5,sky:['#0b0420','#3a106b','#ff2e88'],sun:[300,760,190],hz:900,palms:[[1020,1.3,-1],[150,.9,1]]},
- {id:6,sky:['#ff7a3d','#ff3d7f','#ffd166'],sun:[540,640,300],hz:860,palms:[[20,1.3,1],[1060,1.3,-1],[170,.8,1],[920,.85,-1]]}];
-const S=[
- `<div class="kick"><div class="b">MISSÃO</div>O CLIENTE DESAPARECIDO</div>
-  <div class="t" style="top:170px">Ele viu o seu anúncio.<br><em>E sumiu.</em></div>
-  <img class="bru" src="bruno-pintado.png" style="right:-60px;bottom:0;width:820px">
-  <div class="box" style="top:760px;width:560px">A história de como um <b>funil</b> transforma um desconhecido em cliente, em 4 fases.</div>
-  <div class="swipe">ARRASTA ›</div>`,
- `<div class="kick"><div class="b">FASE 1</div><div class="p"><i class="on"></i><i></i><i></i><i></i></div></div>
-  <div class="t" style="top:170px">Atração:<br><em>o alvo te viu</em></div>
-  <img class="bru" src="bruno-pintado.png" style="right:-120px;bottom:0;width:700px">
-  <div class="box" style="top:720px">Anúncio ou conteúdo trazem a pessoa até você. Ela ainda <b>não confia</b>. Só está passando.<br><br>Sem a próxima fase, ela segue o caminho dela.</div>`,
- `<div class="kick"><div class="b">FASE 2</div><div class="p"><i class="on"></i><i class="on"></i><i></i><i></i></div></div>
-  <div class="t" style="top:170px">Captura:<br><em>pegue o contato</em></div>
-  <img class="bru" src="bruno-pintado.png" style="left:-120px;bottom:0;width:700px;transform:scaleX(-1)">
-  <div class="box" style="top:720px;left:400px">Ofereça algo útil: um diagnóstico, um guia, uma aula. Em troca, <b>nome e WhatsApp</b>.<br><br>Quem não deixa contato some do mapa.</div>`,
- `<div class="kick"><div class="b">FASE 3</div><div class="p"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div>
-  <div class="t" style="top:170px">Aquecimento:<br><em>ganhe confiança</em></div>
-  <img class="bru" src="bruno-pintado.png" style="right:-120px;bottom:0;width:700px">
-  <div class="box" style="top:720px">Conteúdo, prova e conversa nos dias seguintes. Ele passa de <b>curioso</b> para <b>interessado</b>.<br><br>Pular essa fase é pedir casamento no primeiro encontro.</div>`,
- `<div class="kick"><div class="b">FASE 4</div><div class="p"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div></div>
-  <div class="t" style="top:170px">Conversão:<br><em>alguém atende</em></div>
-  <img class="bru" src="bruno-pintado.png" style="left:-120px;bottom:0;width:700px;transform:scaleX(-1)">
-  <div class="box" style="top:720px;left:400px">A oferta certa, na hora certa, com <b>uma pessoa respondendo</b>.<br><br>Mensagem automática pedindo e-mail não fecha venda.</div>`,
- `<div class="kick"><div class="b" style="background:#2ff0e6;color:#1a0b24">MISSÃO CUMPRIDA</div></div>
-  <div class="t" style="top:170px">O tráfego<br><em>entra por último</em></div>
-  <img class="bru" src="bruno-pintado.png" style="right:-40px;bottom:0;width:760px">
-  <div class="box" style="top:700px;width:560px">Com as 4 fases montadas, o anúncio passa pelo funil <b>sem vazar</b>.<br><br>Salva e manda para quem investe em anúncio sem funil.</div>`];
-S.forEach((h,i)=>{document.write(`<div class="s" id="s${i+1}">${cena(C[i])}${h}<div class="foot">@O_ESTRATEGISTA.COM.BR · ${i+1}/6</div></div>`)});
+let uid=0;
+// cenario pastel original: ceu, sol, predios art deco, palmeiras, e um objeto por fase
+function cena(o){const id=++uid,[a,b,c]=o.sky||['#6f5bd6','#ff8fc7','#ffd2a1'];const hz=o.hz||640;
+ let p=`<svg viewBox="0 0 600 900" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="k${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${a}"/><stop offset=".6" stop-color="${b}"/><stop offset="1" stop-color="${c}"/></linearGradient></defs><rect width="600" height="900" fill="url(#k${id})"/>`;
+ p+=`<circle cx="${o.sun||420}" cy="${hz-120}" r="110" fill="#ffe3a8" opacity=".8"/>`;
+ [[20,180,120],[150,240,90],[260,150,110],[390,280,100],[500,200,110]].forEach(([x,h,w],i)=>{p+=`<rect x="${x}" y="${hz-h}" width="${w}" height="${h+10}" fill="${i%2?'#c9a4ff':'#f6b8e0'}" opacity=".75"/>`;for(let j=0;j<h/34;j++)p+=`<rect x="${x+12}" y="${hz-h+16+j*34}" width="${w-24}" height="10" fill="#fff" opacity=".35"/>`});
+ p+=`<rect y="${hz}" width="600" height="${900-hz}" fill="#8fd9e6"/><rect y="${hz}" width="600" height="8" fill="#fff" opacity=".5"/>`;
+ const palm=(x,s,f)=>{let g=`<g transform="translate(${x},${hz+20}) scale(${f*s},${s})" fill="#4a2370" opacity=".9"><path d="M-6 0 C0 -120 8 -240 24 -340 L34 -338 C20 -240 12 -120 8 0Z"/>`;for(let k=0;k<7;k++)g+=`<path transform="translate(29,-340) rotate(${-150+k*45})" d="M0 0 C50 -25 105 -8 150 32 C105 8 55 4 0 10Z"/>`;return g+'</g>'};
+ (o.palms||[[30,1,1],[580,1.1,-1]]).forEach(q=>p+=palm(...q));
+ return p+(o.extra||'')+'</svg>'}
+const PHONE=`<g transform="translate(380,150) rotate(12)"><rect width="170" height="320" rx="26" fill="#2b1150"/><rect x="12" y="20" width="146" height="280" rx="14" fill="#fff"/>${[0,1,2,3].map(i=>`<rect x="24" y="${40+i*62}" width="122" height="46" rx="10" fill="${['#ff8fc7','#ffd166','#8fd9e6','#c9a4ff'][i]}"/><circle cx="46" cy="${63+i*62}" r="12" fill="#fff"/>`).join('')}</g>`;
+const FUNIL=`<g transform="translate(330,120)"><path d="M0 0 L240 0 L150 190 L150 330 L90 330 L90 190 Z" fill="#ffd166" stroke="#3b0f5c" stroke-width="10" stroke-linejoin="round"/>${[[60,40],[170,60],[110,120],[120,260]].map(([x,y],i)=>`<circle cx="${x}" cy="${y}" r="16" fill="${i===1?'#ff3d7f':'#3b0f5c'}"/>`).join('')}</g>`;
+const CHAT=`<g transform="translate(330,140)"><rect width="250" height="90" rx="30" fill="#fff"/><text x="28" y="58" font-family="Inter" font-weight="900" font-size="30" fill="#3b0f5c">Quanto custa?</text><rect x="40" y="120" width="210" height="90" rx="30" fill="#ffd166"/>${[0,1,2].map(i=>`<circle cx="${100+i*40}" cy="165" r="12" fill="#3b0f5c"/>`).join('')}<path d="M30 260 l40 0 l-20 30z" fill="#fff" opacity="0"/></g>`;
+const MONEY=Array.from({length:14},(_,i)=>`<g transform="translate(${40+((i*83)%520)},${60+((i*127)%380)}) rotate(${(i*37)%60-30})"><rect width="90" height="44" rx="6" fill="#7ee0a3" stroke="#2f7a4f" stroke-width="5"/><circle cx="45" cy="22" r="11" fill="#2f7a4f"/></g>`).join('');
+const P=[
+ {img:'pose130.png',cena:{extra:PHONE,sun:120},tag:'FASE 1 · ATRAÇÃO',t:'o alvo<br>te viu',box:'O anúncio ou o conteúdo trazem a pessoa até você. Ela ainda <b>não confia</b>. Só está passando.'},
+ {img:'pose240.png',cena:{extra:CHAT,sky:['#4f7fe0','#a98bff','#ffb3d9'],sun:150},tag:'FASE 2 · CAPTURA',t:'pegue o<br>contato',box:'Ofereça algo útil, como um diagnóstico ou uma aula. Em troca, <b>nome e WhatsApp</b>. Quem não deixa contato some do mapa.'},
+ {img:'pose170.png',cena:{extra:FUNIL,sky:['#7a4fd6','#ff7fb6','#ffc98f'],sun:120},tag:'FASE 3 · AQUECIMENTO',t:'ganhe<br>confiança',box:'Conteúdo, prova e conversa nos dias seguintes. Ele passa de <b>curioso</b> para <b>interessado</b>.'},
+ {img:'pose410.png',cena:{extra:MONEY,sky:['#ff8a6b','#ff6fae','#ffd166'],sun:300},tag:'FASE 4 · CONVERSÃO',t:'alguém<br>atende',box:'A oferta certa, na hora certa, com <b>uma pessoa respondendo</b>. Aqui o visitante vira cliente.'}];
+// ---------- capa em grade, como pôster de jogo ----------
+let capa=`<div class="s" id="s1">`;
+const G=[[30,30,330,560],[375,30,675,700],[30,605,330,700],[375,745,320,560],[710,745,340,560],[30,1320,0,0]];
+const pn=(x,y,w,h,inner)=>`<div class="pn" style="left:${x}px;top:${y}px;width:${w}px;height:${h}px">${inner}</div>`;
+capa+=pn(30,30,330,560,cena({extra:PHONE,sun:120,palms:[[20,.9,1]]})+`<img src="pose130.png" style="height:520px;left:-10px;bottom:-20px">`);
+capa+=pn(375,30,675,700,cena({sky:['#7a4fd6','#ff8fc7','#ffd2a1'],palms:[[40,1.3,1],[560,1.4,-1]]})+`<img src="rosto.png" style="width:640px;left:20px;bottom:-10px">`);
+capa+=pn(30,605,330,715,cena({extra:CHAT,sky:['#4f7fe0','#a98bff','#ffb3d9'],palms:[[560,1,-1]]})+`<img src="pose240.png" style="height:600px;left:-30px;bottom:-30px">`);
+capa+=pn(375,745,320,575,cena({extra:FUNIL,sky:['#7a4fd6','#ff7fb6','#ffc98f']})+`<img src="pose170.png" style="height:540px;left:-40px;bottom:-30px">`);
+capa+=pn(710,745,340,575,cena({extra:MONEY,sky:['#ff8a6b','#ff6fae','#ffd166']})+`<img src="pose410.png" style="height:540px;left:30px;bottom:-30px">`);
+capa+=`<svg style="position:absolute;left:330px;top:500px" width="420" height="405" viewBox="0 0 580 560"><defs><linearGradient id="em" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5b7dff"/><stop offset=".5" stop-color="#ff5fb0"/><stop offset="1" stop-color="#ffb35c"/></linearGradient></defs><path d="M20 20 L560 20 L360 300 L360 540 L220 540 L220 300 Z" fill="url(#em)" stroke="#3b0f5c" stroke-width="22" stroke-linejoin="round"/><path d="M20 20 L560 20 L360 300 L360 540 L220 540 L220 300 Z" fill="none" stroke="#fff" stroke-width="6" stroke-linejoin="round" transform="translate(0,0)"/></svg>`;
+capa+=`<div class="logo" style="left:0;top:600px;width:1080px;font-size:132px"><span style="font-size:90px">o</span><br>estrategista</div>`;
+capa+=`<div style="position:absolute;left:0;width:1080px;top:905px;text-align:center"><span style="font:900 34px Inter;letter-spacing:6px;color:#3b0f5c;background:#fff;padding:12px 26px;border-radius:8px;border:6px solid #3b0f5c">MISSÃO: O FUNIL</span></div>`;
+capa+=`<div class="sw">ARRASTA ›</div></div>`;
+document.write(capa);
+// ---------- fases ----------
+P.forEach((f,i)=>{document.write(`<div class="s" id="s${i+2}"><div class="pn" style="left:30px;top:30px;width:1020px;height:1290px">${cena(f.cena)}<img src="${f.img}" style="height:1120px;${i%2?'left:-60px':'right:-80px'};bottom:-60px;${i%2?'':''}"></div>
+ <div class="tag">${f.tag}</div><div class="ttl" style="top:140px">${f.t}</div>
+ <div class="box" style="top:780px;${i%2?'left:390px':''}">${f.box}</div><div class="foot">@O_ESTRATEGISTA.COM.BR · ${i+2}/6</div></div>`)});
+// ---------- final ----------
+document.write(`<div class="s" id="s6"><div class="pn" style="left:30px;top:30px;width:1020px;height:1290px">${cena({sky:['#ff8a6b','#ff5fa8','#ffd166'],sun:300,palms:[[30,1.4,1],[580,1.5,-1]]})}<img src="rosto.png" style="width:900px;left:60px;bottom:-20px"></div>
+ <div class="tag" style="background:#fff">MISSÃO CUMPRIDA</div><div class="ttl" style="top:140px">o tráfego entra<br>por último</div>
+ <div class="box" style="top:420px;width:760px">Com as 4 fases montadas, o anúncio passa pelo funil <b>sem vazar</b>. Salva e manda para quem investe em anúncio sem funil.</div>
+ <div class="foot">@O_ESTRATEGISTA.COM.BR · 6/6</div></div>`);
 </script></body></html>
