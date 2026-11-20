@@ -1,0 +1,69 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:Inter;src:url(../../videos/bni/fonts/Inter-Black.otf);font-weight:900}
+@font-face{font-family:Inter;src:url(../../videos/bni/fonts/Inter-Bold.otf);font-weight:700}
+@font-face{font-family:PI;src:url(../../videos/bni/fonts/playfair-italic-latin.woff2)}
+body{margin:0;background:#111}*{box-sizing:border-box}
+.s{position:relative;width:1080px;height:1350px;overflow:hidden;margin-bottom:20px;font-family:Inter}
+.sky{position:absolute;inset:0}
+.bru{position:absolute;filter:drop-shadow(0 20px 40px rgba(0,0,0,.55))}
+.kick{position:absolute;left:60px;top:70px;display:flex;gap:14px;align-items:center;font:900 30px Inter;letter-spacing:4px;color:#fff}
+.kick .b{background:#ff2e88;padding:10px 18px;transform:skewX(-10deg);box-shadow:6px 6px 0 #1a0b24}
+.kick .p{display:flex;gap:6px}.kick .p i{width:46px;height:14px;background:rgba(255,255,255,.3);transform:skewX(-20deg)}.kick .p i.on{background:#2ff0e6}
+.t{position:absolute;left:60px;width:960px;font:900 italic 108px Inter;line-height:.95;letter-spacing:-3px;color:#fff;text-transform:uppercase;
+ -webkit-text-stroke:5px #1a0b24;paint-order:stroke fill;text-shadow:8px 8px 0 #ff2e88,16px 16px 0 #1a0b24}
+.t em{font-style:italic;color:#ffd166}
+.box{position:absolute;left:60px;width:620px;background:rgba(18,8,26,.86);border-left:10px solid #2ff0e6;padding:28px 32px;color:#fff;font:700 38px Inter;line-height:1.28;box-shadow:12px 12px 0 rgba(0,0,0,.45)}
+.box b{color:#ffd166}
+.foot{position:absolute;left:60px;bottom:50px;font:700 26px Inter;letter-spacing:3px;color:#fff;opacity:.9}
+.swipe{position:absolute;right:60px;bottom:44px;font:900 30px Inter;color:#1a0b24;background:#ffd166;padding:12px 24px;transform:skewX(-10deg);box-shadow:6px 6px 0 #1a0b24}
+</style></head><body>
+<script>
+// cenario original: ceu de por do sol, sol com faixas, mar, predios e palmeiras em silhueta
+function cena(c){const [a,b,d]=c.sky;let p=`<svg class="sky" viewBox="0 0 1080 1350" preserveAspectRatio="none"><defs><linearGradient id="g${c.id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${a}"/><stop offset=".55" stop-color="${b}"/><stop offset="1" stop-color="${d}"/></linearGradient>
+<linearGradient id="su${c.id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe066"/><stop offset="1" stop-color="#ff3d7f"/></linearGradient>
+<clipPath id="cl${c.id}"><circle cx="${c.sun[0]}" cy="${c.sun[1]}" r="${c.sun[2]}"/></clipPath></defs>
+<rect width="1080" height="1350" fill="url(#g${c.id})"/>`;
+ p+=`<g clip-path="url(#cl${c.id})"><rect x="0" y="0" width="1080" height="1350" fill="url(#su${c.id})"/>${[0,1,2,3,4,5].map(i=>`<rect x="0" y="${c.sun[1]+i*22+10}" width="1080" height="${6+i*2}" fill="${b}"/>`).join('')}</g>`;
+ // predios
+ let x=0,k=0;while(x<1080){const w=50+((k*37)%60),h=180+((k*71)%260);p+=`<rect x="${x}" y="${c.hz-h}" width="${w}" height="${h}" fill="#2a0f3a" opacity=".92"/>`;for(let j=0;j<h/40-1;j++)if((j+k)%3)p+=`<rect x="${x+10}" y="${c.hz-h+18+j*40}" width="${w-20}" height="6" fill="${(j+k)%2?'#2ff0e6':'#ff6ec7'}" opacity=".55"/>`;x+=w+6;k++}
+ // mar e reflexos
+ p+=`<rect y="${c.hz}" width="1080" height="${1350-c.hz}" fill="#1b0a2e"/>`;for(let i=0;i<14;i++)p+=`<rect x="${c.sun[0]-140+((i*53)%120)}" y="${c.hz+14+i*16}" width="${280-i*14}" height="5" fill="#ff7aa8" opacity="${.7-i*.04}"/>`;
+ // palmeiras
+ const palm=(px,s,fl)=>{let g=`<g transform="translate(${px},${c.hz+30}) scale(${fl*s},${s})" fill="#14061e"><path d="M-8 0 C-2 -150 10 -300 30 -430 L42 -428 C24 -300 14 -150 10 0 Z"/>`;for(let f=0;f<7;f++){const an=-150+f*45;g+=`<path transform="translate(36,-430) rotate(${an})" d="M0 0 C60 -30 130 -10 190 40 C130 10 70 5 0 12 Z"/>`}return g+`</g>`};
+ c.palms.forEach(([px,s,fl])=>p+=palm(px,s,fl));
+ return p+`</svg>`}
+const C=[
+ {id:1,sky:['#3b0a5c','#ff4f8b','#ffb35c'],sun:[540,690,250],hz:860,palms:[[60,1.25,1],[1010,1.1,-1],[900,.75,-1]]},
+ {id:2,sky:['#140b3a','#7a1fa2','#ff5e9a'],sun:[820,760,170],hz:900,palms:[[40,1.0,1],[1040,1.15,-1]]},
+ {id:3,sky:['#06223a','#1d6f8a','#ff8a5c'],sun:[260,800,160],hz:920,palms:[[1000,1.2,-1],[90,.8,1]]},
+ {id:4,sky:['#2a0d48','#c2367a','#ffc06b'],sun:[540,720,230],hz:880,palms:[[30,1.15,1],[1050,1.2,-1]]},
+ {id:5,sky:['#0b0420','#3a106b','#ff2e88'],sun:[300,760,190],hz:900,palms:[[1020,1.3,-1],[150,.9,1]]},
+ {id:6,sky:['#ff7a3d','#ff3d7f','#ffd166'],sun:[540,640,300],hz:860,palms:[[20,1.3,1],[1060,1.3,-1],[170,.8,1],[920,.85,-1]]}];
+const S=[
+ `<div class="kick"><div class="b">MISSÃO</div>O CLIENTE DESAPARECIDO</div>
+  <div class="t" style="top:170px">Ele viu o seu anúncio.<br><em>E sumiu.</em></div>
+  <img class="bru" src="bruno-pintado.png" style="right:-60px;bottom:0;width:820px">
+  <div class="box" style="top:760px;width:560px">A história de como um <b>funil</b> transforma um desconhecido em cliente, em 4 fases.</div>
+  <div class="swipe">ARRASTA ›</div>`,
+ `<div class="kick"><div class="b">FASE 1</div><div class="p"><i class="on"></i><i></i><i></i><i></i></div></div>
+  <div class="t" style="top:170px">Atração:<br><em>o alvo te viu</em></div>
+  <img class="bru" src="bruno-pintado.png" style="right:-120px;bottom:0;width:700px">
+  <div class="box" style="top:720px">Anúncio ou conteúdo trazem a pessoa até você. Ela ainda <b>não confia</b>. Só está passando.<br><br>Sem a próxima fase, ela segue o caminho dela.</div>`,
+ `<div class="kick"><div class="b">FASE 2</div><div class="p"><i class="on"></i><i class="on"></i><i></i><i></i></div></div>
+  <div class="t" style="top:170px">Captura:<br><em>pegue o contato</em></div>
+  <img class="bru" src="bruno-pintado.png" style="left:-120px;bottom:0;width:700px;transform:scaleX(-1)">
+  <div class="box" style="top:720px;left:400px">Ofereça algo útil: um diagnóstico, um guia, uma aula. Em troca, <b>nome e WhatsApp</b>.<br><br>Quem não deixa contato some do mapa.</div>`,
+ `<div class="kick"><div class="b">FASE 3</div><div class="p"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div>
+  <div class="t" style="top:170px">Aquecimento:<br><em>ganhe confiança</em></div>
+  <img class="bru" src="bruno-pintado.png" style="right:-120px;bottom:0;width:700px">
+  <div class="box" style="top:720px">Conteúdo, prova e conversa nos dias seguintes. Ele passa de <b>curioso</b> para <b>interessado</b>.<br><br>Pular essa fase é pedir casamento no primeiro encontro.</div>`,
+ `<div class="kick"><div class="b">FASE 4</div><div class="p"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div></div>
+  <div class="t" style="top:170px">Conversão:<br><em>alguém atende</em></div>
+  <img class="bru" src="bruno-pintado.png" style="left:-120px;bottom:0;width:700px;transform:scaleX(-1)">
+  <div class="box" style="top:720px;left:400px">A oferta certa, na hora certa, com <b>uma pessoa respondendo</b>.<br><br>Mensagem automática pedindo e-mail não fecha venda.</div>`,
+ `<div class="kick"><div class="b" style="background:#2ff0e6;color:#1a0b24">MISSÃO CUMPRIDA</div></div>
+  <div class="t" style="top:170px">O tráfego<br><em>entra por último</em></div>
+  <img class="bru" src="bruno-pintado.png" style="right:-40px;bottom:0;width:760px">
+  <div class="box" style="top:700px;width:560px">Com as 4 fases montadas, o anúncio passa pelo funil <b>sem vazar</b>.<br><br>Salva e manda para quem investe em anúncio sem funil.</div>`];
+S.forEach((h,i)=>{document.write(`<div class="s" id="s${i+1}">${cena(C[i])}${h}<div class="foot">@O_ESTRATEGISTA.COM.BR · ${i+1}/6</div></div>`)});
+</script></body></html>
